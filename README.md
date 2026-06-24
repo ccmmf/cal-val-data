@@ -99,9 +99,8 @@ So far CH4 has no covered site and N2O has one. These constraints are documented
 │   └── white_salinas_2020/        # data_entry_report.md lands here
 ├── docs/                          # data collection protocol lands here
 └── tests/
-    ├── testthat.R
     └── testthat/
-        ├── helper.R
+        ├── helper.R               # loads validate.R for the tests
         └── test-integrity.R       # datapackage columns present; warn mode gaps surfaced
 ```
 
@@ -182,10 +181,10 @@ Smaller tables (`citations`, `sites`, `treatments`, `treatment_pairs`, `methods`
 Rscript scripts/validate.R
 ```
 
-`tests/` runs the same checks under testthat; tables not yet generated are skipped, so a fresh clone passes.
+Tests under `tests/testthat/` run the same checks via testthat. Tables not yet generated are skipped, so a fresh clone passes.
 
 ```bash
-Rscript tests/testthat.R
+Rscript -e 'testthat::test_dir("tests/testthat")'
 ```
 
 ## Usage
