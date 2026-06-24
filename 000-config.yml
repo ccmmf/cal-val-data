@@ -1,0 +1,6 @@
+# default config for cal-val-data
+# read with config::get(file = "000-config.yml")
+default:
+  workbook: PASTE_WORKBOOK_ID
+  data_dir: data
+  raw_data_dir: data_raw
