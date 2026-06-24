@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-# read the magic cal/val workbook and write one csv per tab to data/.
+# read the cal/val workbook and write one csv per tab to data/.
 # the workbook is the source of truth; the csvs are generated, not edited.
 
 library(googlesheets4)
