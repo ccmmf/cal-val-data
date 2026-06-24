@@ -39,7 +39,7 @@ Both datasets pull replicate level values from a public archive; companion analy
 | dataset_id | site | lat, lon | period | treatments | variables | citations (DOI) |
 | ---------- | ---- | -------- | ------ | ---------- | --------- | --------------- |
 | `white_salinas_2020` | salinas_socs (USDA ARS, Salinas Valley CA) | 36.62, -121.53 | 2003 to 2011 (8 yr) | 8 systems `socs_sys1`..`socs_sys8`, 4 blocks (compost with or without cover crop type, frequency, seeding rate) | SOC stock and concentration, bulk density, total N, nitrate, POXC | 10.1016/j.dib.2020.106481; 10.1371/journal.pone.0228677 |
-| `nichols_modesto_2024` | modesto_almond_usda (USDA ARS almond fertigation trial, Modesto CA) | 37.63, -121.09 | 2018 to 2019 (2 yr) | `compost` vs `no_compost` (annual compost top dress vs control, same drip fertigation) | N2O flux, total C, total N | 10.1002/saj2.20615; 10.15482/USDA.ADC/26155504 |
+| `nichols_modesto_2024` | modesto_almond_usda (USDA ARS almond fertigation trial, Modesto CA) | 37.63, -121.09 | 2018 to 2019 (2 yr) | `compost` vs `no_compost` (annual compost top dress vs control, same drip fertigation) | N2O flux, total C, total N, bulk density | 10.1002/saj2.20615; 10.15482/USDA.ADC/26155504 |
 
 ### white_salinas_2020
 
@@ -47,7 +47,7 @@ Organic vegetable rotation (romaine lettuce, broccoli) with winter cover crops a
 
 ### nichols_modesto_2024
 
-Long term compost orchard with high frequency low concentration drip fertigation (about 195 kg N ha-1 across 14 events). N2O measured by closed static chamber on 9 dates (Dec 2018 to Aug 2019), 3 replicate arrays per treatment, upscaled to emitter level. Soil total C and N are single timepoint (August 2019), so this dataset supports N2O magnitude and contrast validation but not a SOC trajectory.
+Long term compost orchard with high frequency low concentration drip fertigation (about 195 kg N ha-1 across 14 events). N2O measured by closed static chamber on 9 dates (Dec 2018 to Aug 2019), 3 replicate arrays per treatment, upscaled to emitter level. Soil total C, total N, and bulk density are single timepoint (August 2019), so this dataset supports N2O magnitude and contrast validation but not a SOC trajectory.
 
 ## Measured Variables
 
@@ -56,11 +56,11 @@ Core variables, in reported units:
 | variable | units | description |
 | -------- | ----- | ----------- |
 | `SOC_stock_Mg_ha` | Mg C ha-1 | soil organic carbon stock; depth in `min_depth` / `max_depth` |
-| `SOC_conc_mg_kg` | mg C kg-1 | soil organic carbon concentration |
+| `SOC_conc_mg_kg` | mg C kg-1 soil | soil organic carbon concentration |
 | `bulk_density_g_cm3` | g cm-3 | soil bulk density |
-| `total_N_conc_mg_kg` | mg N kg-1 | total soil nitrogen concentration |
-| `nitrate_N_mg_kg` | mg NO3 N kg-1 | soil nitrate nitrogen |
-| `N2O_flux_g_N_ha_d` | g N2O N ha-1 d-1 | nitrous oxide flux |
+| `total_N_conc_mg_kg` | mg N kg-1 soil | total soil nitrogen concentration |
+| `nitrate_N_mg_kg` | mg NO3-N kg-1 soil | soil nitrate nitrogen |
+| `N2O_flux_g_N_ha_d` | g N2O-N ha-1 day-1 | nitrous oxide flux |
 | `total_C_pct` | % dry weight | total soil carbon by dry combustion |
 | `total_N_pct` | % dry weight | total soil nitrogen by dry combustion |
 
@@ -68,16 +68,16 @@ Supporting variables (soil organic matter fractions, texture, pH, biomass, yield
 
 ## Coverage
 
-`data/coverage.csv` crosses system and treatment contrast against each target, split into absolute magnitude and treatment contrast. Cells marked yes are covered by current datasets; blank cells are tracked gaps.
+data/coverage.csv crosses system and treatment contrast against each target, split into magnitude and treatment contrast, for both SOC change and N2O. Cells marked yes are covered by current datasets; blank cells are tracked gaps.
 
-| System | Treatment contrast | SOC change magnitude | SOC change contrast | N2O magnitude | N2O contrast | source |
+| System | Treatment contrast | ΔSOC magnitude | ΔSOC contrast | N2O magnitude | N2O contrast | source |
 | ------ | ------------------ | :---: | :---: | :---: | :---: | ------ |
-| Annual row, vegetable | cover crop vs no cover crop | yes | yes |  |  | white_salinas_2020 |
-| Annual row, vegetable | compost vs fertilizer only | yes | yes |  |  | white_salinas_2020 (N2O not measured) |
-| Perennial woody, orchard | compost vs control |  |  | yes | yes | nichols_modesto_2024 (single timepoint SOC) |
+| Annual row / vegetable | cover crop vs no cover crop | yes | yes |  |  | white_salinas_2020 |
+| Annual row / vegetable | compost / OM vs fertilizer | yes | yes |  |  | white_salinas_2020 (N2O not measured) |
+| Perennial woody (orchard / vineyard) | one management contrast with known history |  |  | yes | yes | nichols_modesto_2024 (single timepoint SOC) |
 | Annual or perennial | tillage contrast |  |  |  |  | gap |
-| Annual or perennial | irrigation regime |  |  |  |  | gap |
-| Rice, flooded | flood vs alternate wetting and drying (CH4) |  |  |  |  | gap |
+| Annual or perennial | irrigation regime contrast |  |  |  |  | gap |
+| Rice / flooded | flood vs AWD |  |  |  |  | gap |
 
 So far CH4 has no covered site and N2O has one. These constraints are documented for any consumer.
 
@@ -145,7 +145,7 @@ Each workbook tab maps to one CSV in `data/`. Full field schema, types, and keys
 | `notes` | string | free text, including date precision caveats |
 | `dataset_id` | string | short source packet id, e.g. `white_salinas_2020` |
 | `reported_units` | string | units as source reports them |
-| `observation_level` | string | `replicate`, `treatment_mean`, or `zone_mean` |
+| `observation_level` | string | replicate or zone_mean |
 
 ### managements.csv columns
 
@@ -172,7 +172,7 @@ Smaller tables (`citations`, `sites`, `treatments`, `treatment_pairs`, `methods`
 - **Dates.** Record source stated range in `min_date` and `max_date`. An exact date sets both equal; a stated month or season bounds interval; an unknown date stays blank with reason in `notes`. Never invent a day of year.
 - **Statistics.** Store reported statistic (`n`, `statname`, `stat`) as given. Statistic conversion (standard deviation to standard error, and similar) is a downstream step, not curation.
 - **Basis.** Methods state dry vs wet basis (prefer dry) and volumetric vs mass basis. Amendment rates carry their basis in `units`.
-- **`fill_status` vocabulary.** `FILLED_ZOTERO_XLSX`, `FILLED_S1_TABLE`, `FILLED_SITE_DATA_XLSX`, `FILLED_USDA_SOIL_XLSX`, `FILLED_DATASET`, `PAPER_TEXT`, `NEEDS_FILL`, `MISSING_IN_SOURCE`.
+- **fill_status.** Provenance code for each value. Codes in current data: FILLED_SITE_DATA_XLSX, FILLED_ZOTERO_XLSX, FILLED_DATASET. Additional codes (PAPER_TEXT, NEEDS_FILL, MISSING_IN_SOURCE) are reserved for rows still being curated.
 
 ## Validation
 
@@ -187,20 +187,6 @@ Rscript scripts/validate.R
 ```bash
 Rscript tests/testthat.R
 ```
-
-## Known Data Issues
-
-Current curation gaps, surfaced by `scripts/validate.R`. These are workbook in progress items, not permanent schema.
-
-| Issue | Affected table | Description | Status |
-| ----- | -------------- | ----------- | ------ |
-| Two names for one site | observations | `salinas_ca` and `salinas_socs` refer to the same physical site; only `salinas_socs` is in `sites.csv` | reconcile to `salinas_socs` |
-| Dual treatment_id naming | observations | some rows use `sys1_control` / `sys2_quad_compost` style instead of `socs_sys1`..`socs_sys8` | align to `socs_sys*` |
-| Pre study pseudo treatment | managements | `All systems (pre-study establishment)` is not a `treatments.name`; should expand to one row per treatment | expand |
-| Incomplete variable dictionary | variables | extra variables (biomass, soil organic matter fractions, nitrogen inputs) used in data are not all defined | add definitions |
-| Method name mismatch | observations, methods | observation `method` strings carry a depth suffix (e.g. `elemental_analysis_0_30cm`) and do not all key match `methods.csv` | normalize |
-| Mixed date encodings | observations | ISO, `YYYYMMDD`, and Excel serial dates coexist | normalize on ingest |
-| Coverage tab preamble | coverage | a multi row title block sits above header; ingest must skip it | strip on ingest |
 
 ## Usage
 
