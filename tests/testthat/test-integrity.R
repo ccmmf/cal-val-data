@@ -1,4 +1,4 @@
-# integrity checks on the generated data/*.csv. per the warn-mode policy these
+# integrity checks on the generated data/*.csv. per the warn mode policy these
 # tests pass and emit warnings rather than fail; the known curation gaps are
 # documented as a TODO. tables not yet generated are skipped, so a fresh clone
 # passes cleanly. the underlying checks live in scripts/validate.R.
