@@ -1,0 +1,11 @@
+name,definition,start_date,end_date,control
+socs_sys1,"Control: legume-rye cover crop every 4th year (Years 3 and 7 (fall 2006 and fall 2010; planted before Years 4 and 8 vegetable seasons)), no compost applied",2003-10-01T00:00:00Z,2011-09-01T00:00:00Z,yes
+socs_sys2,Compost (7.6 Mg/ha/crop) + legume-rye cover crop every 4th year (Years 3 and 7 (fall 2006 and fall 2010; planted before Years 4 and 8 vegetable seasons)),2003-10-01T00:00:00Z,2011-09-01T00:00:00Z,no
+socs_sys3,"Compost (7.6 Mg/ha/crop) + legume-rye cover crop every year, low seeding rate (1x)",2003-10-01T00:00:00Z,2011-09-01T00:00:00Z,no
+socs_sys4,Compost (7.6 Mg/ha/crop) + legume-rye cover crop every year,2003-10-01T00:00:00Z,2011-09-01T00:00:00Z,no
+socs_sys5,Compost (7.6 Mg/ha/crop) + mustard cover crop every year,2003-10-01T00:00:00Z,2011-09-01T00:00:00Z,no
+socs_sys6,"Compost (7.6 Mg/ha/crop) + mustard cover crop every year, high seeding rate (3x)",2003-10-01T00:00:00Z,2011-09-01T00:00:00Z,no
+socs_sys7,Compost (7.6 Mg/ha/crop) + cereal rye cover crop every year,2003-10-01T00:00:00Z,2011-09-01T00:00:00Z,no
+socs_sys8,"Compost (7.6 Mg/ha/crop) + cereal rye cover crop every year, high seeding rate (3x)",2003-10-01T00:00:00Z,2011-09-01T00:00:00Z,no
+no_compost,Nichols 2024: Control — no compost since 2012 replanting. HFLC drip fertigation ~195 kg N ha-1 (14 events). Western 5 ha. Modesto CA almond orchard.,2018-12-01T00:00:00Z,2019-08-07T00:00:00Z,yes
+compost,"Nichols 2024: Annual compost top-dress ~38 dry t ha-1 (Recology yard trimmings) since 2012 (7 yr). Compost: 20% org C, 1.6% N, C:N ~13. Same HFLC fertigation as no_compost. Eastern 5 ha.",2018-12-01T00:00:00Z,2019-08-07T00:00:00Z,no

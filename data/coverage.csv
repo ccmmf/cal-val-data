@@ -1,0 +1,24 @@
+"MVP goal: demonstrate the calibration/validation pipeline using a minimal set of datasets that support
+(1) absolute-magnitude validation and
+(2) treatment-contrast validation
+for ΔSOC and N2O, across two treatment types and two system types (one annual row crop, one perennial woody/orchard).",...2,...3,...4,...5,...6,...7,...8,...9,...10,...11
+NA,NA,,,,,,,,NA,NA
+System,Treatment contrast,,,,,,,,Initial data sources,Notes
+Annual row / vegetable,Cover crop vs no cover crop,,,,,,,,White/Salinas,Strong row-crop ΔSOC contrast
+Annual row / vegetable,Compost / OM vs fertilizer,,,,,,,,White/Salinas,"Strong ΔSOC contrast (8 yrs, 4 reps). N2O not measured in this study."
+Perennial woody (orchard / vineyard),One management contrast with known history,,,,,,,,"Nichols 2024 (almond, compost vs no_compost); CARB HSP planned",Nichols: 9 dates × 3 reps × 2 treatments. Soil C single-timepoint (Aug 2019) — no ΔSOC.
+Annual or perennial,Tillage contrast,,,,,,,,White/Salinas,Useful second treatment type if orchard N2O is weak
+Annual or perennial,Irrigation regime contrast,,,,,,,,TBD,Could substitute for tillage depending on available data
+Rice / flooded,Flood vs AWD,,,,,,,,Fluxnet TODO,CH4-specific phase
+NA,NA,,,,,,,,NA,NA
+NA,NA,,,,,,,,NA,NA
+NA,NA,,,,,,,,NA,NA
+NA,NA,,,,,,,,NA,NA
+NA,NA,,,,,,,,NA,NA
+MVP Coverage Guidance,NA,,,,,,,,NA,NA
+Core outputs,Prioritize ΔSOC and N2O,,,,,,,,NA,NA
+Validation types,Both absolute magnitude and treatment contrast,,,,,,,,NA,NA
+System coverage,Include at least one annual row-crop system and one perennial woody/orchard system,,,,,,,,NA,NA
+Treatments,Include at least two different treatment contrast types,,,,,,,,NA,NA
+CH4,Only needed for rice w/ water management treatment,,,,,,,,NA,NA
+Other variables,"Lower priority; can be collected to at least compare visually to model output (if not formally) e.g. CO2/NEE; aboveground biomass, mineral N pools",,,,,,,,NA,NA

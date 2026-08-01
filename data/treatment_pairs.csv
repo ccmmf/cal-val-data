@@ -1,0 +1,10 @@
+pair_id,treatment_id_1,treatment_id_2,comparison_factor,comparison_label,use_for_validation
+1,socs_sys1,socs_sys2,compost,no_compost vs compost — quadrennial legume-rye cover crop,TRUE
+2,socs_sys2,socs_sys4,cover_crop_frequency,quadrennial vs annual legume-rye — both with compost,TRUE
+3,socs_sys4,socs_sys5,cover_crop_type,legume-rye vs mustard — annual with compost,TRUE
+4,socs_sys4,socs_sys7,cover_crop_type,legume-rye vs cereal_rye — annual with compost,TRUE
+5,socs_sys5,socs_sys7,cover_crop_type,mustard vs cereal_rye — annual with compost,TRUE
+6,socs_sys3,socs_sys4,seeding_rate,legume-rye 1x vs 3x conventional seeding rate — annual with compost,FALSE
+7,socs_sys5,socs_sys6,seeding_rate,mustard conventional vs 3x seeding rate — annual with compost,FALSE
+8,socs_sys7,socs_sys8,seeding_rate,cereal_rye conventional vs 3x seeding rate — annual with compost,FALSE
+9,no_compost,compost,compost,no compost vs annual compost (38 dry t ha-1 yr-1 since 2012) — Nichols 2024 almond orchard; same HFLC fertigation,TRUE
