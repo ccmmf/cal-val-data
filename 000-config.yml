@@ -1,7 +1,11 @@
 # default config for cal-val-data
 # read with config::get(file = "000-config.yml")
 default:
-  # Salinas + Modesto workbook (datasets: white_salinas_2020, nichols_modesto_2024)
-  workbook: 1pXiZUkNP50WXbmAztoEgUJ6rpQNyewmobCuaFHL8UjQ
+  # one workbook per curated dataset group; ingest stacks each tab across all of them
+  workbook:
+    # Salinas + Modesto (white_salinas_2020, nichols_modesto_2024)
+    - 1pXiZUkNP50WXbmAztoEgUJ6rpQNyewmobCuaFHL8UjQ
+    # Russell Ranch (russell_ranch_tautges_2019)
+    - 1UXKQy0EUEtPBHIjtuf6d-cdQf6sSq0wiZfC_sW_13S0
   data_dir: data
   raw_data_dir: data_raw

@@ -1,10 +1,25 @@
-pair_id,treatment_id_1,treatment_id_2,comparison_factor,comparison_label,use_for_validation
-1,socs_sys1,socs_sys2,compost,no_compost vs compost — quadrennial legume-rye cover crop,TRUE
-2,socs_sys2,socs_sys4,cover_crop_frequency,quadrennial vs annual legume-rye — both with compost,TRUE
-3,socs_sys4,socs_sys5,cover_crop_type,legume-rye vs mustard — annual with compost,TRUE
-4,socs_sys4,socs_sys7,cover_crop_type,legume-rye vs cereal_rye — annual with compost,TRUE
-5,socs_sys5,socs_sys7,cover_crop_type,mustard vs cereal_rye — annual with compost,TRUE
-6,socs_sys3,socs_sys4,seeding_rate,legume-rye 1x vs 3x conventional seeding rate — annual with compost,FALSE
-7,socs_sys5,socs_sys6,seeding_rate,mustard conventional vs 3x seeding rate — annual with compost,FALSE
-8,socs_sys7,socs_sys8,seeding_rate,cereal_rye conventional vs 3x seeding rate — annual with compost,FALSE
-9,no_compost,compost,compost,no compost vs annual compost (38 dry t ha-1 yr-1 since 2012) — Nichols 2024 almond orchard; same HFLC fertigation,TRUE
+pair_id,treatment_id_1,treatment_id_2,comparison_factor,comparison_label,use_for_validation,healthy_soils_practice
+1,socs_sys1,socs_sys2,compost,no_compost vs compost — quadrennial legume-rye cover crop,TRUE,NA
+2,socs_sys2,socs_sys4,cover_crop_frequency,quadrennial vs annual legume-rye — both with compost,TRUE,NA
+3,socs_sys4,socs_sys5,cover_crop_type,legume-rye vs mustard — annual with compost,TRUE,NA
+4,socs_sys4,socs_sys7,cover_crop_type,legume-rye vs cereal_rye — annual with compost,TRUE,NA
+5,socs_sys5,socs_sys7,cover_crop_type,mustard vs cereal_rye — annual with compost,TRUE,NA
+6,socs_sys3,socs_sys4,seeding_rate,legume-rye 1x vs 3x conventional seeding rate — annual with compost,FALSE,NA
+7,socs_sys5,socs_sys6,seeding_rate,mustard conventional vs 3x seeding rate — annual with compost,FALSE,NA
+8,socs_sys7,socs_sys8,seeding_rate,cereal_rye conventional vs 3x seeding rate — annual with compost,FALSE,NA
+9,no_compost,compost,compost,no compost vs annual compost (38 dry t ha-1 yr-1 since 2012) — Nichols 2024 almond orchard; same HFLC fertigation,TRUE,NA
+russell-1,conv_corn_tomato,org_corn_tomato,synthetic_N + compost + cover_crop + pesticides,Organic vs conventional Corn-Tomato (multiple management diffs),NA,cover_crop; compost_om_vs_fertilizer
+russell-2,conv_corn_tomato,leg_corn_tomato,winter_legume_cover,Presence/absence of winter legume cover crop (conventional Corn-Tomato),NA,cover_crop
+russell-3,org_corn_tomato,leg_corn_tomato,compost + synthetic_N + pesticides,"Organic (compost, no synthetic N, no pesticides) vs conventional w/ legume CC; both have winter cover crop",NA,compost_om_vs_fertilizer
+russell-4,conv_corn_tomato,alf_corn_tomato,alfalfa_phase,Adding alfalfa as a 3rd rotation phase (Corn-Tomato vs Alfalfa-Corn-Tomato),NA,other_rotation
+russell-5,conv_corn_tomato,conv_wheat_tomato,alternate_crop_corn_vs_wheat,"Alternate-year crop identity: summer corn vs winter wheat (both conventional, both with tomato)",NA,other_rotation
+russell-6,irr_wheat_control,irr_wheat_fallow,alternate_year_fallow,Continuous wheat vs alternating-year fallow (irrigated),NA,other_rotation
+russell-7,irr_wheat_control,irr_wheat_legume,alternate_year_legume,Continuous wheat vs alternating-year legume crop (irrigated),NA,cover_crop
+russell-8,irr_wheat_fallow,irr_wheat_legume,fallow_vs_legume_in_off_year,Bare fallow vs legume crop in off-year (irrigated wheat),NA,cover_crop
+russell-9,rf_wheat_control,rf_wheat_fallow,alternate_year_fallow,Continuous wheat vs alternating-year fallow (rainfed),NA,other_rotation
+russell-10,rf_wheat_control,rf_wheat_legume,alternate_year_legume,Continuous wheat vs alternating-year legume crop (rainfed),NA,cover_crop
+russell-11,rf_wheat_fallow,rf_wheat_legume,fallow_vs_legume_in_off_year,Bare fallow vs legume crop in off-year (rainfed wheat),NA,cover_crop
+russell-12,irr_wheat_control,rf_wheat_control,rainfed_vs_irrigation,Rainfed vs irrigated (continuous wheat),NA,irrigation
+russell-13,irr_wheat_fallow,rf_wheat_fallow,rainfed_vs_irrigation,Rainfed vs irrigated  (wheat-fallow),NA,irrigation
+russell-14,irr_wheat_legume,rf_wheat_legume,rainfed_vs_irrigation,Rainfed vs irrigated  (wheat-legume),NA,irrigation
+russell-15,conv_corn_tomato,native_grass,cropping_vs_grassland,"Active cropping (planting, harvest, fertilization, tillage) vs unmanaged native grass",NA,NA

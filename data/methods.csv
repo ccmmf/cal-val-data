@@ -16,3 +16,10 @@ n_input_estimation,"Nitrogen inputs estimated from cover crop biomass N content,
 yield_fresh_weight_harvest,Crop yield measured as fresh weight at commercial harvest. Lettuce: head weight. Broccoli: floret head weight. Cumulative over all crops in study period.,10.1002/saj2.20615,NA,NA,NA
 static_chamber_N2O,"Closed static chamber (3.5 L PVC, 20 cm diam). Gas sampled at t=0,10,20 min; N2O by GC-ECD (Shimadzu GC-2014). Flux upscaled across 3 collar zones (0, 50, 150 cm from emitter) using Baram et al. 2018.",10.1081/AL-120024647,NA,NA,NA
 colorimetric_nitrate,"Soil nitrate nitrogen measured by colorimetric method (cadmium reduction or similar), 0-30 cm depth. Samples collected annually at end of growing season.",10.1016/j.dib.2020.106481,NA,NA,NA
+dry_combustion_elemental_analysis,Total C and N by dry combustion on ground soil; elemental analyzer.,10.1002/ecy.2105,NA,NA,NA
+soil_core,"Bulk density by intact soil core (known volume), dried at 105 deg C.",10.1002/ecy.2105,NA,NA,NA
+walkley_black,Soil organic matter by Walkley-Black wet oxidation.,10.1002/ecy.2105,NA,NA,NA
+KCl_extract,Extractable NH4-N and NO3-N by 2M KCl extraction; colorimetric quantification.,10.1002/ecy.2105,NA,NA,NA
+field_harvest,In-field crop yield from hand-harvested subsamples or machine harvest as noted.,10.1002/ecy.2105,NA,NA,NA
+keeney_nelson,Extractable NH4-N and NO3-N determined colorimetrically following the Keeney and Nelson method; applied to KCl extracts.,NA,NA,NA,NA
+doane_miranda,Extractable NH4-N and NO3-N determined colorimetrically following the Doane and Miranda method; applied to KCl extracts.,NA,NA,NA,NA

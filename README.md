@@ -34,12 +34,13 @@ CSVs are committed so consumers read a stable, documented snapshot. Workbook can
 
 ## Datasets
 
-Both datasets pull replicate level values from a public archive; companion analysis papers supply methods and cross checks.
+Each dataset pulls replicate level values from a public archive; companion analysis papers supply methods and cross checks. A dataset is curated in its own workbook, and ingest stacks each tab across all workbooks into one CSV per table.
 
 | dataset_id | site | lat, lon | period | treatments | variables | citations (DOI) |
 | ---------- | ---- | -------- | ------ | ---------- | --------- | --------------- |
 | `white_salinas_2020` | salinas_socs (USDA ARS, Salinas Valley CA) | 36.62, -121.53 | 2003 to 2011 (8 yr) | 8 systems `socs_sys1`..`socs_sys8`, 4 blocks (compost with or without cover crop type, frequency, seeding rate) | SOC stock and concentration, bulk density, total N, nitrate, POXC | 10.1016/j.dib.2020.106481; 10.1371/journal.pone.0228677 |
 | `nichols_modesto_2024` | modesto_almond_usda (USDA ARS almond fertigation trial, Modesto CA) | 37.63, -121.09 | 2018 to 2019 (2 yr) | `compost` vs `no_compost` (annual compost top dress vs control, same drip fertigation) | N2O flux, total C, total N, bulk density | 10.1002/saj2.20615; 10.15482/USDA.ADC/26155504 |
+| `russell_ranch_tautges_2019` | russell_ranch_davis (UC Davis Russell Ranch Century Experiment, Davis CA) | 38.54, -121.87 | 1992 to 2014 (study years -1 to 21) | 14 systems (conventional, organic, legume cover, alfalfa phase corn-tomato; irrigated and rainfed wheat; transitional; native grass reference) | total C and N, bulk density to 250 cm, NH4-N, NO3-N, soil organic matter, corn, tomato, wheat, alfalfa and cover crop yields | 10.1002/ecy.2105; 10.1111/gcb.14762 |
 
 ### white_salinas_2020
 

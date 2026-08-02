@@ -9,3 +9,17 @@ socs_sys7,Compost (7.6 Mg/ha/crop) + cereal rye cover crop every year,2003-10-01
 socs_sys8,"Compost (7.6 Mg/ha/crop) + cereal rye cover crop every year, high seeding rate (3x)",2003-10-01T00:00:00Z,2011-09-01T00:00:00Z,no
 no_compost,Nichols 2024: Control — no compost since 2012 replanting. HFLC drip fertigation ~195 kg N ha-1 (14 events). Western 5 ha. Modesto CA almond orchard.,2018-12-01T00:00:00Z,2019-08-07T00:00:00Z,yes
 compost,"Nichols 2024: Annual compost top-dress ~38 dry t ha-1 (Recology yard trimmings) since 2012 (7 yr). Compost: 20% org C, 1.6% N, C:N ~13. Same HFLC fertigation as no_compost. Eastern 5 ha.",2018-12-01T00:00:00Z,2019-08-07T00:00:00Z,no
+conv_corn_tomato,"Conventional corn-tomato rotation, synthetic fertilizer N, no cover crop. UC Davis Century Experiment.",1993-10-01T00:00:00Z,2014-12-31T00:00:00Z,NA
+conv_corn_tomato_unassigned,Conventional corn-tomato (plot 5-4) used for variety trials; baseline irrigation/fertilization. Variety-trial anomalies present in most years.,1993-10-01T00:00:00Z,2014-12-31T00:00:00Z,NA
+org_corn_tomato,Organic corn-tomato rotation with composted poultry manure and winter cover crop; no synthetic N.,1993-10-01T00:00:00Z,2014-12-31T00:00:00Z,NA
+leg_corn_tomato,Conventional corn-tomato rotation with winter legume cover crop replacing some/all synthetic N.,1993-10-01T00:00:00Z,2014-12-31T00:00:00Z,NA
+alf_corn_tomato,Three-phase rotation: alfalfa -&gt; corn -&gt; tomato. Alfalfa-N feeds subsequent corn/tomato. Started 2012.,2012-01-01T00:00:00Z,2014-12-31T00:00:00Z,NA
+conv_wheat_tomato,"Conventional wheat-tomato rotation, synthetic fertilizer N, no cover crop.",1993-10-01T00:00:00Z,2014-12-31T00:00:00Z,NA
+irr_wheat_control,"Continuous irrigated wheat, conventional synthetic N, no cover crop.",1993-10-01T00:00:00Z,2014-12-31T00:00:00Z,NA
+irr_wheat_fallow,Irrigated wheat-fallow rotation (alternating years).,1993-10-01T00:00:00Z,2014-12-31T00:00:00Z,NA
+irr_wheat_legume,Irrigated wheat-legume rotation; ended 2011.,1993-10-01T00:00:00Z,2011-12-31T00:00:00Z,NA
+rf_wheat_control,"Continuous rainfed wheat, conventional synthetic N, no cover crop.",1993-10-01T00:00:00Z,2014-12-31T00:00:00Z,NA
+rf_wheat_fallow,Rainfed wheat-fallow rotation (alternating years).,1993-10-01T00:00:00Z,2014-12-31T00:00:00Z,NA
+rf_wheat_legume,Rainfed wheat-legume rotation.,1993-10-01T00:00:00Z,2014-12-31T00:00:00Z,NA
+native_grass,Native-grass reference (unmanaged); planted 2012.,2012-01-01T00:00:00Z,2014-12-31T00:00:00Z,NA
+transitional,Conventional-to-organic transition; 3 plots converted 1999.,1999-01-01T00:00:00Z,2014-12-31T00:00:00Z,NA

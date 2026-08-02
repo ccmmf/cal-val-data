@@ -7,3 +7,21 @@ N2O_flux_g_N_ha_d,"Nitrous oxide flux (N2O-N), upscaled to emitter level.",g N2O
 total_C_pct,"Total soil carbon (organic + inorganic, by dry combustion). Distinct from soil organic carbon (SOC); use this when carbonates or other inorganic C may contribute.",% dry weight,Nichols 2024; August 2019 only; n=3 reps per treatment; UC Davis Analytical Laboratory; modesto_almond_usda
 total_N_pct,"Total soil nitrogen (organic + inorganic, by dry combustion). Distinct from soil organic nitrogen; includes any NO3/NH4 in the dry-combusted aliquot.",% dry weight,Nichols 2024; August 2019 only; n=3 reps per treatment; UC Davis Analytical Laboratory; modesto_almond_usda
 nitrate_N_mg_kg,Soil nitrate nitrogen concentration.,mg NO3-N kg-1 soil,"Block-level; Zotero Table 1; 5 systems, Years 0-8, 4 reps; in white-additional-data tab; ammonium not reported"
+total_carbon_pct,Soil total carbon (mass percent of dry soil),%,"Multiple depth intervals 0-15, 15-30, 30-60, 60-100, 100-200, 200-300 cm"
+total_nitrogen_pct,Soil total nitrogen (mass percent of dry soil),%,Same depth intervals as total_carbon_pct
+bulk_density_g_cm3,Soil bulk density,g cm-3,"Intact core, oven-dry"
+soil_organic_matter_pct,Soil organic matter (Walkley-Black),%,NA
+soil_nh4_n_mg_kg,Soil extractable ammonium-N (2M KCl extract),mg kg-1,NA
+soil_no3_n_mg_kg,Soil extractable nitrate-N (2M KCl extract),mg kg-1,NA
+corn_grain_dry_yield_kg_ha,Corn grain dry yield from hand harvest,kg ha-1,NA
+corn_total_biomass_kg_ha,Corn total above-ground dry biomass,kg ha-1,NA
+corn_grain_mh_dry_yield_kg_ha,Corn grain dry yield from machine harvest,kg ha-1,NA
+tomato_red_fresh_yield_Mg_ha,Tomato red fruit fresh yield (hand harvest),Mg ha-1,NA
+tomato_green_fresh_yield_Mg_ha,Tomato green fruit fresh yield (hand harvest),Mg ha-1,NA
+tomato_vine_dry_yield_Mg_ha,Tomato vine dry yield (hand harvest),Mg ha-1,NA
+tomato_mh_dry_yield_Mg_ha,Tomato dry yield from machine harvest,Mg ha-1,NA
+wheat_hh_dry_grain_yield_kg_ha,Wheat grain dry yield (hand harvest),kg ha-1,NA
+wheat_mh_dry_grain_yield_kg_ha,Wheat grain dry yield (machine harvest),kg ha-1,NA
+alfalfa_dry_yield_kg_ha,Alfalfa cut hay dry yield,kg ha-1,NA
+cover_crop_dry_biomass_kg_ha,Winter cover crop above-ground dry biomass,kg ha-1,NA
+sudangrass_dry_yield_kg_ha,Sudangrass dry yield,kg ha-1,NA
