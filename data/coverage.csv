@@ -1,37 +1,43 @@
-System,Treatment contrast,ΔSOC magnitude,ΔSOC treatment contrast,N2O magnitude,N2O treatment contrast,CH4 magnitude,CH4 treatment contrast,Woody Biomass magnitude,Initial data sources,Notes
-Annual row / vegetable,Cover crop vs no cover crop,1,1,0,0,0,0,0,White/Salinas,Strong row-crop ΔSOC contrast
-Annual row / vegetable,Compost / OM vs fertilizer,1,1,0,0,0,0,0,White/Salinas,"Strong ΔSOC contrast (8 yrs, 4 reps). N2O not measured in this study."
-Perennial woody (orchard / vineyard),One management contrast with known history,0,0,1,1,0,0,0,"Nichols 2024 (almond, compost vs no_compost); CARB HSP planned",Nichols: 9 dates × 3 reps × 2 treatments. Soil C single-timepoint (Aug 2019) — no ΔSOC.
-Annual or perennial,Tillage contrast,0,0,0,0,0,0,0,White/Salinas,Useful second treatment type if orchard N2O is weak
-Annual or perennial,Irrigation regime contrast,0,0,0,0,0,0,0,TBD,Could substitute for tillage depending on available data
-Rice / flooded,Flood vs AWD,0,0,0,0,0,0,X,Fluxnet TODO,CH4-specific phase
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-MVP Coverage Guidance,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Core outputs,Prioritize ΔSOC and N2O,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Validation types,Both absolute magnitude and treatment contrast,NA,NA,NA,NA,NA,NA,NA,NA,NA
-System coverage,Include at least one annual row-crop system and one perennial woody/orchard system,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Treatments,Include at least two different treatment contrast types,NA,NA,NA,NA,NA,NA,NA,NA,NA
-CH4,Only needed for rice w/ water management treatment,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Other variables,"Lower priority; can be collected to at least compare visually to model output (if not formally) e.g. CO2/NEE; aboveground biomass, mineral N pools",NA,NA,NA,NA,NA,NA,NA,NA,NA
-Annual row / vegetable,Cover crop vs no cover crop,0,0,0,0,0,0,NA,White/Salinas,Strong row-crop ΔSOC contrast
-Annual row / vegetable,Compost / OM vs fertilizer,0,0,0,0,0,0,NA,White/Salinas,Best current exemplar for both ΔSOC and N2O
-Perennial woody (orchard / vineyard),One management contrast with known history,0,0,0,0,0,0,NA,CARB HSP data,NA
-Annual or perennial,Tillage contrast,0,0,0,0,0,0,NA,White/Salinas,Useful second treatment type if orchard N2O is weak
-Annual or perennial,Irrigation regime contrast,0,0,0,0,0,0,NA,TBD,Could substitute for tillage depending on available data
-Rice / flooded,Flood vs AWD,0,0,0,0,0,0,NA,Fluxnet TODO,CH4-specific phase
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-MVP Coverage Guidance,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Core outputs,Prioritize ΔSOC and N2O,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Validation types,Both absolute magnitude and treatment contrast,NA,NA,NA,NA,NA,NA,NA,NA,NA
-System coverage,Include at least one annual row-crop system and one perennial woody/orchard system,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Treatments,Include at least two different treatment contrast types,NA,NA,NA,NA,NA,NA,NA,NA,NA
-CH4,Only needed for rice w/ water management treatment,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Other variables,"Lower priority; can be collected to at least compare visually to model output (if not formally) e.g. CO2/NEE; aboveground biomass, mineral N pools",NA,NA,NA,NA,NA,NA,NA,NA,NA
+System,Treatment contrast,ΔSOC magnitude,ΔSOC treatment contrast,N2O magnitude,N2O treatment contrast,CH4 magnitude,CH4 treatment contrast,Woody Biomass magnitude,Initial data sources,Notes,site_id,variable,daily_rows,annual_rows,seasonal_rows,static_observation_rows,weather_rows,notes
+Annual row / vegetable,Cover crop vs no cover crop,1,1,0,0,0,0,0,White/Salinas,Strong row-crop ΔSOC contrast,NA,NA,NA,NA,NA,NA,NA,NA
+Annual row / vegetable,Compost / OM vs fertilizer,1,1,0,0,0,0,0,White/Salinas,"Strong ΔSOC contrast (8 yrs, 4 reps). N2O not measured in this study.",NA,NA,NA,NA,NA,NA,NA,NA
+Perennial woody (orchard / vineyard),One management contrast with known history,0,0,1,1,0,0,0,"Nichols 2024 (almond, compost vs no_compost); CARB HSP planned",Nichols: 9 dates × 3 reps × 2 treatments. Soil C single-timepoint (Aug 2019) — no ΔSOC.,NA,NA,NA,NA,NA,NA,NA,NA
+Annual or perennial,Tillage contrast,0,0,0,0,0,0,0,White/Salinas,Useful second treatment type if orchard N2O is weak,NA,NA,NA,NA,NA,NA,NA,NA
+Annual or perennial,Irrigation regime contrast,0,0,0,0,0,0,0,TBD,Could substitute for tillage depending on available data,NA,NA,NA,NA,NA,NA,NA,NA
+Rice / flooded,Flood vs AWD,0,0,0,0,0,0,X,Fluxnet TODO,CH4-specific phase,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+MVP Coverage Guidance,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Core outputs,Prioritize ΔSOC and N2O,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Validation types,Both absolute magnitude and treatment contrast,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+System coverage,Include at least one annual row-crop system and one perennial woody/orchard system,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Treatments,Include at least two different treatment contrast types,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+CH4,Only needed for rice w/ water management treatment,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Other variables,"Lower priority; can be collected to at least compare visually to model output (if not formally) e.g. CO2/NEE; aboveground biomass, mineral N pools",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Annual row / vegetable,Cover crop vs no cover crop,0,0,0,0,0,0,NA,White/Salinas,Strong row-crop ΔSOC contrast,NA,NA,NA,NA,NA,NA,NA,NA
+Annual row / vegetable,Compost / OM vs fertilizer,0,0,0,0,0,0,NA,White/Salinas,Best current exemplar for both ΔSOC and N2O,NA,NA,NA,NA,NA,NA,NA,NA
+Perennial woody (orchard / vineyard),One management contrast with known history,0,0,0,0,0,0,NA,CARB HSP data,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Annual or perennial,Tillage contrast,0,0,0,0,0,0,NA,White/Salinas,Useful second treatment type if orchard N2O is weak,NA,NA,NA,NA,NA,NA,NA,NA
+Annual or perennial,Irrigation regime contrast,0,0,0,0,0,0,NA,TBD,Could substitute for tillage depending on available data,NA,NA,NA,NA,NA,NA,NA,NA
+Rice / flooded,Flood vs AWD,0,0,0,0,0,0,NA,Fluxnet TODO,CH4-specific phase,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+MVP Coverage Guidance,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Core outputs,Prioritize ΔSOC and N2O,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Validation types,Both absolute magnitude and treatment contrast,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+System coverage,Include at least one annual row-crop system and one perennial woody/orchard system,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Treatments,Include at least two different treatment contrast types,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+CH4,Only needed for rice w/ water management treatment,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Other variables,"Lower priority; can be collected to at least compare visually to model output (if not formally) e.g. CO2/NEE; aboveground biomass, mineral N pools",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,US-Bi1,CH4_flux,1379,4,0,6,163584,Row counts for the current calval scope.
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,US-Bi1,NEE,2879,8,0,6,163584,Row counts for the current calval scope.
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,US-Bi2,CH4_flux,2437,7,0,2,146016,Row counts for the current calval scope.
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,US-Bi2,NEE,2444,7,0,2,146016,Row counts for the current calval scope.
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,US-Twt,CH4_flux,2026,6,0,12,144768,Row counts for the current calval scope.
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,US-Twt,NEE,2389,7,0,12,144768,Row counts for the current calval scope.

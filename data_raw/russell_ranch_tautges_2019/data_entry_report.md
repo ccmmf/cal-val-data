@@ -167,22 +167,6 @@ the dates the source reports. **Point dates are never invented.**
 is `FILLED_DATA_PUBLICATION` — taken from the Wolf et al. (2018) *Ecology*
 data publication rather than transcribed from an analysis paper's tables.
 
-## Open follow-ups
-
-- Add `citation_id` to the new `keeney_nelson` and `doane_miranda` method
-  rows (left blank pending confirmation of the exact analytical references
-  the source intends).
-- Confirm whether NH₄/NO₃ rows should reference `KCl_extract` (the
-  extraction) or the determination-specific method rows now used — both are
-  registered, and the choice should be consistent with how other datasets
-  record extraction vs determination.
-- `bulk_density_g_cm3` is defined in both this workbook and the
-  Salinas/Modesto workbook; the definitions agree but the stacked
-  `variables` table reports a duplicate key. Decide where shared variable
-  definitions should live.
-- Confirm the `conv_corn_tomato_unassigned` (variety-trial plot 5-4) rows
-  should be retained for validation or excluded as off-design.
-
 ---
 
 ## Related resource

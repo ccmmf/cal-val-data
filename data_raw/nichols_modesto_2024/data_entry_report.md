@@ -128,15 +128,6 @@ with the source phrase in `notes`. **Point dates are never invented.**
 (Exact `fill_status` codes follow whatever the workbook records for each
 row; confirm against the `observations` tab on ingest.)
 
-## Open follow-ups
-
-- Confirm the total-N reporting basis (concentration vs percent) and units
-  against the archive record.
-- Confirm the exact 9 chamber dates and the ~14 fertigation event dates as
-  carried in `managements` / `observations` match the archive.
-- Verify the `treatment_pairs` row (`compost` vs `no_compost`) is flagged
-  `use_for_validation`.
-
 ---
 
 ## Related resource

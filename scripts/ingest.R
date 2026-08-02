@@ -14,10 +14,16 @@ tabs <- c(
   "observations", "methods", "variables", "crops", "coverage"
 )
 
-# coverage carries a two row title block above its header row
-skip_rows <- c(coverage = 2)
-
 workbooks <- unlist(cfg$workbook, use.names = FALSE)
+
+# some tabs open with a title block above the header, and it is not the same
+# height in every workbook, so find the first row that holds more than one cell
+header_offset <- function(wb, tab) {
+  top <- read_sheet(wb, sheet = tab, range = "1:5", col_names = FALSE, col_types = "c")
+  filled <- vapply(seq_len(nrow(top)), function(i) sum(!is.na(unlist(top[i, ]))), integer(1))
+  first <- which(filled > 1)[1]
+  if (is.na(first)) 0L else first - 1L
+}
 
 # tab names differ in case between workbooks, so match on the lowercased name
 tab_names <- lapply(workbooks, function(wb) gs4_get(wb)$sheets$name)
@@ -50,7 +56,7 @@ for (tab in tabs) {
     parts[[length(parts) + 1]] <- read_sheet(
       workbooks[i],
       sheet = hit[1],
-      skip = if (tab %in% names(skip_rows)) skip_rows[[tab]] else 0
+      skip = header_offset(workbooks[i], hit[1])
     )
   }
   if (!length(parts)) next

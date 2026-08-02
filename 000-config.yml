@@ -7,5 +7,7 @@ default:
     - 1pXiZUkNP50WXbmAztoEgUJ6rpQNyewmobCuaFHL8UjQ
     # Russell Ranch (russell_ranch_tautges_2019)
     - 1UXKQy0EUEtPBHIjtuf6d-cdQf6sSq0wiZfC_sW_13S0
+    # AmeriFlux Delta towers (ameriflux_us_bi2_mvp, ameriflux_us_bi1_mvp, ameriflux_us_twt_mvp)
+    - 148G8IyaeqXhqCvY42G3vI9V3WJk4Uypsgd_3Pb5A8_0
   data_dir: data
   raw_data_dir: data_raw
