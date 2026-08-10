@@ -35,7 +35,14 @@ tab_names <- lapply(workbooks, function(wb) gs4_get(wb)$sheets$name)
 # a column guessed as numeric in one workbook and text in another, or read as a
 # list because its cells are mixed, has to fall back to text before it stacks
 as_text <- function(x) {
-  vapply(x, function(v) if (length(v) && !is.na(v[1])) as.character(v[1]) else NA_character_, character(1))
+  vapply(x, function(v) {
+    # no cell in the current workbooks holds more than one value, and silently
+    # keeping the first would drop data if that ever changed
+    if (length(v) > 1) {
+      stop("a single cell holds ", length(v), " values; cannot flatten to text", call. = FALSE)
+    }
+    if (length(v) && !is.na(v[1])) as.character(v[1]) else NA_character_
+  }, character(1))
 }
 harmonise <- function(parts) {
   for (col in unique(unlist(lapply(parts, names)))) {
