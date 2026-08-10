@@ -63,6 +63,22 @@ drop_empty <- function(dat) {
   dat[keep_row, , drop = FALSE]
 }
 
+# one workbook labels some columns its own way alongside the canonical name, and
+# the two agree on every row they fill. the duplicate carries nothing, so it is
+# dropped rather than exported and declared. named per table because the same
+# column name means different things in different tables: `treatment_id` in
+# observations is the foreign key, in treatments it merely repeats `name`.
+redundant <- list(
+  observations = c("site_id", "method_id"),
+  sites        = "site_id",
+  treatments   = c("treatment_id", "treatment_definition"),
+  managements  = c("site_id", "treatment_id", "event_type"),
+  variables    = "variable"
+)
+drop_redundant <- function(dat, tab) {
+  dat[, !names(dat) %in% redundant[[tab]], drop = FALSE]
+}
+
 dir.create(cfg$data_dir, showWarnings = FALSE)
 
 for (tab in tabs) {
@@ -78,7 +94,7 @@ for (tab in tabs) {
   }
   if (!length(parts)) next
   readr::write_csv(
-    drop_empty(dplyr::bind_rows(harmonise(parts))),
+    drop_redundant(drop_empty(dplyr::bind_rows(harmonise(parts))), tab),
     file.path(cfg$data_dir, paste0(tab, ".csv"))
   )
 }

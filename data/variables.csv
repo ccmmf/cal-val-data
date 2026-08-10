@@ -1,95 +1,95 @@
-name,description,units,notes,variable
-SOC_stock_Mg_ha,Soil organic carbon stock (SOC). Depth interval specified per row in min_depth / max_depth columns.,Mg C ha-1,"Block-level; Zotero Table 1; all 8 systems, Years 0-8, 4 reps; in observations tab",NA
-bulk_density_g_cm3,Soil bulk density.,g cm-3,"Block-level; site-data.xlsx; 5 PLoS ONE systems, Years 4/7/8, 4 reps; in observations tab",NA
-SOC_conc_mg_kg,Soil organic carbon concentration. Depth interval specified per row in min_depth / max_depth columns.,mg C kg-1 soil,"Block-level; Zotero Table 1; all 8 systems, Years 0-8, 4 reps; in observations tab",NA
-total_N_conc_mg_kg,Total soil nitrogen concentration.,mg N kg-1 soil,"Block-level; Zotero Table 1; 5 systems, Years 0-8, 4 reps; in white-additional-data tab",NA
-N2O_flux_g_N_ha_d,"Nitrous oxide flux (N2O-N), upscaled to emitter level.",g N2O-N ha-1 day-1,Nichols 2024; 9 sampling dates Dec 2018–Aug 2019; closed static chamber; n=3 replicate arrays per treatment; modesto_almond_usda,NA
-total_C_pct,"Total soil carbon (organic + inorganic, by dry combustion). Distinct from soil organic carbon (SOC); use this when carbonates or other inorganic C may contribute.",% dry weight,Nichols 2024; August 2019 only; n=3 reps per treatment; UC Davis Analytical Laboratory; modesto_almond_usda,NA
-total_N_pct,"Total soil nitrogen (organic + inorganic, by dry combustion). Distinct from soil organic nitrogen; includes any NO3/NH4 in the dry-combusted aliquot.",% dry weight,Nichols 2024; August 2019 only; n=3 reps per treatment; UC Davis Analytical Laboratory; modesto_almond_usda,NA
-nitrate_N_mg_kg,Soil nitrate nitrogen concentration.,mg NO3-N kg-1 soil,"Block-level; Zotero Table 1; 5 systems, Years 0-8, 4 reps; in white-additional-data tab; ammonium not reported",NA
-total_carbon_pct,Soil total carbon (mass percent of dry soil),%,"Multiple depth intervals 0-15, 15-30, 30-60, 60-100, 100-200, 200-300 cm",NA
-total_nitrogen_pct,Soil total nitrogen (mass percent of dry soil),%,Same depth intervals as total_carbon_pct,NA
-soil_organic_matter_pct,Soil organic matter (Walkley-Black),%,NA,NA
-soil_nh4_n_mg_kg,Soil extractable ammonium-N (2M KCl extract),mg kg-1,NA,NA
-soil_no3_n_mg_kg,Soil extractable nitrate-N (2M KCl extract),mg kg-1,NA,NA
-corn_grain_dry_yield_kg_ha,Corn grain dry yield from hand harvest,kg ha-1,NA,NA
-corn_total_biomass_kg_ha,Corn total above-ground dry biomass,kg ha-1,NA,NA
-corn_grain_mh_dry_yield_kg_ha,Corn grain dry yield from machine harvest,kg ha-1,NA,NA
-tomato_red_fresh_yield_Mg_ha,Tomato red fruit fresh yield (hand harvest),Mg ha-1,NA,NA
-tomato_green_fresh_yield_Mg_ha,Tomato green fruit fresh yield (hand harvest),Mg ha-1,NA,NA
-tomato_vine_dry_yield_Mg_ha,Tomato vine dry yield (hand harvest),Mg ha-1,NA,NA
-tomato_mh_dry_yield_Mg_ha,Tomato dry yield from machine harvest,Mg ha-1,NA,NA
-wheat_hh_dry_grain_yield_kg_ha,Wheat grain dry yield (hand harvest),kg ha-1,NA,NA
-wheat_mh_dry_grain_yield_kg_ha,Wheat grain dry yield (machine harvest),kg ha-1,NA,NA
-alfalfa_dry_yield_kg_ha,Alfalfa cut hay dry yield,kg ha-1,NA,NA
-cover_crop_dry_biomass_kg_ha,Winter cover crop above-ground dry biomass,kg ha-1,NA,NA
-sudangrass_dry_yield_kg_ha,Sudangrass dry yield,kg ha-1,NA,NA
-CH4_flux,Methane flux expressed as carbon.,kg C m-2 s-1 (daily mean); kg C m-2 year-1 (annual total),Mass refers to carbon following the PEcAn standard variable definition.,CH4_flux
-LW_OUT,Outgoing longwave radiation.,W m-2,No PEcAn.utils::standard_vars variable name was available; retains the AmeriFlux native name. source_variable=LW_OUT. reported_units=W m-2.,LW_OUT
-LWdown,Incoming longwave radiation.,W m-2,Uses PEcAn.utils::standard_vars variable name `LWdown` where available. source_variable=LW_IN. reported_units=W m-2.,LWdown
-NEE,Net ecosystem exchange.,kg C m-2 s-1 (daily mean); kg C m-2 year-1 (annual total),Mass refers to carbon.,NEE
-NETRAD,Net radiation.,W m-2,No PEcAn.utils::standard_vars variable name was available; retains the AmeriFlux native name. source_variable=NETRAD. reported_units=W m-2.,NETRAD
-PAR,Incoming photosynthetic photon flux density.,umol photon m-2 s-1,Uses PEcAn.utils::standard_vars variable name `PAR` where available. source_variable=PPFD_IN. reported_units=umol photon m-2 s-1.,PAR
-PPFD_DIF,Diffuse photosynthetic photon flux density.,umol photon m-2 s-1,No PEcAn.utils::standard_vars variable name was available; retains the AmeriFlux native name. source_variable=PPFD_DIF. reported_units=umol photon m-2 s-1.,PPFD_DIF
-PPFD_OUT,Outgoing photosynthetic photon flux density.,umol photon m-2 s-1,No PEcAn.utils::standard_vars variable name was available; retains the AmeriFlux native name. source_variable=PPFD_OUT. reported_units=umol photon m-2 s-1.,PPFD_OUT
-Psurf,Surface air pressure.,kPa,Uses PEcAn.utils::standard_vars variable name `Psurf` where available. source_variable=PA. reported_units=kPa.,Psurf
-RH,Relative humidity.,%,Uses PEcAn.utils::standard_vars variable name `RH` where available. source_variable=RH. reported_units=%.,RH
-Rainf,Precipitation amount per native AmeriFlux timestep.,mm,Uses PEcAn.utils::standard_vars variable name `Rainf` where available. source_variable=P. reported_units=mm.,Rainf
-SW_OUT,Outgoing shortwave radiation.,W m-2,No PEcAn.utils::standard_vars variable name was available; retains the AmeriFlux native name. source_variable=SW_OUT. reported_units=W m-2.,SW_OUT
-SWdown,Incoming shortwave radiation.,W m-2,Uses PEcAn.utils::standard_vars variable name `SWdown` where available. source_variable=SW_IN. reported_units=W m-2.,SWdown
-SoilMoistFrac__SWC_1_1_1,Soil water content series from AmeriFlux BASE source variable SWC_1_1_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_1_1_1. reported_units=%.,SoilMoistFrac__SWC_1_1_1
-SoilMoistFrac__SWC_1_2_1,Soil water content series from AmeriFlux BASE source variable SWC_1_2_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_1_2_1. reported_units=%.,SoilMoistFrac__SWC_1_2_1
-SoilMoistFrac__SWC_1_3_1,Soil water content series from AmeriFlux BASE source variable SWC_1_3_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_1_3_1. reported_units=%.,SoilMoistFrac__SWC_1_3_1
-SoilMoistFrac__SWC_1_4_1,Soil water content series from AmeriFlux BASE source variable SWC_1_4_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_1_4_1. reported_units=%.,SoilMoistFrac__SWC_1_4_1
-SoilMoistFrac__SWC_1_5_1,Soil water content series from AmeriFlux BASE source variable SWC_1_5_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_1_5_1. reported_units=%.,SoilMoistFrac__SWC_1_5_1
-SoilMoistFrac__SWC_2_1_1,Soil water content series from AmeriFlux BASE source variable SWC_2_1_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_2_1_1. reported_units=%.,SoilMoistFrac__SWC_2_1_1
-SoilMoistFrac__SWC_2_2_1,Soil water content series from AmeriFlux BASE source variable SWC_2_2_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_2_2_1. reported_units=%.,SoilMoistFrac__SWC_2_2_1
-SoilMoistFrac__SWC_2_3_1,Soil water content series from AmeriFlux BASE source variable SWC_2_3_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_2_3_1. reported_units=%.,SoilMoistFrac__SWC_2_3_1
-SoilMoistFrac__SWC_2_4_1,Soil water content series from AmeriFlux BASE source variable SWC_2_4_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_2_4_1. reported_units=%.,SoilMoistFrac__SWC_2_4_1
-SoilMoistFrac__SWC_3_1_1,Soil water content series from AmeriFlux BASE source variable SWC_3_1_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_3_1_1. reported_units=%.,SoilMoistFrac__SWC_3_1_1
-SoilMoistFrac__SWC_3_2_1,Soil water content series from AmeriFlux BASE source variable SWC_3_2_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_3_2_1. reported_units=%.,SoilMoistFrac__SWC_3_2_1
-SoilMoistFrac__SWC_3_3_1,Soil water content series from AmeriFlux BASE source variable SWC_3_3_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_3_3_1. reported_units=%.,SoilMoistFrac__SWC_3_3_1
-SoilMoistFrac__SWC_3_4_1,Soil water content series from AmeriFlux BASE source variable SWC_3_4_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_3_4_1. reported_units=%.,SoilMoistFrac__SWC_3_4_1
-SoilMoistFrac__SWC_3_5_1,Soil water content series from AmeriFlux BASE source variable SWC_3_5_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_3_5_1. reported_units=%.,SoilMoistFrac__SWC_3_5_1
-SoilMoistFrac__SWC_4_1_1,Soil water content series from AmeriFlux BASE source variable SWC_4_1_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_4_1_1. reported_units=%.,SoilMoistFrac__SWC_4_1_1
-SoilMoistFrac__SWC_4_2_1,Soil water content series from AmeriFlux BASE source variable SWC_4_2_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_4_2_1. reported_units=%.,SoilMoistFrac__SWC_4_2_1
-SoilMoistFrac__SWC_4_3_1,Soil water content series from AmeriFlux BASE source variable SWC_4_3_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_4_3_1. reported_units=%.,SoilMoistFrac__SWC_4_3_1
-SoilMoistFrac__SWC_PI_1,Soil water content series from AmeriFlux BASE source variable SWC_PI_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_PI_1. reported_units=%.,SoilMoistFrac__SWC_PI_1
-SoilMoistFrac__SWC_PI_2,Soil water content series from AmeriFlux BASE source variable SWC_PI_2.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_PI_2. reported_units=%.,SoilMoistFrac__SWC_PI_2
-SoilTemp__TS_1_1_1,Soil temperature series from AmeriFlux BASE source variable TS_1_1_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_1_1_1. reported_units=degC.,SoilTemp__TS_1_1_1
-SoilTemp__TS_1_2_1,Soil temperature series from AmeriFlux BASE source variable TS_1_2_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_1_2_1. reported_units=degC.,SoilTemp__TS_1_2_1
-SoilTemp__TS_1_3_1,Soil temperature series from AmeriFlux BASE source variable TS_1_3_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_1_3_1. reported_units=degC.,SoilTemp__TS_1_3_1
-SoilTemp__TS_1_4_1,Soil temperature series from AmeriFlux BASE source variable TS_1_4_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_1_4_1. reported_units=degC.,SoilTemp__TS_1_4_1
-SoilTemp__TS_1_5_1,Soil temperature series from AmeriFlux BASE source variable TS_1_5_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_1_5_1. reported_units=degC.,SoilTemp__TS_1_5_1
-SoilTemp__TS_2_1_1,Soil temperature series from AmeriFlux BASE source variable TS_2_1_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_2_1_1. reported_units=degC.,SoilTemp__TS_2_1_1
-SoilTemp__TS_2_2_1,Soil temperature series from AmeriFlux BASE source variable TS_2_2_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_2_2_1. reported_units=degC.,SoilTemp__TS_2_2_1
-SoilTemp__TS_2_3_1,Soil temperature series from AmeriFlux BASE source variable TS_2_3_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_2_3_1. reported_units=degC.,SoilTemp__TS_2_3_1
-SoilTemp__TS_2_4_1,Soil temperature series from AmeriFlux BASE source variable TS_2_4_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_2_4_1. reported_units=degC.,SoilTemp__TS_2_4_1
-SoilTemp__TS_2_5_1,Soil temperature series from AmeriFlux BASE source variable TS_2_5_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_2_5_1. reported_units=degC.,SoilTemp__TS_2_5_1
-SoilTemp__TS_3_1_1,Soil temperature series from AmeriFlux BASE source variable TS_3_1_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_3_1_1. reported_units=degC.,SoilTemp__TS_3_1_1
-SoilTemp__TS_3_2_1,Soil temperature series from AmeriFlux BASE source variable TS_3_2_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_3_2_1. reported_units=degC.,SoilTemp__TS_3_2_1
-SoilTemp__TS_3_3_1,Soil temperature series from AmeriFlux BASE source variable TS_3_3_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_3_3_1. reported_units=degC.,SoilTemp__TS_3_3_1
-SoilTemp__TS_3_4_1,Soil temperature series from AmeriFlux BASE source variable TS_3_4_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_3_4_1. reported_units=degC.,SoilTemp__TS_3_4_1
-SoilTemp__TS_3_5_1,Soil temperature series from AmeriFlux BASE source variable TS_3_5_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_3_5_1. reported_units=degC.,SoilTemp__TS_3_5_1
-SoilTemp__TS_PI_1,Soil temperature series from AmeriFlux BASE source variable TS_PI_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_PI_1. reported_units=degC.,SoilTemp__TS_PI_1
-SoilTemp__TS_PI_2,Soil temperature series from AmeriFlux BASE source variable TS_PI_2.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_PI_2. reported_units=degC.,SoilTemp__TS_PI_2
-SoilTemp__TS_PI_3,Soil temperature series from AmeriFlux BASE source variable TS_PI_3.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_PI_3. reported_units=degC.,SoilTemp__TS_PI_3
-SoilTemp__TS_PI_4,Soil temperature series from AmeriFlux BASE source variable TS_PI_4.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_PI_4. reported_units=degC.,SoilTemp__TS_PI_4
-SoilTemp__TS_PI_5,Soil temperature series from AmeriFlux BASE source variable TS_PI_5.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_PI_5. reported_units=degC.,SoilTemp__TS_PI_5
-Tair,Near-surface air temperature.,degC,Uses PEcAn.utils::standard_vars variable name `Tair` where available. source_variable=TA. reported_units=degC.,Tair
-WD,Wind direction.,degree,No PEcAn.utils::standard_vars variable name was available; retains the AmeriFlux native name. source_variable=WD. reported_units=degree.,WD
-WTD,Water table depth.,m,No PEcAn.utils::standard_vars variable name was available; retains the AmeriFlux native name. source_variable=WTD. reported_units=m.,WTD
-Wind,Wind speed.,m s-1,Uses PEcAn.utils::standard_vars variable name `Wind` where available. source_variable=WS. reported_units=m s-1.,Wind
-litter_carbon_content,Litter carbon content for a reported layer or interval.,source-reported units,Uses the PEcAn.utils::standard_vars variable name where the source reports comparable litter carbon content.,litter_carbon_content
-soil_bulk_density,Soil bulk density for a reported layer or interval.,source-reported units,No PEcAn.utils::standard_vars variable name was available; retains a conservative local variable name.,soil_bulk_density
-soil_carbon_content,Total soil carbon content for a reported layer or interval.,source-reported units,Uses the PEcAn.utils::standard_vars variable name where the source reports comparable total soil carbon content.,soil_carbon_content
-soil_carbon_to_nitrogen_ratio,Soil carbon-to-nitrogen ratio for a reported layer or interval.,source-reported units,No PEcAn.utils::standard_vars variable name was available; retains a conservative local variable name.,soil_carbon_to_nitrogen_ratio
-soil_inorganic_nitrogen_content,Soil inorganic nitrogen content for a reported layer or interval.,source-reported units,Uses the PEcAn.utils::standard_vars variable name where the source reports comparable mineral nitrogen content.,soil_inorganic_nitrogen_content
-soil_nitrogen_content,Total soil nitrogen content for a reported layer or interval.,source-reported units,Uses the PEcAn.utils::standard_vars variable name where the source reports comparable soil nitrogen content.,soil_nitrogen_content
-soil_organic_carbon_content,Soil organic carbon content for a reported layer or interval.,source-reported units,Uses the PEcAn.utils::standard_vars variable name where the source reports comparable soil organic carbon content.,soil_organic_carbon_content
-soil_ph,Soil pH for a reported layer or interval.,source-reported units,No PEcAn.utils::standard_vars variable name was available; retains a conservative local variable name.,soil_ph
-soil_phosphorus_content,Total soil phosphorus content for a reported layer or interval.,source-reported units,Uses the PEcAn.utils::standard_vars variable name where the source reports comparable total soil phosphorus content.,soil_phosphorus_content
-soil_potassium_content,Total soil potassium content for a reported layer or interval.,source-reported units,No PEcAn.utils::standard_vars variable name was available; retains a conservative local variable name.,soil_potassium_content
-CO2_flux_g_m2_d,"Soil CO2 flux from opaque automated chambers. Chambers exclude light, so this is respiration only, not net ecosystem exchange.",g CO2 m-2 d-1,Anthony et al. 2024 Bouldin Island chambers; annual mean per chamber per study year. Plot-scale support - not comparable to tower flux without upscaling assumptions.,NA
-CH4_flux_mg_m2_d,Soil CH4 flux from automated chambers; negative values are uptake.,mg CH4 m-2 d-1,Anthony et al. 2024 Bouldin Island chambers; annual mean per chamber per study year. Plot-scale support - not comparable to tower flux without upscaling assumptions.,NA
-N2O_flux_mg_m2_d,Soil N2O flux from automated chambers; negative values are uptake.,mg N2O m-2 d-1,Anthony et al. 2024 Bouldin Island chambers; annual mean per chamber per study year. Plot-scale support - not comparable to tower flux without upscaling assumptions.,NA
+name,description,units,notes
+SOC_stock_Mg_ha,Soil organic carbon stock (SOC). Depth interval specified per row in min_depth / max_depth columns.,Mg C ha-1,"Block-level; Zotero Table 1; all 8 systems, Years 0-8, 4 reps; in observations tab"
+bulk_density_g_cm3,Soil bulk density.,g cm-3,"Block-level; site-data.xlsx; 5 PLoS ONE systems, Years 4/7/8, 4 reps; in observations tab"
+SOC_conc_mg_kg,Soil organic carbon concentration. Depth interval specified per row in min_depth / max_depth columns.,mg C kg-1 soil,"Block-level; Zotero Table 1; all 8 systems, Years 0-8, 4 reps; in observations tab"
+total_N_conc_mg_kg,Total soil nitrogen concentration.,mg N kg-1 soil,"Block-level; Zotero Table 1; 5 systems, Years 0-8, 4 reps; in white-additional-data tab"
+N2O_flux_g_N_ha_d,"Nitrous oxide flux (N2O-N), upscaled to emitter level.",g N2O-N ha-1 day-1,Nichols 2024; 9 sampling dates Dec 2018–Aug 2019; closed static chamber; n=3 replicate arrays per treatment; modesto_almond_usda
+total_C_pct,"Total soil carbon (organic + inorganic, by dry combustion). Distinct from soil organic carbon (SOC); use this when carbonates or other inorganic C may contribute.",% dry weight,Nichols 2024; August 2019 only; n=3 reps per treatment; UC Davis Analytical Laboratory; modesto_almond_usda
+total_N_pct,"Total soil nitrogen (organic + inorganic, by dry combustion). Distinct from soil organic nitrogen; includes any NO3/NH4 in the dry-combusted aliquot.",% dry weight,Nichols 2024; August 2019 only; n=3 reps per treatment; UC Davis Analytical Laboratory; modesto_almond_usda
+nitrate_N_mg_kg,Soil nitrate nitrogen concentration.,mg NO3-N kg-1 soil,"Block-level; Zotero Table 1; 5 systems, Years 0-8, 4 reps; in white-additional-data tab; ammonium not reported"
+total_carbon_pct,Soil total carbon (mass percent of dry soil),%,"Multiple depth intervals 0-15, 15-30, 30-60, 60-100, 100-200, 200-300 cm"
+total_nitrogen_pct,Soil total nitrogen (mass percent of dry soil),%,Same depth intervals as total_carbon_pct
+soil_organic_matter_pct,Soil organic matter (Walkley-Black),%,NA
+soil_nh4_n_mg_kg,Soil extractable ammonium-N (2M KCl extract),mg kg-1,NA
+soil_no3_n_mg_kg,Soil extractable nitrate-N (2M KCl extract),mg kg-1,NA
+corn_grain_dry_yield_kg_ha,Corn grain dry yield from hand harvest,kg ha-1,NA
+corn_total_biomass_kg_ha,Corn total above-ground dry biomass,kg ha-1,NA
+corn_grain_mh_dry_yield_kg_ha,Corn grain dry yield from machine harvest,kg ha-1,NA
+tomato_red_fresh_yield_Mg_ha,Tomato red fruit fresh yield (hand harvest),Mg ha-1,NA
+tomato_green_fresh_yield_Mg_ha,Tomato green fruit fresh yield (hand harvest),Mg ha-1,NA
+tomato_vine_dry_yield_Mg_ha,Tomato vine dry yield (hand harvest),Mg ha-1,NA
+tomato_mh_dry_yield_Mg_ha,Tomato dry yield from machine harvest,Mg ha-1,NA
+wheat_hh_dry_grain_yield_kg_ha,Wheat grain dry yield (hand harvest),kg ha-1,NA
+wheat_mh_dry_grain_yield_kg_ha,Wheat grain dry yield (machine harvest),kg ha-1,NA
+alfalfa_dry_yield_kg_ha,Alfalfa cut hay dry yield,kg ha-1,NA
+cover_crop_dry_biomass_kg_ha,Winter cover crop above-ground dry biomass,kg ha-1,NA
+sudangrass_dry_yield_kg_ha,Sudangrass dry yield,kg ha-1,NA
+CH4_flux,Methane flux expressed as carbon.,kg C m-2 s-1 (daily mean); kg C m-2 year-1 (annual total),Mass refers to carbon following the PEcAn standard variable definition.
+LW_OUT,Outgoing longwave radiation.,W m-2,No PEcAn.utils::standard_vars variable name was available; retains the AmeriFlux native name. source_variable=LW_OUT. reported_units=W m-2.
+LWdown,Incoming longwave radiation.,W m-2,Uses PEcAn.utils::standard_vars variable name `LWdown` where available. source_variable=LW_IN. reported_units=W m-2.
+NEE,Net ecosystem exchange.,kg C m-2 s-1 (daily mean); kg C m-2 year-1 (annual total),Mass refers to carbon.
+NETRAD,Net radiation.,W m-2,No PEcAn.utils::standard_vars variable name was available; retains the AmeriFlux native name. source_variable=NETRAD. reported_units=W m-2.
+PAR,Incoming photosynthetic photon flux density.,umol photon m-2 s-1,Uses PEcAn.utils::standard_vars variable name `PAR` where available. source_variable=PPFD_IN. reported_units=umol photon m-2 s-1.
+PPFD_DIF,Diffuse photosynthetic photon flux density.,umol photon m-2 s-1,No PEcAn.utils::standard_vars variable name was available; retains the AmeriFlux native name. source_variable=PPFD_DIF. reported_units=umol photon m-2 s-1.
+PPFD_OUT,Outgoing photosynthetic photon flux density.,umol photon m-2 s-1,No PEcAn.utils::standard_vars variable name was available; retains the AmeriFlux native name. source_variable=PPFD_OUT. reported_units=umol photon m-2 s-1.
+Psurf,Surface air pressure.,kPa,Uses PEcAn.utils::standard_vars variable name `Psurf` where available. source_variable=PA. reported_units=kPa.
+RH,Relative humidity.,%,Uses PEcAn.utils::standard_vars variable name `RH` where available. source_variable=RH. reported_units=%.
+Rainf,Precipitation amount per native AmeriFlux timestep.,mm,Uses PEcAn.utils::standard_vars variable name `Rainf` where available. source_variable=P. reported_units=mm.
+SW_OUT,Outgoing shortwave radiation.,W m-2,No PEcAn.utils::standard_vars variable name was available; retains the AmeriFlux native name. source_variable=SW_OUT. reported_units=W m-2.
+SWdown,Incoming shortwave radiation.,W m-2,Uses PEcAn.utils::standard_vars variable name `SWdown` where available. source_variable=SW_IN. reported_units=W m-2.
+SoilMoistFrac__SWC_1_1_1,Soil water content series from AmeriFlux BASE source variable SWC_1_1_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_1_1_1. reported_units=%.
+SoilMoistFrac__SWC_1_2_1,Soil water content series from AmeriFlux BASE source variable SWC_1_2_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_1_2_1. reported_units=%.
+SoilMoistFrac__SWC_1_3_1,Soil water content series from AmeriFlux BASE source variable SWC_1_3_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_1_3_1. reported_units=%.
+SoilMoistFrac__SWC_1_4_1,Soil water content series from AmeriFlux BASE source variable SWC_1_4_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_1_4_1. reported_units=%.
+SoilMoistFrac__SWC_1_5_1,Soil water content series from AmeriFlux BASE source variable SWC_1_5_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_1_5_1. reported_units=%.
+SoilMoistFrac__SWC_2_1_1,Soil water content series from AmeriFlux BASE source variable SWC_2_1_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_2_1_1. reported_units=%.
+SoilMoistFrac__SWC_2_2_1,Soil water content series from AmeriFlux BASE source variable SWC_2_2_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_2_2_1. reported_units=%.
+SoilMoistFrac__SWC_2_3_1,Soil water content series from AmeriFlux BASE source variable SWC_2_3_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_2_3_1. reported_units=%.
+SoilMoistFrac__SWC_2_4_1,Soil water content series from AmeriFlux BASE source variable SWC_2_4_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_2_4_1. reported_units=%.
+SoilMoistFrac__SWC_3_1_1,Soil water content series from AmeriFlux BASE source variable SWC_3_1_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_3_1_1. reported_units=%.
+SoilMoistFrac__SWC_3_2_1,Soil water content series from AmeriFlux BASE source variable SWC_3_2_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_3_2_1. reported_units=%.
+SoilMoistFrac__SWC_3_3_1,Soil water content series from AmeriFlux BASE source variable SWC_3_3_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_3_3_1. reported_units=%.
+SoilMoistFrac__SWC_3_4_1,Soil water content series from AmeriFlux BASE source variable SWC_3_4_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_3_4_1. reported_units=%.
+SoilMoistFrac__SWC_3_5_1,Soil water content series from AmeriFlux BASE source variable SWC_3_5_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_3_5_1. reported_units=%.
+SoilMoistFrac__SWC_4_1_1,Soil water content series from AmeriFlux BASE source variable SWC_4_1_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_4_1_1. reported_units=%.
+SoilMoistFrac__SWC_4_2_1,Soil water content series from AmeriFlux BASE source variable SWC_4_2_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_4_2_1. reported_units=%.
+SoilMoistFrac__SWC_4_3_1,Soil water content series from AmeriFlux BASE source variable SWC_4_3_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_4_3_1. reported_units=%.
+SoilMoistFrac__SWC_PI_1,Soil water content series from AmeriFlux BASE source variable SWC_PI_1.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_PI_1. reported_units=%.
+SoilMoistFrac__SWC_PI_2,Soil water content series from AmeriFlux BASE source variable SWC_PI_2.,%,Uses PEcAn.utils::standard_vars variable name `SoilMoistFrac` where available. source_variable=SWC_PI_2. reported_units=%.
+SoilTemp__TS_1_1_1,Soil temperature series from AmeriFlux BASE source variable TS_1_1_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_1_1_1. reported_units=degC.
+SoilTemp__TS_1_2_1,Soil temperature series from AmeriFlux BASE source variable TS_1_2_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_1_2_1. reported_units=degC.
+SoilTemp__TS_1_3_1,Soil temperature series from AmeriFlux BASE source variable TS_1_3_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_1_3_1. reported_units=degC.
+SoilTemp__TS_1_4_1,Soil temperature series from AmeriFlux BASE source variable TS_1_4_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_1_4_1. reported_units=degC.
+SoilTemp__TS_1_5_1,Soil temperature series from AmeriFlux BASE source variable TS_1_5_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_1_5_1. reported_units=degC.
+SoilTemp__TS_2_1_1,Soil temperature series from AmeriFlux BASE source variable TS_2_1_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_2_1_1. reported_units=degC.
+SoilTemp__TS_2_2_1,Soil temperature series from AmeriFlux BASE source variable TS_2_2_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_2_2_1. reported_units=degC.
+SoilTemp__TS_2_3_1,Soil temperature series from AmeriFlux BASE source variable TS_2_3_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_2_3_1. reported_units=degC.
+SoilTemp__TS_2_4_1,Soil temperature series from AmeriFlux BASE source variable TS_2_4_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_2_4_1. reported_units=degC.
+SoilTemp__TS_2_5_1,Soil temperature series from AmeriFlux BASE source variable TS_2_5_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_2_5_1. reported_units=degC.
+SoilTemp__TS_3_1_1,Soil temperature series from AmeriFlux BASE source variable TS_3_1_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_3_1_1. reported_units=degC.
+SoilTemp__TS_3_2_1,Soil temperature series from AmeriFlux BASE source variable TS_3_2_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_3_2_1. reported_units=degC.
+SoilTemp__TS_3_3_1,Soil temperature series from AmeriFlux BASE source variable TS_3_3_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_3_3_1. reported_units=degC.
+SoilTemp__TS_3_4_1,Soil temperature series from AmeriFlux BASE source variable TS_3_4_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_3_4_1. reported_units=degC.
+SoilTemp__TS_3_5_1,Soil temperature series from AmeriFlux BASE source variable TS_3_5_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_3_5_1. reported_units=degC.
+SoilTemp__TS_PI_1,Soil temperature series from AmeriFlux BASE source variable TS_PI_1.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_PI_1. reported_units=degC.
+SoilTemp__TS_PI_2,Soil temperature series from AmeriFlux BASE source variable TS_PI_2.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_PI_2. reported_units=degC.
+SoilTemp__TS_PI_3,Soil temperature series from AmeriFlux BASE source variable TS_PI_3.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_PI_3. reported_units=degC.
+SoilTemp__TS_PI_4,Soil temperature series from AmeriFlux BASE source variable TS_PI_4.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_PI_4. reported_units=degC.
+SoilTemp__TS_PI_5,Soil temperature series from AmeriFlux BASE source variable TS_PI_5.,degC,Uses PEcAn.utils::standard_vars variable name `SoilTemp` where available. source_variable=TS_PI_5. reported_units=degC.
+Tair,Near-surface air temperature.,degC,Uses PEcAn.utils::standard_vars variable name `Tair` where available. source_variable=TA. reported_units=degC.
+WD,Wind direction.,degree,No PEcAn.utils::standard_vars variable name was available; retains the AmeriFlux native name. source_variable=WD. reported_units=degree.
+WTD,Water table depth.,m,No PEcAn.utils::standard_vars variable name was available; retains the AmeriFlux native name. source_variable=WTD. reported_units=m.
+Wind,Wind speed.,m s-1,Uses PEcAn.utils::standard_vars variable name `Wind` where available. source_variable=WS. reported_units=m s-1.
+litter_carbon_content,Litter carbon content for a reported layer or interval.,source-reported units,Uses the PEcAn.utils::standard_vars variable name where the source reports comparable litter carbon content.
+soil_bulk_density,Soil bulk density for a reported layer or interval.,source-reported units,No PEcAn.utils::standard_vars variable name was available; retains a conservative local variable name.
+soil_carbon_content,Total soil carbon content for a reported layer or interval.,source-reported units,Uses the PEcAn.utils::standard_vars variable name where the source reports comparable total soil carbon content.
+soil_carbon_to_nitrogen_ratio,Soil carbon-to-nitrogen ratio for a reported layer or interval.,source-reported units,No PEcAn.utils::standard_vars variable name was available; retains a conservative local variable name.
+soil_inorganic_nitrogen_content,Soil inorganic nitrogen content for a reported layer or interval.,source-reported units,Uses the PEcAn.utils::standard_vars variable name where the source reports comparable mineral nitrogen content.
+soil_nitrogen_content,Total soil nitrogen content for a reported layer or interval.,source-reported units,Uses the PEcAn.utils::standard_vars variable name where the source reports comparable soil nitrogen content.
+soil_organic_carbon_content,Soil organic carbon content for a reported layer or interval.,source-reported units,Uses the PEcAn.utils::standard_vars variable name where the source reports comparable soil organic carbon content.
+soil_ph,Soil pH for a reported layer or interval.,source-reported units,No PEcAn.utils::standard_vars variable name was available; retains a conservative local variable name.
+soil_phosphorus_content,Total soil phosphorus content for a reported layer or interval.,source-reported units,Uses the PEcAn.utils::standard_vars variable name where the source reports comparable total soil phosphorus content.
+soil_potassium_content,Total soil potassium content for a reported layer or interval.,source-reported units,No PEcAn.utils::standard_vars variable name was available; retains a conservative local variable name.
+CO2_flux_g_m2_d,"Soil CO2 flux from opaque automated chambers. Chambers exclude light, so this is respiration only, not net ecosystem exchange.",g CO2 m-2 d-1,Anthony et al. 2024 Bouldin Island chambers; annual mean per chamber per study year. Plot-scale support - not comparable to tower flux without upscaling assumptions.
+CH4_flux_mg_m2_d,Soil CH4 flux from automated chambers; negative values are uptake.,mg CH4 m-2 d-1,Anthony et al. 2024 Bouldin Island chambers; annual mean per chamber per study year. Plot-scale support - not comparable to tower flux without upscaling assumptions.
+N2O_flux_mg_m2_d,Soil N2O flux from automated chambers; negative values are uptake.,mg N2O m-2 d-1,Anthony et al. 2024 Bouldin Island chambers; annual mean per chamber per study year. Plot-scale support - not comparable to tower flux without upscaling assumptions.
