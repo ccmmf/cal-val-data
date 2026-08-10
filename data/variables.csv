@@ -9,7 +9,6 @@ total_N_pct,"Total soil nitrogen (organic + inorganic, by dry combustion). Disti
 nitrate_N_mg_kg,Soil nitrate nitrogen concentration.,mg NO3-N kg-1 soil,"Block-level; Zotero Table 1; 5 systems, Years 0-8, 4 reps; in white-additional-data tab; ammonium not reported",NA
 total_carbon_pct,Soil total carbon (mass percent of dry soil),%,"Multiple depth intervals 0-15, 15-30, 30-60, 60-100, 100-200, 200-300 cm",NA
 total_nitrogen_pct,Soil total nitrogen (mass percent of dry soil),%,Same depth intervals as total_carbon_pct,NA
-bulk_density_g_cm3,Soil bulk density,g cm-3,"Intact core, oven-dry",NA
 soil_organic_matter_pct,Soil organic matter (Walkley-Black),%,NA,NA
 soil_nh4_n_mg_kg,Soil extractable ammonium-N (2M KCl extract),mg kg-1,NA,NA
 soil_no3_n_mg_kg,Soil extractable nitrate-N (2M KCl extract),mg kg-1,NA,NA

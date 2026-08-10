@@ -64,8 +64,9 @@ no data).
 | `CO2_flux_g_m2_d` | g CO₂ m⁻² d⁻¹ | 70 |
 
 Every row is an **annual mean for one chamber in one study year**, carrying `n` (number of
-underlying measurements, typically 2,500–3,000) and the **annual standard error** in
-`statname` / `stat`.
+underlying measurements, median about 2,700, range 142 to 6,619) and the **annual standard error** in
+`statname` / `stat`. Ten chamber-years rest on fewer than 1,000 measurements, so `n` is worth
+carrying downstream as the weight each row deserves rather than treating the rows as equal.
 
 **Study years run July–June at corn** (year 1 = 2017-06-30 to 2018-06-30), matching the
 paper's reporting period, and are carried in `study_year`.
@@ -74,9 +75,9 @@ paper's reporting period, and are carried in `study_year`.
 occurs inside them. These values are *not* comparable to the tower `NEE` rows already curated
 for these sites — but they can help partition NEE, which the tower alone cannot do.
 
-⚠️ **Negative values are real and are preserved.** CH₄ is negative in the majority of readings
-at both sites (net uptake), and N₂O is negative in a substantial minority. Nothing is clipped
-at zero.
+⚠️ **Negative values are preserved, not clipped.** In the curated annual means CH₄ is negative at
+54 of 70 chamber-years (net uptake, minimum −0.49); N₂O annual means are all positive (minimum
+0.0275), though individual sub-daily readings in the archive do go negative.
 
 ---
 

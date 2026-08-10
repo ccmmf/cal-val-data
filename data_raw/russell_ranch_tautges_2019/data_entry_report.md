@@ -51,7 +51,7 @@ are used only for cross-checking, never as a fill source.
 - **Period:** 1992-07-01 to 2014-10-08 (`study_year` -1 to 21; year -1 is
   pre-study establishment sampling).
 - **Design:** the Century Experiment — a long-term replicated comparison of
-  **14 cropping systems** spanning conventional, organic, legume-cover, and
+  **14 cropping systems** (13 of which carry observations) spanning conventional, organic, legume-cover, and
   alfalfa-phase corn-tomato rotations; irrigated and rainfed wheat systems
   (control, fallow, legume); a conventional-to-organic `transitional`
   treatment (3 plots converted 1999); and an unmanaged `native_grass`

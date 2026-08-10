@@ -40,7 +40,7 @@ Each dataset pulls replicate level values from a public archive; companion analy
 | ---------- | ---- | -------- | ------ | ---------- | --------- | --------------- |
 | `white_salinas_2020` | salinas_socs (USDA ARS, Salinas Valley CA) | 36.62, -121.53 | 2003 to 2011 (8 yr) | 8 systems `socs_sys1`..`socs_sys8`, 4 blocks (compost with or without cover crop type, frequency, seeding rate) | SOC stock and concentration, bulk density, total N, nitrate, POXC | 10.1016/j.dib.2020.106481; 10.1371/journal.pone.0228677 |
 | `nichols_modesto_2024` | modesto_almond_usda (USDA ARS almond fertigation trial, Modesto CA) | 37.63, -121.09 | 2018 to 2019 (2 yr) | `compost` vs `no_compost` (annual compost top dress vs control, same drip fertigation) | N2O flux, total C, total N, bulk density | 10.1002/saj2.20615; 10.15482/USDA.ADC/26155504 |
-| `russell_ranch_tautges_2019` | russell_ranch_davis (UC Davis Russell Ranch Century Experiment, Davis CA) | 38.54, -121.87 | 1992 to 2014 (study years -1 to 21) | 14 systems (conventional, organic, legume cover, alfalfa phase corn-tomato; irrigated and rainfed wheat; transitional; native grass reference) | total C and N, bulk density to 250 cm, NH4-N, NO3-N, soil organic matter, corn, tomato, wheat, alfalfa and cover crop yields | 10.1002/ecy.2105; 10.1111/gcb.14762 |
+| `russell_ranch_tautges_2019` | russell_ranch_davis (UC Davis Russell Ranch Century Experiment, Davis CA) | 38.54, -121.87 | 1992 to 2014 (study years -1 to 21) | 14 systems, 13 with observations (conventional, organic, legume cover, alfalfa phase corn-tomato; irrigated and rainfed wheat; transitional; native grass reference) | total C and N, bulk density to 250 cm, NH4-N, NO3-N, soil organic matter, corn, tomato, wheat, alfalfa and cover crop yields | 10.1002/ecy.2105; 10.1111/gcb.14762 |
 | `anthony_bouldin_2024` | US-Bi2 (Bouldin corn) and US-Bi1 (Bouldin alfalfa), Sacramento-San Joaquin Delta CA | 38.1091, -121.535; 38.0992, -121.499 | 2017 to 2021 (4 study years) | single system per site; 9 automated chambers per site as spatial replicates | chamber N2O, CH4 and CO2 flux, annual mean per chamber per year with standard error | 10.5061/dryad.qz612jmnx; 10.1007/s10533-023-01095-y |
 
 ### white_salinas_2020
@@ -81,7 +81,12 @@ data/coverage.csv crosses system and treatment contrast against each target, spl
 | Annual or perennial | irrigation regime contrast |  |  |  |  | gap |
 | Rice / flooded | flood vs AWD |  |  |  |  | gap |
 
-So far CH4 has no covered site and N2O has one. These constraints are documented for any consumer.
+The table above predates the AmeriFlux Delta and Bouldin chamber datasets. As of those,
+**N2O is covered at three sites** (`nichols_modesto_2024` static chamber; `anthony_bouldin_2024`
+automated chamber at US-Bi2 and US-Bi1) and **CH4 at three** (tower annual budgets for US-Twt,
+US-Bi1 and US-Bi2, plus chamber CH4 at the two Bouldin sites). Chamber and tower values are
+different measurement supports and are not interchangeable. These constraints are documented for
+any consumer.
 
 ## Repository Structure
 

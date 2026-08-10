@@ -17,12 +17,16 @@ tabs <- c(
 workbooks <- unlist(cfg$workbook, use.names = FALSE)
 
 # some tabs open with a title block above the header, and it is not the same
-# height in every workbook, so find the first row that holds more than one cell
+# height in every workbook, so find the first row that holds more than one cell.
+# guessing wrong would silently shift a whole tab, so stop rather than assume row 1
 header_offset <- function(wb, tab) {
   top <- read_sheet(wb, sheet = tab, range = "1:5", col_names = FALSE, col_types = "c")
   filled <- vapply(seq_len(nrow(top)), function(i) sum(!is.na(unlist(top[i, ]))), integer(1))
   first <- which(filled > 1)[1]
-  if (is.na(first)) 0L else first - 1L
+  if (is.na(first)) {
+    stop("no header row found in the first 5 rows of tab '", tab, "'", call. = FALSE)
+  }
+  first - 1L
 }
 
 # tab names differ in case between workbooks, so match on the lowercased name
@@ -46,6 +50,19 @@ harmonise <- function(parts) {
   parts
 }
 
+# the workbooks pad with blank rows, and a blank header cell arrives auto-named
+# (`...4`) carrying nothing. neither belongs in the exported csv: validate.R drops
+# empty rows before checking, so leaving them in means the committed artifact is
+# not the table that was validated.
+is_blank <- function(x) is.na(x) | trimws(as.character(x)) == ""
+drop_empty <- function(dat) {
+  keep_col <- vapply(dat, function(col) !all(is_blank(col)), logical(1))
+  keep_col <- keep_col | !grepl("^\\.\\.\\.[0-9]+$", names(dat))  # keep named-but-empty columns
+  dat <- dat[, keep_col, drop = FALSE]
+  keep_row <- !apply(dat, 1, function(r) all(is_blank(r)))
+  dat[keep_row, , drop = FALSE]
+}
+
 dir.create(cfg$data_dir, showWarnings = FALSE)
 
 for (tab in tabs) {
@@ -61,7 +78,7 @@ for (tab in tabs) {
   }
   if (!length(parts)) next
   readr::write_csv(
-    dplyr::bind_rows(harmonise(parts)),
+    drop_empty(dplyr::bind_rows(harmonise(parts))),
     file.path(cfg$data_dir, paste0(tab, ".csv"))
   )
 }
