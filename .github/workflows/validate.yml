@@ -33,5 +33,6 @@ jobs:
             any::readr
             any::jsonlite
             any::testthat
+            any::here
       - run: Rscript scripts/validate.R
       - run: Rscript -e 'testthat::test_dir("tests/testthat", stop_on_failure = TRUE)'
