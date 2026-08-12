@@ -46,26 +46,34 @@ exact-site publication only where AmeriFlux BADM/BIF does not carry them.
 
 | Variable | Units | Rows | Level |
 |---|---|---|---|
-| NEE | kg C m⁻² year⁻¹ | 8 | `site_year_total` |
 | CH₄ flux | kg C m⁻² year⁻¹ | 4 | `site_year_total` |
 | Soil carbon content | % | 3 | `site_layer`, 0–15 / 15–30 / 30–60 cm |
 | Soil nitrogen content | % | 3 | `site_layer`, 0–15 / 15–30 / 30–60 cm |
 
-**No N₂O** — CO₂ (NEE) and CH₄ only.
+**No N₂O, and no annual NEE** (see below) — CH₄ is the curated flux here.
 
 **Deepest soil profile of the three Delta sites** — three layers to 60 cm,
 against a single 0–15 cm layer at US-Bi2. It is still a single time point,
 so the dataset supports flux validation and an initial-condition soil
 profile, not a soil-carbon trajectory.
 
-**Fewer CH₄ than NEE site-years** (4 vs 8) — CH₄ is reported only for
-site-years passing the annual QC screen, and its record is shorter here.
+CH₄ is reported only for site-years passing the annual QC screen, so its
+record is shorter than the tower's full span.
+
+
+**Annual NEE is not curated for this site.** The AmeriFlux BASE record provides `FC`,
+the observed turbulent CO2 flux, which is not equivalent to an authoritative gap-filled
+annual NEE product: aggregating it to a yearly total would assert a budget the
+measurements do not support. Those site-years are therefore recorded as unavailable
+rather than filled, pending an appropriate gap-filled product or publication.
+
+(8 site-years affected, 2017 to 2024.)
 
 ---
 
 ## Methods
 
-- **`annual_budget_from_daily`** — annual NEE and CH₄ totals derived from
+- **`annual_budget_from_daily`** — annual CH₄ totals derived from
   curated daily observations with unit-aware conversion, for site-years
   passing the annual QC screen. Daily values come from the AmeriFlux BASE
   half-hourly record aggregated under the harmonization rules in `methods`.

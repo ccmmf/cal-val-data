@@ -45,11 +45,10 @@ them.
 
 ## Variables Measured
 
-The richest of the three Delta datasets (25 rows):
+Curated rows:
 
 | Variable | Units | Rows | Level |
 |---|---|---|---|
-| NEE | kg C m⁻² year⁻¹ | 7 | `site_year_total` |
 | CH₄ flux | kg C m⁻² year⁻¹ | 6 | `site_year_total` |
 | Soil carbon content | g kg⁻¹ | 2 | `site_layer`, 0–15 / 0–30 cm |
 | Soil nitrogen content | g kg⁻¹ | 2 | `site_layer` |
@@ -58,7 +57,7 @@ The richest of the three Delta datasets (25 rows):
 | Soil phosphorus content | g kg⁻¹ | 2 | `site_layer` |
 | Soil potassium content | g kg⁻¹ | 2 | `site_layer` |
 
-**No N₂O** — CO₂ (NEE) and CH₄ only. For a flooded rice paddy on Delta
+**No N₂O, and no annual NEE** (see below). For a flooded rice paddy on Delta
 peat, **CH₄ is the headline target**.
 
 **Soil units differ from the other Delta sites** — carbon and nitrogen are
@@ -68,11 +67,20 @@ consumer. Soil is a single time point, so the dataset supports flux
 validation and an initial-condition soil description, not a soil-carbon
 trajectory.
 
+
+**Annual NEE is not curated for this site.** The AmeriFlux BASE record provides `FC`,
+the observed turbulent CO2 flux, which is not equivalent to an authoritative gap-filled
+annual NEE product: aggregating it to a yearly total would assert a budget the
+measurements do not support. Those site-years are therefore recorded as unavailable
+rather than filled, pending an appropriate gap-filled product or publication.
+
+(7 site-years affected, 2010 to 2016.)
+
 ---
 
 ## Methods
 
-- **`annual_budget_from_daily`** — annual NEE and CH₄ totals derived from
+- **`annual_budget_from_daily`** — annual CH₄ totals derived from
   curated daily observations with unit-aware conversion, for site-years
   passing the annual QC screen. Daily values come from the AmeriFlux BASE
   half-hourly record aggregated under the harmonization rules in `methods`.

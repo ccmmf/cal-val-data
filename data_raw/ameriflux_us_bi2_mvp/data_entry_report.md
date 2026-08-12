@@ -45,21 +45,29 @@ exact-site publication only where AmeriFlux BADM/BIF does not carry them.
 
 | Variable | Units | Rows | Level |
 |---|---|---|---|
-| NEE | kg C m⁻² year⁻¹ | 7 | `site_year_total` |
 | CH₄ flux | kg C m⁻² year⁻¹ | 7 | `site_year_total` |
 | Soil carbon content | % | 1 | `site_layer`, 0–15 cm |
 | Soil nitrogen content | % | 1 | `site_layer`, 0–15 cm |
 
-**No N₂O** — CO₂ (NEE) and CH₄ only. Given the drained peat setting, CH₄
-and the net carbon budget are the informative targets. Soil is a **single
+**No N₂O, and no annual NEE** (see below) — CH₄ is the curated flux here.
+Given the drained peat setting CH₄ is the informative target. Soil is a **single
 0–15 cm layer at one time**, so the dataset supports flux validation, not a
 soil-carbon trajectory.
+
+
+**Annual NEE is not curated for this site.** The AmeriFlux BASE record provides `FC`,
+the observed turbulent CO2 flux, which is not equivalent to an authoritative gap-filled
+annual NEE product: aggregating it to a yearly total would assert a budget the
+measurements do not support. Those site-years are therefore recorded as unavailable
+rather than filled, pending an appropriate gap-filled product or publication.
+
+(7 site-years affected, 2018 to 2024.)
 
 ---
 
 ## Methods
 
-- **`annual_budget_from_daily`** — annual NEE and CH₄ totals derived from
+- **`annual_budget_from_daily`** — annual CH₄ totals derived from
   curated daily observations with unit-aware conversion, for site-years
   passing the annual QC screen. Daily values come from the AmeriFlux BASE
   half-hourly record aggregated under the harmonization rules in `methods`.
