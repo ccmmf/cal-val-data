@@ -614,7 +614,8 @@
                 "treatment_mean",
                 "zone_mean",
                 "site_layer",
-                "site_year_total"
+                "site_year_total",
+                "site_period_total"
               ]
             },
             "description": "experimental unit the row represents"

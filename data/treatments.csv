@@ -9,6 +9,7 @@ socs_sys7,Compost (7.6 Mg/ha/crop) + cereal rye cover crop every year,2003-10-01
 socs_sys8,"Compost (7.6 Mg/ha/crop) + cereal rye cover crop every year, high seeding rate (3x)",2003-10-01,2011-09-01,no,NA,NA,NA,NA,NA,NA
 no_compost,Nichols 2024: Control — no compost since 2012 replanting. HFLC drip fertigation ~195 kg N ha-1 (14 events). Western 5 ha. Modesto CA almond orchard.,2018-12-01,2019-08-07,yes,NA,NA,NA,NA,NA,NA
 compost,"Nichols 2024: Annual compost top-dress ~38 dry t ha-1 (Recology yard trimmings) since 2012 (7 yr). Compost: 20% org C, 1.6% N, C:N ~13. Same HFLC fertigation as no_compost. Eastern 5 ha.",2018-12-01,2019-08-07,no,NA,NA,NA,NA,NA,NA
+All systems (pre-study establishment),"Pre-differentiation state of the SOCS experiment: all eight systems before treatments diverged. Carries the one-time establishment compost applied across the whole trial in autumn 2003, which belongs to every system and so cannot be attributed to any single one.",2003-10-01T00:00:00Z,2003-11-12T00:00:00Z,no,NA,NA,NA,NA,NA,NA
 conv_corn_tomato,"Conventional corn-tomato rotation, synthetic fertilizer N, no cover crop. UC Davis Century Experiment.",1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
 conv_corn_tomato_unassigned,Conventional corn-tomato (plot 5-4) used for variety trials; baseline irrigation/fertilization. Variety-trial anomalies present in most years.,1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
 org_corn_tomato,Organic corn-tomato rotation with composted poultry manure and winter cover crop; no synthetic N.,1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA

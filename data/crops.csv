@@ -11,6 +11,4 @@ Triticum aestivum,wheat,Bread wheat; irrigated and rainfed treatments
 Medicago sativa,alfalfa,Perennial forage; multiple cuts per year (2012-2014)
 Sorghum x drummondii,sudangrass,Summer cover/forage crop
 Vicia spp. / Pisum sativum / Secale cereale,winter_cover_crop_mix,Legume / pea / cereal-rye cover crop mixes (variable)
-NA,alfalfa,Derived from Ameriflux Cal/Val Data crop_system and crop_display fields; scientific name left blank unless source-backed.
-NA,corn,Derived from Ameriflux Cal/Val Data crop_system and crop_display fields; scientific name left blank unless source-backed.
-NA,rice,Derived from Ameriflux Cal/Val Data crop_system and crop_display fields; scientific name left blank unless source-backed.
+Oryza sativa,rice,Derived from Ameriflux Cal/Val Data crop_system and crop_display fields; scientific name left blank unless source-backed.
