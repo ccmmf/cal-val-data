@@ -19,12 +19,15 @@
           {
             "name": "citation_id",
             "type": "string",
-            "description": "full citation text, or authorYYYYabc key (first letters of first three title words)"
+            "description": "stable identifier for the source; primary key, because not every source has a DOI",
+            "constraints": {
+              "required": true
+            }
           },
           {
             "name": "doi",
             "type": "string",
-            "description": "DOI or URL; this is the join key used by observations.citation, managements.citation, and methods.citation_id"
+            "description": "DOI where the source has one; optional metadata, not the key"
           },
           {
             "name": "reference",
@@ -53,7 +56,11 @@
           }
         ],
         "primaryKey": [
-          "doi"
+          "citation_id"
+        ],
+        "missingValues": [
+          "",
+          "NA"
         ]
       }
     },
@@ -121,6 +128,10 @@
         ],
         "primaryKey": [
           "name"
+        ],
+        "missingValues": [
+          "",
+          "NA"
         ]
       }
     },
@@ -193,6 +204,10 @@
         ],
         "primaryKey": [
           "name"
+        ],
+        "missingValues": [
+          "",
+          "NA"
         ]
       }
     },
@@ -204,7 +219,7 @@
         "fields": [
           {
             "name": "pair_id",
-            "type": "number",
+            "type": "string",
             "description": "pair identifier"
           },
           {
@@ -269,6 +284,10 @@
               "fields": "name"
             }
           }
+        ],
+        "missingValues": [
+          "",
+          "NA"
         ]
       }
     },
@@ -312,7 +331,10 @@
                 "harvest",
                 "tillage",
                 "fertilization",
-                "compost_application"
+                "compost_application",
+                "flooding",
+                "grazing",
+                "irrigation"
               ]
             },
             "description": "event type; a downstream consumer may map compost_application to fertilization"
@@ -452,6 +474,10 @@
               "fields": "doi"
             }
           }
+        ],
+        "missingValues": [
+          "",
+          "NA"
         ]
       }
     },
@@ -521,8 +547,8 @@
           },
           {
             "name": "replicate_id",
-            "type": "number",
-            "description": "block / plot / core / chamber identifier"
+            "type": "string",
+            "description": "replicate label as the source uses it; numeric at some sites, lettered blocks or named zones at others"
           },
           {
             "name": "study_year",
@@ -556,7 +582,11 @@
                 "FILLED_DATASET",
                 "PAPER_TEXT",
                 "NEEDS_FILL",
-                "MISSING_IN_SOURCE"
+                "MISSING_IN_SOURCE",
+                "FILLED_DATA_PUBLICATION",
+                "FILLED_PUBLICATION_TABLE",
+                "FILLED_PUBLICATION_TEXT",
+                "SCRIPTED_DERIVED"
               ]
             },
             "description": "provenance / source-precedence code; blank allowed for now"
@@ -582,7 +612,9 @@
               "enum": [
                 "replicate",
                 "treatment_mean",
-                "zone_mean"
+                "zone_mean",
+                "site_layer",
+                "site_year_total"
               ]
             },
             "description": "experimental unit the row represents"
@@ -642,6 +674,10 @@
               "fields": "doi"
             }
           }
+        ],
+        "missingValues": [
+          "",
+          "NA"
         ]
       }
     },
@@ -697,6 +733,10 @@
               "fields": "doi"
             }
           }
+        ],
+        "missingValues": [
+          "",
+          "NA"
         ]
       }
     },
@@ -725,6 +765,10 @@
         ],
         "primaryKey": [
           "name"
+        ],
+        "missingValues": [
+          "",
+          "NA"
         ]
       }
     },
@@ -750,6 +794,10 @@
         ],
         "primaryKey": [
           "scientific name"
+        ],
+        "missingValues": [
+          "",
+          "NA"
         ]
       }
     },
@@ -844,6 +892,10 @@
             "type": "string",
             "description": "free text qualifier on the coverage row"
           }
+        ],
+        "missingValues": [
+          "",
+          "NA"
         ]
       }
     }

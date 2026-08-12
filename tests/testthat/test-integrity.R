@@ -18,7 +18,8 @@ for (res in dp$resources) {
       skip_if_not(file.exists(path), paste(resource$name, "not generated yet"))
       dat <- readr::read_csv(
         path,
-        show_col_types = FALSE, name_repair = "minimal", progress = FALSE
+        col_types = readr::cols(.default = readr::col_character()),
+        name_repair = "minimal", progress = FALSE
       )
       missing <- setdiff(want, names(dat))
       if (length(missing) > 0) {

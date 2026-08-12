@@ -27,10 +27,15 @@ drop_empty_rows <- function(dat) {
 # a value counts as present if it is not NA and not blank
 is_present <- function(x) !is.na(x) & trimws(as.character(x)) != ""
 
+# every check here treats values as text, and guessing types from the leading
+# rows silently drops data: a column left empty for the first several thousand
+# rows is guessed logical, so the JSON or flag string that finally appears fails
+# to parse and becomes NA without failing the run. read as text and compare text.
 read_table <- function(path) {
   dat <- readr::read_csv(
     path,
-    show_col_types = FALSE, name_repair = "minimal", progress = FALSE
+    col_types = readr::cols(.default = readr::col_character()),
+    name_repair = "minimal", progress = FALSE
   )
   drop_empty_rows(dat)
 }
