@@ -57,7 +57,7 @@ Curated rows:
 | Soil phosphorus content | g kg⁻¹ | 2 | `site_layer` |
 | Soil potassium content | g kg⁻¹ | 2 | `site_layer` |
 
-**No N₂O, and no annual NEE** (see below). For a flooded rice paddy on Delta
+**Fluxes now come from source-reported annual values** (see below). For a flooded rice paddy on Delta
 peat, **CH₄ is the headline target**.
 
 **Soil units differ from the other Delta sites** — carbon and nitrogen are
@@ -68,22 +68,23 @@ validation and an initial-condition soil description, not a soil-carbon
 trajectory.
 
 
-**Annual NEE is not curated for this site.** The AmeriFlux BASE record provides `FC`,
-the observed turbulent CO2 flux, which is not equivalent to an authoritative gap-filled
-annual NEE product: aggregating it to a yearly total would assert a budget the
-measurements do not support. Those site-years are therefore recorded as unavailable
-rather than filled, pending an appropriate gap-filled product or publication.
+**Annual NEE is curated from gap-filled products.** Earlier revisions of this dataset
+derived annual NEE from AmeriFlux BASE `FC`, which is observed turbulent CO2 flux and not
+equivalent to an authoritative annual budget; those rows were withdrawn. NEE is now taken
+from source-reported annual values (6 site-years) supplied by the harmonization:
+  - `fluxnet2015_us_twt_fullset_2009_2014_1_4`
 
-(7 site-years affected, 2010 to 2016.)
+CH4 is likewise no longer aggregated locally: annual values come from the FLUXNET-CH4
+community product and from exact-site publications, rather than from a daily aggregation
+performed here.
 
 ---
 
 ## Methods
 
-- **`annual_budget_from_daily`** — annual CH₄ totals derived from
-  curated daily observations with unit-aware conversion, for site-years
-  passing the annual QC screen. Daily values come from the AmeriFlux BASE
-  half-hourly record aggregated under the harmonization rules in `methods`.
+- **`Eddy covariance gap-filled annual`** and **`Eddy covariance annual`** — annual
+  NEE and CH₄ as the source product or publication reports them, not aggregated here.
+- **`Automated chamber annual mean`** — annual chamber values where the source reports them.
 - **`static_soil_publication_import`** — soil properties transcribed from
   the exact-site publication's table.
 

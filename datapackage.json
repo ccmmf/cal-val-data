@@ -586,7 +586,8 @@
                 "FILLED_DATA_PUBLICATION",
                 "FILLED_PUBLICATION_TABLE",
                 "FILLED_PUBLICATION_TEXT",
-                "SCRIPTED_DERIVED"
+                "SCRIPTED_DERIVED",
+                "REPORTED_DIRECT"
               ]
             },
             "description": "provenance / source-precedence code; blank allowed for now"

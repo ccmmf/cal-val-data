@@ -50,7 +50,7 @@ exact-site publication only where AmeriFlux BADM/BIF does not carry them.
 | Soil carbon content | % | 3 | `site_layer`, 0–15 / 15–30 / 30–60 cm |
 | Soil nitrogen content | % | 3 | `site_layer`, 0–15 / 15–30 / 30–60 cm |
 
-**No N₂O, and no annual NEE** (see below) — CH₄ is the curated flux here.
+**Fluxes now come from source-reported annual values** (see below).
 
 **Deepest soil profile of the three Delta sites** — three layers to 60 cm,
 against a single 0–15 cm layer at US-Bi2. It is still a single time point,
@@ -61,22 +61,24 @@ CH₄ is reported only for site-years passing the annual QC screen, so its
 record is shorter than the tower's full span.
 
 
-**Annual NEE is not curated for this site.** The AmeriFlux BASE record provides `FC`,
-the observed turbulent CO2 flux, which is not equivalent to an authoritative gap-filled
-annual NEE product: aggregating it to a yearly total would assert a budget the
-measurements do not support. Those site-years are therefore recorded as unavailable
-rather than filled, pending an appropriate gap-filled product or publication.
+**Annual NEE is curated from gap-filled products.** Earlier revisions of this dataset
+derived annual NEE from AmeriFlux BASE `FC`, which is observed turbulent CO2 flux and not
+equivalent to an authoritative annual budget; those rows were withdrawn. NEE is now taken
+from source-reported annual values (12 site-years) supplied by the harmonization:
+  - `ameriflux_fluxnet_1f_us_bi1_v1_3_r1`
+  - `publication_anthony_2023_table_1`
 
-(8 site-years affected, 2017 to 2024.)
+CH4 is likewise no longer aggregated locally: annual values come from the FLUXNET-CH4
+community product and from exact-site publications, rather than from a daily aggregation
+performed here.
 
 ---
 
 ## Methods
 
-- **`annual_budget_from_daily`** — annual CH₄ totals derived from
-  curated daily observations with unit-aware conversion, for site-years
-  passing the annual QC screen. Daily values come from the AmeriFlux BASE
-  half-hourly record aggregated under the harmonization rules in `methods`.
+- **`Eddy covariance gap-filled annual`** and **`Eddy covariance annual`** — annual
+  NEE and CH₄ as the source product or publication reports them, not aggregated here.
+- **`Automated chamber annual mean`** — annual chamber values where the source reports them.
 - **`static_soil_publication_import`** — soil carbon and nitrogen
   transcribed from the exact-site publication.
 
