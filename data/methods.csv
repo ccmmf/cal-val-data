@@ -44,3 +44,4 @@ Automated chamber annual mean,Annual mean calculated by the source from filtered
 In-situ soil sensor,In-situ soil oxygen temperature or moisture sensor measurements retained at their reported temporal resolution.,10.1038/s41467-023-37391-2,soil_sensor,NA,NA,{}
 Soil sampling and laboratory analysis,Sampled soil analyzed in a laboratory where the available evidence does not establish a more specific analytical technique.,NA,soil_sampling_lab,NA,NA,{}
 Soil-water slurry pH,Soil pH measured in a soil-water slurry where the cited source explicitly reports that technique.,10.1038/s41467-023-37391-2,soil_ph_slurry,NA,NA,{}
+continuous_soil_profile_sensor,"Continuous in-situ soil profile sensors logging temperature, volumetric water content and oxygen at 10, 30 and 50 cm every 15 minutes. Curated as daily means per depth; readings outside physical limits were excluded before averaging.",10.5061/dryad.qz612jmnx,NA,NA,NA,NA

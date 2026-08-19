@@ -54,18 +54,21 @@ weighed against model ensemble variance**.
 
 ## Variables Measured
 
-**210 rows** = 2 sites × 3 gases × 4 study years × 9 chambers (minus a few chamber-years with
-no data).
+**210 flux rows** (2 sites × 3 gases × 4 study years × 9 chambers, minus a few chamber-years
+with no data) plus **15,498 daily soil sensor rows**.
 
 | Variable | Units | Rows |
 |---|---|---|
 | `N2O_flux_mg_m2_d` | mg N₂O m⁻² d⁻¹ | 70 |
 | `CH4_flux_mg_m2_d` | mg CH₄ m⁻² d⁻¹ | 70 |
 | `CO2_flux_g_m2_d` | g CO₂ m⁻² d⁻¹ | 70 |
+| `soil_temperature` | °C | 5,198 |
+| `soil_water_content` | m³ m⁻³ | 5,132 |
+| `soil_oxygen_content` | % | 5,168 |
 
-Every row is an **annual mean for one chamber in one study year**, carrying `n` (number of
+Each **flux** row is an **annual mean for one chamber in one study year**, carrying `n` (number of
 underlying measurements, median about 2,700, range 142 to 6,619) and the **annual standard error** in
-`statname` / `stat`. Ten chamber-years rest on fewer than 1,000 measurements, so `n` is worth
+`statname` / `stat`. The **soil sensor** rows are daily means at a single depth (see below). Ten chamber-years rest on fewer than 1,000 measurements, so `n` is worth
 carrying downstream as the weight each row deserves rather than treating the rows as equal.
 
 **Study years run July–June at corn** (year 1 = 2017-06-30 to 2018-06-30), matching the
@@ -125,9 +128,21 @@ invented.**
 - **New variable names carry their units** (`N2O_flux_mg_m2_d`), following the existing
   `N2O_flux_g_N_ha_d` precedent, and deliberately do not reuse the tower `CH4_flux` name — that
   variable is a tower annual budget in different units and a different support.
-- **The deposit also contains continuous soil sensor data** (temperature, water content and
-  oxygen at 10/30/50 cm, 15-minute resolution, 2018–2021). It is **not curated in this pass** and
-  remains available in the deposit.
+- **Continuous soil sensor data is curated as daily means.** The deposit logs temperature,
+  water content and oxygen at 10, 30 and 50 cm every 15 minutes (2018-09-05 to 2021-10-05).
+  These are curated at **daily** resolution rather than annual: a daily mean of a state
+  variable requires no gap-filling assumption, it is the resolution the model runs at, and an
+  annual mean of soil temperature or moisture averages away the seasonal cycle that makes
+  these variables worth checking. Each row carries `n`, the number of 15-minute readings
+  behind it, so partially covered days are visible. There is **one profile per site**, so
+  these rows are not replicated — `replicate_id` is `profile_1` and depth is carried in
+  `min_depth`/`max_depth`.
+- **Physically impossible sensor readings were excluded before averaging**, with generous
+  limits so that ordinary sensor noise is retained: temperature outside -10 to 60 °C, water
+  content outside -0.05 to 1.10 m³ m⁻³, oxygen outside 0 to 25 %. **27 readings** were dropped
+  out of roughly 1.4 million, all at US-Bi1: 4 soil temperatures between 200 and 392 °C, 22
+  oxygen readings above 25 % (peaking at 159 %), and 1 negative water content. Borderline
+  values such as -0.01 m³ m⁻³ or 21.6 % oxygen were kept as measured.
 
 ## Per-row provenance
 
