@@ -37,10 +37,23 @@ cross-checks. Full citation metadata is in `citations`.
 Agricultural Sustainability Institute) and the Wolf et al. data
 publication.
 
-**Source preference:** the data publication reports at plot (replicate)
-level and that resolution is ingested throughout — every row carries
-`observation_level = replicate`. Treatment means in the analysis papers
+**Source preference:** the data publication reports at plot level and every row
+carries `observation_level = replicate`. Treatment means in the analysis papers
 are used only for cross-checking, never as a fill source.
+
+⚠️ **`replicate_id` does not resolve individual plots.** It holds only `E`, `W` or
+`NA`, which is the east/west split of a plot rather than the plot itself, and its
+coverage is inconsistent between variables and years. Consumers should not assume a
+row can be traced to an experimental unit. Concretely, carbon cannot be paired with
+bulk density on the same unit: in 1993 the bulk density is entirely `W`, and in 2012
+the carbon is entirely `NA`. Matching carbon to bulk density on treatment, replicate,
+year and depth succeeds for 50 of 2,180 rows, 2.3%.
+
+The plot identifiers do exist upstream. The Century Experiment release, Wolf et al.
+2018 (`10.1002/ecy.2105`), carries a `plot` column with 177 distinct plots, and the
+Raffeld deposit carries the same. The resolution was lost when this workbook was
+transcribed, not in ingest. See `data_raw/raffeld_2024/` for stocks computed at plot
+level from that deposit.
 
 ---
 
@@ -91,10 +104,22 @@ soil-carbon validation — the point of the Tautges et al. analysis. Several
 other increments appear where the source reports them (0-7.5, 0-25, 0-30,
 10-22, 15-22.5, 22-34 cm).
 
-**Note on soil C.** Total C and N are reported as **percent**, not as
-stocks. Converting to an SOC stock requires pairing with the
-`bulk_density_g_cm3` rows at the matching depth and date; that pairing is
-left to the consumer rather than precomputed here.
+**Note on soil C.** Total C and N are reported here as **percent**, not as stocks.
+
+**Do not compute stocks from these rows.** Two things prevent it. `replicate_id` does
+not resolve plots, so the per plot differencing in Tautges et al. sections 2.5 to 2.6
+is not reproducible, and `mean(BD × C)` is not `mean(BD) × mean(C)`, so a
+treatment-level shortcut does not return the published values. And there is no 1993
+bulk density at all: the campaigns are 1992, 1995, 1999, 2003, 2007 and 2012 for bulk
+density against 1993, 1995, 1997, 2003 and 2012 for carbon.
+
+**0-30 cm stocks are precomputed in `data_raw/raffeld_2024/`** from the Raffeld et al.
+2024 deposit (`10.5061/dryad.p2ngf1w06`), which resolves plots, harmonises depths
+across 1993 and 2012, and screens the bulk densities. Use those.
+
+Also note the bulk densities here include values a bulk density cannot take, up to
+4.48 g/cm³. Those come from the Century Experiment release as published rather than
+from ingest; see `ccmmf/organization#270`.
 
 ---
 
