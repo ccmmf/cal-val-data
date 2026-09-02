@@ -1,0 +1,97 @@
+raffeld_treatment,source_treatment,calval_treatment_id,plot,campaign,SOC_stock_0_30cm_Mg_C_ha,method,source_file
+IW,IWC,irr_wheat_control,2_7,1993,38.246,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,2_7,2012,36.778,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,3_5,1993,34.579,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,3_5,2012,29.247,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,5_6,1993,41.88,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,5_6,2012,38.136,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,6_1,1993,37.023,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,6_1,2012,33.795,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,7_7,1993,44.495,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,7_7,2012,40.179,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,8_7,1993,37.993,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,8_7,2012,42.067,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,2_6,1993,38.357,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,2_6,2012,40.403,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,3_4,1993,32.926,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,3_4,2012,37.55,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,4_2,1993,30.393,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,4_2,2012,31.307,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,4_6,1993,29.898,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,4_6,2012,28.235,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,8_4,1993,40.713,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,8_4,2012,32.188,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,8_5,1993,42.399,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,8_5,2012,37.182,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,1_7,1993,45.865,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,1_7,2012,44.278,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,1_8,1993,47.776,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,1_8,2012,37.618,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,3_9,1993,39.249,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,3_9,2012,35.177,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,4_9,1993,30.681,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,4_9,2012,30.202,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,6_2,1993,39.591,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,6_2,2012,35.8,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,8_3,1993,40.47,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,8_3,2012,35.218,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,1_9,1993,48.339,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,1_9,2012,42.436,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,2_9,1993,40.381,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,2_9,2012,38.031,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,5_8,1993,39.856,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,5_8,2012,38.532,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,5_9,1993,43.385,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,5_9,2012,43.96,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,7_2,1993,39.353,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,7_2,2012,39.962,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,8_2,1993,39.547,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,8_2,2012,33.955,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,1_6,1993,44.867,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,1_6,2012,33.286,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,2_8,1993,40.263,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,2_8,2012,37.495,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,3_7,1993,33.061,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,3_7,2012,33.365,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,3_8,1993,38.597,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,3_8,2012,40.624,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,7_3,1993,40.821,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,7_3,2012,38.056,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,8_1,1993,38.559,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,8_1,2012,36.096,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
+CMT,CMT,conv_corn_tomato,1_3,1993,45.562,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,1_3,2012,43.769,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,1_4,1993,44.222,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,1_4,2012,36.56,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,4_5,1993,37.507,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,4_5,2012,36.355,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,5_5,1993,41.33,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,5_5,2012,32.777,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,7_8,1993,44.454,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,7_8,2012,34.921,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,8_9,1993,37.877,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,8_9,2012,38.021,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,1_1,1993,46.805,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,1_1,2012,41.42,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,2_4,1993,32.932,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,2_4,2012,30.06,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,4_4,1993,34.523,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,4_4,2012,33.135,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,6_3,1993,39.569,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,6_3,2012,45.438,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,6_7,1993,38.887,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,6_7,2012,45.258,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,6_9,1993,45.747,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,6_9,2012,40.323,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,1_2W,1993,44.98,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,1_2W,2012,54.32,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,2_3W,1993,34.777,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,2_3W,2012,44.543,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,6_4W,1993,45.363,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,6_4W,2012,52.692,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,6_5W,1993,41.828,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,6_5W,2012,50.095,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,6_8W,1993,47.373,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,6_8W,2012,49.142,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,8_8E,1993,37.866,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,8_8E,2012,40.941,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
