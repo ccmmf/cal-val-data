@@ -1,105 +1,94 @@
-# Data Entry Report — raffeld_2024
+# Data Entry Report - raffeld_2024
 
-**Dataset id:** `raffeld_2024`
-**Entered by:** Aritra Dey
-**Entry date:** 2026-09-03
+- **Dataset id:** `raffeld_2024`
+- **Entered by:** Aritra Dey and David LeBauer
+- **Entry date:** 2026-09-03
 
-0-30 cm soil organic carbon stocks for the UC Davis Century Experiment, computed from the
-Raffeld et al. (2024) data deposit rather than from the concentrations already curated as
-`russell_ranch_tautges_2019`.
-
----
+This dataset contains plot-level soil organic carbon stocks for the UC Davis
+Century Experiment at the treatment-specific 0-30 cm reference soil mass.
 
 ## Source
 
-- **Raffeld et al.** — *Data from: The importance of accounting method and sampling depth to
-  estimate changes in soil carbon stocks*, Dryad. <https://doi.org/10.5061/dryad.p2ngf1w06>
-- Underlying experiment published as **Tautges et al. (2019)**,
-  <https://doi.org/10.1111/gcb.14762>.
+- Raffeld et al. (2024), Dryad: <https://doi.org/10.5061/dryad.p2ngf1w06>
+- Underlying experiment: Tautges et al. (2019),
+  <https://doi.org/10.1111/gcb.14762>
+- Source files: `Davis_wheat_data.xlsx` and `Davis_maize_data.xlsx`
+- SimpleESM: <https://github.com/fabienferchaud/SimpleESM> at commit
+  `64b7263a60d1bb1dffc99e0bd90b1880532ccdc0`
 
-Files used: `Davis_wheat_data.xlsx` and `Davis_maize_data.xlsx`. `WICST_data.xlsx` is the
-Wisconsin trial and is out of scope.
+The workbooks were downloaded manually from Dryad. `WICST_data.xlsx` contains
+the Wisconsin trial and is out of scope.
 
-**Downloaded by hand.** Dryad is behind Anubis proof-of-work; scripted download is blocked and
-was not circumvented.
+## Why these source files are used
 
----
+The Raffeld deposit preserves the campaign, treatment, plot, point, and depth
+keys needed to pair carbon concentrations with bulk density in `Original_data`.
+In the separately curated `russell_ranch_tautges_2019` data, only the E or W
+suffix of some plot labels survived transcription, and matching carbon to bulk
+density on the curated plot identifier and depth succeeds for only 2.3 percent
+of carbon rows.
 
-## Why this deposit and not the curated concentrations
+The Raffeld files also provide harmonized 1993 and 2012 depth increments and
+bulk densities ranging from 1.01 to 1.76 g/cm3. By comparison, the Century
+Experiment release includes implausible values above 2 g/cm3. These differences
+are why the curated Tautges carbon and bulk-density rows were not used to
+calculate this product.
 
-Requested on `ccmmf/cal-val-data#2`: store 0-30 cm stocks rather than leave the calculation to
-the consumer. Three things make this deposit the right input.
+## Reproduce
 
-1. **It resolves plots.** Bulk density and carbon share one key of campaign, treatment, plot,
-   point and depth, and join at **99.7%**. The curated `russell_ranch_tautges_2019` tables join
-   at 2.3%, because only the E or W half of the plot label survived transcription. Tautges
-   section 2.6 differences per plot before averaging, which is only possible here.
-2. **Depths are already harmonised** across 1993 and 2012, so the reweighting
-   `BD 15-30 = (10 x BD 0-25 + 5 x BD 25-50) / 15` is not needed.
-3. **Bulk densities are screened.** Range 1.05 to 1.76 g/cm3, nothing above 2. The Century
-   Experiment release (Wolf et al. 2018, `10.1002/ecy.2105`) publishes 41 values above 2.0 and
-   7 above 2.2, up to 4.48, which is where ours came from (`ccmmf/organization#270`).
+Download the two source workbooks into this directory, then run:
 
----
-
-## Calculation
-
-Fixed depth, matching Tautges. ESM is deliberately **not** used: Tautges is fixed depth
-throughout, and the ESM treatment of this data is Raffeld's own separate analysis.
-
-```
-SOC stock (Mg C/ha) = SOC (g/kg) x bulk density (g/cm3) x thickness (cm) x 0.1
-SOC 0-30            = SOC 0-15 + SOC 15-30
-change              = 2012 - 1993, differenced per plot, then averaged per treatment
+```sh
+cd data_raw/raffeld_2024
+Rscript calculate_davis_soc_esm.R
 ```
 
-Differencing per plot before averaging matters: `mean(BD x C)` is not `mean(BD) x mean(C)`, so
-a treatment-level shortcut does not reproduce the published values.
+This writes `soc_stocks_0_30cm_per_plot.csv` in the same directory.
 
----
+## Calculation and curation decisions
 
-## Coverage
+The script reads the `Original_data` sheet from each workbook. The prepared
+wheat `BD` sheet is not used because its 1993 plot `8_2` profile contains a
+duplicate 0-15 cm row and omits the 100-200 cm row.
 
-96 per-plot rows, 8 treatments, 6 plots each, campaigns 1993 and 2012.
+For each treatment and layer, the reference mass is the mean 1993 soil mass
+across its six plots. SimpleESM is run separately for each treatment because
+the reference masses differ. The retained result is `SOC_stock_cum_ESM2` for
+`Layer == 2`, which is the cumulative 0-30 cm reference mass rather than the
+15-30 cm increment alone. The measured 30-60 cm layer supplies correction mass
+when the equivalent depth exceeds 30 cm. Equivalent depths range from 28.3 to
+40.0 cm.
 
-| treatment | n | 1993 | 2012 | change | sd of per-plot change |
-|---|---|---|---|---|---|
-| `conv_corn_tomato` | 6 | 41.8 | 37.1 | -4.8 | 4.3 |
-| `leg_corn_tomato` | 6 | 39.7 | 39.3 | -0.5 | 5.3 |
-| `org_corn_tomato` | 6 | 42.0 | 48.6 | +6.6 | 3.4 |
-| `irr_wheat_control` | 6 | 39.0 | 36.7 | -2.3 | 3.4 |
-| `irr_wheat_fallow` | 6 | 35.8 | 34.5 | -1.3 | 4.9 |
-| `rf_wheat_control` | 6 | 40.6 | 36.4 | -4.2 | 3.4 |
-| `rf_wheat_fallow` | 6 | 41.8 | 39.5 | -2.3 | 2.9 |
-| `rf_wheat_legume` | 6 | 39.4 | 36.5 | -2.9 | 4.7 |
+Only ESM2 is retained because it is the Hyman cubic-spline result used by
+Raffeld et al. Classical 1 mm ESM and fixed-depth results are not included.
 
-Units are Mg C/ha over 0-30 cm.
+`OMTD` is excluded because Raffeld et al. did not analyze it. After matching
+corresponding E and W plot suffixes, its measured profiles duplicate `OMTF`
+exactly. The D and F treatment suffixes identify drip and furrow irrigation; E
+and W are plot-identifier suffixes, not irrigation labels. Including both
+treatments would therefore duplicate the organic-system measurements.
+`org_corn_tomato` uses `OMTF`, Raffeld's analyzed `OMT` treatment.
 
----
+The 2019 bulk-density observations are excluded because there are no
+corresponding 2019 carbon concentrations.
 
-## Curation Decisions and Caveats
+Treatment mappings are: `IWC` to `IW`, `IWF` to `IW + N`, `RWC` to `RW`, `RWF`
+to `RW + N`, `RWL` to `RW + WCC`, `CMT` to `CMT`, `LMT` to `CMT + WCC`, and
+`OMTF` to `OMT`. The output retains the source treatment, Raffeld treatment,
+and repository treatment identifier.
 
-- **`OMTD` is excluded, 24 rows dropped.** Raffeld marks it "not analyzed", and its values
-  duplicate `OMTF` plot for plot: `1_2E` and `1_2W` both read 44.980 in 1993 and 54.320 in 2012,
-  and every other pair matches exactly. The organic system was measured once and the value
-  assigned to both halves, so including both would double-count. `org_corn_tomato` here is
-  `OMTF`, Raffeld's `OMT`.
-- **This is also what the curated `replicate_id` of E and W actually is.** Not a spatial
-  replicate but the drip and furrow split of the organic system, carried through with duplicated
-  values.
-- **One concentration row has no matching bulk density**, 1993 `RWF` plot `8_2` at -100 cm. It is
-  below 30 cm and does not affect these stocks.
-- **Treatment names are Raffeld's, mapped to ours.** `IWC` to `IW`, `IWF` to `IW + N`, `RWC` to
-  `RW`, `RWF` to `RW + N`, `RWL` to `RW + WCC`, `CMT` to `CMT`, `LMT` to `CMT + WCC`, `OMTF` to
-  `OMT`. Both names are kept in the per-plot file.
-- **Deeper increments are not summed.** The deposit carries 30-60, 60-100 and 100-200 cm, so a
-  deeper stock can be built from the same file if wanted.
-- **2019 bulk density exists** in the `Original_data` sheet but has no matching 2019
-  concentrations, so no 2019 stock is computed.
-- **Values are computed, not transcribed.** Every row is `SCRIPTED_DERIVED`; the arithmetic is
-  above and reproduces from the deposit.
+The output contains 96 rows: eight treatments x six plots x two campaigns.
+SOC stock is reported in Mg C ha-1 and equivalent depth in cm. Every value is
+`SCRIPTED_DERIVED`; none was transcribed from a results table.
 
-## Related resource
+## Related data
 
-Supersedes deriving stocks from `russell_ranch_tautges_2019`, whose concentration rows remain as
-the record of what the workbook holds but should not be used to compute stocks by hand.
+The separate `russell_ranch_tautges_2019` dataset retains all 20,462 soil,
+nutrient, biomass, and yield observations, including 4,452 bulk-density and
+2,180 total-carbon rows. Those profile observations may support other analyses,
+but they were not inputs to this ESM2 calculation. Full plot identifiers were
+lost in the curated repository workbook, although they remain available in the
+original Wolf et al. Century Experiment files. Carbon and bulk-density campaigns
+also differ in some years, and some bulk densities are implausible. The Raffeld
+files preserve the required identifiers and provide harmonized depth increments
+for this calculation.
