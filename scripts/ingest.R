@@ -96,7 +96,9 @@ for (tab in tabs) {
     parts[[length(parts) + 1]] <- read_sheet(
       workbooks[i],
       sheet = hit[1],
-      skip = header_offset(workbooks[i], hit[1])
+      skip = header_offset(workbooks[i], hit[1]),
+      # Later datasets can populate columns left empty in the first 1000 rows.
+      guess_max = Inf
     )
   }
   if (!length(parts)) next
