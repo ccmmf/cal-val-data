@@ -59,6 +59,13 @@ the reference masses differ. The retained result is `SOC_stock_cum_ESM2` for
 when the equivalent depth exceeds 30 cm. Equivalent depths range from 28.3 to
 40.0 cm.
 
+For 72 of the 96 observations, the equivalent depth exceeds 30 cm; the maximum
+is 40.04 cm. The `min_depth` and `max_depth` fields retain the 0-30 cm reference
+interval, while `attributes_json.equivalent_depth_cm` records the profile depth
+actually integrated. These observations should be compared only with modeled
+stocks placed on the same equivalent-soil-mass basis, not with unadjusted
+fixed-depth 0-30 cm model output.
+
 Only ESM2 is retained because it is the Hyman cubic-spline result used by
 Raffeld et al. Classical 1 mm ESM and fixed-depth results are not included.
 

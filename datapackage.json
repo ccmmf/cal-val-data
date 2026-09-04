@@ -558,12 +558,12 @@
           {
             "name": "min_depth",
             "type": "number",
-            "description": "cm; required for soil variables"
+            "description": "cm; sampled interval for depth-based observations; reference interval for equivalent-soil-mass stocks"
           },
           {
             "name": "max_depth",
             "type": "number",
-            "description": "cm; required for SOC stock"
+            "description": "cm; sampled interval for depth-based observations; reference interval for equivalent-soil-mass stocks, with actual integrated depth in attributes_json.equivalent_depth_cm"
           },
           {
             "name": "citation",

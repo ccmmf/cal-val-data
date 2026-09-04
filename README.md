@@ -58,7 +58,7 @@ Core variables, in reported units:
 
 | variable | units | description |
 | -------- | ----- | ----------- |
-| `SOC_stock_Mg_ha` | Mg C ha-1 | soil organic carbon stock; depth in `min_depth` / `max_depth` |
+| `SOC_stock_Mg_ha` | Mg C ha-1 | soil organic carbon stock; `min_depth` / `max_depth` give the sampled interval for fixed-depth stocks and the reference interval for equivalent-soil-mass stocks |
 | `SOC_conc_mg_kg` | mg C kg-1 soil | soil organic carbon concentration |
 | `bulk_density_g_cm3` | g cm-3 | soil bulk density |
 | `total_N_conc_mg_kg` | mg N kg-1 soil | total soil nitrogen concentration |
@@ -146,7 +146,7 @@ Each workbook tab maps to one CSV in `data/`. Full field schema, types, and keys
 | `treatment_id` | string | foreign key to `treatments.name` |
 | `replicate_id` | number | block, plot, core, or chamber identifier |
 | `study_year` | number | experiment year or calendar year |
-| `min_depth`, `max_depth` | number | cm; required for soil variables and SOC stock |
+| `min_depth`, `max_depth` | number | cm; sampled interval for depth-based observations and reference interval for equivalent-soil-mass stocks; actual integrated depth is recorded in `attributes_json.equivalent_depth_cm` |
 | `citation` | string | DOI, foreign key to `citations.doi` |
 | `fill_status` | string | provenance code (see [Conventions](#conventions)) |
 | `notes` | string | free text, including date precision caveats |
