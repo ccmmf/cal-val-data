@@ -91,6 +91,32 @@ drop_redundant <- function(dat, tab) {
   dat[, !names(dat) %in% redundant[[tab]], drop = FALSE]
 }
 
+# column order in the export follows whatever order the workbooks happen to use,
+# but datapackage.json declares an order and frictionless checks labels by
+# position. moving a column in a sheet would then fail validation even though
+# every value is right. emit the declared columns in schema order and append
+# anything the schema does not mention.
+declared_fields <- local({
+  dp_path <- "datapackage.json"
+  if (!file.exists(dp_path)) {
+    return(list())
+  }
+  dp <- jsonlite::read_json(dp_path, simplifyVector = FALSE)
+  stats::setNames(
+    lapply(dp$resources, function(r) {
+      vapply(r$schema$fields, function(f) f$name, character(1))
+    }),
+    vapply(dp$resources, function(r) r$name, character(1))
+  )
+})
+order_columns <- function(dat, tab) {
+  want <- declared_fields[[tab]]
+  if (is.null(want)) {
+    return(dat)
+  }
+  dat[, c(intersect(want, names(dat)), setdiff(names(dat), want)), drop = FALSE]
+}
+
 dir.create(cfg$data_dir, showWarnings = FALSE)
 
 for (tab in tabs) {
@@ -108,7 +134,9 @@ for (tab in tabs) {
   }
   if (!length(parts)) next
   readr::write_csv(
-    drop_redundant(drop_empty(dplyr::bind_rows(harmonise(parts))), tab),
+    order_columns(
+      drop_redundant(drop_empty(dplyr::bind_rows(harmonise(parts))), tab), tab
+    ),
     file.path(cfg$data_dir, paste0(tab, ".csv"))
   )
 }
