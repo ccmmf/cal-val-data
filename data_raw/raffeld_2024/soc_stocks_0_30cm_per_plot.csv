@@ -1,97 +1,97 @@
-raffeld_treatment,source_treatment,calval_treatment_id,plot,campaign,SOC_stock_0_30cm_Mg_C_ha,method,source_file
-IW,IWC,irr_wheat_control,2_7,1993,38.246,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW,IWC,irr_wheat_control,2_7,2012,36.778,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW,IWC,irr_wheat_control,3_5,1993,34.579,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW,IWC,irr_wheat_control,3_5,2012,29.247,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW,IWC,irr_wheat_control,5_6,1993,41.88,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW,IWC,irr_wheat_control,5_6,2012,38.136,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW,IWC,irr_wheat_control,6_1,1993,37.023,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW,IWC,irr_wheat_control,6_1,2012,33.795,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW,IWC,irr_wheat_control,7_7,1993,44.495,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW,IWC,irr_wheat_control,7_7,2012,40.179,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW,IWC,irr_wheat_control,8_7,1993,37.993,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW,IWC,irr_wheat_control,8_7,2012,42.067,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW + N,IWF,irr_wheat_fallow,2_6,1993,38.357,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW + N,IWF,irr_wheat_fallow,2_6,2012,40.403,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW + N,IWF,irr_wheat_fallow,3_4,1993,32.926,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW + N,IWF,irr_wheat_fallow,3_4,2012,37.55,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW + N,IWF,irr_wheat_fallow,4_2,1993,30.393,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW + N,IWF,irr_wheat_fallow,4_2,2012,31.307,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW + N,IWF,irr_wheat_fallow,4_6,1993,29.898,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW + N,IWF,irr_wheat_fallow,4_6,2012,28.235,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW + N,IWF,irr_wheat_fallow,8_4,1993,40.713,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW + N,IWF,irr_wheat_fallow,8_4,2012,32.188,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW + N,IWF,irr_wheat_fallow,8_5,1993,42.399,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-IW + N,IWF,irr_wheat_fallow,8_5,2012,37.182,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW,RWC,rf_wheat_control,1_7,1993,45.865,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW,RWC,rf_wheat_control,1_7,2012,44.278,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW,RWC,rf_wheat_control,1_8,1993,47.776,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW,RWC,rf_wheat_control,1_8,2012,37.618,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW,RWC,rf_wheat_control,3_9,1993,39.249,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW,RWC,rf_wheat_control,3_9,2012,35.177,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW,RWC,rf_wheat_control,4_9,1993,30.681,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW,RWC,rf_wheat_control,4_9,2012,30.202,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW,RWC,rf_wheat_control,6_2,1993,39.591,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW,RWC,rf_wheat_control,6_2,2012,35.8,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW,RWC,rf_wheat_control,8_3,1993,40.47,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW,RWC,rf_wheat_control,8_3,2012,35.218,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + N,RWF,rf_wheat_fallow,1_9,1993,48.339,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + N,RWF,rf_wheat_fallow,1_9,2012,42.436,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + N,RWF,rf_wheat_fallow,2_9,1993,40.381,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + N,RWF,rf_wheat_fallow,2_9,2012,38.031,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + N,RWF,rf_wheat_fallow,5_8,1993,39.856,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + N,RWF,rf_wheat_fallow,5_8,2012,38.532,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + N,RWF,rf_wheat_fallow,5_9,1993,43.385,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + N,RWF,rf_wheat_fallow,5_9,2012,43.96,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + N,RWF,rf_wheat_fallow,7_2,1993,39.353,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + N,RWF,rf_wheat_fallow,7_2,2012,39.962,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + N,RWF,rf_wheat_fallow,8_2,1993,39.547,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + N,RWF,rf_wheat_fallow,8_2,2012,33.955,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + WCC,RWL,rf_wheat_legume,1_6,1993,44.867,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + WCC,RWL,rf_wheat_legume,1_6,2012,33.286,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + WCC,RWL,rf_wheat_legume,2_8,1993,40.263,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + WCC,RWL,rf_wheat_legume,2_8,2012,37.495,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + WCC,RWL,rf_wheat_legume,3_7,1993,33.061,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + WCC,RWL,rf_wheat_legume,3_7,2012,33.365,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + WCC,RWL,rf_wheat_legume,3_8,1993,38.597,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + WCC,RWL,rf_wheat_legume,3_8,2012,40.624,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + WCC,RWL,rf_wheat_legume,7_3,1993,40.821,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + WCC,RWL,rf_wheat_legume,7_3,2012,38.056,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + WCC,RWL,rf_wheat_legume,8_1,1993,38.559,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-RW + WCC,RWL,rf_wheat_legume,8_1,2012,36.096,"fixed depth, sum of 0-15 and 15-30 increments",Davis_wheat_data.xlsx
-CMT,CMT,conv_corn_tomato,1_3,1993,45.562,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT,CMT,conv_corn_tomato,1_3,2012,43.769,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT,CMT,conv_corn_tomato,1_4,1993,44.222,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT,CMT,conv_corn_tomato,1_4,2012,36.56,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT,CMT,conv_corn_tomato,4_5,1993,37.507,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT,CMT,conv_corn_tomato,4_5,2012,36.355,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT,CMT,conv_corn_tomato,5_5,1993,41.33,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT,CMT,conv_corn_tomato,5_5,2012,32.777,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT,CMT,conv_corn_tomato,7_8,1993,44.454,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT,CMT,conv_corn_tomato,7_8,2012,34.921,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT,CMT,conv_corn_tomato,8_9,1993,37.877,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT,CMT,conv_corn_tomato,8_9,2012,38.021,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT + WCC,LMT,leg_corn_tomato,1_1,1993,46.805,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT + WCC,LMT,leg_corn_tomato,1_1,2012,41.42,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT + WCC,LMT,leg_corn_tomato,2_4,1993,32.932,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT + WCC,LMT,leg_corn_tomato,2_4,2012,30.06,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT + WCC,LMT,leg_corn_tomato,4_4,1993,34.523,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT + WCC,LMT,leg_corn_tomato,4_4,2012,33.135,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT + WCC,LMT,leg_corn_tomato,6_3,1993,39.569,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT + WCC,LMT,leg_corn_tomato,6_3,2012,45.438,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT + WCC,LMT,leg_corn_tomato,6_7,1993,38.887,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT + WCC,LMT,leg_corn_tomato,6_7,2012,45.258,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT + WCC,LMT,leg_corn_tomato,6_9,1993,45.747,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-CMT + WCC,LMT,leg_corn_tomato,6_9,2012,40.323,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-OMT,OMTF,org_corn_tomato,1_2W,1993,44.98,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-OMT,OMTF,org_corn_tomato,1_2W,2012,54.32,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-OMT,OMTF,org_corn_tomato,2_3W,1993,34.777,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-OMT,OMTF,org_corn_tomato,2_3W,2012,44.543,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-OMT,OMTF,org_corn_tomato,6_4W,1993,45.363,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-OMT,OMTF,org_corn_tomato,6_4W,2012,52.692,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-OMT,OMTF,org_corn_tomato,6_5W,1993,41.828,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-OMT,OMTF,org_corn_tomato,6_5W,2012,50.095,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-OMT,OMTF,org_corn_tomato,6_8W,1993,47.373,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-OMT,OMTF,org_corn_tomato,6_8W,2012,49.142,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-OMT,OMTF,org_corn_tomato,8_8E,1993,37.866,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
-OMT,OMTF,org_corn_tomato,8_8E,2012,40.941,"fixed depth, sum of 0-15 and 15-30 increments",Davis_maize_data.xlsx
+raffeld_treatment,source_treatment,calval_treatment_id,plot,campaign,SOC_stock_0_30cm_Mg_C_ha,equivalent_depth_cm,method,source_file
+CMT,CMT,conv_corn_tomato,1_3,1993,45.9708648929124,30.2962912405957,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,1_3,2012,48.1474652623314,32.6585136060875,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,1_4,1993,45.0180618560918,30.6128640379974,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,1_4,2012,42.0476852244957,34.7810591448931,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,4_5,1993,37.6118681829638,30.1039105652504,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,4_5,2012,41.3636268014064,34.3041503078947,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,5_5,1993,40.9669295815077,29.7030455159948,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,5_5,2012,39.5431885827832,38.106174905553,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,7_8,1993,44.588409901651,30.0995809814826,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,7_8,2012,43.4275237768834,38.2758023629375,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,8_9,1993,36.9883237234592,29.2147625181634,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT,CMT,conv_corn_tomato,8_9,2012,41.469726330632,32.8806182867711,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+IW,IWC,irr_wheat_control,2_7,1993,39.0699121448445,30.7031548889559,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,2_7,2012,43.9637638179067,35.8300398505971,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,3_5,1993,35.0862458007266,30.5127687639109,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,3_5,2012,32.2877005843991,34.0026705419981,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,5_6,1993,41.624080129749,29.7959399215159,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,5_6,2012,40.4695990344175,32.0348123155695,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,6_1,1993,36.4531160014193,29.5123898727908,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,6_1,2012,39.51802568888,34.8213925555411,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,7_7,1993,43.403914651304,29.2060595622858,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,7_7,2012,40.2995680691477,30.093354206832,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,8_7,1993,38.3445754623599,30.3080525411878,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW,IWC,irr_wheat_control,8_7,2012,45.8040804117834,32.914248931773,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,2_6,1993,39.8532387382872,31.2409590500258,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,2_6,2012,48.7044115485307,35.6674905076638,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,3_4,1993,33.634757063723,30.7533614833624,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,3_4,2012,42.836395921345,33.9563339036595,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,4_2,1993,29.8647808187046,29.3176855643204,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,4_2,2012,31.6008852252481,30.3292009759578,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,4_6,1993,29.0215285749957,28.8006492175783,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,4_6,2012,28.5213326238177,30.4425019521106,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,8_4,1993,42.3967132903787,31.3044671259331,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,8_4,2012,41.9229795898744,38.7038327602934,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,8_5,1993,40.6913869331719,28.662603154928,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+IW + N,IWF,irr_wheat_fallow,8_5,2012,39.3291004270002,31.6459036081417,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,1_1,1993,44.3117451274363,28.322294769878,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,1_1,2012,48.4249092414367,35.2731748000012,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,2_4,1993,35.5136154936085,32.4013257581031,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,2_4,2012,37.9597711081242,40.0436149476132,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,4_4,1993,33.8611236441315,29.3391902849858,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,4_4,2012,37.9016617620264,36.3059163326638,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,6_3,1993,39.3348410273145,29.8215565550337,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,6_3,2012,49.9079550276877,33.1096979774211,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,6_7,1993,41.4516376980472,32.1970519692153,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,6_7,2012,50.7998918817262,34.1459749892896,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,6_9,1993,43.33348100491,28.3666442569758,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+CMT + WCC,LMT,leg_corn_tomato,6_9,2012,48.5912164991938,36.2274508023337,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,1_2W,1993,45.0482558971112,30.0496598572314,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,1_2W,2012,58.1425482305164,32.8511774248432,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,2_3W,1993,34.9316069489308,30.151825340761,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,2_3W,2012,50.8711841367905,35.070013970391,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,6_4W,1993,45.0258860253023,29.747078579335,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,6_4W,2012,59.1251056690108,34.277752070181,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,6_5W,1993,41.8907508098389,30.0502862300352,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,6_5W,2012,53.3302594336196,32.5600552319753,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,6_8W,1993,45.727881830523,28.8756621836189,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,6_8W,2012,61.4299118521828,37.5607845581861,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,8_8E,1993,39.2629774516852,31.2868356813156,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+OMT,OMTF,org_corn_tomato,8_8E,2012,50.4002357365004,37.9938783881057,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_maize_data.xlsx
+RW,RWC,rf_wheat_control,1_7,1993,44.4417902849314,28.904207584538,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,1_7,2012,45.3893707573808,30.7513418479622,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,1_8,1993,46.6306684833551,29.1684317856588,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,1_8,2012,42.9634321287508,34.0642730816546,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,3_9,1993,38.3267712544192,29.1508913878055,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,3_9,2012,37.8486590814215,32.6270908712748,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,4_9,1993,32.4717720291928,32.1595944444293,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,4_9,2012,32.4528904130666,32.1982702368076,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,6_2,1993,38.674629892203,29.2532921360324,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,6_2,2012,38.5134919002409,32.285674572232,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,8_3,1993,42.5149033968208,31.6508381215936,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW,RWC,rf_wheat_control,8_3,2012,41.566484880455,34.9052125554563,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,1_9,1993,46.8868750472003,29.0348536736808,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,1_9,2012,48.54415771108,34.265259372826,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,2_9,1993,39.8777684160471,29.5809593504504,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,2_9,2012,39.1623272126675,30.9346315013738,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,5_8,1993,39.3596602973027,29.5851134053933,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,5_8,2012,40.7034762014338,31.439497162513,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,5_9,1993,44.7044047341896,30.9632499963061,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,5_9,2012,50.1538730483987,33.8872796370639,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,7_2,1993,40.3832807603374,30.8081801305149,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,7_2,2012,40.6892573998923,30.5370248824531,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,8_2,1993,41.5935478149881,30.0884754069648,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + N,RWF,rf_wheat_fallow,8_2,2012,38.5836383509727,34.0456155986411,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,1_6,1993,43.6545290761413,29.1288650898549,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,1_6,2012,39.1961406513348,34.936774989837,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,2_8,1993,40.0358057003878,29.8175727020141,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,2_8,2012,40.6366334229171,32.4152773137493,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,3_7,1993,34.5795272433384,31.5046186930406,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,3_7,2012,36.476805967947,33.2369201807257,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,3_8,1993,38.6166146819544,30.0177654201849,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,3_8,2012,43.2040859309034,31.7287743543603,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,7_3,1993,42.5373003950352,31.3027324076939,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,7_3,2012,44.5878827053778,34.6570248271123,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,8_1,1993,36.6211862649534,28.3816614177983,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
+RW + WCC,RWL,rf_wheat_legume,8_1,2012,40.2921083646418,33.8132008391773,"equivalent soil mass, Hyman cubic spline (SimpleESM ESM2)",Davis_wheat_data.xlsx
