@@ -118,12 +118,13 @@ check_foreign_keys <- function(dat, resource, dp, root) {
   warns
 }
 
-# light plausibility check; current export mixes ISO, YYYYMMDD, excel serial
+# light plausibility check. an unanchored excel-serial branch used to sit here and
+# accepted any bare number, so 0 or 42 passed as a date; every exported date is
+# ISO or YYYYMMDD, so matching those two is both stricter and sufficient.
 date_like <- function(x) {
   x <- trimws(as.character(x))
   grepl("^[0-9]{4}-[0-9]{2}-[0-9]{2}", x) | # YYYY-MM-DD[ ...]
-    grepl("^[0-9]{8}$", x) | # YYYYMMDD
-    grepl("^[0-9]+(\\.[0-9]+)?$", x) # excel serial
+    grepl("^[0-9]{8}$", x) # YYYYMMDD
 }
 
 check_dates <- function(dat, resource) {
