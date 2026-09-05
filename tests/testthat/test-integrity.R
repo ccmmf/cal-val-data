@@ -1,7 +1,8 @@
-# integrity checks on the generated data/*.csv. per the warn mode policy these
-# tests pass and emit warnings rather than fail; the known curation gaps are
-# documented as a TODO. tables not yet generated are skipped, so a fresh clone
-# passes cleanly. the underlying checks live in scripts/validate.R.
+# integrity checks on the generated data/*.csv. validate.R runs in warn mode so a
+# workbook in progress still passes, but the column contract is asserted here and
+# does fail: a column that silently stops being exported is the failure mode this
+# repo has actually hit, and a warning would not have caught it. tables not yet
+# generated are skipped, so a fresh clone passes cleanly.
 
 root <- here::here()
 dp <- jsonlite::read_json(
@@ -22,11 +23,12 @@ for (res in dp$resources) {
         name_repair = "minimal", progress = FALSE
       )
       missing <- setdiff(want, names(dat))
-      if (length(missing) > 0) {
-        warning(resource$name, " missing columns: ",
-                paste(missing, collapse = ", "))
-      }
-      succeed()
+      expect_true(
+        length(missing) == 0,
+        info = paste(
+          resource$name, "is missing columns:", paste(missing, collapse = ", ")
+        )
+      )
     })
   })
 }
