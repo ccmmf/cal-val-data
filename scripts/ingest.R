@@ -33,7 +33,10 @@ header_offset <- function(wb, tab) {
 tab_names <- lapply(workbooks, function(wb) gs4_get(wb)$sheets$name)
 
 # a column guessed as numeric in one workbook and text in another, or read as a
-# list because its cells are mixed, has to fall back to text before it stacks
+# list because its cells are mixed, has to fall back to text before it stacks.
+# only the workbooks that actually have the column count: `p[[col]]` is NULL when
+# a part lacks it, and "NULL" would otherwise read as a second type and cast a
+# perfectly consistent numeric column to text.
 as_text <- function(x) {
   vapply(x, function(v) {
     # no cell in the current workbooks holds more than one value, and silently
@@ -46,7 +49,9 @@ as_text <- function(x) {
 }
 harmonise <- function(parts) {
   for (col in unique(unlist(lapply(parts, names)))) {
-    types <- unique(unlist(lapply(parts, function(p) class(p[[col]])[1])))
+    types <- unique(unlist(lapply(
+      parts, function(p) if (col %in% names(p)) class(p[[col]])[1]
+    )))
     if (length(types) > 1 || "list" %in% types) {
       parts <- lapply(parts, function(p) {
         if (col %in% names(p)) p[[col]] <- as_text(p[[col]])
