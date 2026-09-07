@@ -60,9 +60,7 @@ so the dataset supports flux validation and an initial-condition soil
 profile, not a soil-carbon trajectory.
 
 
-**Annual NEE is curated from gap-filled products.** Earlier revisions of this dataset
-derived annual NEE from AmeriFlux BASE `FC`, which is observed turbulent CO2 flux and not
-equivalent to an authoritative annual budget; those rows were withdrawn. NEE is now taken
+NEE is taken
 from the eight source-reported annual values in
 `ameriflux_fluxnet_1f_us_bi1_v1_3_r1`, using the provider’s standardized gap filling
 and annual NEE product.
