@@ -34,12 +34,15 @@ CSVs are committed so consumers read a stable, documented snapshot. Workbook can
 
 ## Datasets
 
-Both datasets pull replicate level values from a public archive; companion analysis papers supply methods and cross checks.
+Each dataset pulls replicate level values from a public archive; companion analysis papers supply methods and cross checks. A dataset is curated in its own workbook, and ingest stacks each tab across all workbooks into one CSV per table.
 
 | dataset_id | site | lat, lon | period | treatments | variables | citations (DOI) |
 | ---------- | ---- | -------- | ------ | ---------- | --------- | --------------- |
 | `white_salinas_2020` | salinas_socs (USDA ARS, Salinas Valley CA) | 36.62, -121.53 | 2003 to 2011 (8 yr) | 8 systems `socs_sys1`..`socs_sys8`, 4 blocks (compost with or without cover crop type, frequency, seeding rate) | SOC stock and concentration, bulk density, total N, nitrate, POXC | 10.1016/j.dib.2020.106481; 10.1371/journal.pone.0228677 |
 | `nichols_modesto_2024` | modesto_almond_usda (USDA ARS almond fertigation trial, Modesto CA) | 37.63, -121.09 | 2018 to 2019 (2 yr) | `compost` vs `no_compost` (annual compost top dress vs control, same drip fertigation) | N2O flux, total C, total N, bulk density | 10.1002/saj2.20615; 10.15482/USDA.ADC/26155504 |
+| `russell_ranch_tautges_2019` | russell_ranch_davis (UC Davis Russell Ranch Century Experiment, Davis CA) | 38.54, -121.87 | 1992 to 2014 (study years -1 to 21) | 14 systems, 13 with observations (conventional, organic, legume cover, alfalfa phase corn-tomato; irrigated and rainfed wheat; transitional; native grass reference) | total C and N, bulk density to 250 cm, NH4-N, NO3-N, soil organic matter, corn, tomato, wheat, alfalfa and cover crop yields | 10.1002/ecy.2105; 10.1111/gcb.14762 |
+| `raffeld_2024` | russell_ranch_davis (UC Davis Russell Ranch Century Experiment, Davis CA) | 38.54, -121.87 | 1993 and 2012 | 8 treatments, 6 plots each | `SOC_stock_Mg_ha` at the treatment-specific 0-30 cm reference soil mass, computed per plot with SimpleESM ESM2 | 10.5061/dryad.p2ngf1w06 |
+| `anthony_bouldin_2024` | US-Bi2 (Bouldin corn) and US-Bi1 (Bouldin alfalfa), Sacramento-San Joaquin Delta CA | 38.1091, -121.535; 38.0992, -121.499 | 2017 to 2021 (4 study years) | single system per site; 9 automated chambers per site as spatial replicates | chamber N2O, CH4 and CO2 flux, annual mean per chamber per year with standard error | 10.5061/dryad.qz612jmnx; 10.1007/s10533-023-01095-y |
 
 ### white_salinas_2020
 
@@ -55,7 +58,7 @@ Core variables, in reported units:
 
 | variable | units | description |
 | -------- | ----- | ----------- |
-| `SOC_stock_Mg_ha` | Mg C ha-1 | soil organic carbon stock; depth in `min_depth` / `max_depth` |
+| `SOC_stock_Mg_ha` | Mg C ha-1 | soil organic carbon stock; `min_depth` / `max_depth` give the sampled interval for fixed-depth stocks and the reference interval for equivalent-soil-mass stocks |
 | `SOC_conc_mg_kg` | mg C kg-1 soil | soil organic carbon concentration |
 | `bulk_density_g_cm3` | g cm-3 | soil bulk density |
 | `total_N_conc_mg_kg` | mg N kg-1 soil | total soil nitrogen concentration |
@@ -79,7 +82,12 @@ data/coverage.csv crosses system and treatment contrast against each target, spl
 | Annual or perennial | irrigation regime contrast |  |  |  |  | gap |
 | Rice / flooded | flood vs AWD |  |  |  |  | gap |
 
-So far CH4 has no covered site and N2O has one. These constraints are documented for any consumer.
+The table above predates the AmeriFlux Delta and Bouldin chamber datasets. As of those,
+**N2O is covered at three sites** (`nichols_modesto_2024` static chamber; `anthony_bouldin_2024`
+automated chamber at US-Bi2 and US-Bi1) and **CH4 at three** (tower annual budgets for US-Twt,
+US-Bi1 and US-Bi2, plus chamber CH4 at the two Bouldin sites). Chamber and tower values are
+different measurement supports and are not interchangeable. These constraints are documented for
+any consumer.
 
 ## Repository Structure
 
@@ -138,7 +146,7 @@ Each workbook tab maps to one CSV in `data/`. Full field schema, types, and keys
 | `treatment_id` | string | foreign key to `treatments.name` |
 | `replicate_id` | number | block, plot, core, or chamber identifier |
 | `study_year` | number | experiment year or calendar year |
-| `min_depth`, `max_depth` | number | cm; required for soil variables and SOC stock |
+| `min_depth`, `max_depth` | number | cm; sampled interval for depth-based observations and reference interval for equivalent-soil-mass stocks; actual integrated depth is recorded in `attributes_json.equivalent_depth_cm` |
 | `citation` | string | DOI, foreign key to `citations.doi` |
 | `fill_status` | string | provenance code (see [Conventions](#conventions)) |
 | `notes` | string | free text, including date precision caveats |

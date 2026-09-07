@@ -1,0 +1,36 @@
+name,definition,start_date,end_date,control,site_id,treatment_name,is_control,citation_id,notes,attributes_json
+socs_sys1,"Control: legume-rye cover crop every 4th year (Years 3 and 7 (fall 2006 and fall 2010; planted before Years 4 and 8 vegetable seasons)), no compost applied",2003-10-01,2011-09-01,yes,NA,NA,NA,NA,NA,NA
+socs_sys2,Compost (7.6 Mg/ha/crop) + legume-rye cover crop every 4th year (Years 3 and 7 (fall 2006 and fall 2010; planted before Years 4 and 8 vegetable seasons)),2003-10-01,2011-09-01,no,NA,NA,NA,NA,NA,NA
+socs_sys3,"Compost (7.6 Mg/ha/crop) + legume-rye cover crop every year, low seeding rate (1x)",2003-10-01,2011-09-01,no,NA,NA,NA,NA,NA,NA
+socs_sys4,Compost (7.6 Mg/ha/crop) + legume-rye cover crop every year,2003-10-01,2011-09-01,no,NA,NA,NA,NA,NA,NA
+socs_sys5,Compost (7.6 Mg/ha/crop) + mustard cover crop every year,2003-10-01,2011-09-01,no,NA,NA,NA,NA,NA,NA
+socs_sys6,"Compost (7.6 Mg/ha/crop) + mustard cover crop every year, high seeding rate (3x)",2003-10-01,2011-09-01,no,NA,NA,NA,NA,NA,NA
+socs_sys7,Compost (7.6 Mg/ha/crop) + cereal rye cover crop every year,2003-10-01,2011-09-01,no,NA,NA,NA,NA,NA,NA
+socs_sys8,"Compost (7.6 Mg/ha/crop) + cereal rye cover crop every year, high seeding rate (3x)",2003-10-01,2011-09-01,no,NA,NA,NA,NA,NA,NA
+no_compost,Nichols 2024: Control — no compost since 2012 replanting. HFLC drip fertigation ~195 kg N ha-1 (14 events). Western 5 ha. Modesto CA almond orchard.,2018-12-01,2019-08-07,yes,NA,NA,NA,NA,NA,NA
+compost,"Nichols 2024: Annual compost top-dress ~38 dry t ha-1 (Recology yard trimmings) since 2012 (7 yr). Compost: 20% org C, 1.6% N, C:N ~13. Same HFLC fertigation as no_compost. Eastern 5 ha.",2018-12-01,2019-08-07,no,NA,NA,NA,NA,NA,NA
+All systems (pre-study establishment),"Pre-differentiation state of the SOCS experiment: all eight systems before treatments diverged. Carries the one-time establishment compost applied across the whole trial in autumn 2003, which belongs to every system and so cannot be attributed to any single one.",2003-10-01T00:00:00Z,2003-11-12T00:00:00Z,no,NA,NA,NA,NA,NA,NA
+conv_corn_tomato,"Conventional corn-tomato rotation, synthetic fertilizer N, no cover crop. UC Davis Century Experiment.",1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+conv_corn_tomato_unassigned,Conventional corn-tomato (plot 5-4) used for variety trials; baseline irrigation/fertilization. Variety-trial anomalies present in most years.,1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+org_corn_tomato,Organic corn-tomato rotation with composted poultry manure and winter cover crop; no synthetic N.,1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+leg_corn_tomato,Conventional corn-tomato rotation with winter legume cover crop replacing some/all synthetic N.,1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+alf_corn_tomato,Three-phase rotation: alfalfa -&gt; corn -&gt; tomato. Alfalfa-N feeds subsequent corn/tomato. Started 2012.,2012-01-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+conv_wheat_tomato,"Conventional wheat-tomato rotation, synthetic fertilizer N, no cover crop.",1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+irr_wheat_control,"Continuous irrigated wheat, conventional synthetic N, no cover crop.",1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+irr_wheat_fallow,Irrigated wheat-fallow rotation (alternating years).,1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+irr_wheat_legume,Irrigated wheat-legume rotation; ended 2011.,1993-10-01,2011-12-31,NA,NA,NA,NA,NA,NA,NA
+rf_wheat_control,"Continuous rainfed wheat, conventional synthetic N, no cover crop.",1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+rf_wheat_fallow,Rainfed wheat-fallow rotation (alternating years).,1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+rf_wheat_legume,Rainfed wheat-legume rotation.,1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+native_grass,Native-grass reference (unmanaged); planted 2012.,2012-01-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+transitional,Conventional-to-organic transition; 3 plots converted 1999.,1999-01-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+US-Twt__system,"Single AmeriFlux tower system represented as one treatment. Rice paddy managed with spring drill seeding, flood onset about 1 month after planting, late-summer or early-fall harvest drainage, and winter reflooding.",NA,NA,NA,US-Twt,US-Twt tower system,NA,us_twt_base_dataset,NA,"{""site_page_citation_id"":""us_twt_site_page"",""publication_source_ids"":[""ref_10_1371_journal_pone_0121432""],""management_summary"":""Growing-season flood plus winter reflooding after residue chopping.""}"
+US-Bi1__system,"Single AmeriFlux tower system represented as one treatment. Conventional perennial alfalfa (>5 years) managed with periodic flood irrigation, repeated cuttings, and winter grazing.",NA,NA,NA,US-Bi1,US-Bi1 tower system,NA,us_bi1_base_dataset,NA,"{""site_page_citation_id"":""us_bi1_site_page"",""publication_source_ids"":[""ref_10_1038_s41467_023_37391_2""],""management_summary"":""Perennial alfalfa with repeated harvests and winter grazing.""}"
+US-Bi2__system,Single AmeriFlux tower system represented as one treatment. Drained peat corn field managed for rapid biomass production with intensive fertilization and fallow-season flooding; site metadata notes sorghum in 2024.,NA,NA,NA,US-Bi2,US-Bi2 tower system,NA,us_bi2_base_dataset,NA,"{""site_page_citation_id"":""us_bi2_site_page"",""publication_source_ids"":[""ref_10_1016_j_jenvman_2021_113562"",""us_bi2_site_page""],""management_summary"":""Corn silage system with intensive fertilization and autumn-to-spring fallow flooding.""}"
+US-Twt__tower_20090403__system,AmeriFlux tower treatment at the initial Twitchell deployment.,NA,NA,NA,US-Twt__tower_20090403,US-Twt tower system beginning 2009-04-03,NA,us_twt_base_dataset,NA,"{""site_group_id"":""US-Twt""}"
+US-Twt__tower_20090722__system,AmeriFlux tower treatment at the temporary Twitchell deployment.,NA,NA,NA,US-Twt__tower_20090722,US-Twt temporary tower system,NA,us_twt_base_dataset,NA,"{""site_group_id"":""US-Twt""}"
+US-Twt__tower_20101118__system,AmeriFlux tower treatment at the Twitchell deployment beginning 2010-11-18.,NA,NA,NA,US-Twt__tower_20101118,US-Twt tower system beginning 2010-11-18,NA,us_twt_base_dataset,NA,"{""site_group_id"":""US-Twt""}"
+US-Twt__publication_site_1__system,2012 experimental rice-field system identified as Site 1 in Kirk et al. 2015.,NA,NA,NA,US-Twt__publication_site_1,Twitchell publication Site 1 system,NA,kirk2015eas,NA,"{""site_group_id"":""US-Twt""}"
+US-Twt__publication_site_2__system,2012 experimental rice-field system identified as Site 2 in Kirk et al. 2015.,NA,NA,NA,US-Twt__publication_site_2,Twitchell publication Site 2 system,NA,kirk2015eas,NA,"{""site_group_id"":""US-Twt""}"
+US-Bi1__alfalfa_chambers__system,Perennial alfalfa chamber-field system spatially distinct from the US-Bi1 tower.,NA,NA,NA,US-Bi1__alfalfa_chambers,Bouldin alfalfa chamber-field system,NA,anthony2023cpo,NA,"{""site_group_id"":""US-Bi1""}"
+US-Bi2__management_field__system,Field-level corn management regime for 2017-2023 followed by reported sorghum planting in 2024.,NA,NA,NA,US-Bi2__management_field,Bouldin management-field system,NA,anthony2024hsa,The treatment retains field-level co-location without assigning chamber observations to the tower mast.,"{""site_group_id"":""US-Bi2"",""co_located_site_id"":""US-Bi2""}"

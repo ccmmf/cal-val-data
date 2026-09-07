@@ -27,10 +27,15 @@ drop_empty_rows <- function(dat) {
 # a value counts as present if it is not NA and not blank
 is_present <- function(x) !is.na(x) & trimws(as.character(x)) != ""
 
+# every check here treats values as text, and guessing types from the leading
+# rows silently drops data: a column left empty for the first several thousand
+# rows is guessed logical, so the JSON or flag string that finally appears fails
+# to parse and becomes NA without failing the run. read as text and compare text.
 read_table <- function(path) {
   dat <- readr::read_csv(
     path,
-    show_col_types = FALSE, name_repair = "minimal", progress = FALSE
+    col_types = readr::cols(.default = readr::col_character()),
+    name_repair = "minimal", progress = FALSE
   )
   drop_empty_rows(dat)
 }
@@ -113,12 +118,13 @@ check_foreign_keys <- function(dat, resource, dp, root) {
   warns
 }
 
-# light plausibility check; current export mixes ISO, YYYYMMDD, excel serial
+# light plausibility check. an unanchored excel-serial branch used to sit here and
+# accepted any bare number, so 0 or 42 passed as a date; every exported date is
+# ISO or YYYYMMDD, so matching those two is both stricter and sufficient.
 date_like <- function(x) {
   x <- trimws(as.character(x))
   grepl("^[0-9]{4}-[0-9]{2}-[0-9]{2}", x) | # YYYY-MM-DD[ ...]
-    grepl("^[0-9]{8}$", x) | # YYYYMMDD
-    grepl("^[0-9]+(\\.[0-9]+)?$", x) # excel serial
+    grepl("^[0-9]{8}$", x) # YYYYMMDD
 }
 
 check_dates <- function(dat, resource) {
