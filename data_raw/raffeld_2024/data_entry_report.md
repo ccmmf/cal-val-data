@@ -69,12 +69,21 @@ fixed-depth 0-30 cm model output.
 Only ESM2 is retained because it is the Hyman cubic-spline result used by
 Raffeld et al. Classical 1 mm ESM and fixed-depth results are not included.
 
-`OMTD` is excluded because Raffeld et al. did not analyze it. After matching
-corresponding E and W plot suffixes, its measured profiles duplicate `OMTF`
-exactly. The D and F treatment suffixes identify drip and furrow irrigation; E
-and W are plot-identifier suffixes, not irrigation labels. Including both
-treatments would therefore duplicate the organic-system measurements.
-`org_corn_tomato` uses `OMTF`, Raffeld's analyzed `OMT` treatment.
+`OMTD` is excluded because Raffeld et al. did not analyze it, and because it is
+not an independent treatment in the source file. Pairing its plots with `OMTF` by
+the E and W suffix (`1_2E` with `1_2W`, `2_3E` with `2_3W`, `6_4E` with `6_4W`,
+`6_5E` with `6_5W`, `6_8E` with `6_8W`, and `8_8W` with `8_8E`, that last pair
+reversed), every bulk density and carbon concentration is identical to the last
+reported digit in both campaigns and all five depth increments. The same measured
+profile carries both labels. The D and F treatment suffixes identify drip and
+furrow irrigation; E and W are plot-identifier suffixes, not irrigation labels.
+
+**The organic system therefore has six measured profiles, not twelve.** Because
+the values are identical, combining `OMTD` and `OMTF` returns `OMTF` unchanged,
+so `org_corn_tomato` already is the combined `OMT` treatment and nothing further
+needs merging. Stacking both labels instead would double count the organic system
+and halve its apparent standard error. `org_corn_tomato` uses `OMTF`, Raffeld's
+analyzed `OMT` treatment.
 
 The 2019 bulk-density observations are excluded because there are no
 corresponding 2019 carbon concentrations.
