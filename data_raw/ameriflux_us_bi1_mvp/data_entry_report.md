@@ -21,8 +21,8 @@ datasets — US-Bi1 (this one), `ameriflux_us_bi2_mvp` (corn), and
   nitrogen values by depth layer.
   <https://doi.org/10.1038/s41467-023-37391-2>
 
-Flux values come from the AmeriFlux BASE product and are aggregated here,
-not transcribed from figures. Soil properties are transcribed from the
+Annual flux values come from the source products and publications listed below.
+Soil properties are transcribed from the
 exact-site publication only where AmeriFlux BADM/BIF does not carry them.
 
 ---
@@ -46,7 +46,8 @@ exact-site publication only where AmeriFlux BADM/BIF does not carry them.
 
 | Variable | Units | Rows | Level |
 |---|---|---|---|
-| CH₄ flux | kg C m⁻² year⁻¹ | 4 | `site_year_total` |
+| CH₄ flux (FLUXNET-CH4) | g C m⁻² year⁻¹ | 1 | `site_year_total` |
+| CH₄ flux (Anthony 2023, chambers) | mg CH₄ m⁻² year⁻¹ | 4 | `site_year_total` |
 | Soil carbon content | % | 3 | `site_layer`, 0–15 / 15–30 / 30–60 cm |
 | Soil nitrogen content | % | 3 | `site_layer`, 0–15 / 15–30 / 30–60 cm |
 
@@ -57,14 +58,11 @@ against a single 0–15 cm layer at US-Bi2. It is still a single time point,
 so the dataset supports flux validation and an initial-condition soil
 profile, not a soil-carbon trajectory.
 
-CH₄ is reported only for site-years passing the annual QC screen, so its
-record is shorter than the tower's full span.
-
 
 **Annual NEE is curated from gap-filled products.** Earlier revisions of this dataset
 derived annual NEE from AmeriFlux BASE `FC`, which is observed turbulent CO2 flux and not
 equivalent to an authoritative annual budget; those rows were withdrawn. NEE is now taken
-from source-reported annual values (12 site-years) supplied by the harmonization:
+from source-reported annual values (12 annual records) supplied by the harmonization:
   - `ameriflux_fluxnet_1f_us_bi1_v1_3_r1`
   - `publication_anthony_2023_table_1`
 
@@ -86,23 +84,18 @@ performed here.
 
 ## Dates
 
-Flux rows are annual: `min_date` = 1 January, `max_date` = 31 December of
-the site-year. Soil rows carry the sampling window the source reports. All
-dates ISO `YYYY-MM-DD`. **Point dates are never invented** — where the
-source gives only a year, the row stays annual.
+Flux rows retain their observation intervals. Where the source gives only a year,
+January 1–December 31 is assigned and noted per row. Soil rows retain the sampling
+information provided by the source. Anthony (2023) annual intervals run from
+January 27 through January 26 of the following year.
 
 ---
 
 ## Curation Decisions and Caveats
 
-- **Fluxes are derived, not reported.** Flux rows are `SCRIPTED_DERIVED` —
-  annual totals computed here from the daily product. The aggregation and QC
-  screen make the value, so they are recorded on the `methods` row.
 - **Annual resolution only.** This matters more at US-Bi1 than at the
   annual-crop sites: alfalfa is cut repeatedly within a year and those
   cycles are invisible at annual resolution.
-- **One row has a blank `observation_level`**, left as the source has it
-  rather than inferred.
 - **Empty `variable` header repaired.** The `observations` tab had an empty
   header cell over the column holding the variable names, so the key column
   read as unnamed and its foreign key could not resolve. The header was set
@@ -119,7 +112,8 @@ source gives only a year, the row stays annual.
 
 ## Per-row provenance
 
-- `SCRIPTED_DERIVED` — annual flux totals computed from the daily product.
+- `REPORTED_DIRECT` — annual values imported from source data products.
+- `FILLED_PUBLICATION_TABLE` — values transcribed from publication tables.
 - `FILLED_PUBLICATION_TEXT` — soil values transcribed from the prose of the
   exact-site publication.
 

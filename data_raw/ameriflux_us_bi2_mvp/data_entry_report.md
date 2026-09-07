@@ -21,8 +21,8 @@ datasets — US-Bi2 (this one), `ameriflux_us_bi1_mvp` (alfalfa), and
   nitrogen values.
   <https://doi.org/10.1016/j.jenvman.2021.113562>
 
-Flux values come from the AmeriFlux BASE product and are aggregated here,
-not transcribed from figures. Soil properties are transcribed from the
+Annual flux values come from the source products and publications listed below.
+Soil properties are transcribed from the
 exact-site publication only where AmeriFlux BADM/BIF does not carry them.
 
 ---
@@ -31,7 +31,7 @@ exact-site publication only where AmeriFlux BADM/BIF does not carry them.
 
 - **Site:** US-Bi2, Bouldin Island corn, Sacramento–San Joaquin Delta, CA
   (`US-Bi2`), 38.1091, -121.535.
-- **Period:** 2018-01-01 to 2024-12-31.
+- **Period:** 2017-01-01 to 2024-12-31; tower NEE begins in 2018.
 - **Design:** a single eddy-covariance tower represented as one treatment
   (`US-Bi2__system`) — drained peat corn managed for rapid biomass
   production with intensive fertilization and fallow-season flooding. **No
@@ -45,7 +45,8 @@ exact-site publication only where AmeriFlux BADM/BIF does not carry them.
 
 | Variable | Units | Rows | Level |
 |---|---|---|---|
-| CH₄ flux | kg C m⁻² year⁻¹ | 7 | `site_year_total` |
+| CH₄ flux (FLUXNET-CH4) | g C m⁻² year⁻¹ | 2 | `site_year_total` |
+| CH₄ flux (Anthony and Silver 2021, chambers) | mg CH₄ m⁻² year⁻¹ | 3 | `site_year_total` |
 | Soil carbon content | % | 1 | `site_layer`, 0–15 cm |
 | Soil nitrogen content | % | 1 | `site_layer`, 0–15 cm |
 
@@ -79,18 +80,15 @@ performed here.
 
 ## Dates
 
-Flux rows are annual: `min_date` = 1 January, `max_date` = 31 December of
-the site-year. Soil rows carry the sampling window the source reports. All
-dates ISO `YYYY-MM-DD`. **Point dates are never invented** — where the
-source gives only a year, the row stays annual.
+Flux rows retain their observation intervals. Where the source gives only a year,
+January 1–December 31 is assigned and noted per row. Soil rows retain the sampling
+information provided by the source. Anthony and Silver (2021) annual intervals
+run from July 1 through June 30 of the following year.
 
 ---
 
 ## Curation Decisions and Caveats
 
-- **Fluxes are derived, not reported.** Flux rows are `SCRIPTED_DERIVED` —
-  annual totals computed here from the daily product. The aggregation and QC
-  screen make the value, so they are recorded on the `methods` row.
 - **Annual resolution only.** Site-year totals constrain annual carbon and
   methane budgets; they cannot constrain seasonal or event-scale dynamics
   even though the underlying record is half-hourly.
@@ -110,7 +108,8 @@ source gives only a year, the row stays annual.
 
 ## Per-row provenance
 
-- `SCRIPTED_DERIVED` — annual flux totals computed from the daily product.
+- `REPORTED_DIRECT` — annual values imported from source data products.
+- `FILLED_PUBLICATION_TABLE` — values transcribed from publication tables.
 - `FILLED_PUBLICATION_TEXT` — soil values transcribed from the prose of the
   exact-site publication.
 

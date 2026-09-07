@@ -21,8 +21,8 @@ datasets — US-Twt (this one), `ameriflux_us_bi2_mvp` (corn), and
   table (carbon, nitrogen, C:N, pH, phosphorus, potassium).
   <https://doi.org/10.1371/journal.pone.0121432>
 
-Flux values come from the AmeriFlux BASE product and are aggregated here,
-not transcribed from figures. Soil properties are transcribed from the
+Annual flux values come from the source products and publications listed below.
+Soil properties are transcribed from the
 exact-site publication's table only where AmeriFlux BADM/BIF does not carry
 them.
 
@@ -32,7 +32,7 @@ them.
 
 - **Site:** US-Twt, Twitchell Island rice, Sacramento–San Joaquin Delta, CA
   (`US-Twt`), 38.1087, -121.653.
-- **Period:** 2010-01-01 to 2016-12-31.
+- **Annual-flux period:** 2009-01-01 to 2017-12-31.
 - **Design:** a single eddy-covariance tower represented as one treatment
   (`US-Twt__system`) — a rice paddy managed with spring drill seeding, flood
   onset about one month after planting, late-summer or early-fall harvest
@@ -49,7 +49,7 @@ Curated rows:
 
 | Variable | Units | Rows | Level |
 |---|---|---|---|
-| CH₄ flux | kg C m⁻² year⁻¹ | 6 | `site_year_total` |
+| CH₄ flux | g C m⁻² year⁻¹ | 8 | `site_year_total` |
 | Soil carbon content | g kg⁻¹ | 2 | `site_layer`, 0–15 / 0–30 cm |
 | Soil nitrogen content | g kg⁻¹ | 2 | `site_layer` |
 | Soil C:N ratio | ratio | 2 | `site_layer` |
@@ -92,18 +92,14 @@ performed here.
 
 ## Dates
 
-Flux rows are annual: `min_date` = 1 January, `max_date` = 31 December of
-the site-year. Soil rows carry the sampling window the source reports. All
-dates ISO `YYYY-MM-DD`. **Point dates are never invented** — where the
-source gives only a year, the row stays annual.
+Flux rows retain their observation intervals. Where the source gives only a year,
+January 1–December 31 is assigned and noted per row. Soil rows retain the sampling
+information provided by the source.
 
 ---
 
 ## Curation Decisions and Caveats
 
-- **Fluxes are derived, not reported.** Flux rows are `SCRIPTED_DERIVED` —
-  annual totals computed here from the daily product. The aggregation and QC
-  screen make the value, so they are recorded on the `methods` row.
 - **Annual resolution only.** Site-year totals cannot constrain the
   flood/drain transitions that drive CH₄ at this site. The flood calendar is
   in `managements`, so the timing is documented even where the observations
@@ -124,7 +120,7 @@ source gives only a year, the row stays annual.
 
 ## Per-row provenance
 
-- `SCRIPTED_DERIVED` — annual flux totals computed from the daily product.
+- `REPORTED_DIRECT` — annual values imported from source data products.
 - `FILLED_PUBLICATION_TABLE` — soil values transcribed from a table in the
   exact-site publication.
 
