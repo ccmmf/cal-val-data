@@ -65,15 +65,13 @@ from the eight source-reported annual values in
 `ameriflux_fluxnet_1f_us_bi1_v1_3_r1`, using the provider’s standardized gap filling
 and annual NEE product.
 
-The four Anthony (2023) NEE estimates are excluded in favor of this standardized
-product; this does not establish that the publication estimates are erroneous or
-obsolete. They remain recoverable from
-[commit 96be224](https://github.com/ccmmf/cal-val-data/blob/96be22427ee54ca1734785cb74c4d61444a21583/data/observations.csv#L21716-L21719)
+Anthony et al (2023) provide four  NEE estimates. These were originally included but have now been excluded in favor of FLUXNET standardized
+product. 
+Records are recoverable from
+- [commit 96be224](https://github.com/ccmmf/cal-val-data/blob/96be22427ee54ca1734785cb74c4d61444a21583/data/observations.csv#L21716-L21719)
 (`dataset_id = publication_anthony_2023_table_1`, `variable = NEE`, study years
-2017–2020). Anthony chamber CH₄/N₂O observations are retained. The four NEE rows
-are preserved in the source workbook’s
-[`excluded_obs` worksheet](https://docs.google.com/spreadsheets/d/148G8IyaeqXhqCvY42G3vI9V3WJk4Uypsgd_3Pb5A8_0/edit#gid=237406429),
-which `scripts/ingest.R` does not import.
+2017–2020).
+- source workbook [`excluded_obs` worksheet](https://docs.google.com/spreadsheets/d/148G8IyaeqXhqCvY42G3vI9V3WJk4Uypsgd_3Pb5A8_0/edit#gid=237406429).
 
 CH4 is likewise no longer aggregated locally: annual values come from the FLUXNET-CH4
 community product and from exact-site publications, rather than from a daily aggregation
