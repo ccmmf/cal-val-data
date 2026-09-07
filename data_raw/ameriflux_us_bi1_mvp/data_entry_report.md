@@ -46,6 +46,7 @@ exact-site publication only where AmeriFlux BADM/BIF does not carry them.
 
 | Variable | Units | Rows | Level |
 |---|---|---|---|
+| NEE (AmeriFlux FLUXNET-1F) | g C m⁻² year⁻¹ | 8 | `site_year_total` |
 | CH₄ flux (FLUXNET-CH4) | g C m⁻² year⁻¹ | 1 | `site_year_total` |
 | CH₄ flux (Anthony 2023, chambers) | mg CH₄ m⁻² year⁻¹ | 4 | `site_year_total` |
 | Soil carbon content | % | 3 | `site_layer`, 0–15 / 15–30 / 30–60 cm |
@@ -62,9 +63,19 @@ profile, not a soil-carbon trajectory.
 **Annual NEE is curated from gap-filled products.** Earlier revisions of this dataset
 derived annual NEE from AmeriFlux BASE `FC`, which is observed turbulent CO2 flux and not
 equivalent to an authoritative annual budget; those rows were withdrawn. NEE is now taken
-from source-reported annual values (12 annual records) supplied by the harmonization:
-  - `ameriflux_fluxnet_1f_us_bi1_v1_3_r1`
-  - `publication_anthony_2023_table_1`
+from the eight source-reported annual values in
+`ameriflux_fluxnet_1f_us_bi1_v1_3_r1`, using the provider’s standardized gap filling
+and annual NEE product.
+
+The four Anthony (2023) NEE estimates are excluded in favor of this standardized
+product; this does not establish that the publication estimates are erroneous or
+obsolete. They remain recoverable from
+[commit 96be224](https://github.com/ccmmf/cal-val-data/blob/96be22427ee54ca1734785cb74c4d61444a21583/data/observations.csv#L21716-L21719)
+(`dataset_id = publication_anthony_2023_table_1`, `variable = NEE`, study years
+2017–2020). Anthony chamber CH₄/N₂O observations are retained. The four NEE rows
+are preserved in the source workbook’s
+[`excluded_obs` worksheet](https://docs.google.com/spreadsheets/d/148G8IyaeqXhqCvY42G3vI9V3WJk4Uypsgd_3Pb5A8_0/edit#gid=237406429),
+which `scripts/ingest.R` does not import.
 
 CH4 is likewise no longer aggregated locally: annual values come from the FLUXNET-CH4
 community product and from exact-site publications, rather than from a daily aggregation
