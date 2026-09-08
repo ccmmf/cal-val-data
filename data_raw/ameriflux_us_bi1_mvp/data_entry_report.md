@@ -46,6 +46,7 @@ exact-site publication only where AmeriFlux BADM/BIF does not carry them.
 
 | Variable | Units | Rows | Level |
 |---|---|---|---|
+| NEE (AmeriFlux FLUXNET-1F) | g C m⁻² year⁻¹ | 8 | `site_year_total` |
 | CH₄ flux (FLUXNET-CH4) | g C m⁻² year⁻¹ | 1 | `site_year_total` |
 | CH₄ flux (Anthony 2023, chambers) | mg CH₄ m⁻² year⁻¹ | 4 | `site_year_total` |
 | Soil carbon content | % | 3 | `site_layer`, 0–15 / 15–30 / 30–60 cm |
@@ -59,12 +60,17 @@ so the dataset supports flux validation and an initial-condition soil
 profile, not a soil-carbon trajectory.
 
 
-**Annual NEE is curated from gap-filled products.** Earlier revisions of this dataset
-derived annual NEE from AmeriFlux BASE `FC`, which is observed turbulent CO2 flux and not
-equivalent to an authoritative annual budget; those rows were withdrawn. NEE is now taken
-from source-reported annual values (12 annual records) supplied by the harmonization:
-  - `ameriflux_fluxnet_1f_us_bi1_v1_3_r1`
-  - `publication_anthony_2023_table_1`
+Annual NEE uses the standardized FLUXNET product
+`ameriflux_fluxnet_1f_us_bi1_v1_3_r1` for 2017–2024, chosen for
+consistent processing across sites. Anthony et al. (2023) estimates
+are excluded from the active dataset but retained for reconciliation.
+FLUXNET NEE is roughly 500 g C m⁻² yr⁻¹ more positive; the discrepancy
+persists after matching observation periods, and its cause remains unresolved. This choice of using FLUXNET NEE does not suggest that the Anthony estimates are incorrect.
+Records are recoverable from
+- [commit 96be224](https://github.com/ccmmf/cal-val-data/blob/96be22427ee54ca1734785cb74c4d61444a21583/data/observations.csv#L21716-L21719)
+(`dataset_id = publication_anthony_2023_table_1`, `variable = NEE`, study years
+2017–2020).
+- source workbook [`excluded_obs` worksheet](https://docs.google.com/spreadsheets/d/148G8IyaeqXhqCvY42G3vI9V3WJk4Uypsgd_3Pb5A8_0/edit#gid=237406429).
 
 CH4 is likewise no longer aggregated locally: annual values come from the FLUXNET-CH4
 community product and from exact-site publications, rather than from a daily aggregation
@@ -79,7 +85,9 @@ performed here.
 - **`Automated chamber annual mean`** — annual chamber values where the source reports them.
 - **`static_soil_publication_import`** — soil carbon and nitrogen
   transcribed from the exact-site publication.
-
+- FLUXNET NEE uncertainty is reported as `NEE_VUT_REF_JOINTUNC`,
+this combines random flux uncertainty and uncertainty associated with
+  turbulence filtering.
 ---
 
 ## Dates
