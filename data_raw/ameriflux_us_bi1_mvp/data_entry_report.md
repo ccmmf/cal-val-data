@@ -85,7 +85,9 @@ performed here.
 - **`Automated chamber annual mean`** — annual chamber values where the source reports them.
 - **`static_soil_publication_import`** — soil carbon and nitrogen
   transcribed from the exact-site publication.
-
+- FLUXNET NEE uncertainty is reported as `NEE_VUT_REF_JOINTUNC`,
+this combines random flux uncertainty and uncertainty associated with
+  turbulence filtering.
 ---
 
 ## Dates
