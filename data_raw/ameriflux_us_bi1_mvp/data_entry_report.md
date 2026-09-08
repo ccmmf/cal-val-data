@@ -64,7 +64,7 @@ Annual NEE uses the standardized FLUXNET product
 `ameriflux_fluxnet_1f_us_bi1_v1_3_r1` for 2017–2024, chosen for
 consistent processing across sites. Anthony et al. (2023) estimates
 are excluded from the active dataset but retained for reconciliation.
-FLUXNET NEE is roughly 500 g C m⁻² yr⁻¹ more positive; the discrepancy
+FLUXNET NEE is ~500 g C m⁻² yr⁻¹ more positive (mean = 483.7, min = 464, max = 508); the discrepancy
 persists after matching observation periods, and its cause remains unresolved. This choice of using FLUXNET NEE does not suggest that the Anthony estimates are incorrect.
 Records are recoverable from
 - [commit 96be224](https://github.com/ccmmf/cal-val-data/blob/96be22427ee54ca1734785cb74c4d61444a21583/data/observations.csv#L21716-L21719)
