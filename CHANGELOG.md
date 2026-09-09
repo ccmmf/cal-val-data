@@ -25,8 +25,9 @@ Changes to datasets, schemas, and curation workflows are documented here.
 - Salinas SOC stocks await reconciliation with the White et al. (2024)
   correction; see [#6](https://github.com/ccmmf/cal-val-data/issues/6).
 - US-Bi1 NEE uses standardized FLUXNET values. Four Anthony publication
-  NEE values are excluded; the source discrepancy remains documented -
-  explicitly decided to prefer standardized FLUXNET product (consistent
-  across sites; also longer time span in this case).
+  NEE values are excluded; the source discrepancy is unresolved, but 
+  documented in `data_raw/ameriflux_us_bi1_mvp/data_entry_report.md`.
+  Chose to use standardized FLUXNET product because it is consistently
+  processed across sites and is more up to date.
 - Chamber and tower measurements represent different measurement
   supports and are not interchangeable.
