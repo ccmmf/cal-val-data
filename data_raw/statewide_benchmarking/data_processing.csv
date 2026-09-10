@@ -1,0 +1,12 @@
+Van Kessel fig 1a,,,,,,,,,,,,
+Data extracted w/,,,,,,,,,,,,
+group,subgroup,,percent_change,ci95_lower_percent,ci95_upper_percent,SE,n_comparisons,n_studies,lrr,lrr_ci95_lower,lrr_ci95_upper,lrr_se_approx
+Overall,All,,0.344,-9.72,11.4,5.4,239,41,0.003,-0.102,0.108,0.054
+Tillage,Reduced tillage,,-6.63,-18,8.35,6.7,62,17,-0.069,-0.198,0.080,0.071
+Tillage,No tillage,,2.15,-9.47,15.8,6.4,177,34,0.021,-0.099,0.147,0.063
+Climate,Humid,,-4.04,-13.6,7.57,5.4,183,32,-0.041,-0.146,0.073,0.056
+Climate,Dry,,19.7,-5.85,48.4,13.8,56,9,0.180,-0.060,0.395,0.116
+Fig 2a,,,,,,,,,,,,
+group,subgroup,duration_years,percent_change,ci95_lower_percent,ci95_upper_percent,SE,n_comparisons,n_studies,lrr,lrr_ci95_lower,lrr_ci95_upper,lrr_se_approx
+Climate,Dry,<10,38,6.15,72.8,17.0,40,7,0.322,0.060,0.547,0.124
+Climate,Dry,>=10,-34.2,-50,-16,8.7,16,2,-0.419,-0.693,-0.174,0.132
