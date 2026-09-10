@@ -85,11 +85,33 @@ SIPNET has one undifferentiated soil pool and cannot produce an isotopically par
 both rows are now `not_viable`. This empties the N fertilization by soil carbon cell, which had rested
 entirely on them.
 
+### 7. van Kessel — replaced with the figure extractions, and the quantity changed
+
+David digitised Fig 1a and Fig 2a into the `data processing` tab. Three rows now take those values
+instead of the abstract text.
+
+The captions matter: **Fig 1a and 2a are area-scaled N2O; Fig 1c and 2c are yield-scaled.** The abstract
+sentences we had originally quoted are the yield-scaled panels. Area-scaled is what the model produces,
+so this is a change of quantity, not just of precision.
+
+| row | was | now | source |
+|---|---|---|---|
+| overall | blank, after removing an lrr of 0.0 | 0.003, SE 0.054, n = 239 / 41 | Fig 1a, tab row 6 |
+| dry, under 10 yr | 0.451 from "+57 percent yield-scaled" | 0.322, SE 0.124, n = 40 / 7 | Fig 2a, tab row 14 |
+| dry, 10 yr or more | -0.315 from "-27 percent yield-scaled" | -0.419, SE 0.132, n = 16 / 2 | Fig 2a, tab row 15 |
+
+The overall row is the useful one: it was a bare "no significant change" with no effect size, and is now
+a quantified near-zero effect with an interval, which is a much stronger statement than an absent row.
+
+The duration split carries a modelling requirement. Comparing against these means matching the model
+window to the class, roughly 5 years after initiation for the under-10 row and 15 years for the other.
+The 10-year-plus row rests on 2 studies.
+
 ## Where this leaves the likelihood
 
 | | count |
 |---|---|
-| contrasts expressed as an LRR | 16 |
+| contrasts expressed as an LRR | 14 |
 | of those, with a derivable SE **on the LRR** | **1** |
 
 The one is Li et al. 2023, reduced tillage × N2O. Every other LRR is a ratio of two point estimates
