@@ -1,0 +1,83 @@
+# Statewide benchmarking evidence — uncertainty audit and conversion record
+
+Prepared 2026-09-10 in response to David's review: `sd_norm` mixed standard errors, standard
+deviations and unspecified uncertainties. Every reported value is preserved unchanged; all
+derived quantities sit in separate columns.
+
+## Fields
+
+| column | meaning |
+|---|---|
+| `val_unc_type` | `SE`, `SD`, `CI95_halfwidth`, or `none` |
+| `val_unc_value` | the number, on the scale named below |
+| `val_unc_units` | scale and units the uncertainty is expressed in |
+| `val_unc_applies_to` | **the quantity it describes**, e.g. a treatment arm mean vs the LRR |
+| `val_unc_derivation` | `reported_as_is`, `derived_from_CI95`, `not_derivable` |
+| `se_on_analysis_scale` | SE where one is derivable, else blank |
+| `lrr_se`, `lrr_se_derivation` | uncertainty **of the log response ratio**, kept separate |
+| `reported_statistic_name`, `reported_statistic`, `reported_lower`, `reported_upper` | preserved verbatim |
+| `conversion_note` | what was done and why |
+
+The split between `se_on_analysis_scale` and `lrr_se` is the substantive fix. A dispersion on a
+treatment arm is not the uncertainty of the contrast, and the old single column could not say which
+of the two it held.
+
+## Corrections
+
+### 1. Poeplau & Don 2015 — mislabelled, three rows
+
+The sheet recorded `statistic_name = standard error`. The paper says otherwise, section 2.2:
+
+> Errors given in the text are 95% confidence intervals.
+
+So `0.32 ± 0.08`, `16.7 ± 1.5` and `0.12 ± 0.03` are **95% CI half-widths**, not SEs. Treated as an
+SE, the interval is about twice too wide. Recorded as `CI95_halfwidth` with
+`SE = half-width / 1.96` alongside: 0.0408, 0.7653 and 0.0153 respectively.
+
+This was the only soil-carbon row we had with an error bar.
+
+### 2. Snyder et al. 2009 — wrong quantity
+
+`0.57` was sitting on the same row as the LRR, implying it was the LRR's uncertainty. It is the
+**standard deviation of the no-till arm's annual flux** in kg N2O-N ha-1 yr-1, describing variation
+among lands. The comparator arm's SD, 0.98, is now recorded on its own row.
+
+No SE of the LRR is derivable. `var(ln R)` needs n per arm, and this is an inventory estimate that
+reports none. `lrr_se_derivation = not_derivable`. Note the arms overlap heavily,
+0.68 ± 0.57 against 0.95 ± 0.98.
+
+### 3. van Kessel et al. 2013 overall — a null result is not a zero effect
+
+Previously recorded as `lrr = 0.0` from "no significant change". The protocol glossary is explicit
+that a non-significant result establishes neither a zero effect nor an SE. The effect size is now
+blank, with the direction recorded as no detected effect.
+
+### 4. CI-derived SEs — approximate, and now labelled as such
+
+- **Li et al. 2023**: 95% CI of −19 to −1 percent. Bounds converted to LRR **first**, then
+  `SE = (upper − lower) / 3.92 = 0.0512`. Symmetry is more defensible on the log scale.
+- **Liu et al. 2017 EFc**: 95% CI 1.81 to 3.35 percent, giving SE 0.00393 on the fraction scale.
+  Row is `not_viable` regardless: the EF is combined NO + N2O, not N2O alone.
+
+Both assume approximate normality. Flagged `derived_from_CI95`.
+
+### 5. Confirmed correct
+
+- **Anthony et al. 2023**: "Mean (± standard error)". 624 ± 28 mg N2O m-2 yr-1 is a genuine SE.
+  Mean and SE are both unconverted; any unit conversion of the mean must apply the same factor to
+  the SE.
+- **Six et al. 2004**: table caption states "SE = standard error".
+
+## Where this leaves the likelihood
+
+| | count |
+|---|---|
+| contrasts expressed as an LRR | 16 |
+| of those, with a derivable SE **on the LRR** | **1** |
+
+The one is Li et al. 2023, reduced tillage × N2O. Every other LRR is a ratio of two point estimates
+with no reported dispersion, so no weight can be computed for it without an assumption we would be
+inventing.
+
+The remaining reported uncertainties are real but attach to absolute quantities, not to contrasts:
+Poeplau's rate, Anthony's flux, Six's CH4 uptake, Snyder's arm SDs.

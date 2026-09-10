@@ -1,0 +1,19 @@
+practice_table6,outcome,evidence_rows,sources,status
++Cover Crops,Soil C,4,Poeplau & Don; Vicente-Vicente et al.,COVERED
++Cover Crops,N2O,3,Basche et al.; Li et al.,COVERED
++Cover Crops,CH4,0,,STILL EMPTY
++Non-crop C,Soil C,1,Vicente-Vicente et al.,COVERED
++Non-crop C,N2O,1,Ma et al.,COVERED
++Non-crop C,CH4,1,Ma et al.,COVERED
+Reduced tillage,Soil C,1,"Robertson, Paul & Harwoo",COVERED
+Reduced tillage,N2O,5,Li et al.; Snyder et al.; van Kessel et al.,COVERED
+Reduced tillage,CH4,1,Six et al.,COVERED
++/- N Fertilization,Soil C,1,Snyder et al.,COVERED
++/- N Fertilization,N2O,17,Bouwman et al.; Cayuela et al.; IPCC; Leschinsky & Xia; Li et al.; Liu et al.,COVERED
++/- N Fertilization,CH4,1,Snyder et al.,COVERED
+Flooding / rice,Soil C,1,Kirk et al.,COVERED
+Flooding / rice,N2O,4,Cayuela et al.; IPCC; Jiang et al.; Li et al.,COVERED
+Flooding / rice,CH4,2,Conrad; Jiang et al.,COVERED
+Annual -> Perennial,Soil C,2,Siddique et al.,COVERED
+Annual -> Perennial,N2O,1,Anthony et al.,COVERED
+Annual -> Perennial,CH4,1,"Robertson, Paul & Harwoo",COVERED
