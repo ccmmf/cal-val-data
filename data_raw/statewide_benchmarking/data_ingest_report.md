@@ -68,6 +68,23 @@ Both assume approximate normality. Flagged `derived_from_CI95`.
   the SE.
 - **Six et al. 2004**: table caption states "SE = standard error".
 
+### 6. Snyder et al. 2009 soil carbon — wrong quantity entirely
+
+Table 2's column heading is **"SOC derived from corn"**, the isotopically traced corn fraction, not total
+SOC. The accompanying text is explicit:
+
+> total soil organic C declined for all treatments, but at a slower rate in the fertilized treatments
+> than in the unfertilized control. The difference resulted from increased accumulation of C in the soil
+> with the isotopic signature of corn.
+
+So total SOC was **falling** in every treatment while only the corn-signature fraction accumulated faster
+under N. Recording 17.0 / 13.0 / 10.1 as a total SOC contrast gave a +6.9 t ha-1 gain with the sign
+opposite to the real total SOC trajectory.
+
+SIPNET has one undifferentiated soil pool and cannot produce an isotopically partitioned fraction, so
+both rows are now `not_viable`. This empties the N fertilization by soil carbon cell, which had rested
+entirely on them.
+
 ## Where this leaves the likelihood
 
 | | count |
