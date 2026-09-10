@@ -107,6 +107,22 @@ The duration split carries a modelling requirement. Comparing against these mean
 window to the class, roughly 5 years after initiation for the under-10 row and 15 years for the other.
 The 10-year-plus row rests on 2 studies.
 
+### 8. Anthony — converted, mean and SE together
+
+Reported as 624 +/- 28 mg N2O m-2 yr-1. Converted to an N2O-N basis by 28.014 / 44.013 = 0.636494, then
+mg to kg by 1e-6, with the **identical factor applied to the SE**:
+
+| | reported | converted |
+|---|---|---|
+| mean | 624 mg N2O m-2 yr-1 | 3.97172e-4 kg N2O-N m-2 yr-1 |
+| SE | 28 mg N2O m-2 yr-1 | 1.78218e-5 kg N2O-N m-2 yr-1 |
+
+Reported values preserved in `original_mean` and `original_units`.
+
+That works out to 3.97 +/- 0.18 kg N2O-N ha-1 yr-1, which is the basis the Snyder rows already use
+(0.68 and 0.95), so the two are directly comparable and alfalfa is several times a typical cropland flux.
+Worth noting the N2O flux rows are not yet on a single common unit.
+
 ## Where this leaves the likelihood
 
 | | count |
