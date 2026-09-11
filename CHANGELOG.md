@@ -4,6 +4,13 @@ Changes to datasets, schemas, and curation workflows are documented here.
 
 ## Unreleased
 
+### Changed
+
+- Salinas SOC stocks updated for the White et al. (2024) correction. All 288
+  block-level rows (Years 0–8, 8 systems) are rescaled by 0.905 and recorded
+  as `SCRIPTED_DERIVED`; see `data_raw/white_salinas_2020/data_entry_report.md`
+  ([#6](https://github.com/ccmmf/cal-val-data/issues/6)).
+
 ## 0.1.0 — Initial release
 
 ### Added
