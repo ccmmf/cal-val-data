@@ -1,19 +1,19 @@
-metric_cell,practice,outcome,table6_expectation,audited_status,evidence_rows,evidence_contrasts,evidence_with_error_bar,evidence_lrr_mean,evidence_direction,what_is_testable,model_direction,model_effect,model_lrr,agreement,note
-+Cover Crops x Soil C,+Cover Crops,Soil C,up up,verified,6,4,1,,,direction and magnitude,,,,,"Poeplau carries a valid error bar, but two different ones. The paper's +/- 0.08 is a 95% CI half width on the mean, giving SE 0.041. The supplement's 139 plot rates give a population SD of 0.74. summarized_targets uses 0.74 because the comparison is against the model's across site spread, not against the precision of the synthesis mean."
-+Cover Crops x N2O,+Cover Crops,N2O,down,variable,3,0,0,,,no usable contrast,,,,,
-+Cover Crops x CH4,+Cover Crops,CH4,down,unsupported,0,0,0,,,no usable contrast,,,,,
-+Non-crop C x Soil C,+Non-crop C,Soil C,up up,verified,1,1,0,,,direction only,,,,,
-+Non-crop C x N2O,+Non-crop C,N2O,up,disputed,1,0,0,,,no usable contrast,,,,,
-+Non-crop C x CH4,+Non-crop C,CH4,up,variable,1,0,0,,,no usable contrast,,,,,
-Reduced tillage x Soil C,Reduced tillage,Soil C,up up,variable,1,1,0,,,direction only,,,,,
-Reduced tillage x N2O,Reduced tillage,N2O,down,disputed,6,6,4,-0.109,decrease,direction and magnitude,,,,,
-Reduced tillage x CH4,Reduced tillage,CH4,uncertain,verified,1,1,0,,,direction only,,,,,"Six 2004, 0.6 kg CH4 ha-1 yr-1 uptake enhancement, confirmed in the text. The SE of 0.1 is not in the extracted verbatim and Table 1 could not be read, so it is withheld. Whole CH4 estimate rests on five data points."
-+/- N Fertilization x Soil C,+/- N Fertilization,Soil C,uncertain,variable,2,0,0,,,no usable contrast,,,,,
-+/- N Fertilization x N2O,+/- N Fertilization,N2O,down down,verified,21,8,0,-0.591,decrease,no usable contrast,,,,,"8 contrast rows exist but none is a fertilisation contrast. Cayuela and Li compare drip vs sprinkler, rainfed vs irrigated, cereals vs maize and inorganic vs manure. The genuine fertilised vs unfertilised rows are the IPCC emission factors, which are absolute levels and per dlebauer 2026-09-15 are post hoc comparisons rather than calibration targets."
-+/- N Fertilization x CH4,+/- N Fertilization,CH4,uncertain,unsupported,1,0,0,,,no usable contrast,,,,,
-Flooding / rice x Soil C,Flooding / rice,Soil C,uncertain,variable,2,0,0,,,no usable contrast,,,,,
-Flooding / rice x N2O,Flooding / rice,N2O,uncertain,verified,4,2,0,-0.1249,decrease,direction only,,,,,
-Flooding / rice x CH4,Flooding / rice,CH4,down down,verified,2,1,0,-0.755,decrease,direction only,,,,,
-Annual -> Perennial x Soil C,Annual -> Perennial,Soil C,up up,variable,3,3,0,0.232,increase,direction only,,,,,
-Annual -> Perennial x N2O,Annual -> Perennial,N2O,down,disputed,1,0,0,,,no usable contrast,,,,,
-Annual -> Perennial x CH4,Annual -> Perennial,CH4,uncertain,variable,1,0,0,,,no usable contrast,,,,,
+metric_cell,practice,outcome,table6_expectation,audited_status,n_contrast_rows,selected_row_id,selected_value,selected_units,selected_spread,use,contributing_rows_unaggregated,model_direction,model_effect,agreement,note
++Cover Crops x Soil C,+Cover Crops,Soil C,up up,verified,4,Poeplau_Don_2015_rate,0.32,Mg C ha-1 yr-1,0.74,likelihood,Poeplau_Don_2015_rate=0.32 Mg C ha-1 yr-1 (se 0.08); VicenteVicente_2016_CC.olive=1.1 Mg C ha-1 yr-1; VicenteVicente_2016_CC.vineyard=0.78 Mg C ha-1 yr-1; VicenteVicente_2016_CC.almond=2.0 Mg C ha-1 yr-1,,,,"Poeplau carries a valid error bar, but two different ones. The paper's +/- 0.08 is a 95% CI half width on the mean, giving SE 0.041. The supplement's 139 plot rates give a population SD of 0.74. summarized_targets uses 0.74 because the comparison is against the model's across site spread, not against the precision of the synthesis mean."
++Cover Crops x N2O,+Cover Crops,N2O,down,variable,0,,,,,none,,,,,
++Cover Crops x CH4,+Cover Crops,CH4,down,unsupported,0,,,,,none,,,,,
++Non-crop C x Soil C,+Non-crop C,Soil C,up up,verified,1,VicenteVicente_2016_OA,5.3,Mg C ha-1 yr-1,,sign_check,VicenteVicente_2016_OA=5.3 Mg C ha-1 yr-1,,,,
++Non-crop C x N2O,+Non-crop C,N2O,up,disputed,0,,,,,none,,,,,
++Non-crop C x CH4,+Non-crop C,CH4,up,variable,0,,,,,none,,,,,
+Reduced tillage x Soil C,Reduced tillage,Soil C,up up,variable,1,Robertson_2000_notill_SOC,0.3,Mg C ha-1 yr-1,,sign_check,Robertson_2000_notill_SOC=0.3 Mg C ha-1 yr-1,,,,
+Reduced tillage x N2O,Reduced tillage,N2O,down,disputed,6,VanKessel_2013_dry_short,0.322,LRR (dimensionless),0.124,likelihood,VanKessel_2013_dry_short=0.322 (se 0.124); VanKessel_2013_dry_long=-0.419 (se 0.132); Li_2023_NTRT=-0.116534 (se 0.051193); VanKessel_2013_overall=0.003 (se 0.054); Snyder_2009_notill_N2O.notill=-0.334369; Snyder_2009_notill_N2O.conv=0.95 kg N2O-N ha-1 yr-1,,,,"Selected van Kessel dry under 10 years per dlebauer 2026-09-15. NOT aggregated: the overall row contains the same sites as the dry subgroups so pooling would double count, and the two duration classes have opposite signs. Snyder is listed as a contributor but its dispersion is an arm SD, not the contrast's."
+Reduced tillage x CH4,Reduced tillage,CH4,uncertain,verified,1,Six_2004_CH4,-0.6,kg CH4 ha-1 yr-1,,sign_check,Six_2004_CH4=-0.6 kg CH4 ha-1 yr-1,,,,"Six 2004, 0.6 kg CH4 ha-1 yr-1 uptake enhancement, confirmed in the text. The SE of 0.1 is not in the extracted verbatim and Table 1 could not be read, so it is withheld. Whole CH4 estimate rests on five data points."
++/- N Fertilization x Soil C,+/- N Fertilization,Soil C,uncertain,variable,0,,,,,none,,,,,
++/- N Fertilization x N2O,+/- N Fertilization,N2O,down down,verified,8,,,,,none,Cayuela_2017_irrigation.drip=-0.579034; Cayuela_2017_irrigation.sprinkler=0.0091 fraction of N applied; Cayuela_2017_rainfed_irrigated.rainfed=-0.847298; Cayuela_2017_rainfed_irrigated.irrigated=0.0063 fraction of N applied; Cayuela_2017_croptype.low=-1.160744; Cayuela_2017_croptype.high=0.0083 fraction of N applied; Li_2024_EF_by_type.a=0.223144; Li_2024_EF_by_type.b=0.008 fraction of N applied,,,,"8 contrast rows exist but none is a fertilisation contrast. Cayuela and Li compare drip vs sprinkler, rainfed vs irrigated, cereals vs maize and inorganic vs manure. The genuine fertilised vs unfertilised rows are the IPCC emission factors, which are absolute levels and per dlebauer 2026-09-15 are post hoc comparisons rather than calibration targets."
++/- N Fertilization x CH4,+/- N Fertilization,CH4,uncertain,unsupported,0,,,,,none,,,,,
+Flooding / rice x Soil C,Flooding / rice,Soil C,uncertain,variable,0,,,,,none,,,,,
+Flooding / rice x N2O,Flooding / rice,N2O,uncertain,verified,2,Jiang_2019_N2O_tradeoff,0.718,LRR (dimensionless),,sign_check,Li_2024_deficit_irrigation=-0.967584; Jiang_2019_N2O_tradeoff=0.71784,,,,"Selected Jiang 2019, non continuous flooding versus continuous flooding, which is the flooding practice. NOT aggregated with Li 2024 deficit irrigation, which is a specialty crop irrigation treatment and has the opposite sign. Averaging the two previously produced a spurious decrease benchmark when the rice contrast is an increase. Li 2024 arguably does not belong in this cell at all, flagged for reclassification."
+Flooding / rice x CH4,Flooding / rice,CH4,down down,verified,1,Jiang_2019_CH4,-0.755,LRR (dimensionless),,sign_check,Jiang_2019_CH4=-0.755023,,,,
+Annual -> Perennial x Soil C,Annual -> Perennial,Soil C,up up,variable,3,Siddique_2023_vs_monoculture,0.154,LRR (dimensionless),,sign_check,Siddique_2023_vs_monoculture=0.153579; Siddique_2023_time_dependence.lt5yr= ; Siddique_2023_time_dependence.gt10yr=0.310422,,,,
+Annual -> Perennial x N2O,Annual -> Perennial,N2O,down,disputed,0,,,,,none,,,,,
+Annual -> Perennial x CH4,Annual -> Perennial,CH4,uncertain,variable,0,,,,,none,,,,,
