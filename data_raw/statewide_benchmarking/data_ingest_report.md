@@ -123,6 +123,45 @@ That works out to 3.97 +/- 0.18 kg N2O-N ha-1 yr-1, which is the basis the Snyde
 (0.68 and 0.95), so the two are directly comparable and alfalfa is several times a typical cropland flux.
 Worth noting the N2O flux rows are not yet on a single common unit.
 
+### 9. Blanket spread where none is reported
+
+Five cells have a defensible centre but no dispersion anywhere in the source. Per dlebauer 2026-09-16 a
+blanket assumption is used rather than leaving them unweighted.
+
+**The assumption.** The 95% confidence interval spans a factor of four either side of the estimate.
+
+**The arithmetic.** On the log scale a factor of four is `ln(4) = 1.3863`. A 95% CI half width is
+`1.96 x SE`, so:
+
+```
+SE = ln(4) / 1.96 = 1.3863 / 1.96 = 0.7073
+```
+
+**Why the log scale and not a multiplier.** Taking a quarter of the value and four times the value gives an
+interval that can never contain zero, so a model producing no effect, or an effect of the opposite sign,
+could never agree. Applied additively on the log scale the interval spans zero for any effect smaller than
+a factor of four, which is all of them.
+
+**Sense check.** The only cell where the real spread is known is Poeplau cover crops, whose supplement
+gives an among plot SD of **0.744**. The blanket assumption gives **0.707**. Within five percent, so the
+assumption is calibrated rather than arbitrary.
+
+**Cells it was applied to, and what it means in their own units:**
+
+| cell | centre | implied 95% interval |
+|---|---|---|
+| +Non-crop C x Soil C | 5.3 Mg C ha-1 yr-1 | 1.32 to 21.2 |
+| Reduced tillage x Soil C | 0.30 Mg C ha-1 yr-1 | 0.075 to 1.2 |
+| Flooding / rice x N2O | 0.718 LRR | -0.668 to 2.104 |
+| Flooding / rice x CH4 | -0.755 LRR | -2.141 to 0.631 |
+| Annual -> Perennial x Soil C | 0.154 LRR | -1.232 to 1.540 |
+
+For the two cells whose centre is an absolute rate rather than a ratio, the factor of four is applied
+multiplicatively, since a symmetric additive interval on a rate has no natural meaning.
+
+All five are marked `spread_type = se on the log scale, assumed`, so they can be filtered out of any
+analysis that should only use reported uncertainty.
+
 ## Where this leaves the likelihood
 
 | | count |
