@@ -125,7 +125,7 @@ Worth noting the N2O flux rows are not yet on a single common unit.
 
 ### 9. Blanket spread where none is reported
 
-Five cells have a defensible centre but no dispersion anywhere in the source. Per dlebauer 2026-09-16 a
+Five cells have a defensible centre but no dispersion anywhere in the source. Per David 2026-09-16 a
 blanket assumption is used rather than leaving them unweighted.
 
 **The assumption.** The 95% confidence interval spans a factor of four either side of the estimate.
@@ -175,3 +175,18 @@ inventing.
 
 The remaining reported uncertainties are real but attach to absolute quantities, not to contrasts:
 Poeplau's rate, Anthony's flux, Six's CH4 uptake, Snyder's arm SDs.
+
+### CH4 is scoped to rice
+
+Per David on 2026-09-16, CH4 is only in scope for rice systems. Reduced tillage x CH4 therefore
+carries `use = none` even though Six et al. (2004) is the one non rice CH4 cell with a real reported
+SE. Tillage does not enter the SIPNET CH4 formulation, so the model returns no difference for that
+cell: it can be neither fitted nor sign checked, and a target there would only look like coverage.
+The Six estimate stays in the table because it is verified, but it is not a target.
+
+The CH4 target is Flooding / rice x CH4, Jiang et al. (2019). That cell reports no dispersion, so it
+carries the assumed blanket spread and is a sign check, not a likelihood. It becomes a likelihood
+only if a rice CH4 contrast with reported dispersion is found.
+
+That leaves two likelihood cells in `summarized_targets.csv`: +Cover Crops x Soil C and
+Reduced tillage x N2O.

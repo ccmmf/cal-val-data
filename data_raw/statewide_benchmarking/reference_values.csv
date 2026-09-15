@@ -1,5 +1,5 @@
 row_id,outcome,quantity,value,units,spread,spread_type,source_id,note
-POOLED_EF_N2O,N2O,pooled N2O emission factor across the EF rows below,0.0072,fraction of N applied,0.0036,"sd, estimated",derived from the 7 EF rows,"estimated sd by setting min/max = 95%CI across studies (dlebauer). Post hoc comparison, not a calibration target."
+POOLED_EF_N2O,N2O,pooled N2O emission factor across the EF rows below,0.0072,fraction of N applied,0.0036,"sd, estimated",derived from the 7 EF rows,"estimated sd by setting min/max = 95%CI across studies (David). Post hoc comparison, not a calibration target."
 CARB_2025_soilC_series,Soil C,(cross-cutting) / total,225.43,"MMT C, statewide cropland soil pool",,,CARB_2025_soilC_series,"CARB 2025 NWL Carbon Inventory, Appendix C Croplands, sheet CL_Fig1. Annual series 2001 to 2022, range 209.34 to 264.44. The 2022 value is 213.495, which is the unexplained number in the draft table."
 CARB_2025_biomassC_series,Soil C,(cross-cutting) / total,46.4,"MMT C, statewide cropland biomass pool",,,CARB_2025_biomassC_series,"Same source and series, range 34.67 to 64.99. Biomass nearly doubles across the series while soil carbon is flat to declining, consistent with orchard expansion."
 Cayuela_2017_EFmed,N2O,+/- N Fertilization / ef,0.005,fraction of N applied,,,Cayuela_2017_EFmed,
