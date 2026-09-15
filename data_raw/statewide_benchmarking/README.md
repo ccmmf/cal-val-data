@@ -12,16 +12,16 @@ must not be hand edited.
 
 | file | worksheet | contents |
 |---|---|---|
-| `extracted_evidence.csv` | `extracted_evidence` | one row per finding as extracted from a paper, with verbatim, DOI and locator |
-| `normalised_targets.csv` | `normalised_targets` | one row per target after splitting multi value cells, with explicit uncertainty fields. Contrasts only; absolute levels are kept separate in `reference_values.csv` |
-| `summarized_targets.csv` | `summarized_targets` | one row per practice by outcome cell, the selected centre and spread |
-| `reference_values.csv` | `reference_values` | absolute levels for post hoc comparison, not calibration targets |
-| `model_vs_evidence.csv` | `model_vs_evidence` | the 18 cells with the evidence side filled and model columns empty |
-| `coverage.csv` | `coverage` | evidence row counts per cell |
-| `audited_direction_matrix_v2.csv` | `audited_matrix` | Table 6 audited against the literature |
-| `source_audit.csv` | `source_audit` | which sources were found, read or excluded |
-| `carb_crosscheck.csv` | `carb_crosscheck` | cross check against CARB inventory figures |
-| `data_processing.csv` | `data processing` | figure digitisations, currently van Kessel Fig 1a and 2a |
+| `extracted_evidence.csv` | [`extracted_evidence`](https://docs.google.com/spreadsheets/d/1BS6O6LocjN95dbbD_PT0zkvrtwBAc4aafYCLnlsK3Ek/edit#gid=1170072992) | one row per finding as extracted from a paper, with verbatim, DOI and locator |
+| `normalised_targets.csv` | [`normalised_targets`](https://docs.google.com/spreadsheets/d/1BS6O6LocjN95dbbD_PT0zkvrtwBAc4aafYCLnlsK3Ek/edit#gid=1162085351) | one row per target after splitting multi value cells, with explicit uncertainty fields. Contrasts only; absolute levels are kept separate in `reference_values.csv` |
+| `summarized_targets.csv` | [`summarized_targets`](https://docs.google.com/spreadsheets/d/1BS6O6LocjN95dbbD_PT0zkvrtwBAc4aafYCLnlsK3Ek/edit#gid=969363970) | one row per practice by outcome cell, the selected centre and spread |
+| `reference_values.csv` | [`reference_values`](https://docs.google.com/spreadsheets/d/1BS6O6LocjN95dbbD_PT0zkvrtwBAc4aafYCLnlsK3Ek/edit#gid=1748042894) | absolute levels for post hoc comparison, not calibration targets |
+| `model_vs_evidence.csv` | [`model_vs_evidence`](https://docs.google.com/spreadsheets/d/1BS6O6LocjN95dbbD_PT0zkvrtwBAc4aafYCLnlsK3Ek/edit#gid=425713752) | the 18 cells with the evidence side filled and model columns empty |
+| `coverage.csv` | [`coverage`](https://docs.google.com/spreadsheets/d/1BS6O6LocjN95dbbD_PT0zkvrtwBAc4aafYCLnlsK3Ek/edit#gid=1290277630) | evidence row counts per cell |
+| `audited_matrix.csv` | [`audited_matrix`](https://docs.google.com/spreadsheets/d/1BS6O6LocjN95dbbD_PT0zkvrtwBAc4aafYCLnlsK3Ek/edit#gid=860394402) | Table 6 audited against the literature |
+| `source_audit.csv` | [`source_audit`](https://docs.google.com/spreadsheets/d/1BS6O6LocjN95dbbD_PT0zkvrtwBAc4aafYCLnlsK3Ek/edit#gid=1961825273) | which sources were found, read or excluded |
+| `carb_crosscheck.csv` | [`carb_crosscheck`](https://docs.google.com/spreadsheets/d/1BS6O6LocjN95dbbD_PT0zkvrtwBAc4aafYCLnlsK3Ek/edit#gid=153684563) | cross check against CARB inventory figures |
+| `data_processing.csv` | [`data_processing`](https://docs.google.com/spreadsheets/d/1BS6O6LocjN95dbbD_PT0zkvrtwBAc4aafYCLnlsK3Ek/edit#gid=1221880749) | figure digitisations, currently van Kessel Fig 1a and 2a |
 | `data_ingest_report.md` | none | uncertainty audit and record of every conversion |
 
 The `README` worksheet is deliberately not exported.

@@ -87,7 +87,7 @@ entirely on them.
 
 ### 7. van Kessel — replaced with the figure extractions, and the quantity changed
 
-David digitised Fig 1a and Fig 2a into the `data processing` tab. Three rows now take those values
+David digitised Fig 1a and Fig 2a into the `data_processing` tab. Three rows now take those values
 instead of the abstract text.
 
 The captions matter: **Fig 1a and 2a are area-scaled N2O; Fig 1c and 2c are yield-scaled.** The abstract
