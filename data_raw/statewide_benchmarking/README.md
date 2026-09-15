@@ -13,7 +13,7 @@ must not be hand edited.
 | file | worksheet | contents |
 |---|---|---|
 | `extracted_evidence.csv` | `extracted_evidence` | one row per finding as extracted from a paper, with verbatim, DOI and locator |
-| `normalised_targets.csv` | `normalised_targets` | one row per target after splitting multi value cells, with explicit uncertainty fields |
+| `normalised_targets.csv` | `normalised_targets` | one row per target after splitting multi value cells, with explicit uncertainty fields. Contrasts only; absolute levels are kept separate in `reference_values.csv` |
 | `summarized_targets.csv` | `summarized_targets` | one row per practice by outcome cell, the selected centre and spread |
 | `reference_values.csv` | `reference_values` | absolute levels for post hoc comparison, not calibration targets |
 | `model_vs_evidence.csv` | `model_vs_evidence` | the 18 cells with the evidence side filled and model columns empty |
