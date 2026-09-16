@@ -166,12 +166,18 @@ analysis that should only use reported uncertainty.
 
 | | count |
 |---|---|
-| contrasts expressed as an LRR | 14 |
-| of those, with a derivable SE **on the LRR** | **1** |
+| contrasts expressed as an LRR | 15 |
+| of those, with a derivable SE **on the LRR** | **4** |
+| distinct cells those 4 rows cover | **1** |
 
-The one is Li et al. 2023, reduced tillage × N2O. Every other LRR is a ratio of two point estimates
-with no reported dispersion, so no weight can be computed for it without an assumption we would be
-inventing.
+Counts corrected 2026-09-16. An earlier version of this table read 14 and 1, which predated the
+van Kessel Fig 1a and 2a digitisation and the removal of the absolute reference rows.
+
+The four are Li et al. 2023 and the three van Kessel 2013 rows, whose SEs come from the digitised
+95% CIs. All four are reduced tillage × N2O, so they are alternatives for the same cell rather than
+four independent constraints, and only the selected row enters the likelihood. Every other LRR is a
+ratio of two point estimates with no reported dispersion, so no weight can be computed for it
+without an assumption we would be inventing.
 
 The remaining reported uncertainties are real but attach to absolute quantities, not to contrasts:
 Poeplau's rate, Anthony's flux, Six's CH4 uptake, Snyder's arm SDs.
