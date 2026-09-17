@@ -6,7 +6,15 @@ practice-change effects at statewide scale.
 ## Provenance
 
 The Google Sheet is the source of truth. Every CSV here is an export of one worksheet and
-must not be hand edited.
+must not be hand edited. Regenerate them with:
+
+```sh
+Rscript scripts/ingest_benchmarking.R           # rewrite the CSVs from the workbook
+Rscript scripts/ingest_benchmarking.R --check   # compare only, exits non zero if they drift
+```
+
+The `README` worksheet is deliberately not exported, and `data_processing` is read as a raw grid
+because it is a digitisation sheet rather than a single table.
 
 **Workbook:** [MAGiC statewide benchmarking, evidence from papers](https://docs.google.com/spreadsheets/d/1BS6O6LocjN95dbbD_PT0zkvrtwBAc4aafYCLnlsK3Ek)
 
