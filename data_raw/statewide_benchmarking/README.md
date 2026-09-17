@@ -43,15 +43,26 @@ Two cells carry several, because the evidence is stratified and a single row can
 
 | cell | subclasses |
 |---|---|
-| `+/- N Fertilization x N2O` | `all crops (aggregate)`, `upland grains`, `rice`, `perennial grass or forage`, `N fixing crops` |
+| `+/- N Fertilization x N2O` | `all crops (aggregate)`, `non N fixing crops`, `N fixing crops`, `upland grains`, `rice`, `perennial grass or forage` |
 | `Flooding / rice x CH4` | `1 drying event`, `2 drying events`, `3 drying events`, `more than 3 drying events`, `2 or more drying events` |
 
 Filter on `subclass` as well as practice and outcome, or a query will return several rows per cell.
 
-**Do not use `all crops (aggregate)` for a single crop panel.** It is the only N fertilization value
-Shcherbak reports with an interval, but it is pulled up by N fixing crops at 0.018 against 0.0017 for
-upland grains. Map the site PFT to a crop class and use that row. The crop class rows have no reported
-interval, so they are sign checks rather than likelihoods.
+Every N fertilization subclass carries a reported SEM and n from Shcherbak Table S3, so all of them are
+`likelihood` rather than sign checks.
+
+**Do not use `all crops (aggregate)` for a single crop panel.** It is pulled up by N fixing crops at
+0.0181 against 0.0017 for upland grains.
+
+**Prefer `non N fixing crops` over the finer crop rows.** Table S4 reports that N fixers differ
+significantly from upland grain (P=0.001), rice (P=0.000) and forage (P=0.004), while upland grain, rice
+and forage do not differ from one another (P=0.193, 0.231, 0.057). The split the data supports is N fixing
+against non N fixing: 0.0018 with SEM 0.00048 and n=221, against 0.0181 with SEM 0.00497 and n=7. The
+finer crop rows are kept because they are published, but they are not statistically distinguishable.
+
+Table S3 is used as printed. It cannot be rebuilt from the released Dataset S1: `deltaEF` is populated for
+233 site-years, which matches the table, but `CropType` for only 78 of them, so the group means cannot be
+reconstructed.
 
 The drying event classes are a dose response, not repeats of one effect: the CH4 reduction roughly
 doubles between one event and three. Match the class to the run and never average across them.
