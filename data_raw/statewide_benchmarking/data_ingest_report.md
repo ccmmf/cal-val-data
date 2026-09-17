@@ -182,6 +182,26 @@ without an assumption we would be inventing.
 The remaining reported uncertainties are real but attach to absolute quantities, not to contrasts:
 Poeplau's rate, Anthony's flux, Six's CH4 uptake, Snyder's arm SDs.
 
+### Target table keyed on subclass
+
+Akash pointed out on PR #9 that the crop specific slopes existed only as prose in the note and operator
+fields, so nothing could read them, while the machine readable `center` still held the 0.0027 all crop mean,
+the value we had already agreed is wrong for a row crop panel. Any consumer filtering the table the normal
+way picked up exactly the wrong number. The same limit hit rice CH4, where the two dry arm should score
+against Jiang's two event class but the row could only carry the single event class.
+
+`summarized_targets.csv` and `model_vs_evidence.csv` are now keyed on **practice x outcome x subclass**,
+26 rows instead of 18. `subclass` is empty for the 16 cells that have one target.
+
+- **N fertilization x N2O**, five rows: the all crop aggregate at 0.0027, which is the only one with a
+  reported interval, plus upland grains 0.0017, rice 0.001, perennial grass or forage 0.0033 and N fixing
+  crops 0.018. Shcherbak reports **no per category interval** in the main text, only in Table S3, so the
+  four crop rows are point estimates and are sign checks rather than likelihoods.
+- **Flooding / rice x CH4**, five rows, one per drying event class from Jiang Table 2, each with its own
+  reported CI, so all five are fittable.
+
+The aggregate row carries an explicit warning not to use it for a single crop panel.
+
 ### Shcherbak units were wrong, corrected before the rescore
 
 The N fertilization dEF was recorded with units of "kg N2O-N per kg N per ha". That is wrong. dEF is

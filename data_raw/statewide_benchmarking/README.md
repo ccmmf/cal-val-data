@@ -34,6 +34,28 @@ because it is a digitisation sheet rather than a single table.
 
 The `README` worksheet is deliberately not exported.
 
+## Subclasses
+
+`summarized_targets.csv` and `model_vs_evidence.csv` are keyed on
+**practice x outcome x subclass**. `subclass` is empty for most cells, which have a single target.
+
+Two cells carry several, because the evidence is stratified and a single row cannot express it:
+
+| cell | subclasses |
+|---|---|
+| `+/- N Fertilization x N2O` | `all crops (aggregate)`, `upland grains`, `rice`, `perennial grass or forage`, `N fixing crops` |
+| `Flooding / rice x CH4` | `1 drying event`, `2 drying events`, `3 drying events`, `more than 3 drying events`, `2 or more drying events` |
+
+Filter on `subclass` as well as practice and outcome, or a query will return several rows per cell.
+
+**Do not use `all crops (aggregate)` for a single crop panel.** It is the only N fertilization value
+Shcherbak reports with an interval, but it is pulled up by N fixing crops at 0.018 against 0.0017 for
+upland grains. Map the site PFT to a crop class and use that row. The crop class rows have no reported
+interval, so they are sign checks rather than likelihoods.
+
+The drying event classes are a dose response, not repeats of one effect: the CH4 reduction roughly
+doubles between one event and three. Match the class to the run and never average across them.
+
 ## Aggregation
 
 `model_vs_evidence.csv` records **one selected row per cell**, not a pooled average. Contributing
