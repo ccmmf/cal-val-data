@@ -182,6 +182,39 @@ without an assumption we would be inventing.
 The remaining reported uncertainties are real but attach to absolute quantities, not to contrasts:
 Poeplau's rate, Anthony's flux, Six's CH4 uptake, Snyder's arm SDs.
 
+### Crop group slopes now carry intervals, from Table S3
+
+Aritra downloaded the PNAS supplement by hand after every automated route was blocked: PNAS returns 403,
+the PMC supplementary path serves a reCAPTCHA, and Europe PMC reports the article is not open access.
+
+**Table S3 gives a SEM and an n for every crop group**, so the four crop rows move from `sign_check` to
+`likelihood` and two values are corrected.
+
+| group | n site-years | mean dEF | SEM |
+|---|---|---|---|
+| all crops, four outliers retained | 233 | 0.0027 | 0.00085 |
+| all crops, outliers excluded | 229 | 0.0024 | 0.00053 |
+| N fixers | 7 | **0.0181** | 0.00497 |
+| non N fixers | 221 | 0.0018 | 0.00048 |
+| upland grain | 121 | 0.0017 | 0.00056 |
+| rice | 16 | **0.0009** | 0.00028 |
+| perennial grass or forage | 41 | 0.0033 | 0.00126 |
+
+Rice was recorded as 0.001 and N fixers as 0.018 from the main text; Table S3 gives 0.0009 and 0.0181.
+The published SEM of 0.00085 for the aggregate also confirms the 0.000842 previously derived from the CI.
+
+**Table S4 changes the recommendation.** Pairwise t tests show N fixers differ significantly from upland
+grain (P=0.001), rice (P=0.000) and forage (P=0.004), while upland grain, rice and forage do **not** differ
+from one another (P=0.193, 0.231, 0.057). The only split the data supports is N fixing against non N
+fixing, so a `non N fixing crops` row at 0.0018 with SEM 0.00048 and n=221 is provided and is the one to
+use for a mixed row crop panel. The finer crop rows are kept because they are published, but they are not
+statistically distinguishable from each other.
+
+Dataset S1 does not allow this to be checked independently: `deltaEF` is populated for 233 site-years,
+matching the table, but `CropType` is filled for only 78 of them, so the group means cannot be
+reconstructed from the released data. The published table is used as printed, after confirming the upland
+grain model in it, `1,218+(6.49 + 0.0187 N) N`, matches the main text.
+
 ### Target table keyed on subclass
 
 Akash pointed out on PR #9 that the crop specific slopes existed only as prose in the note and operator
