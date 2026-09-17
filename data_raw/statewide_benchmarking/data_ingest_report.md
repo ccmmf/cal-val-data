@@ -182,6 +182,36 @@ without an assumption we would be inventing.
 The remaining reported uncertainties are real but attach to absolute quantities, not to contrasts:
 Poeplau's rate, Anthony's flux, Six's CH4 uptake, Snyder's arm SDs.
 
+### Rice CH4 now has a reported confidence interval
+
+David asked on the sheet, 2026-09-17, whether Jiang's Table 2 carries CH4 confidence intervals for one and
+two drying events. It does, and our record had been taken from the abstract only.
+
+Table 2 stratifies the CH4 effect of non-continuous flooding by number of drying events, each class with a
+95 percent interval:
+
+| drying events | percent change in CH4 | 95% CI | n | LRR | SE |
+|---|---|---|---|---|---|
+| 1 | -32.9 | -49.0 to -11.8 | 43 | -0.3990 | 0.1397 |
+| 2 | -46.5 | -61.7 to -25.4 | 22 | -0.6255 | 0.1701 |
+| 3 | -73.6 | -81.5 to -62.3 | 16 | -1.3318 | 0.1816 |
+| >3 | -75.2 | -82.2 to -65.4 | 22 | -1.3943 | 0.1696 |
+| >=2 combined | -63.4 | -70.9 to -53.9 | 60 | -1.0051 | 0.1174 |
+
+The cell moves from `sign_check` to `likelihood`. The reported SEs are roughly **five times narrower** than
+the 0.707 that had been assumed, so the blanket was badly overstating the uncertainty here.
+
+The single drying event class is selected, because the curated US-Twt management describes one pre-harvest
+drain within the season. The classes are **not** aggregated: they form a dose response in the number of
+drying events, with the effect roughly doubling between one and three events, so averaging them would
+describe no real practice. The earlier -53 percent headline is kept as contributing evidence; it carries no
+dispersion, which is why the blanket had been needed.
+
+This was also the last priority 1 cell on an assumed spread, so all five are now fittable.
+
+`source_audit.csv` is corrected at the same time: Jiang et al. (2019) was recorded as not in Zotero, and it
+is in fact there.
+
 ### Two more priority cells filled from papers David shared
 
 Per David on Slack, 2026-09-17, three syntheses were assessed against the priority rows.
