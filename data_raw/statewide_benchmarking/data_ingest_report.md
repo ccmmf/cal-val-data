@@ -182,6 +182,43 @@ without an assumption we would be inventing.
 The remaining reported uncertainties are real but attach to absolute quantities, not to contrasts:
 Poeplau's rate, Anthony's flux, Six's CH4 uptake, Snyder's arm SDs.
 
+### Two more priority cells filled from papers David shared
+
+Per David on Slack, 2026-09-17, three syntheses were assessed against the priority rows.
+
+**Bai et al. (2023)**, doi:10.1016/j.catena.2023.107343, replaces Vicente-Vicente (2016) as the selected
+value for **+Non-crop C x Soil C**. It reports organic amendment raising SOC by 26.9 percent with a 95
+percent confidence interval of 26.2 to 27.6, from 1,972 comparisons in 424 papers. On the log scale that
+is 0.2382 with an SE of 0.0028, so the cell moves from `sign_check` on a blanket assumption to
+`likelihood` on a reported interval.
+
+Two cautions. The SE is precision on a mean of 1,972 comparisons, so it pins the mean very tightly and
+says nothing about how much an individual field varies. And Bai reports the effect as both a percent
+change and a stock change of 5.1 Mg C ha-1, whereas the superseded Vicente-Vicente value of 5.3 was a
+*rate* in Mg C ha-1 yr-1. Those are different quantities that happen to be near identical numbers, so
+the cell was moved onto the LRR scale to avoid the two ever being swapped. Bai's California relevant
+subgroups are arid 32.4 percent, warm 40.2 percent and compost 28.7 percent, but no combined arid and
+warm subgroup is reported, so the global mean is used.
+
+**Shcherbak et al. (2014)**, doi:10.1073/pnas.1322434111, fills **+/- N Fertilization x N2O**, which had
+been the only empty priority 1 cell. From 78 studies and 233 site-years it gives dEF/dN of 0.0027 kg
+N2O-N per kg N per ha, 95 percent CI 0.0011 to 0.0044, with crop specific slopes of 0.0017 for upland
+grains, 0.001 for rice and 0.018 for N fixing crops.
+
+This one is a **dose response, not a two arm contrast**. The quantity is the rate at which the emission
+factor rises with N rate, in the fitted model `Emis = (EF0 + dEF x N) x N`. The matching model quantity
+is therefore how fast modelled N2O rises with N rate, not a ratio between two treatments, and it cannot
+be pooled with the LRR cells. It is recorded with `target_type = dose_response`.
+
+**Han, Walter & Drinkwater (2017)**, doi:10.1007/s10705-017-9836-z, is the best candidate for the two
+empty N2O cells at +Cover Crops and +Non-crop C. It reports that cover crops reduce N2O against bare
+fallow and that manure interacts with soil texture. No value was entered: the full text is paywalled and
+no pooled effect size with a dispersion could be read from the abstract. The authors also note that
+their ecologically-based treatments frequently over-applied N, which confounds the cover crop contrast
+with an N rate contrast. It is logged in `source_audit.csv` as a source to obtain.
+
+After these changes four of the five priority 1 cells are fittable, against two before.
+
 ### Tillage effect on SOC replaced with a California analog synthesis
 
 Per David in issue #11, the Reduced tillage x Soil C target no longer uses Robertson et al. (2000),
