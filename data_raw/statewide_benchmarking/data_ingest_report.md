@@ -199,25 +199,38 @@ and corn, though it does contain alfalfa sites where 0.018 applies.
 ### The model cannot reproduce the nonlinearity at all
 
 Scored against Akash's 958 run matrix, using his `annual_outputs.csv` and the fertilizer N rates read from
-each arm's `events.in`. Fertilizer induced EF is `(N2O_N - N2O_0)/N`.
+each arm's `events.in`. Fertilizer induced EF is `(N2O_N - N2O_0) / N_mineral`.
 
-| arm | induced EF |
+| statistic | induced EF |
 |---|---|
-| half N | 1.309 percent |
-| reference N | 1.309 percent |
-| one and a half N | 1.309 percent |
+| N weighted across the panel | **3.57 percent** |
+| per site median | 3.31 percent |
+| per site mean | 3.44 percent |
 
-The EF is **identical at every N rate**, to six decimal places at 39 of 99 sites and to four or five at the
-rest. Induced N2O is exactly proportional to N applied: at site 102480 the three arms give 1.159, 2.319 and
-3.478, a clean 1 to 2 to 3.
+**Denominator correction, 2026-09-17.** An earlier version of this section reported 1.13 and 1.31 percent.
+That was wrong. The SIPNET `events.in` fertilization line is `year day fert org_N org_C mineral_N`, and the
+first calculation summed all three of those columns into the denominator, so it added **organic carbon to a
+nitrogen denominator**. Akash caught it. At 47 of the 99 sites the reference arm carries an organic event
+with values like `18.6 382.8 0`, so the organic C term dominated and pushed the EF down by about a factor of
+three.
 
-So the model's dEF/dN is about 1.7e-8 percentage points per kg N ha-1, against an upland grain target of
-0.0017, five orders of magnitude smaller. SIPNET's fertilizer N2O is linear in N rate by construction and
-cannot produce the nonlinearity, which makes this a **third structural gap** alongside tillage N2O having no
-compaction pathway and rice drying never leaving saturation.
+Mineral N is the right denominator because it is the only thing that differs between the paired arms: the
+organic event is byte identical in all four arms, `mineral_N_zero` included, and only the mineral column is
+scaled. So the induced N2O response is driven by mineral N alone.
 
-The level is a separate question from the slope. The model's induced EF of 1.31 percent sits above the IPCC
-default of 1.0 and well above Cayuela's measured Mediterranean value of 0.5.
+**The slope result is unchanged by any of this.** The EF is flat with N rate whichever denominator is used,
+since the denominator cancels when comparing arms at the same site-year. Induced N2O is exactly proportional
+to N applied: at site 102480 the half, reference and one and a half arms give 1.159, 2.319 and 3.478, a clean
+1 to 2 to 3. Per site-year the EF varies across the three N rates by a median of 0.01 percent relative, and
+dEF/dN comes out at about 1.4e-7 percentage points per kg N ha-1 against an upland grain target of 0.0017,
+four orders of magnitude short.
+
+So SIPNET's fertilizer N2O is linear in N rate by construction and cannot produce the nonlinearity. That is a
+**third structural gap** alongside tillage N2O having no compaction pathway and rice drying never leaving
+saturation.
+
+On the level rather than the slope, 3.57 percent sits well above the IPCC default of 1.0 and Cayuela's
+measured Mediterranean value of 0.5.
 
 ### Every fittable cell now states its observation operator
 
