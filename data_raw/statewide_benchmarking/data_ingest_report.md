@@ -182,6 +182,31 @@ without an assumption we would be inventing.
 The remaining reported uncertainties are real but attach to absolute quantities, not to contrasts:
 Poeplau's rate, Anthony's flux, Six's CH4 uptake, Snyder's arm SDs.
 
+### Every fittable cell now states its observation operator
+
+David noted on the sheet, 2026-09-17, that independently collected emission factor values can serve as
+calibration targets provided the observation operator is correctly specified, meaning modelled N2O over
+fertilizer N, and that he had been conflating IPCC *defaults* with IPCC *EF parameter values*.
+
+Two changes follow.
+
+**`summarized_targets.csv` gains an `observation_operator` column.** A target is only usable if the model
+side is unambiguous, so each cell now says exactly what quantity to compute from model output. This is the
+same discipline as recording the type, scale and referent of an uncertainty, applied to the other side of
+the comparison. The N fertilization cell reads
+`d( modelled N2O-N / fertilizer N ) / d(fertilizer N)`, which makes explicit that it is the slope of the
+emission factor against N rate and not a treatment ratio.
+
+**Measured EFs are distinguished from IPCC defaults in `reference_values.csv`.** The Cayuela et al. (2017)
+values are measured and are therefore eligible as targets under the rule above. The IPCC 2019 EF1 values
+are prescribed defaults, a convention rather than an observation, so they stay as comparison only; using
+one as a calibration target would largely be circular. `POOLED_EF_N2O` currently mixes the two and carries
+a caution that it would need recomputing from the measured rows before any use as a target.
+
+Not yet done: Cayuela's Mediterranean EF of 0.005 is both measured and climatically close to California, so
+it is a candidate second target for +/- N Fertilization x N2O, at the EF *level* rather than its slope.
+That needs a decision on whether one cell should carry two targets with different operators.
+
 ### Rice CH4 now has a reported confidence interval
 
 David asked on the sheet, 2026-09-17, whether Jiang's Table 2 carries CH4 confidence intervals for one and
