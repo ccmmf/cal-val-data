@@ -182,6 +182,35 @@ without an assumption we would be inventing.
 The remaining reported uncertainties are real but attach to absolute quantities, not to contrasts:
 Poeplau's rate, Anthony's flux, Six's CH4 uptake, Snyder's arm SDs.
 
+### Tillage effect on SOC replaced with a California analog synthesis
+
+Per David in issue #11, the Reduced tillage x Soil C target no longer uses Robertson et al. (2000),
+a single long term experiment at KBS Michigan with no reported dispersion. It now uses Sun et al.
+(2020), doi:10.1111/gcb.15001, restricted to a California analog climate.
+
+The selection is the script given in issue #11, run unmodified against Table S1 of that paper. It
+keeps rows with MAT between 10 and 20 C and MAP/MAT below 40, giving an envelope of MAT 12.5 to 20 C
+and MAP 355 to 690 mm, which brackets Central Valley conditions. 62 no-till versus conventional-till comparisons at
+23 named sites survive, each site weighted equally after its own comparisons are averaged.
+
+| | value |
+|---|---|
+| mean annualised stock difference | **0.2162 Mg C ha-1 yr-1** |
+| SD among the 23 sites | 0.4478 |
+| SE on the mean | 0.0934 |
+| mean LRR | 0.0555, or +5.7 percent |
+
+Because this carries a real dispersion the cell moves from `sign_check` to `likelihood`, giving three
+fittable cells rather than two. Robertson is retained as contributing evidence and is not aggregated
+with Sun, since it is a single site lying inside the same synthesis scope.
+
+Two caveats travel with the number. The subset contains no Californian site and is dominated by
+Spain, 35 of the 62 comparisons. And two of the 23 sites are the same Urbana Illinois experiment
+entered under different labels, from Yang & Wander 1999 and Yang et al. 2009 at identical
+coordinates; the source table gives Urbana a MAT of 18.6 C and MAP of 657 mm, which is what admits it
+to a warm and dry filter. Merging the pair moves the mean to 0.2175 and dropping Urbana entirely
+moves it to 0.2521, so the estimate does not hinge on it.
+
 ### CH4 is scoped to rice
 
 Per David on 2026-09-16, CH4 is only in scope for rice systems. Reduced tillage x CH4 therefore

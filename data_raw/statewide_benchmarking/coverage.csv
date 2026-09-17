@@ -5,7 +5,7 @@ practice_table6,outcome,evidence_rows,sources,status
 +Non-crop C,Soil C,1,Vicente-Vicente et al.,COVERED
 +Non-crop C,N2O,1,Ma et al.,COVERED
 +Non-crop C,CH4,1,Ma et al.,COVERED
-Reduced tillage,Soil C,1,"Robertson, Paul & Harwoo",COVERED
+Reduced tillage,Soil C,2,"Robertson, Paul & Harwoo; Sun et al.",COVERED
 Reduced tillage,N2O,5,Li et al.; Snyder et al.; van Kessel et al.,COVERED
 Reduced tillage,CH4,1,Six et al.,COVERED
 +/- N Fertilization,Soil C,1,Snyder et al.,COVERED
