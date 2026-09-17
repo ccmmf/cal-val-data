@@ -182,6 +182,43 @@ without an assumption we would be inventing.
 The remaining reported uncertainties are real but attach to absolute quantities, not to contrasts:
 Poeplau's rate, Anthony's flux, Six's CH4 uptake, Snyder's arm SDs.
 
+### Shcherbak units were wrong, corrected before the rescore
+
+The N fertilization dEF was recorded with units of "kg N2O-N per kg N per ha". That is wrong. dEF is
+**percentage points of EF per kg N ha-1**, where EF is fertilizer induced N2O as a percentage of N applied.
+
+Caught by the paper disagreeing with itself on the face of it: the reported mean dEF is 0.0027 while the
+upland grain fit is `Emis = (6.49 + 0.0187 N) N`. They reconcile once the units are right. With Emis in
+g N2O-N per ha and N in kg N per ha, EF = 6.49 + 0.0187N g N2O-N per kg N, which is 0.649 + 0.00187N as a
+percentage, so dEF/dN = 0.00187 against the 0.0017 the paper reports for upland grains.
+
+**Use the crop specific value, not the 0.0027 all crop mean**: upland grains 0.0017, rice 0.001, N fixing
+crops 0.018. The all crop mean is pulled up by N fixing crops, and the statewide panel is mostly row crops
+and corn, though it does contain alfalfa sites where 0.018 applies.
+
+### The model cannot reproduce the nonlinearity at all
+
+Scored against Akash's 958 run matrix, using his `annual_outputs.csv` and the fertilizer N rates read from
+each arm's `events.in`. Fertilizer induced EF is `(N2O_N - N2O_0)/N`.
+
+| arm | induced EF |
+|---|---|
+| half N | 1.309 percent |
+| reference N | 1.309 percent |
+| one and a half N | 1.309 percent |
+
+The EF is **identical at every N rate**, to six decimal places at 39 of 99 sites and to four or five at the
+rest. Induced N2O is exactly proportional to N applied: at site 102480 the three arms give 1.159, 2.319 and
+3.478, a clean 1 to 2 to 3.
+
+So the model's dEF/dN is about 1.7e-8 percentage points per kg N ha-1, against an upland grain target of
+0.0017, five orders of magnitude smaller. SIPNET's fertilizer N2O is linear in N rate by construction and
+cannot produce the nonlinearity, which makes this a **third structural gap** alongside tillage N2O having no
+compaction pathway and rice drying never leaving saturation.
+
+The level is a separate question from the slope. The model's induced EF of 1.31 percent sits above the IPCC
+default of 1.0 and well above Cayuela's measured Mediterranean value of 0.5.
+
 ### Every fittable cell now states its observation operator
 
 David noted on the sheet, 2026-09-17, that independently collected emission factor values can serve as
