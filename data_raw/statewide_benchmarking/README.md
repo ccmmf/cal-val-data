@@ -43,13 +43,20 @@ Two cells carry several, because the evidence is stratified and a single row can
 
 | cell | subclasses |
 |---|---|
-| `+/- N Fertilization x N2O` | `all crops (aggregate)`, `non N fixing crops`, `N fixing crops`, `upland grains`, `rice`, `perennial grass or forage` |
+| `+/- N Fertilization x N2O` | `EF level, Mediterranean`, then the slope subclasses: `all crops (aggregate)`, `non N fixing crops`, `N fixing crops`, `upland grains`, `rice`, `perennial grass or forage` |
 | `Flooding / rice x CH4` | `1 drying event`, `2 drying events`, `3 drying events`, `more than 3 drying events`, `2 or more drying events` |
 
 Filter on `subclass` as well as practice and outcome, or a query will return several rows per cell.
 
-Every N fertilization subclass carries a reported SEM and n from Shcherbak Table S3, so all of them are
-`likelihood` rather than sign checks.
+This cell carries **two different quantities**, which is why the subclasses are not all of one kind.
+`EF level, Mediterranean` is the EF itself, Cayuela's 0.50 percent with a 95% CI half width of 0.12 over
+N=200, so SE 0.0612. Every other subclass is the **slope** of EF against N rate, from Shcherbak. The two
+answer different questions, whether the modelled EF magnitude is reasonable for Mediterranean
+agriculture, and whether EF rises with N rate at the right rate, so score both. The
+`observation_operator` on each row says which quantity to compute.
+
+Every Shcherbak subclass carries a reported SEM and n from Table S3, so all of them are `likelihood`
+rather than sign checks.
 
 **Do not use `all crops (aggregate)` for a single crop panel.** It is pulled up by N fixing crops at
 0.0181 against 0.0017 for upland grains.

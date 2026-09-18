@@ -182,6 +182,28 @@ without an assumption we would be inventing.
 The remaining reported uncertainties are real but attach to absolute quantities, not to contrasts:
 Poeplau's rate, Anthony's flux, Six's CH4 uptake, Snyder's arm SDs.
 
+### EF level added as a second target on the N fertilization cell
+
+David confirmed on 2026-09-18 that Cayuela's Mediterranean EF should sit alongside Shcherbak's slope rather
+than replace it, because the two test different things: whether the modelled EF magnitude is reasonable for
+Mediterranean agriculture, and whether EF rises with N rate at an appropriate rate.
+
+Cayuela et al. (2017) report **EFMed of 0.50 percent with a 95 percent CI half width of 0.12 over N=200**
+observations, so SE is 0.0612 percentage points. The interval was not in our record, which had been taken
+from the abstract; it is in the results text, where `pdftotext` drops the plus minus glyph and renders it as
+"0.50% 0.12", with the label "(EFMed 95%CI, N = 200)" confirming what the second number is.
+
+It enters as the subclass `EF level, Mediterranean`, `target_type = absolute_level`, units percent of N
+applied, and it is fittable. The `+/- N Fertilization x N2O` cell now carries two kinds of quantity, a level
+and a slope, distinguished by `observation_operator` on each row.
+
+This is the first row promoted out of `reference_values` into the targets under David's rule that
+independently collected EF values can be calibration targets provided the observation operator is
+specified. The `reference_values` row is kept and annotated with the promotion.
+
+Against the forward runs the level is a clear miss: the model's N weighted induced EF is 3.57 percent
+against 0.50, roughly seven times too high and far outside the interval.
+
 ### Crop group slopes now carry intervals, from Table S3
 
 Aritra downloaded the PNAS supplement by hand after every automated route was blocked: PNAS returns 403,
