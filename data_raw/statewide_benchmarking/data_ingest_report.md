@@ -1,4 +1,4 @@
-# Statewide benchmarking evidence — uncertainty audit and conversion record
+# Synthesis and meta-analysis evidence — uncertainty audit and conversion record
 
 Prepared 2026-09-10 in response to David's review: `sd_norm` mixed standard errors, standard
 deviations and unspecified uncertainties. Every reported value is preserved unchanged; all
@@ -6,17 +6,17 @@ derived quantities sit in separate columns.
 
 ## Fields
 
-| column | meaning |
-|---|---|
-| `val_unc_type` | `SE`, `SD`, `CI95_halfwidth`, or `none` |
-| `val_unc_value` | the number, on the scale named below |
-| `val_unc_units` | scale and units the uncertainty is expressed in |
-| `val_unc_applies_to` | **the quantity it describes**, e.g. a treatment arm mean vs the LRR |
-| `val_unc_derivation` | `reported_as_is`, `derived_from_CI95`, `not_derivable` |
-| `se_on_analysis_scale` | SE where one is derivable, else blank |
-| `lrr_se`, `lrr_se_derivation` | uncertainty **of the log response ratio**, kept separate |
-| `reported_statistic_name`, `reported_statistic`, `reported_lower`, `reported_upper` | preserved verbatim |
-| `conversion_note` | what was done and why |
+| column                                                                              | meaning                                                             |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `val_unc_type`                                                                      | `SE`, `SD`, `CI95_halfwidth`, or `none`                             |
+| `val_unc_value`                                                                     | the number, on the scale named below                                |
+| `val_unc_units`                                                                     | scale and units the uncertainty is expressed in                     |
+| `val_unc_applies_to`                                                                | **the quantity it describes**, e.g. a treatment arm mean vs the LRR |
+| `val_unc_derivation`                                                                | `reported_as_is`, `derived_from_CI95`, `not_derivable`              |
+| `se_on_analysis_scale`                                                              | SE where one is derivable, else blank                               |
+| `lrr_se`, `lrr_se_derivation`                                                       | uncertainty **of the log response ratio**, kept separate            |
+| `reported_statistic_name`, `reported_statistic`, `reported_lower`, `reported_upper` | preserved verbatim                                                  |
+| `conversion_note`                                                                   | what was done and why                                               |
 
 The split between `se_on_analysis_scale` and `lrr_se` is the substantive fix. A dispersion on a
 treatment arm is not the uncertainty of the contrast, and the old single column could not say which
@@ -48,9 +48,9 @@ reports none. `lrr_se_derivation = not_derivable`. Note the arms overlap heavily
 
 ### 3. van Kessel et al. 2013 overall — a null result is not a zero effect
 
-Previously recorded as `lrr = 0.0` from "no significant change". The protocol glossary is explicit
-that a non-significant result establishes neither a zero effect nor an SE. The effect size is now
-blank, with the direction recorded as no detected effect.
+A non-significant result establishes neither a zero effect nor an SE. The overall
+row uses the Fig 1a digitisation in section 7: LRR 0.003 with SE 0.054; its interval
+spans zero, so the direction remains unresolved.
 
 ### 4. CI-derived SEs — approximate, and now labelled as such
 
@@ -64,8 +64,7 @@ Both assume approximate normality. Flagged `derived_from_CI95`.
 ### 5. Confirmed correct
 
 - **Anthony et al. 2023**: "Mean (± standard error)". 624 ± 28 mg N2O m-2 yr-1 is a genuine SE.
-  Mean and SE are both unconverted; any unit conversion of the mean must apply the same factor to
-  the SE.
+  Mean and SE are converted together in section 8; reported values are preserved.
 - **Six et al. 2004**: table caption states "SE = standard error".
 
 ### 6. Snyder et al. 2009 soil carbon — wrong quantity entirely
@@ -94,14 +93,14 @@ The captions matter: **Fig 1a and 2a are area-scaled N2O; Fig 1c and 2c are yiel
 sentences we had originally quoted are the yield-scaled panels. Area-scaled is what the model produces,
 so this is a change of quantity, not just of precision.
 
-| row | was | now | source |
-|---|---|---|---|
-| overall | blank, after removing an lrr of 0.0 | 0.003, SE 0.054, n = 239 / 41 | Fig 1a, tab row 6 |
-| dry, under 10 yr | 0.451 from "+57 percent yield-scaled" | 0.322, SE 0.124, n = 40 / 7 | Fig 2a, tab row 14 |
-| dry, 10 yr or more | -0.315 from "-27 percent yield-scaled" | -0.419, SE 0.132, n = 16 / 2 | Fig 2a, tab row 15 |
+| row                | was                                    | now                           | source             |
+| ------------------ | -------------------------------------- | ----------------------------- | ------------------ |
+| overall            | blank, after removing an lrr of 0.0    | 0.003, SE 0.054, n = 239 / 41 | Fig 1a, tab row 6  |
+| dry, under 10 yr   | 0.451 from "+57 percent yield-scaled"  | 0.322, SE 0.124, n = 40 / 7   | Fig 2a, tab row 14 |
+| dry, 10 yr or more | -0.315 from "-27 percent yield-scaled" | -0.419, SE 0.132, n = 16 / 2  | Fig 2a, tab row 15 |
 
-The overall row is the useful one: it was a bare "no significant change" with no effect size, and is now
-a quantified near-zero effect with an interval, which is a much stronger statement than an absent row.
+The overall estimate overlaps its duration subgroups. Use the dry, under-ten-year row
+for the selected short-term target; do not score the overall estimate as independent evidence.
 
 The duration split carries a modelling requirement. Comparing against these means matching the model
 window to the class, roughly 5 years after initiation for the under-10 row and 15 years for the other.
@@ -112,75 +111,37 @@ The 10-year-plus row rests on 2 studies.
 Reported as 624 +/- 28 mg N2O m-2 yr-1. Converted to an N2O-N basis by 28.014 / 44.013 = 0.636494, then
 mg to kg by 1e-6, with the **identical factor applied to the SE**:
 
-| | reported | converted |
-|---|---|---|
+|      | reported            | converted                    |
+| ---- | ------------------- | ---------------------------- |
 | mean | 624 mg N2O m-2 yr-1 | 3.97172e-4 kg N2O-N m-2 yr-1 |
-| SE | 28 mg N2O m-2 yr-1 | 1.78218e-5 kg N2O-N m-2 yr-1 |
+| SE   | 28 mg N2O m-2 yr-1  | 1.78218e-5 kg N2O-N m-2 yr-1 |
 
 Reported values preserved in `original_mean` and `original_units`.
 
-That works out to 3.97 +/- 0.18 kg N2O-N ha-1 yr-1, which is the basis the Snyder rows already use
-(0.68 and 0.95), so the two are directly comparable and alfalfa is several times a typical cropland flux.
-Worth noting the N2O flux rows are not yet on a single common unit.
+That works out to 3.97 +/- 0.18 kg N2O-N ha-1 yr-1. Matching units alone does not
+establish comparability with Snyder. Anthony has no annual-crop comparator, so the
+absolute flux cannot establish an annual-to-perennial effect. It remains a reference value.
 
-### 9. Blanket spread where none is reported
+### 9. Assumed spread where contrast uncertainty is unavailable
 
-Five cells have a defensible centre but no dispersion anywhere in the source. Per David 2026-09-16 a
-blanket assumption is used rather than leaving them unweighted.
+For Jiang's rice N2O contrast and Siddique's perennial SOC aggregate, sensitivity
+analysis assumes a normal distribution for the log response ratio with standard
+deviation `log(4) / 1.96 ≈ 0.7073`, stored as 0.707. Its central 95% interval
+corresponds to treatment/control ratios ranging from one-quarter to four times
+the estimated ratio. This is an assumed uncertainty range, not a confidence
+interval reported by either study.
 
-**The assumption.** The 95% confidence interval spans a factor of four either side of the estimate.
-
-**The arithmetic.** On the log scale a factor of four is `ln(4) = 1.3863`. A 95% CI half width is
-`1.96 x SE`, so:
-
-```
-SE = ln(4) / 1.96 = 1.3863 / 1.96 = 0.7073
-```
-
-**Why the log scale and not a multiplier.** Taking a quarter of the value and four times the value gives an
-interval that can never contain zero, so a model producing no effect, or an effect of the opposite sign,
-could never agree. Applied additively on the log scale the interval spans zero for any effect smaller than
-a factor of four, which is all of them.
-
-**Sense check.** The only cell where the real spread is known is Poeplau cover crops, whose supplement
-gives an among plot SD of **0.744**. The blanket assumption gives **0.707**. Within five percent, so the
-assumption is calibrated rather than arbitrary.
-
-**Cells it was applied to, and what it means in their own units:**
-
-| cell | centre | implied 95% interval |
-|---|---|---|
-| +Non-crop C x Soil C | 5.3 Mg C ha-1 yr-1 | 1.32 to 21.2 |
-| Reduced tillage x Soil C | 0.30 Mg C ha-1 yr-1 | 0.075 to 1.2 |
-| Flooding / rice x N2O | 0.718 LRR | -0.668 to 2.104 |
-| Flooding / rice x CH4 | -0.755 LRR | -2.141 to 0.631 |
-| Annual -> Perennial x Soil C | 0.154 LRR | -1.232 to 1.540 |
-
-For the two cells whose centre is an absolute rate rather than a ratio, the factor of four is applied
-multiplicatively, since a symmetric additive interval on a rate has no natural meaning.
-
-All five are marked `spread_type = se on the log scale, assumed`, so they can be filtered out of any
-analysis that should only use reported uncertainty.
+Poeplau's among-plot SD
+of 0.744 Mg C ha-1 yr-1 cannot validate a dimensionless log-scale spread. Both rows
+are marked `spread_type = assumed log-scale sensitivity spread` and `use = sign_check`.
+Using those assumptions in a likelihood requires an explicit decision and sensitivity analysis.
 
 ## Where this leaves the likelihood
 
-| | count |
-|---|---|
-| contrasts expressed as an LRR | 15 |
-| of those, with a derivable SE **on the LRR** | **4** |
-| distinct cells those 4 rows cover | **1** |
-
-Counts corrected 2026-09-16. An earlier version of this table read 14 and 1, which predated the
-van Kessel Fig 1a and 2a digitisation and the removal of the absolute reference rows.
-
-The four are Li et al. 2023 and the three van Kessel 2013 rows, whose SEs come from the digitised
-95% CIs. All four are reduced tillage × N2O, so they are alternatives for the same cell rather than
-four independent constraints, and only the selected row enters the likelihood. Every other LRR is a
-ratio of two point estimates with no reported dispersion, so no weight can be computed for it
-without an assumption we would be inventing.
-
-The remaining reported uncertainties are real but attach to absolute quantities, not to contrasts:
-Poeplau's rate, Anthony's flux, Six's CH4 uptake, Snyder's arm SDs.
+The selected table has 28 rows: 16 likelihood rows across six practice-outcome groups,
+two sign checks and ten rows with `use = none`. Crop and drying-event subclasses are
+conditional alternatives, not independent constraints to stack with their aggregates.
+SD among sites, SE of a synthesis mean and SE of a contrast remain distinct.
 
 ### EF level added as a second target on the N fertilization cell
 
@@ -212,25 +173,25 @@ the PMC supplementary path serves a reCAPTCHA, and Europe PMC reports the articl
 **Table S3 gives a SEM and an n for every crop group**, so the four crop rows move from `sign_check` to
 `likelihood` and two values are corrected.
 
-| group | n site-years | mean dEF | SEM |
-|---|---|---|---|
-| all crops, four outliers retained | 233 | 0.0027 | 0.00085 |
-| all crops, outliers excluded | 229 | 0.0024 | 0.00053 |
-| N fixers | 7 | **0.0181** | 0.00497 |
-| non N fixers | 221 | 0.0018 | 0.00048 |
-| upland grain | 121 | 0.0017 | 0.00056 |
-| rice | 16 | **0.0009** | 0.00028 |
-| perennial grass or forage | 41 | 0.0033 | 0.00126 |
+| group                             | n site-years | mean dEF   | SEM     |
+| --------------------------------- | ------------ | ---------- | ------- |
+| all crops, four outliers retained | 233          | 0.0027     | 0.00085 |
+| all crops, outliers excluded      | 229          | 0.0024     | 0.00053 |
+| N fixers                          | 7            | **0.0181** | 0.00497 |
+| non N fixers                      | 221          | 0.0018     | 0.00048 |
+| upland grain                      | 121          | 0.0017     | 0.00056 |
+| rice                              | 16           | **0.0009** | 0.00028 |
+| perennial grass or forage         | 41           | 0.0033     | 0.00126 |
 
 Rice was recorded as 0.001 and N fixers as 0.018 from the main text; Table S3 gives 0.0009 and 0.0181.
 The published SEM of 0.00085 for the aggregate also confirms the 0.000842 previously derived from the CI.
 
 **Table S4 changes the recommendation.** Pairwise t tests show N fixers differ significantly from upland
 grain (P=0.001), rice (P=0.000) and forage (P=0.004), while upland grain, rice and forage do **not** differ
-from one another (P=0.193, 0.231, 0.057). The only split the data supports is N fixing against non N
+from one another (P=0.193, 0.231, 0.057). The recommended broad grouping is N fixing against non N
 fixing, so a `non N fixing crops` row at 0.0018 with SEM 0.00048 and n=221 is provided and is the one to
 use for a mixed row crop panel. The finer crop rows are kept because they are published, but they are not
-statistically distinguishable from each other.
+statistically distinguishable from each other; this does not establish equivalence.
 
 Dataset S1 does not allow this to be checked independently: `deltaEF` is populated for 233 site-years,
 matching the table, but `CropType` is filled for only 78 of them, so the group means cannot be
@@ -245,15 +206,13 @@ the value we had already agreed is wrong for a row crop panel. Any consumer filt
 way picked up exactly the wrong number. The same limit hit rice CH4, where the two dry arm should score
 against Jiang's two event class but the row could only carry the single event class.
 
-`summarized_targets.csv` and `model_vs_evidence.csv` are now keyed on **practice x outcome x subclass**,
-26 rows instead of 18. `subclass` is empty for the 16 cells that have one target.
+`summarized_targets.csv` and `model_vs_evidence.csv` are keyed on
+**practice x outcome x subclass**, with 28 rows across 18 practice-outcome groups.
 
-- **N fertilization x N2O**, five rows: the all crop aggregate at 0.0027, which is the only one with a
-  reported interval, plus upland grains 0.0017, rice 0.001, perennial grass or forage 0.0033 and N fixing
-  crops 0.018. Shcherbak reports **no per category interval** in the main text, only in Table S3, so the
-  four crop rows are point estimates and are sign checks rather than likelihoods.
-- **Flooding / rice x CH4**, five rows, one per drying event class from Jiang Table 2, each with its own
-  reported CI, so all five are fittable.
+- **N fertilization x N2O:** seven rows, comprising six Shcherbak slope groups with
+  reported SEMs from Table S3 and the separate Cayuela Mediterranean EF level.
+- **Flooding / rice x CH4:** five drying-event classes, each with a reported CI.
+- The remaining 16 groups have one row each, including gaps and out-of-scope targets.
 
 The aggregate row carries an explicit warning not to use it for a single crop panel.
 
@@ -267,20 +226,20 @@ upland grain fit is `Emis = (6.49 + 0.0187 N) N`. They reconcile once the units 
 g N2O-N per ha and N in kg N per ha, EF = 6.49 + 0.0187N g N2O-N per kg N, which is 0.649 + 0.00187N as a
 percentage, so dEF/dN = 0.00187 against the 0.0017 the paper reports for upland grains.
 
-**Use the crop specific value, not the 0.0027 all crop mean**: upland grains 0.0017, rice 0.001, N fixing
-crops 0.018. The all crop mean is pulled up by N fixing crops, and the statewide panel is mostly row crops
-and corn, though it does contain alfalfa sites where 0.018 applies.
+**Use the crop specific value, not the 0.0027 all crop mean**: upland grains 0.0017, rice 0.0009, N fixing
+crops 0.0181. The all crop mean is increased by N fixing crops, and the statewide panel is mostly row crops
+and corn, though it does contain alfalfa sites where 0.0181 applies.
 
 ### The model cannot reproduce the nonlinearity at all
 
 Scored against Akash's 958 run matrix, using his `annual_outputs.csv` and the fertilizer N rates read from
 each arm's `events.in`. Fertilizer induced EF is `(N2O_N - N2O_0) / N_mineral`.
 
-| statistic | induced EF |
-|---|---|
+| statistic                   | induced EF       |
+| --------------------------- | ---------------- |
 | N weighted across the panel | **3.57 percent** |
-| per site median | 3.31 percent |
-| per site mean | 3.44 percent |
+| per site median             | 3.31 percent     |
+| per site mean               | 3.44 percent     |
 
 **Denominator correction, 2026-09-17.** An earlier version of this section reported 1.13 and 1.31 percent.
 That was wrong. The SIPNET `events.in` fertilization line is `year day fert org_N org_C mineral_N`, and the
@@ -319,7 +278,7 @@ Two changes follow.
 side is unambiguous, so each cell now says exactly what quantity to compute from model output. This is the
 same discipline as recording the type, scale and referent of an uncertainty, applied to the other side of
 the comparison. The N fertilization cell reads
-`d( modelled N2O-N / fertilizer N ) / d(fertilizer N)`, which makes explicit that it is the slope of the
+`d(100 * (N2O_N - N2O_0) / N_mineral) / d(N_mineral)`, which makes explicit that it is the slope of the
 emission factor against N rate and not a treatment ratio.
 
 **Measured EFs are distinguished from IPCC defaults in `reference_values.csv`.** The Cayuela et al. (2017)
@@ -328,9 +287,8 @@ are prescribed defaults, a convention rather than an observation, so they stay a
 one as a calibration target would largely be circular. `POOLED_EF_N2O` currently mixes the two and carries
 a caution that it would need recomputing from the measured rows before any use as a target.
 
-Not yet done: Cayuela's Mediterranean EF of 0.005 is both measured and climatically close to California, so
-it is a candidate second target for +/- N Fertilization x N2O, at the EF *level* rather than its slope.
-That needs a decision on whether one cell should carry two targets with different operators.
+Cayuela's Mediterranean EF is selected as the separate `EF level, Mediterranean`
+subclass. Its reference copy is not an additional observation to score.
 
 ### Rice CH4 now has a reported confidence interval
 
@@ -340,24 +298,25 @@ two drying events. It does, and our record had been taken from the abstract only
 Table 2 stratifies the CH4 effect of non-continuous flooding by number of drying events, each class with a
 95 percent interval:
 
-| drying events | percent change in CH4 | 95% CI | n | LRR | SE |
-|---|---|---|---|---|---|
-| 1 | -32.9 | -49.0 to -11.8 | 43 | -0.3990 | 0.1397 |
-| 2 | -46.5 | -61.7 to -25.4 | 22 | -0.6255 | 0.1701 |
-| 3 | -73.6 | -81.5 to -62.3 | 16 | -1.3318 | 0.1816 |
-| >3 | -75.2 | -82.2 to -65.4 | 22 | -1.3943 | 0.1696 |
-| >=2 combined | -63.4 | -70.9 to -53.9 | 60 | -1.0051 | 0.1174 |
+| drying events | percent change in CH4 | 95% CI         | n   | LRR     | SE     |
+| ------------- | --------------------- | -------------- | --- | ------- | ------ |
+| 1             | -32.9                 | -49.0 to -11.8 | 43  | -0.3990 | 0.1397 |
+| 2             | -46.5                 | -61.7 to -25.4 | 22  | -0.6255 | 0.1701 |
+| 3             | -73.6                 | -81.5 to -62.3 | 16  | -1.3318 | 0.1816 |
+| >3            | -75.2                 | -82.2 to -65.4 | 22  | -1.3943 | 0.1696 |
+| >=2 combined  | -63.4                 | -70.9 to -53.9 | 60  | -1.0051 | 0.1174 |
 
 The cell moves from `sign_check` to `likelihood`. The reported SEs are roughly **five times narrower** than
 the 0.707 that had been assumed, so the blanket was badly overstating the uncertainty here.
 
-The single drying event class is selected, because the curated US-Twt management describes one pre-harvest
-drain within the season. The classes are **not** aggregated: they form a dose response in the number of
+Select the class matching the modelled within-season drying treatment. The combined
+two-or-more class overlaps the individual classes and must not be scored alongside them.
+The classes are **not** aggregated: they form a dose response in the number of
 drying events, with the effect roughly doubling between one and three events, so averaging them would
 describe no real practice. The earlier -53 percent headline is kept as contributing evidence; it carries no
 dispersion, which is why the blanket had been needed.
 
-This was also the last priority 1 cell on an assumed spread, so all five are now fittable.
+The rice CH4 subclasses use reported uncertainty rather than the assumed spread.
 
 `source_audit.csv` is corrected at the same time: Jiang et al. (2019) was recorded as not in Zotero, and it
 is in fact there.
@@ -381,14 +340,14 @@ subgroups are arid 32.4 percent, warm 40.2 percent and compost 28.7 percent, but
 warm subgroup is reported, so the global mean is used.
 
 **Shcherbak et al. (2014)**, doi:10.1073/pnas.1322434111, fills **+/- N Fertilization x N2O**, which had
-been the only empty priority 1 cell. From 78 studies and 233 site-years it gives dEF/dN of 0.0027 kg
-N2O-N per kg N per ha, 95 percent CI 0.0011 to 0.0044, with crop specific slopes of 0.0017 for upland
-grains, 0.001 for rice and 0.018 for N fixing crops.
+been the only empty priority 1 cell. From 78 studies and 233 site-years it gives dEF/dN of 0.0027
+percentage points of EF per kg N ha-1, 95 percent CI 0.0011 to 0.0044, with crop specific slopes of 0.0017 for upland
+grains, 0.0009 for rice and 0.0181 for N fixing crops (Table S3).
 
 This one is a **dose response, not a two arm contrast**. The quantity is the rate at which the emission
 factor rises with N rate, in the fitted model `Emis = (EF0 + dEF x N) x N`. The matching model quantity
-is therefore how fast modelled N2O rises with N rate, not a ratio between two treatments, and it cannot
-be pooled with the LRR cells. It is recorded with `target_type = dose_response`.
+is therefore how fast the fertilizer-induced EF increases with N rate, not a ratio between two treatments, and it cannot
+be combined with the LRR cells. It is recorded with `target_type = dose_response`.
 
 **Han, Walter & Drinkwater (2017)**, doi:10.1007/s10705-017-9836-z, is the best candidate for the two
 empty N2O cells at +Cover Crops and +Non-crop C. It reports that cover crops reduce N2O against bare
@@ -397,7 +356,7 @@ no pooled effect size with a dispersion could be read from the abstract. The aut
 their ecologically-based treatments frequently over-applied N, which confounds the cover crop contrast
 with an N rate contrast. It is logged in `source_audit.csv` as a source to obtain.
 
-After these changes four of the five priority 1 cells are fittable, against two before.
+Selected target counts are given in "Where this leaves the likelihood" above.
 
 ### Tillage effect on SOC replaced with a California analog synthesis
 
@@ -410,15 +369,14 @@ keeps rows with MAT between 10 and 20 C and MAP/MAT below 40, giving an envelope
 and MAP 355 to 690 mm, which brackets Central Valley conditions. 62 no-till versus conventional-till comparisons at
 23 named sites survive, each site weighted equally after its own comparisons are averaged.
 
-| | value |
-|---|---|
+|                                  | value                     |
+| -------------------------------- | ------------------------- |
 | mean annualised stock difference | **0.2162 Mg C ha-1 yr-1** |
-| SD among the 23 sites | 0.4478 |
-| SE on the mean | 0.0934 |
-| mean LRR | 0.0555, or +5.7 percent |
+| SD among the 23 sites            | 0.4478                    |
+| SE on the mean                   | 0.0934                    |
+| mean LRR                         | 0.0555, or +5.7 percent   |
 
-Because this carries a real dispersion the cell moves from `sign_check` to `likelihood`, giving three
-fittable cells rather than two. Robertson is retained as contributing evidence and is not aggregated
+This target carries among-site dispersion and is marked `likelihood`. Robertson is retained as contributing evidence and is not aggregated
 with Sun, since it is a single site lying inside the same synthesis scope.
 
 Two caveats travel with the number. The subset contains no Californian site and is dominated by
@@ -436,9 +394,6 @@ SE. Tillage does not enter the SIPNET CH4 formulation, so the model returns no d
 cell: it can be neither fitted nor sign checked, and a target there would only look like coverage.
 The Six estimate stays in the table because it is verified, but it is not a target.
 
-The CH4 target is Flooding / rice x CH4, Jiang et al. (2019). That cell reports no dispersion, so it
-carries the assumed blanket spread and is a sign check, not a likelihood. It becomes a likelihood
-only if a rice CH4 contrast with reported dispersion is found.
-
-That leaves two likelihood cells in `summarized_targets.csv`: +Cover Crops x Soil C and
-Reduced tillage x N2O.
+The rice CH4 target uses Jiang Table 2 drying-event classes with reported confidence
+intervals and derived log-scale SEs. Select the applicable class; these rows are
+`likelihood` targets, not sign checks on an assumed spread.
