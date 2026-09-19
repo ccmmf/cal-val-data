@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-# Regenerate data_raw/statewide_benchmarking/*.csv from the benchmarking workbook.
+# Regenerate data_raw/statewide_benchmarking/*.csv from the synthesis and meta-analysis evidence workbook.
 #
 # The workbook is the source of truth, exactly as it is for data/ via ingest.R.
 # Until this script existed the README said so but nothing enforced it, and the
@@ -19,8 +19,8 @@ gs4_auth(email = Sys.getenv("CCMMF_SHEETS_EMAIL", "aritradey.nitt@gmail.com"))
 
 # Worksheet -> file stem. These are identical by design; a mismatch was one of the
 # review findings, so keeping the map explicit makes a future rename visible here.
-TABS <- c("extracted_evidence", "normalised_targets", "summarized_targets",
-          "reference_values", "model_vs_evidence", "coverage", "audited_matrix",
+TABS <- c("evidence_assessment", "extracted_evidence", "normalised_targets", "summarized_targets",
+          "reference_values", "model_vs_evidence", "coverage",
           "source_audit", "carb_crosscheck", "data_processing")
 # README is deliberately not exported.
 
