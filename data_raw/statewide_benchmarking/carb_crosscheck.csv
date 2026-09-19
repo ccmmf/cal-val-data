@@ -1,0 +1,8 @@
+quantity,as_stated_in_issue_228,as_carried_in_draft,verdict,note
+Total cropland SOC stock,270 MMT SOC (245.09 mineral + 24.47 drained organic),no row carries 270,GAP,Draft has 213.495506299556 and 245.09. Neither is 270.
+"Mineral soil SOC, top 30 cm",245.09 MMT SOC,245.09 MMT C,MATCH,
+Drained organic soil SOC,24.47 MMT SOC,absent,MISSING,"#228 states these drive most cropland CO2 emissions, so the dominant term is missing."
+Cropland N2O flux,6.8 MMT CO2e/yr = 22.8 Gg N2O/yr,6.8 MMT CO2e yr-1,MATCH,The 22.8 Gg N2O/yr equivalent is not carried; add it so the conversion is checkable.
+Rice methane,~0.9 MMT CO2e,0.8 MMT CO2e yr-1,MISMATCH,Resolve against the CARB methane inventory PDF before use.
+Statewide SOM ceiling,max ~2% statewide (citation needed),absent,MISSING,#228 itself flags the citation as needed.
+CARB_current_SOC provenance,not stated in #228,213.495506299556 MMT C,UNEXPLAINED,Matches neither figure in #228; twelve decimals is false precision. Trace or drop.

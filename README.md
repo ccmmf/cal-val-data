@@ -28,6 +28,7 @@ Curation happens in a Google Sheet workbook, which is source of truth. CSVs in `
 1. Workbook holds curated tables and is edited and reviewed there.
 2. `scripts/ingest.R` pulls each workbook tab to `data/<tab>.csv`.
 3. `scripts/validate.R` checks `data/` against `datapackage.json`.
+3b. `scripts/ingest_benchmarking.R` does the same for the synthesis and meta-analysis evidence workbook into `data_raw/statewide_benchmarking/`.
 4. Downstream consumers read committed CSVs.
 
 CSVs are committed so consumers read a stable, documented snapshot. Workbook can keep changing without a commit per edit; CSVs are regenerated and committed when a dataset version is ready.
