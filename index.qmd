@@ -1,0 +1,15 @@
+---
+filters:
+  - mermaid-fence.lua
+---
+
+{{< include README.md >}}
+
+::: {.hidden}
+```{mermaid}
+%% Not shown. This cell makes Quarto ship its bundled Mermaid library,
+%% which draws the README diagram (see mermaid-fence.lua).
+flowchart LR
+  a
+```
+:::
