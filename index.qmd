@@ -1,15 +1,17 @@
 ---
-filters:
-  - mermaid-fence.lua
+title: "MAGiC Calibration and Validation Data"
 ---
 
-{{< include README.md >}}
+This site reports the data used to calibrate and validate the SIPNET ecosystem model in the
+MAGiC inventory runs for California cropland: measurements from six field sites, and evidence
+from published syntheses of how soil carbon and greenhouse gas fluxes respond to management.
 
-::: {.hidden}
-```{mermaid}
-%% Not shown. This cell makes Quarto ship its bundled Mermaid library,
-%% which draws the README diagram (see mermaid-fence.lua).
-flowchart LR
-  a
-```
-:::
+- [Overview & Key Points](reports/calibration-validation-data.qmd) summarises the two bodies of
+  evidence, what each can support, and how they are used together.
+- [Part A: Site-Level Data](reports/site-level-data.qmd) describes the six sites, when and what
+  was measured, and the practice contrasts.
+- [Part B: Statewide Evidence](reports/statewide-evidence.qmd) sets out the practice by outcome
+  grid built from published syntheses, and which cells can be fitted.
+
+The [Data Collection Protocol](docs/data-collection-protocol.qmd) and the
+[Data Requirements](docs/data-requirements.qmd) describe how datasets are chosen and curated.
