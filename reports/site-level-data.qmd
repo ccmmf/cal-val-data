@@ -8,12 +8,6 @@ format:
     toc: true
 ---
 
-::: {.callout-note title="Source"}
-**Original document:** [Calibration and Validation Data (Google Doc)](https://docs.google.com/document/d/1FuVfgN-JbE4pBMSoXS6X5yTnXet_lDQ91Y4VgFDG59U/edit), Part A. Author Aritra Dey, published 2026-09-16, working draft. The Summary, Key points, Part C and the Appendix are on the [main report page](calibration-validation-data.qmd).
-
-Synchronised 2026-09-30 from the Google Doc last modified 2026-09-30.
-:::
-
 ## A1. The six sites {#a1-the-six-sites}
 
 ![Where the six cal/val sites are. Point size is the number of target records used. The three Delta towers are within about 15 km of each other. Circles mark field experiments and triangles mark flux towers, each labelled with its number of target records.](figures/a1-site-map.png){#fig-a1-site-map width=100% fig-align="center" fig-alt="Map of central California with county outlines, longitude -124 to -120 and latitude about 36.3 to 39.2. Circles mark Russell Ranch (96), Modesto almond (54) and Salinas SOCS (224). Three overlapping triangles in the Delta mark US-Twt rice (14), US-Bi2 corn (123) and US-Bi1 alfalfa (119). Point size scales with the number of target records."}

@@ -8,18 +8,6 @@ format:
     toc: true
 ---
 
-::: {.callout-note title="Source"}
-**Original document:** [Calibration and Validation Data (Google Doc)](https://docs.google.com/document/d/1FuVfgN-JbE4pBMSoXS6X5yTnXet_lDQ91Y4VgFDG59U/edit)
-
-**Author and date:** Aritra Dey, published 2026-09-16.
-
-**Status:** working draft. The text below is the report as written on its source date. Where a count in the text differs from the current repository, the current state is given separately in a callout titled "Repository state".
-
-This report is split across three pages: this page (Summary, Key points, Part C and the Appendix), [Part A. The site level data](site-level-data.qmd) and [Part B. The statewide evidence](statewide-evidence.qmd).
-
-Synchronised 2026-09-30 from the Google Doc last modified 2026-09-30.
-:::
-
 ## Summary {#summary}
 
 The MAGiC pipeline is used to generate inventory and projection estimates of SOC stocks and GHG emissions from California croplands.

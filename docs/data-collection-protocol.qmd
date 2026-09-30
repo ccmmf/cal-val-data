@@ -7,16 +7,6 @@ format:
     toc: true
 ---
 
-::: {.callout-note title="Source"}
-**[Open the original Google Doc: Calibration / Validation Data Collection Protocol](https://docs.google.com/document/d/13iHlkWCEwWezIXt2sO7e3XcsNKkCwRrhGSMtXfJu_t4/edit)**
-
-Author: David LeBauer. The document carries no date of its own. The Google Doc was created 2026-04-13; the date above is the date it was last modified.
-
-Status: working draft. "Protocol and schema are working drafts. As a draft, this document and schema should be updated as needed."
-
-Synchronised 2026-09-30 from the Google Doc last modified 2026-09-10.
-:::
-
 Status: Protocol and schema are working drafts. As a draft, this document and schema should be updated as needed.
 
 **Purpose**

@@ -8,12 +8,6 @@ format:
     toc: true
 ---
 
-::: {.callout-note title="Source"}
-**Original document:** [Calibration and Validation Data (Google Doc)](https://docs.google.com/document/d/1FuVfgN-JbE4pBMSoXS6X5yTnXet_lDQ91Y4VgFDG59U/edit), Part B. Author Aritra Dey, published 2026-09-16, working draft. The Summary, Key points, Part C and the Appendix are on the [main report page](calibration-validation-data.qmd).
-
-Synchronised 2026-09-30 from the Google Doc last modified 2026-09-30.
-:::
-
 ## B1. What this half is for {#b1-what-this-half-is-for}
 
 Six sites cannot establish how California cropland responds to a management change. The statewide evidence is the second constraint: a synthesis of published results for each practice and outcome, assembled so it can serve either as a calibration target or as an acceptance test on model behaviour.

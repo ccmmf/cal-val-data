@@ -80,8 +80,6 @@ quarto render
 quarto publish gh-pages
 ```
 
-The report, protocol and requirements pages are converted from Google Docs, which remain the source of their text; each page links its document and gives the date it was last synchronised.
-
 ## Attribution
 
 Curated data derives from sources (public data archives and journals) that require attribution under CC-BY. Cite the original sources listed in [`data/citations.csv`](https://github.com/ccmmf/cal-val-data/blob/develop/data/citations.csv) and, for the synthesis evidence, in the `citation` and `doi` columns of [`data_raw/statewide_benchmarking/extracted_evidence.csv`](https://github.com/ccmmf/cal-val-data/blob/develop/data_raw/statewide_benchmarking/extracted_evidence.csv). Each site level dataset's provenance and curation decisions are recorded in its `data_raw/<dataset_id>/data_entry_report.md` under [`data_raw/`](https://github.com/ccmmf/cal-val-data/tree/develop/data_raw); the synthesis evidence has its [`data_ingest_report.md`](https://github.com/ccmmf/cal-val-data/blob/develop/data_raw/statewide_benchmarking/data_ingest_report.md).
