@@ -66,167 +66,58 @@
     ]
   },
   {
-    "objectID": "reports/statewide-evidence.html",
-    "href": "reports/statewide-evidence.html",
-    "title": "Part B. The statewide evidence",
+    "objectID": "reports/using-the-two-together.html",
+    "href": "reports/using-the-two-together.html",
+    "title": "Part C. Using the two together",
     "section": "",
-    "text": "Six sites cannot establish how California cropland responds to a management change. The statewide evidence is the second constraint: a synthesis of published results for each practice and outcome, assembled so it can serve either as a calibration target or as an acceptance test on model behaviour.\n62 evidence rows were extracted from 20 audited sources, 14 of which are held in the shared reference library.",
+    "text": "Site data constrains magnitude; statewide evidence constrains response. They also check each other, which is the main reason for carrying both.",
     "crumbs": [
       "Reports",
-      "Part B: Statewide Evidence"
+      "Part C: Using the Two Together"
     ]
   },
   {
-    "objectID": "reports/statewide-evidence.html#b1-what-this-half-is-for",
-    "href": "reports/statewide-evidence.html#b1-what-this-half-is-for",
-    "title": "Part B. The statewide evidence",
+    "objectID": "reports/using-the-two-together.html#c1-what-each-side-constrains",
+    "href": "reports/using-the-two-together.html#c1-what-each-side-constrains",
+    "title": "Part C. Using the two together",
     "section": "",
-    "text": "Six sites cannot establish how California cropland responds to a management change. The statewide evidence is the second constraint: a synthesis of published results for each practice and outcome, assembled so it can serve either as a calibration target or as an acceptance test on model behaviour.\n62 evidence rows were extracted from 20 audited sources, 14 of which are held in the shared reference library.",
+    "text": "Site data constrains magnitude; statewide evidence constrains response. They also check each other, which is the main reason for carrying both.",
     "crumbs": [
       "Reports",
-      "Part B: Statewide Evidence"
+      "Part C: Using the Two Together"
     ]
   },
   {
-    "objectID": "reports/statewide-evidence.html#b2-the-practice-by-outcome-grid",
-    "href": "reports/statewide-evidence.html#b2-the-practice-by-outcome-grid",
-    "title": "Part B. The statewide evidence",
-    "section": "B2. The practice by outcome grid",
-    "text": "B2. The practice by outcome grid\n\n\n\n\n\n\nFigure 1: Statewide evidence, practice by outcome. Label names the selected source. Green cells enter a likelihood; purple cells are sign checks. Grey cells carry no target.\n\n\n\nSix practices by three outcomes gives 18 cells. 17 have at least one piece of evidence behind them; cover crops and methane is the only cell with nothing in the library at all.\nCoverage is not usability, which is what the colouring separates.\n\n\n\nTable 1: Classes of practice by outcome cell.\n\n\n\n\n\n\n\n\n\n\nClass\nCells\nMeaning\n\n\n\n\nFittable\n6\na real uncertainty on the contrast is reported, or can be computed from the source’s own data, so the cell can enter a likelihood\n\n\nSign check\n2\nthe effect has a magnitude but no spread has been recovered, so it carries an expert informed prior on the spread; it can be fitted if that prior is adopted, and until then serves as a sign check\n\n\nNo target\n10\nno usable contrast in the evidence, no evidence at all for cover crops and methane, or left out by priority for reduced tillage and methane\n\n\n\n\n\n\nSix cells are fittable: cover crops, non-crop carbon and reduced tillage on soil carbon, reduced tillage on N2O, fertilisation on N2O, and rice drying on CH4.\n\nThe eight cells that are used\nSix cells are fittable. Their spread comes from the source itself, so they can enter a likelihood directly. For fertilisation and rice methane the rows are held by crop class and by number of drying events, and only the one matching a run is used.\n\n\n\nTable 2: The six fittable cells.\n\n\n\n\n\n\n\n\n\n\n\n\nCell\nCentre\nSpread\nUnits\nSource\n\n\n\n\n+Cover Crops x Soil C\n0.32\n0.74 (SD, population)\nMg C ha-1 yr-1\nPoeplau & Don 2015\n\n\nReduced tillage x N2O\n0.322\n0.124 (SE, from 95% CI)\nLRR\nvan Kessel 2013, dry &lt;10 yr\n\n\n+Non-crop C x Soil C\n0.238\n0.0028 (SE, from 95% CI)\nLRR\nBai 2023\n\n\nReduced tillage x Soil C\n0.216\n0.448 (SD, population)\nMg C ha-1 yr-1\nSun 2020\n\n\n+/- N Fertilization x N2O\n0.0009 to 0.0181\n0.00028 to 0.00497 (SE, reported)\n% points of EF per kg N ha-1\nShcherbak 2014, by crop class\n\n\nFlooding / rice x CH4\n-0.399 to -1.394\n0.117 to 0.182 (SE, from 95% CIs)\nLRR\nJiang 2019, by drying events\n\n\n\n\n\n\nTwo more have a published effect size but no printed dispersion, so they carry the expert informed prior on the spread described in B5 and serve as sign checks unless that prior is adopted in the likelihood. For rice N2O an interval is drawn in Jiang 2019 Figure 2a and could still be digitised.\n\n\n\nTable 3: The two sign check cells, with an expert informed prior on the spread.\n\n\n\n\n\n\n\n\n\n\n\n\nCell\nCentre\nSpread\nUnits\nSource\n\n\n\n\nFlooding / rice x N2O\n0.718\n0.707 (SE, expert prior)\nLRR\nJiang 2019\n\n\nAnnual -&gt; Perennial x Soil C\n0.154\n0.707 (SE, expert prior)\nLRR\nSiddique 2023\n\n\n\n\n\n\nNote that the fittable cells sit on three scales. Cover crops and reduced tillage on soil carbon are absolute rates in Mg C ha-1 yr-1; non-crop carbon, reduced tillage on N2O and rice methane are log response ratios, which are dimensionless; fertilisation on N2O is a change in emission factor per kg N ha-1. They cannot be compared to each other directly, and each has to be matched against the equivalent model quantity on its own scale.\nThe remaining ten cells carry no target; nine have no usable value, and reduced tillage on methane is left out by priority (B3). That is the finding, not a gap to be filled.\nThat is a small number and it is better stated plainly than dressed up. Filling the grid was never the objective. An empty cell carries information, because it says the literature does not support a target there, and a manufactured number would be worse than the gap.",
+    "objectID": "reports/using-the-two-together.html#c2-a-caution-on-how-the-evidence-enters-the-likelihood",
+    "href": "reports/using-the-two-together.html#c2-a-caution-on-how-the-evidence-enters-the-likelihood",
+    "title": "Part C. Using the two together",
+    "section": "C2. A caution on how the evidence enters the likelihood",
+    "text": "C2. A caution on how the evidence enters the likelihood\nA synthesis estimate is one estimate, not many. If every design point is scored separately against the same synthesis number, that single piece of information is counted repeatedly, and the posterior on the mean effect tightens as one over the square root of the number of pseudo observations. That precision is set by how many were included rather than by the underlying data.\nPerturbing each pseudo observation with the population spread makes the draws look correct marginally, but does not change how much they say about the mean. Heterogeneity across sites belongs in the model as variation, not in the observation error where it is averaged away.\nTwo quantities are therefore worth reporting separately: the mean effect with its interval, noted as dependent on the number of pseudo observations used, and the predictive spread across sites, checked against the observed among plot spread.",
     "crumbs": [
       "Reports",
-      "Part B: Statewide Evidence"
+      "Part C: Using the Two Together"
     ]
   },
   {
-    "objectID": "reports/statewide-evidence.html#b3-why-so-few-cells-are-fittable",
-    "href": "reports/statewide-evidence.html#b3-why-so-few-cells-are-fittable",
-    "title": "Part B. The statewide evidence",
-    "section": "B3. Why so few cells are fittable",
-    "text": "B3. Why so few cells are fittable\n\n\n\n\n\n\nFigure 2: Every contrast in the evidence library, on the log response ratio scale. Bars are 95% intervals. Only 4 of 15 have one, and all 4 are the same cell. Grey points are point estimates only; green points have an error bar reported or derivable.\n\n\n\nThe figure shows the library as first assembled. This is the clearest single view of the problem. Fifteen contrasts are expressed as log response ratios. Four carry an interval. Eleven are point estimates with nothing around them.\nThree distinct causes sit behind that, and they have different remedies.\nMost sources report a ratio with no dispersion. The eleven grey points are ratios of two published means. Since the figure was made, four more cells have gained a spread. Rice methane uses the confidence intervals Jiang 2019 reports for each number of drying events. Non-crop carbon and reduced tillage on soil carbon moved to newer syntheses: Bai 2023, which reports a confidence interval, in place of Vicente-Vicente 2016, and Sun 2020 in place of Robertson 2000, with the spread computed from the site data in its Table S1. Fertilisation on N2O comes from Shcherbak 2014, whose supplementary Table S3 reports standard errors by crop class. These now enter the likelihood (B2). The two with no printed spread carry an expert informed prior on the spread (B5), although for rice N2O an interval is drawn in Jiang 2019 Figure 2a and could still be digitised.\nThe four that do have intervals are not four constraints. All of them are reduced tillage on N2O, so they are alternatives for a single cell. The figure also shows why pooling them would be wrong: the two van Kessel duration subgroups are one response changing with time since adoption, positive under 10 years and negative after, so the target is matched to adoption age rather than averaged.\nSome reported uncertainties describe a different quantity from the one being targeted. A standard deviation across the plots of one treatment arm is not the uncertainty on the difference between arms, and treating it as such would underestimate . Each row now records what its uncertainty applies to, so this cannot be misread downstream.\nOne further case is a matter of scope. Reduced tillage on methane has a real published error bar, and tillage does enter the SIPNET methane formulation: it speeds decomposition, which leaves less carbon substrate for methane production. It can be sign checked, and a model that does not respond, or responds in the wrong direction, fails that check and warrants further investigation. It is left out of the targets by priority rather than because it cannot be used, as the next paragraph explains.\nThe dataset focuses on the response of methane to water management in rice systems because this is the primary source of cropland CH4.",
+    "objectID": "reports/using-the-two-together.html#c3-reading-this-data-honestly",
+    "href": "reports/using-the-two-together.html#c3-reading-this-data-honestly",
+    "title": "Part C. Using the two together",
+    "section": "C3. Reading this data honestly",
+    "text": "C3. Reading this data honestly\nThree limits are worth carrying forward into any result built on it.\nCross domain skill is not demonstrated. Because no site pairs soil carbon with flux at useful density, a parameter set reproducing soil carbon at Davis has never been tested for methane in the Delta.\nThe Delta is one landscape, not three samples. The three towers share a climate and a Delta peat island setting, so agreement among them is weaker evidence than three independent sites would be.\nTwo caveats apply to the targets. Salinas 2003 and 2004 are excluded as establishment effects, and the magnitude of the US-Bi2 net source should be confirmed with the site team before it carries weight in a fit. Both are documented above so that a later reader meets the caveat alongside the data rather than discovering it independently.",
     "crumbs": [
       "Reports",
-      "Part B: Statewide Evidence"
+      "Part C: Using the Two Together"
     ]
   },
   {
-    "objectID": "reports/statewide-evidence.html#b4-how-uncertainty-is-recorded",
-    "href": "reports/statewide-evidence.html#b4-how-uncertainty-is-recorded",
-    "title": "Part B. The statewide evidence",
-    "section": "B4. How uncertainty is recorded",
-    "text": "B4. How uncertainty is recorded\nA bare number beside a spread does not say enough to be used, because the same figure can mean opposite things. Every row therefore declares three properties explicitly: the type of uncertainty, the scale it lives on, since a ratio must be on the log scale before it is meaningful, and the referent, meaning whether it describes the mean, the population, or a single arm.\nThe distinction that matters most is precision against variability. An uncertainty on a mean tightens a posterior; a spread across a population should widen it. Reading one as the other is the easiest route to a calibration that is confident and wrong.\n\n\n\n\n\n\nA worked example\n\n\n\nPoeplau and Don report 0.32 ± 0.08 Mg C ha-1 yr-1 for cover crops on soil carbon. Their methods state that errors in the text are 95 percent confidence intervals, so 0.08 is a confidence interval half width and the standard error on the mean is 0.041.\nTheir supplement separately provides 139 per plot annual rates, whose standard deviation is 0.744. Both numbers are valid and they answer different questions. 0.041 describes how well the synthesis pins the average. 0.744 describes how much real sites vary. They differ by a factor of eighteen.\nA further subtlety: those 139 rates have a mean of 0.544, whereas the headline 0.32 is the slope of a regression forced through the origin. The centre and the spread are therefore not two descriptions of one distribution, so which estimator is being targeted should be named rather than assumed.",
-    "crumbs": [
-      "Reports",
-      "Part B: Statewide Evidence"
-    ]
-  },
-  {
-    "objectID": "reports/statewide-evidence.html#b5-where-the-spread-is-an-expert-informed-prior",
-    "href": "reports/statewide-evidence.html#b5-where-the-spread-is-an-expert-informed-prior",
-    "title": "Part B. The statewide evidence",
-    "section": "B5. Where the spread is an expert informed prior",
-    "text": "B5. Where the spread is an expert informed prior\nTwo cells have a published effect size but no printed dispersion in the source. Rather than discarding them or inventing a precise figure, they carry a stated expert informed prior on the spread: the 95 percent interval spans a factor of four either side of the estimate, making the standard error ln(4) / 1.96, or 0.707 on the log scale.\nIn the data tables every such row is marked as an assumed spread used for sign checks, so any analysis restricted to reported uncertainty can exclude them in a single step.",
-    "crumbs": [
-      "Reports",
-      "Part B: Statewide Evidence"
-    ]
-  },
-  {
-    "objectID": "reports/statewide-evidence.html#b6-what-is-deliberately-excluded",
-    "href": "reports/statewide-evidence.html#b6-what-is-deliberately-excluded",
-    "title": "Part B. The statewide evidence",
-    "section": "B6. What is deliberately excluded",
-    "text": "B6. What is deliberately excluded\nNo pooling across studies that disagree. Each cell selects one row and retains the others beside it, unaggregated. An earlier version averaged a positive effect against a negative one and produced an apparent decrease matching neither input.\nNo effect sizes derived from null results. A paper reporting no significant change is an absence of an effect size, not an effect size of zero.\nNo absolute levels among the targets. Inventory totals and emission factors are comparison values rather than calibration targets, and are held separately.\nNo source used beyond what it measured. One candidate soil carbon row was dropped after finding the table reported carbon derived from corn rather than total soil carbon, where the total was in fact declining, so the sign would have been backwards.",
-    "crumbs": [
-      "Reports",
-      "Part B: Statewide Evidence"
-    ]
-  },
-  {
-    "objectID": "reports/calibration-validation-data.html",
-    "href": "reports/calibration-validation-data.html",
-    "title": "Calibration and Validation Data",
-    "section": "",
-    "text": "The MAGiC pipeline is used to generate inventory and projection estimates of SOC stocks and GHG emissions from California croplands.\nThe calibration and validation dataset combines two functionally1 independent bodies of evidence, and they do different jobs. These are\nSite level data is six California fields where somebody measured soil carbon or a greenhouse gas flux. It answers a question about magnitude: does the model produce the right stock, the right flux, at a real place.\nSynthesis evidence is a set of values from statistical synthesis of published literature on the impacts of sustainable farming practices on SOC and GHG balance. It answers a question about response: when a practice changes, does the model respond in a direction and rough magnitude that is consistent with available evidence.\n\n\n\n\n\n\nNeither of these datasets is sufficient. The limited site-level dataset is insufficient for calibration because it is easy to overfit the model to specific sites while missing the big picture changes.\n\n\n\n\n\n\nSoil carbon and gas flux are measured at different sites. Of the six sites, three include SOC stock measurements, and three provide gas exchange, and no site carries both. Any claim spanning both is an extrapolation, not a validated result.\nPractice contrasts exist at only two sites, both annual crop soil sites. There is no measured practice contrast anywhere in the Delta, and none for rice.\nSix of the 18 statewide cells carry a spread and can be fitted, where a cell is one practice paired with one outcome. They are cover crops, non-crop carbon and reduced tillage on soil carbon, reduced tillage on N2O, fertilisation on N2O, and rice drying on CH4. Two more have no published spread and are used to check the direction of the model response (B5).\nTwo caveats apply to the targets. Salinas 2003 and 2004 are excluded as establishment effects, and US-Bi2 is a much larger net carbon source than its neighbour, a magnitude to confirm with the site team. Both are described in place.\nCoverage and usability are not the same thing. An empty cell indicates that no useable target was identified in the sources reviewed.",
-    "crumbs": [
-      "Reports",
-      "Overview & Key Points"
-    ]
-  },
-  {
-    "objectID": "reports/calibration-validation-data.html#summary",
-    "href": "reports/calibration-validation-data.html#summary",
-    "title": "Calibration and Validation Data",
-    "section": "",
-    "text": "The MAGiC pipeline is used to generate inventory and projection estimates of SOC stocks and GHG emissions from California croplands.\nThe calibration and validation dataset combines two functionally1 independent bodies of evidence, and they do different jobs. These are\nSite level data is six California fields where somebody measured soil carbon or a greenhouse gas flux. It answers a question about magnitude: does the model produce the right stock, the right flux, at a real place.\nSynthesis evidence is a set of values from statistical synthesis of published literature on the impacts of sustainable farming practices on SOC and GHG balance. It answers a question about response: when a practice changes, does the model respond in a direction and rough magnitude that is consistent with available evidence.\n\n\n\n\n\n\nNeither of these datasets is sufficient. The limited site-level dataset is insufficient for calibration because it is easy to overfit the model to specific sites while missing the big picture changes.\n\n\n\n\n\n\nSoil carbon and gas flux are measured at different sites. Of the six sites, three include SOC stock measurements, and three provide gas exchange, and no site carries both. Any claim spanning both is an extrapolation, not a validated result.\nPractice contrasts exist at only two sites, both annual crop soil sites. There is no measured practice contrast anywhere in the Delta, and none for rice.\nSix of the 18 statewide cells carry a spread and can be fitted, where a cell is one practice paired with one outcome. They are cover crops, non-crop carbon and reduced tillage on soil carbon, reduced tillage on N2O, fertilisation on N2O, and rice drying on CH4. Two more have no published spread and are used to check the direction of the model response (B5).\nTwo caveats apply to the targets. Salinas 2003 and 2004 are excluded as establishment effects, and US-Bi2 is a much larger net carbon source than its neighbour, a magnitude to confirm with the site team. Both are described in place.\nCoverage and usability are not the same thing. An empty cell indicates that no useable target was identified in the sources reviewed.",
-    "crumbs": [
-      "Reports",
-      "Overview & Key Points"
-    ]
-  },
-  {
-    "objectID": "reports/calibration-validation-data.html#part-a-the-site-level-data",
-    "href": "reports/calibration-validation-data.html#part-a-the-site-level-data",
-    "title": "Calibration and Validation Data",
-    "section": "Part A. The site level data",
-    "text": "Part A. The site level data\nSections A1 to A7 are on their own page: Part A. The site level data.",
-    "crumbs": [
-      "Reports",
-      "Overview & Key Points"
-    ]
-  },
-  {
-    "objectID": "reports/calibration-validation-data.html#part-b-the-statewide-evidence",
-    "href": "reports/calibration-validation-data.html#part-b-the-statewide-evidence",
-    "title": "Calibration and Validation Data",
-    "section": "Part B. The statewide evidence",
-    "text": "Part B. The statewide evidence\nSections B1 to B6 are on their own page: Part B. The statewide evidence.",
-    "crumbs": [
-      "Reports",
-      "Overview & Key Points"
-    ]
-  },
-  {
-    "objectID": "reports/calibration-validation-data.html#part-c-using-the-two-together",
-    "href": "reports/calibration-validation-data.html#part-c-using-the-two-together",
-    "title": "Calibration and Validation Data",
-    "section": "Part C. Using the two together",
-    "text": "Part C. Using the two together\n\nC1. What each side constrains\nSite data constrains magnitude; statewide evidence constrains response. They also check each other, which is the main reason for carrying both.\n\n\nC2. A caution on how the evidence enters the likelihood\nA synthesis estimate is one estimate, not many. If every design point is scored separately against the same synthesis number, that single piece of information is counted repeatedly, and the posterior on the mean effect tightens as one over the square root of the number of pseudo observations. That precision is set by how many were included rather than by the underlying data.\nPerturbing each pseudo observation with the population spread makes the draws look correct marginally, but does not change how much they say about the mean. Heterogeneity across sites belongs in the model as variation, not in the observation error where it is averaged away.\nTwo quantities are therefore worth reporting separately: the mean effect with its interval, noted as dependent on the number of pseudo observations used, and the predictive spread across sites, checked against the observed among plot spread.\n\n\nC3. Reading this data honestly\nThree limits are worth carrying forward into any result built on it.\nCross domain skill is not demonstrated. Because no site pairs soil carbon with flux at useful density, a parameter set reproducing soil carbon at Davis has never been tested for methane in the Delta.\nThe Delta is one landscape, not three samples. The three towers share a climate and a Delta peat island setting, so agreement among them is weaker evidence than three independent sites would be.\nTwo caveats apply to the targets. Salinas 2003 and 2004 are excluded as establishment effects, and the magnitude of the US-Bi2 net source should be confirmed with the site team before it carries weight in a fit. Both are documented above so that a later reader meets the caveat alongside the data rather than discovering it independently.",
-    "crumbs": [
-      "Reports",
-      "Overview & Key Points"
-    ]
-  },
-  {
-    "objectID": "reports/calibration-validation-data.html#appendix-data-held-but-not-used-as-targets",
-    "href": "reports/calibration-validation-data.html#appendix-data-held-but-not-used-as-targets",
-    "title": "Calibration and Validation Data",
+    "objectID": "reports/using-the-two-together.html#appendix-data-held-but-not-used-as-targets",
+    "href": "reports/using-the-two-together.html#appendix-data-held-but-not-used-as-targets",
+    "title": "Part C. Using the two together",
     "section": "Appendix. Data held but not used as targets",
     "text": "Appendix. Data held but not used as targets\nThe repository holds 37,258 records in total. Beyond the 630 targets, the rest are mainly soil sensor profiles, bulk density, soil chemistry and crop yields, which support diagnosis and context but are not targets. Yield and biomass exist only at Russell Ranch. The towers also carry soil sensor records of temperature, moisture and oxygen; they are valuable for diagnosing why a flux is wrong, but they are not themselves carbon targets.",
     "crumbs": [
       "Reports",
-      "Overview & Key Points"
-    ]
-  },
-  {
-    "objectID": "reports/calibration-validation-data.html#footnotes",
-    "href": "reports/calibration-validation-data.html#footnotes",
-    "title": "Calibration and Validation Data",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nLarge scale synthesis datasets may contain the same site level data, but we assume that the effect is small enough to be practically independent.↩︎",
-    "crumbs": [
-      "Reports",
-      "Overview & Key Points"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "MAGiC Calibration and Validation Data",
-    "section": "",
-    "text": "This site reports the data used to calibrate and validate the SIPNET ecosystem model in the MAGiC inventory runs for California cropland: measurements from six field sites, and evidence from published syntheses of how soil carbon and greenhouse gas fluxes respond to management.\n\nOverview & Key Points summarises the two bodies of evidence, what each can support, and how they are used together.\nPart A: Site-Level Data describes the six sites, when and what was measured, and the practice contrasts.\nPart B: Statewide Evidence sets out the practice by outcome grid built from published syntheses, and which cells can be fitted.\n\nThe Data Collection Protocol and the Data Requirements describe how datasets are chosen and curated.",
-    "crumbs": [
-      "Home"
+      "Part C: Using the Two Together"
     ]
   },
   {
@@ -315,6 +206,133 @@
     "crumbs": [
       "Reports",
       "Part A: Site-Level Data"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Calibration and Validation Data",
+    "section": "",
+    "text": "The MAGiC pipeline is used to generate inventory and projection estimates of SOC stocks and GHG emissions from California croplands.\nThe calibration and validation dataset combines two functionally1 independent bodies of evidence, and they do different jobs. These are\nSite level data is six California fields where somebody measured soil carbon or a greenhouse gas flux. It answers a question about magnitude: does the model produce the right stock, the right flux, at a real place.\nSynthesis evidence is a set of values from statistical synthesis of published literature on the impacts of sustainable farming practices on SOC and GHG balance. It answers a question about response: when a practice changes, does the model respond in a direction and rough magnitude that is consistent with available evidence.\n\n\n\n\n\n\nNeither of these datasets is sufficient. The limited site-level dataset is insufficient for calibration because it is easy to overfit the model to specific sites while missing the big picture changes.\n\n\n\n\n\n\n\n\nKey point\nDetail\n\n\n\n\nSoil carbon and gas flux are measured at different sites.\nOf the six sites, three include SOC stock measurements, and three provide gas exchange, and no site carries both. Any claim spanning both is an extrapolation, not a validated result.\n\n\nPractice contrasts exist at only two sites, both annual crop soil sites.\nThere is no measured practice contrast anywhere in the Delta, and none for rice.\n\n\nSix of the 18 statewide cells carry a spread and can be fitted, where a cell is one practice paired with one outcome.\nThey are cover crops, non-crop carbon and reduced tillage on soil carbon, reduced tillage on N2O, fertilisation on N2O, and rice drying on CH4. Two more have no published spread and are used to check the direction of the model response (B5).\n\n\nTwo caveats apply to the targets.\nSalinas 2003 and 2004 are excluded as establishment effects, and US-Bi2 is a much larger net carbon source than its neighbour, a magnitude to confirm with the site team. Both are described in place.\n\n\nCoverage and usability are not the same thing.\nAn empty cell indicates that no useable target was identified in the sources reviewed.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "Calibration and Validation Data",
+    "section": "",
+    "text": "The MAGiC pipeline is used to generate inventory and projection estimates of SOC stocks and GHG emissions from California croplands.\nThe calibration and validation dataset combines two functionally1 independent bodies of evidence, and they do different jobs. These are\nSite level data is six California fields where somebody measured soil carbon or a greenhouse gas flux. It answers a question about magnitude: does the model produce the right stock, the right flux, at a real place.\nSynthesis evidence is a set of values from statistical synthesis of published literature on the impacts of sustainable farming practices on SOC and GHG balance. It answers a question about response: when a practice changes, does the model respond in a direction and rough magnitude that is consistent with available evidence.\n\n\n\n\n\n\nNeither of these datasets is sufficient. The limited site-level dataset is insufficient for calibration because it is easy to overfit the model to specific sites while missing the big picture changes.\n\n\n\n\n\n\n\n\nKey point\nDetail\n\n\n\n\nSoil carbon and gas flux are measured at different sites.\nOf the six sites, three include SOC stock measurements, and three provide gas exchange, and no site carries both. Any claim spanning both is an extrapolation, not a validated result.\n\n\nPractice contrasts exist at only two sites, both annual crop soil sites.\nThere is no measured practice contrast anywhere in the Delta, and none for rice.\n\n\nSix of the 18 statewide cells carry a spread and can be fitted, where a cell is one practice paired with one outcome.\nThey are cover crops, non-crop carbon and reduced tillage on soil carbon, reduced tillage on N2O, fertilisation on N2O, and rice drying on CH4. Two more have no published spread and are used to check the direction of the model response (B5).\n\n\nTwo caveats apply to the targets.\nSalinas 2003 and 2004 are excluded as establishment effects, and US-Bi2 is a much larger net carbon source than its neighbour, a magnitude to confirm with the site team. Both are described in place.\n\n\nCoverage and usability are not the same thing.\nAn empty cell indicates that no useable target was identified in the sources reviewed.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#the-two-bodies-of-evidence",
+    "href": "index.html#the-two-bodies-of-evidence",
+    "title": "Calibration and Validation Data",
+    "section": "The two bodies of evidence",
+    "text": "The two bodies of evidence\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Site level data. Where the six cal/val sites are. Point size is the number of target records used; circles mark field experiments and triangles mark flux towers. See Part A.\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Statewide evidence. Practice by outcome grid, labelled with the selected source. Green cells enter a likelihood; purple cells are sign checks; grey cells carry no target. See Part B.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#contents",
+    "href": "index.html#contents",
+    "title": "Calibration and Validation Data",
+    "section": "Contents",
+    "text": "Contents\n\n\n\nPage\nWhat it covers\n\n\n\n\nPart A: Site-Level Data\nThe six sites, when the measurements happened, coverage against the prepared run windows, what is measured and where, the soil carbon and flux records, and practice contrasts (A1 to A7)\n\n\nPart B: Statewide Evidence\nWhat the statewide evidence is for, the practice by outcome grid, why so few cells are fittable, how uncertainty is recorded, where the spread is an expert informed prior, and what is deliberately excluded (B1 to B6)\n\n\nPart C: Using the Two Together\nWhat each side constrains, how the evidence enters the likelihood, and reading this data honestly (C1 to C3), with the data held but not used as targets\n\n\nData Collection Protocol\nProtocol for spreadsheet-based curation of published and archived datasets for crop model calibration and validation (working draft)\n\n\nData Requirements (2024)\nThe datasets sought, as of December 2024, to evaluate the SIPNET ecosystem model’s simulation of agricultural management and biogeochemical cycling",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "Calibration and Validation Data",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nLarge scale synthesis datasets may contain the same site level data, but we assume that the effect is small enough to be practically independent.↩︎",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "reports/statewide-evidence.html",
+    "href": "reports/statewide-evidence.html",
+    "title": "Part B. The statewide evidence",
+    "section": "",
+    "text": "Six sites cannot establish how California cropland responds to a management change. The statewide evidence is the second constraint: a synthesis of published results for each practice and outcome, assembled so it can serve either as a calibration target or as an acceptance test on model behaviour.\n62 evidence rows were extracted from 20 audited sources, 14 of which are held in the shared reference library.",
+    "crumbs": [
+      "Reports",
+      "Part B: Statewide Evidence"
+    ]
+  },
+  {
+    "objectID": "reports/statewide-evidence.html#b1-what-this-half-is-for",
+    "href": "reports/statewide-evidence.html#b1-what-this-half-is-for",
+    "title": "Part B. The statewide evidence",
+    "section": "",
+    "text": "Six sites cannot establish how California cropland responds to a management change. The statewide evidence is the second constraint: a synthesis of published results for each practice and outcome, assembled so it can serve either as a calibration target or as an acceptance test on model behaviour.\n62 evidence rows were extracted from 20 audited sources, 14 of which are held in the shared reference library.",
+    "crumbs": [
+      "Reports",
+      "Part B: Statewide Evidence"
+    ]
+  },
+  {
+    "objectID": "reports/statewide-evidence.html#b2-the-practice-by-outcome-grid",
+    "href": "reports/statewide-evidence.html#b2-the-practice-by-outcome-grid",
+    "title": "Part B. The statewide evidence",
+    "section": "B2. The practice by outcome grid",
+    "text": "B2. The practice by outcome grid\n\n\n\n\n\n\nFigure 1: Statewide evidence, practice by outcome. Label names the selected source. Green cells enter a likelihood; purple cells are sign checks. Grey cells carry no target.\n\n\n\nSix practices by three outcomes gives 18 cells. 17 have at least one piece of evidence behind them; cover crops and methane is the only cell with nothing in the library at all.\nCoverage is not usability, which is what the colouring separates.\n\n\n\nTable 1: Classes of practice by outcome cell.\n\n\n\n\n\n\n\n\n\n\nClass\nCells\nMeaning\n\n\n\n\nFittable\n6\na real uncertainty on the contrast is reported, or can be computed from the source’s own data, so the cell can enter a likelihood\n\n\nSign check\n2\nthe effect has a magnitude but no spread has been recovered, so it carries an expert informed prior on the spread; it can be fitted if that prior is adopted, and until then serves as a sign check\n\n\nNo target\n10\nno usable contrast in the evidence, no evidence at all for cover crops and methane, or left out by priority for reduced tillage and methane\n\n\n\n\n\n\nSix cells are fittable: cover crops, non-crop carbon and reduced tillage on soil carbon, reduced tillage on N2O, fertilisation on N2O, and rice drying on CH4.\n\nThe eight cells that are used\nSix cells are fittable. Their spread comes from the source itself, so they can enter a likelihood directly. For fertilisation and rice methane the rows are held by crop class and by number of drying events, and only the one matching a run is used.\n\n\n\nTable 2: The six fittable cells.\n\n\n\n\n\n\n\n\n\n\n\n\nCell\nCentre\nSpread\nUnits\nSource\n\n\n\n\n+Cover Crops x Soil C\n0.32\n0.74 (SD, population)\nMg C ha-1 yr-1\nPoeplau & Don 2015\n\n\nReduced tillage x N2O\n0.322\n0.124 (SE, from 95% CI)\nLRR\nvan Kessel 2013, dry &lt;10 yr\n\n\n+Non-crop C x Soil C\n0.238\n0.0028 (SE, from 95% CI)\nLRR\nBai 2023\n\n\nReduced tillage x Soil C\n0.216\n0.448 (SD, population)\nMg C ha-1 yr-1\nSun 2020\n\n\n+/- N Fertilization x N2O\n0.0009 to 0.0181\n0.00028 to 0.00497 (SE, reported)\n% points of EF per kg N ha-1\nShcherbak 2014, by crop class\n\n\nFlooding / rice x CH4\n-0.399 to -1.394\n0.117 to 0.182 (SE, from 95% CIs)\nLRR\nJiang 2019, by drying events\n\n\n\n\n\n\nTwo more have a published effect size but no printed dispersion, so they carry the expert informed prior on the spread described in B5 and serve as sign checks unless that prior is adopted in the likelihood. For rice N2O an interval is drawn in Jiang 2019 Figure 2a and could still be digitised.\n\n\n\nTable 3: The two sign check cells, with an expert informed prior on the spread.\n\n\n\n\n\n\n\n\n\n\n\n\nCell\nCentre\nSpread\nUnits\nSource\n\n\n\n\nFlooding / rice x N2O\n0.718\n0.707 (SE, expert prior)\nLRR\nJiang 2019\n\n\nAnnual -&gt; Perennial x Soil C\n0.154\n0.707 (SE, expert prior)\nLRR\nSiddique 2023\n\n\n\n\n\n\nNote that the fittable cells sit on three scales. Cover crops and reduced tillage on soil carbon are absolute rates in Mg C ha-1 yr-1; non-crop carbon, reduced tillage on N2O and rice methane are log response ratios, which are dimensionless; fertilisation on N2O is a change in emission factor per kg N ha-1. They cannot be compared to each other directly, and each has to be matched against the equivalent model quantity on its own scale.\nThe remaining ten cells carry no target; nine have no usable value, and reduced tillage on methane is left out by priority (B3). That is the finding, not a gap to be filled.\nThat is a small number and it is better stated plainly than dressed up. Filling the grid was never the objective. An empty cell carries information, because it says the literature does not support a target there, and a manufactured number would be worse than the gap.",
+    "crumbs": [
+      "Reports",
+      "Part B: Statewide Evidence"
+    ]
+  },
+  {
+    "objectID": "reports/statewide-evidence.html#b3-why-so-few-cells-are-fittable",
+    "href": "reports/statewide-evidence.html#b3-why-so-few-cells-are-fittable",
+    "title": "Part B. The statewide evidence",
+    "section": "B3. Why so few cells are fittable",
+    "text": "B3. Why so few cells are fittable\n\n\n\n\n\n\nFigure 2: Every contrast in the evidence library, on the log response ratio scale. Bars are 95% intervals. Only 4 of 15 have one, and all 4 are the same cell. Grey points are point estimates only; green points have an error bar reported or derivable.\n\n\n\nThe figure shows the library as first assembled. This is the clearest single view of the problem. Fifteen contrasts are expressed as log response ratios. Four carry an interval. Eleven are point estimates with nothing around them.\nThree distinct causes sit behind that, and they have different remedies.\nMost sources report a ratio with no dispersion. The eleven grey points are ratios of two published means. Since the figure was made, four more cells have gained a spread. Rice methane uses the confidence intervals Jiang 2019 reports for each number of drying events. Non-crop carbon and reduced tillage on soil carbon moved to newer syntheses: Bai 2023, which reports a confidence interval, in place of Vicente-Vicente 2016, and Sun 2020 in place of Robertson 2000, with the spread computed from the site data in its Table S1. Fertilisation on N2O comes from Shcherbak 2014, whose supplementary Table S3 reports standard errors by crop class. These now enter the likelihood (B2). The two with no printed spread carry an expert informed prior on the spread (B5), although for rice N2O an interval is drawn in Jiang 2019 Figure 2a and could still be digitised.\nThe four that do have intervals are not four constraints. All of them are reduced tillage on N2O, so they are alternatives for a single cell. The figure also shows why pooling them would be wrong: the two van Kessel duration subgroups are one response changing with time since adoption, positive under 10 years and negative after, so the target is matched to adoption age rather than averaged.\nSome reported uncertainties describe a different quantity from the one being targeted. A standard deviation across the plots of one treatment arm is not the uncertainty on the difference between arms, and treating it as such would underestimate . Each row now records what its uncertainty applies to, so this cannot be misread downstream.\nOne further case is a matter of scope. Reduced tillage on methane has a real published error bar, and tillage does enter the SIPNET methane formulation: it speeds decomposition, which leaves less carbon substrate for methane production. It can be sign checked, and a model that does not respond, or responds in the wrong direction, fails that check and warrants further investigation. It is left out of the targets by priority rather than because it cannot be used, as the next paragraph explains.\nThe dataset focuses on the response of methane to water management in rice systems because this is the primary source of cropland CH4.",
+    "crumbs": [
+      "Reports",
+      "Part B: Statewide Evidence"
+    ]
+  },
+  {
+    "objectID": "reports/statewide-evidence.html#b4-how-uncertainty-is-recorded",
+    "href": "reports/statewide-evidence.html#b4-how-uncertainty-is-recorded",
+    "title": "Part B. The statewide evidence",
+    "section": "B4. How uncertainty is recorded",
+    "text": "B4. How uncertainty is recorded\nA bare number beside a spread does not say enough to be used, because the same figure can mean opposite things. Every row therefore declares three properties explicitly: the type of uncertainty, the scale it lives on, since a ratio must be on the log scale before it is meaningful, and the referent, meaning whether it describes the mean, the population, or a single arm.\nThe distinction that matters most is precision against variability. An uncertainty on a mean tightens a posterior; a spread across a population should widen it. Reading one as the other is the easiest route to a calibration that is confident and wrong.\n\n\n\n\n\n\nA worked example\n\n\n\nPoeplau and Don report 0.32 ± 0.08 Mg C ha-1 yr-1 for cover crops on soil carbon. Their methods state that errors in the text are 95 percent confidence intervals, so 0.08 is a confidence interval half width and the standard error on the mean is 0.041.\nTheir supplement separately provides 139 per plot annual rates, whose standard deviation is 0.744. Both numbers are valid and they answer different questions. 0.041 describes how well the synthesis pins the average. 0.744 describes how much real sites vary. They differ by a factor of eighteen.\nA further subtlety: those 139 rates have a mean of 0.544, whereas the headline 0.32 is the slope of a regression forced through the origin. The centre and the spread are therefore not two descriptions of one distribution, so which estimator is being targeted should be named rather than assumed.",
+    "crumbs": [
+      "Reports",
+      "Part B: Statewide Evidence"
+    ]
+  },
+  {
+    "objectID": "reports/statewide-evidence.html#b5-where-the-spread-is-an-expert-informed-prior",
+    "href": "reports/statewide-evidence.html#b5-where-the-spread-is-an-expert-informed-prior",
+    "title": "Part B. The statewide evidence",
+    "section": "B5. Where the spread is an expert informed prior",
+    "text": "B5. Where the spread is an expert informed prior\nTwo cells have a published effect size but no printed dispersion in the source. Rather than discarding them or inventing a precise figure, they carry a stated expert informed prior on the spread: the 95 percent interval spans a factor of four either side of the estimate, making the standard error ln(4) / 1.96, or 0.707 on the log scale.\nIn the data tables every such row is marked as an assumed spread used for sign checks, so any analysis restricted to reported uncertainty can exclude them in a single step.",
+    "crumbs": [
+      "Reports",
+      "Part B: Statewide Evidence"
+    ]
+  },
+  {
+    "objectID": "reports/statewide-evidence.html#b6-what-is-deliberately-excluded",
+    "href": "reports/statewide-evidence.html#b6-what-is-deliberately-excluded",
+    "title": "Part B. The statewide evidence",
+    "section": "B6. What is deliberately excluded",
+    "text": "B6. What is deliberately excluded\nNo pooling across studies that disagree. Each cell selects one row and retains the others beside it, unaggregated. An earlier version averaged a positive effect against a negative one and produced an apparent decrease matching neither input.\nNo effect sizes derived from null results. A paper reporting no significant change is an absence of an effect size, not an effect size of zero.\nNo absolute levels among the targets. Inventory totals and emission factors are comparison values rather than calibration targets, and are held separately.\nNo source used beyond what it measured. One candidate soil carbon row was dropped after finding the table reported carbon derived from corn rather than total soil carbon, where the total was in fact declining, so the sign would have been backwards.",
+    "crumbs": [
+      "Reports",
+      "Part B: Statewide Evidence"
     ]
   },
   {
