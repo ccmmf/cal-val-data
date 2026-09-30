@@ -99,10 +99,6 @@ The usual workflow is:
 - TODO: put CSVs under version control
 - TODO: annotate PDFs in Zotero?
 
-::: {.callout-note title="Repository state, develop 900ffd2 (2026-09-30)"}
-The curated tables are already exported as CSV files under version control in [`data/`](https://github.com/ccmmf/cal-val-data/tree/develop/data), generated from the workbooks by [`scripts/ingest.R`](https://github.com/ccmmf/cal-val-data/blob/develop/scripts/ingest.R). Basic QA is scripted: [`scripts/validate.R`](https://github.com/ccmmf/cal-val-data/blob/develop/scripts/validate.R) checks the CSVs against [`datapackage.json`](https://github.com/ccmmf/cal-val-data/blob/develop/datapackage.json) (missing columns, empty keys, broken foreign keys, odd dates; warnings only), and it runs in CI on pull requests ([`.github/workflows/validate.yml`](https://github.com/ccmmf/cal-val-data/blob/develop/.github/workflows/validate.yml)) together with `frictionless validate datapackage.json` and the tests in [`tests/testthat`](https://github.com/ccmmf/cal-val-data/tree/develop/tests/testthat).
-:::
-
 **Do not:** Optimize early curation around the final downstream file layout.
 
 The first priority is accurate capture and documentation.
@@ -302,12 +298,6 @@ The current workbook still uses some older column names such as `trait`, `mean`,
 - `trait` -> `variable`
 - `mean` -> `value`
 - `start_date` / `end_date` -> `min_date` / `max_date`
-
-::: {.callout-note title="Repository state, develop 900ffd2 (2026-09-30)"}
-[`data/observations.csv`](https://github.com/ccmmf/cal-val-data/blob/develop/data/observations.csv) (37,258 rows) already uses `variable`, `value`, `min_date` and `max_date`; it has no `trait`, `mean`, `start_date` or `end_date` columns. It also has `dataset_id`, `citation_id`, `treatment_id`, `replicate_id`, `reported_units`, `observation_level`, `statname`, `stat`, `n`, `notes` and `flags`.
-
-The exported observations have no `site_id` or `method_id` column. Observations reference the site through `sitename` (the `name` key of [`data/sites.csv`](https://github.com/ccmmf/cal-val-data/blob/develop/data/sites.csv)) and the method through `method` (the `method name` key of [`data/methods.csv`](https://github.com/ccmmf/cal-val-data/blob/develop/data/methods.csv), which also has a `method_id` column). `treatment_id` references the `name` key of [`data/treatments.csv`](https://github.com/ccmmf/cal-val-data/blob/develop/data/treatments.csv). Where a workbook carries `site_id` or `method_id` columns in observations, [`scripts/ingest.R`](https://github.com/ccmmf/cal-val-data/blob/develop/scripts/ingest.R) drops them as duplicates of those columns. It likewise drops the workbook `site_id` column from sites and `treatment_id` from treatments, so [`data/sites.csv`](https://github.com/ccmmf/cal-val-data/blob/develop/data/sites.csv) and [`data/treatments.csv`](https://github.com/ccmmf/cal-val-data/blob/develop/data/treatments.csv) are keyed by `name`.
-:::
 
 ### 6.6 Management events
 
@@ -757,12 +747,6 @@ These columns are worth using when the source reports them directly.
 
 : Optional stable columns for routine curation of management events. {#tbl-management-optional-columns}
 
-::: {.callout-note title="Repository state, develop 900ffd2 (2026-09-30)"}
-[`data/managements.csv`](https://github.com/ccmmf/cal-val-data/blob/develop/data/managements.csv) (3,865 rows, keyed by `event_id`) does not use the proposed names for three of the core columns. The site is in `sites.name`, the treatment in `treatments.name` and the event type in `mgmttype`; where a workbook carries `site_id`, `treatment_id` or `event_type` columns, [`scripts/ingest.R`](https://github.com/ccmmf/cal-val-data/blob/develop/scripts/ingest.R) drops them as duplicates of those columns. There is no `source_id` column; the source is in `citation` (a DOI) and `citation_id`. The file does have `min_date`, `max_date`, `notes`, `relative_timing`, `relative_timing_days` and `attributes_json`.
-
-Of the optional columns in @tbl-management-optional-columns, it has `crop_display`, `reported_amount`, `reported_units`, `depth_m`, `intensity_category` and `reported_material`. It has no `crop_code`, `method` or `frac_above_removed_0to1` column. The generic columns `mgmttype`, `level`, `units` and `estimated` (Section 16.3) are still present.
-:::
-
 ### 15.3 PEcAn-aligned reference fields for later conversion
 
 The current PEcAn `events.json` schema includes fields such as:
@@ -813,10 +797,6 @@ The following changes would improve the current curation schema. This section is
 - add `reported_effect_scope` with clearly defined values such as `treatment_mean` and `aggregated_mean`
 - add `aggregated_over_factors` for aggregated summaries
 
-::: {.callout-note title="Repository state, develop 900ffd2 (2026-09-30)"}
-Most of these changes are already in [`data/observations.csv`](https://github.com/ccmmf/cal-val-data/blob/develop/data/observations.csv): it has `value`, `variable`, `reported_units`, `observation_level`, `dataset_id`, `replicate_id`, `min_date` and `max_date`, and no `mean`, `trait` or `rep` column. It has no `block_id`, `plot_id`, `reported_effect_scope` or `aggregated_over_factors` column.
-:::
-
 ### 16.2 Experimental design metadata
 
 Add one of the following:
@@ -864,6 +844,3 @@ The following questions should be revisited after several real datasets have bee
 
 Until then, prefer simple, explicit capture over premature schema complexity.
 
-::: {.callout-note title="Repository state, develop 900ffd2 (2026-09-30)"}
-[`data/observations.csv`](https://github.com/ccmmf/cal-val-data/blob/develop/data/observations.csv) already has a `source_table` column; it has no `source_figure` or `source_panel` column.
-:::

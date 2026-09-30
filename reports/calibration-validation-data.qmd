@@ -36,12 +36,6 @@ Neither of these datasets is sufficient. The limited site-level dataset is insuf
 
 5.  **Coverage and usability are not the same thing.** An empty cell indicates that no useable target was identified in the sources reviewed.
 
-::: {.callout-note title="Repository state, develop 900ffd2 (2026-09-30)"}
-**Key point 1.** In [`data/observations.csv`](https://github.com/ccmmf/cal-val-data/blob/develop/data/observations.csv), SOC stock records (`SOC_stock_Mg_ha`) exist at two sites, not three: `russell_ranch_davis` (96 records) and `salinas_socs` (288 records, of which the 64 from 2003 and 2004 are excluded from the targets). Modesto holds 6 total carbon concentration records (`total_C_pct`), not stocks, and 54 chamber N~2~O flux records. Gas flux target records therefore come from four sites: Modesto, US-Bi1, US-Bi2 and US-Twt. No site holds both SOC stock and gas flux target records.
-
-**Key point 2.** [`data/treatment_pairs.csv`](https://github.com/ccmmf/cal-val-data/blob/develop/data/treatment_pairs.csv) holds 24 practice contrasts at three sites, not two: Russell Ranch 15, Salinas 8 and Modesto 1 (compost against no compost), as the table in [A7](site-level-data.qmd#a7-practice-contrasts) lists. None is at a Delta tower site or under rice.
-:::
-
 ## Part A. The site level data {#part-a-the-site-level-data}
 
 Sections A1 to A7 are on their own page: [Part A. The site level data](site-level-data.qmd).

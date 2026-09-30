@@ -14,10 +14,6 @@ Six sites cannot establish how California cropland responds to a management chan
 
 62 evidence rows were extracted from 20 audited sources, 14 of which are held in the shared reference library.
 
-::: {.callout-note title="Repository state, develop 900ffd2 (2026-09-30)"}
-The statewide evidence in [`data_raw/statewide_benchmarking`](https://github.com/ccmmf/cal-val-data/tree/develop/data_raw/statewide_benchmarking) now holds 67 evidence rows in [`extracted_evidence.csv`](https://github.com/ccmmf/cal-val-data/blob/develop/data_raw/statewide_benchmarking/extracted_evidence.csv) (text: 62), from 24 audited sources in [`source_audit.csv`](https://github.com/ccmmf/cal-val-data/blob/develop/data_raw/statewide_benchmarking/source_audit.csv) (text: 20), of which 15 are marked as held in the shared Zotero library (`in_zotero` is `yes`; text: 14). The sentence above gives the counts on the source date.
-:::
-
 ## B2. The practice by outcome grid {#b2-the-practice-by-outcome-grid}
 
 ![Statewide evidence, practice by outcome. Label names the selected source. Green cells enter a likelihood; purple cells are sign checks. Grey cells carry no target.](figures/b2-evidence-grid.png){#fig-b2-evidence-grid width=100% fig-align="center" fig-alt="Grid of six practices (+Cover Crops, +Non-crop C, Reduced tillage, +/- N Fertilization, Flooding / rice, Annual -> Perennial) by three outcomes (Soil C, N2O, CH4). Six green fittable cells: +Cover Crops by Soil C (Poeplau 2015), +Non-crop C by Soil C (Bai 2023), Reduced tillage by Soil C (Sun 2020), Reduced tillage by N2O (van Kessel 2013), +/- N Fertilization by N2O (Shcherbak 2014, 6 subclasses) and Flooding / rice by CH4 (Jiang 2019, 5 subclasses). Two purple sign check cells: Flooding / rice by N2O (Jiang 2019) and Annual -> Perennial by Soil C (Siddique 2023). The other ten cells are grey; +Cover Crops by CH4 is labelled no evidence and Reduced tillage by CH4 is labelled Six 2004, not a target."}
