@@ -7,15 +7,13 @@ format:
     toc: true
 ---
 
-Status: Protocol and schema are working drafts. As a draft, this document and schema should be updated as needed.
-
 **Purpose**
 
 Protocol for spreadsheet-based curation of published and / or archived datasets for crop model calibration and validation.
 
 This document describes a protocol that data curators can use to compile target observations as well as context required for running a model. It uses a file-based workflow centered on a curation workbook, dataset README notes, and later conversion to structured flat files for model configuration and evaluation. It is based on the BETYdb data entry docs, but does not assume a web based UI, API, or PostgreSQL database.
 
-## 1. Scope and status
+## 1. Scope
 
 This protocol describes how to curate published or archived datasets into the current calibration/validation workbook.
 
@@ -25,10 +23,6 @@ The immediate goal is to capture what the source actually reports in a way that 
 - reviewable
 - practical and usable for curation
 - flexible enough to support schema refinement
-
-This is a working protocol, not a finalized publication. Some fields and conventions will change as more datasets are curated.
-
-Dataset-specific discussions and decisions should be tracked in the relevant GitHub issue. This document will capture general decisions.
 
 ## 2. Purpose and guiding principles
 
@@ -89,15 +83,13 @@ The usual workflow is:
 3. Add the paper and any archived data to the project Zotero folders.
 4. Populate the workbook tabs.
 5. Document assumptions, unavoidable transformations, and unresolved issues in the dataset README.
-6. Run basic QA. \[TODO: define\]
+6. Run basic QA.
 7. Hand off for later conversion, harmonization, and gap-filling.
 
 **Required:** Keep project-level source organization simple.
 
 - Maintain project-specific Zotero folders for `to enter` and `entered`.
 - Make sure the curated dataset can be traced back to a stable paper, archive, supplement, or figure source.
-- TODO: put CSVs under version control
-- TODO: annotate PDFs in Zotero?
 
 **Do not:** Optimize early curation around the final downstream file layout.
 
@@ -180,7 +172,7 @@ Examples:
 
 - A site key should not encode the treatment.
 - A treatment key should not be the only place where factor structure is documented.
-- A replicate identifier should not be hidden in notes if it can be represented explicitly. TODO: explain with examples such as `block_a_plot_3` vs buried notes
+- A replicate identifier should not be hidden in notes if it can be represented explicitly.
 
 ## 6. Core data model
 
@@ -197,8 +189,6 @@ Minimum:
 - `doi` when available
 
 **Recommended:** A stable local text key such as `authorYYYYabc` can be used as `citation_id`, where `abc` is based on the first letters of the first three informative words in the title.
-
-TODO: decide whether `citation_id` should be the canonical local key, whether DOI should serve as the primary key when available, or whether this is purely a schema decision and should be omitted from protocol text.
 
 ### 6.2 Sites
 
@@ -330,7 +320,7 @@ The calibration / validation data collection template is adequate for single-fac
 At minimum, record:
 
 - `design_type`
-- experimental unit TODO: clarify difference between experimental unit, replicate unit, and plot structure
+- experimental unit
 - replicate unit
 - blocking or plot structure if present
 - factors and levels
@@ -338,19 +328,7 @@ At minimum, record:
 
 **Recommended:** If the spreadsheet can not capture a design, include the design metadata in the README immediately rather than leaving it implicit.
 
-### 7.2 Is the current schema good enough?
-
-For simple datasets, mostly yes.
-
-For more complex designs, not by itself. The current curation structure needs additional metadata for:
-
-- block and plot hierarchy
-- repeated measures on the same unit TODO: consider whether `plot_id`, `entity_id`, or another grouping field is needed
-- factorial main effects including pooled summaries across factors
-- explicit unit of replication
-- TODO: Add experiment_id (currently 'site_id' is overloaded, experiment ID should be explicit)
-
-### 7.3 Treatment comparisons
+### 7.2 Treatment comparisons
 
 For datasets used for explicit treatment-contrast calibration or validation, add a `treatment_pairs` table.
 
@@ -369,7 +347,7 @@ By convention, `treatment_id_1` is the baseline treatment.
 
 Treatment-level control flags may still be stored when obvious from the paper, but pair ordering is authoritative for comparison tasks.
 
-### 7.4 Main effects and aggregated factorial summaries
+### 7.3 Main effects and aggregated factorial summaries
 
 Published main effects are sometimes the only values available from a factorial study. These can be used with careful construction of model runs. But this is complex and lower prioirty.
 
@@ -705,142 +683,3 @@ Examples:
 - management details that may change the modeled interpretation
 
 **Do not:** Resolve major schema or interpretation ambiguity silently.
-
-## 15. Proposed management events table schema
-
-### 15.1 Required core columns
-
-These are the minimum columns recommended for routine curation.
-
-| column | status | description |
-| :--------------------- | :------------------------ | :----------------------------------------------------------------------------------------------- |
-| `site_id` | required | Stable site key |
-| `treatment_id` | required | Stable treatment or system key |
-| `event_type` | required | PEcAn-aligned event type such as `planting`, `harvest`, `irrigation`, `fertilization`, `tillage` |
-| `min_date` | required when recoverable | Earliest plausible event date |
-| `max_date` | required when recoverable | Latest plausible event date |
-| `source_id` | required | Citation or source key |
-| `notes` | recommended | Human-readable event notes |
-| `relative_timing` | optional | Relative timing category when date is described relative to another event |
-| `relative_timing_days` | optional | Numeric day offset associated with `relative_timing` when reported |
-| `attributes_json` | optional | Additional structured event metadata not yet promoted to columns |
-
-: Required core columns for the proposed management events table. {#tbl-management-core-columns}
-
-TODO: decide whether `relative_timing` and `relative_timing_days` should remain first-class columns or move into `attributes_json`.
-
-### 15.2 Optional stable columns for routine curation
-
-These columns are worth using when the source reports them directly.
-
-| column | applies to | notes |
-| :------------------------ | :-------------------------------------------- | :-------------------------------------------------- |
-| `crop_code` | planting | Stable crop identifier when available |
-| `crop_display` | planting | Human-readable crop name |
-| `reported_amount` | irrigation, fertilization, harvest, amendment | Store the amount as reported |
-| `reported_units` | irrigation, fertilization, harvest, amendment | Store the original reported units |
-| `method` | irrigation | For example `soil`, `canopy`, `flood` when reported |
-| `depth_m` | tillage | Reported tillage depth |
-| `intensity_category` | tillage | For example `zero`, `reduced`, `conventional` |
-| `frac_above_removed_0to1` | harvest | Only when directly reported or directly recoverable |
-| `reported_material` | fertilization or amendment | For example compost, manure, urea, ammonium sulfate |
-
-: Optional stable columns for routine curation of management events. {#tbl-management-optional-columns}
-
-### 15.3 PEcAn-aligned reference fields for later conversion
-
-The current PEcAn `events.json` schema includes fields such as:
-
-- `leaf_c_kg_m2`
-- `wood_c_kg_m2`
-- `fine_root_c_kg_m2`
-- `coarse_root_c_kg_m2`
-- `frac_below_removed_0to1`
-- `frac_above_to_litter_0to1`
-- `frac_below_to_litter_0to1`
-- `amount_mm`
-- `immed_evap_frac_0to1`
-- `org_c_kg_m2`
-- `org_n_kg_m2`
-- `nh4_n_kg_m2`
-- `no3_n_kg_m2`
-- `tillage_eff_0to1`
-
-These should be treated as optional conversion targets, not routine curation requirements.
-
-**Required:** Leave these blank during curation if the paper does not report them.
-
-### 15.4 Why not require all PEcAn fields now?
-
-Because many literature sources do not report the model-facing attributes needed for direct `events.json` population.
-
-The curation schema should therefore:
-
-- preserve reported event information faithfully
-- make later conversion straightforward
-- avoid forcing curators to invent missing model inputs
-
-## 16. Suggested schema changes
-
-The following changes would improve the current curation schema. This section is exploratory and may evolve as more datasets are curated.
-
-### 16.1 Observation schema
-
-- rename `mean` to `value`
-- rename `trait` to `variable`
-- add `reported_units`
-- add `observation_level`
-- add `dataset_id`
-- replace `rep` with `replicate_id`
-- add `block_id` and `plot_id` if needed separately from replicate id
-- use `min_date` and `max_date` consistently
-- add `reported_effect_scope` with clearly defined values such as `treatment_mean` and `aggregated_mean`
-- add `aggregated_over_factors` for aggregated summaries
-
-### 16.2 Experimental design metadata
-
-Add one of the following:
-
-- a dedicated design tab, or
-- a required structured README section
-
-Recommended fields:
-
-- `design_type`
-- `experimental_unit`
-- `replicate_unit`
-- `control_definition`
-- factor names and levels
-- `treatment_pairs` for explicit contrast tasks
-
-### 16.3 Management schema
-
-The current management sheet pattern using generic columns such as `mgmttype`, `level`, `units`, and `estimated` is useful for quick capture but should evolve toward:
-
-- required event core columns
-- optional stable event columns
-- `attributes_json` for overflow
-
-This will better support later conversion to PEcAn-compatible events.
-
-## 17. Future workflow expansion
-
-This protocol can later be reorganized into a fuller BETYdb-style step-by-step workflow, but the current version is intended to be usable now.
-
-- Import / integrate figure extraction, unit conversion, statistic conversion, site guidance, treatment guidance, management concepts, and QA material as reusable references.
-- Add a top-level pointer directing curators from the legacy BETYdb workflow docs to this spreadsheet-first protocol.
-- Over time, separate reusable curation principles from BETYdb-specific implementation details.
-
-## 18. Open questions and likely future extensions
-
-The following questions should be revisited after several real datasets have been curated:
-
-- whether to add a dedicated design tab instead of relying on README notes
-- how to represent repeated measures on the same experimental unit
-- how best to encode pooled main effects and interaction summaries in downstream conversion
-- whether to add explicit source-location fields such as `source_table`, `source_figure`, and `source_panel`
-- whether to maintain both reported-unit variables and normalized downstream variable names in the same workbook
-- which recurring `attributes_json` keys should be promoted to first-class columns
-
-Until then, prefer simple, explicit capture over premature schema complexity.
-
