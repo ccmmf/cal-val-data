@@ -25,7 +25,7 @@ Neither of these datasets is sufficient. The limited site-level dataset is insuf
 
 | Key point | Detail |
 | :--------------------------------------- | :------------------------------------------------------------------------------ |
-| **Soil carbon and gas flux are measured at different sites.** | Of the six sites, three include SOC stock measurements, and three provide gas exchange, and no site carries both. Any claim spanning both is an extrapolation, not a validated result. |
+| **Soil carbon and gas flux are measured at different sites.** | Of the six sites, two include SOC stock measurements (Russell Ranch and Salinas), four provide gas exchange (Modesto and the three towers), and no site carries both. Any claim spanning both is an extrapolation, not a validated result. |
 | **Practice contrasts exist at only two sites**, both annual crop soil sites. | There is no measured practice contrast anywhere in the Delta, and none for rice. |
 | **Six of the 18 statewide cells carry a spread and can be fitted**, where a cell is one practice paired with one outcome. | They are cover crops, non-crop carbon and reduced tillage on soil carbon, reduced tillage on N~2~O, fertilisation on N~2~O, and rice drying on CH~4~. Two more have no published spread and are used to check the direction of the model response ([B5](reports/statewide-evidence.qmd#b5-where-the-spread-is-an-expert-informed-prior)). |
 | **Two caveats apply to the targets.** | [Salinas 2003 and 2004](reports/site-level-data.qmd#a5-the-soil-carbon-record) are excluded as establishment effects, and [US-Bi2](reports/site-level-data.qmd#a6-the-flux-record) is a much larger net carbon source than its neighbour, a magnitude to confirm with the site team. Both are described in place. |
