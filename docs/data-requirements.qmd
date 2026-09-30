@@ -1,0 +1,128 @@
+---
+title: "Data Requirements for SIPNET Model Validation"
+subtitle: "Modeling and Analysis of Greenhouse gases in Croplands"
+date: 2024-12-18
+format:
+  html:
+    toc: true
+---
+
+::: {.callout-note title="Source"}
+**Original document:** [Data Requirements for SIPNET Model Validation (Google Doc)](https://docs.google.com/document/d/149Za_k-p8gSKTJIkOm5-YLFRYHFg2KYUYOIgLdPZZ0o/edit)
+
+**Author and date:** Modeling and Analysis of Greenhouse gases in Croplands, 2024-12-18. This is the document's subtitle line; no individual author is named.
+
+**Status:** dated reference. This page records what the project was seeking from datasets as of 2024-12-18. It is not a record of which requirements this repository meets; the [Data Reference](data-reference.qmd) describes what the repository holds.
+
+Synchronised 2026-09-30 from the Google Doc last modified 2026-05-29.
+:::
+
+## Overview
+
+We are developing new capabilities to simulate agricultural management and biogeochemical cycling in the SIPNET ecosystem model. To evaluate model performance, **we are seeking datasets that:**
+
+- Include measurements of soil carbon, GHG flux, biomass, and/or water balance;
+- Provide records of management events at the sites where each measurement was taken; and
+- Are from croplands (row crops, orchards, vineyards, hay land) in California or regions that are climatically and agronomically relevant to California agriculture.
+
+We define these in detail below, but if this already sounds like your dataset then we want to talk to you!
+
+## Background
+
+We are developing a framework for GHG measurement and modeling in order to estimate the GHG balance of California croplands. As part of this work we are updating the SIPNET biogeochemistry model by adding  two classes of change to the model that require calibration and validation. First we will add representation of cropland management events including planting, harvest, irrigation, fertilization, and tillage. Second we will add a nitrogen cycle and the ability to simulate N~2~O and CH~4~ fluxes to a model that currently tracks C and water dynamics.
+
+The ideal calibration and validation data are time series observations from field experiments where these management events are known and the target response variables (soil C stocks and GHG fluxes) are measured at multiple time points. Ideally, these observations will have adequate metadata and additional covariates, including soil physical properties, weather, and other observations of C, N, and H~2~O pools and fluxes.
+
+## Sites
+
+We are interested in observations both from monitoring of single-management sites and from experiments that compare GHG balance between conventional and regenerative agricultural practices. Across the project we are interested in a representative sample of California’s crops and cropping systems, including orchards, vineyards,  row crops, hay land, and temporarily idled cropland.
+
+The minimum site metadata are:
+
+- Location: latitude and longitude (used to look up climate and soil information)
+- At least one year of available measurements
+- Available management data covers at least the full measurement period
+- Description of management(s) or intervention(s) applied
+
+Environmental conditions that are useful if available:
+
+- Soil physical properties: Texture, water holding capacity
+- Local weather station data
+
+Interventions of interest include but are not limited to:
+
+- Reduced or zero tillage,
+- Adoption of cover crops, interplanting, and alternative rotations
+- Alternate irrigation regimes
+- Type or timing of fertilization
+- Organic matter addition
+- Any practice eligible for the CA Healthy Soils Program
+
+There is no minimum or maximum field/plot size, but management should be uniform across each area sampled for the reported measurements. Sites should be in California or have cropping systems, climates, and soils that are temperate, Mediterranean, or otherwise comparable to those found in the state. Examples include orchards, vineyards, row crops, or hayland under irrigation and management practices similar to those used in California.
+
+## Measurements
+
+Model calibration and validation will require  measurements of at least one of:
+
+- Soil organic carbon
+    - Minimum measurement depth 30 cm
+    - At least two timepoints separated by at least three years
+- GHG Flux (CO~2~, N~2~O, and/or CH~4~)
+    - Measurements may be from continuous eddy covariance or from periodic chamber measurements at \<10d frequency
+    - Must cover at least one full growing season (year-round preferred)
+- Plant biomass
+    - Separated into root, stem, leaf if available
+- Evapotranspiration
+    - Must cover at least one full growing season (year-round preferred)
+
+Additional observations that would be useful for calibration and validation include:
+
+- Leaf Area Index
+- Growth stage (phenology)
+- Soil N mineralization rate
+- Other pools and fluxes of N, C, H~2~O
+    - Especially: NEE, soil water content
+    - N content or C:N ratio of plant biomass and soil organic matter
+- Site or local meteorology:
+    - Air temperature
+    - Soil temperature (optional)
+    - Photosynthetically Active Radiation or Shortwave Radiation
+    - Precipitation
+    - Vapor Pressure Deficit
+    - Wind speed
+
+## Management
+
+To verify that the model correctly represents the effects of management, we need to know the site’s management history in enough detail to set key attributes when modeling each event.
+
+Recognizing that management records are often sparse or incomplete, the definition of “enough detail” is flexible. In general, we need to know the existence, timing, type, and intensity of each management event, but we can assume default values for some of these when they are not known. Management practices that differ between treatments are the most important. Management histories should be fairly complete for the time period when measurements were collected; site history prior to the measurement period is also valuable but we recognize it is likely to be less detailed.
+
+Specific attributes of interest include (\* indicates required):
+
+- Irrigation
+    - start date\*
+    - end date
+    - type (e.g. drip, flood, sprinkler)
+    - amount\* (depth equivalent)
+        - if based on soil moisture, what is the minimum and maximum soil moisture content for irrigation to start and stop?
+    - rate (depth equivalent / hour) or event duration (hours)
+- Fertilization
+    - date\*
+    - N application rate\* (mass N / area)
+    - Fertilizer form
+    - If organic, amount of C\* (mass C / area) OR C:N ratio
+- Tillage
+    - date\*
+    - depth
+    - Implement
+- Planting
+    - date\*
+    - crop\*
+- Harvest, mowing, or biomass removal
+    - date\*
+    - component\* (grain, fruit, straw, wood, leaf)
+    - biomass removed (dry mass / area)
+    - biomass remaining in field (dry mass / area)
+    - biomass C:N ratio
+
+Please also indicate whether the management history is known complete or incomplete for a given time period; for example whether this is all the tillage events between 2010 and 2015, or only the ones that happened to be observed and recorded.
