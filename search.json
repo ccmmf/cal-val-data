@@ -1,134 +1,320 @@
 [
   {
-    "objectID": "docs/data-reference.html",
-    "href": "docs/data-reference.html",
-    "title": "Data Reference",
+    "objectID": "docs/data-requirements.html",
+    "href": "docs/data-requirements.html",
+    "title": "Data Requirements for SIPNET Model Validation",
     "section": "",
-    "text": "About this page\n\n\n\nThis reference was moved out of the repository README on 2026-09-30, when the README became the home page of this site. The README had fallen behind the repository in places, so the tables and lists below were brought up to date with develop 900ffd2 on that date. The changes are listed at the end. For fields, types and keys, datapackage.json remains the authority.",
+    "text": "We are developing new capabilities to simulate agricultural management and biogeochemical cycling in the SIPNET ecosystem model. To evaluate model performance, we are seeking datasets that:\n\nInclude measurements of soil carbon, GHG flux, biomass, and/or water balance;\nProvide records of management events at the sites where each measurement was taken; and\nAre from croplands (row crops, orchards, vineyards, hay land) in California or regions that are climatically and agronomically relevant to California agriculture.\n\nWe define these in detail below, but if this already sounds like your dataset then we want to talk to you!",
     "crumbs": [
       "Docs",
-      "Data Reference"
+      "Data Requirements (2024)"
     ]
   },
   {
-    "objectID": "docs/data-reference.html#overview",
-    "href": "docs/data-reference.html#overview",
-    "title": "Data Reference",
-    "section": "Overview",
-    "text": "Overview\nDatasets describe field experiments where a soil carbon or greenhouse gas response was measured against a control, so a model can be tested on two things at once: absolute value, and treatment difference (practice change signal that policy applications care about).\nKey features:\n\nModel agnostic. Observations stay in reported units with no model specific transformation. Mapping to model state variables happens downstream.\nLong format observations, one row per dataset, site, treatment, replicate, time window, and variable, at replicate level where source archive provides it.\nStable text keys (dataset_id, site, treatment_id, citation) rather than database identifiers.\nPer row provenance through fill_status, recording which source file each value came from.\nSource stated date ranges in min_date and max_date; point dates are never invented.\nNamed treatment contrasts in treatment_pairs, so practice change validation (compost vs no compost, cover crop vs none, organic vs conventional) is a first class query.\nCoverage matrix tracking which system, contrast, and target cells are filled, so gaps stay explicit.\n\nThe statewide synthesis evidence is kept apart from these tables, in data_raw/statewide_benchmarking/. Its README describes the files, and Part B of the report describes the evidence.",
+    "objectID": "docs/data-requirements.html#overview",
+    "href": "docs/data-requirements.html#overview",
+    "title": "Data Requirements for SIPNET Model Validation",
+    "section": "",
+    "text": "We are developing new capabilities to simulate agricultural management and biogeochemical cycling in the SIPNET ecosystem model. To evaluate model performance, we are seeking datasets that:\n\nInclude measurements of soil carbon, GHG flux, biomass, and/or water balance;\nProvide records of management events at the sites where each measurement was taken; and\nAre from croplands (row crops, orchards, vineyards, hay land) in California or regions that are climatically and agronomically relevant to California agriculture.\n\nWe define these in detail below, but if this already sounds like your dataset then we want to talk to you!",
     "crumbs": [
       "Docs",
-      "Data Reference"
+      "Data Requirements (2024)"
     ]
   },
   {
-    "objectID": "docs/data-reference.html#data-flow",
-    "href": "docs/data-reference.html#data-flow",
-    "title": "Data Reference",
-    "section": "Data flow",
-    "text": "Data flow\nCuration happens in Google Sheet workbooks, which are the source of truth. CSVs in data/ and data_raw/statewide_benchmarking/ are generated exports and must not be hand edited.\n\nThe workbooks hold the curated tables and are edited and reviewed there. 000-config.yml lists the three dataset workbooks: Salinas and Modesto, Russell Ranch, and the AmeriFlux Delta towers.\nscripts/ingest.R pulls each workbook tab to data/&lt;tab&gt;.csv, stacking the tab across all three workbooks.\nscripts/validate.R checks data/ against datapackage.json.\nscripts/ingest_benchmarking.R pulls the synthesis and meta-analysis evidence workbook into data_raw/statewide_benchmarking/, one CSV per worksheet except its README. With --check it compares the workbook with the committed CSVs and writes nothing.\nDownstream consumers read committed CSVs.\n\nCSVs are committed so consumers read a stable, documented snapshot. A workbook can keep changing without a commit per edit; CSVs are regenerated and committed when a dataset version is ready.",
+    "objectID": "docs/data-requirements.html#background",
+    "href": "docs/data-requirements.html#background",
+    "title": "Data Requirements for SIPNET Model Validation",
+    "section": "Background",
+    "text": "Background\nWe are developing a framework for GHG measurement and modeling in order to estimate the GHG balance of California croplands. As part of this work we are updating the SIPNET biogeochemistry model by adding two classes of change to the model that require calibration and validation. First we will add representation of cropland management events including planting, harvest, irrigation, fertilization, and tillage. Second we will add a nitrogen cycle and the ability to simulate N2O and CH4 fluxes to a model that currently tracks C and water dynamics.\nThe ideal calibration and validation data are time series observations from field experiments where these management events are known and the target response variables (soil C stocks and GHG fluxes) are measured at multiple time points. Ideally, these observations will have adequate metadata and additional covariates, including soil physical properties, weather, and other observations of C, N, and H2O pools and fluxes.",
     "crumbs": [
       "Docs",
-      "Data Reference"
+      "Data Requirements (2024)"
     ]
   },
   {
-    "objectID": "docs/data-reference.html#datasets",
-    "href": "docs/data-reference.html#datasets",
-    "title": "Data Reference",
-    "section": "Datasets",
-    "text": "Datasets\nEach site level dataset has a folder under data_raw/ whose data_entry_report.md records its provenance and curation decisions. Replicate level values come from a public archive wherever one provides them; companion analysis papers supply methods and cross checks. Each dataset group is curated in its own workbook, and ingest stacks each tab across all workbooks into one CSV per table.\n\n\n\nTable 1: Curated site level datasets.\n\n\n\n\n\ndataset_id\nsite\nlat, lon\nperiod\ntreatments\nvariables\ncitations (DOI)\n\n\n\n\nwhite_salinas_2020\nsalinas_socs (USDA ARS, Salinas Valley CA)\n36.62, -121.53\n2003 to 2011 (8 yr)\n8 systems socs_sys1..socs_sys8, 4 blocks (compost with or without cover crop type, frequency, seeding rate)\nSOC stock and concentration, bulk density, total N, nitrate, POXC\n10.1016/j.dib.2020.106481; 10.1371/journal.pone.0228677\n\n\nnichols_modesto_2024\nmodesto_almond_usda (USDA ARS almond fertigation trial, Modesto CA)\n37.63, -121.09\n2018 to 2019 (2 yr)\ncompost vs no_compost (annual compost top dress vs control, same drip fertigation)\nN2O flux, total C, total N, bulk density\n10.1002/saj2.20615; 10.15482/USDA.ADC/26155504\n\n\nrussell_ranch_tautges_2019\nrussell_ranch_davis (UC Davis Russell Ranch Century Experiment, Davis CA)\n38.54, -121.87\n1992 to 2014 (study years -1 to 21)\n14 systems, 13 with observations (conventional, organic, legume cover, alfalfa phase corn-tomato; irrigated and rainfed wheat; transitional; native grass reference)\ntotal C and N, bulk density to 250 cm, NH4-N, NO3-N, soil organic matter, corn, tomato, wheat, alfalfa and cover crop yields\n10.1002/ecy.2105; 10.1111/gcb.14762\n\n\nraffeld_2024\nrussell_ranch_davis (UC Davis Russell Ranch Century Experiment, Davis CA)\n38.54, -121.87\n1993 and 2012\n8 treatments, 6 plots each\nSOC_stock_Mg_ha at the treatment-specific 0-30 cm reference soil mass, computed per plot with SimpleESM ESM2\n10.5061/dryad.p2ngf1w06\n\n\nanthony_bouldin_2024\nUS-Bi2 (Bouldin corn) and US-Bi1 (Bouldin alfalfa), Sacramento-San Joaquin Delta CA\n38.1091, -121.535; 38.0992, -121.499\n2017 to 2021 (4 study years)\nsingle system per site; 9 automated chambers per site as spatial replicates\nchamber N2O, CH4 and CO2 flux, annual mean per chamber per year with standard error\n10.5061/dryad.qz612jmnx; 10.1007/s10533-023-01095-y\n\n\nameriflux_us_bi1_mvp\nUS-Bi1 (Bouldin Island alfalfa, Sacramento-San Joaquin Delta CA)\n38.0992, -121.499\n2017 to 2024\nsingle eddy covariance tower, no treatment contrast\nannual NEE and CH4 flux; soil C and N to 60 cm\n10.17190/AMF/1480317; 10.1038/s41467-023-37391-2\n\n\nameriflux_us_bi2_mvp\nUS-Bi2 (Bouldin Island corn, Sacramento-San Joaquin Delta CA)\n38.1091, -121.535\n2017 to 2024 (tower NEE from 2018)\nsingle eddy covariance tower, no treatment contrast\nannual NEE and CH4 flux; soil C and N, 0-15 cm\n10.17190/AMF/1419513; 10.1016/j.jenvman.2021.113562\n\n\nameriflux_us_twt_mvp\nUS-Twt (Twitchell Island rice, Sacramento-San Joaquin Delta CA)\n38.1087, -121.653\n2009 to 2017\nsingle eddy covariance tower, no treatment contrast\nannual NEE and CH4 flux; soil C, N, C:N, pH, P and K\n10.17190/AMF/1246140; 10.1371/journal.pone.0121432\n\n\n\n\n\n\nThe annual NEE and tower CH4 rows at the three Delta sites, and the annual chamber rows taken from publication tables at the two Bouldin sites, carry the upstream product or publication as their dataset_id, for example ameriflux_fluxnet_1f_us_bi1_v1_3_r1, fluxnet_ch4_community_product_v1_appendix_b_v2 or publication_anthony_2023_table_1. data/observations.csv therefore holds 14 dataset_id values in all.\n\nwhite_salinas_2020\nOrganic vegetable rotation (romaine lettuce, broccoli) with winter cover crops and compost. Randomized complete block, 4 blocks, so block level is replicate level here. Companion analysis paper focuses on 5 systems (those with optimal cover crop seeding rates); workbook carries all 8 from archive. SOC stock is concentration times bulk density times depth (0 to 30 cm), with bulk density measured only at end of Years 3 and 7 and propagated by equivalent soil mass, so core_sample method row carries that propagation rule. A large Year 0 to Year 1 SOC drop appears across all systems including no compost control, and is documented in source.\n\n\nnichols_modesto_2024\nLong term compost orchard with high frequency low concentration drip fertigation (about 195 kg N ha-1 across 14 events). N2O measured by closed static chamber on 9 dates (Dec 2018 to Aug 2019), 3 replicate arrays per treatment, upscaled to emitter level. Soil total C, total N, and bulk density are single timepoint (August 2019), so this dataset supports N2O magnitude and contrast validation but not a SOC trajectory.",
+    "objectID": "docs/data-requirements.html#sites",
+    "href": "docs/data-requirements.html#sites",
+    "title": "Data Requirements for SIPNET Model Validation",
+    "section": "Sites",
+    "text": "Sites\nWe are interested in observations both from monitoring of single-management sites and from experiments that compare GHG balance between conventional and regenerative agricultural practices. Across the project we are interested in a representative sample of California’s crops and cropping systems, including orchards, vineyards, row crops, hay land, and temporarily idled cropland.\nThe minimum site metadata are:\n\nLocation: latitude and longitude (used to look up climate and soil information)\nAt least one year of available measurements\nAvailable management data covers at least the full measurement period\nDescription of management(s) or intervention(s) applied\n\nEnvironmental conditions that are useful if available:\n\nSoil physical properties: Texture, water holding capacity\nLocal weather station data\n\nInterventions of interest include but are not limited to:\n\nReduced or zero tillage,\nAdoption of cover crops, interplanting, and alternative rotations\nAlternate irrigation regimes\nType or timing of fertilization\nOrganic matter addition\nAny practice eligible for the CA Healthy Soils Program\n\nThere is no minimum or maximum field/plot size, but management should be uniform across each area sampled for the reported measurements. Sites should be in California or have cropping systems, climates, and soils that are temperate, Mediterranean, or otherwise comparable to those found in the state. Examples include orchards, vineyards, row crops, or hayland under irrigation and management practices similar to those used in California.",
     "crumbs": [
       "Docs",
-      "Data Reference"
+      "Data Requirements (2024)"
     ]
   },
   {
-    "objectID": "docs/data-reference.html#measured-variables",
-    "href": "docs/data-reference.html#measured-variables",
-    "title": "Data Reference",
-    "section": "Measured variables",
-    "text": "Measured variables\nCore variables, in reported units:\n\n\n\nTable 2: Core measured variables.\n\n\n\n\n\n\n\n\n\n\nvariable\nunits\ndescription\n\n\n\n\nSOC_stock_Mg_ha\nMg C ha-1\nsoil organic carbon stock; min_depth / max_depth give the sampled interval for fixed-depth stocks and the reference interval for equivalent-soil-mass stocks\n\n\nSOC_conc_mg_kg\nmg C kg-1 soil\nsoil organic carbon concentration\n\n\nbulk_density_g_cm3\ng cm-3\nsoil bulk density\n\n\ntotal_N_conc_mg_kg\nmg N kg-1 soil\ntotal soil nitrogen concentration\n\n\nnitrate_N_mg_kg\nmg NO3-N kg-1 soil\nsoil nitrate nitrogen\n\n\nN2O_flux_g_N_ha_d\ng N2O-N ha-1 day-1\nnitrous oxide flux\n\n\ntotal_C_pct\n% dry weight\ntotal soil carbon by dry combustion\n\n\ntotal_N_pct\n% dry weight\ntotal soil nitrogen by dry combustion\n\n\n\n\n\n\nThe Delta tower and Bouldin chamber datasets add the gas flux variables below. The units column is as data/variables.csv gives it; each row keeps the source’s own units in reported_units.\n\n\n\nTable 3: Gas flux variables of the Delta tower and Bouldin chamber datasets.\n\n\n\n\n\n\n\n\n\n\n\n\nvariable\nunits\nreported units\nmeasurement support\nrows\n\n\n\n\nN2O_flux_mg_m2_d\nmg N2O m-2 d-1\nmg N2O m-2 d-1\nautomated chamber, US-Bi1 and US-Bi2 (anthony_bouldin_2024)\n70\n\n\nCH4_flux_mg_m2_d\nmg CH4 m-2 d-1\nmg CH4 m-2 d-1\nautomated chamber, US-Bi1 and US-Bi2 (anthony_bouldin_2024)\n70\n\n\nCO2_flux_g_m2_d\ng CO2 m-2 d-1\ng CO2 m-2 d-1\nopaque automated chamber, respiration only, US-Bi1 and US-Bi2 (anthony_bouldin_2024)\n70\n\n\nCH4_flux\nkg C m-2 s-1 (daily mean); kg C m-2 year-1 (annual total)\ng C m-2 yr-1 (11 rows); mg CH4 m-2 yr-1 (4); mg CH4 m-2 y-1 (3)\neddy covariance annual totals at US-Twt, US-Bi1 and US-Bi2 (11 rows); automated chamber annual means from publication tables at the US-Bi1 alfalfa chambers and US-Bi2 (7 rows)\n18\n\n\nN2O_flux\nsource-reported units\nmg N2O m-2 yr-1 (4); g N2O m-2 y-1 (3)\nautomated chamber annual means from publication tables, US-Bi1 alfalfa chambers and US-Bi2\n7\n\n\nNEE\nkg C m-2 s-1 (daily mean); kg C m-2 year-1 (annual total)\ngC m-2 y-1\neddy covariance annual totals, US-Bi1 (8), US-Bi2 (7), US-Twt (6)\n21\n\n\n\n\n\n\nCH4_flux holds both tower and chamber values, told apart by the method column. Chamber and tower values are different measurement supports and are not interchangeable.\nSupporting variables (soil organic matter fractions, texture, pH, biomass, yields, nitrogen inputs) accompany core targets where source reports them. The full list of 104 variables lives in data/variables.csv.",
+    "objectID": "docs/data-requirements.html#measurements",
+    "href": "docs/data-requirements.html#measurements",
+    "title": "Data Requirements for SIPNET Model Validation",
+    "section": "Measurements",
+    "text": "Measurements\nModel calibration and validation will require measurements of at least one of:\n\nSoil organic carbon\n\nMinimum measurement depth 30 cm\nAt least two timepoints separated by at least three years\n\nGHG Flux (CO2, N2O, and/or CH4)\n\nMeasurements may be from continuous eddy covariance or from periodic chamber measurements at &lt;10d frequency\nMust cover at least one full growing season (year-round preferred)\n\nPlant biomass\n\nSeparated into root, stem, leaf if available\n\nEvapotranspiration\n\nMust cover at least one full growing season (year-round preferred)\n\n\nAdditional observations that would be useful for calibration and validation include:\n\nLeaf Area Index\nGrowth stage (phenology)\nSoil N mineralization rate\nOther pools and fluxes of N, C, H2O\n\nEspecially: NEE, soil water content\nN content or C:N ratio of plant biomass and soil organic matter\n\nSite or local meteorology:\n\nAir temperature\nSoil temperature (optional)\nPhotosynthetically Active Radiation or Shortwave Radiation\nPrecipitation\nVapor Pressure Deficit\nWind speed",
     "crumbs": [
       "Docs",
-      "Data Reference"
+      "Data Requirements (2024)"
     ]
   },
   {
-    "objectID": "docs/data-reference.html#coverage",
-    "href": "docs/data-reference.html#coverage",
-    "title": "Data Reference",
-    "section": "Coverage",
-    "text": "Coverage\ndata/coverage.csv crosses system and treatment contrast against each target, split into magnitude and treatment contrast, for SOC change, N2O, CH4 and woody biomass. Target cells are coded 1 where current datasets cover them and 0 where they are tracked gaps. The planning matrix, with the SOC change and N2O columns and 1 shown as yes:\n\n\n\nTable 4: Planning matrix of system and treatment contrast against SOC change and N2O targets.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSystem\nTreatment contrast\nΔSOC magnitude\nΔSOC contrast\nN2O magnitude\nN2O contrast\nsource\n\n\n\n\nAnnual row / vegetable\ncover crop vs no cover crop\nyes\nyes\n\n\nwhite_salinas_2020\n\n\nAnnual row / vegetable\ncompost / OM vs fertilizer\nyes\nyes\n\n\nwhite_salinas_2020 (N2O not measured)\n\n\nPerennial woody (orchard / vineyard)\none management contrast with known history\n\n\nyes\nyes\nnichols_modesto_2024 (single timepoint SOC)\n\n\nAnnual or perennial\ntillage contrast\n\n\n\n\ngap\n\n\nAnnual or perennial\nirrigation regime contrast\n\n\n\n\ngap\n\n\nRice / flooded\nflood vs AWD\n\n\n\n\ngap\n\n\n\n\n\n\nThe matrix predates the Russell Ranch, AmeriFlux Delta and Bouldin chamber datasets. Russell Ranch adds SOC change magnitude and contrasts on annual row crops, among them cover cropping, compost against synthetic fertiliser, rotation and irrigation (A7). N2O is covered at three sites (nichols_modesto_2024 static chamber; anthony_bouldin_2024 automated chamber at US-Bi2 and US-Bi1) and CH4 at three (tower annual budgets for US-Twt, US-Bi1 and US-Bi2, plus chamber CH4 at the two Bouldin sites). Chamber and tower values are different measurement supports and are not interchangeable. A4 in the report shows the target records by site and variable.\nBecause ingest stacks the coverage tab from every workbook, the file holds the matrix and its MVP coverage guidance twice, the second copy with every SOC, N2O and CH4 cell 0, followed by six rows of record counts for CH4_flux and NEE at US-Bi1, US-Bi2 and US-Twt.",
+    "objectID": "docs/data-requirements.html#management",
+    "href": "docs/data-requirements.html#management",
+    "title": "Data Requirements for SIPNET Model Validation",
+    "section": "Management",
+    "text": "Management\nTo verify that the model correctly represents the effects of management, we need to know the site’s management history in enough detail to set key attributes when modeling each event.\nRecognizing that management records are often sparse or incomplete, the definition of “enough detail” is flexible. In general, we need to know the existence, timing, type, and intensity of each management event, but we can assume default values for some of these when they are not known. Management practices that differ between treatments are the most important. Management histories should be fairly complete for the time period when measurements were collected; site history prior to the measurement period is also valuable but we recognize it is likely to be less detailed.\nSpecific attributes of interest include (* indicates required):\n\nIrrigation\n\nstart date*\nend date\ntype (e.g. drip, flood, sprinkler)\namount* (depth equivalent)\n\nif based on soil moisture, what is the minimum and maximum soil moisture content for irrigation to start and stop?\n\nrate (depth equivalent / hour) or event duration (hours)\n\nFertilization\n\ndate*\nN application rate* (mass N / area)\nFertilizer form\nIf organic, amount of C* (mass C / area) OR C:N ratio\n\nTillage\n\ndate*\ndepth\nImplement\n\nPlanting\n\ndate*\ncrop*\n\nHarvest, mowing, or biomass removal\n\ndate*\ncomponent* (grain, fruit, straw, wood, leaf)\nbiomass removed (dry mass / area)\nbiomass remaining in field (dry mass / area)\nbiomass C:N ratio\n\n\nPlease also indicate whether the management history is known complete or incomplete for a given time period; for example whether this is all the tillage events between 2010 and 2015, or only the ones that happened to be observed and recorded.",
     "crumbs": [
       "Docs",
-      "Data Reference"
+      "Data Requirements (2024)"
     ]
   },
   {
-    "objectID": "docs/data-reference.html#repository-structure",
-    "href": "docs/data-reference.html#repository-structure",
-    "title": "Data Reference",
-    "section": "Repository structure",
-    "text": "Repository structure\n.\n├── LICENSE                        # BSD-3-Clause (code)\n├── README.md                      # also the home page of the site\n├── CHANGELOG.md\n├── 000-config.yml                 # workbook ids, data_dir, raw_data_dir (config::get)\n├── datapackage.json               # schema: fields, types, keys for each table\n├── _quarto.yml                    # site configuration\n├── index.qmd                      # site home page; includes README.md\n├── mermaid-fence.lua              # draws the README diagram on the site\n├── styles.css                     # lets wide tables scroll on narrow screens\n├── .github/workflows/\n│   └── validate.yml               # CI: frictionless, validate.R and tests\n├── scripts/\n│   ├── ingest.R                   # googlesheets4 pull, one workbook tab to one data/*.csv\n│   ├── ingest_benchmarking.R      # evidence workbook to data_raw/statewide_benchmarking/*.csv\n│   └── validate.R                 # warn mode integrity checks vs datapackage.json\n├── data/                          # generated csv exports (see Data products); do not hand edit\n├── data_raw/                      # per dataset provenance, one folder per dataset\n│   ├── README.md                  # folder per dataset rule\n│   ├── ameriflux_us_bi1_mvp/      # each site level folder holds its data_entry_report.md\n│   ├── ameriflux_us_bi2_mvp/\n│   ├── ameriflux_us_twt_mvp/\n│   ├── anthony_bouldin_2024/\n│   ├── nichols_modesto_2024/\n│   ├── raffeld_2024/              # also the ESM script and per plot stocks\n│   ├── russell_ranch_tautges_2019/\n│   ├── statewide_benchmarking/    # synthesis evidence CSVs, README, data_ingest_report.md\n│   └── white_salinas_2020/\n├── reports/                       # evidence report pages and their figures\n├── docs/                          # protocol, requirements and this data reference\n└── tests/\n    └── testthat/\n        ├── helper.R               # loads validate.R for the tests\n        ├── test-integrity.R       # datapackage columns present; warn mode gaps surfaced\n        └── test-benchmarking.R    # checks on the statewide evidence",
+    "objectID": "reports/statewide-evidence.html",
+    "href": "reports/statewide-evidence.html",
+    "title": "Part B. The statewide evidence",
+    "section": "",
+    "text": "Six sites cannot establish how California cropland responds to a management change. The statewide evidence is the second constraint: a synthesis of published results for each practice and outcome, assembled so it can serve either as a calibration target or as an acceptance test on model behaviour.\n62 evidence rows were extracted from 20 audited sources, 14 of which are held in the shared reference library.",
     "crumbs": [
-      "Docs",
-      "Data Reference"
+      "Reports",
+      "Part B: Statewide Evidence"
     ]
   },
   {
-    "objectID": "docs/data-reference.html#data-products",
-    "href": "docs/data-reference.html#data-products",
-    "title": "Data Reference",
-    "section": "Data products",
-    "text": "Data products\nEach workbook tab maps to one CSV in data/. Full field schema, types, and keys live in datapackage.json; two core tables are described below.\n\nTable inventory\n\n\n\nTable 5: Tables in data/.\n\n\n\n\n\n\n\n\n\n\nCSV\nPurpose\nKey\n\n\n\n\ncitations.csv\nbibliographic sources\ncitation_id\n\n\nsites.csv\nsite name and coordinates\nname\n\n\ntreatments.csv\ntreatment and system definitions, control flag\nname\n\n\ntreatment_pairs.csv\nnamed contrasts for treatment difference validation\npair_id\n\n\nmanagements.csv\nagronomic events (planting, harvest, tillage, fertilization, amendment)\nevent_id\n\n\nobservations.csv\nmeasured data, long format\nnone declared\n\n\nmethods.csv\nhow each measurement was taken\nmethod name\n\n\nvariables.csv\nvariable dictionary (name, description, units)\nname\n\n\ncrops.csv\ncrop and cover crop species\nscientific name\n\n\ncoverage.csv\ncoverage planning matrix\n\n\n\n\n\n\n\nIn observations.csv and managements.csv, citation holds a DOI and refers to citations.doi, while citation_id refers to citations.citation_id.\n\n\nobservations.csv columns\n\n\n\nTable 6: Columns of observations.csv.\n\n\n\n\n\nColumn\nType\nDescription\n\n\n\n\nmin_date, max_date\nstring\nsource stated window; equal for a point sample, blank when source gives no date; date encodings are mixed in the current export\n\n\ncrop, variety\nstring\ncrop and variety, where reported\n\n\nsitename\nstring\nforeign key to sites.name\n\n\nvariable\nstring\nforeign key to variables.name\n\n\nmethod\nstring\nmeasurement method (see methods.csv)\n\n\nvalue\nnumber\nmeasured value, in reported_units\n\n\nn\nnumber\nsample size; 1 for replicate level rows\n\n\nstatname, stat\nstring, number\nreported statistic (e.g. SE) and its value; not converted during curation\n\n\ntreatment_id\nstring\nforeign key to treatments.name\n\n\nreplicate_id\nstring\nblock, plot, core, or chamber identifier as the source uses it; numeric at some sites, lettered blocks or named zones at others\n\n\nstudy_year\nnumber\nexperiment year or calendar year\n\n\nmin_depth, max_depth\nnumber\ncm; sampled interval for depth-based observations and reference interval for equivalent-soil-mass stocks; actual integrated depth is recorded in attributes_json.equivalent_depth_cm\n\n\ncitation\nstring\nDOI, foreign key to citations.doi\n\n\nfill_status\nstring\nprovenance code (see Conventions)\n\n\nnotes\nstring\nfree text, including date precision caveats\n\n\ndataset_id\nstring\nshort source packet id, e.g. white_salinas_2020\n\n\nreported_units\nstring\nunits as source reports them\n\n\nobservation_level\nstring\nexperimental unit the row represents: replicate, treatment_mean, zone_mean, site_layer, site_year_total or site_period_total\n\n\ncitation_id\nstring\ncitation this observation was drawn from; refers to citations.citation_id, not a DOI\n\n\ndata_origin\nstring\nhow the value was obtained, e.g. publication_table, publication_text, scripted aggregation\n\n\nflags\nstring\nquality flags carried from the producing workflow, e.g. QC_PASS_YEAR\n\n\nattributes_json\nstring\nJSON object carrying source specific fields with no column of their own\n\n\nsource_table\nstring\ntable or sheet within the source the row came from\n\n\n\n\n\n\n\n\nmanagements.csv columns\n\n\n\nTable 7: Columns of managements.csv.\n\n\n\n\n\n\n\n\n\n\nColumn\nType\nDescription\n\n\n\n\nevent_id\nstring\nunique row key, &lt;mgmttype&gt;-NNNN\n\n\nsites.name\nstring\nforeign key to sites.name\n\n\ntreatments.name\nstring\nforeign key to treatments.name\n\n\nmin_date, max_date\nstring\nevent window\n\n\nmgmttype\nstring\nplanting, harvest, tillage, fertilization, compost_application, flooding, grazing or irrigation\n\n\ncover_crop\nboolean\nplanting rows: cover crop vs cash crop\n\n\ncrop_name\nstring\ncover crop name on planting rows\n\n\nlevel, units\nnumber, string\nrate and its unit (e.g. Mg ha-1 (oven-dry), kg N ha-1, cm depth)\n\n\nnotes\nstring\nprovenance comment\n\n\nattributes_keyvalue\nstring\nsemicolon delimited key=value extras (material, N content, implement, timing)\n\n\ncitation\nstring\nDOI, foreign key to citations.doi\n\n\nexact_date\nstring\nflag for whether the reported date is exact rather than a window or an estimate\n\n\nestimated\nstring\nwhether the event timing or amount was estimated rather than reported\n\n\ncitation_id\nstring\ncitation this event was drawn from; refers to citations.citation_id, not a DOI\n\n\nrelative_timing\nstring\ntiming relative to another event where no calendar date is given, e.g. after_planting\n\n\nrelative_timing_days\nnumber\noffset in days that relative_timing refers to\n\n\nreported_amount\nnumber\namount as the source reports it, in reported_units\n\n\nreported_units\nstring\nunits of reported_amount, as reported\n\n\nreported_material\nstring\nmaterial applied or removed, as the source describes it\n\n\ncrop_display\nstring\ncrop label as the source displays it\n\n\ndepth_m\nnumber\ndepth of the event in metres, where the source gives one\n\n\nintensity_category\nstring\nqualitative intensity of the event, e.g. intensive, recurring, seasonal\n\n\nmethod_id\nstring\nhow this event record was produced; refers to methods.method_id\n\n\nattributes_json\nstring\nJSON object carrying source specific fields with no column of their own\n\n\n\n\n\n\nSmaller tables (citations, sites, treatments, treatment_pairs, methods, variables, crops) are short; see datapackage.json for their fields.",
+    "objectID": "reports/statewide-evidence.html#b1-what-this-half-is-for",
+    "href": "reports/statewide-evidence.html#b1-what-this-half-is-for",
+    "title": "Part B. The statewide evidence",
+    "section": "",
+    "text": "Six sites cannot establish how California cropland responds to a management change. The statewide evidence is the second constraint: a synthesis of published results for each practice and outcome, assembled so it can serve either as a calibration target or as an acceptance test on model behaviour.\n62 evidence rows were extracted from 20 audited sources, 14 of which are held in the shared reference library.",
     "crumbs": [
-      "Docs",
-      "Data Reference"
+      "Reports",
+      "Part B: Statewide Evidence"
     ]
   },
   {
-    "objectID": "docs/data-reference.html#conventions",
-    "href": "docs/data-reference.html#conventions",
-    "title": "Data Reference",
-    "section": "Conventions",
-    "text": "Conventions\n\nStable text keys. A site key is physical location only; it does not encode treatment, replicate, or date. Treatment keys (socs_sys1, compost, no_compost) stay stable across a dataset.\nLong format, replicate level. Where a paper has a companion data archive, ingest replicate level values from archive; summary tables in analysis paper are for cross checking, not primary fill source.\nDates. Record source stated range in min_date and max_date. An exact date sets both equal; a stated month or season bounds interval; an unknown date stays blank with reason in notes. Never invent a day of year.\nStatistics. Store reported statistic (n, statname, stat) as given. Statistic conversion (standard deviation to standard error, and similar) is a downstream step, not curation.\nBasis. Methods state dry vs wet basis (prefer dry) and volumetric vs mass basis. Amendment rates carry their basis in units.\nfill_status. Provenance code for each value. Codes in current data: FILLED_DATA_PUBLICATION, SCRIPTED_DERIVED, FILLED_ZOTERO_XLSX, FILLED_DATASET, FILLED_SITE_DATA_XLSX, REPORTED_DIRECT, FILLED_PUBLICATION_TABLE and FILLED_PUBLICATION_TEXT. datapackage.json also allows FILLED_S1_TABLE and FILLED_USDA_SOIL_XLSX. Additional codes (PAPER_TEXT, NEEDS_FILL, MISSING_IN_SOURCE) are reserved for rows still being curated.",
+    "objectID": "reports/statewide-evidence.html#b2-the-practice-by-outcome-grid",
+    "href": "reports/statewide-evidence.html#b2-the-practice-by-outcome-grid",
+    "title": "Part B. The statewide evidence",
+    "section": "B2. The practice by outcome grid",
+    "text": "B2. The practice by outcome grid\n\n\n\n\n\n\nFigure 1: Statewide evidence, practice by outcome. Label names the selected source. Green cells enter a likelihood; purple cells are sign checks. Grey cells carry no target.\n\n\n\nSix practices by three outcomes gives 18 cells. 17 have at least one piece of evidence behind them; cover crops and methane is the only cell with nothing in the library at all.\nCoverage is not usability, which is what the colouring separates.\n\n\n\nTable 1: Classes of practice by outcome cell.\n\n\n\n\n\n\n\n\n\n\nClass\nCells\nMeaning\n\n\n\n\nFittable\n6\na real uncertainty on the contrast is reported, or can be computed from the source’s own data, so the cell can enter a likelihood\n\n\nSign check\n2\nthe effect has a magnitude but no spread has been recovered, so it carries an expert informed prior on the spread; it can be fitted if that prior is adopted, and until then serves as a sign check\n\n\nNo target\n10\nno usable contrast in the evidence, no evidence at all for cover crops and methane, or left out by priority for reduced tillage and methane\n\n\n\n\n\n\nSix cells are fittable: cover crops, non-crop carbon and reduced tillage on soil carbon, reduced tillage on N2O, fertilisation on N2O, and rice drying on CH4.\n\nThe eight cells that are used\nSix cells are fittable. Their spread comes from the source itself, so they can enter a likelihood directly. For fertilisation and rice methane the rows are held by crop class and by number of drying events, and only the one matching a run is used.\n\n\n\nTable 2: The six fittable cells.\n\n\n\n\n\n\n\n\n\n\n\n\nCell\nCentre\nSpread\nUnits\nSource\n\n\n\n\n+Cover Crops x Soil C\n0.32\n0.74 (SD, population)\nMg C ha-1 yr-1\nPoeplau & Don 2015\n\n\nReduced tillage x N2O\n0.322\n0.124 (SE, from 95% CI)\nLRR\nvan Kessel 2013, dry &lt;10 yr\n\n\n+Non-crop C x Soil C\n0.238\n0.0028 (SE, from 95% CI)\nLRR\nBai 2023\n\n\nReduced tillage x Soil C\n0.216\n0.448 (SD, population)\nMg C ha-1 yr-1\nSun 2020\n\n\n+/- N Fertilization x N2O\n0.0009 to 0.0181\n0.00028 to 0.00497 (SE, reported)\n% points of EF per kg N ha-1\nShcherbak 2014, by crop class\n\n\nFlooding / rice x CH4\n-0.399 to -1.394\n0.117 to 0.182 (SE, from 95% CIs)\nLRR\nJiang 2019, by drying events\n\n\n\n\n\n\nTwo more have a published effect size but no printed dispersion, so they carry the expert informed prior on the spread described in B5 and serve as sign checks unless that prior is adopted in the likelihood. For rice N2O an interval is drawn in Jiang 2019 Figure 2a and could still be digitised.\n\n\n\nTable 3: The two sign check cells, with an expert informed prior on the spread.\n\n\n\n\n\n\n\n\n\n\n\n\nCell\nCentre\nSpread\nUnits\nSource\n\n\n\n\nFlooding / rice x N2O\n0.718\n0.707 (SE, expert prior)\nLRR\nJiang 2019\n\n\nAnnual -&gt; Perennial x Soil C\n0.154\n0.707 (SE, expert prior)\nLRR\nSiddique 2023\n\n\n\n\n\n\nNote that the fittable cells sit on three scales. Cover crops and reduced tillage on soil carbon are absolute rates in Mg C ha-1 yr-1; non-crop carbon, reduced tillage on N2O and rice methane are log response ratios, which are dimensionless; fertilisation on N2O is a change in emission factor per kg N ha-1. They cannot be compared to each other directly, and each has to be matched against the equivalent model quantity on its own scale.\nThe remaining ten cells carry no target; nine have no usable value, and reduced tillage on methane is left out by priority (B3). That is the finding, not a gap to be filled.\nThat is a small number and it is better stated plainly than dressed up. Filling the grid was never the objective. An empty cell carries information, because it says the literature does not support a target there, and a manufactured number would be worse than the gap.",
     "crumbs": [
-      "Docs",
-      "Data Reference"
+      "Reports",
+      "Part B: Statewide Evidence"
     ]
   },
   {
-    "objectID": "docs/data-reference.html#validation",
-    "href": "docs/data-reference.html#validation",
-    "title": "Data Reference",
-    "section": "Validation",
-    "text": "Validation\nscripts/validate.R checks every generated data/*.csv against datapackage.json. It runs in warn mode: missing columns, empty keys, broken foreign keys, and odd dates warn but do not stop, so a workbook in progress still passes. It needs only base R plus jsonlite and readr.\nRscript scripts/validate.R\nTests under tests/testthat/ run the same checks via testthat, plus checks on the statewide evidence; they also need testthat and here. Tables not yet generated are skipped, so a fresh clone passes.\nRscript -e 'testthat::test_dir(\"tests/testthat\")'\nCI (.github/workflows/validate.yml) runs both, plus frictionless validate datapackage.json, on every pull request and on pushes to main.",
+    "objectID": "reports/statewide-evidence.html#b3-why-so-few-cells-are-fittable",
+    "href": "reports/statewide-evidence.html#b3-why-so-few-cells-are-fittable",
+    "title": "Part B. The statewide evidence",
+    "section": "B3. Why so few cells are fittable",
+    "text": "B3. Why so few cells are fittable\n\n\n\n\n\n\nFigure 2: Every contrast in the evidence library, on the log response ratio scale. Bars are 95% intervals. Only 4 of 15 have one, and all 4 are the same cell. Grey points are point estimates only; green points have an error bar reported or derivable.\n\n\n\nThe figure shows the library as first assembled. This is the clearest single view of the problem. Fifteen contrasts are expressed as log response ratios. Four carry an interval. Eleven are point estimates with nothing around them.\nThree distinct causes sit behind that, and they have different remedies.\nMost sources report a ratio with no dispersion. The eleven grey points are ratios of two published means. Since the figure was made, four more cells have gained a spread. Rice methane uses the confidence intervals Jiang 2019 reports for each number of drying events. Non-crop carbon and reduced tillage on soil carbon moved to newer syntheses: Bai 2023, which reports a confidence interval, in place of Vicente-Vicente 2016, and Sun 2020 in place of Robertson 2000, with the spread computed from the site data in its Table S1. Fertilisation on N2O comes from Shcherbak 2014, whose supplementary Table S3 reports standard errors by crop class. These now enter the likelihood (B2). The two with no printed spread carry an expert informed prior on the spread (B5), although for rice N2O an interval is drawn in Jiang 2019 Figure 2a and could still be digitised.\nThe four that do have intervals are not four constraints. All of them are reduced tillage on N2O, so they are alternatives for a single cell. The figure also shows why pooling them would be wrong: the two van Kessel duration subgroups are one response changing with time since adoption, positive under 10 years and negative after, so the target is matched to adoption age rather than averaged.\nSome reported uncertainties describe a different quantity from the one being targeted. A standard deviation across the plots of one treatment arm is not the uncertainty on the difference between arms, and treating it as such would underestimate . Each row now records what its uncertainty applies to, so this cannot be misread downstream.\nOne further case is a matter of scope. Reduced tillage on methane has a real published error bar, and tillage does enter the SIPNET methane formulation: it speeds decomposition, which leaves less carbon substrate for methane production. It can be sign checked, and a model that does not respond, or responds in the wrong direction, fails that check and warrants further investigation. It is left out of the targets by priority rather than because it cannot be used, as the next paragraph explains.\nThe dataset focuses on the response of methane to water management in rice systems because this is the primary source of cropland CH4.",
     "crumbs": [
-      "Docs",
-      "Data Reference"
+      "Reports",
+      "Part B: Statewide Evidence"
     ]
   },
   {
-    "objectID": "docs/data-reference.html#usage",
-    "href": "docs/data-reference.html#usage",
-    "title": "Data Reference",
-    "section": "Usage",
-    "text": "Usage\n\nLoad a table\nlibrary(readr)\nobs &lt;- read_csv(\"data/observations.csv\", show_col_types = FALSE)\n\n# replicate level SOC stock\nsubset(obs, variable == \"SOC_stock_Mg_ha\" & observation_level == \"replicate\")\n\n\nPull a treatment contrast\npairs &lt;- read_csv(\"data/treatment_pairs.csv\", show_col_types = FALSE)\n\n# contrasts flagged for validation (e.g. compost vs no compost)\nsubset(pairs, use_for_validation == TRUE)\n\n\nRegenerate the snapshot from the workbooks\n# the workbook ids are in 000-config.yml; authenticate once\n# interactively with googlesheets4::gs4_auth(), then\nsource(\"scripts/ingest.R\")\nThe statewide evidence has its own script. Set CCMMF_SHEETS_EMAIL to the Google account that can read the evidence workbook.\nRscript scripts/ingest_benchmarking.R --check   # compare the workbook with the committed CSVs\nRscript scripts/ingest_benchmarking.R           # regenerate them",
+    "objectID": "reports/statewide-evidence.html#b4-how-uncertainty-is-recorded",
+    "href": "reports/statewide-evidence.html#b4-how-uncertainty-is-recorded",
+    "title": "Part B. The statewide evidence",
+    "section": "B4. How uncertainty is recorded",
+    "text": "B4. How uncertainty is recorded\nA bare number beside a spread does not say enough to be used, because the same figure can mean opposite things. Every row therefore declares three properties explicitly: the type of uncertainty, the scale it lives on, since a ratio must be on the log scale before it is meaningful, and the referent, meaning whether it describes the mean, the population, or a single arm.\nThe distinction that matters most is precision against variability. An uncertainty on a mean tightens a posterior; a spread across a population should widen it. Reading one as the other is the easiest route to a calibration that is confident and wrong.\n\n\n\n\n\n\nA worked example\n\n\n\nPoeplau and Don report 0.32 ± 0.08 Mg C ha-1 yr-1 for cover crops on soil carbon. Their methods state that errors in the text are 95 percent confidence intervals, so 0.08 is a confidence interval half width and the standard error on the mean is 0.041.\nTheir supplement separately provides 139 per plot annual rates, whose standard deviation is 0.744. Both numbers are valid and they answer different questions. 0.041 describes how well the synthesis pins the average. 0.744 describes how much real sites vary. They differ by a factor of eighteen.\nA further subtlety: those 139 rates have a mean of 0.544, whereas the headline 0.32 is the slope of a regression forced through the origin. The centre and the spread are therefore not two descriptions of one distribution, so which estimator is being targeted should be named rather than assumed.",
     "crumbs": [
-      "Docs",
-      "Data Reference"
+      "Reports",
+      "Part B: Statewide Evidence"
     ]
   },
   {
-    "objectID": "docs/data-reference.html#changes-from-the-readme",
-    "href": "docs/data-reference.html#changes-from-the-readme",
-    "title": "Data Reference",
-    "section": "Changes from the README",
-    "text": "Changes from the README\n\n\n\n\n\n\nWhat was updated on 2026-09-30, against develop 900ffd2\n\n\n\n\n\n\nData flow. Three dataset workbooks and a separate evidence workbook, where the README described one workbook; the evidence ingest is now its own numbered step.\nDatasets. Added the three AmeriFlux tower datasets, the upstream dataset_id values their flux rows carry, and a pointer to the statewide evidence folder.\nMeasured variables. Added the gas flux variables of the Delta tower and Bouldin chamber datasets.\nCoverage. Target cells in the file are coded 1 and 0; the matrix also predates Russell Ranch; the stacked copies in the file are described.\nRepository structure. The tree showed an early layout; it now shows the current one, including the site files.\nTable inventory. citations.csv is keyed by citation_id, not doi, and observations.csv declares no primary key.\nColumn tables. All 27 observations.csv and 26 managements.csv columns are listed, with the types datapackage.json declares (replicate_id, min_date and max_date are strings) and the allowed observation_level and mgmttype values.\nConventions. The eight fill_status codes now in use, where the README listed three.\nValidation and usage. The statewide evidence tests, CI, and scripts/ingest_benchmarking.R.",
+    "objectID": "reports/statewide-evidence.html#b5-where-the-spread-is-an-expert-informed-prior",
+    "href": "reports/statewide-evidence.html#b5-where-the-spread-is-an-expert-informed-prior",
+    "title": "Part B. The statewide evidence",
+    "section": "B5. Where the spread is an expert informed prior",
+    "text": "B5. Where the spread is an expert informed prior\nTwo cells have a published effect size but no printed dispersion in the source. Rather than discarding them or inventing a precise figure, they carry a stated expert informed prior on the spread: the 95 percent interval spans a factor of four either side of the estimate, making the standard error ln(4) / 1.96, or 0.707 on the log scale.\nIn the data tables every such row is marked as an assumed spread used for sign checks, so any analysis restricted to reported uncertainty can exclude them in a single step.",
     "crumbs": [
-      "Docs",
-      "Data Reference"
+      "Reports",
+      "Part B: Statewide Evidence"
+    ]
+  },
+  {
+    "objectID": "reports/statewide-evidence.html#b6-what-is-deliberately-excluded",
+    "href": "reports/statewide-evidence.html#b6-what-is-deliberately-excluded",
+    "title": "Part B. The statewide evidence",
+    "section": "B6. What is deliberately excluded",
+    "text": "B6. What is deliberately excluded\nNo pooling across studies that disagree. Each cell selects one row and retains the others beside it, unaggregated. An earlier version averaged a positive effect against a negative one and produced an apparent decrease matching neither input.\nNo effect sizes derived from null results. A paper reporting no significant change is an absence of an effect size, not an effect size of zero.\nNo absolute levels among the targets. Inventory totals and emission factors are comparison values rather than calibration targets, and are held separately.\nNo source used beyond what it measured. One candidate soil carbon row was dropped after finding the table reported carbon derived from corn rather than total soil carbon, where the total was in fact declining, so the sign would have been backwards.",
+    "crumbs": [
+      "Reports",
+      "Part B: Statewide Evidence"
+    ]
+  },
+  {
+    "objectID": "reports/calibration-validation-data.html",
+    "href": "reports/calibration-validation-data.html",
+    "title": "Calibration and Validation Data",
+    "section": "",
+    "text": "The MAGiC pipeline is used to generate inventory and projection estimates of SOC stocks and GHG emissions from California croplands.\nThe calibration and validation dataset combines two functionally1 independent bodies of evidence, and they do different jobs. These are\nSite level data is six California fields where somebody measured soil carbon or a greenhouse gas flux. It answers a question about magnitude: does the model produce the right stock, the right flux, at a real place.\nSynthesis evidence is a set of values from statistical synthesis of published literature on the impacts of sustainable farming practices on SOC and GHG balance. It answers a question about response: when a practice changes, does the model respond in a direction and rough magnitude that is consistent with available evidence.\n\n\n\n\n\n\nNeither of these datasets is sufficient. The limited site-level dataset is insufficient for calibration because it is easy to overfit the model to specific sites while missing the big picture changes.\n\n\n\n\n\n\nSoil carbon and gas flux are measured at different sites. Of the six sites, three include SOC stock measurements, and three provide gas exchange, and no site carries both. Any claim spanning both is an extrapolation, not a validated result.\nPractice contrasts exist at only two sites, both annual crop soil sites. There is no measured practice contrast anywhere in the Delta, and none for rice.\nSix of the 18 statewide cells carry a spread and can be fitted, where a cell is one practice paired with one outcome. They are cover crops, non-crop carbon and reduced tillage on soil carbon, reduced tillage on N2O, fertilisation on N2O, and rice drying on CH4. Two more have no published spread and are used to check the direction of the model response (B5).\nTwo caveats apply to the targets. Salinas 2003 and 2004 are excluded as establishment effects, and US-Bi2 is a much larger net carbon source than its neighbour, a magnitude to confirm with the site team. Both are described in place.\nCoverage and usability are not the same thing. An empty cell indicates that no useable target was identified in the sources reviewed.",
+    "crumbs": [
+      "Reports",
+      "Overview & Key Points"
+    ]
+  },
+  {
+    "objectID": "reports/calibration-validation-data.html#summary",
+    "href": "reports/calibration-validation-data.html#summary",
+    "title": "Calibration and Validation Data",
+    "section": "",
+    "text": "The MAGiC pipeline is used to generate inventory and projection estimates of SOC stocks and GHG emissions from California croplands.\nThe calibration and validation dataset combines two functionally1 independent bodies of evidence, and they do different jobs. These are\nSite level data is six California fields where somebody measured soil carbon or a greenhouse gas flux. It answers a question about magnitude: does the model produce the right stock, the right flux, at a real place.\nSynthesis evidence is a set of values from statistical synthesis of published literature on the impacts of sustainable farming practices on SOC and GHG balance. It answers a question about response: when a practice changes, does the model respond in a direction and rough magnitude that is consistent with available evidence.\n\n\n\n\n\n\nNeither of these datasets is sufficient. The limited site-level dataset is insufficient for calibration because it is easy to overfit the model to specific sites while missing the big picture changes.\n\n\n\n\n\n\nSoil carbon and gas flux are measured at different sites. Of the six sites, three include SOC stock measurements, and three provide gas exchange, and no site carries both. Any claim spanning both is an extrapolation, not a validated result.\nPractice contrasts exist at only two sites, both annual crop soil sites. There is no measured practice contrast anywhere in the Delta, and none for rice.\nSix of the 18 statewide cells carry a spread and can be fitted, where a cell is one practice paired with one outcome. They are cover crops, non-crop carbon and reduced tillage on soil carbon, reduced tillage on N2O, fertilisation on N2O, and rice drying on CH4. Two more have no published spread and are used to check the direction of the model response (B5).\nTwo caveats apply to the targets. Salinas 2003 and 2004 are excluded as establishment effects, and US-Bi2 is a much larger net carbon source than its neighbour, a magnitude to confirm with the site team. Both are described in place.\nCoverage and usability are not the same thing. An empty cell indicates that no useable target was identified in the sources reviewed.",
+    "crumbs": [
+      "Reports",
+      "Overview & Key Points"
+    ]
+  },
+  {
+    "objectID": "reports/calibration-validation-data.html#part-a-the-site-level-data",
+    "href": "reports/calibration-validation-data.html#part-a-the-site-level-data",
+    "title": "Calibration and Validation Data",
+    "section": "Part A. The site level data",
+    "text": "Part A. The site level data\nSections A1 to A7 are on their own page: Part A. The site level data.",
+    "crumbs": [
+      "Reports",
+      "Overview & Key Points"
+    ]
+  },
+  {
+    "objectID": "reports/calibration-validation-data.html#part-b-the-statewide-evidence",
+    "href": "reports/calibration-validation-data.html#part-b-the-statewide-evidence",
+    "title": "Calibration and Validation Data",
+    "section": "Part B. The statewide evidence",
+    "text": "Part B. The statewide evidence\nSections B1 to B6 are on their own page: Part B. The statewide evidence.",
+    "crumbs": [
+      "Reports",
+      "Overview & Key Points"
+    ]
+  },
+  {
+    "objectID": "reports/calibration-validation-data.html#part-c-using-the-two-together",
+    "href": "reports/calibration-validation-data.html#part-c-using-the-two-together",
+    "title": "Calibration and Validation Data",
+    "section": "Part C. Using the two together",
+    "text": "Part C. Using the two together\n\nC1. What each side constrains\nSite data constrains magnitude; statewide evidence constrains response. They also check each other, which is the main reason for carrying both.\n\n\nC2. A caution on how the evidence enters the likelihood\nA synthesis estimate is one estimate, not many. If every design point is scored separately against the same synthesis number, that single piece of information is counted repeatedly, and the posterior on the mean effect tightens as one over the square root of the number of pseudo observations. That precision is set by how many were included rather than by the underlying data.\nPerturbing each pseudo observation with the population spread makes the draws look correct marginally, but does not change how much they say about the mean. Heterogeneity across sites belongs in the model as variation, not in the observation error where it is averaged away.\nTwo quantities are therefore worth reporting separately: the mean effect with its interval, noted as dependent on the number of pseudo observations used, and the predictive spread across sites, checked against the observed among plot spread.\n\n\nC3. Reading this data honestly\nThree limits are worth carrying forward into any result built on it.\nCross domain skill is not demonstrated. Because no site pairs soil carbon with flux at useful density, a parameter set reproducing soil carbon at Davis has never been tested for methane in the Delta.\nThe Delta is one landscape, not three samples. The three towers share a climate and a Delta peat island setting, so agreement among them is weaker evidence than three independent sites would be.\nTwo caveats apply to the targets. Salinas 2003 and 2004 are excluded as establishment effects, and the magnitude of the US-Bi2 net source should be confirmed with the site team before it carries weight in a fit. Both are documented above so that a later reader meets the caveat alongside the data rather than discovering it independently.",
+    "crumbs": [
+      "Reports",
+      "Overview & Key Points"
+    ]
+  },
+  {
+    "objectID": "reports/calibration-validation-data.html#appendix-data-held-but-not-used-as-targets",
+    "href": "reports/calibration-validation-data.html#appendix-data-held-but-not-used-as-targets",
+    "title": "Calibration and Validation Data",
+    "section": "Appendix. Data held but not used as targets",
+    "text": "Appendix. Data held but not used as targets\nThe repository holds 37,258 records in total. Beyond the 630 targets, the rest are mainly soil sensor profiles, bulk density, soil chemistry and crop yields, which support diagnosis and context but are not targets. Yield and biomass exist only at Russell Ranch. The towers also carry soil sensor records of temperature, moisture and oxygen; they are valuable for diagnosing why a flux is wrong, but they are not themselves carbon targets.",
+    "crumbs": [
+      "Reports",
+      "Overview & Key Points"
+    ]
+  },
+  {
+    "objectID": "reports/calibration-validation-data.html#footnotes",
+    "href": "reports/calibration-validation-data.html#footnotes",
+    "title": "Calibration and Validation Data",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nLarge scale synthesis datasets may contain the same site level data, but we assume that the effect is small enough to be practically independent.↩︎",
+    "crumbs": [
+      "Reports",
+      "Overview & Key Points"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MAGiC Calibration and Validation Data",
+    "section": "",
+    "text": "This site reports the data used to calibrate and validate the SIPNET ecosystem model in the MAGiC inventory runs for California cropland: measurements from six field sites, and evidence from published syntheses of how soil carbon and greenhouse gas fluxes respond to management.\n\nOverview & Key Points summarises the two bodies of evidence, what each can support, and how they are used together.\nPart A: Site-Level Data describes the six sites, when and what was measured, and the practice contrasts.\nPart B: Statewide Evidence sets out the practice by outcome grid built from published syntheses, and which cells can be fitted.\n\nThe Data Collection Protocol and the Data Requirements describe how datasets are chosen and curated.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "reports/site-level-data.html",
+    "href": "reports/site-level-data.html",
+    "title": "Part A. The site level data",
+    "section": "",
+    "text": "Figure 1: Where the six cal/val sites are. Point size is the number of target records used. The three Delta towers are within about 15 km of each other. Circles mark field experiments and triangles mark flux towers, each labelled with its number of target records.\n\n\n\nFive of the six sit in a narrow band of the Central Valley and Delta. Salinas is the outlier, a coastal vegetable system roughly 160 km south of the rest. The three flux towers cluster within about 15 km of each other on Delta peat islands, which means they share a climate, a soil history and a drainage regime. They are three views of one landscape rather than three independent samples of California.\n\n\n\nTable 1: The six sites.\n\n\n\n\n\n\n\n\n\n\n\n\n\nSite\nCrop\nLocation\nObserved\nTargets\nTrts\n\n\n\n\nRussell Ranch, Davis\ncorn / tomato / wheat\n38.54, -121.87\n1993, 2012\n96\n13\n\n\nSalinas SOCS\nlettuce / broccoli\n36.62, -121.53\n2005-2011\n224\n8\n\n\nModesto almond\nalmond\n37.63, -121.09\n2018-2019\n54\n2\n\n\nUS-Bi1, Bouldin\nalfalfa\n38.10, -121.50\n2017-2024\n119\n2\n\n\nUS-Bi2, Bouldin\ncorn\n38.11, -121.54\n2017-2024\n123\n1\n\n\nUS-Twt, Twitchell\nrice\n38.11, -121.65\n2009-2017\n14\n3\n\n\n\n\n\n\nTargets are the SOC stock and gas flux records the model is scored against, 630 in all, with Salinas 2003 and 2004 excluded as described in A5. They are records, not independent measurements. Other data the repository holds are described in the appendix.\nThe six sites are also two different kinds of thing. Three are replicated field experiments with a treatment structure that allows calculation of practice change effects. Three are eddy covariance towers with no within site management contrast; the extra treatments listed for US-Bi1 and US-Twt in the table are separate measurement fields or tower deployments, not management practices. Each tower is unreplicated, the accepted limitation of eddy covariance, and the two Bouldin towers can be compared with each other, as A7 describes.",
+    "crumbs": [
+      "Reports",
+      "Part A: Site-Level Data"
+    ]
+  },
+  {
+    "objectID": "reports/site-level-data.html#a1-the-six-sites",
+    "href": "reports/site-level-data.html#a1-the-six-sites",
+    "title": "Part A. The site level data",
+    "section": "",
+    "text": "Figure 1: Where the six cal/val sites are. Point size is the number of target records used. The three Delta towers are within about 15 km of each other. Circles mark field experiments and triangles mark flux towers, each labelled with its number of target records.\n\n\n\nFive of the six sit in a narrow band of the Central Valley and Delta. Salinas is the outlier, a coastal vegetable system roughly 160 km south of the rest. The three flux towers cluster within about 15 km of each other on Delta peat islands, which means they share a climate, a soil history and a drainage regime. They are three views of one landscape rather than three independent samples of California.\n\n\n\nTable 1: The six sites.\n\n\n\n\n\n\n\n\n\n\n\n\n\nSite\nCrop\nLocation\nObserved\nTargets\nTrts\n\n\n\n\nRussell Ranch, Davis\ncorn / tomato / wheat\n38.54, -121.87\n1993, 2012\n96\n13\n\n\nSalinas SOCS\nlettuce / broccoli\n36.62, -121.53\n2005-2011\n224\n8\n\n\nModesto almond\nalmond\n37.63, -121.09\n2018-2019\n54\n2\n\n\nUS-Bi1, Bouldin\nalfalfa\n38.10, -121.50\n2017-2024\n119\n2\n\n\nUS-Bi2, Bouldin\ncorn\n38.11, -121.54\n2017-2024\n123\n1\n\n\nUS-Twt, Twitchell\nrice\n38.11, -121.65\n2009-2017\n14\n3\n\n\n\n\n\n\nTargets are the SOC stock and gas flux records the model is scored against, 630 in all, with Salinas 2003 and 2004 excluded as described in A5. They are records, not independent measurements. Other data the repository holds are described in the appendix.\nThe six sites are also two different kinds of thing. Three are replicated field experiments with a treatment structure that allows calculation of practice change effects. Three are eddy covariance towers with no within site management contrast; the extra treatments listed for US-Bi1 and US-Twt in the table are separate measurement fields or tower deployments, not management practices. Each tower is unreplicated, the accepted limitation of eddy covariance, and the two Bouldin towers can be compared with each other, as A7 describes.",
+    "crumbs": [
+      "Reports",
+      "Part A: Site-Level Data"
+    ]
+  },
+  {
+    "objectID": "reports/site-level-data.html#a2-when-the-measurements-happened",
+    "href": "reports/site-level-data.html#a2-when-the-measurements-happened",
+    "title": "Part A. The site level data",
+    "section": "A2. When the measurements happened",
+    "text": "A2. When the measurements happened\n\n\n\n\n\n\nFigure 2: When the target records were collected. Darker is more target records that year. Salinas 2003 and 2004 are excluded. Each row is a site and each tile is one year.\n\n\n\nRussell Ranch has two campaigns, 1993 and 2012, and Salinas is annual from 2005 to 2011. The towers only begin in 2017, except US-Twt, which runs 2009 to 2017 and thins to one record a year from 2015. No other site has measurements from 2015 and 2016.",
+    "crumbs": [
+      "Reports",
+      "Part A: Site-Level Data"
+    ]
+  },
+  {
+    "objectID": "reports/site-level-data.html#a3-coverage-against-the-prepared-run-windows",
+    "href": "reports/site-level-data.html#a3-coverage-against-the-prepared-run-windows",
+    "title": "Part A. The site level data",
+    "section": "A3. Coverage against the prepared run windows",
+    "text": "A3. Coverage against the prepared run windows\n\n\n\n\n\n\nFigure 3: Target records against the prepared run window. Each green block is a year with target records. Calibration can only use years inside the run window. The purple bar under each site is its prepared model run window.\n\n\n\nCalibration can only use years where an observation and a model run overlap, so this comparison decides how much of the curated data is reachable at all. Runs end where their management inputs end: the towers’ recent management comes from the statewide monitoring product, which ends in 2023.\nRussell Ranch, Salinas and Modesto line up well, because their run windows were set from the data. US-Bi1 and US-Bi2 have observations extending a year past their run windows, to 2024 against runs ending in 2023; extending those two runs would pick up a year of existing data once management inputs for 2024 are available.\nUS-Twt is the difficult case. Observations stop in 2017 while the run reaches 2023, because it was first built on the monitoring record, which runs to 2023; the years after 2017 are simulated but not scored, so six of fourteen run years have nothing to compare against. The run was deliberately extended back to 2010, where the site’s published management record begins, to buy overlap. Even then the usable overlap is 2010 to 2017, and 13 of the site’s 14 target records fall inside it, since the first annual NEE record is from 2009. Rice is also the system chosen to evaluate the methane response, so that evaluation rests on the site with the least data.",
+    "crumbs": [
+      "Reports",
+      "Part A: Site-Level Data"
+    ]
+  },
+  {
+    "objectID": "reports/site-level-data.html#a4-what-is-measured-and-where",
+    "href": "reports/site-level-data.html#a4-what-is-measured-and-where",
+    "title": "Part A. The site level data",
+    "section": "A4. What is measured, and where",
+    "text": "A4. What is measured, and where\n\n\n\n\n\n\nFigure 4: Target records by site and variable. A dash is no records. Salinas 2003 and 2004 are excluded. Darker green means more records in the cell.\n\n\n\nThe division is clean. Soil carbon is effectively Russell Ranch and Salinas. Methane and CO2 come only from the three tower sites, measured by eddy covariance and, at the Bouldin sites, also by automated chamber.\n\n\n\n\n\n\nMeasurement support is recorded, and the kinds are not interchangeable\n\n\n\nTower eddy covariance integrates a flux over a footprint of hundreds of metres that shifts with the wind. A chamber gives a plot scale mean over well under a square metre. A soil core gives a point value at a stated depth. These are different quantities, which is why method and observation level travel with every value instead of being collapsed at ingest.\n\n\nRussell Ranch and Salinas both report stocks to 30 cm on an equivalent soil mass basis. Salinas uses the published stocks, which take the greatest measured bulk density as the reference, while Russell Ranch is recomputed per plot from its full soil profile. The 96 Russell Ranch equivalent soil mass records report a 0 to 30 cm interval, but the depth actually integrated runs from about 28 to 40 cm, because each plot is taken to its treatment’s reference soil mass rather than to a fixed depth. That keeps each treatment comparable between the two sampling years, and it means model output should be compared on the same mass basis rather than at a fixed depth.",
+    "crumbs": [
+      "Reports",
+      "Part A: Site-Level Data"
+    ]
+  },
+  {
+    "objectID": "reports/site-level-data.html#a5-the-soil-carbon-record",
+    "href": "reports/site-level-data.html#a5-the-soil-carbon-record",
+    "title": "Part A. The site level data",
+    "section": "A5. The soil carbon record",
+    "text": "A5. The soil carbon record\n\n\n\n\n\n\nFigure 5: Soil organic carbon stock to 30 cm, equivalent soil mass basis. Treatment means of replicate values, Mg C ha-1. Faded: Salinas 2003 and 2004, excluded as establishment effects. Each line is one Russell Ranch treatment or one Salinas system.\n\n\n\nRussell Ranch has two campaigns, 1993 and 2012. That constrains a long term rate but says nothing about interannual behaviour. The organic corn and tomato system is the clear mover, which is the expected direction and a useful sanity check.\nSalinas is sampled annually from 2003 to 2011, which provides the opportunity to evaluate the intra-annual dynamics represented by the model. However,\n\n\n\n\n\n\nThe Salinas 2003 and 2004 campaigns are excluded\n\n\n\nMean stock falls from 49.2 Mg C ha-1 in 2003 to 18.6 in 2004, then recovers to 37.8 in 2005. The drop appears in every one of the eight systems and all four replicates, all 32 records of that campaign. A soil carbon stock to 30 cm fell this far, the authors explain, because of the change in management when the experiment began. Before it, the field had low intensity management with cover crops incorporated only by disking, and about 22 Mg ha-1 (wet weight) of compost the year before, which left every system near 50 Mg C ha-1. Year 1 then brought spading to 30 cm and two vegetable crops, which likely broke up macroaggregates built by the earlier cover crop roots and exposed the soil carbon they protected (White et al. 2020, PLOS ONE). This is a start up effect of moving into the treatment regime rather than the dynamics of interest, so 2003 and 2004 are excluded from the targets. The values are kept exactly as published, following the rule that nothing is silently dropped.\n\n\nThe series also varies year to year, moving between 27 and 38 Mg C ha-1 from 2005 to 2011.",
+    "crumbs": [
+      "Reports",
+      "Part A: Site-Level Data"
+    ]
+  },
+  {
+    "objectID": "reports/site-level-data.html#a6-the-flux-record",
+    "href": "reports/site-level-data.html#a6-the-flux-record",
+    "title": "Part A. The site level data",
+    "section": "A6. The flux record",
+    "text": "A6. The flux record\n\n\n\n\n\n\nFigure 6: Annual net ecosystem exchange at the three flux towers. Gap filled annual totals as published. Positive is a net source. Values are in gC m-2 y-1, one point per tower year.\n\n\n\nAnnual net ecosystem exchange is one gas variable reported in the same unit, gC m-2 y-1, at all three towers, taken directly from the gap filled AmeriFlux FLUXNET products, FLUXNET-1F at the Bouldin towers and FLUXNET2015 at US-Twt, with no local annualisation or unit conversion.\n\n\n\n\n\n\nUS-Bi2 net ecosystem exchange looks large\n\n\n\nUS-Bi2 runs from +992 to +2317 gC m-2 y-1. US-Bi1, over the same years, from the same provider, the same product and the same units, sits between -295 and +386. A positive value is a net source in the standard convention, and 2317 gC m-2 y-1 is about 23 t C ha-1 y-1. The site metadata describes deep peat drained for farming and a century of subsidence in the Delta, which would favour a net source. The values are the source’s own annual figures, imported without conversion, and the two sites are different systems: US-Bi2 is corn on deep drained peat, with sorghum in 2024, and US-Bi1 is perennial alfalfa on a mix of peat and mineral sediments under periodic flood irrigation. At US-Bi1 the same product runs about 480 gC m-2 y-1 more positive than the published estimates of Anthony et al. (2023), for reasons not yet resolved, so the US-Bi2 magnitude should be confirmed with the site team before it carries weight in a fit.\n\n\n\n\n\n\n\n\nFigure 7: Chamber N2O at Modesto and the Bouldin towers, on one scale. g N2O-N ha-1 d-1. Bouldin values converted from mg N2O m-2 d-1 (x 6.36). Static chamber at Modesto, automated chamber at the Bouldin towers. Each point is one record, with a box plot for each site.\n\n\n\nN2O is measured by static chamber at Modesto and automated chamber at the Bouldin towers, where the same chambers also record CO2 and CH4; those chamber records make up most of the Bouldin CO2 and CH4 counts in A4. Chamber measurements are limited in their ability to estimate field scale fluxes, but they are used, as in many studies, because the data are too valuable to discard; they are most defensible for differences between sites or treatments measured the same way, so in the figure above the two Bouldin towers compare directly, while the gap to Modesto reflects method as well as site. The units differ by source and are kept as published; converting to a common scale, as the figure above does, uses 1 mg N2O m-2 d-1 = 6.36 g N2O-N ha-1 d-1.",
+    "crumbs": [
+      "Reports",
+      "Part A: Site-Level Data"
+    ]
+  },
+  {
+    "objectID": "reports/site-level-data.html#a7-practice-contrasts",
+    "href": "reports/site-level-data.html#a7-practice-contrasts",
+    "title": "Part A. The site level data",
+    "section": "A7. Practice contrasts",
+    "text": "A7. Practice contrasts\n24 named contrasts are recorded, so a practice change can be queried directly rather than reconstructed from treatment labels afterwards.\n\n\n\nTable 2: Named practice contrasts by source.\n\n\n\n\n\n\n\n\n\n\nSource\nCount\nCoverage\n\n\n\n\nRussell Ranch\n15\ncover cropping, compost against synthetic fertiliser, rotation, irrigation, cropping against grassland\n\n\nSalinas SOCS\n8\ncompost, cover crop frequency, cover crop type, seeding rate\n\n\nModesto\n1\ncompost against no compost\n\n\nFlux towers\n0\nUS-Bi2 is a single treatment, US-Bi1 has two systems, the tower and a separate chamber field, not a management contrast\n\n\n\n\n\n\nThe contrast structure therefore lives almost entirely at two annual crop soil sites. Nothing in the Delta and nothing under rice has a measured practice contrast, which is precisely where the statewide evidence has to carry the weight instead. The two Bouldin towers can still be read as perennial alfalfa against annual corn on the same island. The comparison is confounded, because irrigation and fertilisation differ along with the crop, and it is unreplicated, the accepted limitation of eddy covariance. It therefore supports a check on direction rather than an effect size.",
+    "crumbs": [
+      "Reports",
+      "Part A: Site-Level Data"
     ]
   },
   {
@@ -169,7 +355,7 @@
     "href": "docs/data-collection-protocol.html#deliverables-and-workflow-stages",
     "title": "Calibration and Validation Data Collection Protocol",
     "section": "3. Deliverables and workflow stages",
-    "text": "3. Deliverables and workflow stages\nThe usual workflow is:\n\nAssemble the source packet including papers and data.\nConfirm the dataset is in scope for calibration or validation.\nAdd the paper and any archived data to the project Zotero folders.\nPopulate the workbook tabs.\nDocument assumptions, unavoidable transformations, and unresolved issues in the dataset README.\nRun basic QA. [TODO: define]\nHand off for later conversion, harmonization, and gap-filling.\n\nRequired: Keep project-level source organization simple.\n\nMaintain project-specific Zotero folders for to enter and entered.\nMake sure the curated dataset can be traced back to a stable paper, archive, supplement, or figure source.\nTODO: put CSVs under version control\nTODO: annotate PDFs in Zotero?\n\n\n\n\n\n\n\nRepository state, develop 900ffd2 (2026-09-30)\n\n\n\nThe curated tables are already exported as CSV files under version control in data/, generated from the workbooks by scripts/ingest.R. Basic QA is scripted: scripts/validate.R checks the CSVs against datapackage.json (missing columns, empty keys, broken foreign keys, odd dates; warnings only), and it runs in CI on pull requests (.github/workflows/validate.yml) together with frictionless validate datapackage.json and the tests in tests/testthat.\n\n\nDo not: Optimize early curation around the final downstream file layout.\nThe first priority is accurate capture and documentation.\nDo not: Collect all data or stray from targets.",
+    "text": "3. Deliverables and workflow stages\nThe usual workflow is:\n\nAssemble the source packet including papers and data.\nConfirm the dataset is in scope for calibration or validation.\nAdd the paper and any archived data to the project Zotero folders.\nPopulate the workbook tabs.\nDocument assumptions, unavoidable transformations, and unresolved issues in the dataset README.\nRun basic QA. [TODO: define]\nHand off for later conversion, harmonization, and gap-filling.\n\nRequired: Keep project-level source organization simple.\n\nMaintain project-specific Zotero folders for to enter and entered.\nMake sure the curated dataset can be traced back to a stable paper, archive, supplement, or figure source.\nTODO: put CSVs under version control\nTODO: annotate PDFs in Zotero?\n\nDo not: Optimize early curation around the final downstream file layout.\nThe first priority is accurate capture and documentation.\nDo not: Collect all data or stray from targets.",
     "crumbs": [
       "Docs",
       "Data Collection Protocol"
@@ -202,7 +388,7 @@
     "href": "docs/data-collection-protocol.html#core-data-model",
     "title": "Calibration and Validation Data Collection Protocol",
     "section": "6. Core data model",
-    "text": "6. Core data model\n\n6.1 Citations\nA citation identifies the source of the data or metadata.\nRequired: Capture enough information to identify and retrieve the source again.\nMinimum:\n\ncitation_id\nfull citation text or bibliographic reference\ndoi when available\n\nRecommended: A stable local text key such as authorYYYYabc can be used as citation_id, where abc is based on the first letters of the first three informative words in the title.\nTODO: decide whether citation_id should be the canonical local key, whether DOI should serve as the primary key when available, or whether this is purely a schema decision and should be omitted from protocol text.\n\n\n6.2 Sites\nA site is the experimental location.\nRequired: Represent sites separately from treatments.\nMinimum:\n\nsite_id\nrecognizable site name\ncitation linkage\n\nWhen available, also capture:\n\nlatitude and longitude\ncountry, state, nearest city\ngreenhouse or controlled-environment status\nsoil context\nelevation\n\nRecommended: Record location precision honestly.\nIf exact coordinates are not reported, use the best recoverable coordinates and explain the basis in notes.\nDo not: Create separate sites for each plot if all observations come from the same experimental location.\nPlot- or block-level spatial definitions for remote sensing or spatial analysis may be useful later, but they are out of scope for the current curation protocol.\n\n\n6.3 Treatments\nA treatment is the experimental condition, management combination, or system contrast associated with an observation.\nRequired: Represent treatments as categorical conditions with names that are recognizable from source.\nMinimum:\n\ntreatment_id\ntreatment name or source label\ntreatment definition\ncontrol status if identifiable\n\nRecommended: Keep continuous quantities out of the treatment name unless the source itself uses them as the treatment label.\nThe treatment definition is where the curator explains the intended contrast. Quantified operations should also appear in the management events table when they can be recovered.\nDo not: Use treatments to represent information that belongs in another field such as site, cultivar, replicate, or date.\n\n\n6.4 Methods\nA method describes how an observation was measured or derived by the source.\nRequired: Give each distinct method a stable method_id.\nMethod records should capture:\n\nmethod_id\nshort name\ndescription\nrelevant citation\n\nRecommended: Record method distinctions that materially affect interpretation, such as:\n\ndry vs wet basis\nconcentration vs stock\ndepth interval\nflux chamber vs inferred annual total\nelemental analysis vs sensor estimate\n\n\n\n6.5 Observations\nAn observation row is the core data unit for calibration or validation.\nRequired: Use long format by default.\nOne row should represent one dataset/source × site × treatment × replicate or summary unit × time window × variable.\nEach observation should identify:\n\ndataset_id\ncitation_id\nsite_id\ntreatment_id\nreplicate_id or summary unit\nvariable\nvalue\nreported_units\nmethod_id\nmin_date\nmax_date\nobservation level\nstatistic fields if applicable\nnotes and flags\n\nThe current workbook still uses some older column names such as trait, mean, start_date, and end_date. Use those fields pragmatically if needed during current work, but the preferred schema direction is:\n\ntrait -&gt; variable\nmean -&gt; value\nstart_date / end_date -&gt; min_date / max_date\n\n\n\n\n\n\n\nRepository state, develop 900ffd2 (2026-09-30)\n\n\n\ndata/observations.csv (37,258 rows) already uses variable, value, min_date and max_date; it has no trait, mean, start_date or end_date columns. It also has dataset_id, citation_id, treatment_id, replicate_id, reported_units, observation_level, statname, stat, n, notes and flags.\nThe exported observations have no site_id or method_id column. Observations reference the site through sitename (the name key of data/sites.csv) and the method through method (the method name key of data/methods.csv, which also has a method_id column). treatment_id references the name key of data/treatments.csv. Where a workbook carries site_id or method_id columns in observations, scripts/ingest.R drops them as duplicates of those columns. It likewise drops the workbook site_id column from sites and treatment_id from treatments, so data/sites.csv and data/treatments.csv are keyed by name.\n\n\n\n\n6.6 Management events\nManagement should be represented as time-specific events.\nRequired: Keep one row per event.\nManagement events are distinct from treatments:\n\nthe treatment identifies the experimental condition\nthe event records what happened, when, and with what reported amount or attributes\n\nBecause management details vary across event types, use:\n\na small required core shared by all events\noptional stable columns for common event details\nattributes_json for recurring details that are not yet stable enough for first-class columns",
+    "text": "6. Core data model\n\n6.1 Citations\nA citation identifies the source of the data or metadata.\nRequired: Capture enough information to identify and retrieve the source again.\nMinimum:\n\ncitation_id\nfull citation text or bibliographic reference\ndoi when available\n\nRecommended: A stable local text key such as authorYYYYabc can be used as citation_id, where abc is based on the first letters of the first three informative words in the title.\nTODO: decide whether citation_id should be the canonical local key, whether DOI should serve as the primary key when available, or whether this is purely a schema decision and should be omitted from protocol text.\n\n\n6.2 Sites\nA site is the experimental location.\nRequired: Represent sites separately from treatments.\nMinimum:\n\nsite_id\nrecognizable site name\ncitation linkage\n\nWhen available, also capture:\n\nlatitude and longitude\ncountry, state, nearest city\ngreenhouse or controlled-environment status\nsoil context\nelevation\n\nRecommended: Record location precision honestly.\nIf exact coordinates are not reported, use the best recoverable coordinates and explain the basis in notes.\nDo not: Create separate sites for each plot if all observations come from the same experimental location.\nPlot- or block-level spatial definitions for remote sensing or spatial analysis may be useful later, but they are out of scope for the current curation protocol.\n\n\n6.3 Treatments\nA treatment is the experimental condition, management combination, or system contrast associated with an observation.\nRequired: Represent treatments as categorical conditions with names that are recognizable from source.\nMinimum:\n\ntreatment_id\ntreatment name or source label\ntreatment definition\ncontrol status if identifiable\n\nRecommended: Keep continuous quantities out of the treatment name unless the source itself uses them as the treatment label.\nThe treatment definition is where the curator explains the intended contrast. Quantified operations should also appear in the management events table when they can be recovered.\nDo not: Use treatments to represent information that belongs in another field such as site, cultivar, replicate, or date.\n\n\n6.4 Methods\nA method describes how an observation was measured or derived by the source.\nRequired: Give each distinct method a stable method_id.\nMethod records should capture:\n\nmethod_id\nshort name\ndescription\nrelevant citation\n\nRecommended: Record method distinctions that materially affect interpretation, such as:\n\ndry vs wet basis\nconcentration vs stock\ndepth interval\nflux chamber vs inferred annual total\nelemental analysis vs sensor estimate\n\n\n\n6.5 Observations\nAn observation row is the core data unit for calibration or validation.\nRequired: Use long format by default.\nOne row should represent one dataset/source × site × treatment × replicate or summary unit × time window × variable.\nEach observation should identify:\n\ndataset_id\ncitation_id\nsite_id\ntreatment_id\nreplicate_id or summary unit\nvariable\nvalue\nreported_units\nmethod_id\nmin_date\nmax_date\nobservation level\nstatistic fields if applicable\nnotes and flags\n\nThe current workbook still uses some older column names such as trait, mean, start_date, and end_date. Use those fields pragmatically if needed during current work, but the preferred schema direction is:\n\ntrait -&gt; variable\nmean -&gt; value\nstart_date / end_date -&gt; min_date / max_date\n\n\n\n6.6 Management events\nManagement should be represented as time-specific events.\nRequired: Keep one row per event.\nManagement events are distinct from treatments:\n\nthe treatment identifies the experimental condition\nthe event records what happened, when, and with what reported amount or attributes\n\nBecause management details vary across event types, use:\n\na small required core shared by all events\noptional stable columns for common event details\nattributes_json for recurring details that are not yet stable enough for first-class columns",
     "crumbs": [
       "Docs",
       "Data Collection Protocol"
@@ -301,7 +487,7 @@
     "href": "docs/data-collection-protocol.html#proposed-management-events-table-schema",
     "title": "Calibration and Validation Data Collection Protocol",
     "section": "15. Proposed management events table schema",
-    "text": "15. Proposed management events table schema\n\n15.1 Required core columns\nThese are the minimum columns recommended for routine curation.\n\n\n\nTable 2: Required core columns for the proposed management events table.\n\n\n\n\n\n\n\n\n\n\ncolumn\nstatus\ndescription\n\n\n\n\nsite_id\nrequired\nStable site key\n\n\ntreatment_id\nrequired\nStable treatment or system key\n\n\nevent_type\nrequired\nPEcAn-aligned event type such as planting, harvest, irrigation, fertilization, tillage\n\n\nmin_date\nrequired when recoverable\nEarliest plausible event date\n\n\nmax_date\nrequired when recoverable\nLatest plausible event date\n\n\nsource_id\nrequired\nCitation or source key\n\n\nnotes\nrecommended\nHuman-readable event notes\n\n\nrelative_timing\noptional\nRelative timing category when date is described relative to another event\n\n\nrelative_timing_days\noptional\nNumeric day offset associated with relative_timing when reported\n\n\nattributes_json\noptional\nAdditional structured event metadata not yet promoted to columns\n\n\n\n\n\n\nTODO: decide whether relative_timing and relative_timing_days should remain first-class columns or move into attributes_json.\n\n\n15.2 Optional stable columns for routine curation\nThese columns are worth using when the source reports them directly.\n\n\n\nTable 3: Optional stable columns for routine curation of management events.\n\n\n\n\n\n\n\n\n\n\ncolumn\napplies to\nnotes\n\n\n\n\ncrop_code\nplanting\nStable crop identifier when available\n\n\ncrop_display\nplanting\nHuman-readable crop name\n\n\nreported_amount\nirrigation, fertilization, harvest, amendment\nStore the amount as reported\n\n\nreported_units\nirrigation, fertilization, harvest, amendment\nStore the original reported units\n\n\nmethod\nirrigation\nFor example soil, canopy, flood when reported\n\n\ndepth_m\ntillage\nReported tillage depth\n\n\nintensity_category\ntillage\nFor example zero, reduced, conventional\n\n\nfrac_above_removed_0to1\nharvest\nOnly when directly reported or directly recoverable\n\n\nreported_material\nfertilization or amendment\nFor example compost, manure, urea, ammonium sulfate\n\n\n\n\n\n\n\n\n\n\n\n\nRepository state, develop 900ffd2 (2026-09-30)\n\n\n\ndata/managements.csv (3,865 rows, keyed by event_id) does not use the proposed names for three of the core columns. The site is in sites.name, the treatment in treatments.name and the event type in mgmttype; where a workbook carries site_id, treatment_id or event_type columns, scripts/ingest.R drops them as duplicates of those columns. There is no source_id column; the source is in citation (a DOI) and citation_id. The file does have min_date, max_date, notes, relative_timing, relative_timing_days and attributes_json.\nOf the optional columns in Table 3, it has crop_display, reported_amount, reported_units, depth_m, intensity_category and reported_material. It has no crop_code, method or frac_above_removed_0to1 column. The generic columns mgmttype, level, units and estimated (Section 16.3) are still present.\n\n\n\n\n15.3 PEcAn-aligned reference fields for later conversion\nThe current PEcAn events.json schema includes fields such as:\n\nleaf_c_kg_m2\nwood_c_kg_m2\nfine_root_c_kg_m2\ncoarse_root_c_kg_m2\nfrac_below_removed_0to1\nfrac_above_to_litter_0to1\nfrac_below_to_litter_0to1\namount_mm\nimmed_evap_frac_0to1\norg_c_kg_m2\norg_n_kg_m2\nnh4_n_kg_m2\nno3_n_kg_m2\ntillage_eff_0to1\n\nThese should be treated as optional conversion targets, not routine curation requirements.\nRequired: Leave these blank during curation if the paper does not report them.\n\n\n15.4 Why not require all PEcAn fields now?\nBecause many literature sources do not report the model-facing attributes needed for direct events.json population.\nThe curation schema should therefore:\n\npreserve reported event information faithfully\nmake later conversion straightforward\navoid forcing curators to invent missing model inputs",
+    "text": "15. Proposed management events table schema\n\n15.1 Required core columns\nThese are the minimum columns recommended for routine curation.\n\n\n\nTable 2: Required core columns for the proposed management events table.\n\n\n\n\n\n\n\n\n\n\ncolumn\nstatus\ndescription\n\n\n\n\nsite_id\nrequired\nStable site key\n\n\ntreatment_id\nrequired\nStable treatment or system key\n\n\nevent_type\nrequired\nPEcAn-aligned event type such as planting, harvest, irrigation, fertilization, tillage\n\n\nmin_date\nrequired when recoverable\nEarliest plausible event date\n\n\nmax_date\nrequired when recoverable\nLatest plausible event date\n\n\nsource_id\nrequired\nCitation or source key\n\n\nnotes\nrecommended\nHuman-readable event notes\n\n\nrelative_timing\noptional\nRelative timing category when date is described relative to another event\n\n\nrelative_timing_days\noptional\nNumeric day offset associated with relative_timing when reported\n\n\nattributes_json\noptional\nAdditional structured event metadata not yet promoted to columns\n\n\n\n\n\n\nTODO: decide whether relative_timing and relative_timing_days should remain first-class columns or move into attributes_json.\n\n\n15.2 Optional stable columns for routine curation\nThese columns are worth using when the source reports them directly.\n\n\n\nTable 3: Optional stable columns for routine curation of management events.\n\n\n\n\n\n\n\n\n\n\ncolumn\napplies to\nnotes\n\n\n\n\ncrop_code\nplanting\nStable crop identifier when available\n\n\ncrop_display\nplanting\nHuman-readable crop name\n\n\nreported_amount\nirrigation, fertilization, harvest, amendment\nStore the amount as reported\n\n\nreported_units\nirrigation, fertilization, harvest, amendment\nStore the original reported units\n\n\nmethod\nirrigation\nFor example soil, canopy, flood when reported\n\n\ndepth_m\ntillage\nReported tillage depth\n\n\nintensity_category\ntillage\nFor example zero, reduced, conventional\n\n\nfrac_above_removed_0to1\nharvest\nOnly when directly reported or directly recoverable\n\n\nreported_material\nfertilization or amendment\nFor example compost, manure, urea, ammonium sulfate\n\n\n\n\n\n\n\n\n15.3 PEcAn-aligned reference fields for later conversion\nThe current PEcAn events.json schema includes fields such as:\n\nleaf_c_kg_m2\nwood_c_kg_m2\nfine_root_c_kg_m2\ncoarse_root_c_kg_m2\nfrac_below_removed_0to1\nfrac_above_to_litter_0to1\nfrac_below_to_litter_0to1\namount_mm\nimmed_evap_frac_0to1\norg_c_kg_m2\norg_n_kg_m2\nnh4_n_kg_m2\nno3_n_kg_m2\ntillage_eff_0to1\n\nThese should be treated as optional conversion targets, not routine curation requirements.\nRequired: Leave these blank during curation if the paper does not report them.\n\n\n15.4 Why not require all PEcAn fields now?\nBecause many literature sources do not report the model-facing attributes needed for direct events.json population.\nThe curation schema should therefore:\n\npreserve reported event information faithfully\nmake later conversion straightforward\navoid forcing curators to invent missing model inputs",
     "crumbs": [
       "Docs",
       "Data Collection Protocol"
@@ -312,7 +498,7 @@
     "href": "docs/data-collection-protocol.html#suggested-schema-changes",
     "title": "Calibration and Validation Data Collection Protocol",
     "section": "16. Suggested schema changes",
-    "text": "16. Suggested schema changes\nThe following changes would improve the current curation schema. This section is exploratory and may evolve as more datasets are curated.\n\n16.1 Observation schema\n\nrename mean to value\nrename trait to variable\nadd reported_units\nadd observation_level\nadd dataset_id\nreplace rep with replicate_id\nadd block_id and plot_id if needed separately from replicate id\nuse min_date and max_date consistently\nadd reported_effect_scope with clearly defined values such as treatment_mean and aggregated_mean\nadd aggregated_over_factors for aggregated summaries\n\n\n\n\n\n\n\nRepository state, develop 900ffd2 (2026-09-30)\n\n\n\nMost of these changes are already in data/observations.csv: it has value, variable, reported_units, observation_level, dataset_id, replicate_id, min_date and max_date, and no mean, trait or rep column. It has no block_id, plot_id, reported_effect_scope or aggregated_over_factors column.\n\n\n\n\n16.2 Experimental design metadata\nAdd one of the following:\n\na dedicated design tab, or\na required structured README section\n\nRecommended fields:\n\ndesign_type\nexperimental_unit\nreplicate_unit\ncontrol_definition\nfactor names and levels\ntreatment_pairs for explicit contrast tasks\n\n\n\n16.3 Management schema\nThe current management sheet pattern using generic columns such as mgmttype, level, units, and estimated is useful for quick capture but should evolve toward:\n\nrequired event core columns\noptional stable event columns\nattributes_json for overflow\n\nThis will better support later conversion to PEcAn-compatible events.",
+    "text": "16. Suggested schema changes\nThe following changes would improve the current curation schema. This section is exploratory and may evolve as more datasets are curated.\n\n16.1 Observation schema\n\nrename mean to value\nrename trait to variable\nadd reported_units\nadd observation_level\nadd dataset_id\nreplace rep with replicate_id\nadd block_id and plot_id if needed separately from replicate id\nuse min_date and max_date consistently\nadd reported_effect_scope with clearly defined values such as treatment_mean and aggregated_mean\nadd aggregated_over_factors for aggregated summaries\n\n\n\n16.2 Experimental design metadata\nAdd one of the following:\n\na dedicated design tab, or\na required structured README section\n\nRecommended fields:\n\ndesign_type\nexperimental_unit\nreplicate_unit\ncontrol_definition\nfactor names and levels\ntreatment_pairs for explicit contrast tasks\n\n\n\n16.3 Management schema\nThe current management sheet pattern using generic columns such as mgmttype, level, units, and estimated is useful for quick capture but should evolve toward:\n\nrequired event core columns\noptional stable event columns\nattributes_json for overflow\n\nThis will better support later conversion to PEcAn-compatible events.",
     "crumbs": [
       "Docs",
       "Data Collection Protocol"
@@ -334,408 +520,10 @@
     "href": "docs/data-collection-protocol.html#open-questions-and-likely-future-extensions",
     "title": "Calibration and Validation Data Collection Protocol",
     "section": "18. Open questions and likely future extensions",
-    "text": "18. Open questions and likely future extensions\nThe following questions should be revisited after several real datasets have been curated:\n\nwhether to add a dedicated design tab instead of relying on README notes\nhow to represent repeated measures on the same experimental unit\nhow best to encode pooled main effects and interaction summaries in downstream conversion\nwhether to add explicit source-location fields such as source_table, source_figure, and source_panel\nwhether to maintain both reported-unit variables and normalized downstream variable names in the same workbook\nwhich recurring attributes_json keys should be promoted to first-class columns\n\nUntil then, prefer simple, explicit capture over premature schema complexity.\n\n\n\n\n\n\nRepository state, develop 900ffd2 (2026-09-30)\n\n\n\ndata/observations.csv already has a source_table column; it has no source_figure or source_panel column.",
+    "text": "18. Open questions and likely future extensions\nThe following questions should be revisited after several real datasets have been curated:\n\nwhether to add a dedicated design tab instead of relying on README notes\nhow to represent repeated measures on the same experimental unit\nhow best to encode pooled main effects and interaction summaries in downstream conversion\nwhether to add explicit source-location fields such as source_table, source_figure, and source_panel\nwhether to maintain both reported-unit variables and normalized downstream variable names in the same workbook\nwhich recurring attributes_json keys should be promoted to first-class columns\n\nUntil then, prefer simple, explicit capture over premature schema complexity.",
     "crumbs": [
       "Docs",
       "Data Collection Protocol"
-    ]
-  },
-  {
-    "objectID": "reports/site-level-data.html",
-    "href": "reports/site-level-data.html",
-    "title": "Part A. The site level data",
-    "section": "",
-    "text": "Figure 1: Where the six cal/val sites are. Point size is the number of target records used. The three Delta towers are within about 15 km of each other. Circles mark field experiments and triangles mark flux towers, each labelled with its number of target records.\n\n\n\nFive of the six sit in a narrow band of the Central Valley and Delta. Salinas is the outlier, a coastal vegetable system roughly 160 km south of the rest. The three flux towers cluster within about 15 km of each other on Delta peat islands, which means they share a climate, a soil history and a drainage regime. They are three views of one landscape rather than three independent samples of California.\n\n\n\nTable 1: The six sites.\n\n\n\n\n\n\n\n\n\n\n\n\n\nSite\nCrop\nLocation\nObserved\nTargets\nTrts\n\n\n\n\nRussell Ranch, Davis\ncorn / tomato / wheat\n38.54, -121.87\n1993, 2012\n96\n13\n\n\nSalinas SOCS\nlettuce / broccoli\n36.62, -121.53\n2005-2011\n224\n8\n\n\nModesto almond\nalmond\n37.63, -121.09\n2018-2019\n54\n2\n\n\nUS-Bi1, Bouldin\nalfalfa\n38.10, -121.50\n2017-2024\n119\n2\n\n\nUS-Bi2, Bouldin\ncorn\n38.11, -121.54\n2017-2024\n123\n1\n\n\nUS-Twt, Twitchell\nrice\n38.11, -121.65\n2009-2017\n14\n3\n\n\n\n\n\n\nTargets are the SOC stock and gas flux records the model is scored against, 630 in all, with Salinas 2003 and 2004 excluded as described in A5. They are records, not independent measurements. Other data the repository holds are described in the appendix.\nThe six sites are also two different kinds of thing. Three are replicated field experiments with a treatment structure that allows calculation of practice change effects. Three are eddy covariance towers with no within site management contrast; the extra treatments listed for US-Bi1 and US-Twt in the table are separate measurement fields or tower deployments, not management practices. Each tower is unreplicated, the accepted limitation of eddy covariance, and the two Bouldin towers can be compared with each other, as A7 describes.",
-    "crumbs": [
-      "Reports",
-      "Part A: Site-Level Data"
-    ]
-  },
-  {
-    "objectID": "reports/site-level-data.html#a1-the-six-sites",
-    "href": "reports/site-level-data.html#a1-the-six-sites",
-    "title": "Part A. The site level data",
-    "section": "",
-    "text": "Figure 1: Where the six cal/val sites are. Point size is the number of target records used. The three Delta towers are within about 15 km of each other. Circles mark field experiments and triangles mark flux towers, each labelled with its number of target records.\n\n\n\nFive of the six sit in a narrow band of the Central Valley and Delta. Salinas is the outlier, a coastal vegetable system roughly 160 km south of the rest. The three flux towers cluster within about 15 km of each other on Delta peat islands, which means they share a climate, a soil history and a drainage regime. They are three views of one landscape rather than three independent samples of California.\n\n\n\nTable 1: The six sites.\n\n\n\n\n\n\n\n\n\n\n\n\n\nSite\nCrop\nLocation\nObserved\nTargets\nTrts\n\n\n\n\nRussell Ranch, Davis\ncorn / tomato / wheat\n38.54, -121.87\n1993, 2012\n96\n13\n\n\nSalinas SOCS\nlettuce / broccoli\n36.62, -121.53\n2005-2011\n224\n8\n\n\nModesto almond\nalmond\n37.63, -121.09\n2018-2019\n54\n2\n\n\nUS-Bi1, Bouldin\nalfalfa\n38.10, -121.50\n2017-2024\n119\n2\n\n\nUS-Bi2, Bouldin\ncorn\n38.11, -121.54\n2017-2024\n123\n1\n\n\nUS-Twt, Twitchell\nrice\n38.11, -121.65\n2009-2017\n14\n3\n\n\n\n\n\n\nTargets are the SOC stock and gas flux records the model is scored against, 630 in all, with Salinas 2003 and 2004 excluded as described in A5. They are records, not independent measurements. Other data the repository holds are described in the appendix.\nThe six sites are also two different kinds of thing. Three are replicated field experiments with a treatment structure that allows calculation of practice change effects. Three are eddy covariance towers with no within site management contrast; the extra treatments listed for US-Bi1 and US-Twt in the table are separate measurement fields or tower deployments, not management practices. Each tower is unreplicated, the accepted limitation of eddy covariance, and the two Bouldin towers can be compared with each other, as A7 describes.",
-    "crumbs": [
-      "Reports",
-      "Part A: Site-Level Data"
-    ]
-  },
-  {
-    "objectID": "reports/site-level-data.html#a2-when-the-measurements-happened",
-    "href": "reports/site-level-data.html#a2-when-the-measurements-happened",
-    "title": "Part A. The site level data",
-    "section": "A2. When the measurements happened",
-    "text": "A2. When the measurements happened\n\n\n\n\n\n\nFigure 2: When the target records were collected. Darker is more target records that year. Salinas 2003 and 2004 are excluded. Each row is a site and each tile is one year.\n\n\n\nRussell Ranch has two campaigns, 1993 and 2012, and Salinas is annual from 2005 to 2011. The towers only begin in 2017, except US-Twt, which runs 2009 to 2017 and thins to one record a year from 2015. No other site has measurements from 2015 and 2016.",
-    "crumbs": [
-      "Reports",
-      "Part A: Site-Level Data"
-    ]
-  },
-  {
-    "objectID": "reports/site-level-data.html#a3-coverage-against-the-prepared-run-windows",
-    "href": "reports/site-level-data.html#a3-coverage-against-the-prepared-run-windows",
-    "title": "Part A. The site level data",
-    "section": "A3. Coverage against the prepared run windows",
-    "text": "A3. Coverage against the prepared run windows\n\n\n\n\n\n\nFigure 3: Target records against the prepared run window. Each green block is a year with target records. Calibration can only use years inside the run window. The purple bar under each site is its prepared model run window.\n\n\n\nCalibration can only use years where an observation and a model run overlap, so this comparison decides how much of the curated data is reachable at all. Runs end where their management inputs end: the towers’ recent management comes from the statewide monitoring product, which ends in 2023.\nRussell Ranch, Salinas and Modesto line up well, because their run windows were set from the data. US-Bi1 and US-Bi2 have observations extending a year past their run windows, to 2024 against runs ending in 2023; extending those two runs would pick up a year of existing data once management inputs for 2024 are available.\nUS-Twt is the difficult case. Observations stop in 2017 while the run reaches 2023, because it was first built on the monitoring record, which runs to 2023; the years after 2017 are simulated but not scored, so six of fourteen run years have nothing to compare against. The run was deliberately extended back to 2010, where the site’s published management record begins, to buy overlap. Even then the usable overlap is 2010 to 2017, and 13 of the site’s 14 target records fall inside it, since the first annual NEE record is from 2009. Rice is also the system chosen to evaluate the methane response, so that evaluation rests on the site with the least data.",
-    "crumbs": [
-      "Reports",
-      "Part A: Site-Level Data"
-    ]
-  },
-  {
-    "objectID": "reports/site-level-data.html#a4-what-is-measured-and-where",
-    "href": "reports/site-level-data.html#a4-what-is-measured-and-where",
-    "title": "Part A. The site level data",
-    "section": "A4. What is measured, and where",
-    "text": "A4. What is measured, and where\n\n\n\n\n\n\nFigure 4: Target records by site and variable. A dash is no records. Salinas 2003 and 2004 are excluded. Darker green means more records in the cell.\n\n\n\nThe division is clean. Soil carbon is effectively Russell Ranch and Salinas. Methane and CO2 come only from the three tower sites, measured by eddy covariance and, at the Bouldin sites, also by automated chamber.\n\n\n\n\n\n\nMeasurement support is recorded, and the kinds are not interchangeable\n\n\n\nTower eddy covariance integrates a flux over a footprint of hundreds of metres that shifts with the wind. A chamber gives a plot scale mean over well under a square metre. A soil core gives a point value at a stated depth. These are different quantities, which is why method and observation level travel with every value instead of being collapsed at ingest.\n\n\nRussell Ranch and Salinas both report stocks to 30 cm on an equivalent soil mass basis. Salinas uses the published stocks, which take the greatest measured bulk density as the reference, while Russell Ranch is recomputed per plot from its full soil profile. The 96 Russell Ranch equivalent soil mass records report a 0 to 30 cm interval, but the depth actually integrated runs from about 28 to 40 cm, because each plot is taken to its treatment’s reference soil mass rather than to a fixed depth. That keeps each treatment comparable between the two sampling years, and it means model output should be compared on the same mass basis rather than at a fixed depth.",
-    "crumbs": [
-      "Reports",
-      "Part A: Site-Level Data"
-    ]
-  },
-  {
-    "objectID": "reports/site-level-data.html#a5-the-soil-carbon-record",
-    "href": "reports/site-level-data.html#a5-the-soil-carbon-record",
-    "title": "Part A. The site level data",
-    "section": "A5. The soil carbon record",
-    "text": "A5. The soil carbon record\n\n\n\n\n\n\nFigure 5: Soil organic carbon stock to 30 cm, equivalent soil mass basis. Treatment means of replicate values, Mg C ha-1. Faded: Salinas 2003 and 2004, excluded as establishment effects. Each line is one Russell Ranch treatment or one Salinas system.\n\n\n\nRussell Ranch has two campaigns, 1993 and 2012. That constrains a long term rate but says nothing about interannual behaviour. The organic corn and tomato system is the clear mover, which is the expected direction and a useful sanity check.\nSalinas is sampled annually from 2003 to 2011, which provides the opportunity to evaluate the intra-annual dynamics represented by the model. However,\n\n\n\n\n\n\nThe Salinas 2003 and 2004 campaigns are excluded\n\n\n\nMean stock falls from 49.2 Mg C ha-1 in 2003 to 18.6 in 2004, then recovers to 37.8 in 2005. The drop appears in every one of the eight systems and all four replicates, all 32 records of that campaign. A soil carbon stock to 30 cm fell this far, the authors explain, because of the change in management when the experiment began. Before it, the field had low intensity management with cover crops incorporated only by disking, and about 22 Mg ha-1 (wet weight) of compost the year before, which left every system near 50 Mg C ha-1. Year 1 then brought spading to 30 cm and two vegetable crops, which likely broke up macroaggregates built by the earlier cover crop roots and exposed the soil carbon they protected (White et al. 2020, PLOS ONE). This is a start up effect of moving into the treatment regime rather than the dynamics of interest, so 2003 and 2004 are excluded from the targets. The values are kept exactly as published, following the rule that nothing is silently dropped.\n\n\nThe series also varies year to year, moving between 27 and 38 Mg C ha-1 from 2005 to 2011.",
-    "crumbs": [
-      "Reports",
-      "Part A: Site-Level Data"
-    ]
-  },
-  {
-    "objectID": "reports/site-level-data.html#a6-the-flux-record",
-    "href": "reports/site-level-data.html#a6-the-flux-record",
-    "title": "Part A. The site level data",
-    "section": "A6. The flux record",
-    "text": "A6. The flux record\n\n\n\n\n\n\nFigure 6: Annual net ecosystem exchange at the three flux towers. Gap filled annual totals as published. Positive is a net source. Values are in gC m-2 y-1, one point per tower year.\n\n\n\nAnnual net ecosystem exchange is one gas variable reported in the same unit, gC m-2 y-1, at all three towers, taken directly from the gap filled AmeriFlux FLUXNET products, FLUXNET-1F at the Bouldin towers and FLUXNET2015 at US-Twt, with no local annualisation or unit conversion.\n\n\n\n\n\n\nUS-Bi2 net ecosystem exchange looks large\n\n\n\nUS-Bi2 runs from +992 to +2317 gC m-2 y-1. US-Bi1, over the same years, from the same provider, the same product and the same units, sits between -295 and +386. A positive value is a net source in the standard convention, and 2317 gC m-2 y-1 is about 23 t C ha-1 y-1. The site metadata describes deep peat drained for farming and a century of subsidence in the Delta, which would favour a net source. The values are the source’s own annual figures, imported without conversion, and the two sites are different systems: US-Bi2 is corn on deep drained peat, with sorghum in 2024, and US-Bi1 is perennial alfalfa on a mix of peat and mineral sediments under periodic flood irrigation. At US-Bi1 the same product runs about 480 gC m-2 y-1 more positive than the published estimates of Anthony et al. (2023), for reasons not yet resolved, so the US-Bi2 magnitude should be confirmed with the site team before it carries weight in a fit.\n\n\n\n\n\n\n\n\nFigure 7: Chamber N2O at Modesto and the Bouldin towers, on one scale. g N2O-N ha-1 d-1. Bouldin values converted from mg N2O m-2 d-1 (x 6.36). Static chamber at Modesto, automated chamber at the Bouldin towers. Each point is one record, with a box plot for each site.\n\n\n\nN2O is measured by static chamber at Modesto and automated chamber at the Bouldin towers, where the same chambers also record CO2 and CH4; those chamber records make up most of the Bouldin CO2 and CH4 counts in A4. Chamber measurements are limited in their ability to estimate field scale fluxes, but they are used, as in many studies, because the data are too valuable to discard; they are most defensible for differences between sites or treatments measured the same way, so in the figure above the two Bouldin towers compare directly, while the gap to Modesto reflects method as well as site. The units differ by source and are kept as published; converting to a common scale, as the figure above does, uses 1 mg N2O m-2 d-1 = 6.36 g N2O-N ha-1 d-1.",
-    "crumbs": [
-      "Reports",
-      "Part A: Site-Level Data"
-    ]
-  },
-  {
-    "objectID": "reports/site-level-data.html#a7-practice-contrasts",
-    "href": "reports/site-level-data.html#a7-practice-contrasts",
-    "title": "Part A. The site level data",
-    "section": "A7. Practice contrasts",
-    "text": "A7. Practice contrasts\n24 named contrasts are recorded, so a practice change can be queried directly rather than reconstructed from treatment labels afterwards.\n\n\n\nTable 2: Named practice contrasts by source.\n\n\n\n\n\n\n\n\n\n\nSource\nCount\nCoverage\n\n\n\n\nRussell Ranch\n15\ncover cropping, compost against synthetic fertiliser, rotation, irrigation, cropping against grassland\n\n\nSalinas SOCS\n8\ncompost, cover crop frequency, cover crop type, seeding rate\n\n\nModesto\n1\ncompost against no compost\n\n\nFlux towers\n0\nUS-Bi2 is a single treatment, US-Bi1 has two systems, the tower and a separate chamber field, not a management contrast\n\n\n\n\n\n\nThe contrast structure therefore lives almost entirely at two annual crop soil sites. Nothing in the Delta and nothing under rice has a measured practice contrast, which is precisely where the statewide evidence has to carry the weight instead. The two Bouldin towers can still be read as perennial alfalfa against annual corn on the same island. The comparison is confounded, because irrigation and fertilisation differ along with the crop, and it is unreplicated, the accepted limitation of eddy covariance. It therefore supports a check on direction rather than an effect size.",
-    "crumbs": [
-      "Reports",
-      "Part A: Site-Level Data"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Calibration and Validation Data for Agroecosystem Carbon and Greenhouse Gas Models",
-    "section": "",
-    "text": "Curated field observations of soil carbon and greenhouse gas responses to management, with provenance, for calibrating and validating ecosystem and biogeochemical models.\nThis repository holds two kinds of evidence, each with a trail back to its source:\n\nSite level observations: curated measurements (soil organic carbon stocks, N2O, CH4 and CO2 fluxes, and supporting soil, yield and biomass variables), site and treatment metadata, named treatment contrasts, management histories, and bibliographic and methodological context, in data/. Values are stored as each source reports them, in reported units.\nStatewide synthesis evidence: effect sizes and reference values extracted from syntheses and meta analyses, with the selected response targets, in data_raw/statewide_benchmarking/.\n\nWebsite: https://ccmmf.github.io/cal-val-data/\n\n\nThe two kinds of evidence do different jobs. The evidence report sets out the detail.\n\nSite level observations constrain magnitude. They test whether a model produces the right stock, the right flux, at a real place: six California fields, with 630 soil carbon stock and gas flux target records. Soil carbon and gas flux are measured at different sites, and no site carries both. The 24 named practice contrasts sit almost entirely at the two annual crop soil sites, Russell Ranch and Salinas, with one at Modesto; none are in the Delta or under rice. Chamber and tower measurements are different measurement supports and are not interchangeable.\nStatewide synthesis evidence constrains response. It tests whether, when a practice changes, a model responds in a direction and rough magnitude consistent with published syntheses. Six of the 18 practice by outcome cells carry a spread and can enter a likelihood; two more serve as sign checks.\nNeither independently establishes cross domain skill. Six sites cannot establish how California cropland responds to a management change, and a synthesis says how a response goes, not what the stock or flux is at a given field. Because no site pairs soil carbon with flux at useful density, a parameter set reproducing soil carbon at Davis has never been tested for methane in the Delta. The two bodies of evidence check each other, which is the main reason for carrying both.\n\n\n\n\n\n\n\nPage\nWhat it covers\n\n\n\n\nCalibration and Validation Data\nThe evidence report: what the repository holds, what it supports, and what is missing\n\n\nPart A: Site-Level Data\nThe six sites, their target records, and practice contrasts\n\n\nPart B: Statewide Evidence\nSynthesis and meta analysis evidence for statewide response\n\n\nData Collection Protocol\nHow datasets are found, curated and documented (working draft)\n\n\nData Requirements (2024)\nWhat model validation was to require of a dataset, as set out in December 2024; a dated reference, not a record of what is met\n\n\nData Reference\nDatasets, variables, table schemas, coverage and curation conventions\n\n\n\n\n\n\nflowchart TD\n  A[\"Source publications and archives\"] --&gt; B[\"Curation workbooks\"]\n  B --&gt; C[\"scripts/ingest.R and scripts/ingest_benchmarking.R\"]\n  C --&gt; D[\"scripts/validate.R and tests\"]\n  D --&gt; E[\"Committed data/ and statewide-evidence snapshots\"]\n  E --&gt; F[\"Site-level magnitude and statewide response evidence\"]\n  F --&gt; G[\"Downstream model calibration and validation\"]\nThe Google Sheet workbooks are the source of truth. The CSVs in data/ and data_raw/statewide_benchmarking/ are generated exports and must not be hand edited. They are committed so consumers read a stable, documented snapshot.\n\n\n\nThis repository owns measured and synthesized evidence with its provenance: the measured site values, the evidence extracted from published syntheses, and the record of where each value came from. Model configuration, imputation, calibration code and model specific transformations remain downstream, and so do initial conditions, gap filled or imputed events, day of year imputation, fold assignment and parameter priors. Site level values are stored as each source reports them, with no unit or statistic conversion. Those downstream steps are properties of a particular model and a particular study, so they live with whatever consumes the data. Keeping this layer neutral is what lets a second model or analysis reuse the same tables.\n\n\n\nscripts/validate.R checks every generated data/*.csv against datapackage.json. It needs only base R plus jsonlite and readr.\nRscript scripts/validate.R\nTests under tests/testthat/ run the same checks via testthat, plus checks on the statewide evidence; they also need testthat and here.\nRscript -e 'testthat::test_dir(\"tests/testthat\")'\nCI (.github/workflows/validate.yml) also checks every table against its declared types, keys and foreign keys with frictionless.\nfrictionless validate datapackage.json\nLoading tables, regenerating the snapshot from the workbooks, and the full schema are described in the data reference.\n\n\n\nThe site at https://ccmmf.github.io/cal-val-data/ is built with Quarto from _quarto.yml:\nquarto render\nquarto publish gh-pages\n\n\n\nCurated data derives from sources (public data archives and journals) that require attribution under CC-BY. Cite the original sources listed in data/citations.csv and, for the synthesis evidence, in the citation and doi columns of data_raw/statewide_benchmarking/extracted_evidence.csv. Each site level dataset’s provenance and curation decisions are recorded in its data_raw/&lt;dataset_id&gt;/data_entry_report.md under data_raw/; the synthesis evidence has its data_ingest_report.md.\n\n\n\nCode in this repository (scripts/, tests/) is BSD-3-Clause; see LICENSE.\n\n\n\n\n\n\n%% Not shown. This cell makes Quarto ship its bundled Mermaid library,\n%% which draws the README diagram (see mermaid-fence.lua).\nflowchart LR\n  a",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#what-the-data-can-and-cannot-support",
-    "href": "index.html#what-the-data-can-and-cannot-support",
-    "title": "Calibration and Validation Data for Agroecosystem Carbon and Greenhouse Gas Models",
-    "section": "",
-    "text": "The two kinds of evidence do different jobs. The evidence report sets out the detail.\n\nSite level observations constrain magnitude. They test whether a model produces the right stock, the right flux, at a real place: six California fields, with 630 soil carbon stock and gas flux target records. Soil carbon and gas flux are measured at different sites, and no site carries both. The 24 named practice contrasts sit almost entirely at the two annual crop soil sites, Russell Ranch and Salinas, with one at Modesto; none are in the Delta or under rice. Chamber and tower measurements are different measurement supports and are not interchangeable.\nStatewide synthesis evidence constrains response. It tests whether, when a practice changes, a model responds in a direction and rough magnitude consistent with published syntheses. Six of the 18 practice by outcome cells carry a spread and can enter a likelihood; two more serve as sign checks.\nNeither independently establishes cross domain skill. Six sites cannot establish how California cropland responds to a management change, and a synthesis says how a response goes, not what the stock or flux is at a given field. Because no site pairs soil carbon with flux at useful density, a parameter set reproducing soil carbon at Davis has never been tested for methane in the Delta. The two bodies of evidence check each other, which is the main reason for carrying both.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#start-here",
-    "href": "index.html#start-here",
-    "title": "Calibration and Validation Data for Agroecosystem Carbon and Greenhouse Gas Models",
-    "section": "",
-    "text": "Page\nWhat it covers\n\n\n\n\nCalibration and Validation Data\nThe evidence report: what the repository holds, what it supports, and what is missing\n\n\nPart A: Site-Level Data\nThe six sites, their target records, and practice contrasts\n\n\nPart B: Statewide Evidence\nSynthesis and meta analysis evidence for statewide response\n\n\nData Collection Protocol\nHow datasets are found, curated and documented (working draft)\n\n\nData Requirements (2024)\nWhat model validation was to require of a dataset, as set out in December 2024; a dated reference, not a record of what is met\n\n\nData Reference\nDatasets, variables, table schemas, coverage and curation conventions",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#how-information-moves-through-the-repository",
-    "href": "index.html#how-information-moves-through-the-repository",
-    "title": "Calibration and Validation Data for Agroecosystem Carbon and Greenhouse Gas Models",
-    "section": "",
-    "text": "flowchart TD\n  A[\"Source publications and archives\"] --&gt; B[\"Curation workbooks\"]\n  B --&gt; C[\"scripts/ingest.R and scripts/ingest_benchmarking.R\"]\n  C --&gt; D[\"scripts/validate.R and tests\"]\n  D --&gt; E[\"Committed data/ and statewide-evidence snapshots\"]\n  E --&gt; F[\"Site-level magnitude and statewide response evidence\"]\n  F --&gt; G[\"Downstream model calibration and validation\"]\nThe Google Sheet workbooks are the source of truth. The CSVs in data/ and data_raw/statewide_benchmarking/ are generated exports and must not be hand edited. They are committed so consumers read a stable, documented snapshot.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#scope-and-repository-boundary",
-    "href": "index.html#scope-and-repository-boundary",
-    "title": "Calibration and Validation Data for Agroecosystem Carbon and Greenhouse Gas Models",
-    "section": "",
-    "text": "This repository owns measured and synthesized evidence with its provenance: the measured site values, the evidence extracted from published syntheses, and the record of where each value came from. Model configuration, imputation, calibration code and model specific transformations remain downstream, and so do initial conditions, gap filled or imputed events, day of year imputation, fold assignment and parameter priors. Site level values are stored as each source reports them, with no unit or statistic conversion. Those downstream steps are properties of a particular model and a particular study, so they live with whatever consumes the data. Keeping this layer neutral is what lets a second model or analysis reuse the same tables.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#quick-start-validate-the-snapshot",
-    "href": "index.html#quick-start-validate-the-snapshot",
-    "title": "Calibration and Validation Data for Agroecosystem Carbon and Greenhouse Gas Models",
-    "section": "",
-    "text": "scripts/validate.R checks every generated data/*.csv against datapackage.json. It needs only base R plus jsonlite and readr.\nRscript scripts/validate.R\nTests under tests/testthat/ run the same checks via testthat, plus checks on the statewide evidence; they also need testthat and here.\nRscript -e 'testthat::test_dir(\"tests/testthat\")'\nCI (.github/workflows/validate.yml) also checks every table against its declared types, keys and foreign keys with frictionless.\nfrictionless validate datapackage.json\nLoading tables, regenerating the snapshot from the workbooks, and the full schema are described in the data reference.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#site",
-    "href": "index.html#site",
-    "title": "Calibration and Validation Data for Agroecosystem Carbon and Greenhouse Gas Models",
-    "section": "",
-    "text": "The site at https://ccmmf.github.io/cal-val-data/ is built with Quarto from _quarto.yml:\nquarto render\nquarto publish gh-pages",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#attribution",
-    "href": "index.html#attribution",
-    "title": "Calibration and Validation Data for Agroecosystem Carbon and Greenhouse Gas Models",
-    "section": "",
-    "text": "Curated data derives from sources (public data archives and journals) that require attribution under CC-BY. Cite the original sources listed in data/citations.csv and, for the synthesis evidence, in the citation and doi columns of data_raw/statewide_benchmarking/extracted_evidence.csv. Each site level dataset’s provenance and curation decisions are recorded in its data_raw/&lt;dataset_id&gt;/data_entry_report.md under data_raw/; the synthesis evidence has its data_ingest_report.md.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#license",
-    "href": "index.html#license",
-    "title": "Calibration and Validation Data for Agroecosystem Carbon and Greenhouse Gas Models",
-    "section": "",
-    "text": "Code in this repository (scripts/, tests/) is BSD-3-Clause; see LICENSE.\n\n\n\n\n\n\n%% Not shown. This cell makes Quarto ship its bundled Mermaid library,\n%% which draws the README diagram (see mermaid-fence.lua).\nflowchart LR\n  a",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "reports/calibration-validation-data.html",
-    "href": "reports/calibration-validation-data.html",
-    "title": "Calibration and Validation Data",
-    "section": "",
-    "text": "The MAGiC pipeline is used to generate inventory and projection estimates of SOC stocks and GHG emissions from California croplands.\nThe calibration and validation dataset combines two functionally1 independent bodies of evidence, and they do different jobs. These are\nSite level data is six California fields where somebody measured soil carbon or a greenhouse gas flux. It answers a question about magnitude: does the model produce the right stock, the right flux, at a real place.\nSynthesis evidence is a set of values from statistical synthesis of published literature on the impacts of sustainable farming practices on SOC and GHG balance. It answers a question about response: when a practice changes, does the model respond in a direction and rough magnitude that is consistent with available evidence.\n\n\n\n\n\n\nNeither of these datasets is sufficient. The limited site-level dataset is insufficient for calibration because it is easy to overfit the model to specific sites while missing the big picture changes.\n\n\n\n\n\n\nSoil carbon and gas flux are measured at different sites. Of the six sites, three include SOC stock measurements, and three provide gas exchange, and no site carries both. Any claim spanning both is an extrapolation, not a validated result.\nPractice contrasts exist at only two sites, both annual crop soil sites. There is no measured practice contrast anywhere in the Delta, and none for rice.\nSix of the 18 statewide cells carry a spread and can be fitted, where a cell is one practice paired with one outcome. They are cover crops, non-crop carbon and reduced tillage on soil carbon, reduced tillage on N2O, fertilisation on N2O, and rice drying on CH4. Two more have no published spread and are used to check the direction of the model response (B5).\nTwo caveats apply to the targets. Salinas 2003 and 2004 are excluded as establishment effects, and US-Bi2 is a much larger net carbon source than its neighbour, a magnitude to confirm with the site team. Both are described in place.\nCoverage and usability are not the same thing. An empty cell indicates that no useable target was identified in the sources reviewed.\n\n\n\n\n\n\n\nRepository state, develop 900ffd2 (2026-09-30)\n\n\n\nKey point 1. In data/observations.csv, SOC stock records (SOC_stock_Mg_ha) exist at two sites, not three: russell_ranch_davis (96 records) and salinas_socs (288 records, of which the 64 from 2003 and 2004 are excluded from the targets). Modesto holds 6 total carbon concentration records (total_C_pct), not stocks, and 54 chamber N2O flux records. Gas flux target records therefore come from four sites: Modesto, US-Bi1, US-Bi2 and US-Twt. No site holds both SOC stock and gas flux target records.\nKey point 2. data/treatment_pairs.csv holds 24 practice contrasts at three sites, not two: Russell Ranch 15, Salinas 8 and Modesto 1 (compost against no compost), as the table in A7 lists. None is at a Delta tower site or under rice.",
-    "crumbs": [
-      "Reports",
-      "Overview & Key Points"
-    ]
-  },
-  {
-    "objectID": "reports/calibration-validation-data.html#summary",
-    "href": "reports/calibration-validation-data.html#summary",
-    "title": "Calibration and Validation Data",
-    "section": "",
-    "text": "The MAGiC pipeline is used to generate inventory and projection estimates of SOC stocks and GHG emissions from California croplands.\nThe calibration and validation dataset combines two functionally1 independent bodies of evidence, and they do different jobs. These are\nSite level data is six California fields where somebody measured soil carbon or a greenhouse gas flux. It answers a question about magnitude: does the model produce the right stock, the right flux, at a real place.\nSynthesis evidence is a set of values from statistical synthesis of published literature on the impacts of sustainable farming practices on SOC and GHG balance. It answers a question about response: when a practice changes, does the model respond in a direction and rough magnitude that is consistent with available evidence.\n\n\n\n\n\n\nNeither of these datasets is sufficient. The limited site-level dataset is insufficient for calibration because it is easy to overfit the model to specific sites while missing the big picture changes.\n\n\n\n\n\n\nSoil carbon and gas flux are measured at different sites. Of the six sites, three include SOC stock measurements, and three provide gas exchange, and no site carries both. Any claim spanning both is an extrapolation, not a validated result.\nPractice contrasts exist at only two sites, both annual crop soil sites. There is no measured practice contrast anywhere in the Delta, and none for rice.\nSix of the 18 statewide cells carry a spread and can be fitted, where a cell is one practice paired with one outcome. They are cover crops, non-crop carbon and reduced tillage on soil carbon, reduced tillage on N2O, fertilisation on N2O, and rice drying on CH4. Two more have no published spread and are used to check the direction of the model response (B5).\nTwo caveats apply to the targets. Salinas 2003 and 2004 are excluded as establishment effects, and US-Bi2 is a much larger net carbon source than its neighbour, a magnitude to confirm with the site team. Both are described in place.\nCoverage and usability are not the same thing. An empty cell indicates that no useable target was identified in the sources reviewed.\n\n\n\n\n\n\n\nRepository state, develop 900ffd2 (2026-09-30)\n\n\n\nKey point 1. In data/observations.csv, SOC stock records (SOC_stock_Mg_ha) exist at two sites, not three: russell_ranch_davis (96 records) and salinas_socs (288 records, of which the 64 from 2003 and 2004 are excluded from the targets). Modesto holds 6 total carbon concentration records (total_C_pct), not stocks, and 54 chamber N2O flux records. Gas flux target records therefore come from four sites: Modesto, US-Bi1, US-Bi2 and US-Twt. No site holds both SOC stock and gas flux target records.\nKey point 2. data/treatment_pairs.csv holds 24 practice contrasts at three sites, not two: Russell Ranch 15, Salinas 8 and Modesto 1 (compost against no compost), as the table in A7 lists. None is at a Delta tower site or under rice.",
-    "crumbs": [
-      "Reports",
-      "Overview & Key Points"
-    ]
-  },
-  {
-    "objectID": "reports/calibration-validation-data.html#part-a-the-site-level-data",
-    "href": "reports/calibration-validation-data.html#part-a-the-site-level-data",
-    "title": "Calibration and Validation Data",
-    "section": "Part A. The site level data",
-    "text": "Part A. The site level data\nSections A1 to A7 are on their own page: Part A. The site level data.",
-    "crumbs": [
-      "Reports",
-      "Overview & Key Points"
-    ]
-  },
-  {
-    "objectID": "reports/calibration-validation-data.html#part-b-the-statewide-evidence",
-    "href": "reports/calibration-validation-data.html#part-b-the-statewide-evidence",
-    "title": "Calibration and Validation Data",
-    "section": "Part B. The statewide evidence",
-    "text": "Part B. The statewide evidence\nSections B1 to B6 are on their own page: Part B. The statewide evidence.",
-    "crumbs": [
-      "Reports",
-      "Overview & Key Points"
-    ]
-  },
-  {
-    "objectID": "reports/calibration-validation-data.html#part-c-using-the-two-together",
-    "href": "reports/calibration-validation-data.html#part-c-using-the-two-together",
-    "title": "Calibration and Validation Data",
-    "section": "Part C. Using the two together",
-    "text": "Part C. Using the two together\n\nC1. What each side constrains\nSite data constrains magnitude; statewide evidence constrains response. They also check each other, which is the main reason for carrying both.\n\n\nC2. A caution on how the evidence enters the likelihood\nA synthesis estimate is one estimate, not many. If every design point is scored separately against the same synthesis number, that single piece of information is counted repeatedly, and the posterior on the mean effect tightens as one over the square root of the number of pseudo observations. That precision is set by how many were included rather than by the underlying data.\nPerturbing each pseudo observation with the population spread makes the draws look correct marginally, but does not change how much they say about the mean. Heterogeneity across sites belongs in the model as variation, not in the observation error where it is averaged away.\nTwo quantities are therefore worth reporting separately: the mean effect with its interval, noted as dependent on the number of pseudo observations used, and the predictive spread across sites, checked against the observed among plot spread.\n\n\nC3. Reading this data honestly\nThree limits are worth carrying forward into any result built on it.\nCross domain skill is not demonstrated. Because no site pairs soil carbon with flux at useful density, a parameter set reproducing soil carbon at Davis has never been tested for methane in the Delta.\nThe Delta is one landscape, not three samples. The three towers share a climate and a Delta peat island setting, so agreement among them is weaker evidence than three independent sites would be.\nTwo caveats apply to the targets. Salinas 2003 and 2004 are excluded as establishment effects, and the magnitude of the US-Bi2 net source should be confirmed with the site team before it carries weight in a fit. Both are documented above so that a later reader meets the caveat alongside the data rather than discovering it independently.",
-    "crumbs": [
-      "Reports",
-      "Overview & Key Points"
-    ]
-  },
-  {
-    "objectID": "reports/calibration-validation-data.html#appendix-data-held-but-not-used-as-targets",
-    "href": "reports/calibration-validation-data.html#appendix-data-held-but-not-used-as-targets",
-    "title": "Calibration and Validation Data",
-    "section": "Appendix. Data held but not used as targets",
-    "text": "Appendix. Data held but not used as targets\nThe repository holds 37,258 records in total. Beyond the 630 targets, the rest are mainly soil sensor profiles, bulk density, soil chemistry and crop yields, which support diagnosis and context but are not targets. Yield and biomass exist only at Russell Ranch. The towers also carry soil sensor records of temperature, moisture and oxygen; they are valuable for diagnosing why a flux is wrong, but they are not themselves carbon targets.",
-    "crumbs": [
-      "Reports",
-      "Overview & Key Points"
-    ]
-  },
-  {
-    "objectID": "reports/calibration-validation-data.html#footnotes",
-    "href": "reports/calibration-validation-data.html#footnotes",
-    "title": "Calibration and Validation Data",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nLarge scale synthesis datasets may contain the same site level data, but we assume that the effect is small enough to be practically independent.↩︎",
-    "crumbs": [
-      "Reports",
-      "Overview & Key Points"
-    ]
-  },
-  {
-    "objectID": "reports/statewide-evidence.html",
-    "href": "reports/statewide-evidence.html",
-    "title": "Part B. The statewide evidence",
-    "section": "",
-    "text": "Six sites cannot establish how California cropland responds to a management change. The statewide evidence is the second constraint: a synthesis of published results for each practice and outcome, assembled so it can serve either as a calibration target or as an acceptance test on model behaviour.\n62 evidence rows were extracted from 20 audited sources, 14 of which are held in the shared reference library.\n\n\n\n\n\n\nRepository state, develop 900ffd2 (2026-09-30)\n\n\n\nThe statewide evidence in data_raw/statewide_benchmarking now holds 67 evidence rows in extracted_evidence.csv (text: 62), from 24 audited sources in source_audit.csv (text: 20), of which 15 are marked as held in the shared Zotero library (in_zotero is yes; text: 14). The sentence above gives the counts on the source date.",
-    "crumbs": [
-      "Reports",
-      "Part B: Statewide Evidence"
-    ]
-  },
-  {
-    "objectID": "reports/statewide-evidence.html#b1-what-this-half-is-for",
-    "href": "reports/statewide-evidence.html#b1-what-this-half-is-for",
-    "title": "Part B. The statewide evidence",
-    "section": "",
-    "text": "Six sites cannot establish how California cropland responds to a management change. The statewide evidence is the second constraint: a synthesis of published results for each practice and outcome, assembled so it can serve either as a calibration target or as an acceptance test on model behaviour.\n62 evidence rows were extracted from 20 audited sources, 14 of which are held in the shared reference library.\n\n\n\n\n\n\nRepository state, develop 900ffd2 (2026-09-30)\n\n\n\nThe statewide evidence in data_raw/statewide_benchmarking now holds 67 evidence rows in extracted_evidence.csv (text: 62), from 24 audited sources in source_audit.csv (text: 20), of which 15 are marked as held in the shared Zotero library (in_zotero is yes; text: 14). The sentence above gives the counts on the source date.",
-    "crumbs": [
-      "Reports",
-      "Part B: Statewide Evidence"
-    ]
-  },
-  {
-    "objectID": "reports/statewide-evidence.html#b2-the-practice-by-outcome-grid",
-    "href": "reports/statewide-evidence.html#b2-the-practice-by-outcome-grid",
-    "title": "Part B. The statewide evidence",
-    "section": "B2. The practice by outcome grid",
-    "text": "B2. The practice by outcome grid\n\n\n\n\n\n\nFigure 1: Statewide evidence, practice by outcome. Label names the selected source. Green cells enter a likelihood; purple cells are sign checks. Grey cells carry no target.\n\n\n\nSix practices by three outcomes gives 18 cells. 17 have at least one piece of evidence behind them; cover crops and methane is the only cell with nothing in the library at all.\nCoverage is not usability, which is what the colouring separates.\n\n\n\nTable 1: Classes of practice by outcome cell.\n\n\n\n\n\n\n\n\n\n\nClass\nCells\nMeaning\n\n\n\n\nFittable\n6\na real uncertainty on the contrast is reported, or can be computed from the source’s own data, so the cell can enter a likelihood\n\n\nSign check\n2\nthe effect has a magnitude but no spread has been recovered, so it carries an expert informed prior on the spread; it can be fitted if that prior is adopted, and until then serves as a sign check\n\n\nNo target\n10\nno usable contrast in the evidence, no evidence at all for cover crops and methane, or left out by priority for reduced tillage and methane\n\n\n\n\n\n\nSix cells are fittable: cover crops, non-crop carbon and reduced tillage on soil carbon, reduced tillage on N2O, fertilisation on N2O, and rice drying on CH4.\n\nThe eight cells that are used\nSix cells are fittable. Their spread comes from the source itself, so they can enter a likelihood directly. For fertilisation and rice methane the rows are held by crop class and by number of drying events, and only the one matching a run is used.\n\n\n\nTable 2: The six fittable cells.\n\n\n\n\n\n\n\n\n\n\n\n\nCell\nCentre\nSpread\nUnits\nSource\n\n\n\n\n+Cover Crops x Soil C\n0.32\n0.74 (SD, population)\nMg C ha-1 yr-1\nPoeplau & Don 2015\n\n\nReduced tillage x N2O\n0.322\n0.124 (SE, from 95% CI)\nLRR\nvan Kessel 2013, dry &lt;10 yr\n\n\n+Non-crop C x Soil C\n0.238\n0.0028 (SE, from 95% CI)\nLRR\nBai 2023\n\n\nReduced tillage x Soil C\n0.216\n0.448 (SD, population)\nMg C ha-1 yr-1\nSun 2020\n\n\n+/- N Fertilization x N2O\n0.0009 to 0.0181\n0.00028 to 0.00497 (SE, reported)\n% points of EF per kg N ha-1\nShcherbak 2014, by crop class\n\n\nFlooding / rice x CH4\n-0.399 to -1.394\n0.117 to 0.182 (SE, from 95% CIs)\nLRR\nJiang 2019, by drying events\n\n\n\n\n\n\nTwo more have a published effect size but no printed dispersion, so they carry the expert informed prior on the spread described in B5 and serve as sign checks unless that prior is adopted in the likelihood. For rice N2O an interval is drawn in Jiang 2019 Figure 2a and could still be digitised.\n\n\n\nTable 3: The two sign check cells, with an expert informed prior on the spread.\n\n\n\n\n\n\n\n\n\n\n\n\nCell\nCentre\nSpread\nUnits\nSource\n\n\n\n\nFlooding / rice x N2O\n0.718\n0.707 (SE, expert prior)\nLRR\nJiang 2019\n\n\nAnnual -&gt; Perennial x Soil C\n0.154\n0.707 (SE, expert prior)\nLRR\nSiddique 2023\n\n\n\n\n\n\nNote that the fittable cells sit on three scales. Cover crops and reduced tillage on soil carbon are absolute rates in Mg C ha-1 yr-1; non-crop carbon, reduced tillage on N2O and rice methane are log response ratios, which are dimensionless; fertilisation on N2O is a change in emission factor per kg N ha-1. They cannot be compared to each other directly, and each has to be matched against the equivalent model quantity on its own scale.\nThe remaining ten cells carry no target; nine have no usable value, and reduced tillage on methane is left out by priority (B3). That is the finding, not a gap to be filled.\nThat is a small number and it is better stated plainly than dressed up. Filling the grid was never the objective. An empty cell carries information, because it says the literature does not support a target there, and a manufactured number would be worse than the gap.",
-    "crumbs": [
-      "Reports",
-      "Part B: Statewide Evidence"
-    ]
-  },
-  {
-    "objectID": "reports/statewide-evidence.html#b3-why-so-few-cells-are-fittable",
-    "href": "reports/statewide-evidence.html#b3-why-so-few-cells-are-fittable",
-    "title": "Part B. The statewide evidence",
-    "section": "B3. Why so few cells are fittable",
-    "text": "B3. Why so few cells are fittable\n\n\n\n\n\n\nFigure 2: Every contrast in the evidence library, on the log response ratio scale. Bars are 95% intervals. Only 4 of 15 have one, and all 4 are the same cell. Grey points are point estimates only; green points have an error bar reported or derivable.\n\n\n\nThe figure shows the library as first assembled. This is the clearest single view of the problem. Fifteen contrasts are expressed as log response ratios. Four carry an interval. Eleven are point estimates with nothing around them.\nThree distinct causes sit behind that, and they have different remedies.\nMost sources report a ratio with no dispersion. The eleven grey points are ratios of two published means. Since the figure was made, four more cells have gained a spread. Rice methane uses the confidence intervals Jiang 2019 reports for each number of drying events. Non-crop carbon and reduced tillage on soil carbon moved to newer syntheses: Bai 2023, which reports a confidence interval, in place of Vicente-Vicente 2016, and Sun 2020 in place of Robertson 2000, with the spread computed from the site data in its Table S1. Fertilisation on N2O comes from Shcherbak 2014, whose supplementary Table S3 reports standard errors by crop class. These now enter the likelihood (B2). The two with no printed spread carry an expert informed prior on the spread (B5), although for rice N2O an interval is drawn in Jiang 2019 Figure 2a and could still be digitised.\nThe four that do have intervals are not four constraints. All of them are reduced tillage on N2O, so they are alternatives for a single cell. The figure also shows why pooling them would be wrong: the two van Kessel duration subgroups are one response changing with time since adoption, positive under 10 years and negative after, so the target is matched to adoption age rather than averaged.\nSome reported uncertainties describe a different quantity from the one being targeted. A standard deviation across the plots of one treatment arm is not the uncertainty on the difference between arms, and treating it as such would underestimate . Each row now records what its uncertainty applies to, so this cannot be misread downstream.\nOne further case is a matter of scope. Reduced tillage on methane has a real published error bar, and tillage does enter the SIPNET methane formulation: it speeds decomposition, which leaves less carbon substrate for methane production. It can be sign checked, and a model that does not respond, or responds in the wrong direction, fails that check and warrants further investigation. It is left out of the targets by priority rather than because it cannot be used, as the next paragraph explains.\nThe dataset focuses on the response of methane to water management in rice systems because this is the primary source of cropland CH4.",
-    "crumbs": [
-      "Reports",
-      "Part B: Statewide Evidence"
-    ]
-  },
-  {
-    "objectID": "reports/statewide-evidence.html#b4-how-uncertainty-is-recorded",
-    "href": "reports/statewide-evidence.html#b4-how-uncertainty-is-recorded",
-    "title": "Part B. The statewide evidence",
-    "section": "B4. How uncertainty is recorded",
-    "text": "B4. How uncertainty is recorded\nA bare number beside a spread does not say enough to be used, because the same figure can mean opposite things. Every row therefore declares three properties explicitly: the type of uncertainty, the scale it lives on, since a ratio must be on the log scale before it is meaningful, and the referent, meaning whether it describes the mean, the population, or a single arm.\nThe distinction that matters most is precision against variability. An uncertainty on a mean tightens a posterior; a spread across a population should widen it. Reading one as the other is the easiest route to a calibration that is confident and wrong.\n\n\n\n\n\n\nA worked example\n\n\n\nPoeplau and Don report 0.32 ± 0.08 Mg C ha-1 yr-1 for cover crops on soil carbon. Their methods state that errors in the text are 95 percent confidence intervals, so 0.08 is a confidence interval half width and the standard error on the mean is 0.041.\nTheir supplement separately provides 139 per plot annual rates, whose standard deviation is 0.744. Both numbers are valid and they answer different questions. 0.041 describes how well the synthesis pins the average. 0.744 describes how much real sites vary. They differ by a factor of eighteen.\nA further subtlety: those 139 rates have a mean of 0.544, whereas the headline 0.32 is the slope of a regression forced through the origin. The centre and the spread are therefore not two descriptions of one distribution, so which estimator is being targeted should be named rather than assumed.",
-    "crumbs": [
-      "Reports",
-      "Part B: Statewide Evidence"
-    ]
-  },
-  {
-    "objectID": "reports/statewide-evidence.html#b5-where-the-spread-is-an-expert-informed-prior",
-    "href": "reports/statewide-evidence.html#b5-where-the-spread-is-an-expert-informed-prior",
-    "title": "Part B. The statewide evidence",
-    "section": "B5. Where the spread is an expert informed prior",
-    "text": "B5. Where the spread is an expert informed prior\nTwo cells have a published effect size but no printed dispersion in the source. Rather than discarding them or inventing a precise figure, they carry a stated expert informed prior on the spread: the 95 percent interval spans a factor of four either side of the estimate, making the standard error ln(4) / 1.96, or 0.707 on the log scale.\nIn the data tables every such row is marked as an assumed spread used for sign checks, so any analysis restricted to reported uncertainty can exclude them in a single step.",
-    "crumbs": [
-      "Reports",
-      "Part B: Statewide Evidence"
-    ]
-  },
-  {
-    "objectID": "reports/statewide-evidence.html#b6-what-is-deliberately-excluded",
-    "href": "reports/statewide-evidence.html#b6-what-is-deliberately-excluded",
-    "title": "Part B. The statewide evidence",
-    "section": "B6. What is deliberately excluded",
-    "text": "B6. What is deliberately excluded\nNo pooling across studies that disagree. Each cell selects one row and retains the others beside it, unaggregated. An earlier version averaged a positive effect against a negative one and produced an apparent decrease matching neither input.\nNo effect sizes derived from null results. A paper reporting no significant change is an absence of an effect size, not an effect size of zero.\nNo absolute levels among the targets. Inventory totals and emission factors are comparison values rather than calibration targets, and are held separately.\nNo source used beyond what it measured. One candidate soil carbon row was dropped after finding the table reported carbon derived from corn rather than total soil carbon, where the total was in fact declining, so the sign would have been backwards.",
-    "crumbs": [
-      "Reports",
-      "Part B: Statewide Evidence"
-    ]
-  },
-  {
-    "objectID": "docs/data-requirements.html",
-    "href": "docs/data-requirements.html",
-    "title": "Data Requirements for SIPNET Model Validation",
-    "section": "",
-    "text": "We are developing new capabilities to simulate agricultural management and biogeochemical cycling in the SIPNET ecosystem model. To evaluate model performance, we are seeking datasets that:\n\nInclude measurements of soil carbon, GHG flux, biomass, and/or water balance;\nProvide records of management events at the sites where each measurement was taken; and\nAre from croplands (row crops, orchards, vineyards, hay land) in California or regions that are climatically and agronomically relevant to California agriculture.\n\nWe define these in detail below, but if this already sounds like your dataset then we want to talk to you!",
-    "crumbs": [
-      "Docs",
-      "Data Requirements (2024)"
-    ]
-  },
-  {
-    "objectID": "docs/data-requirements.html#overview",
-    "href": "docs/data-requirements.html#overview",
-    "title": "Data Requirements for SIPNET Model Validation",
-    "section": "",
-    "text": "We are developing new capabilities to simulate agricultural management and biogeochemical cycling in the SIPNET ecosystem model. To evaluate model performance, we are seeking datasets that:\n\nInclude measurements of soil carbon, GHG flux, biomass, and/or water balance;\nProvide records of management events at the sites where each measurement was taken; and\nAre from croplands (row crops, orchards, vineyards, hay land) in California or regions that are climatically and agronomically relevant to California agriculture.\n\nWe define these in detail below, but if this already sounds like your dataset then we want to talk to you!",
-    "crumbs": [
-      "Docs",
-      "Data Requirements (2024)"
-    ]
-  },
-  {
-    "objectID": "docs/data-requirements.html#background",
-    "href": "docs/data-requirements.html#background",
-    "title": "Data Requirements for SIPNET Model Validation",
-    "section": "Background",
-    "text": "Background\nWe are developing a framework for GHG measurement and modeling in order to estimate the GHG balance of California croplands. As part of this work we are updating the SIPNET biogeochemistry model by adding two classes of change to the model that require calibration and validation. First we will add representation of cropland management events including planting, harvest, irrigation, fertilization, and tillage. Second we will add a nitrogen cycle and the ability to simulate N2O and CH4 fluxes to a model that currently tracks C and water dynamics.\nThe ideal calibration and validation data are time series observations from field experiments where these management events are known and the target response variables (soil C stocks and GHG fluxes) are measured at multiple time points. Ideally, these observations will have adequate metadata and additional covariates, including soil physical properties, weather, and other observations of C, N, and H2O pools and fluxes.",
-    "crumbs": [
-      "Docs",
-      "Data Requirements (2024)"
-    ]
-  },
-  {
-    "objectID": "docs/data-requirements.html#sites",
-    "href": "docs/data-requirements.html#sites",
-    "title": "Data Requirements for SIPNET Model Validation",
-    "section": "Sites",
-    "text": "Sites\nWe are interested in observations both from monitoring of single-management sites and from experiments that compare GHG balance between conventional and regenerative agricultural practices. Across the project we are interested in a representative sample of California’s crops and cropping systems, including orchards, vineyards, row crops, hay land, and temporarily idled cropland.\nThe minimum site metadata are:\n\nLocation: latitude and longitude (used to look up climate and soil information)\nAt least one year of available measurements\nAvailable management data covers at least the full measurement period\nDescription of management(s) or intervention(s) applied\n\nEnvironmental conditions that are useful if available:\n\nSoil physical properties: Texture, water holding capacity\nLocal weather station data\n\nInterventions of interest include but are not limited to:\n\nReduced or zero tillage,\nAdoption of cover crops, interplanting, and alternative rotations\nAlternate irrigation regimes\nType or timing of fertilization\nOrganic matter addition\nAny practice eligible for the CA Healthy Soils Program\n\nThere is no minimum or maximum field/plot size, but management should be uniform across each area sampled for the reported measurements. Sites should be in California or have cropping systems, climates, and soils that are temperate, Mediterranean, or otherwise comparable to those found in the state. Examples include orchards, vineyards, row crops, or hayland under irrigation and management practices similar to those used in California.",
-    "crumbs": [
-      "Docs",
-      "Data Requirements (2024)"
-    ]
-  },
-  {
-    "objectID": "docs/data-requirements.html#measurements",
-    "href": "docs/data-requirements.html#measurements",
-    "title": "Data Requirements for SIPNET Model Validation",
-    "section": "Measurements",
-    "text": "Measurements\nModel calibration and validation will require measurements of at least one of:\n\nSoil organic carbon\n\nMinimum measurement depth 30 cm\nAt least two timepoints separated by at least three years\n\nGHG Flux (CO2, N2O, and/or CH4)\n\nMeasurements may be from continuous eddy covariance or from periodic chamber measurements at &lt;10d frequency\nMust cover at least one full growing season (year-round preferred)\n\nPlant biomass\n\nSeparated into root, stem, leaf if available\n\nEvapotranspiration\n\nMust cover at least one full growing season (year-round preferred)\n\n\nAdditional observations that would be useful for calibration and validation include:\n\nLeaf Area Index\nGrowth stage (phenology)\nSoil N mineralization rate\nOther pools and fluxes of N, C, H2O\n\nEspecially: NEE, soil water content\nN content or C:N ratio of plant biomass and soil organic matter\n\nSite or local meteorology:\n\nAir temperature\nSoil temperature (optional)\nPhotosynthetically Active Radiation or Shortwave Radiation\nPrecipitation\nVapor Pressure Deficit\nWind speed",
-    "crumbs": [
-      "Docs",
-      "Data Requirements (2024)"
-    ]
-  },
-  {
-    "objectID": "docs/data-requirements.html#management",
-    "href": "docs/data-requirements.html#management",
-    "title": "Data Requirements for SIPNET Model Validation",
-    "section": "Management",
-    "text": "Management\nTo verify that the model correctly represents the effects of management, we need to know the site’s management history in enough detail to set key attributes when modeling each event.\nRecognizing that management records are often sparse or incomplete, the definition of “enough detail” is flexible. In general, we need to know the existence, timing, type, and intensity of each management event, but we can assume default values for some of these when they are not known. Management practices that differ between treatments are the most important. Management histories should be fairly complete for the time period when measurements were collected; site history prior to the measurement period is also valuable but we recognize it is likely to be less detailed.\nSpecific attributes of interest include (* indicates required):\n\nIrrigation\n\nstart date*\nend date\ntype (e.g. drip, flood, sprinkler)\namount* (depth equivalent)\n\nif based on soil moisture, what is the minimum and maximum soil moisture content for irrigation to start and stop?\n\nrate (depth equivalent / hour) or event duration (hours)\n\nFertilization\n\ndate*\nN application rate* (mass N / area)\nFertilizer form\nIf organic, amount of C* (mass C / area) OR C:N ratio\n\nTillage\n\ndate*\ndepth\nImplement\n\nPlanting\n\ndate*\ncrop*\n\nHarvest, mowing, or biomass removal\n\ndate*\ncomponent* (grain, fruit, straw, wood, leaf)\nbiomass removed (dry mass / area)\nbiomass remaining in field (dry mass / area)\nbiomass C:N ratio\n\n\nPlease also indicate whether the management history is known complete or incomplete for a given time period; for example whether this is all the tillage events between 2010 and 2015, or only the ones that happened to be observed and recorded.",
-    "crumbs": [
-      "Docs",
-      "Data Requirements (2024)"
     ]
   }
 ]

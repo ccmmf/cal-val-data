@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -101,9 +67,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -203,12 +166,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Data Requirements (2024)</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./docs/data-reference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Reference</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -216,146 +173,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#calibration-and-validation-data-for-agroecosystem-carbon-and-greenhouse-gas-models" id="toc-calibration-and-validation-data-for-agroecosystem-carbon-and-greenhouse-gas-models" class="nav-link active" data-scroll-target="#calibration-and-validation-data-for-agroecosystem-carbon-and-greenhouse-gas-models">Calibration and Validation Data for Agroecosystem Carbon and Greenhouse Gas Models</a>
-  <ul class="collapse">
-  <li><a href="#what-the-data-can-and-cannot-support" id="toc-what-the-data-can-and-cannot-support" class="nav-link" data-scroll-target="#what-the-data-can-and-cannot-support">What the data can and cannot support</a></li>
-  <li><a href="#start-here" id="toc-start-here" class="nav-link" data-scroll-target="#start-here">Start here</a></li>
-  <li><a href="#how-information-moves-through-the-repository" id="toc-how-information-moves-through-the-repository" class="nav-link" data-scroll-target="#how-information-moves-through-the-repository">How information moves through the repository</a></li>
-  <li><a href="#scope-and-repository-boundary" id="toc-scope-and-repository-boundary" class="nav-link" data-scroll-target="#scope-and-repository-boundary">Scope and repository boundary</a></li>
-  <li><a href="#quick-start-validate-the-snapshot" id="toc-quick-start-validate-the-snapshot" class="nav-link" data-scroll-target="#quick-start-validate-the-snapshot">Quick start: validate the snapshot</a></li>
-  <li><a href="#site" id="toc-site" class="nav-link" data-scroll-target="#site">Site</a></li>
-  <li><a href="#attribution" id="toc-attribution" class="nav-link" data-scroll-target="#attribution">Attribution</a></li>
-  <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">MAGiC Calibration and Validation Data</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="calibration-and-validation-data-for-agroecosystem-carbon-and-greenhouse-gas-models" class="level1">
-<h1>Calibration and Validation Data for Agroecosystem Carbon and Greenhouse Gas Models</h1>
-<p><a href="https://github.com/ccmmf/cal-val-data/blob/develop/LICENSE"><img src="https://img.shields.io/badge/Code_License-BSD_3--Clause-blue.svg" class="img-fluid" alt="Code License"></a> <img src="https://img.shields.io/badge/Data_License-CC--BY_(upstream)-lightgrey.svg" class="img-fluid" alt="Data License"></p>
-<p>Curated field observations of soil carbon and greenhouse gas responses to management, with provenance, for calibrating and validating ecosystem and biogeochemical models.</p>
-<p>This repository holds two kinds of evidence, each with a trail back to its source:</p>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This site reports the data used to calibrate and validate the SIPNET ecosystem model in the MAGiC inventory runs for California cropland: measurements from six field sites, and evidence from published syntheses of how soil carbon and greenhouse gas fluxes respond to management.</p>
 <ul>
-<li><strong>Site level observations</strong>: curated measurements (soil organic carbon stocks, N2O, CH4 and CO2 fluxes, and supporting soil, yield and biomass variables), site and treatment metadata, named treatment contrasts, management histories, and bibliographic and methodological context, in <a href="https://github.com/ccmmf/cal-val-data/tree/develop/data"><code>data/</code></a>. Values are stored as each source reports them, in reported units.</li>
-<li><strong>Statewide synthesis evidence</strong>: effect sizes and reference values extracted from syntheses and meta analyses, with the selected response targets, in <a href="https://github.com/ccmmf/cal-val-data/tree/develop/data_raw/statewide_benchmarking"><code>data_raw/statewide_benchmarking/</code></a>.</li>
+<li><a href="./reports/calibration-validation-data.html">Overview &amp; Key Points</a> summarises the two bodies of evidence, what each can support, and how they are used together.</li>
+<li><a href="./reports/site-level-data.html">Part A: Site-Level Data</a> describes the six sites, when and what was measured, and the practice contrasts.</li>
+<li><a href="./reports/statewide-evidence.html">Part B: Statewide Evidence</a> sets out the practice by outcome grid built from published syntheses, and which cells can be fitted.</li>
 </ul>
-<p>Website: <a href="https://ccmmf.github.io/cal-val-data/" class="uri">https://ccmmf.github.io/cal-val-data/</a></p>
-<section id="what-the-data-can-and-cannot-support" class="level2">
-<h2 class="anchored" data-anchor-id="what-the-data-can-and-cannot-support">What the data can and cannot support</h2>
-<p>The two kinds of evidence do different jobs. The <a href="./reports/calibration-validation-data.html">evidence report</a> sets out the detail.</p>
-<ul>
-<li><strong>Site level observations constrain magnitude.</strong> They test whether a model produces the right stock, the right flux, at a real place: six California fields, with 630 soil carbon stock and gas flux target records. Soil carbon and gas flux are measured at different sites, and no site carries both. The 24 named practice contrasts sit almost entirely at the two annual crop soil sites, Russell Ranch and Salinas, with one at Modesto; none are in the Delta or under rice. Chamber and tower measurements are different measurement supports and are not interchangeable.</li>
-<li><strong>Statewide synthesis evidence constrains response.</strong> It tests whether, when a practice changes, a model responds in a direction and rough magnitude consistent with published syntheses. Six of the 18 practice by outcome cells carry a spread and can enter a likelihood; two more serve as sign checks.</li>
-<li><strong>Neither independently establishes cross domain skill.</strong> Six sites cannot establish how California cropland responds to a management change, and a synthesis says how a response goes, not what the stock or flux is at a given field. Because no site pairs soil carbon with flux at useful density, a parameter set reproducing soil carbon at Davis has never been tested for methane in the Delta. The two bodies of evidence check each other, which is the main reason for carrying both.</li>
-</ul>
-</section>
-<section id="start-here" class="level2">
-<h2 class="anchored" data-anchor-id="start-here">Start here</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Page</th>
-<th>What it covers</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="./reports/calibration-validation-data.html">Calibration and Validation Data</a></td>
-<td>The evidence report: what the repository holds, what it supports, and what is missing</td>
-</tr>
-<tr class="even">
-<td><a href="./reports/site-level-data.html">Part A: Site-Level Data</a></td>
-<td>The six sites, their target records, and practice contrasts</td>
-</tr>
-<tr class="odd">
-<td><a href="./reports/statewide-evidence.html">Part B: Statewide Evidence</a></td>
-<td>Synthesis and meta analysis evidence for statewide response</td>
-</tr>
-<tr class="even">
-<td><a href="./docs/data-collection-protocol.html">Data Collection Protocol</a></td>
-<td>How datasets are found, curated and documented (working draft)</td>
-</tr>
-<tr class="odd">
-<td><a href="./docs/data-requirements.html">Data Requirements (2024)</a></td>
-<td>What model validation was to require of a dataset, as set out in December 2024; a dated reference, not a record of what is met</td>
-</tr>
-<tr class="even">
-<td><a href="./docs/data-reference.html">Data Reference</a></td>
-<td>Datasets, variables, table schemas, coverage and curation conventions</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="how-information-moves-through-the-repository" class="level2">
-<h2 class="anchored" data-anchor-id="how-information-moves-through-the-repository">How information moves through the repository</h2>
-<div class="cell"><div class="cell-output-display"><div><pre class="mermaid mermaid-js">flowchart TD
-  A["Source publications and archives"] --&gt; B["Curation workbooks"]
-  B --&gt; C["scripts/ingest.R and scripts/ingest_benchmarking.R"]
-  C --&gt; D["scripts/validate.R and tests"]
-  D --&gt; E["Committed data/ and statewide-evidence snapshots"]
-  E --&gt; F["Site-level magnitude and statewide response evidence"]
-  F --&gt; G["Downstream model calibration and validation"]</pre></div></div></div>
-<p>The Google Sheet workbooks are the source of truth. The CSVs in <code>data/</code> and <code>data_raw/statewide_benchmarking/</code> are generated exports and must not be hand edited. They are committed so consumers read a stable, documented snapshot.</p>
-</section>
-<section id="scope-and-repository-boundary" class="level2">
-<h2 class="anchored" data-anchor-id="scope-and-repository-boundary">Scope and repository boundary</h2>
-<p>This repository owns measured and synthesized evidence with its provenance: the measured site values, the evidence extracted from published syntheses, and the record of where each value came from. Model configuration, imputation, calibration code and model specific transformations remain downstream, and so do initial conditions, gap filled or imputed events, day of year imputation, fold assignment and parameter priors. Site level values are stored as each source reports them, with no unit or statistic conversion. Those downstream steps are properties of a particular model and a particular study, so they live with whatever consumes the data. Keeping this layer neutral is what lets a second model or analysis reuse the same tables.</p>
-</section>
-<section id="quick-start-validate-the-snapshot" class="level2">
-<h2 class="anchored" data-anchor-id="quick-start-validate-the-snapshot">Quick start: validate the snapshot</h2>
-<p><a href="https://github.com/ccmmf/cal-val-data/blob/develop/scripts/validate.R"><code>scripts/validate.R</code></a> checks every generated <code>data/*.csv</code> against <a href="https://github.com/ccmmf/cal-val-data/blob/develop/datapackage.json"><code>datapackage.json</code></a>. It needs only base R plus <code>jsonlite</code> and <code>readr</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> scripts/validate.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Tests under <a href="https://github.com/ccmmf/cal-val-data/tree/develop/tests/testthat"><code>tests/testthat/</code></a> run the same checks via testthat, plus checks on the statewide evidence; they also need <code>testthat</code> and <code>here</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">'testthat::test_dir("tests/testthat")'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>CI (<a href="https://github.com/ccmmf/cal-val-data/blob/develop/.github/workflows/validate.yml"><code>.github/workflows/validate.yml</code></a>) also checks every table against its declared types, keys and foreign keys with frictionless.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">frictionless</span> validate datapackage.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Loading tables, regenerating the snapshot from the workbooks, and the full schema are described in the <a href="./docs/data-reference.html">data reference</a>.</p>
-</section>
-<section id="site" class="level2">
-<h2 class="anchored" data-anchor-id="site">Site</h2>
-<p>The site at <a href="https://ccmmf.github.io/cal-val-data/" class="uri">https://ccmmf.github.io/cal-val-data/</a> is built with Quarto from <code>_quarto.yml</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="attribution" class="level2">
-<h2 class="anchored" data-anchor-id="attribution">Attribution</h2>
-<p>Curated data derives from sources (public data archives and journals) that require attribution under CC-BY. Cite the original sources listed in <a href="https://github.com/ccmmf/cal-val-data/blob/develop/data/citations.csv"><code>data/citations.csv</code></a> and, for the synthesis evidence, in the <code>citation</code> and <code>doi</code> columns of <a href="https://github.com/ccmmf/cal-val-data/blob/develop/data_raw/statewide_benchmarking/extracted_evidence.csv"><code>data_raw/statewide_benchmarking/extracted_evidence.csv</code></a>. Each site level dataset’s provenance and curation decisions are recorded in its <code>data_raw/&lt;dataset_id&gt;/data_entry_report.md</code> under <a href="https://github.com/ccmmf/cal-val-data/tree/develop/data_raw"><code>data_raw/</code></a>; the synthesis evidence has its <a href="https://github.com/ccmmf/cal-val-data/blob/develop/data_raw/statewide_benchmarking/data_ingest_report.md"><code>data_ingest_report.md</code></a>.</p>
-</section>
-<section id="license" class="level2">
-<h2 class="anchored" data-anchor-id="license">License</h2>
-<p>Code in this repository (<code>scripts/</code>, <code>tests/</code>) is BSD-3-Clause; see <a href="https://github.com/ccmmf/cal-val-data/blob/develop/LICENSE">LICENSE</a>.</p>
-<div class="hidden">
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">%% Not shown. This cell makes Quarto ship its bundled Mermaid library,
-%% which draws the README diagram (see mermaid-fence.lua).
-flowchart LR
-  a
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</div>
+<p>The <a href="./docs/data-collection-protocol.html">Data Collection Protocol</a> and the <a href="./docs/data-requirements.html">Data Requirements</a> describe how datasets are chosen and curated.</p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

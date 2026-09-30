@@ -172,12 +172,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Data Requirements (2024)</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../docs/data-reference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Reference</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -241,23 +235,10 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="b1-what-this-half-is-for">B1. What this half is for</h2>
 <p>Six sites cannot establish how California cropland responds to a management change. The statewide evidence is the second constraint: a synthesis of published results for each practice and outcome, assembled so it can serve either as a calibration target or as an acceptance test on model behaviour.</p>
 <p>62 evidence rows were extracted from 20 audited sources, 14 of which are held in the shared reference library.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Repository state, develop 900ffd2 (2026-09-30)">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Repository state, develop 900ffd2 (2026-09-30)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The statewide evidence in <a href="https://github.com/ccmmf/cal-val-data/tree/develop/data_raw/statewide_benchmarking"><code>data_raw/statewide_benchmarking</code></a> now holds 67 evidence rows in <a href="https://github.com/ccmmf/cal-val-data/blob/develop/data_raw/statewide_benchmarking/extracted_evidence.csv"><code>extracted_evidence.csv</code></a> (text: 62), from 24 audited sources in <a href="https://github.com/ccmmf/cal-val-data/blob/develop/data_raw/statewide_benchmarking/source_audit.csv"><code>source_audit.csv</code></a> (text: 20), of which 15 are marked as held in the shared Zotero library (<code>in_zotero</code> is <code>yes</code>; text: 14). The sentence above gives the counts on the source date.</p>
-</div>
-</div>
 </section>
 <section id="b2-the-practice-by-outcome-grid" class="level2">
 <h2 class="anchored" data-anchor-id="b2-the-practice-by-outcome-grid">B2. The practice by outcome grid</h2>
-<div id="fig-b2-evidence-grid" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Grid of six practices (+Cover Crops, +Non-crop C, Reduced tillage, +/- N Fertilization, Flooding / rice, Annual -> Perennial) by three outcomes (Soil C, N2O, CH4). Six green fittable cells: +Cover Crops by Soil C (Poeplau 2015), +Non-crop C by Soil C (Bai 2023), Reduced tillage by Soil C (Sun 2020), Reduced tillage by N2O (van Kessel 2013), +/- N Fertilization by N2O (Shcherbak 2014, 6 subclasses) and Flooding / rice by CH4 (Jiang 2019, 5 subclasses). Two purple sign check cells: Flooding / rice by N2O (Jiang 2019) and Annual -> Perennial by Soil C (Siddique 2023). The other ten cells are grey; +Cover Crops by CH4 is labelled no evidence and Reduced tillage by CH4 is labelled Six 2004, not a target.">
+<div id="fig-b2-evidence-grid" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Grid of six practices (+Cover Crops, +Non-crop C, Reduced tillage, +/- N Fertilization, Flooding / rice, Annual -> Perennial) by three outcomes (Soil C, N2O, CH4). Six green fittable cells: +Cover Crops by Soil C (Poeplau 2015), +Non-crop C by Soil C (Bai 2023), Reduced tillage by Soil C (Sun 2020), Reduced tillage by N2O (van Kessel 2013), +/- N Fertilization by N2O (Shcherbak 2014, 6 subclasses) and Flooding / rice by CH4 (Jiang 2019, 5 subclasses). Two purple sign check cells: Flooding / rice by N2O (Jiang 2019) and Annual -> Perennial by Soil C (Siddique 2023). The other ten cells are grey; +Cover Crops by CH4 is labelled no evidence and Reduced tillage by CH4 is labelled Six 2004, not a target." data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-b2-evidence-grid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="figures/b2-evidence-grid.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Statewide evidence, practice by outcome. Label names the selected source. Green cells enter a likelihood; purple cells are sign checks. Grey cells carry no target."><img src="figures/b2-evidence-grid.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Grid of six practices (+Cover Crops, +Non-crop C, Reduced tillage, +/- N Fertilization, Flooding / rice, Annual -> Perennial) by three outcomes (Soil C, N2O, CH4). Six green fittable cells: +Cover Crops by Soil C (Poeplau 2015), +Non-crop C by Soil C (Bai 2023), Reduced tillage by Soil C (Sun 2020), Reduced tillage by N2O (van Kessel 2013), +/- N Fertilization by N2O (Shcherbak 2014, 6 subclasses) and Flooding / rice by CH4 (Jiang 2019, 5 subclasses). Two purple sign check cells: Flooding / rice by N2O (Jiang 2019) and Annual -> Perennial by Soil C (Siddique 2023). The other ten cells are grey; +Cover Crops by CH4 is labelled no evidence and Reduced tillage by CH4 is labelled Six 2004, not a target."></a>
@@ -435,7 +416,7 @@ Table&nbsp;3: The two sign check cells, with an expert informed prior on the spr
 </section>
 <section id="b3-why-so-few-cells-are-fittable" class="level2">
 <h2 class="anchored" data-anchor-id="b3-why-so-few-cells-are-fittable">B3. Why so few cells are fittable</h2>
-<div id="fig-b3-contrast-forest" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Dot plot of 15 named contrasts on a log response ratio axis from about -1.7 to 0.7, with a vertical line at 0. Eleven grey points have no interval, from Liu_2017_inhibitors (N2O) near -1.65 up to Jiang_2019_N2O_tradeoff (N2O) near 0.72, and include Cayuela_2017, Li_2024, Snyder_2009, Siddique_2023 and Jiang_2019_CH4 contrasts. Four green points with 95 percent interval bars, all N2O, are VanKessel_2013_dry_short at about 0.32, VanKessel_2013_overall at about 0, Li_2023_NTRT at about -0.12 and VanKessel_2013_dry_long at about -0.42.">
+<div id="fig-b3-contrast-forest" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dot plot of 15 named contrasts on a log response ratio axis from about -1.7 to 0.7, with a vertical line at 0. Eleven grey points have no interval, from Liu_2017_inhibitors (N2O) near -1.65 up to Jiang_2019_N2O_tradeoff (N2O) near 0.72, and include Cayuela_2017, Li_2024, Snyder_2009, Siddique_2023 and Jiang_2019_CH4 contrasts. Four green points with 95 percent interval bars, all N2O, are VanKessel_2013_dry_short at about 0.32, VanKessel_2013_overall at about 0, Li_2023_NTRT at about -0.12 and VanKessel_2013_dry_long at about -0.42." data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-b3-contrast-forest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="figures/b3-contrast-forest.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Every contrast in the evidence library, on the log response ratio scale. Bars are 95% intervals. Only 4 of 15 have one, and all 4 are the same cell. Grey points are point estimates only; green points have an error bar reported or derivable."><img src="figures/b3-contrast-forest.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Dot plot of 15 named contrasts on a log response ratio axis from about -1.7 to 0.7, with a vertical line at 0. Eleven grey points have no interval, from Liu_2017_inhibitors (N2O) near -1.65 up to Jiang_2019_N2O_tradeoff (N2O) near 0.72, and include Cayuela_2017, Li_2024, Snyder_2009, Siddique_2023 and Jiang_2019_CH4 contrasts. Four green points with 95 percent interval bars, all N2O, are VanKessel_2013_dry_short at about 0.32, VanKessel_2013_overall at about 0, Li_2023_NTRT at about -0.12 and VanKessel_2013_dry_long at about -0.42."></a>

@@ -169,12 +169,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Data Requirements (2024)</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../docs/data-reference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Reference</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -389,19 +383,6 @@ ul.task-list li input[type="checkbox"] {
 <li>TODO: put CSVs under version control</li>
 <li>TODO: annotate PDFs in Zotero?</li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled" title="Repository state, develop 900ffd2 (2026-09-30)">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Repository state, develop 900ffd2 (2026-09-30)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The curated tables are already exported as CSV files under version control in <a href="https://github.com/ccmmf/cal-val-data/tree/develop/data"><code>data/</code></a>, generated from the workbooks by <a href="https://github.com/ccmmf/cal-val-data/blob/develop/scripts/ingest.R"><code>scripts/ingest.R</code></a>. Basic QA is scripted: <a href="https://github.com/ccmmf/cal-val-data/blob/develop/scripts/validate.R"><code>scripts/validate.R</code></a> checks the CSVs against <a href="https://github.com/ccmmf/cal-val-data/blob/develop/datapackage.json"><code>datapackage.json</code></a> (missing columns, empty keys, broken foreign keys, odd dates; warnings only), and it runs in CI on pull requests (<a href="https://github.com/ccmmf/cal-val-data/blob/develop/.github/workflows/validate.yml"><code>.github/workflows/validate.yml</code></a>) together with <code>frictionless validate datapackage.json</code> and the tests in <a href="https://github.com/ccmmf/cal-val-data/tree/develop/tests/testthat"><code>tests/testthat</code></a>.</p>
-</div>
-</div>
 <p><strong>Do not:</strong> Optimize early curation around the final downstream file layout.</p>
 <p>The first priority is accurate capture and documentation.</p>
 <p><strong>Do not:</strong> Collect all data or stray from targets.</p>
@@ -586,20 +567,6 @@ Repository state, develop 900ffd2 (2026-09-30)
 <li><code>mean</code> -&gt; <code>value</code></li>
 <li><code>start_date</code> / <code>end_date</code> -&gt; <code>min_date</code> / <code>max_date</code></li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled" title="Repository state, develop 900ffd2 (2026-09-30)">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Repository state, develop 900ffd2 (2026-09-30)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><a href="https://github.com/ccmmf/cal-val-data/blob/develop/data/observations.csv"><code>data/observations.csv</code></a> (37,258 rows) already uses <code>variable</code>, <code>value</code>, <code>min_date</code> and <code>max_date</code>; it has no <code>trait</code>, <code>mean</code>, <code>start_date</code> or <code>end_date</code> columns. It also has <code>dataset_id</code>, <code>citation_id</code>, <code>treatment_id</code>, <code>replicate_id</code>, <code>reported_units</code>, <code>observation_level</code>, <code>statname</code>, <code>stat</code>, <code>n</code>, <code>notes</code> and <code>flags</code>.</p>
-<p>The exported observations have no <code>site_id</code> or <code>method_id</code> column. Observations reference the site through <code>sitename</code> (the <code>name</code> key of <a href="https://github.com/ccmmf/cal-val-data/blob/develop/data/sites.csv"><code>data/sites.csv</code></a>) and the method through <code>method</code> (the <code>method name</code> key of <a href="https://github.com/ccmmf/cal-val-data/blob/develop/data/methods.csv"><code>data/methods.csv</code></a>, which also has a <code>method_id</code> column). <code>treatment_id</code> references the <code>name</code> key of <a href="https://github.com/ccmmf/cal-val-data/blob/develop/data/treatments.csv"><code>data/treatments.csv</code></a>. Where a workbook carries <code>site_id</code> or <code>method_id</code> columns in observations, <a href="https://github.com/ccmmf/cal-val-data/blob/develop/scripts/ingest.R"><code>scripts/ingest.R</code></a> drops them as duplicates of those columns. It likewise drops the workbook <code>site_id</code> column from sites and <code>treatment_id</code> from treatments, so <a href="https://github.com/ccmmf/cal-val-data/blob/develop/data/sites.csv"><code>data/sites.csv</code></a> and <a href="https://github.com/ccmmf/cal-val-data/blob/develop/data/treatments.csv"><code>data/treatments.csv</code></a> are keyed by <code>name</code>.</p>
-</div>
-</div>
 </section>
 <section id="management-events" class="level3">
 <h3 class="anchored" data-anchor-id="management-events">6.6 Management events</h3>
@@ -1200,20 +1167,6 @@ Table&nbsp;3: Optional stable columns for routine curation of management events.
 </div>
 </figure>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Repository state, develop 900ffd2 (2026-09-30)">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Repository state, develop 900ffd2 (2026-09-30)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><a href="https://github.com/ccmmf/cal-val-data/blob/develop/data/managements.csv"><code>data/managements.csv</code></a> (3,865 rows, keyed by <code>event_id</code>) does not use the proposed names for three of the core columns. The site is in <code>sites.name</code>, the treatment in <code>treatments.name</code> and the event type in <code>mgmttype</code>; where a workbook carries <code>site_id</code>, <code>treatment_id</code> or <code>event_type</code> columns, <a href="https://github.com/ccmmf/cal-val-data/blob/develop/scripts/ingest.R"><code>scripts/ingest.R</code></a> drops them as duplicates of those columns. There is no <code>source_id</code> column; the source is in <code>citation</code> (a DOI) and <code>citation_id</code>. The file does have <code>min_date</code>, <code>max_date</code>, <code>notes</code>, <code>relative_timing</code>, <code>relative_timing_days</code> and <code>attributes_json</code>.</p>
-<p>Of the optional columns in <a href="#tbl-management-optional-columns" class="quarto-xref">Table&nbsp;3</a>, it has <code>crop_display</code>, <code>reported_amount</code>, <code>reported_units</code>, <code>depth_m</code>, <code>intensity_category</code> and <code>reported_material</code>. It has no <code>crop_code</code>, <code>method</code> or <code>frac_above_removed_0to1</code> column. The generic columns <code>mgmttype</code>, <code>level</code>, <code>units</code> and <code>estimated</code> (Section 16.3) are still present.</p>
-</div>
-</div>
 </section>
 <section id="pecan-aligned-reference-fields-for-later-conversion" class="level3">
 <h3 class="anchored" data-anchor-id="pecan-aligned-reference-fields-for-later-conversion">15.3 PEcAn-aligned reference fields for later conversion</h3>
@@ -1265,19 +1218,6 @@ Repository state, develop 900ffd2 (2026-09-30)
 <li>add <code>reported_effect_scope</code> with clearly defined values such as <code>treatment_mean</code> and <code>aggregated_mean</code></li>
 <li>add <code>aggregated_over_factors</code> for aggregated summaries</li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled" title="Repository state, develop 900ffd2 (2026-09-30)">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Repository state, develop 900ffd2 (2026-09-30)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Most of these changes are already in <a href="https://github.com/ccmmf/cal-val-data/blob/develop/data/observations.csv"><code>data/observations.csv</code></a>: it has <code>value</code>, <code>variable</code>, <code>reported_units</code>, <code>observation_level</code>, <code>dataset_id</code>, <code>replicate_id</code>, <code>min_date</code> and <code>max_date</code>, and no <code>mean</code>, <code>trait</code> or <code>rep</code> column. It has no <code>block_id</code>, <code>plot_id</code>, <code>reported_effect_scope</code> or <code>aggregated_over_factors</code> column.</p>
-</div>
-</div>
 </section>
 <section id="experimental-design-metadata" class="level3">
 <h3 class="anchored" data-anchor-id="experimental-design-metadata">16.2 Experimental design metadata</h3>
@@ -1328,19 +1268,6 @@ Repository state, develop 900ffd2 (2026-09-30)
 <li>which recurring <code>attributes_json</code> keys should be promoted to first-class columns</li>
 </ul>
 <p>Until then, prefer simple, explicit capture over premature schema complexity.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Repository state, develop 900ffd2 (2026-09-30)">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Repository state, develop 900ffd2 (2026-09-30)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><a href="https://github.com/ccmmf/cal-val-data/blob/develop/data/observations.csv"><code>data/observations.csv</code></a> already has a <code>source_table</code> column; it has no <code>source_figure</code> or <code>source_panel</code> column.</p>
-</div>
-</div>
 
 
 </section>
