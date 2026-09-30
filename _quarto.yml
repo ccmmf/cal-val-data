@@ -1,0 +1,60 @@
+project:
+  type: website
+  output-dir: _site
+  preview:
+    watch-inputs: true
+  render:
+    # Explicit pages to render
+    - index.qmd
+    - reports/site-level-data.qmd
+    - reports/statewide-evidence.qmd
+    - reports/using-the-two-together.qmd
+    - docs/data-collection-protocol.qmd
+    - docs/data-requirements.qmd
+
+website:
+  title: "MAGiC Calibration and Validation Data"
+  description: "Curated field observations and synthesis evidence of soil carbon and greenhouse gas responses to management, with provenance, for calibrating and validating ecosystem and biogeochemical models."
+  site-url: https://ccmmf.github.io/cal-val-data/
+  search: true
+  page-navigation: true
+  sidebar:
+    style: docked
+    collapse-level: 2
+    contents:
+      - href: index.qmd
+        text: Home
+      - section: Reports
+        contents:
+          - href: reports/site-level-data.qmd
+            text: "Part A: Site-Level Data"
+          - href: reports/statewide-evidence.qmd
+            text: "Part B: Statewide Evidence"
+          - href: reports/using-the-two-together.qmd
+            text: "Part C: Using the Two Together"
+      - section: Docs
+        contents:
+          - href: docs/data-collection-protocol.qmd
+            text: Data Collection Protocol
+          - href: docs/data-requirements.qmd
+            text: Data Requirements (2024)
+    tools:
+      - icon: exclamation-octagon
+        text: "Status: Draft"
+      - icon: github
+        href: https://github.com/ccmmf/cal-val-data
+
+lightbox: auto
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    self-contained: false
+
+execute:
+  echo: false
+  warning: false
+  message: false
+  freeze: auto

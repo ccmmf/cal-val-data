@@ -24,3 +24,8 @@ nohup.out
 
 # working copies of publisher supplements and derivation scripts
 data_raw/statewide_benchmarking/sources/
+
+# Quarto site build (published to the gh-pages branch with quarto publish)
+/.quarto/
+/_site/
+/_freeze/
