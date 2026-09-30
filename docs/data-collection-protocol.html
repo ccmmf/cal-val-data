@@ -181,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#scope-and-status" id="toc-scope-and-status" class="nav-link active" data-scroll-target="#scope-and-status">1. Scope and status</a></li>
+  <li><a href="#scope" id="toc-scope" class="nav-link active" data-scroll-target="#scope">1. Scope</a></li>
   <li><a href="#purpose-and-guiding-principles" id="toc-purpose-and-guiding-principles" class="nav-link" data-scroll-target="#purpose-and-guiding-principles">2. Purpose and guiding principles</a></li>
   <li><a href="#deliverables-and-workflow-stages" id="toc-deliverables-and-workflow-stages" class="nav-link" data-scroll-target="#deliverables-and-workflow-stages">3. Deliverables and workflow stages</a></li>
   <li><a href="#source-handling" id="toc-source-handling" class="nav-link" data-scroll-target="#source-handling">4. Source handling</a>
@@ -206,9 +206,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#experimental-design-guidance" id="toc-experimental-design-guidance" class="nav-link" data-scroll-target="#experimental-design-guidance">7. Experimental design guidance</a>
   <ul class="collapse">
   <li><a href="#what-to-capture" id="toc-what-to-capture" class="nav-link" data-scroll-target="#what-to-capture">7.1 What to capture</a></li>
-  <li><a href="#is-the-current-schema-good-enough" id="toc-is-the-current-schema-good-enough" class="nav-link" data-scroll-target="#is-the-current-schema-good-enough">7.2 Is the current schema good enough?</a></li>
-  <li><a href="#treatment-comparisons" id="toc-treatment-comparisons" class="nav-link" data-scroll-target="#treatment-comparisons">7.3 Treatment comparisons</a></li>
-  <li><a href="#main-effects-and-aggregated-factorial-summaries" id="toc-main-effects-and-aggregated-factorial-summaries" class="nav-link" data-scroll-target="#main-effects-and-aggregated-factorial-summaries">7.4 Main effects and aggregated factorial summaries</a></li>
+  <li><a href="#treatment-comparisons" id="toc-treatment-comparisons" class="nav-link" data-scroll-target="#treatment-comparisons">7.2 Treatment comparisons</a></li>
+  <li><a href="#main-effects-and-aggregated-factorial-summaries" id="toc-main-effects-and-aggregated-factorial-summaries" class="nav-link" data-scroll-target="#main-effects-and-aggregated-factorial-summaries">7.3 Main effects and aggregated factorial summaries</a></li>
   </ul></li>
   <li><a href="#observations-1" id="toc-observations-1" class="nav-link" data-scroll-target="#observations-1">8. Observations</a>
   <ul class="collapse">
@@ -245,21 +244,6 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#required-documentation-per-curated-dataset" id="toc-required-documentation-per-curated-dataset" class="nav-link" data-scroll-target="#required-documentation-per-curated-dataset">13. Required documentation per curated dataset</a></li>
   <li><a href="#escalation-and-ambiguity-handling" id="toc-escalation-and-ambiguity-handling" class="nav-link" data-scroll-target="#escalation-and-ambiguity-handling">14. Escalation and ambiguity handling</a></li>
-  <li><a href="#proposed-management-events-table-schema" id="toc-proposed-management-events-table-schema" class="nav-link" data-scroll-target="#proposed-management-events-table-schema">15. Proposed management events table schema</a>
-  <ul class="collapse">
-  <li><a href="#required-core-columns" id="toc-required-core-columns" class="nav-link" data-scroll-target="#required-core-columns">15.1 Required core columns</a></li>
-  <li><a href="#optional-stable-columns-for-routine-curation" id="toc-optional-stable-columns-for-routine-curation" class="nav-link" data-scroll-target="#optional-stable-columns-for-routine-curation">15.2 Optional stable columns for routine curation</a></li>
-  <li><a href="#pecan-aligned-reference-fields-for-later-conversion" id="toc-pecan-aligned-reference-fields-for-later-conversion" class="nav-link" data-scroll-target="#pecan-aligned-reference-fields-for-later-conversion">15.3 PEcAn-aligned reference fields for later conversion</a></li>
-  <li><a href="#why-not-require-all-pecan-fields-now" id="toc-why-not-require-all-pecan-fields-now" class="nav-link" data-scroll-target="#why-not-require-all-pecan-fields-now">15.4 Why not require all PEcAn fields now?</a></li>
-  </ul></li>
-  <li><a href="#suggested-schema-changes" id="toc-suggested-schema-changes" class="nav-link" data-scroll-target="#suggested-schema-changes">16. Suggested schema changes</a>
-  <ul class="collapse">
-  <li><a href="#observation-schema" id="toc-observation-schema" class="nav-link" data-scroll-target="#observation-schema">16.1 Observation schema</a></li>
-  <li><a href="#experimental-design-metadata" id="toc-experimental-design-metadata" class="nav-link" data-scroll-target="#experimental-design-metadata">16.2 Experimental design metadata</a></li>
-  <li><a href="#management-schema" id="toc-management-schema" class="nav-link" data-scroll-target="#management-schema">16.3 Management schema</a></li>
-  </ul></li>
-  <li><a href="#future-workflow-expansion" id="toc-future-workflow-expansion" class="nav-link" data-scroll-target="#future-workflow-expansion">17. Future workflow expansion</a></li>
-  <li><a href="#open-questions-and-likely-future-extensions" id="toc-open-questions-and-likely-future-extensions" class="nav-link" data-scroll-target="#open-questions-and-likely-future-extensions">18. Open questions and likely future extensions</a></li>
   </ul>
 </nav>
     </div>
@@ -297,12 +281,11 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Status: Protocol and schema are working drafts. As a draft, this document and schema should be updated as needed.</p>
 <p><strong>Purpose</strong></p>
 <p>Protocol for spreadsheet-based curation of published and / or archived datasets for crop model calibration and validation.</p>
 <p>This document describes a protocol that data curators can use to compile target observations as well as context required for running a model. It uses a file-based workflow centered on a curation workbook, dataset README notes, and later conversion to structured flat files for model configuration and evaluation. It is based on the BETYdb data entry docs, but does not assume a web based UI, API, or PostgreSQL database.</p>
-<section id="scope-and-status" class="level2">
-<h2 class="anchored" data-anchor-id="scope-and-status">1. Scope and status</h2>
+<section id="scope" class="level2">
+<h2 class="anchored" data-anchor-id="scope">1. Scope</h2>
 <p>This protocol describes how to curate published or archived datasets into the current calibration/validation workbook.</p>
 <p>The immediate goal is to capture what the source actually reports in a way that is:</p>
 <ul>
@@ -311,8 +294,6 @@ ul.task-list li input[type="checkbox"] {
 <li>practical and usable for curation</li>
 <li>flexible enough to support schema refinement</li>
 </ul>
-<p>This is a working protocol, not a finalized publication. Some fields and conventions will change as more datasets are curated.</p>
-<p>Dataset-specific discussions and decisions should be tracked in the relevant GitHub issue. This document will capture general decisions.</p>
 </section>
 <section id="purpose-and-guiding-principles" class="level2">
 <h2 class="anchored" data-anchor-id="purpose-and-guiding-principles">2. Purpose and guiding principles</h2>
@@ -373,15 +354,13 @@ ul.task-list li input[type="checkbox"] {
 <li>Add the paper and any archived data to the project Zotero folders.</li>
 <li>Populate the workbook tabs.</li>
 <li>Document assumptions, unavoidable transformations, and unresolved issues in the dataset README.</li>
-<li>Run basic QA. [TODO: define]</li>
+<li>Run basic QA.</li>
 <li>Hand off for later conversion, harmonization, and gap-filling.</li>
 </ol>
 <p><strong>Required:</strong> Keep project-level source organization simple.</p>
 <ul>
 <li>Maintain project-specific Zotero folders for <code>to enter</code> and <code>entered</code>.</li>
 <li>Make sure the curated dataset can be traced back to a stable paper, archive, supplement, or figure source.</li>
-<li>TODO: put CSVs under version control</li>
-<li>TODO: annotate PDFs in Zotero?</li>
 </ul>
 <p><strong>Do not:</strong> Optimize early curation around the final downstream file layout.</p>
 <p>The first priority is accurate capture and documentation.</p>
@@ -462,7 +441,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>A site key should not encode the treatment.</li>
 <li>A treatment key should not be the only place where factor structure is documented.</li>
-<li>A replicate identifier should not be hidden in notes if it can be represented explicitly. TODO: explain with examples such as <code>block_a_plot_3</code> vs buried notes</li>
+<li>A replicate identifier should not be hidden in notes if it can be represented explicitly.</li>
 </ul>
 </section>
 </section>
@@ -479,7 +458,6 @@ ul.task-list li input[type="checkbox"] {
 <li><code>doi</code> when available</li>
 </ul>
 <p><strong>Recommended:</strong> A stable local text key such as <code>authorYYYYabc</code> can be used as <code>citation_id</code>, where <code>abc</code> is based on the first letters of the first three informative words in the title.</p>
-<p>TODO: decide whether <code>citation_id</code> should be the canonical local key, whether DOI should serve as the primary key when available, or whether this is purely a schema decision and should be omitted from protocol text.</p>
 </section>
 <section id="sites" class="level3">
 <h3 class="anchored" data-anchor-id="sites">6.2 Sites</h3>
@@ -598,7 +576,7 @@ ul.task-list li input[type="checkbox"] {
 <p>At minimum, record:</p>
 <ul>
 <li><code>design_type</code></li>
-<li>experimental unit TODO: clarify difference between experimental unit, replicate unit, and plot structure</li>
+<li>experimental unit</li>
 <li>replicate unit</li>
 <li>blocking or plot structure if present</li>
 <li>factors and levels</li>
@@ -606,20 +584,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><strong>Recommended:</strong> If the spreadsheet can not capture a design, include the design metadata in the README immediately rather than leaving it implicit.</p>
 </section>
-<section id="is-the-current-schema-good-enough" class="level3">
-<h3 class="anchored" data-anchor-id="is-the-current-schema-good-enough">7.2 Is the current schema good enough?</h3>
-<p>For simple datasets, mostly yes.</p>
-<p>For more complex designs, not by itself. The current curation structure needs additional metadata for:</p>
-<ul>
-<li>block and plot hierarchy</li>
-<li>repeated measures on the same unit TODO: consider whether <code>plot_id</code>, <code>entity_id</code>, or another grouping field is needed</li>
-<li>factorial main effects including pooled summaries across factors</li>
-<li>explicit unit of replication</li>
-<li>TODO: Add experiment_id (currently ‘site_id’ is overloaded, experiment ID should be explicit)</li>
-</ul>
-</section>
 <section id="treatment-comparisons" class="level3">
-<h3 class="anchored" data-anchor-id="treatment-comparisons">7.3 Treatment comparisons</h3>
+<h3 class="anchored" data-anchor-id="treatment-comparisons">7.2 Treatment comparisons</h3>
 <p>For datasets used for explicit treatment-contrast calibration or validation, add a <code>treatment_pairs</code> table.</p>
 <p>This table is required when the task depends on named treatment comparisons. It is not required for every curated dataset.</p>
 <p>Minimum fields:</p>
@@ -635,7 +601,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Treatment-level control flags may still be stored when obvious from the paper, but pair ordering is authoritative for comparison tasks.</p>
 </section>
 <section id="main-effects-and-aggregated-factorial-summaries" class="level3">
-<h3 class="anchored" data-anchor-id="main-effects-and-aggregated-factorial-summaries">7.4 Main effects and aggregated factorial summaries</h3>
+<h3 class="anchored" data-anchor-id="main-effects-and-aggregated-factorial-summaries">7.3 Main effects and aggregated factorial summaries</h3>
 <p>Published main effects are sometimes the only values available from a factorial study. These can be used with careful construction of model runs. But this is complex and lower prioirty.</p>
 <p><strong>Required:</strong> If only main effects or other aggregated summaries are available:</p>
 <ul>
@@ -1011,263 +977,6 @@ Table&nbsp;1: Summary of statistical metrics found in primary studies and meta-a
 <li>management details that may change the modeled interpretation</li>
 </ul>
 <p><strong>Do not:</strong> Resolve major schema or interpretation ambiguity silently.</p>
-</section>
-<section id="proposed-management-events-table-schema" class="level2">
-<h2 class="anchored" data-anchor-id="proposed-management-events-table-schema">15. Proposed management events table schema</h2>
-<section id="required-core-columns" class="level3">
-<h3 class="anchored" data-anchor-id="required-core-columns">15.1 Required core columns</h3>
-<p>These are the minimum columns recommended for routine curation.</p>
-<div id="tbl-management-core-columns" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-management-core-columns-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: Required core columns for the proposed management events table.
-</figcaption>
-<div aria-describedby="tbl-management-core-columns-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 17%">
-<col style="width: 67%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">column</th>
-<th style="text-align: left;">status</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code>site_id</code></td>
-<td style="text-align: left;">required</td>
-<td style="text-align: left;">Stable site key</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>treatment_id</code></td>
-<td style="text-align: left;">required</td>
-<td style="text-align: left;">Stable treatment or system key</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>event_type</code></td>
-<td style="text-align: left;">required</td>
-<td style="text-align: left;">PEcAn-aligned event type such as <code>planting</code>, <code>harvest</code>, <code>irrigation</code>, <code>fertilization</code>, <code>tillage</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>min_date</code></td>
-<td style="text-align: left;">required when recoverable</td>
-<td style="text-align: left;">Earliest plausible event date</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>max_date</code></td>
-<td style="text-align: left;">required when recoverable</td>
-<td style="text-align: left;">Latest plausible event date</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>source_id</code></td>
-<td style="text-align: left;">required</td>
-<td style="text-align: left;">Citation or source key</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>notes</code></td>
-<td style="text-align: left;">recommended</td>
-<td style="text-align: left;">Human-readable event notes</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>relative_timing</code></td>
-<td style="text-align: left;">optional</td>
-<td style="text-align: left;">Relative timing category when date is described relative to another event</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>relative_timing_days</code></td>
-<td style="text-align: left;">optional</td>
-<td style="text-align: left;">Numeric day offset associated with <code>relative_timing</code> when reported</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>attributes_json</code></td>
-<td style="text-align: left;">optional</td>
-<td style="text-align: left;">Additional structured event metadata not yet promoted to columns</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-<p>TODO: decide whether <code>relative_timing</code> and <code>relative_timing_days</code> should remain first-class columns or move into <code>attributes_json</code>.</p>
-</section>
-<section id="optional-stable-columns-for-routine-curation" class="level3">
-<h3 class="anchored" data-anchor-id="optional-stable-columns-for-routine-curation">15.2 Optional stable columns for routine curation</h3>
-<p>These columns are worth using when the source reports them directly.</p>
-<div id="tbl-management-optional-columns" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-management-optional-columns-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3: Optional stable columns for routine curation of management events.
-</figcaption>
-<div aria-describedby="tbl-management-optional-columns-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 37%">
-<col style="width: 42%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">column</th>
-<th style="text-align: left;">applies to</th>
-<th style="text-align: left;">notes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code>crop_code</code></td>
-<td style="text-align: left;">planting</td>
-<td style="text-align: left;">Stable crop identifier when available</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>crop_display</code></td>
-<td style="text-align: left;">planting</td>
-<td style="text-align: left;">Human-readable crop name</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>reported_amount</code></td>
-<td style="text-align: left;">irrigation, fertilization, harvest, amendment</td>
-<td style="text-align: left;">Store the amount as reported</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>reported_units</code></td>
-<td style="text-align: left;">irrigation, fertilization, harvest, amendment</td>
-<td style="text-align: left;">Store the original reported units</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>method</code></td>
-<td style="text-align: left;">irrigation</td>
-<td style="text-align: left;">For example <code>soil</code>, <code>canopy</code>, <code>flood</code> when reported</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>depth_m</code></td>
-<td style="text-align: left;">tillage</td>
-<td style="text-align: left;">Reported tillage depth</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>intensity_category</code></td>
-<td style="text-align: left;">tillage</td>
-<td style="text-align: left;">For example <code>zero</code>, <code>reduced</code>, <code>conventional</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>frac_above_removed_0to1</code></td>
-<td style="text-align: left;">harvest</td>
-<td style="text-align: left;">Only when directly reported or directly recoverable</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>reported_material</code></td>
-<td style="text-align: left;">fertilization or amendment</td>
-<td style="text-align: left;">For example compost, manure, urea, ammonium sulfate</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-</section>
-<section id="pecan-aligned-reference-fields-for-later-conversion" class="level3">
-<h3 class="anchored" data-anchor-id="pecan-aligned-reference-fields-for-later-conversion">15.3 PEcAn-aligned reference fields for later conversion</h3>
-<p>The current PEcAn <code>events.json</code> schema includes fields such as:</p>
-<ul>
-<li><code>leaf_c_kg_m2</code></li>
-<li><code>wood_c_kg_m2</code></li>
-<li><code>fine_root_c_kg_m2</code></li>
-<li><code>coarse_root_c_kg_m2</code></li>
-<li><code>frac_below_removed_0to1</code></li>
-<li><code>frac_above_to_litter_0to1</code></li>
-<li><code>frac_below_to_litter_0to1</code></li>
-<li><code>amount_mm</code></li>
-<li><code>immed_evap_frac_0to1</code></li>
-<li><code>org_c_kg_m2</code></li>
-<li><code>org_n_kg_m2</code></li>
-<li><code>nh4_n_kg_m2</code></li>
-<li><code>no3_n_kg_m2</code></li>
-<li><code>tillage_eff_0to1</code></li>
-</ul>
-<p>These should be treated as optional conversion targets, not routine curation requirements.</p>
-<p><strong>Required:</strong> Leave these blank during curation if the paper does not report them.</p>
-</section>
-<section id="why-not-require-all-pecan-fields-now" class="level3">
-<h3 class="anchored" data-anchor-id="why-not-require-all-pecan-fields-now">15.4 Why not require all PEcAn fields now?</h3>
-<p>Because many literature sources do not report the model-facing attributes needed for direct <code>events.json</code> population.</p>
-<p>The curation schema should therefore:</p>
-<ul>
-<li>preserve reported event information faithfully</li>
-<li>make later conversion straightforward</li>
-<li>avoid forcing curators to invent missing model inputs</li>
-</ul>
-</section>
-</section>
-<section id="suggested-schema-changes" class="level2">
-<h2 class="anchored" data-anchor-id="suggested-schema-changes">16. Suggested schema changes</h2>
-<p>The following changes would improve the current curation schema. This section is exploratory and may evolve as more datasets are curated.</p>
-<section id="observation-schema" class="level3">
-<h3 class="anchored" data-anchor-id="observation-schema">16.1 Observation schema</h3>
-<ul>
-<li>rename <code>mean</code> to <code>value</code></li>
-<li>rename <code>trait</code> to <code>variable</code></li>
-<li>add <code>reported_units</code></li>
-<li>add <code>observation_level</code></li>
-<li>add <code>dataset_id</code></li>
-<li>replace <code>rep</code> with <code>replicate_id</code></li>
-<li>add <code>block_id</code> and <code>plot_id</code> if needed separately from replicate id</li>
-<li>use <code>min_date</code> and <code>max_date</code> consistently</li>
-<li>add <code>reported_effect_scope</code> with clearly defined values such as <code>treatment_mean</code> and <code>aggregated_mean</code></li>
-<li>add <code>aggregated_over_factors</code> for aggregated summaries</li>
-</ul>
-</section>
-<section id="experimental-design-metadata" class="level3">
-<h3 class="anchored" data-anchor-id="experimental-design-metadata">16.2 Experimental design metadata</h3>
-<p>Add one of the following:</p>
-<ul>
-<li>a dedicated design tab, or</li>
-<li>a required structured README section</li>
-</ul>
-<p>Recommended fields:</p>
-<ul>
-<li><code>design_type</code></li>
-<li><code>experimental_unit</code></li>
-<li><code>replicate_unit</code></li>
-<li><code>control_definition</code></li>
-<li>factor names and levels</li>
-<li><code>treatment_pairs</code> for explicit contrast tasks</li>
-</ul>
-</section>
-<section id="management-schema" class="level3">
-<h3 class="anchored" data-anchor-id="management-schema">16.3 Management schema</h3>
-<p>The current management sheet pattern using generic columns such as <code>mgmttype</code>, <code>level</code>, <code>units</code>, and <code>estimated</code> is useful for quick capture but should evolve toward:</p>
-<ul>
-<li>required event core columns</li>
-<li>optional stable event columns</li>
-<li><code>attributes_json</code> for overflow</li>
-</ul>
-<p>This will better support later conversion to PEcAn-compatible events.</p>
-</section>
-</section>
-<section id="future-workflow-expansion" class="level2">
-<h2 class="anchored" data-anchor-id="future-workflow-expansion">17. Future workflow expansion</h2>
-<p>This protocol can later be reorganized into a fuller BETYdb-style step-by-step workflow, but the current version is intended to be usable now.</p>
-<ul>
-<li>Import / integrate figure extraction, unit conversion, statistic conversion, site guidance, treatment guidance, management concepts, and QA material as reusable references.</li>
-<li>Add a top-level pointer directing curators from the legacy BETYdb workflow docs to this spreadsheet-first protocol.</li>
-<li>Over time, separate reusable curation principles from BETYdb-specific implementation details.</li>
-</ul>
-</section>
-<section id="open-questions-and-likely-future-extensions" class="level2">
-<h2 class="anchored" data-anchor-id="open-questions-and-likely-future-extensions">18. Open questions and likely future extensions</h2>
-<p>The following questions should be revisited after several real datasets have been curated:</p>
-<ul>
-<li>whether to add a dedicated design tab instead of relying on README notes</li>
-<li>how to represent repeated measures on the same experimental unit</li>
-<li>how best to encode pooled main effects and interaction summaries in downstream conversion</li>
-<li>whether to add explicit source-location fields such as <code>source_table</code>, <code>source_figure</code>, and <code>source_panel</code></li>
-<li>whether to maintain both reported-unit variables and normalized downstream variable names in the same workbook</li>
-<li>which recurring <code>attributes_json</code> keys should be promoted to first-class columns</li>
-</ul>
-<p>Until then, prefer simple, explicit capture over premature schema complexity.</p>
 
 
 </section>
