@@ -1,0 +1,35 @@
+---
+title: "Part C. Using the two together"
+subtitle: "Calibration and Validation Data, Part C"
+author: "Aritra Dey"
+date: 2026-09-16
+format:
+  html:
+    toc: true
+---
+
+## C1. What each side constrains {#c1-what-each-side-constrains}
+
+Site data constrains magnitude; statewide evidence constrains response. They also check each other, which is the main reason for carrying both.
+
+## C2. A caution on how the evidence enters the likelihood {#c2-a-caution-on-how-the-evidence-enters-the-likelihood}
+
+A synthesis estimate is one estimate, not many. If every design point is scored separately against the same synthesis number, that single piece of information is counted repeatedly, and the posterior on the mean effect tightens as one over the square root of the number of pseudo observations. That precision is set by how many were included rather than by the underlying data.
+
+Perturbing each pseudo observation with the population spread makes the draws look correct marginally, but does not change how much they say about the mean. Heterogeneity across sites belongs in the model as variation, not in the observation error where it is averaged away.
+
+Two quantities are therefore worth reporting separately: the mean effect with its interval, noted as dependent on the number of pseudo observations used, and the predictive spread across sites, checked against the observed among plot spread.
+
+## C3. Reading this data honestly {#c3-reading-this-data-honestly}
+
+Three limits are worth carrying forward into any result built on it.
+
+**Cross domain skill is not demonstrated.** Because no site pairs soil carbon with flux at useful density, a parameter set reproducing soil carbon at Davis has never been tested for methane in the Delta.
+
+**The Delta is one landscape, not three samples.** The three towers share a climate and a Delta peat island setting, so agreement among them is weaker evidence than three independent sites would be.
+
+**Two caveats apply to the targets.** [Salinas 2003 and 2004](site-level-data.qmd#a5-the-soil-carbon-record) are excluded as establishment effects, and the magnitude of the [US-Bi2 net source](site-level-data.qmd#a6-the-flux-record) should be confirmed with the site team before it carries weight in a fit. Both are documented above so that a later reader meets the caveat alongside the data rather than discovering it independently.
+
+## Appendix. Data held but not used as targets {#appendix-data-held-but-not-used-as-targets}
+
+The repository holds 37,258 records in total. Beyond the 630 targets, the rest are mainly soil sensor profiles, bulk density, soil chemistry and crop yields, which support diagnosis and context but are not targets. Yield and biomass exist only at Russell Ranch. The towers also carry soil sensor records of temperature, moisture and oxygen; they are valuable for diagnosing why a flux is wrong, but they are not themselves carbon targets.

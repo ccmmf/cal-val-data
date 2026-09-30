@@ -25,7 +25,7 @@ Five of the six sit in a narrow band of the Central Valley and Delta. Salinas is
 
 : The six sites. {#tbl-a1-six-sites}
 
-Targets are the SOC stock and gas flux records the model is scored against, 630 in all, with Salinas 2003 and 2004 excluded as described in A5. They are records, not independent measurements. Other data the repository holds are described in the [appendix](calibration-validation-data.qmd#appendix-data-held-but-not-used-as-targets).
+Targets are the SOC stock and gas flux records the model is scored against, 630 in all, with Salinas 2003 and 2004 excluded as described in A5. They are records, not independent measurements. Other data the repository holds are described in the [appendix](using-the-two-together.qmd#appendix-data-held-but-not-used-as-targets).
 
 The six sites are also two different kinds of thing. Three are replicated field experiments with a treatment structure that allows calculation of practice change effects. Three are eddy covariance towers with no within site management contrast; the extra treatments listed for US-Bi1 and US-Twt in the table are separate measurement fields or tower deployments, not management practices. Each tower is unreplicated, the accepted limitation of eddy covariance, and the two Bouldin towers can be compared with each other, as A7 describes.
 

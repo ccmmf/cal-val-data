@@ -6,9 +6,9 @@ project:
   render:
     # Explicit pages to render
     - index.qmd
-    - reports/calibration-validation-data.qmd
     - reports/site-level-data.qmd
     - reports/statewide-evidence.qmd
+    - reports/using-the-two-together.qmd
     - docs/data-collection-protocol.qmd
     - docs/data-requirements.qmd
 
@@ -26,12 +26,12 @@ website:
         text: Home
       - section: Reports
         contents:
-          - href: reports/calibration-validation-data.qmd
-            text: "Overview & Key Points"
           - href: reports/site-level-data.qmd
             text: "Part A: Site-Level Data"
           - href: reports/statewide-evidence.qmd
             text: "Part B: Statewide Evidence"
+          - href: reports/using-the-two-together.qmd
+            text: "Part C: Using the Two Together"
       - section: Docs
         contents:
           - href: docs/data-collection-protocol.qmd
