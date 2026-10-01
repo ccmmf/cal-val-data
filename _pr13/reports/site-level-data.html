@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Aritra Dey">
+<meta name="dcterms.date" content="2026-09-16">
+
+<title>Part A. The site level data – MAGiC Calibration and Validation Data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../reports/statewide-evidence.html" rel="next">
+<link href="../reports/overview.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bcb4737e8fbcf1e9dfc00b59f8305558.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reports/overview.html">Reports</a></li><li class="breadcrumb-item"><a href="../reports/site-level-data.html">Part A: Site-Level Data</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">MAGiC Calibration and Validation Data</a> 
+        <div class="sidebar-tools-main">
+    <a href="" title="Status: Draft" class="quarto-navigation-tool px-1" aria-label="Status: Draft"><i class="bi bi-exclamation-octagon"></i></a>
+    <a href="https://github.com/ccmmf/cal-val-data" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Reports</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reports/overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Evidence Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reports/site-level-data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Part A: Site-Level Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reports/statewide-evidence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part B: Statewide Evidence</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reports/using-the-two-together.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part C: Using the Two Together</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Docs</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/data-reference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Reference</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/data-collection-protocol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Collection Protocol</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/data-requirements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Requirements (2024)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#a1-the-six-sites" id="toc-a1-the-six-sites" class="nav-link active" data-scroll-target="#a1-the-six-sites">A1. The six sites</a></li>
+  <li><a href="#a2-when-the-measurements-happened" id="toc-a2-when-the-measurements-happened" class="nav-link" data-scroll-target="#a2-when-the-measurements-happened">A2. When the measurements happened</a></li>
+  <li><a href="#a3-coverage-against-the-prepared-run-windows" id="toc-a3-coverage-against-the-prepared-run-windows" class="nav-link" data-scroll-target="#a3-coverage-against-the-prepared-run-windows">A3. Coverage against the prepared run windows</a></li>
+  <li><a href="#a4-what-is-measured-and-where" id="toc-a4-what-is-measured-and-where" class="nav-link" data-scroll-target="#a4-what-is-measured-and-where">A4. What is measured, and where</a></li>
+  <li><a href="#a5-the-soil-carbon-record" id="toc-a5-the-soil-carbon-record" class="nav-link" data-scroll-target="#a5-the-soil-carbon-record">A5. The soil carbon record</a></li>
+  <li><a href="#a6-the-flux-record" id="toc-a6-the-flux-record" class="nav-link" data-scroll-target="#a6-the-flux-record">A6. The flux record</a></li>
+  <li><a href="#a7-practice-contrasts" id="toc-a7-practice-contrasts" class="nav-link" data-scroll-target="#a7-practice-contrasts">A7. Practice contrasts</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reports/overview.html">Reports</a></li><li class="breadcrumb-item"><a href="../reports/site-level-data.html">Part A: Site-Level Data</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Part A. The site level data</h1>
+<p class="subtitle lead">Calibration and Validation Data, Part A</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Aritra Dey </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 16, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled" title="Source and status">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Source and status
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Draft evidence report. Target counts refer to the committed snapshot, not independent observations. Adapted from the <a href="https://docs.google.com/document/d/1FuVfgN-JbE4pBMSoXS6X5yTnXet_lDQ91Y4VgFDG59U/edit">source Google Doc</a>, checked on September 30, 2026. Original authorship and document dates are retained; website corrections reconcile the narrative with the committed data. The source document may require permission to view.</p>
+</div>
+</div>
+<section id="a1-the-six-sites" class="level2">
+<h2 class="anchored" data-anchor-id="a1-the-six-sites">A1. The six sites</h2>
+<div id="fig-a1-site-map" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Map of central California with county outlines, longitude -124 to -120 and latitude about 36.3 to 39.2. Circles mark Russell Ranch (96), Modesto almond (54) and Salinas SOCS (224). Three overlapping triangles in the Delta mark US-Twt rice (14), US-Bi2 corn (123) and US-Bi1 alfalfa (119). Point size scales with the number of target records.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a1-site-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/a1-site-map.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Where the six cal/val sites are. Point size is the number of target records used. The three Delta towers are within about 15 km of each other. Circles mark field experiments and triangles mark flux towers, each labelled with its number of target records."><img src="figures/a1-site-map.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Map of central California with county outlines, longitude -124 to -120 and latitude about 36.3 to 39.2. Circles mark Russell Ranch (96), Modesto almond (54) and Salinas SOCS (224). Three overlapping triangles in the Delta mark US-Twt rice (14), US-Bi2 corn (123) and US-Bi1 alfalfa (119). Point size scales with the number of target records."></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a1-site-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Where the six cal/val sites are. Point size is the number of target records used. The three Delta towers are within about 15 km of each other. Circles mark field experiments and triangles mark flux towers, each labelled with its number of target records.
+</figcaption>
+</figure>
+</div>
+<p>Five of the six sit in a narrow band of the Central Valley and Delta. Salinas is the outlier, a coastal vegetable system roughly 160 km south of the rest. The three flux towers cluster within about 15 km of each other on Delta peat islands, which means they share a climate, a soil history and a drainage regime. They are three views of one landscape rather than three independent samples of California.</p>
+<div id="tbl-a1-six-sites" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-a1-six-sites-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: The six sites.
+</figcaption>
+<div aria-describedby="tbl-a1-six-sites-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 27%">
+<col style="width: 18%">
+<col style="width: 13%">
+<col style="width: 9%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Site</th>
+<th style="text-align: left;">Crop</th>
+<th style="text-align: left;">Location</th>
+<th style="text-align: left;">Observed</th>
+<th style="text-align: left;">Targets</th>
+<th style="text-align: left;">Trts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Russell Ranch, Davis</td>
+<td style="text-align: left;">corn / tomato / wheat</td>
+<td style="text-align: left;">38.54, -121.87</td>
+<td style="text-align: left;">1993, 2012</td>
+<td style="text-align: left;">96</td>
+<td style="text-align: left;">13</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Salinas SOCS</td>
+<td style="text-align: left;">lettuce / broccoli</td>
+<td style="text-align: left;">36.62, -121.53</td>
+<td style="text-align: left;">2005-2011</td>
+<td style="text-align: left;">224</td>
+<td style="text-align: left;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Modesto almond</td>
+<td style="text-align: left;">almond</td>
+<td style="text-align: left;">37.63, -121.09</td>
+<td style="text-align: left;">2018-2019</td>
+<td style="text-align: left;">54</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">US-Bi1, Bouldin</td>
+<td style="text-align: left;">alfalfa</td>
+<td style="text-align: left;">38.10, -121.50</td>
+<td style="text-align: left;">2017-2024</td>
+<td style="text-align: left;">119</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">US-Bi2, Bouldin</td>
+<td style="text-align: left;">corn</td>
+<td style="text-align: left;">38.11, -121.54</td>
+<td style="text-align: left;">2017-2024</td>
+<td style="text-align: left;">123</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">US-Twt, Twitchell</td>
+<td style="text-align: left;">rice</td>
+<td style="text-align: left;">38.11, -121.65</td>
+<td style="text-align: left;">2009-2017</td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Targets here are the SOC stock and gas flux records selected for model comparison, 630 in all, with Salinas 2003 and 2004 excluded as described in A5. They are records, not independent measurements. Other data the repository holds are described in the <a href="../reports/using-the-two-together.html#appendix-data-held-but-not-used-as-targets">appendix</a>.</p>
+<p>The six sites are also two different kinds of thing. Three are replicated field experiments with a treatment structure that allows calculation of practice change effects. Three are eddy covariance towers with no within site management contrast; the extra treatments listed for US-Bi1 and US-Twt in the table are separate measurement fields or tower deployments, not management practices. Each tower is unreplicated, the accepted limitation of eddy covariance, and the two Bouldin towers can be compared with each other, as A7 describes.</p>
+</section>
+<section id="a2-when-the-measurements-happened" class="level2">
+<h2 class="anchored" data-anchor-id="a2-when-the-measurements-happened">A2. When the measurements happened</h2>
+<div id="fig-a2-target-records-by-year" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Tile chart of years 1990 to 2025, one row per site. Russell Ranch has dark tiles in 1993 and 2012. Salinas SOCS has tiles for every year from 2005 to 2011. Modesto almond has a light tile in 2018 and a dark tile in 2019. US-Bi1 alfalfa and US-Bi2 corn have tiles from 2017 to 2024, darker to 2020 and lighter after. US-Twt rice has light tiles from 2009 to 2017, lightest in 2009 and from 2015 to 2017.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a2-target-records-by-year-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/a2-target-records-by-year.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: When the target records were collected. Darker is more target records that year. Salinas 2003 and 2004 are excluded. Each row is a site and each tile is one year."><img src="figures/a2-target-records-by-year.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Tile chart of years 1990 to 2025, one row per site. Russell Ranch has dark tiles in 1993 and 2012. Salinas SOCS has tiles for every year from 2005 to 2011. Modesto almond has a light tile in 2018 and a dark tile in 2019. US-Bi1 alfalfa and US-Bi2 corn have tiles from 2017 to 2024, darker to 2020 and lighter after. US-Twt rice has light tiles from 2009 to 2017, lightest in 2009 and from 2015 to 2017."></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a2-target-records-by-year-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: When the target records were collected. Darker is more target records that year. Salinas 2003 and 2004 are excluded. Each row is a site and each tile is one year.
+</figcaption>
+</figure>
+</div>
+<p>Russell Ranch has two campaigns, 1993 and 2012, and Salinas is annual from 2005 to 2011. The towers only begin in 2017, except US-Twt, which runs 2009 to 2017 and thins to one record a year from 2015. No other site has measurements from 2015 and 2016.</p>
+</section>
+<section id="a3-coverage-against-the-prepared-run-windows" class="level2">
+<h2 class="anchored" data-anchor-id="a3-coverage-against-the-prepared-run-windows">A3. Coverage against the prepared run windows</h2>
+<div id="fig-a3-target-records-vs-run-window" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Timeline by site from about 1992 to 2025, with green blocks for years with target records and a purple bar for each run window. Russell Ranch has blocks in 1993 and 2012 over a bar from 1992 to 2015. Salinas SOCS has blocks for 2005 to 2011 over a bar from 2003 to 2012. Modesto almond has blocks for 2018 and 2019 over a bar from 2018 to 2020. US-Bi1 alfalfa has blocks for 2017 to 2024 over a bar covering 2017 through 2023; the 2024 boundary marks the exclusive end. US-Bi2 corn has blocks for 2017 to 2024 over a bar covering 2016 through 2023, with the 2024 block outside it. US-Twt rice has blocks for 2009 to 2017 over a bar covering 2010 through 2023.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a3-target-records-vs-run-window-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/a3-target-records-vs-run-window.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Target records against the prepared run window. Each green block is a year with target records. Calibration can only use years inside the run window. The purple bar under each site is its prepared model run window."><img src="figures/a3-target-records-vs-run-window.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Timeline by site from about 1992 to 2025, with green blocks for years with target records and a purple bar for each run window. Russell Ranch has blocks in 1993 and 2012 over a bar from 1992 to 2015. Salinas SOCS has blocks for 2005 to 2011 over a bar from 2003 to 2012. Modesto almond has blocks for 2018 and 2019 over a bar from 2018 to 2020. US-Bi1 alfalfa has blocks for 2017 to 2024 over a bar covering 2017 through 2023; the 2024 boundary marks the exclusive end. US-Bi2 corn has blocks for 2017 to 2024 over a bar covering 2016 through 2023, with the 2024 block outside it. US-Twt rice has blocks for 2009 to 2017 over a bar covering 2010 through 2023."></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a3-target-records-vs-run-window-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Target records against the prepared run window. Each green block is a year with target records. Calibration can only use years inside the run window. The purple bar under each site is its prepared model run window.
+</figcaption>
+</figure>
+</div>
+<p>Calibration can only use years where an observation and a model run overlap, so this comparison decides how much of the curated data is reachable at all. Runs end where their management inputs end: the towers’ recent management comes from the statewide monitoring product, which ends in 2023.</p>
+<p>Russell Ranch, Salinas and Modesto line up well, because their run windows were set from the data. US-Bi1 and US-Bi2 have observations extending a year past their run windows, to 2024 against runs ending in 2023; extending those two runs would pick up a year of existing data once management inputs for 2024 are available.</p>
+<p>US-Twt is the difficult case. Observations stop in 2017 while the run reaches 2023, because it was first built on the monitoring record, which runs to 2023; the years after 2017 are simulated but not scored, so six of fourteen run years have nothing to compare against. The run was deliberately extended back to 2010, where the site’s published management record begins, to buy overlap. Even then the usable overlap is 2010 to 2017, and 13 of the site’s 14 target records fall inside it, since the first annual NEE record is from 2009. Rice is also the system chosen to evaluate the methane response, so that evaluation rests on the site with the least data.</p>
+</section>
+<section id="a4-what-is-measured-and-where" class="level2">
+<h2 class="anchored" data-anchor-id="a4-what-is-measured-and-where">A4. What is measured, and where</h2>
+<div id="fig-a4-target-records-by-site-variable" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Heat map with rows SOC stock, CO2 / NEE, CH4 flux and N2O flux and columns Russell Ranch, Salinas SOCS, Modesto almond, US-Bi1 alfalfa, US-Bi2 corn and US-Twt rice. SOC stock: Russell Ranch 96, Salinas SOCS 224. CO2 / NEE: US-Bi1 alfalfa 42, US-Bi2 corn 43, US-Twt rice 6. CH4 flux: US-Bi1 alfalfa 39, US-Bi2 corn 41, US-Twt rice 8. N2O flux: Modesto almond 54, US-Bi1 alfalfa 38, US-Bi2 corn 39. Every other cell is a dash.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a4-target-records-by-site-variable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/a4-target-records-by-site-variable.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Target records by site and variable. A dash is no records. Salinas 2003 and 2004 are excluded. Darker green means more records in the cell."><img src="figures/a4-target-records-by-site-variable.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Heat map with rows SOC stock, CO2 / NEE, CH4 flux and N2O flux and columns Russell Ranch, Salinas SOCS, Modesto almond, US-Bi1 alfalfa, US-Bi2 corn and US-Twt rice. SOC stock: Russell Ranch 96, Salinas SOCS 224. CO2 / NEE: US-Bi1 alfalfa 42, US-Bi2 corn 43, US-Twt rice 6. CH4 flux: US-Bi1 alfalfa 39, US-Bi2 corn 41, US-Twt rice 8. N2O flux: Modesto almond 54, US-Bi1 alfalfa 38, US-Bi2 corn 39. Every other cell is a dash."></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a4-target-records-by-site-variable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Target records by site and variable. A dash is no records. Salinas 2003 and 2004 are excluded. Darker green means more records in the cell.
+</figcaption>
+</figure>
+</div>
+<p>The division is clean. Soil carbon is effectively Russell Ranch and Salinas. Methane and CO<sub>2</sub> come only from the three tower sites, measured by eddy covariance and, at the Bouldin sites, also by automated chamber.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Measurement support is recorded, and the kinds are not interchangeable">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Measurement support is recorded, and the kinds are not interchangeable
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Tower eddy covariance integrates a flux over a footprint of hundreds of metres that shifts with the wind. A chamber gives a plot scale mean over well under a square metre. A soil core gives a point value at a stated depth. These are different quantities, which is why method and observation level travel with every value instead of being collapsed at ingest.</p>
+</div>
+</div>
+<p>Russell Ranch and Salinas both report stocks to 30 cm on an equivalent soil mass basis. Salinas uses the published stocks, which take the greatest measured bulk density as the reference, while Russell Ranch is recomputed per plot from its full soil profile. The 96 Russell Ranch equivalent soil mass records report a 0 to 30 cm interval, but the depth actually integrated runs from about 28 to 40 cm, because each plot is taken to its treatment’s reference soil mass rather than to a fixed depth. That keeps each treatment comparable between the two sampling years, and it means model output should be compared on the same mass basis rather than at a fixed depth.</p>
+</section>
+<section id="a5-the-soil-carbon-record" class="level2">
+<h2 class="anchored" data-anchor-id="a5-the-soil-carbon-record">A5. The soil carbon record</h2>
+<div id="fig-a5-soil-carbon-record" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Line chart of SOC stock in Mg C ha-1 against year from 1993 to 2012. Eight green Russell Ranch lines run from about 36 to 42 in 1993 to about 39 to 56 in 2012, with org corn tomato highest, labelled org corn tomato, leg corn tomato, rf wheat fallow, conv corn tomato, rf wheat legume, irr wheat control, rf wheat control and irr wheat fallow. Eight pink Salinas lines, labelled sys 1 to sys 8, sit near 44 to 53 in 2003 and fall to about 15 to 21 in 2004, both drawn faded and dashed, then vary between about 20 and 42 from 2005 to 2011, with sys 1 lowest.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a5-soil-carbon-record-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/a5-soil-carbon-record.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Soil organic carbon stock to 30 cm, equivalent soil mass basis. Treatment means of replicate values, Mg C ha-1. Faded: Salinas 2003 and 2004, excluded as establishment effects. Each line is one Russell Ranch treatment or one Salinas system."><img src="figures/a5-soil-carbon-record.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Line chart of SOC stock in Mg C ha-1 against year from 1993 to 2012. Eight green Russell Ranch lines run from about 36 to 42 in 1993 to about 39 to 56 in 2012, with org corn tomato highest, labelled org corn tomato, leg corn tomato, rf wheat fallow, conv corn tomato, rf wheat legume, irr wheat control, rf wheat control and irr wheat fallow. Eight pink Salinas lines, labelled sys 1 to sys 8, sit near 44 to 53 in 2003 and fall to about 15 to 21 in 2004, both drawn faded and dashed, then vary between about 20 and 42 from 2005 to 2011, with sys 1 lowest."></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a5-soil-carbon-record-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Soil organic carbon stock to 30 cm, equivalent soil mass basis. Treatment means of replicate values, Mg C ha<sup>-1</sup>. Faded: Salinas 2003 and 2004, excluded as establishment effects. Each line is one Russell Ranch treatment or one Salinas system.
+</figcaption>
+</figure>
+</div>
+<p>Russell Ranch has two campaigns, 1993 and 2012. That constrains a long term rate but says nothing about interannual behaviour. The organic corn and tomato system is the clear mover, which is the expected direction and a useful sanity check.</p>
+<p>Salinas is sampled annually from 2003 to 2011, allowing evaluation of interannual stock changes. Annual sampling does not resolve within-year dynamics; the 2003 and 2004 campaigns are excluded from the selected targets for the reasons below.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="The Salinas 2003 and 2004 campaigns are excluded">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>The Salinas 2003 and 2004 campaigns are excluded
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Mean stock falls from 49.2 Mg C ha<sup>-1</sup> in 2003 to 18.6 in 2004, then recovers to 37.8 in 2005. The drop appears in every one of the eight systems and all four replicates, all 32 records of that campaign. A soil carbon stock to 30 cm fell this far, the authors explain, because of the change in management when the experiment began. Before it, the field had low intensity management with cover crops incorporated only by disking, and about 22 Mg ha<sup>-1</sup> (wet weight) of compost the year before, which left every system near 50 Mg C ha<sup>-1</sup>. Year 1 then brought spading to 30 cm and two vegetable crops, which likely broke up macroaggregates built by the earlier cover crop roots and exposed the soil carbon they protected (White et al.&nbsp;2020, PLOS ONE). This is a start up effect of moving into the treatment regime rather than the dynamics of interest, so 2003 and 2004 are excluded from the targets. The values are kept exactly as published, following the rule that nothing is silently dropped.</p>
+</div>
+</div>
+<p>The series also varies year to year, moving between 27 and 38 Mg C ha<sup>-1</sup> from 2005 to 2011.</p>
+</section>
+<section id="a6-the-flux-record" class="level2">
+<h2 class="anchored" data-anchor-id="a6-the-flux-record">A6. The flux record</h2>
+<div id="fig-a6-annual-nee" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Line chart of annual NEE in gC m-2 y-1 against year from 2008 to 2025, with a horizontal line at zero. US-Twt rice runs from 2009 to 2014, from about -170 to about 470. US-Bi1 alfalfa runs from 2017 to 2024, between about -295 and about 386. US-Bi2 corn runs from 2018 to 2024, between about 990 and about 2320, far above the other two.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a6-annual-nee-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/a6-annual-nee.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Annual net ecosystem exchange at the three flux towers. Gap filled annual totals as published. Positive is a net source. Values are in gC m-2 y-1, one point per tower year."><img src="figures/a6-annual-nee.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Line chart of annual NEE in gC m-2 y-1 against year from 2008 to 2025, with a horizontal line at zero. US-Twt rice runs from 2009 to 2014, from about -170 to about 470. US-Bi1 alfalfa runs from 2017 to 2024, between about -295 and about 386. US-Bi2 corn runs from 2018 to 2024, between about 990 and about 2320, far above the other two."></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a6-annual-nee-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Annual net ecosystem exchange at the three flux towers. Gap filled annual totals as published. Positive is a net source. Values are in gC m<sup>-2</sup> y<sup>-1</sup>, one point per tower year.
+</figcaption>
+</figure>
+</div>
+<p>Annual net ecosystem exchange is one gas variable reported in the same unit, gC m<sup>-2</sup> y<sup>-1</sup>, at all three towers, taken directly from the gap filled AmeriFlux FLUXNET products, FLUXNET-1F at the Bouldin towers and FLUXNET2015 at US-Twt, with no local annualisation or unit conversion.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="US-Bi2 net ecosystem exchange looks large">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>US-Bi2 net ecosystem exchange looks large
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>US-Bi2 runs from +992 to +2317 gC m<sup>-2</sup> y<sup>-1</sup>. US-Bi1, over the same years, from the same provider, the same product and the same units, sits between -295 and +386. A positive value is a net source in the standard convention, and 2317 gC m<sup>-2</sup> y<sup>-1</sup> is about 23 t C ha<sup>-1</sup> y<sup>-1</sup>. The site metadata describes deep peat drained for farming and a century of subsidence in the Delta, which would favour a net source. The values are the source’s own annual figures, imported without conversion, and the two sites are different systems: US-Bi2 is corn on deep drained peat, with sorghum in 2024, and US-Bi1 is perennial alfalfa on a mix of peat and mineral sediments under periodic flood irrigation. At US-Bi1 the same product runs about 480 gC m<sup>-2</sup> y<sup>-1</sup> more positive than the published estimates of Anthony et al.&nbsp;(2023), for reasons not yet resolved, so the US-Bi2 magnitude should be confirmed with the site team before it carries weight in a fit.</p>
+</div>
+</div>
+<div id="fig-a6-chamber-n2o" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Box plots with jittered points of chamber N2O flux in g N2O-N ha-1 d-1 for three sites. Modesto almond values cluster near 0, all below about 10. US-Bi1 alfalfa values mostly lie between 0 and about 35, with a median under 10. US-Bi2 corn values spread from under 10 to about 275, with a median of about 40.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a6-chamber-n2o-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/a6-chamber-n2o.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Chamber N2O at Modesto and the Bouldin towers, on one scale. g N2O-N ha-1 d-1. Bouldin values converted from mg N2O m-2 d-1 (x 6.36). Static chamber at Modesto, automated chamber at the Bouldin towers. Each point is one record: a date-specific replicate measurement at Modesto or a per-chamber annual mean rate at Bouldin. Boxes summarize those records, not identical temporal supports."><img src="figures/a6-chamber-n2o.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Box plots with jittered points of chamber N2O flux in g N2O-N ha-1 d-1 for three sites. Modesto almond values cluster near 0, all below about 10. US-Bi1 alfalfa values mostly lie between 0 and about 35, with a median under 10. US-Bi2 corn values spread from under 10 to about 275, with a median of about 40."></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a6-chamber-n2o-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Chamber N<sub>2</sub>O at Modesto and the Bouldin towers, on one scale. g N<sub>2</sub>O-N ha<sup>-1</sup> d<sup>-1</sup>. Bouldin values converted from mg N<sub>2</sub>O m<sup>-2</sup> d<sup>-1</sup> (x 6.36). Static chamber at Modesto, automated chamber at the Bouldin towers. Each point is one record: a date-specific replicate measurement at Modesto or a per-chamber annual mean rate at Bouldin. Boxes summarize those records, not identical temporal supports.
+</figcaption>
+</figure>
+</div>
+<p>N<sub>2</sub>O is measured by static chamber at Modesto and automated chamber at the Bouldin sites, where the same chambers also record CO<sub>2</sub> and CH<sub>4</sub>. Modesto supplies replicate observations on nine measurement dates; Bouldin supplies per-chamber annual mean rates. Their common display units do not make their temporal or spatial supports interchangeable. Matched treatment comparisons at Modesto are more defensible than interpreting differences among these sites as management effects. The units are retained as published; the display conversion uses 1 mg N<sub>2</sub>O m<sup>-2</sup> d<sup>-1</sup> = 6.36 g N<sub>2</sub>O-N ha<sup>-1</sup> d<sup>-1</sup>.</p>
+</section>
+<section id="a7-practice-contrasts" class="level2">
+<h2 class="anchored" data-anchor-id="a7-practice-contrasts">A7. Practice contrasts</h2>
+<p>24 named contrasts are recorded, so a practice change can be queried directly rather than reconstructed from treatment labels afterwards.</p>
+<div id="tbl-a7-practice-contrasts" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-a7-practice-contrasts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Named practice contrasts by source.
+</figcaption>
+<div aria-describedby="tbl-a7-practice-contrasts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 3%">
+<col style="width: 86%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Source</th>
+<th style="text-align: left;">Count</th>
+<th style="text-align: left;">Coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Russell Ranch</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">cover cropping, compost against synthetic fertiliser, rotation, irrigation, cropping against grassland</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Salinas SOCS</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">compost, cover crop frequency, cover crop type, seeding rate</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Modesto</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">compost against no compost</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Flux towers</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">US-Bi2 is a single treatment, US-Bi1 has two systems, the tower and a separate chamber field, not a management contrast</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The contrast structure therefore lives almost entirely at two annual crop soil sites. Nothing in the Delta and nothing under rice has a measured practice contrast, which is precisely where the statewide evidence has to carry the weight instead. The two Bouldin towers can still be read as perennial alfalfa against annual corn on the same island. The comparison is confounded, because irrigation and fertilisation differ along with the crop, and it is unreplicated, the accepted limitation of eddy covariance. It therefore supports a check on direction rather than an effect size.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ccmmf\.github\.io\/cal-val-data\/_pr13\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../reports/overview.html" class="pagination-link" aria-label="Evidence Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Evidence Overview</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../reports/statewide-evidence.html" class="pagination-link" aria-label="Part B: Statewide Evidence">
+        <span class="nav-page-text">Part B: Statewide Evidence</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

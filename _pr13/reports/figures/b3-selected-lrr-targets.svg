@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 792" role="img" aria-labelledby="title description">
+<title id="title">Selected log-response-ratio targets</title>
+<desc id="description">Seven likelihood-eligible rows have SE-derived intervals; two assumed-spread sign checks have no bars. Rows retain distinct comparators and overlapping subclasses.</desc>
+<metadata>Source: summarized_targets.csv; SHA256: 7ea544bb7ab69e8f1a7098db491dbc11f1586ee00f85a79831ee74ef52c0ab5f</metadata>
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="Arial, sans-serif">
+<text x="20" y="36" font-size="30" fill="#222" text-anchor="start">Selected log-response-ratio targets</text>
+<text x="20" y="70" font-size="22" fill="#222" text-anchor="start">Bars: approximate 95% intervals from source-derived SE. Sign checks: points only.</text>
+<line x1="655.86" x2="655.86" y1="100" y2="632" stroke="#ddd"/>
+<text x="655.86" y="662" font-size="20" fill="#222" text-anchor="middle">-1.5</text>
+<line x1="750.69" x2="750.69" y1="100" y2="632" stroke="#ddd"/>
+<text x="750.69" y="662" font-size="20" fill="#222" text-anchor="middle">-1</text>
+<line x1="845.52" x2="845.52" y1="100" y2="632" stroke="#ddd"/>
+<text x="845.52" y="662" font-size="20" fill="#222" text-anchor="middle">-0.5</text>
+<line x1="940.34" x2="940.34" y1="100" y2="632" stroke="#444"/>
+<text x="940.34" y="662" font-size="20" fill="#222" text-anchor="middle">0</text>
+<line x1="1035.17" x2="1035.17" y1="100" y2="632" stroke="#ddd"/>
+<text x="1035.17" y="662" font-size="20" fill="#222" text-anchor="middle">0.5</text>
+<line x1="1130.00" x2="1130.00" y1="100" y2="632" stroke="#ddd"/>
+<text x="1130.0" y="662" font-size="20" fill="#222" text-anchor="middle">1</text>
+<text x="20" y="137" font-size="21" fill="#222" text-anchor="start">L · +Non-crop C / Soil C</text>
+<line x1="984.48" x2="986.57" y1="130" y2="130" stroke="#216653" stroke-width="4"/>
+<circle cx="985.53" cy="130" r="7" fill="#216653"/>
+<text x="20" y="195" font-size="21" fill="#222" text-anchor="start">L · Reduced tillage / N2O</text>
+<line x1="955.32" x2="1047.51" y1="188" y2="188" stroke="#216653" stroke-width="4"/>
+<circle cx="1001.41" cy="188" r="7" fill="#216653"/>
+<text x="20" y="253" font-size="21" fill="#222" text-anchor="start">S · Flooding / rice / N2O</text>
+<path d="M 1076.52 237 l 9 9 l -9 9 l -9 -9 Z" fill="#65458a"/>
+<text x="20" y="311" font-size="21" fill="#222" text-anchor="start">S · Annual -&gt; Perennial / Soil C</text>
+<path d="M 969.55 295 l 9 9 l -9 9 l -9 -9 Z" fill="#65458a"/>
+<text x="20" y="369" font-size="21" fill="#222" text-anchor="start">L · Flooding / rice / CH4 / 1 drying event</text>
+<line x1="812.73" x2="916.62" y1="362" y2="362" stroke="#216653" stroke-width="4"/>
+<circle cx="864.67" cy="362" r="7" fill="#216653"/>
+<text x="20" y="427" font-size="21" fill="#222" text-anchor="start">L · Flooding / rice / CH4 / 2 drying events</text>
+<line x1="758.50" x2="884.94" y1="420" y2="420" stroke="#216653" stroke-width="4"/>
+<circle cx="821.72" cy="420" r="7" fill="#216653"/>
+<text x="20" y="485" font-size="21" fill="#222" text-anchor="start">L · Flooding / rice / CH4 / 3 drying events</text>
+<line x1="620.26" x2="755.27" y1="478" y2="478" stroke="#216653" stroke-width="4"/>
+<circle cx="687.76" cy="478" r="7" fill="#216653"/>
+<text x="20" y="543" font-size="21" fill="#222" text-anchor="start">L · Flooding / rice / CH4 / more than 3 drying events</text>
+<line x1="612.88" x2="738.93" y1="536" y2="536" stroke="#216653" stroke-width="4"/>
+<circle cx="675.90" cy="536" r="7" fill="#216653"/>
+<text x="20" y="601" font-size="21" fill="#222" text-anchor="start">L · Flooding / rice / CH4 / 2 or more drying events</text>
+<line x1="706.09" x2="793.35" y1="594" y2="594" stroke="#216653" stroke-width="4"/>
+<circle cx="749.72" cy="594" r="7" fill="#216653"/>
+<text x="855.0" y="697" font-size="22" fill="#222" text-anchor="middle">ln(intervention / comparator)</text>
+<text x="20" y="754" font-size="20" fill="#222" text-anchor="start">Rice drying classes overlap: choose one applicable representation. L = eligible; S = sign check.</text>
+<text x="20" y="780" font-size="20" fill="#222" text-anchor="start">Absolute SOC rates and EF levels/slopes are omitted because their scales differ. Stand age matters for SOC.</text>
+</g>
+</svg>
