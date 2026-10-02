@@ -98,7 +98,9 @@ same table. No rows come from the PLOS ONE S1 Table.
   since spading reaches 30 cm). This propagation rule is carried on the
   `core_sample` method row in `methods`. The published stocks are on this
   maximum equivalent soil mass basis (*Data in Brief* Supplementary
-  Table 1, footnote 2); the 2024 correction revised them (see below).
+  Table 1, footnote 2); the 2024 correction revised them, and the corrected
+  stocks no longer use the greatest measured bulk density as reference (see
+  Basis of the corrected stocks below).
 - **Harvest indices** (from White et al. 2020b, citing Brennan
   unpublished): romaine lettuce hearts HI = 0.26 (~74% of shoot biomass
   left as residue); broccoli HI = 0.24 (~76% left as residue). Recorded on
@@ -179,10 +181,43 @@ factor:
   cells range from 0.902 to 0.909, the spread expected from rounding to
   0.1 Mg C ha⁻¹.
 - Standard errors decrease by the same proportion (0.907).
-- POX-C stocks also decrease (0.89); they are not ingested here.
+- POX-C stocks also decrease (0.89 overall, 0.87 to 0.92 cell by cell);
+  they are not ingested here.
 - Carbon inputs are unchanged.
 - Two 2020 confidence limits that excluded their own means (Year 5
   System 3; Year 7 System 4) are fixed.
+
+### Basis of the corrected stocks
+
+The correction does not say why the stocks changed, and its S1 Table has no
+methods note. The rows can still be checked against the method. White et al.
+(2020b) convert concentrations to stocks by the maximum equivalent soil mass
+method, with the greatest bulk density measured during the study as the
+reference. Dividing each stock by its 0–30 cm SOC concentration and depth
+gives the bulk density it implies:
+
+| Quantity | Bulk density (g cm⁻³) |
+|---|---|
+| Implied by the uncorrected stocks, median of 288 rows | 1.41 (1.39 to 1.44 by system) |
+| Implied by the corrected stocks, median of 288 rows | 1.28 (1.26 to 1.30 by system) |
+| Greatest measured, by system | 1.31 to 1.45 |
+| Median measured, without the five 1.0 values | 1.28 |
+
+The uncorrected stocks share one reference near the greatest measured
+values, as the method describes. The corrected stocks sit below every
+system's greatest measured value, at about the median. One factor scales
+every stock, so the corrected rows still share a single reference soil mass
+and stay on an equivalent soil mass basis, but that reference is not the
+greatest measured bulk density, and the correction does not say what it is.
+POX-C stocks moved by 0.87 to 0.92 cell by cell, so the correction is not
+one change applied to every carbon stock. The measured values come from this
+dataset's bulk density rows, which still need reconciling with their source
+(see Open follow-ups).
+
+The corrected rows therefore carry `stock_basis = equivalent_soil_mass`,
+`reference_depth_cm = 30` and `reference_soil_mass = "not stated in the
+2024 correction"`, with `source_stock_basis = maximum_equivalent_soil_mass`
+for the uncorrected value kept in `source_value_Mg_ha`.
 
 ### How the rows were corrected
 
@@ -209,9 +244,10 @@ as the original block means reproduced the 2020 table (RMS 0.35 vs
 
 Each corrected row has `fill_status = SCRIPTED_DERIVED`, the corrected
 `value`, a note citing the correction, and `attributes_json` with
-`stock_basis`, `source_file`, `source_sheet`, `source_value_Mg_ha` (the
-uncorrected value), `plos_system`, `correction_doi`, `correction_factor`
-and `derivation_script`.
+`stock_basis`, `reference_depth_cm`, `reference_soil_mass`,
+`source_stock_basis`, `source_file`, `source_sheet`, `source_value_Mg_ha`
+(the uncorrected value), `plos_system`, `correction_doi`,
+`correction_factor` and `derivation_script`.
 
 ### Reproduce
 
@@ -245,6 +281,9 @@ whether the snapshot holds the uncorrected or the corrected values.
 - Ask the authors for corrected block-level SOC stocks, or an updated
   *Data in Brief* / Ag Data Commons deposit. If they are published,
   transcribe them in place of the rescaled values.
+- Ask the authors which reference bulk density the corrected stocks use
+  (implied about 1.28 g cm⁻³, against the greatest measured 1.45), and set
+  `reference_soil_mass` from their answer.
 - Confirm the per-year vs pooled treatment of the 2003 establishment
   compost row across the 8 systems.
 - Reconcile the bulk density rows with their source. The 60 rows are

@@ -187,9 +187,16 @@ message(sprintf(
 
 # Corrected stocks --------------------------------------------------------
 
+# the source values are on the maximum equivalent soil mass basis (greatest
+# measured bulk density as reference). One factor keeps every stock on a single
+# reference soil mass, but the correction does not say which; the corrected
+# stocks imply about 1.28 g cm-3 against 1.41 before (data_entry_report.md)
 row_attributes <- function(source_value, plos_system) {
   as.character(toJSON(list(
-    stock_basis = "maximum_equivalent_soil_mass",
+    stock_basis = "equivalent_soil_mass",
+    reference_depth_cm = 30,
+    reference_soil_mass = "not stated in the 2024 correction",
+    source_stock_basis = "maximum_equivalent_soil_mass",
     source_file = dib_file,
     source_sheet = dib_sheet,
     source_value_Mg_ha = source_value,
