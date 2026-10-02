@@ -10,6 +10,9 @@ Changes to datasets, schemas, and curation workflows are documented here.
   block-level rows (Years 0–8, 8 systems) are rescaled by 0.905 and recorded
   as `SCRIPTED_DERIVED`; see `data_raw/white_salinas_2020/data_entry_report.md`
   ([#6](https://github.com/ccmmf/cal-val-data/issues/6)).
+- Citations: the entry for `10.1371/journal.pone.0228677` now carries that
+  paper's title, and the 2024 correction (`10.1371/journal.pone.0307250`)
+  is added.
 
 ## 0.1.0 — Initial release
 

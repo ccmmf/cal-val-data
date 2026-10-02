@@ -250,7 +250,9 @@ Each corrected row has `fill_status = SCRIPTED_DERIVED`, the corrected
 `stock_basis`, `reference_depth_cm`, `reference_soil_mass`,
 `source_stock_basis`, `source_file`, `source_sheet`, `source_value_Mg_ha`
 (the uncorrected value), `plos_system`, `correction_doi`,
-`correction_factor` and `derivation_script`.
+`correction_factor` and `derivation_script`. These are written to the
+workbook `observations` tab, which gained an `attributes_json` column for
+them, and reach `data/observations.csv` through `scripts/ingest.R`.
 
 ### Reproduce
 
