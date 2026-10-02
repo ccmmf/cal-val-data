@@ -23,5 +23,6 @@ test_that("white_salinas_2020 SOC stocks carry the White et al. (2024) correctio
   expect_identical(obs$value, derived$SOC_stock_0_30cm_Mg_C_ha)
   expect_identical(obs$attributes_json, derived$attributes_json)
   expect_true(all(obs$fill_status == "SCRIPTED_DERIVED"))
+  expect_true(all(obs$method == "equivalent_soil_mass_white_2024_correction"))
   expect_true(all(endsWith(obs$notes, derived$correction_note)))
 })

@@ -13,6 +13,9 @@ Changes to datasets, schemas, and curation workflows are documented here.
 - Citations: the entry for `10.1371/journal.pone.0228677` now carries that
   paper's title, and the 2024 correction (`10.1371/journal.pone.0307250`)
   is added.
+- Salinas SOC stock rows use a new method row,
+  `equivalent_soil_mass_white_2024_correction`, in place of
+  `elemental_analysis`, whose description did not fit the corrected stocks.
 
 ## 0.1.0 — Initial release
 

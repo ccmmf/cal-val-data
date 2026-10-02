@@ -95,8 +95,10 @@ same table. No rows come from the PLOS ONE S1 Table.
   Bulk density was measured only at the end of Years 3 and 7 (Brennan,
   unpublished) and propagated across years by the equivalent-soil-mass
   method (greatest measured BD used as the Year 0 proxy, uniform 0–30 cm
-  since spading reaches 30 cm). This propagation rule is carried on the
-  `core_sample` method row in `methods`. The published stocks are on this
+  since spading reaches 30 cm). The stock rows carry their own method row,
+  `equivalent_soil_mass_white_2024_correction`, which records this basis
+  and the 2024 rescale; `core_sample` describes only the bulk density
+  cores, and `elemental_analysis` the concentration measurement. The published stocks are on this
   maximum equivalent soil mass basis (*Data in Brief* Supplementary
   Table 1, footnote 2); the 2024 correction revised them, and the corrected
   stocks no longer use the greatest measured bulk density as reference (see

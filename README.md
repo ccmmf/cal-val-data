@@ -47,7 +47,7 @@ Each dataset pulls replicate level values from a public archive; companion analy
 
 ### white_salinas_2020
 
-Organic vegetable rotation (romaine lettuce, broccoli) with winter cover crops and compost. Randomized complete block, 4 blocks, so block level is replicate level here. Companion analysis paper focuses on 5 systems (those with optimal cover crop seeding rates); workbook carries all 8 from archive. SOC stock is concentration times bulk density times depth (0 to 30 cm), with bulk density measured only at end of Years 3 and 7 and propagated by equivalent soil mass, so `core_sample` method row carries that propagation rule. A large Year 0 to Year 1 SOC drop appears across all systems including no compost control, and is documented in source.
+Organic vegetable rotation (romaine lettuce, broccoli) with winter cover crops and compost. Randomized complete block, 4 blocks, so block level is replicate level here. Companion analysis paper focuses on 5 systems (those with optimal cover crop seeding rates); workbook carries all 8 from archive. SOC stock is concentration times bulk density times depth (0 to 30 cm), with bulk density measured only at end of Years 3 and 7 and propagated by equivalent soil mass. Stock rows are Data in Brief block values rescaled by 0.905 for the White et al. (2024) correction, which does not state the corrected reference soil mass; they carry method `equivalent_soil_mass_white_2024_correction` and keep the uncorrected value in `attributes_json`. A large Year 0 to Year 1 SOC drop appears across all systems including no compost control, and is documented in source.
 
 ### nichols_modesto_2024
 
