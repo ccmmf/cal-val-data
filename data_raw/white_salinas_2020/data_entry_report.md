@@ -231,11 +231,14 @@ as the original block means reproduced the 2020 table (RMS 0.35 vs
   2024 S1 means set the factor and check the result; they are not ingested
   as observations.
 - **One factor for all 8 systems.** The correction covers `socs_sys1`,
-  `socs_sys2`, `socs_sys4`, `socs_sys5` and `socs_sys7`. Applying the same
-  factor to `socs_sys3`, `socs_sys6` and `socs_sys8` assumes they were
-  affected the same way. The uniform ratio across the five published
-  systems supports this, but the authors have not confirmed it. These rows
-  carry `attributes_json.plos_system = null`.
+  `socs_sys2`, `socs_sys4`, `socs_sys5` and `socs_sys7`. The same factor is
+  applied to `socs_sys3`, `socs_sys6` and `socs_sys8` because their
+  uncorrected stocks were built on the same basis: they imply the same
+  bulk density as the five published systems (median 1.415 g cm⁻³ over
+  108 rows, against 1.413 over 180 rows; see Basis of the corrected
+  stocks). With the ratio uniform across the five published systems, one
+  factor fits all eight. The authors have not confirmed it for the three
+  unpublished systems, whose rows carry `attributes_json.plos_system = null`.
 - **Precision.** Source values are whole numbers, so each corrected value
   inherits up to ±0.45 Mg C ha⁻¹ of rounding.
 - **Contrasts.** Treatment differences shrink by the same factor in
