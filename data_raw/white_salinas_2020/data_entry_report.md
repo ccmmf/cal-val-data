@@ -3,7 +3,7 @@
 **Dataset id:** `white_salinas_2020`
 **Entered by:** Aritra Dey
 **Entry date:** 2026-04-10
-**Updated:** 2026-09-11 — SOC stocks corrected for White et al. (2024); see
+**Updated:** 2026-10-03 — SOC stocks corrected for White et al. (2024); see
 [2024 correction to SOC stocks](#2024-correction-to-soc-stocks) and
 [#6](https://github.com/ccmmf/cal-val-data/issues/6).
 
@@ -21,8 +21,10 @@ companion papers supply experimental design, methods, and cross-checks.
 Full citation metadata is in `citations`.
 
 - **White et al. (2020a)** — *Data in Brief* 33, 106481. Supplemental
-  tables (Tables 1–4) are the block-level source. Every SOC stock, SOC
-  concentration, total N and nitrate-N row matches Supplementary Table 1.
+  tables (Tables 1–4) are the block-level source. Every SOC
+  concentration, total N and nitrate-N row matches Supplementary Table 1;
+  SOC stock rows hold its values rescaled for the 2024 correction, with the
+  Table 1 value kept in `attributes_json.source_value_Mg_ha`.
   <https://doi.org/10.1016/j.dib.2020.106481>
 - **White et al. (2020b)** — companion *PLOS ONE* paper. Experimental
   design, methods, harvest indices, site history; Supplementary Table S1
@@ -70,22 +72,28 @@ substitute for it.
 
 ## Variables Measured
 
-Ingested to the `observations` tab in reported units (`observation_level =
-replicate, n = 1` for block-level rows):
+Ingested to the `observations` tab in reported units (`n = 1` for
+block-level rows; `observation_level = replicate` except on the total N
+and nitrate-N rows, see below):
 
 | Variable | Units | Years | Notes |
 |---|---|---|---|
 | SOC stock | Mg C ha⁻¹ | 0–8 | 0–30 cm; corrected for White et al. (2024) |
 | SOC concentration | mg C kg⁻¹ | 0–8 | |
-| Total N concentration | mg kg⁻¹ | 0–8 | N stocks not ingested |
-| Nitrate-N | mg NO₃-N kg⁻¹ | 0–8 | |
+| Total N concentration | mg kg⁻¹ | 3–8 | Year 3 `socs_sys5` and `socs_sys7` only; N stocks not ingested |
+| Nitrate-N | mg NO₃-N kg⁻¹ | 3–8 | Year 3 `socs_sys5` and `socs_sys7` only |
 | POXC (labile C) | — | 0, 6, 8 only | not ingested; *Data in Brief* Supplementary Table 3 |
-| Bulk density | g cm⁻³ | Years 3, 7 only | see Methods and Open follow-ups |
+| Bulk density | g cm⁻³ | 4, 7, 8 | five PLOS ONE systems; the paper measured Years 3 and 7, see Open follow-ups |
 
 SOC stock and SOC concentration are block-level in every year: 288 rows
 each (8 systems × 4 blocks × Years 0–8), from *Data in Brief*
 Supplementary Table 1. Total N and nitrate-N have 108 rows each from the
-same table. No rows come from the PLOS ONE S1 Table.
+same table: Year 3 for `socs_sys5` and `socs_sys7`, and Years 4–8 for the
+five PLOS ONE systems. The other 180 block values of each in Supplementary
+Table 1 are not yet ingested: Years 0–2 for all 8 systems (96), Year 3 for
+the other six systems (24), and `socs_sys3`, `socs_sys6` and `socs_sys8` in
+Years 4–8 (60). The 216 ingested rows have `observation_level` and
+`reported_units` blank. No rows come from the PLOS ONE S1 Table.
 
 ---
 
@@ -95,14 +103,14 @@ same table. No rows come from the PLOS ONE S1 Table.
   Bulk density was measured only at the end of Years 3 and 7 (Brennan,
   unpublished) and propagated across years by the equivalent-soil-mass
   method (greatest measured BD used as the Year 0 proxy, uniform 0–30 cm
-  since spading reaches 30 cm). The stock rows carry their own method row,
-  `equivalent_soil_mass_white_2024_correction`, which records this basis
-  and the 2024 rescale; `core_sample` describes only the bulk density
-  cores, and `elemental_analysis` the concentration measurement. The published stocks are on this
-  maximum equivalent soil mass basis (*Data in Brief* Supplementary
-  Table 1, footnote 2); the 2024 correction revised them, and the corrected
-  stocks no longer use the greatest measured bulk density as reference (see
-  Basis of the corrected stocks below).
+  since spading reaches 30 cm). The published stocks are on this maximum
+  equivalent soil mass basis (*Data in Brief* Supplementary Table 1,
+  footnote 2); the 2024 correction revised them, and the corrected stocks
+  no longer use the greatest measured bulk density as reference (see Basis
+  of the corrected stocks below). The stock rows carry their own method
+  row, `equivalent_soil_mass_white_2024_correction`, which records this
+  basis and the rescale; `core_sample` describes only the bulk density
+  cores, and `elemental_analysis` the concentration measurement.
 - **Harvest indices** (from White et al. 2020b, citing Brennan
   unpublished): romaine lettuce hearts HI = 0.26 (~74% of shoot biomass
   left as residue); broccoli HI = 0.24 (~76% left as residue). Recorded on
@@ -114,12 +122,19 @@ same table. No rows come from the PLOS ONE S1 Table.
 
 The papers describe management as seasonal windows (e.g. "cover crops
 planted in fall, incorporated in late winter/early spring"). No exact
-calendar dates are given for any event in any year.
+calendar dates are given for any management event in any year.
 
 Each `managements` row therefore carries the paper's stated season bounds
 in `min_date` / `max_date` (e.g. spring planting →
 `min_date = 2005-03-01`, `max_date = 2005-05-31`), with a `notes` field
 recording the source phrase. **Point dates are never invented.**
+
+SOC, total N and nitrate-N rows use the fall sampling window of each year
+(August for Year 8). The Year 0 and Year 6 rows instead carry 13 October
+2003 and 30 October 2009, which White et al. (2020b) give as the dates of
+additional samples frozen for microbial biomass; the paper does not say the
+0–30 cm composite samples were taken on those days. The bulk density rows
+have their own date question. Both are in Open follow-ups.
 
 ---
 
@@ -140,13 +155,18 @@ recording the source phrase. **Point dates are never invented.**
   cover crops with minimal compost or fertilizer inputs and frequent fallow.
   The pre-study soil is a relatively low-input baseline, not a fertilized
   steady state.
-- **2003 establishment compost.** A one-time compost application of
-  22 Mg ha⁻¹ (wet weight) at establishment, applied to all systems — much
-  larger than the annual rate. Documented in source as driving the large,
-  unexpected Year 0 → Year 1 SOC drop that appears across all systems
-  (including the no-compost control), attributed to spading + tillage
-  breaking macroaggregates and exposing protected SOC. Currently a single
-  `treatment_id = all_systems` pre-establishment row in `managements`.
+- **2003 establishment compost.** About 22 Mg ha⁻¹ (wet weight) of urban
+  yard waste compost was applied to the whole field in the year before the
+  study. With lower intensity management and disked cover crops, White et
+  al. (2020b) credit it for the high starting stock (about 50 Mg SOC ha⁻¹
+  as published in 2020, about 45 after the 2024 correction). They attribute
+  the large Year 0 → Year 1 SOC drop across all systems, including the no
+  compost control, to the switch to spading to 30 cm and two fertilized,
+  irrigated crops a year, which likely broke up macroaggregates built by
+  earlier cover crop roots and exposed the SOC they protected. The routine
+  rate, 7.6 Mg ha⁻¹ dry weight before each vegetable crop, is on a different
+  basis. Currently a single `treatment_id = all_systems` pre-establishment
+  row in `managements`.
 - **No GHG fluxes.** This dataset has no N₂O, CH₄, or CO₂ measurements —
   explicitly noted as a limitation in the paper. It supports SOC magnitude
   and treatment-contrast validation only.
@@ -186,8 +206,9 @@ factor:
 - POX-C stocks also decrease (0.89 overall, 0.87 to 0.92 cell by cell);
   they are not ingested here.
 - Carbon inputs are unchanged.
-- Two 2020 confidence limits that excluded their own means (Year 5
-  System 3; Year 7 System 4) are fixed.
+- Two 2020 confidence limits that excluded their own means (PLOS ONE
+  Year 5 System 3 and Year 7 System 4, that is `socs_sys4` and
+  `socs_sys5`) are fixed.
 
 ### Basis of the corrected stocks
 
@@ -205,12 +226,14 @@ gives the bulk density it implies:
 | Greatest measured, by system | 1.31 to 1.45 |
 | Median measured, without the five 1.0 values | 1.28 |
 
-The uncorrected stocks share one reference near the greatest measured
-values, as the method describes. The corrected stocks sit below every
-system's greatest measured value, at about the median. One factor scales
-every stock, so the corrected rows still share a single reference soil mass
-and stay on an equivalent soil mass basis, but that reference is not the
-greatest measured bulk density, and the correction does not say what it is.
+The uncorrected stocks centre on one reference near the greatest measured
+values, as the method describes, although single rows range from 1.36 to
+1.61, more than whole-number rounding explains; the cause of that spread is
+not known. The corrected stocks centre on about 1.28, below every system's
+greatest measured value and close to the median. One factor scales every
+stock, so the corrected rows keep the same relative pattern and stay on an
+equivalent soil mass basis, but their reference is not the greatest
+measured bulk density, and the correction does not say what it is.
 POX-C stocks moved by 0.87 to 0.92 cell by cell, so the correction is not
 one change applied to every carbon stock. The measured values come from this
 dataset's bulk density rows, which still need reconciling with their source
@@ -291,6 +314,18 @@ whether the snapshot holds the uncorrected or the corrected values.
 - Ask the authors which reference bulk density the corrected stocks use
   (implied about 1.28 g cm⁻³, against the greatest measured 1.45), and set
   `reference_soil_mass` from their answer.
+- Regenerate the Salinas calibration targets in ccmmf/calibration
+  (`010_prepare_observations.R`, `020_build_priors.R`) from the corrected
+  observations, after refreshing the observation copy that workflow reads.
+  Targets scale by 0.905 and their variances by 0.819 (issue #6).
+- Ingest the remaining 180 total N and 180 nitrate-N block values from
+  Supplementary Table 1, and fill `observation_level = replicate` and
+  `reported_units` on the existing 216 rows (workbook write, then
+  re-ingest). Correct the `total_N_conc_mg_kg` and `nitrate_N_mg_kg` notes
+  in `variables` at the same time; they say Years 0–8.
+- Check the Year 0 and Year 6 observation dates. If the 0–30 cm composite
+  samples were not taken on 13 October 2003 and 30 October 2009, give
+  those rows the fall window used in the other years.
 - Confirm the per-year vs pooled treatment of the 2003 establishment
   compost row across the 8 systems.
 - Reconcile the bulk density rows with their source. The 60 rows are
@@ -298,7 +333,9 @@ whether the snapshot holds the uncorrected or the corrected values.
   and `socs_sys7`, recorded at 0–30 cm and cited to *Data in Brief*, and
   five values are exactly 1.0 g cm⁻³. The PLOS ONE methods describe bulk
   density measured to 12.8 cm at the end of Years 3 and 7, and *Data in
-  Brief* Supplementary Table 1 has no bulk density column.
+  Brief* Supplementary Table 1 has no bulk density column. The
+  `study_year` 4 rows are dated fall 2006, the Year 3 window, so they may
+  be the Year 3 measurement labelled as Year 4.
 
 ---
 
@@ -307,7 +344,9 @@ whether the snapshot holds the uncorrected or the corrected values.
 **`github.com/swood-ecology/socs`** — an analysis-code repository
 accompanying the White papers, containing the SOC-stock derivation formula
 (`pom.stock = (POM C × blkden × 30) / 10`). It is not a data archive — the
-underlying observations live in the *Data in Brief* supplement and the Ag
-Data Commons archive — so it is not cited as a data source. Useful only as
+underlying observations come from the *Data in Brief* supplement, which
+the Ag Data Commons record also links, and this dataset's SOC stocks are
+those values rescaled for the 2024 correction — so it is not cited as a
+data source. Useful only as
 a methodology reference for deriving SOC stock from concentration + bulk
 density.
