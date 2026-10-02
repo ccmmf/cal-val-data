@@ -188,9 +188,10 @@ message(sprintf(
 # Corrected stocks --------------------------------------------------------
 
 # the source values are on the maximum equivalent soil mass basis (greatest
-# measured bulk density as reference). One factor keeps every stock on a single
-# reference soil mass, but the correction does not say which; the corrected
-# stocks imply about 1.28 g cm-3 against 1.41 before (data_entry_report.md)
+# measured bulk density as reference). One factor keeps the stocks' relative
+# pattern, but the correction does not say which reference it uses; the
+# corrected stocks imply about 1.28 g cm-3 against 1.41 before
+# (data_entry_report.md)
 row_attributes <- function(source_value, plos_system) {
   as.character(toJSON(list(
     stock_basis = "equivalent_soil_mass",
@@ -210,7 +211,9 @@ row_attributes <- function(source_value, plos_system) {
 result <- blocks |>
   mutate(
     correction_factor = correction_factor,
-    SOC_stock_0_30cm_Mg_C_ha = source_value * correction_factor,
+    # whole-number source x 3-decimal factor has at most 3 decimals; rounding
+    # drops float artefacts (54.300000000000004) so the CSV matches data/
+    SOC_stock_0_30cm_Mg_C_ha = round(source_value * correction_factor, 3),
     correction_note = paste0(
       "rescaled x", correction_factor, " for the White et al. (2024) correction (",
       correction_doi, ")"
