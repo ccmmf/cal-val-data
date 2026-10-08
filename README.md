@@ -5,6 +5,8 @@
 
 Curated field observations of soil carbon and greenhouse gas responses to management, with provenance, for calibrating and validating ecosystem and biogeochemical models.
 
+Website: <https://ccmmf.github.io/cal-val-data/>
+
 This repository holds curated observations, site and treatment metadata, management histories, and bibliographic and methodological context. Values are stored as each source reports them, in reported units, with a trail back to primary archive. It carries no model configuration, no initial conditions, no gap filled or imputed values, and no calibration code. Those depend on a model and belong with whatever consumes data.
 
 ## Overview

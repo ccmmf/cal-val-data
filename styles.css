@@ -1,0 +1,11 @@
+/* On narrow screens wide tables scroll inside their own box, so the page
+   itself does not scroll sideways, and links in tables keep whole words. */
+@media (max-width: 767.98px) {
+  main table {
+    display: block;
+    overflow-x: auto;
+  }
+  main .table a {
+    word-break: normal;
+  }
+}
