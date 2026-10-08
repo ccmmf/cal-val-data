@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 696" role="img" aria-labelledby="title description">
+<title id="title">Selected evidence grid</title>
+<desc id="description">Six practices by three outcomes; L denotes likelihood eligibility, S sign checks, and a dash no selected target.</desc>
+<metadata>Source: summarized_targets.csv; SHA256: 7ea544bb7ab69e8f1a7098db491dbc11f1586ee00f85a79831ee74ef52c0ab5f</metadata>
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="Arial, sans-serif">
+<text x="20" y="36" font-size="30" fill="#222" text-anchor="start">Selected evidence by practice and outcome</text>
+<text x="425" y="90" font-size="26" fill="#222" text-anchor="middle">Soil C</text>
+<text x="725" y="90" font-size="26" fill="#222" text-anchor="middle">N2O</text>
+<text x="1025" y="90" font-size="26" fill="#222" text-anchor="middle">CH4</text>
+<text x="20" y="151" font-size="22" fill="#222" text-anchor="start">+Cover Crops</text>
+<rect x="280" y="108" width="290" height="76" fill="#216653"/>
+<text x="425" y="136" font-size="20" fill="white" text-anchor="middle">L · Likelihood eligible</text>
+<text x="425" y="165" font-size="18" fill="white" text-anchor="middle">Poeplau &amp; Don 2015</text>
+<rect x="580" y="108" width="290" height="76" fill="#eeeeee"/>
+<text x="725" y="136" font-size="20" fill="#222" text-anchor="middle">— · No selected target</text>
+<text x="725" y="165" font-size="18" fill="#222" text-anchor="middle">Evidence held; not selected</text>
+<rect x="880" y="108" width="290" height="76" fill="#eeeeee"/>
+<text x="1025" y="136" font-size="20" fill="#222" text-anchor="middle">— · No selected target</text>
+<text x="1025" y="165" font-size="18" fill="#222" text-anchor="middle">No evidence curated</text>
+<text x="20" y="237" font-size="22" fill="#222" text-anchor="start">+Non-crop C</text>
+<rect x="280" y="194" width="290" height="76" fill="#216653"/>
+<text x="425" y="222" font-size="20" fill="white" text-anchor="middle">L · Likelihood eligible</text>
+<text x="425" y="251" font-size="18" fill="white" text-anchor="middle">Bai 2023</text>
+<rect x="580" y="194" width="290" height="76" fill="#eeeeee"/>
+<text x="725" y="222" font-size="20" fill="#222" text-anchor="middle">— · No selected target</text>
+<text x="725" y="251" font-size="18" fill="#222" text-anchor="middle">Evidence held; not selected</text>
+<rect x="880" y="194" width="290" height="76" fill="#eeeeee"/>
+<text x="1025" y="222" font-size="20" fill="#222" text-anchor="middle">— · No selected target</text>
+<text x="1025" y="251" font-size="18" fill="#222" text-anchor="middle">Evidence held; not selected</text>
+<text x="20" y="323" font-size="22" fill="#222" text-anchor="start">Reduced tillage</text>
+<rect x="280" y="280" width="290" height="76" fill="#216653"/>
+<text x="425" y="308" font-size="20" fill="white" text-anchor="middle">L · Likelihood eligible</text>
+<text x="425" y="337" font-size="18" fill="white" text-anchor="middle">Sun 2020</text>
+<rect x="580" y="280" width="290" height="76" fill="#216653"/>
+<text x="725" y="308" font-size="20" fill="white" text-anchor="middle">L · Likelihood eligible</text>
+<text x="725" y="337" font-size="18" fill="white" text-anchor="middle">VanKessel 2013</text>
+<rect x="880" y="280" width="290" height="76" fill="#eeeeee"/>
+<text x="1025" y="308" font-size="20" fill="#222" text-anchor="middle">— · No selected target</text>
+<text x="1025" y="337" font-size="18" fill="#222" text-anchor="middle">Evidence held; not selected</text>
+<text x="20" y="409" font-size="22" fill="#222" text-anchor="start">+/- N Fertilization</text>
+<rect x="280" y="366" width="290" height="76" fill="#eeeeee"/>
+<text x="425" y="394" font-size="20" fill="#222" text-anchor="middle">— · No selected target</text>
+<text x="425" y="423" font-size="18" fill="#222" text-anchor="middle">Evidence held; not selected</text>
+<rect x="580" y="366" width="290" height="76" fill="#216653"/>
+<text x="725" y="394" font-size="20" fill="white" text-anchor="middle">L · Likelihood eligible</text>
+<text x="725" y="423" font-size="18" fill="white" text-anchor="middle">Shcherbak 2014 + Cayuela 2017</text>
+<rect x="880" y="366" width="290" height="76" fill="#eeeeee"/>
+<text x="1025" y="394" font-size="20" fill="#222" text-anchor="middle">— · No selected target</text>
+<text x="1025" y="423" font-size="18" fill="#222" text-anchor="middle">Evidence held; not selected</text>
+<text x="20" y="495" font-size="22" fill="#222" text-anchor="start">Flooding / rice</text>
+<rect x="280" y="452" width="290" height="76" fill="#eeeeee"/>
+<text x="425" y="480" font-size="20" fill="#222" text-anchor="middle">— · No selected target</text>
+<text x="425" y="509" font-size="18" fill="#222" text-anchor="middle">Evidence held; not selected</text>
+<rect x="580" y="452" width="290" height="76" fill="#65458a"/>
+<text x="725" y="480" font-size="20" fill="white" text-anchor="middle">S · Sign check</text>
+<text x="725" y="509" font-size="18" fill="white" text-anchor="middle">Jiang 2019</text>
+<rect x="880" y="452" width="290" height="76" fill="#216653"/>
+<text x="1025" y="480" font-size="20" fill="white" text-anchor="middle">L · Likelihood eligible</text>
+<text x="1025" y="509" font-size="18" fill="white" text-anchor="middle">Jiang 2019</text>
+<text x="20" y="581" font-size="22" fill="#222" text-anchor="start">Annual -&gt; Perennial</text>
+<rect x="280" y="538" width="290" height="76" fill="#65458a"/>
+<text x="425" y="566" font-size="20" fill="white" text-anchor="middle">S · Sign check</text>
+<text x="425" y="595" font-size="18" fill="white" text-anchor="middle">Siddique 2023</text>
+<rect x="580" y="538" width="290" height="76" fill="#eeeeee"/>
+<text x="725" y="566" font-size="20" fill="#222" text-anchor="middle">— · No selected target</text>
+<text x="725" y="595" font-size="18" fill="#222" text-anchor="middle">Evidence held; not selected</text>
+<rect x="880" y="538" width="290" height="76" fill="#eeeeee"/>
+<text x="1025" y="566" font-size="20" fill="#222" text-anchor="middle">— · No selected target</text>
+<text x="1025" y="595" font-size="18" fill="#222" text-anchor="middle">Evidence held; not selected</text>
+<text x="20" y="660" font-size="20" fill="#222" text-anchor="start">Letters distinguish classes without relying on color. Subclass rows are not independent constraints.</text>
+<text x="20" y="686" font-size="20" fill="#222" text-anchor="start">Fertilizer N2O includes an EF level and crop-specific slopes; select matching observation operators.</text>
+</g>
+</svg>
