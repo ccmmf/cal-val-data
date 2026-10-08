@@ -1,6 +1,6 @@
 # Calibration and Validation Data for Agroecosystem Carbon and Greenhouse Gas Models
 
-[![Code License](https://img.shields.io/badge/Code_License-BSD_3--Clause-blue.svg)](LICENSE)
+[![Code License](https://img.shields.io/badge/Code_License-BSD_3--Clause-blue.svg)](https://github.com/ccmmf/cal-val-data/blob/develop/LICENSE)
 ![Data License](https://img.shields.io/badge/Data_License-CC--BY_(upstream)-lightgrey.svg)
 
 Curated field observations of soil carbon and greenhouse gas responses to management, with provenance, for calibrating and validating ecosystem and biogeochemical models.
@@ -8,6 +8,15 @@ Curated field observations of soil carbon and greenhouse gas responses to manage
 Website: <https://ccmmf.github.io/cal-val-data/>
 
 This repository holds curated observations, site and treatment metadata, management histories, and bibliographic and methodological context. Values are stored as each source reports them, in reported units, with a trail back to primary archive. It carries no model configuration, no initial conditions, no gap filled or imputed values, and no calibration code. Those depend on a model and belong with whatever consumes data.
+
+## Start here
+
+| What you need | Where to go |
+| --- | --- |
+| Understand the evidence | [Evidence overview](reports/overview.qmd), then [site-level data](reports/site-level-data.qmd), [synthesis evidence](reports/statewide-evidence.qmd), and [using the two together](reports/using-the-two-together.qmd) |
+| Find datasets, fields, and examples | [Data reference](docs/data-reference.qmd) |
+| Curate a dataset | [Data collection protocol](docs/data-collection-protocol.qmd) |
+| Read the original data request | [Data requirements (2024)](docs/data-requirements.qmd) |
 
 ## Overview
 
@@ -30,11 +39,10 @@ Curation happens in a Google Sheet workbook, which is source of truth. CSVs in `
 1. Workbook holds curated tables and is edited and reviewed there.
 2. `scripts/ingest.R` pulls each workbook tab to `data/<tab>.csv`.
 3. `scripts/validate.R` checks `data/` against `datapackage.json`.
-3b. `scripts/ingest_benchmarking.R` does the same for the synthesis and meta-analysis evidence workbook into `data_raw/statewide_benchmarking/`.
-4. Downstream consumers read committed CSVs.
+4. `scripts/ingest_benchmarking.R` does the same for the synthesis and meta-analysis evidence workbook into `data_raw/statewide_benchmarking/`.
+5. Downstream consumers read committed CSVs.
 
 CSVs are committed so consumers read a stable, documented snapshot. Workbook can keep changing without a commit per edit; CSVs are regenerated and committed when a dataset version is ready.
-
 
 ## Data reference
 
@@ -46,4 +54,4 @@ This repository is a data layer: measured values and their provenance. It does n
 
 ## License
 
-Code in this repository (`scripts/`, `tests/`) is BSD-3-Clause; see [LICENSE](LICENSE). Curated data derives from sources (public data archives and journals) that require attribution under CC-BY; cite the original sources listed in `data/citations.csv`.
+Code in this repository (`scripts/`, `tests/`) is BSD-3-Clause; see [LICENSE](https://github.com/ccmmf/cal-val-data/blob/develop/LICENSE). Curated data derives from sources (public data archives and journals) that require attribution under CC-BY; cite the original sources listed in `data/citations.csv`.
