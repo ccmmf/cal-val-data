@@ -6,6 +6,7 @@ project:
   render:
     # Explicit pages to render
     - index.qmd
+    - docs/data-reference.qmd
     - reports/site-level-data.qmd
     - reports/statewide-evidence.qmd
     - reports/using-the-two-together.qmd
@@ -34,6 +35,8 @@ website:
             text: "Part C: Using the Two Together"
       - section: Docs
         contents:
+          - href: docs/data-reference.qmd
+            text: Data Reference
           - href: docs/data-collection-protocol.qmd
             text: Data Collection Protocol
           - href: docs/data-requirements.qmd
