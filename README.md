@@ -1,13 +1,12 @@
 # Calibration and Validation Data for Agroecosystem Carbon and Greenhouse Gas Models
 
 [![Code License](https://img.shields.io/badge/Code_License-BSD_3--Clause-blue.svg)](https://github.com/ccmmf/cal-val-data/blob/develop/LICENSE)
-![Data License](https://img.shields.io/badge/Data_License-CC--BY_(upstream)-lightgrey.svg)
 
-Curated field observations of soil carbon and greenhouse gas responses to management, with provenance, for calibrating and validating ecosystem and biogeochemical models.
+Curated field observations and synthesis evidence of soil carbon and greenhouse gas responses to management, with provenance, for calibrating and validating ecosystem and biogeochemical models.
 
 Website: <https://ccmmf.github.io/cal-val-data/>
 
-This repository holds curated observations, site and treatment metadata, management histories, and bibliographic and methodological context. Values are stored as each source reports them, in reported units, with a trail back to primary archive. It carries no model configuration, no initial conditions, no gap filled or imputed values, and no calibration code. Those depend on a model and belong with whatever consumes data.
+This repository holds curated observations, site and treatment metadata, management histories, and bibliographic and methodological context. Site observations preserve source-reported values and units, including provider-processed flux products. Documented derived quantities include equivalent-soil-mass stocks and normalized synthesis targets. Model configuration, initial conditions, model-specific imputation, and calibration code belong downstream.
 
 ## Start here
 
@@ -20,14 +19,14 @@ This repository holds curated observations, site and treatment metadata, managem
 
 ## Overview
 
-Datasets describe field experiments where a soil carbon or greenhouse gas response was measured against a control, so a model can be tested on two things at once: absolute value, and treatment difference (practice change signal that policy applications care about).
+Datasets include field experiments, replicate-level archives, and tower flux products. Where a control and suitable management history are available, they support evaluation of both absolute values and treatment differences. Synthesis evidence provides complementary, conditional constraints.
 
 **Key features:**
 
-- **Model agnostic.** Observations stay in reported units with no model specific transformation. Mapping to model state variables happens downstream.
+- **Model agnostic.** Site observations retain reported units; derived quantities document their transformations. Mapping to model state variables happens downstream.
 - **Long format observations**, one row per dataset, site, treatment, replicate, time window, and variable, at replicate level where source archive provides it.
-- **Stable text keys** (`dataset_id`, `site`, `treatment_id`, `citation`) rather than database identifiers.
-- **Per row provenance** through `fill_status`, recording which source file each value came from.
+- **Stable text keys** (`dataset_id`, `sitename`, `treatment_id`, `citation`) rather than database identifiers.
+- **Per row provenance** through citations, methods, source notes, and source locators; `fill_status` records the source category, not an exact file locator.
 - **Source stated date ranges** in `min_date` and `max_date`; point dates are never invented.
 - **Named treatment contrasts** in `treatment_pairs`, so practice change validation (compost vs no compost, cover crop vs none, organic vs conventional) is a first class query.
 - **Coverage matrix** tracking which system, contrast, and target cells are filled, so gaps stay explicit.
@@ -38,7 +37,7 @@ Curation happens in a Google Sheet workbook, which is source of truth. CSVs in `
 
 1. Workbook holds curated tables and is edited and reviewed there.
 2. `scripts/ingest.R` pulls each workbook tab to `data/<tab>.csv`.
-3. `scripts/validate.R` checks `data/` against `datapackage.json`.
+3. `scripts/validate.R` checks `data/` against `datapackage.json` in warn mode. Review warnings and run the integrity tests; successful execution alone does not approve the snapshot.
 4. `scripts/ingest_benchmarking.R` does the same for the synthesis and meta-analysis evidence workbook into `data_raw/statewide_benchmarking/`.
 5. Downstream consumers read committed CSVs.
 
@@ -50,8 +49,8 @@ See the [data reference](docs/data-reference.qmd) for datasets, measured variabl
 
 ## Scope
 
-This repository is a data layer: measured values and their provenance. It does not carry model configuration, initial conditions, gap filled or imputed events, day of year imputation, unit or statistic conversion, fold assignment, priors, or calibration code. Those are properties of a particular model and a particular study, so they live downstream with whatever consumes data. Keeping this layer neutral is what lets a second model or analysis reuse the same tables.
+This repository is an evidence layer: measured values, documented derived quantities, and their provenance. Provider gap filling and synthesis transformations are documented with their sources; they are not model-specific imputation. Model configuration, initial conditions, observation operators, fold assignment, and calibration code live downstream. Keeping this layer neutral lets other models and analyses reuse the same evidence.
 
 ## License
 
-Code in this repository (`scripts/`, `tests/`) is BSD-3-Clause; see [LICENSE](https://github.com/ccmmf/cal-val-data/blob/develop/LICENSE). Curated data derives from sources (public data archives and journals) that require attribution under CC-BY; cite the original sources listed in `data/citations.csv`.
+Code in this repository (`scripts/`, `tests/`) is BSD-3-Clause; see [LICENSE](https://github.com/ccmmf/cal-val-data/blob/develop/LICENSE). Data reuse is governed by each upstream source's terms, which are not uniformly CC-BY. Consult the source archive and dataset provenance notes, and cite the original sources listed in `data/citations.csv`.
