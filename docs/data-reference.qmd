@@ -2,9 +2,11 @@
 title: "Data reference"
 ---
 
+This page describes the committed CSV exports and their use. The [collection protocol](data-collection-protocol.qmd) describes the curation workflow. The schema in [datapackage.json](https://github.com/ccmmf/cal-val-data/blob/develop/datapackage.json), together with source-specific provenance, governs the exported site tables.
+
 ## Datasets
 
-Each dataset pulls replicate level values from a public archive; companion analysis papers supply methods and cross checks. A dataset is curated in its own workbook, and ingest stacks each tab across all workbooks into one CSV per table.
+Sources include replicate-level archives and provider-reported annual flux products; companion analysis papers supply methods and cross-checks. A dataset is curated in its own workbook, and ingest stacks each tab across all workbooks into one CSV per table.
 
 | dataset_id | site | lat, lon | period | treatments | variables | citations (DOI) |
 | ---------- | ---- | -------- | ------ | ---------- | --------- | --------------- |
@@ -13,6 +15,8 @@ Each dataset pulls replicate level values from a public archive; companion analy
 | `russell_ranch_tautges_2019` | russell_ranch_davis (UC Davis Russell Ranch Century Experiment, Davis CA) | 38.54, -121.87 | 1992 to 2014 (study years -1 to 21) | 14 systems, 13 with observations (conventional, organic, legume cover, alfalfa phase corn-tomato; irrigated and rainfed wheat; transitional; native grass reference) | total C and N, bulk density to 250 cm, NH4-N, NO3-N, soil organic matter, corn, tomato, wheat, alfalfa and cover crop yields | 10.1002/ecy.2105; 10.1111/gcb.14762 |
 | `raffeld_2024` | russell_ranch_davis (UC Davis Russell Ranch Century Experiment, Davis CA) | 38.54, -121.87 | 1993 and 2012 | 8 treatments, 6 plots each | `SOC_stock_Mg_ha` at the treatment-specific 0-30 cm reference soil mass, computed per plot with SimpleESM ESM2 | 10.5061/dryad.p2ngf1w06 |
 | `anthony_bouldin_2024` | US-Bi2 (Bouldin corn) and US-Bi1 (Bouldin alfalfa), Sacramento-San Joaquin Delta CA | 38.1091, -121.535; 38.0992, -121.499 | 2017 to 2021 (4 study years) | single system per site; 9 automated chambers per site as spatial replicates | chamber N2O, CH4 and CO2 flux, annual mean per chamber per year with standard error | 10.5061/dryad.qz612jmnx; 10.1007/s10533-023-01095-y |
+
+Tower products also contribute observations at US-Bi1, US-Bi2, and US-Twt. The exported `dataset_id` values distinguish AmeriFlux FLUXNET-1F, FLUXNET2015 annual NEE, the FLUXNET-CH4 community product, source-reported publication totals, and supporting sensor records. See [Part A](../reports/site-level-data.qmd) for target counts and temporal/measurement support; the citation and method tables preserve product-level provenance. The archive-group table above is not an exhaustive list of product-specific `dataset_id` values.
 
 ### white_salinas_2020
 
@@ -69,9 +73,10 @@ any consumer.
 ├── datapackage.json               # schema: fields, types, keys for each table
 ├── scripts/
 │   ├── ingest.R                   # googlesheets4 pull, one workbook tab to one data/*.csv
+│   ├── ingest_benchmarking.R       # synthesis workbook exports
 │   └── validate.R                 # warn mode integrity checks vs datapackage.json
 ├── data/                          # generated csv exports land here (see Data Products); do not hand edit
-│   └── .gitkeep
+│   └── observations.csv           # one of ten committed tables
 ├── data_raw/                      # per dataset provenance, one folder per dataset
 │   ├── README.md                  # folder per dataset rule
 │   └── white_salinas_2020/        # data_entry_report.md lands here
@@ -105,7 +110,7 @@ Each workbook tab maps to one CSV in `data/`. Full field schema, types, and keys
 
 | Column | Type | Description |
 | ------ | ---- | ----------- |
-| `min_date`, `max_date` | date | source stated window; equal for a point sample, blank when source gives no date |
+| `min_date`, `max_date` | string | reported date window; current encodings include ISO, YYYYMMDD, and Excel serial dates; equal for a point sample, blank when source gives no date |
 | `crop`, `variety` | string | crop and variety, where reported |
 | `sitename` | string | foreign key to `sites.name` |
 | `variable` | string | foreign key to `variables.name` |
@@ -114,7 +119,7 @@ Each workbook tab maps to one CSV in `data/`. Full field schema, types, and keys
 | `n` | number | sample size; 1 for replicate level rows |
 | `statname`, `stat` | string, number | reported statistic (e.g. SE) and its value; not converted during curation |
 | `treatment_id` | string | foreign key to `treatments.name` |
-| `replicate_id` | number | block, plot, core, or chamber identifier |
+| `replicate_id` | string | block, plot, core, or chamber identifier; preserve text labels |
 | `study_year` | number | experiment year or calendar year |
 | `min_depth`, `max_depth` | number | cm; sampled interval for depth-based observations and reference interval for equivalent-soil-mass stocks; actual integrated depth is recorded in `attributes_json.equivalent_depth_cm` |
 | `citation` | string | DOI, foreign key to `citations.doi` |
@@ -131,7 +136,7 @@ Each workbook tab maps to one CSV in `data/`. Full field schema, types, and keys
 | `event_id` | string | unique row key, `<mgmttype>-NNNN` |
 | `sites.name` | string | foreign key to `sites.name` |
 | `treatments.name` | string | foreign key to `treatments.name` |
-| `min_date`, `max_date` | datetime | event window |
+| `min_date`, `max_date` | string | reported event window; stored as text with mixed date encodings and source precision documented |
 | `mgmttype` | string | `planting`, `harvest`, `tillage`, `fertilization`, `compost_application` |
 | `cover_crop` | boolean | planting rows: cover crop vs cash crop |
 | `crop_name` | string | cover crop name on planting rows |
@@ -153,13 +158,13 @@ Smaller tables (`citations`, `sites`, `treatments`, `treatment_pairs`, `methods`
 
 ## Validation
 
-`scripts/validate.R` checks every generated `data/*.csv` against `datapackage.json`. It runs in warn mode: missing columns, empty keys, broken foreign keys, and odd dates warn but do not stop, so a workbook in progress still passes. It needs only base R plus `jsonlite` and `readr`.
+`scripts/validate.R` checks every generated `data/*.csv` against `datapackage.json`. It runs in warn mode: missing columns, empty keys, broken foreign keys, and odd dates warn but do not stop, so a workbook in progress can exit successfully with unresolved problems. Review every warning; the stricter tests and CI checks are separate gates. It needs only base R plus `jsonlite` and `readr`.
 
 ```bash
 Rscript scripts/validate.R
 ```
 
-Tests under `tests/testthat/` run the same checks via testthat. Tables not yet generated are skipped, so a fresh clone passes.
+Tests under `tests/testthat/` run the same checks via testthat. The committed snapshot supplies the tables tested here. Tests can skip absent tables; review skips and warnings as well as failures.
 
 ```bash
 Rscript -e 'testthat::test_dir("tests/testthat")'
@@ -171,7 +176,10 @@ Rscript -e 'testthat::test_dir("tests/testthat")'
 
 ```r
 library(readr)
-obs <- read_csv("data/observations.csv", show_col_types = FALSE)
+obs <- read_csv("data/observations.csv", show_col_types = FALSE,
+                col_types = cols(.default = col_character()))
+
+obs$value <- parse_double(obs$value)
 
 # replicate level SOC stock
 subset(obs, variable == "SOC_stock_Mg_ha" & observation_level == "replicate")
@@ -193,3 +201,41 @@ subset(pairs, use_for_validation == TRUE)
 # interactively with googlesheets4::gs4_auth()
 source("scripts/ingest.R")
 ```
+
+## Synthesis data products
+
+Synthesis worksheets are exported separately from the site tables. The [synthesis README](https://github.com/ccmmf/cal-val-data/blob/develop/data_raw/statewide_benchmarking/README.md) documents sources, subclasses, uncertainty, and selection decisions.
+
+| File | Purpose |
+| --- | --- |
+| `extracted_evidence.csv` | Source findings with citations and locators |
+| `normalised_targets.csv` | Derived target quantities and explicit uncertainty definitions |
+| `summarized_targets.csv` | Selected rows keyed by practice, outcome, and subclass |
+| `reference_values.csv` | Contextual values; the selected Mediterranean EF level also appears here and must not be counted twice |
+| `model_vs_evidence.csv` | Evidence-side comparison scaffold; empty model columns do not represent model results |
+| `coverage.csv`, `evidence_assessment.csv`, `source_audit.csv` | Coverage, conditional assessments, and source review |
+| `carb_crosscheck.csv`, `data_processing.csv`, `data_ingest_report.md` | Inventory cross-checks, digitization records, and transformation notes |
+
+The six likelihood-eligible practice–outcome groups are not six independent scalar observations. Fertilizer N2O has an EF level and alternative crop-specific slopes; rice CH4 has overlapping drying-event subclasses. Match the observation operator and select applicable subgroups rather than counting overlapping estimates as independent evidence.
+
+To compare synthesis exports against the workbook without rewriting them:
+
+```sh
+Rscript scripts/ingest_benchmarking.R --check
+```
+
+This requires authorized Google Sheets access, `googlesheets4` and `readr`. Set `CCMMF_SHEETS_EMAIL` to the authorized account before running the synthesis script; without it, the script uses its configured default account. The script without `--check` rewrites exports. Site ingestion also requires `config` and `dplyr`. Ingestion does not replace source review or validate scientific comparability.
+
+## Build and maintain the documentation
+
+The homepage includes the root README, so edit the README to update both entry points. Detailed dataset and schema information belongs on this page; report interpretations belong in Parts A–C. Update source-check dates when reconciling adaptations with the linked Google Docs.
+
+```sh
+python3 -m unittest discover -s tests -p 'test_*.py'
+python3 scripts/build_evidence_figures.py --check
+quarto render
+python3 scripts/check_site.py
+quarto preview
+```
+
+The figure check compares versioned evidence diagrams with the committed synthesis targets. Run it without `--check` to regenerate those diagrams after a reviewed target update. The site check verifies rendered local links and figure alt text. Neither command ingests workbooks, runs a model, or publishes a site.

@@ -9,6 +9,8 @@ format:
 
 *This page is the December 2024 statement of what the project was seeking from datasets. It is a reference, not a record of which requirements are currently met.*
 
+Adapted from the [source data request](https://docs.google.com/document/d/149Za_k-p8gSKTJIkOm5-YLFRYHFg2KYUYOIgLdPZZ0o/edit). The source may require permission to view.
+
 ## Overview
 
 We are developing new capabilities to simulate agricultural management and biogeochemical cycling in the SIPNET ecosystem model. To evaluate model performance, **we are seeking datasets that:**
