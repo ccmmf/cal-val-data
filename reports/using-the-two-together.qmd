@@ -10,7 +10,7 @@ format:
 
 ## C1. What each side constrains {#c1-what-each-side-constrains}
 
-Site data constrains magnitude; statewide evidence constrains response. They also check each other, which is the main reason for carrying both.
+Site data supports site-specific magnitude and treatment-contrast checks; synthesis evidence adds management-response constraints and a selected EF level. Their roles are complementary, but source overlap must be checked before treating them as independent evidence.
 
 ## C2. A caution on how the evidence enters the likelihood {#c2-a-caution-on-how-the-evidence-enters-the-likelihood}
 
@@ -18,13 +18,13 @@ A synthesis estimate is one estimate, not many. If every design point is scored 
 
 Perturbing each pseudo observation with the population spread makes the draws look correct marginally, but does not change how much they say about the mean. Heterogeneity across sites belongs in the model as variation, not in the observation error where it is averaged away.
 
-Two quantities are therefore worth reporting separately: the mean effect with its interval, noted as dependent on the number of pseudo observations used, and the predictive spread across sites, checked against the observed among plot spread.
+Report the mean effect and its uncertainty separately from predicted heterogeneity among sites. If pseudo-observations are used, document their dependence and how their number affects precision. Match any heterogeneity comparison to the source's plot/site support and estimator.
 
 ## C3. Reading this data honestly {#c3-reading-this-data-honestly}
 
 Three limits are worth carrying forward into any result built on it.
 
-**Cross domain skill is not demonstrated.** Because no site pairs soil carbon with flux at useful density, a parameter set reproducing soil carbon at Davis has never been tested for methane in the Delta.
+**Cross domain skill is not demonstrated.** Because no site pairs soil carbon with flux at useful density, agreement with soil carbon at Davis does not establish methane skill in the Delta.
 
 **The Delta is one landscape, not three samples.** The three towers share a climate and a Delta peat island setting, so agreement among them is weaker evidence than three independent sites would be.
 
