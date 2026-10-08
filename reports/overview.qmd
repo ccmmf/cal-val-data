@@ -1,0 +1,50 @@
+---
+title: "Evidence overview"
+subtitle: "What we have for testing the model, and what it can actually support"
+author: "Aritra Dey"
+date: 2026-09-16
+---
+
+## Overview
+
+The MAGiC pipeline is used to generate inventory and projection estimates of SOC stocks and GHG emissions from California croplands.
+
+The calibration and validation dataset combines two functionally[^1] independent bodies of evidence, and they do different jobs. These are
+
+**Site level data** is six California fields where somebody measured soil carbon or a greenhouse gas flux. It answers a question about magnitude: does the model produce the right stock, the right flux, at a real place.
+
+**Synthesis evidence** is a set of values from statistical synthesis of published literature on the impacts of sustainable farming practices on SOC and GHG balance. It answers a question about response: when a practice changes, does the model respond in a direction and rough magnitude that is consistent with available evidence.
+
+::: {.callout-note appearance="simple"}
+Neither of these datasets is sufficient. The limited site-level dataset is insufficient for calibration because it is easy to overfit the model to specific sites while missing the big picture changes.
+:::
+
+[^1]: Large scale synthesis datasets may contain the same site level data, but we assume that the effect is small enough to be practically independent.
+
+### Key points
+
+| Key point | Detail |
+| :--------------------------------------- | :------------------------------------------------------------------------------ |
+| **Soil carbon and gas flux are measured at different sites.** | Of the six sites, two include SOC stock measurements (Russell Ranch and Salinas), four provide gas exchange (Modesto and the three towers), and no site carries both. Any claim spanning both is an extrapolation, not a validated result. |
+| **Practice contrasts exist at only two sites**, both annual crop soil sites. | There is no measured practice contrast anywhere in the Delta, and none for rice. |
+| **Six of the 18 statewide cells carry a spread and can be fitted**, where a cell is one practice paired with one outcome. | They are cover crops, non-crop carbon and reduced tillage on soil carbon, reduced tillage on N~2~O, fertilisation on N~2~O, and rice drying on CH~4~. Two more have no published spread and are used to check the direction of the model response ([B5](statewide-evidence.qmd#b5-where-the-spread-is-an-expert-informed-prior)). |
+| **Two caveats apply to the targets.** | [Salinas 2003 and 2004](site-level-data.qmd#a5-the-soil-carbon-record) are excluded as establishment effects, and [US-Bi2](site-level-data.qmd#a6-the-flux-record) is a much larger net carbon source than its neighbour, a magnitude to confirm with the site team. Both are described in place. |
+| **Coverage and usability are not the same thing.** | An empty cell indicates that no useable target was identified in the sources reviewed. |
+
+## The two bodies of evidence
+
+::: {layout-ncol=2}
+![**Site level data.** Where the six cal/val sites are. Point size is the number of target records used; circles mark field experiments and triangles mark flux towers. See [Part A](site-level-data.qmd).](figures/a1-site-map.png){#fig-site-map fig-alt="Map of central California with county outlines. Circles mark Russell Ranch (96), Modesto almond (54) and Salinas SOCS (224). Three overlapping triangles in the Delta mark US-Twt rice (14), US-Bi2 corn (123) and US-Bi1 alfalfa (119). Point size scales with the number of target records."}
+
+![**Statewide evidence.** Practice by outcome grid, labelled with the selected source. Green cells enter a likelihood; purple cells are sign checks; grey cells carry no target. See [Part B](statewide-evidence.qmd).](figures/b2-evidence-grid.png){#fig-evidence-grid fig-alt="Grid of six practices by three outcomes (Soil C, N2O, CH4). Six green fittable cells: cover crops, non-crop carbon and reduced tillage on soil carbon, reduced tillage on N2O, fertilization on N2O and flooding on CH4. Two purple sign check cells: flooding on N2O and annual to perennial on soil carbon. The other ten cells are grey."}
+:::
+
+## Contents
+
+| Page | What it covers |
+| :--------------------------------------- | :------------------------------------------------------------------------------ |
+| [Part A: Site-Level Data](site-level-data.qmd) | The six sites, when the measurements happened, coverage against the prepared run windows, what is measured and where, the soil carbon and flux records, and practice contrasts (A1 to A7) |
+| [Part B: Statewide Evidence](statewide-evidence.qmd) | What the statewide evidence is for, the practice by outcome grid, why so few cells are fittable, how uncertainty is recorded, where the spread is an expert informed prior, and what is deliberately excluded (B1 to B6) |
+| [Part C: Using the Two Together](using-the-two-together.qmd) | What each side constrains, how the evidence enters the likelihood, and reading this data honestly (C1 to C3), with the data held but not used as targets |
+| [Data Collection Protocol](../docs/data-collection-protocol.qmd) | Protocol for spreadsheet-based curation of published and archived datasets for crop model calibration and validation |
+| [Data Requirements (2024)](../docs/data-requirements.qmd) | The datasets sought, as of December 2024, to evaluate the SIPNET ecosystem model's simulation of agricultural management and biogeochemical cycling |

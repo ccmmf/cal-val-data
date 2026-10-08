@@ -6,6 +6,7 @@ project:
   render:
     # Explicit pages to render
     - index.qmd
+    - reports/overview.qmd
     - docs/data-reference.qmd
     - reports/site-level-data.qmd
     - reports/statewide-evidence.qmd
@@ -27,6 +28,8 @@ website:
         text: Home
       - section: Reports
         contents:
+          - href: reports/overview.qmd
+            text: Evidence Overview
           - href: reports/site-level-data.qmd
             text: "Part A: Site-Level Data"
           - href: reports/statewide-evidence.qmd
