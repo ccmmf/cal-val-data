@@ -4,6 +4,23 @@ Changes to datasets, schemas, and curation workflows are documented here.
 
 ## Unreleased
 
+### Changed
+
+- Salinas SOC stocks updated for the White et al. (2024) correction. All 288
+  block-level rows (Years 0–8, 8 systems) are rescaled by 0.905 and recorded
+  as `SCRIPTED_DERIVED`. The rows now record their basis in
+  `attributes_json`: an equivalent soil mass whose reference the correction
+  does not state, with the uncorrected *Data in Brief* value (maximum
+  equivalent soil mass basis) kept in `source_value_Mg_ha`; see
+  `data_raw/white_salinas_2020/data_entry_report.md`
+  ([#6](https://github.com/ccmmf/cal-val-data/issues/6)).
+- Citations: the entry for `10.1371/journal.pone.0228677` now carries that
+  paper's title, and the 2024 correction (`10.1371/journal.pone.0307250`)
+  is added.
+- Salinas SOC stock rows use a new method row,
+  `equivalent_soil_mass_white_2024_correction`, in place of
+  `elemental_analysis`, whose description did not fit the corrected stocks.
+
 ## 0.1.0 — Initial release
 
 ### Added

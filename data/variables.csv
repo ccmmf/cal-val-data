@@ -1,5 +1,5 @@
 name,description,units,notes
-SOC_stock_Mg_ha,Soil organic carbon stock (SOC). Depth interval specified per row in min_depth / max_depth columns.,Mg C ha-1,"Block-level; Zotero Table 1; all 8 systems, Years 0-8, 4 reps; in observations tab"
+SOC_stock_Mg_ha,Soil organic carbon stock (SOC). Depth interval specified per row in min_depth / max_depth columns.,Mg C ha-1,"Block-level; Zotero Table 1 rescaled x0.905 for the White et al. (2024) correction (SCRIPTED_DERIVED); all 8 systems, Years 0-8, 4 reps; in observations tab"
 bulk_density_g_cm3,Soil bulk density.,g cm-3,"Block-level; site-data.xlsx; 5 PLoS ONE systems, Years 4/7/8, 4 reps; in observations tab"
 SOC_conc_mg_kg,Soil organic carbon concentration. Depth interval specified per row in min_depth / max_depth columns.,mg C kg-1 soil,"Block-level; Zotero Table 1; all 8 systems, Years 0-8, 4 reps; in observations tab"
 total_N_conc_mg_kg,Total soil nitrogen concentration.,mg N kg-1 soil,"Block-level; Zotero Table 1; 5 systems, Years 0-8, 4 reps; in white-additional-data tab"
