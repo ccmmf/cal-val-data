@@ -62,7 +62,7 @@ Ingested to the `observations` tab in reported units:
 | N₂O flux | g N₂O-N ha⁻¹ day⁻¹ | 2018–2019 | closed static chamber, 9 dates (Dec 2018 – Aug 2019) |
 | Total soil C | % dry weight | 2019 | single timepoint (Aug 2019), 0–30 cm; a concentration, not a stock (see caveats) |
 | Total soil N | per source (conc. or %) | 2019 | single timepoint (Aug 2019) |
-| Bulk density | g cm⁻³ | 2019 | single timepoint (Aug 2019) |
+| Bulk density | g cm⁻³ | 2019 | single timepoint (Aug 2019); sampling depth not reported, so `min_depth` / `max_depth` are NA (see caveats) |
 
 N₂O is the trajectory variable (9 flux dates across a full season). The
 soil variables (total C, total N, bulk density) are **single-timepoint**
