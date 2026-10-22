@@ -1,6 +1,6 @@
 method name,description,citation_id,method_id,short_name,notes,attributes_json
-elemental_analysis,"Soil organic carbon measured by dry combustion elemental analysis (CNS analyzer), 0-30 cm depth. Samples collected annually at end of growing season. Results expressed as Mg C ha-1 using measured bulk density for stock calculations.",10.2136/sssabookser5.3.c34,NA,NA,NA,NA
-core_sample,"Bulk density measured from undisturbed soil cores, 0-30 cm depth. Core volume calculated from ring dimensions; dry weight after oven-drying at 105°C.",10.2136/sssabookser5.1.2ed.c13,NA,NA,NA,NA
+elemental_analysis,"Soil C and N concentration by dry combustion elemental analysis; concentrations only, stocks are curated under their own method. Sampling depth and dates are recorded on each observation row.",10.2136/sssabookser5.3.c34,NA,NA,NA,NA
+core_sample,Bulk density measured from undisturbed soil cores; sampling depth is recorded on each observation row. Core volume calculated from ring dimensions; dry weight after oven-drying at 105°C.,10.2136/sssabookser5.1.2ed.c13,NA,NA,NA,NA
 density_fractionation,"Soil organic matter fractionation by density separation into particulate organic matter (POM, &lt;1.85 g cm-3) and mineral-associated organic matter (MAOM, &gt;1.85 g cm-3). C and N content of each fraction measured by elemental analysis.",10.2136/sssaj1992.03615995005600030017x,NA,NA,NA,NA
 loss_on_ignition,Soil organic matter estimated by loss-on-ignition (LOI): sample ignited at 360°C for 2 hours; organic matter = mass lost as percentage of dry soil mass.,10.2136/sssaj1974.03615995003800010046x,NA,NA,NA,NA
 1:1_water,Soil pH measured in 1:1 soil-to-water suspension using a calibrated pH meter.,10.2136/sssabookser5.3.c16,NA,NA,NA,NA

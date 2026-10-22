@@ -26,6 +26,10 @@ Changes to datasets, schemas, and curation workflows are documented here.
   (2024) nor the Ag Data Commons archive gives a sampling depth for the
   ~5.08 cm brass rings. Values are unchanged; see
   `data_raw/nichols_modesto_2024/data_entry_report.md`.
+- Method descriptions: `core_sample` no longer states a 0–30 cm depth, and
+  `elemental_analysis` no longer describes stock calculations. Both are
+  shared by Salinas and Modesto, so depth and dates are read from each
+  observation row, and stocks keep their own method.
 
 ## 0.1.0 — Initial release
 
