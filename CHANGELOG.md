@@ -20,6 +20,16 @@ Changes to datasets, schemas, and curation workflows are documented here.
 - Salinas SOC stock rows use a new method row,
   `equivalent_soil_mass_white_2024_correction`, in place of
   `elemental_analysis`, whose description did not fit the corrected stocks.
+- Modesto bulk density: the six `nichols_modesto_2024`
+  `bulk_density_g_cm3` rows no longer carry a 0–30 cm depth. `min_depth`
+  and `max_depth` are now NA, with a note, because neither Nichols et al.
+  (2024) nor the Ag Data Commons archive gives a sampling depth for the
+  ~5.08 cm brass rings. Values are unchanged; see
+  `data_raw/nichols_modesto_2024/data_entry_report.md`.
+- Method descriptions: `core_sample` no longer states a 0–30 cm depth, and
+  `elemental_analysis` no longer describes stock calculations. Both are
+  shared by Salinas and Modesto, so depth and dates are read from each
+  observation row, and stocks keep their own method.
 
 ## 0.1.0 — Initial release
 

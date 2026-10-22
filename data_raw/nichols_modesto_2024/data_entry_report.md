@@ -60,9 +60,9 @@ Ingested to the `observations` tab in reported units:
 | Variable | Units | Years | Notes |
 |---|---|---|---|
 | N₂O flux | g N₂O-N ha⁻¹ day⁻¹ | 2018–2019 | closed static chamber, 9 dates (Dec 2018 – Aug 2019) |
-| Total soil C | % dry weight | 2019 | single timepoint (Aug 2019) |
+| Total soil C | % dry weight | 2019 | single timepoint (Aug 2019), 0–30 cm; a concentration, not a stock (see caveats) |
 | Total soil N | per source (conc. or %) | 2019 | single timepoint (Aug 2019) |
-| Bulk density | g cm⁻³ | 2019 | single timepoint (Aug 2019) |
+| Bulk density | g cm⁻³ | 2019 | single timepoint (Aug 2019); sampling depth not reported, so `min_depth` / `max_depth` are NA (see caveats) |
 
 N₂O is the trajectory variable (9 flux dates across a full season). The
 soil variables (total C, total N, bulk density) are **single-timepoint**
@@ -105,6 +105,19 @@ with the source phrase in `notes`. **Point dates are never invented.**
   sampling (Aug 2019). No pre-treatment or time-series soil, so this
   dataset cannot anchor a soil-C trajectory — it validates N₂O magnitude
   and the compost-vs-control contrast only.
+- **Soil carbon basis: concentration at fixed depth, not a stock.** The
+  source reports **total C** by dry combustion on 0–30 cm cores (n = 3 per
+  treatment; Table 1: 8.1 ± 2.9 mg g⁻¹ No Compost, 13.4 ± 2 Compost). No
+  stock is published and none is curated. Total C includes any inorganic C,
+  but soil pH is 6.16 (No Compost) and 6.68 (Compost), so carbonate should
+  be negligible and total C is close to organic C here. Bulk density was
+  measured separately in ~5.08 cm brass rings at each chamber distance from
+  the emitter, and the authors note it "did not have a 1:1 correspondence
+  with the depth of the soil samples". A stock built as total C ×
+  bulk density × 30 cm is therefore a **fixed-depth** estimate with a depth
+  mismatch, **not** an equivalent soil mass stock; any use of it should say
+  so in the methods. It supports the compost-vs-control contrast at one
+  date (0.81 vs 1.34 % total C in the curated rows), not change over time.
 - **Emitter-level N₂O upscaling.** Fluxes are reported at emitter level,
   not whole-orchard areal average; downstream comparison must apply the
   same footprint assumption, so the upscaling basis is documented on the
