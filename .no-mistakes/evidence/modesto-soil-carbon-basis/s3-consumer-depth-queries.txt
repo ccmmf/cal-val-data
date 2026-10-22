@@ -1,0 +1,27 @@
+readr parse problems: 0 
+min_depth/max_depth parsed as: numeric / numeric 
+
+== consumer asks for bulk density at 0-30 cm ==
+         dataset_id  n
+ white_salinas_2020 60
+
+== consumer asks for bulk density with no stated depth ==
+           dataset_id n
+ nichols_modesto_2024 6
+
+== Modesto soil C/N rows keep their 0-30 cm sample depth ==
+    variable rows      dates depth
+ total_C_pct    6 2019-08-07  0-30
+ total_N_pct    6 2019-08-07  0-30
+
+== Modesto carbon variables curated (no stock) ==
+           variable  n
+  N2O_flux_g_N_ha_d 54
+ bulk_density_g_cm3  6
+        total_C_pct  6
+        total_N_pct  6
+
+== report claim: 0.81 vs 1.34 % total C (compost vs control) ==
+ treatment_id n mean_total_C_pct mg_per_g
+      compost 3            1.343    13.43
+   no_compost 3            0.813     8.13

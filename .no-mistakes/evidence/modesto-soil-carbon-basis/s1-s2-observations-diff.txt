@@ -1,0 +1,28 @@
+rows base: 37258  rows branch: 37258 
+columns identical: TRUE ( 27 cols )
+rows that differ: 6 
+columns that differ in those rows: min_depth, max_depth, notes 
+all differing rows are nichols_modesto_2024 bulk_density_g_cm3: TRUE 
+values unchanged in differing rows: TRUE 
+
+== Modesto bulk density rows as a consumer sees them (branch) ==
+  treatment value n min_depth max_depth                         zone
+ no_compost  1.57 3        NA        NA   zone=0cm_from_drip_emitter
+ no_compost   1.4 3        NA        NA  zone=50cm_from_drip_emitter
+ no_compost   1.6 3        NA        NA zone=150cm_from_drip_emitter
+    compost  1.53 3        NA        NA   zone=0cm_from_drip_emitter
+    compost  1.38 3        NA        NA  zone=50cm_from_drip_emitter
+    compost  1.54 3        NA        NA zone=150cm_from_drip_emitter
+
+note on first row:
+   zone=0cm_from_drip_emitter; brass ring cores; oven-dried 105C 48h; n=3 sub-replicates; brass ring ~5.08 cm tall, sampling depth not reported; authors note bulk density does not correspond to the 0-30 cm soil sample depth (Nichols et al. 2024) 
+every row carries the depth caveat: TRUE 
+
+== Same rows on base ==
+  treatment value min_depth max_depth
+ no_compost  1.57         0        30
+ no_compost   1.4         0        30
+ no_compost   1.6         0        30
+    compost  1.53         0        30
+    compost  1.38         0        30
+    compost  1.54         0        30

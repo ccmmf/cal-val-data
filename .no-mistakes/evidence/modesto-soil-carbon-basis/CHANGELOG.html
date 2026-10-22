@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>CHANGELOG.md</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;max-width:980px;margin:24px auto;padding:0 32px;font-size:15px;line-height:1.5;color:#1f2328}
+table{border-collapse:collapse}th,td{border:1px solid #d0d7de;padding:6px 13px}tr:nth-child(2n){background:#f6f8fa}
+code{background:#eff1f3;padding:.1em .3em;border-radius:4px;font-size:85%}h1,h2{border-bottom:1px solid #d8dee4;padding-bottom:.3em}
+mark{background:#fff8c5}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">CHANGELOG.md</h1>
+</header>
+<h1 id="changelog">Changelog</h1>
+<p>Changes to datasets, schemas, and curation workflows are documented
+here.</p>
+<h2 id="unreleased">Unreleased</h2>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Salinas SOC stocks updated for the White et al. (2024) correction.
+All 288 block-level rows (Years 0–8, 8 systems) are rescaled by 0.905
+and recorded as <code>SCRIPTED_DERIVED</code>. The rows now record their
+basis in <code>attributes_json</code>: an equivalent soil mass whose
+reference the correction does not state, with the uncorrected <em>Data
+in Brief</em> value (maximum equivalent soil mass basis) kept in
+<code>source_value_Mg_ha</code>; see
+<code>data_raw/white_salinas_2020/data_entry_report.md</code> (<a href="https://github.com/ccmmf/cal-val-data/issues/6">#6</a>).</li>
+<li>Citations: the entry for <code>10.1371/journal.pone.0228677</code>
+now carries that paper&#39;s title, and the 2024 correction
+(<code>10.1371/journal.pone.0307250</code>) is added.</li>
+<li>Salinas SOC stock rows use a new method row,
+<code>equivalent_soil_mass_white_2024_correction</code>, in place of
+<code>elemental_analysis</code>, whose description did not fit the
+corrected stocks.</li>
+<li>Modesto bulk density: the six <code>nichols_modesto_2024</code>
+<code>bulk_density_g_cm3</code> rows no longer carry a 0–30 cm depth.
+<code>min_depth</code> and <code>max_depth</code> are now NA, with a
+note, because neither Nichols et al. (2024) nor the Ag Data Commons
+archive gives a sampling depth for the ~5.08 cm brass rings. Values are
+unchanged; see
+<code>data_raw/nichols_modesto_2024/data_entry_report.md</code>.</li>
+</ul>
+<h2 id="010--initial-release">0.1.0 — Initial release</h2>
+<h3 id="added">Added</h3>
+<ul>
+<li>Curated soil carbon, soil properties, and supporting observations
+from Salinas, Modesto, and Russell Ranch.</li>
+<li>AmeriFlux observations from US-Bi1, US-Bi2, and US-Twt, and Bouldin
+chamber greenhouse gas measurements.</li>
+<li>Ten CSV tables covering observations, sites, treatments, treatment
+contrasts, management histories, methods, variables, crops, citations,
+and coverage.</li>
+<li>Field definitions and table relationships in
+<code>datapackage.json</code>.</li>
+<li>Source-specific provenance and curation reports in
+<code>data_raw/[source id]/data_entry_report.md</code>.</li>
+<li>Workbook ingestion scripts, schema validation, and R integrity
+tests.</li>
+</ul>
+<h3 id="known-limitations">Known limitations</h3>
+<ul>
+<li>Salinas SOC stocks await reconciliation with the White et al. (2024)
+correction; see <a href="https://github.com/ccmmf/cal-val-data/issues/6">#6</a>.</li>
+<li>US-Bi1 NEE uses standardized FLUXNET values. Four Anthony
+publication NEE values are excluded; the source discrepancy is
+unresolved, but documented in
+<code>data_raw/ameriflux_us_bi1_mvp/data_entry_report.md</code>. Chose
+to use standardized FLUXNET product because it is consistently processed
+across sites and is more up to date.</li>
+<li>Chamber and tower measurements represent different measurement
+supports and are not interchangeable.</li>
+</ul>
+</body>
+</html>

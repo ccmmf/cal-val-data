@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>data_raw/nichols_modesto_2024/data_entry_report.md</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;max-width:980px;margin:24px auto;padding:0 32px;font-size:15px;line-height:1.5;color:#1f2328}
+table{border-collapse:collapse}th,td{border:1px solid #d0d7de;padding:6px 13px}tr:nth-child(2n){background:#f6f8fa}
+code{background:#eff1f3;padding:.1em .3em;border-radius:4px;font-size:85%}h1,h2{border-bottom:1px solid #d8dee4;padding-bottom:.3em}
+mark{background:#fff8c5}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">data_raw/nichols_modesto_2024/data_entry_report.md</h1>
+</header>
+<h1 id="data-entry-report--nichols_modesto_2024">Data Entry Report —
+nichols_modesto_2024</h1>
+<p><strong>Dataset id:</strong> <code>nichols_modesto_2024</code>
+<strong>Entered by:</strong> Aritra Dey <strong>Entry date:</strong>
+2026-08-01</p>
+<p>Provenance and curation record for the Nichols et al. (2024) almond
+fertigation N₂O dataset (USDA-ARS, Modesto CA). Curated values live in
+the workbook and export to <code>data/</code>; this report documents
+where the values came from and the decisions made while curating them.
+Salinas and Modesto share one curation workbook but are separate
+datasets — Salinas (<code>white_salinas_2020</code>) is documented in
+its own report.</p>
+<hr />
+<h2 id="source">Source</h2>
+<p>Values are pulled from the public archive; the companion journal
+article supplies experimental design, methods, and cross-checks. Full
+citation metadata is in <code>citations</code>.</p>
+<ul>
+<li><strong>Nichols et al. (2024)</strong> — <em>Soil Science Society of
+America Journal</em>. Analysis paper: experimental design, chamber
+methodology, fertigation regime, and reported N₂O and soil results. <a href="https://doi.org/10.1002/saj2.20615">https://doi.org/10.1002/saj2.20615</a></li>
+<li><strong>USDA Ag Data Commons</strong> — archive of the underlying
+trial data (N₂O chamber measurements and single-timepoint soil data)
+from the same Modesto almond experiment. <a href="https://doi.org/10.15482/USDA.ADC/26155504">https://doi.org/10.15482/USDA.ADC/26155504</a></li>
+</ul>
+<p><strong>License / attribution:</strong> CC-BY (upstream). Attribute
+Nichols and the USDA-ARS archive.</p>
+<p><strong>Source preference:</strong> where the archive reports at
+replicate (chamber array) level, that resolution is ingested.
+Treatment-level summaries in the analysis paper are used only to
+cross-check the archive ingest, never as a substitute for it.</p>
+<hr />
+<h2 id="site-and-experimental-design">Site and Experimental Design</h2>
+<ul>
+<li><strong>Site:</strong> USDA-ARS almond fertigation trial, Modesto,
+CA (<code>modesto_almond_usda</code>), 37.63, -121.09.</li>
+<li><strong>Period:</strong> 2018–2019 (2 study years).</li>
+<li><strong>Design:</strong> paired-treatment comparison,
+<strong><code>compost</code> vs <code>no_compost</code></strong> — an
+annual compost top-dress against a control, both on the <strong>same
+high-frequency low-concentration drip fertigation</strong>. N₂O measured
+with <strong>3 replicate chamber arrays per treatment</strong>; array is
+used as <code>replicate_id</code>. The
+<code>compost</code>/<code>no_compost</code> contrast is registered in
+<code>treatment_pairs</code>
+(<code>comparison_factor = compost</code>).</li>
+<li><strong>Crop:</strong> established almond orchard (perennial),
+drip-fertigated.</li>
+</ul>
+<hr />
+<h2 id="variables-measured">Variables Measured</h2>
+<p>Ingested to the <code>observations</code> tab in reported units:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Units</th>
+<th>Years</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>N₂O flux</td>
+<td>g N₂O-N ha⁻¹ day⁻¹</td>
+<td>2018–2019</td>
+<td>closed static chamber, 9 dates (Dec 2018 – Aug 2019)</td>
+</tr>
+<tr class="even">
+<td>Total soil C</td>
+<td>% dry weight</td>
+<td>2019</td>
+<td>single timepoint (Aug 2019), 0–30 cm; a concentration, not a stock
+(see caveats)</td>
+</tr>
+<tr class="odd">
+<td>Total soil N</td>
+<td>per source (conc. or %)</td>
+<td>2019</td>
+<td>single timepoint (Aug 2019)</td>
+</tr>
+<tr class="even">
+<td>Bulk density</td>
+<td>g cm⁻³</td>
+<td>2019</td>
+<td>single timepoint (Aug 2019)</td>
+</tr>
+</tbody>
+</table>
+<p>N₂O is the trajectory variable (9 flux dates across a full season).
+The soil variables (total C, total N, bulk density) are
+<strong>single-timepoint</strong> (August 2019), so this dataset
+supports <strong>N₂O magnitude and treatment- contrast validation but
+not a SOC trajectory</strong>.</p>
+<hr />
+<h2 id="methods">Methods</h2>
+<ul>
+<li><strong>N₂O flux</strong> by <strong>closed static chamber</strong>,
+sampled on <strong>9 dates</strong> (December 2018 to August 2019),
+<strong>3 replicate arrays per treatment</strong>, <strong>upscaled to
+emitter level</strong> (accounting for the fertigation wetting pattern
+rather than assuming uniform areal emission). The upscaling rule is
+carried on the corresponding <code>methods</code> row.</li>
+<li><strong>Fertigation:</strong> high-frequency, low-concentration
+drip, <strong>≈195 kg N ha⁻¹ across ~14 events</strong> over the season;
+recorded as fertilization events in <code>managements</code> with
+<code>level</code> / <code>units</code> where reported.</li>
+<li><strong>Compost:</strong> annual top-dress on the
+<code>compost</code> treatment only, recorded as
+<code>event_type = compost_application</code> in
+<code>managements</code>.</li>
+<li><strong>Soil (total C, total N, bulk density):</strong> single
+sampling in August 2019; method basis (dry combustion, mass vs
+volumetric) recorded on the <code>methods</code> rows.</li>
+</ul>
+<hr />
+<h2 id="dates">Dates</h2>
+<p>The N₂O archive reports <strong>specific chamber sampling
+dates</strong> (9 dates, Dec 2018 – Aug 2019); those exact dates are
+carried in <code>min_date</code> / <code>max_date</code> on the
+observation rows. Fertigation and compost events use the dates the
+source reports where given, otherwise the source-stated window, with the
+source phrase in <code>notes</code>. <strong>Point dates are never
+invented.</strong></p>
+<hr />
+<h2 id="curation-decisions-and-caveats">Curation Decisions and
+Caveats</h2>
+<ul>
+<li><strong>Single-timepoint soil.</strong> Total C, total N, and bulk
+density are one sampling (Aug 2019). No pre-treatment or time-series
+soil, so this dataset cannot anchor a soil-C trajectory — it validates
+N₂O magnitude and the compost-vs-control contrast only.</li>
+<li><strong>Soil carbon basis: concentration at fixed depth, not a
+stock.</strong> The source reports <strong>total C</strong> by dry
+combustion on 0–30 cm cores (n = 3 per treatment; Table 1: 8.1 ± 2.9 mg
+g⁻¹ No Compost, 13.4 ± 2 Compost). No stock is published and none is
+curated. Total C includes any inorganic C, but soil pH is 6.16 (No
+Compost) and 6.68 (Compost), so carbonate should be negligible and total
+C is close to organic C here. Bulk density was measured separately in
+~5.08 cm brass rings at each chamber distance from the emitter, and the
+authors note it &quot;did not have a 1:1 correspondence with the depth of the
+soil samples&quot;. A stock built as total C × bulk density × 30 cm is
+therefore a <strong>fixed-depth</strong> estimate with a depth mismatch,
+<strong>not</strong> an equivalent soil mass stock; any use of it should
+say so in the methods. It supports the compost-vs-control contrast at
+one date (0.81 vs 1.34 % total C in the curated rows), not change over
+time.</li>
+<li><strong>Emitter-level N₂O upscaling.</strong> Fluxes are reported at
+emitter level, not whole-orchard areal average; downstream comparison
+must apply the same footprint assumption, so the upscaling basis is
+documented on the <code>methods</code> row rather than baked silently
+into the values.</li>
+<li><strong>Fertigation characterization.</strong> The ≈195 kg N ha⁻¹ is
+delivered across ~14 small fertigation events, not a single application
+— relevant because N₂O responds to the pulse structure, not just the
+seasonal total.</li>
+<li><strong>Perennial orchard.</strong> Established almond; there is no
+annual planting/harvest cycle. Any planting/harvest representation
+downstream is a modeling convenience, not an observation in this
+dataset.</li>
+</ul>
+<h2 id="per-row-provenance">Per-row provenance</h2>
+<p><code>fill_status</code> records the source of each value:</p>
+<ul>
+<li>Archive-sourced rows (N₂O chamber + single-timepoint soil from the
+USDA Ag Data Commons record) carry the archive fill code.</li>
+<li>Values taken from the paper text/tables where not in the archive
+carry <code>PAPER_TEXT</code>.</li>
+</ul>
+<p>(Exact <code>fill_status</code> codes follow whatever the workbook
+records for each row; confirm against the <code>observations</code> tab
+on ingest.)</p>
+<hr />
+<h2 id="related-resource">Related resource</h2>
+<p>The Modesto site is also configured as a SIPNET run in
+<code>ccmmf/workflows</code> (<code>examples/modesto_ncycle</code>),
+where its management is assembled from the statewide monitoring product
++ fertilization parquet for the model side. That is a <strong>model
+configuration</strong>, not a data source — the observations in this
+dataset come only from the Nichols paper and the USDA Ag Data Commons
+archive above.</p>
+</body>
+</html>
