@@ -1,0 +1,25 @@
+##### mutant A: validate.R
+WARNING: observations variable -> variables.name has 1 unmatched value(s): rice_grain_yield_t_ha
+validated 10 table(s) with 1 warning(s)
+##### mutant A: frictionless
+│ observations    │ table │ data/observations.csv    │ INVALID │
+│ 37260 │ None  │ foreign-key │ Row at position "37260" violates the foreign   │
+│ 37261 │ None  │ foreign-key │ Row at position "37261" violates the foreign   │
+│ 37262 │ None  │ foreign-key │ Row at position "37262" violates the foreign   │
+│ 37263 │ None  │ foreign-key │ Row at position "37263" violates the foreign   │
+│ 37264 │ None  │ foreign-key │ Row at position "37264" violates the foreign   │
+##### mutant B: validate.R
+WARNING: managements sites.name -> sites.name has 1 unmatched value(s): US-Bi1x
+validated 10 table(s) with 1 warning(s)
+##### mutant B: frictionless
+│ managements     │ table │ data/managements.csv     │ INVALID │
+│ 3867 │ None  │ foreign-key │ Row at position "3867" violates the foreign     │
+##### mutant C: validate.R
+validated 10 table(s) with 0 warning(s)
+##### mutant C: frictionless
+│ observations    │ table │ data/observations.csv    │ INVALID │
+│ 37260 │ 18    │ constraint-error │ The cell "FILLED_PUB_TABLE" in row at     │
+│       │       │                  │ constraint: constraint "enum" is          │
+│ 37261 │ 18    │ constraint-error │ The cell "FILLED_PUB_TABLE" in row at     │
+│       │       │                  │ constraint: constraint "enum" is          │
+│ 37262 │ 18    │ constraint-error │ The cell "FILLED_PUB_TABLE" in row at     │

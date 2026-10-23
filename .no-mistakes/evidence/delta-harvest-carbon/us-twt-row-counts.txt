@@ -1,0 +1,8 @@
+                       variable           level                     fill Freq
+2           soil_carbon_content      site_layer FILLED_PUBLICATION_TABLE    2
+3 soil_carbon_to_nitrogen_ratio      site_layer FILLED_PUBLICATION_TABLE    2
+4         soil_nitrogen_content      site_layer FILLED_PUBLICATION_TABLE    2
+5                       soil_ph      site_layer FILLED_PUBLICATION_TABLE    2
+6       soil_phosphorus_content      site_layer FILLED_PUBLICATION_TABLE    2
+7        soil_potassium_content      site_layer FILLED_PUBLICATION_TABLE    2
+8         rice_grain_yield_t_ha site_year_total FILLED_PUBLICATION_TABLE    7

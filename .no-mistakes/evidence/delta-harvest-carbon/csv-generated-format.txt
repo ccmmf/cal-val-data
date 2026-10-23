@@ -1,0 +1,21 @@
+managements   rows=  3866  readr::write_csv round-trip byte-identical: TRUE
+observations  rows= 37265  readr::write_csv round-trip byte-identical: TRUE
+variables     rows=   105  readr::write_csv round-trip byte-identical: TRUE
+methods       rows=    48  readr::write_csv round-trip byte-identical: TRUE
+
+Rows changed by this PR's commits (4cc29f0..HEAD), per table:
+  managements.csv: +2 -1
+  observations.csv: +7 -0
+  variables.csv: +1 -0
+  methods.csv: +0 -0
+
+Changed managements keys:
+      1 +delta-harvest-0015
+      1 -delta-harvest-0015
+      1 +delta-harvest-0018
+Per-commit data files touched:
+  af9faa0 Note corn conversion: CHANGELOG.md data/managements.csv data_raw/ameriflux_us_bi2_mvp/data_entry_report.md 
+  a7d9bae Add alfalfa harvest: CHANGELOG.md data/managements.csv data_raw/ameriflux_us_bi1_mvp/data_entry_report.md 
+  756880a Add rice yields: CHANGELOG.md data/observations.csv data/variables.csv data_raw/ameriflux_us_twt_mvp/data_entry_report.md 
+  fe66ded Update biomass note: reports/using-the-two-together.qmd 
+  09f9f8b Document harvest method: data_raw/ameriflux_us_twt_mvp/data_entry_report.md 

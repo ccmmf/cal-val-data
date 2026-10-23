@@ -1,0 +1,88 @@
+=== Q1: Akash's question - which Delta sites have yield / biomass / harvested-carbon values? ===
+    site              variable Freq
+1 US-Twt rice_grain_yield_t_ha    7
+            event_id sites.name crop_name level        units  citation_id
+1 delta-harvest-0018     US-Bi1   alfalfa   595 g C m-2 yr-1 hemes2019atc
+
+=== Q2: US-Twt rice grain yield rows ===
+                   name                                            description
+1 rice_grain_yield_t_ha Rice grain yield at 14% moisture content, as published
+   units
+1 t ha-1
+                                                                                                                notes
+1 Fresh basis at 14% moisture as reported by Knox et al. (2016); convert to dry matter downstream (multiply by 0.86).
+PASS - variable rice_grain_yield_t_ha is declared once with units t ha-1 
+    min_date   max_date variety sitename value        method
+1 2009-10-20 2009-10-25    M104   US-Twt   4.7 field_harvest
+2 2010-10-28 2010-10-29    M206   US-Twt   4.5 field_harvest
+3 2011-10-12 2011-10-14    M104   US-Twt     6 field_harvest
+4 2012-11-13 2012-11-15    M104   US-Twt   5.6 field_harvest
+5 2013-09-20 2013-09-20    M206   US-Twt   7.3 field_harvest
+6 2014-10-02 2014-10-02    M206   US-Twt   5.7 field_harvest
+7 2015-09-23 2015-09-23    M206   US-Twt   7.4 field_harvest
+               fill_status observation_level study_year citation_id
+1 FILLED_PUBLICATION_TABLE   site_year_total       2009 knox2016bco
+2 FILLED_PUBLICATION_TABLE   site_year_total       2010 knox2016bco
+3 FILLED_PUBLICATION_TABLE   site_year_total       2011 knox2016bco
+4 FILLED_PUBLICATION_TABLE   site_year_total       2012 knox2016bco
+5 FILLED_PUBLICATION_TABLE   site_year_total       2013 knox2016bco
+6 FILLED_PUBLICATION_TABLE   site_year_total       2014 knox2016bco
+7 FILLED_PUBLICATION_TABLE   site_year_total       2015 knox2016bco
+  replicate_id
+1         <NA>
+2         <NA>
+3         <NA>
+4         <NA>
+5         <NA>
+6         <NA>
+7         <NA>
+PASS - exactly 7 rice yield rows 
+PASS - all at US-Twt 
+PASS - study years 2009..2015 
+PASS - values 4.7,4.5,6.0,5.6,7.3,5.7,7.4 (Knox 2016 Table 1) 
+PASS - method field_harvest, which exists in methods 
+PASS - fill_status FILLED_PUBLICATION_TABLE 
+PASS - observation_level site_year_total 
+PASS - reported_units t ha-1 (published units kept) 
+PASS - citation knox2016bco resolves in citations 
+grain_carbon_g_m2 from attributes_json: 172 163 220 205 266 208 269 
+peak_plant_area_index from attributes_json: 6.7 7 4.6 4.1 4.6 5 3.5 
+consumer recompute (t/ha*100*0.86 dry*0.43 C): 173.8 166.4 221.9 207.1 270 210.8 273.7 
+PASS - attributes_json grain carbon within 3% of yield x 0.86 x 0.43 (published-basis interpretation is self-consistent) 
+PASS - attributes_json moisture_basis records 14% moisture 
+PASS - grain carbon / PAI are not separate observation rows 
+dry-matter yields a consumer derives (x0.86): 4.042 3.87 5.16 4.816 6.278 4.902 6.364 
+PASS - yield row dates equal managements delta-harvest-0003..0009 harvest intervals 
+
+=== Q3: Bouldin harvested carbon (managements) ===
+delta-harvest-0015 | US-Bi2__management_field | US-Bi2__management_field__system | corn | 712 g C m-2 yr-1 
+  notes: Harvested corn carbon for the 2017 crop from farmer records, converted by the authors at 44% C of dry matter with corn harvested at 65% moisture. The 164 is an assumed SD of 23% of harvested C for a single site year, not a measured spread. The harvest date and raw farmer yield are not published. 
+  attributes_json: {"source_year":2017,"crop_cycle":"2017 corn crop","reported_uncertainty":164,"reported_uncertainty_units":"g C m-2 yr-1","uncertainty_basis":"assumed SD = 23% of harvested C (single site year; Hemes 2019 Methods 2.4)","source_record":"farmer records","carbon_fraction_dry_matter":0.44,"harvest_moisture_fraction":0.65,"date_precision":"source year","interval_semantics":"annual harvested-carbon aggregate","date_interpretation":"source-year harvest occurrence; exact event date unresolved","raw_yield_units_resolved":false,"conversion_details_resolved":true} 
+delta-harvest-0018 | US-Bi1 | US-Bi1__system | alfalfa | 595 g C m-2 yr-1 
+  notes: Harvested alfalfa carbon for 2017 from farmer records, converted by the authors at 44% C of dry matter; the paper states alfalfa was harvested at 88% moisture, kept as printed. The 137 is an assumed SD of 23% of harvested C for a single site year (the text names Twitchell alfalfa for this rule, but 137 is 23% of 595). Cutting dates and raw yields are not published. 
+  attributes_json: {"source_year":2017,"crop_cycle":"2017 alfalfa cuttings","reported_uncertainty":137,"reported_uncertainty_units":"g C m-2 yr-1","uncertainty_basis":"assumed SD = 23% of harvested C (single site year; Hemes 2019 Methods 2.4)","source_record":"farmer records","carbon_fraction_dry_matter":0.44,"harvest_moisture_fraction_as_printed":0.88,"date_precision":"source year","interval_semantics":"annual harvested-carbon aggregate","date_interpretation":"source-year harvest total; individual cutting dates unresolved","raw_yield_units_resolved":false,"conversion_details_resolved":true} 
+PASS - delta-harvest-0015 value 712 g C m-2 yr-1 unchanged from base 
+PASS - 0015 attributes record 44% C, 65% moisture, +/-164 
+PASS - 0015 notes state 164 is an assumed 23% SD, not measured 
+PASS - 164 = round(0.23 x 712 = 163.76) 
+PASS - delta-harvest-0018 is new (absent at base) 
+PASS - delta-harvest-0018: US-Bi1 alfalfa 595 g C m-2 yr-1 
+PASS - 0018 attributes record +/-137, 44% C, 88% moisture as printed, 2017 
+PASS - 137 = round(0.23 x 595 = 136.85) 
+PASS - 0018 notes record the Twitchell-alfalfa text vs 137 = 23% of 595 
+PASS - 0018 site and treatment keys resolve 
+PASS - both cite hemes2019atc 
+PASS - Bouldin harvested C is not duplicated as observations rows 
+
+=== Q4: double-counting guard - no Hemes US-Twt harvested carbon curated ===
+US-Twt managements rows citing hemes2019atc: 0 
+US-Twt observations rows citing hemes2019atc: 0 
+US-Twt harvest events carrying a value: 0 
+PASS - US-Twt harvested C from Hemes 2019 not curated anywhere 
+PASS - no filled 2016 US-Twt yield row 
+
+=== Q5: totals ===
+observations rows: 37265 
+PASS - observations has 37,265 rows (matches report count) 
+
+SUMMARY: 29 pass / 29 checks
