@@ -6,6 +6,10 @@ Changes to datasets, schemas, and curation workflows are documented here.
 
 ### Added
 
+- US-Twt (Twitchell rice) grain yield for 2009 to 2015 from Knox et al.
+  (2016) Table 1, as 7 `observations` rows under a new variable,
+  `rice_grain_yield_t_ha` (t ha⁻¹ at 14% moisture); see the US-Twt report in
+  `data_raw/`.
 - US-Bi1 (Bouldin alfalfa) 2017 harvested carbon from Hemes et al. (2019),
   as `managements` event `delta-harvest-0018`; see the US-Bi1 report in
   `data_raw/`.

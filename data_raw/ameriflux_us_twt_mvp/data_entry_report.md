@@ -20,6 +20,10 @@ datasets — US-Twt (this one), `ameriflux_us_bi2_mvp` (corn), and
 - **Exact-site soil publication** — source of the static soil property
   table (carbon, nitrogen, C:N, pH, phosphorus, potassium).
   <https://doi.org/10.1371/journal.pone.0121432>
+- **Knox et al. (2016)**, *JGR Biogeosciences*. Table 1 gives the tower
+  paddy's management calendar and grain yield for 2009 to 2015 (harvest
+  dates in `managements`, yields in `observations`).
+  <https://doi.org/10.1002/2015JG003247>
 
 Annual flux values come from the source products and publications listed below.
 Soil properties are transcribed from the
@@ -56,6 +60,7 @@ Curated rows:
 | Soil pH | pH | 2 | `site_layer` |
 | Soil phosphorus content | g kg⁻¹ | 2 | `site_layer` |
 | Soil potassium content | g kg⁻¹ | 2 | `site_layer` |
+| Rice grain yield (14% moisture) | t ha⁻¹ | 7 | `site_year_total`, 2009–2015 |
 
 **Fluxes now come from source-reported annual values** (see below). For a flooded rice paddy on Delta
 peat, **CH₄ is the headline target**.
@@ -104,6 +109,15 @@ information provided by the source.
   flood/drain transitions that drive CH₄ at this site. The flood calendar is
   in `managements`, so the timing is documented even where the observations
   cannot resolve it.
+- **Rice grain yield is kept on the published basis.** Knox et al. (2016)
+  Table 1 reports yield at 14% moisture content; values are kept as published
+  and converted to dry matter downstream (× 0.86). The paper's grain carbon
+  (calculated with a 0.43 C fraction) and peak plant area index are kept in
+  `attributes_json`, not as separate rows. These yields come from the tower
+  paddy itself; the Kirk et al. (2015) plot yields are off the flux footprint
+  and are not curated. Hemes et al. (2019) report US-Twt harvested carbon as
+  the mean of these same yields (2016 filled with that mean), so that value is
+  not curated, to avoid counting the same harvests twice.
 - **Empty `variable` header repaired.** The `observations` tab had an empty
   header cell over the column holding the variable names, so the key column
   read as unnamed and its foreign key could not resolve. The header was set
@@ -122,7 +136,8 @@ information provided by the source.
 
 - `REPORTED_DIRECT` — annual values imported from source data products.
 - `FILLED_PUBLICATION_TABLE` — soil values transcribed from a table in the
-  exact-site publication.
+  exact-site publication, and rice grain yields from Knox et al. (2016)
+  Table 1.
 
 ---
 

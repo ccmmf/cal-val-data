@@ -103,3 +103,4 @@ soil_oxygen_concentration,Soil oxygen concentration at a source-reported depth.,
 soil_temperature,"Soil temperature at a stated depth, from a continuous profile sensor.",degrees C,"Bouldin Island continuous profile at 10, 30 and 50 cm; curated as daily means. Depth is carried in min_depth/max_depth."
 soil_water_content,"Soil volumetric water content at a stated depth, from a continuous profile sensor.",m3 m-3,"Bouldin Island continuous profile at 10, 30 and 50 cm; curated as daily means. Depth is carried in min_depth/max_depth."
 soil_oxygen_content,"Soil oxygen concentration at a stated depth, from a continuous profile sensor.",percent,"Bouldin Island continuous profile at 10, 30 and 50 cm; curated as daily means. Depth is carried in min_depth/max_depth."
+rice_grain_yield_t_ha,"Rice grain yield at 14% moisture content, as published",t ha-1,Fresh basis at 14% moisture as reported by Knox et al. (2016); convert to dry matter downstream (multiply by 0.86).
