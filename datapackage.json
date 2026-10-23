@@ -586,6 +586,7 @@
                 "FILLED_DATA_PUBLICATION",
                 "FILLED_PUBLICATION_TABLE",
                 "FILLED_PUBLICATION_TEXT",
+                "FILLED_PUBLICATION_FIGURE",
                 "SCRIPTED_DERIVED",
                 "REPORTED_DIRECT"
               ]
