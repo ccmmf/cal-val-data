@@ -4,6 +4,12 @@ Changes to datasets, schemas, and curation workflows are documented here.
 
 ## Unreleased
 
+### Added
+
+- US-Bi1 (Bouldin alfalfa) 2017 harvested carbon from Hemes et al. (2019),
+  as `managements` event `delta-harvest-0018`; see the US-Bi1 report in
+  `data_raw/`.
+
 ### Changed
 
 - `delta-harvest-0015` (US-Bi2 2017 corn harvested carbon) now records the
