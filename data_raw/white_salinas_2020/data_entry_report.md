@@ -41,6 +41,11 @@ Full citation metadata is in `citations`.
   under the *Data in Brief* DOI. It is not a separate block-level archive
   and has not been updated for the 2024 correction. (An earlier
   `10.15482/USDA.ADC/1503927` identifier did not resolve.)
+- **Brennan and Boyd (2012)** — *Agronomy Journal* 104:684–698. Winter
+  cover crop shoot dry matter for the six annually cover-cropped systems,
+  Years 1–8. Yearly values appear only in Fig. 5; they were read from the
+  figure (see Cover crop biomass below). Table 2 gives the sampling dates.
+  <https://doi.org/10.2134/agronj2011.0330>
 
 **License / attribution:** CC-BY (upstream). Attribute White, Brennan,
 Cavigelli and the USDA-ARS archive.
@@ -84,6 +89,7 @@ and nitrate-N rows, see below):
 | Nitrate-N | mg NO₃-N kg⁻¹ | 3–8 | Year 3 `socs_sys5` and `socs_sys7` only |
 | POXC (labile C) | — | 0, 6, 8 only | not ingested; *Data in Brief* Supplementary Table 3 |
 | Bulk density | g cm⁻³ | 4, 7, 8 | five PLOS ONE systems; the paper measured Years 3 and 7, see Open follow-ups |
+| Cover crop shoot dry matter | Mg ha⁻¹ | 1–8 | season-end, treatment means of 4 plots, `socs_sys3`–`socs_sys8`; read from Brennan and Boyd (2012) Fig. 5 |
 
 SOC stock and SOC concentration are block-level in every year: 288 rows
 each (8 systems × 4 blocks × Years 0–8), from *Data in Brief*
@@ -115,6 +121,39 @@ Years 4–8 (60). The 216 ingested rows have `observation_level` and
   unpublished): romaine lettuce hearts HI = 0.26 (~74% of shoot biomass
   left as residue); broccoli HI = 0.24 (~76% left as residue). Recorded on
   the harvest rows in `managements`.
+
+### Cover crop biomass (Brennan and Boyd 2012)
+
+48 rows of `cover_crop_shoot_dry_matter_Mg_ha`: season-end (February or
+March) total shoot dry matter for `socs_sys3`–`socs_sys8`, Years 1–8, each
+the mean of the 4 blocks (`n = 4`, `observation_level = treatment_mean`).
+Shoots were hand clipped from one 50 × 100 cm quadrat per plot and oven
+dried at 65 °C (method `cover_crop_quadrat_clipping`). Year *k* is the
+winter cover crop planted in fall 2002 + *k*; dates are the season-end
+sampling dates in the paper's Table 2. Seeding rates (1x / 3x, kg ha⁻¹):
+rye 90 / 270 (`socs_sys7` / `socs_sys8`), mustard 11 / 33 (`socs_sys5` /
+`socs_sys6`), legume–rye 140 / 420 (`socs_sys3` / `socs_sys4`).
+
+- **Read from a figure.** The paper prints the yearly values only in
+  Fig. 5, a raster image. `digitize_brennan_boyd_2012_fig5.R` reads them
+  and writes `brennan_boyd_2012_fig5_digitized.csv` (values, intervals and
+  marker positions): the y axis is calibrated per panel from the gridlines
+  (about 23.6 px per Mg ha⁻¹), and the filled (1x) and open (3x) markers are
+  located by shape next to each year tick. Read error is about
+  0.1 Mg ha⁻¹. The figure itself is not checked in; the script takes the
+  image from the user's own copy of the paper, and stops if any system's
+  8-year mean is more than 0.1 Mg ha⁻¹ off the paper's.
+- **Checked against the paper's stated means.** The digitized 8-year means
+  agree with the means the paper prints (Fig. 6) within 0.05 Mg ha⁻¹ for
+  all six systems (rye 7.13 / 7.1 and 7.18 / 7.2; legume–rye 6.88 / 6.9
+  and 7.50 / 7.5; mustard 5.54 / 5.5 and 5.75 / 5.7).
+- **The stated 8-year means are not separate rows.** They are the average
+  of these same 48 values, so adding them would count the data twice.
+- **Confidence intervals** (95%) are kept in `attributes_json` only where
+  both ends of the error bar were found cleanly (33 of 48); elsewhere the
+  two series' bars overlap.
+- **Systems 1 and 2** were cover cropped only in Years 4 and 8, and are not
+  in this figure; see Open follow-ups.
 
 ---
 
@@ -305,6 +344,8 @@ whether the snapshot holds the uncorrected or the corrected values.
 - `FILLED_ZOTERO_XLSX` — SOC concentration, total N and nitrate-N rows,
   transcribed from *Data in Brief* Supplementary Table 1.
 - `FILLED_SITE_DATA_XLSX` — bulk density rows.
+- `FILLED_PUBLICATION_FIGURE` — cover crop shoot dry matter rows, read
+  from Brennan and Boyd (2012) Fig. 5.
 
 ## Open follow-ups
 
@@ -336,6 +377,12 @@ whether the snapshot holds the uncorrected or the corrected values.
   Brief* Supplementary Table 1 has no bulk density column. The
   `study_year` 4 rows are dated fall 2006, the Year 3 window, so they may
   be the Year 3 measurement labelled as Year 4.
+- Add cover crop biomass for `socs_sys1` and `socs_sys2` (Years 4 and 8)
+  from Brennan and Smith (2017), 10.2134/agronj2016.06.0354. Its every
+  winter System 3 was seeded at 420 kg ha⁻¹, so it is `socs_sys4`, not
+  `socs_sys3`.
+- Replace the figure-read values with plot data if the authors share it
+  (asked 2026-10-24).
 
 ---
 

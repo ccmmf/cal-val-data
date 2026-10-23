@@ -7,6 +7,7 @@ N2O_flux_g_N_ha_d,"Nitrous oxide flux (N2O-N), upscaled to emitter level.",g N2O
 total_C_pct,"Total soil carbon (organic + inorganic, by dry combustion). Distinct from soil organic carbon (SOC); use this when carbonates or other inorganic C may contribute.",% dry weight,Nichols 2024; August 2019 only; n=3 reps per treatment; UC Davis Analytical Laboratory; modesto_almond_usda
 total_N_pct,"Total soil nitrogen (organic + inorganic, by dry combustion). Distinct from soil organic nitrogen; includes any NO3/NH4 in the dry-combusted aliquot.",% dry weight,Nichols 2024; August 2019 only; n=3 reps per treatment; UC Davis Analytical Laboratory; modesto_almond_usda
 nitrate_N_mg_kg,Soil nitrate nitrogen concentration.,mg NO3-N kg-1 soil,"Block-level; Zotero Table 1; 5 systems, Years 0-8, 4 reps; in white-additional-data tab; ammonium not reported"
+cover_crop_shoot_dry_matter_Mg_ha,"Winter cover crop above-ground shoot dry matter at season end (February/March), oven dried at 65 C",Mg ha-1,Treatment means of 4 plots read from Brennan and Boyd (2012) Fig. 5; total of all mixture components.
 total_carbon_pct,Soil total carbon (mass percent of dry soil),%,"Multiple depth intervals 0-15, 15-30, 30-60, 60-100, 100-200, 200-300 cm"
 total_nitrogen_pct,Soil total nitrogen (mass percent of dry soil),%,Same depth intervals as total_carbon_pct
 soil_organic_matter_pct,Soil organic matter (Walkley-Black),%,NA

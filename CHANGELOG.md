@@ -6,6 +6,11 @@ Changes to datasets, schemas, and curation workflows are documented here.
 
 ### Added
 
+- Salinas winter cover crop shoot dry matter: 48 `observations` rows
+  (`socs_sys3`–`socs_sys8`, Years 1–8) under a new variable,
+  `cover_crop_shoot_dry_matter_Mg_ha`, read from Brennan and Boyd (2012)
+  Fig. 5 and flagged with a new `fill_status`, `FILLED_PUBLICATION_FIGURE`;
+  see the Salinas report in `data_raw/`.
 - US-Twt (Twitchell rice) grain yield for 2009 to 2015 from Knox et al.
   (2016) Table 1, as 7 `observations` rows under a new variable,
   `rice_grain_yield_t_ha` (t ha⁻¹ at 14% moisture); see the US-Twt report in
