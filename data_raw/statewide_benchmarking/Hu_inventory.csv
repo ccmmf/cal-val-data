@@ -1,0 +1,39 @@
+California rice methane,,,,,
+Hu 2026 archive v2 and CARB 2025 inventory,,,,,
+Source,Period,CH4 (Gg/year),Seasonal basis,Spatial basis,Comparison status
+Hu Tier 3 mean,2010s (2011-2020 inferred),76.683,Growing-season totals aggregated by year,Direct California grid extraction,"Contextual. Years, area and seasons need alignment."
+"Hu CH4-EF, reconstructed",2010s (2011-2020 inferred),68.388,Cultivation-season estimate,Sum of county EF allocations,Derived method comparison. Not an uncertainty bound.
+"CARB 2025, rice category 3C7",2011-2020,31.392,Inventory method includes winter flooding,California statewide rice inventory,Seasonal equivalence with Hu remains unresolved.
+MAGiC historical rice,2016-2023,,Not established,No eligible integrated rice aggregate,Unavailable. Annual rice-only results needed.
+Hu Tier 3 / CARB,,2.44x,Descriptive ratio before matching seasons and activity area,,
+Hu minus CARB (Gg CH4/year),,45.291,,,
+Regional contributions,,,,,
+Region,CH4 (t/year),CH4 (Gg/year),Share of statewide Hu,LandIQ footprint (ha),Derived EF (t CH4/year)
+Other California counties,"5,155.986",5.156,6.7%,"6,235.5","5,376.307"
+Other Delta counties,"1,770.133",1.770,2.3%,"1,549.9","1,701.949"
+Sacramento rice counties,"69,756.742",69.757,91.0%,"195,352.2","61,309.597"
+County sum (Gg CH4/year),,76.682861,,,
+County sum minus state (t CH4/year),,0.022401,,,
+Interpretation,,,,,
+Period,2010s means 2011-2020 by inference; the archive does not explicitly confirm these years.,,,,
+Season,Growing-season sums are aggregated by year. A separate winter/fallow contribution is not described.,,,,
+Uncertainty,California intervals are unavailable. Global RMSE and model differences are not local uncertainty.,,,,
+County allocation,"Grid totals are allocated by boundary overlap, assuming uniform emissions within each cell.",,,,
+Coverage,26 county zeros reflect no finite source cells. Derived Gg values stay blank for those counties.,,,,
+LandIQ area,"The footprint is the 2018-2020 parcel-classification mean, not harvested area for an emission factor.",,,,
+Grid,The handoff retained native centers and relabeled geographic coordinates. Exact alignment is unconfirmed.,,,,
+Spatial residual,County totals exceed the direct state extraction by about 0.0224 t; both source values are retained.,,,,
+MAGiC,No eligible integrated annual rice aggregate is supplied. Its result and uncertainty remain unavailable.,,,,
+Scope,Use for inventory context and regional patterns. The archive cannot establish management effects.,,,,
+Cell counts,Cells can intersect several counties. Summed county cell counts are not unique statewide cell counts.,,,,
+Conversion and comparison years,,,,,
+Tonnes per Gg,1000,,,,
+CARB mean: first year,2011,,,,
+CARB mean: last year,2020,,,,
+Sources,,,,,
+Article,https://doi.org/10.1093/nsr/nwag555,,,,
+"Archive, version 2",https://doi.org/10.6084/m9.figshare.29287904.v2,,,,
+CARB inventory,https://ww2.arb.ca.gov/resources/documents/ab-32-ghg-emissions-inventory-2025-edition-documents,,,,
+Reference workbook,https://docs.google.com/spreadsheets/d/1BS6O6LocjN95dbbD_PT0zkvrtwBAc4aafYCLnlsK3Ek/edit?gid=1961825273,,,,
+California extraction,"15 October 2026 handoff: inventory_comparison.csv, california_county_benchmark.csv and california_grid_cells.csv.",,,,
+Supplement,Pages 7-8: season. Page 10: decade convention. Figure S5: observation locations. Table S5: global errors.,,,,

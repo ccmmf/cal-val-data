@@ -18,8 +18,10 @@ Rscript scripts/ingest_benchmarking.R           # rewrite the CSVs from the work
 Rscript scripts/ingest_benchmarking.R --check   # compare only, exits non zero if they drift
 ```
 
-The `README` worksheet is deliberately not exported, and `data_processing` is read as a raw grid
-because it is a digitisation sheet rather than a single table.
+The `README`, `audited_matrix`, `Hu_counties` and `Hu_grid` worksheets are deliberately not exported;
+`Hu_grid` is a 6,318 row grid extraction, and county and grid detail stays in the workbook.
+`data_processing` and `Hu_inventory` are read as raw grids because they are digitisation or report
+sheets rather than single tables.
 
 **Workbook:** [Synthesis and meta-analysis evidence workbook](https://docs.google.com/spreadsheets/d/1BS6O6LocjN95dbbD_PT0zkvrtwBAc4aafYCLnlsK3Ek)
 
@@ -35,9 +37,11 @@ because it is a digitisation sheet rather than a single table.
 | `source_audit.csv`        | [`source_audit`](https://docs.google.com/spreadsheets/d/1BS6O6LocjN95dbbD_PT0zkvrtwBAc4aafYCLnlsK3Ek/edit#gid=1961825273)       | which sources were found, read or excluded                                                                                                                                                                       |
 | `carb_crosscheck.csv`     | [`carb_crosscheck`](https://docs.google.com/spreadsheets/d/1BS6O6LocjN95dbbD_PT0zkvrtwBAc4aafYCLnlsK3Ek/edit#gid=153684563)     | cross check against CARB inventory figures                                                                                                                                                                       |
 | `data_processing.csv`     | [`data_processing`](https://docs.google.com/spreadsheets/d/1BS6O6LocjN95dbbD_PT0zkvrtwBAc4aafYCLnlsK3Ek/edit#gid=1221880749)    | figure digitisations, currently van Kessel Fig 1a and 2a                                                                                                                                                         |
+| `Hu_inventory.csv`        | `Hu_inventory`                                                                                                                  | California rice CH4 summary from Hu et al. (2026) and CARB 2025, with regional contributions                                                                                                                     |
+| `CARB_rice_annual.csv`    | `CARB_rice_annual`                                                                                                              | CARB 2025 rice category 3C7 annual series, reported MMT CO2e and converted Gg CH4                                                                                                                                |
 | `data_ingest_report.md`   | none                                                                                                                            | uncertainty audit and record of every conversion                                                                                                                                                                 |
 
-The `README` worksheet is deliberately not exported.
+The `README`, `audited_matrix`, `Hu_counties` and `Hu_grid` worksheets are deliberately not exported.
 
 ## Subclasses
 
