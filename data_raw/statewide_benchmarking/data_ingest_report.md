@@ -404,11 +404,11 @@ Three absolute references for California rice CH4 sit in `reference_values.csv` 
 `extracted_evidence.csv`, all in Gg CH4 yr-1. Their inputs are in `Hu_inventory.csv` and
 `CARB_rice_annual.csv`.
 
-| row                               | value     | derivation                                                     |
-| --------------------------------- | --------- | -------------------------------------------------------------- |
-| `Hu_2026_CA_rice_CH4_Tier3`       | 76.682839 | mean of CH4MOD and CH4-ML from the California grid extraction  |
-| `Hu_2026_CA_rice_CH4_EF_derived`  | 68.387853 | S3 Tier 3 minus the S2 Tier 3 minus EF difference              |
-| `CARB_2025_CA_rice_CH4_2011_2020` | 31.391947 | arithmetic mean of the 2011-2020 annual values                 |
+| row                               | value     | derivation                                                         |
+| --------------------------------- | --------- | ------------------------------------------------------------------ |
+| `Hu_2026_CA_rice_CH4_Tier3`       | 76.682839 | mean of CH4MOD and CH4-ML from the California grid extraction      |
+| `Hu_2026_CA_rice_CH4_EF_derived`  | 68.387853 | S3 Tier 3 total minus the archived Tier 3 minus EF difference (S2) |
+| `CARB_2025_CA_rice_CH4_2011_2020` | 31.391947 | arithmetic mean of the 2011-2020 annual values                     |
 
 **CARB** reports category 3C7 in MMT CO2e. Each year is converted as MMT CO2e x 1000 / 25, using the
 AR4 GWP100 of 25, and `CARB_rice_annual.csv` keeps the reported value and the GWP beside the
