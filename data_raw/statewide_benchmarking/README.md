@@ -41,8 +41,6 @@ sheets rather than single tables.
 | `CARB_rice_annual.csv`    | [`CARB_rice_annual`](https://docs.google.com/spreadsheets/d/1BS6O6LocjN95dbbD_PT0zkvrtwBAc4aafYCLnlsK3Ek/edit#gid=2026101904)   | CARB 2025 rice category 3C7 annual series, reported MMT CO2e and converted Gg CH4                                                                                                                                |
 | `data_ingest_report.md`   | none                                                                                                                            | uncertainty audit and record of every conversion                                                                                                                                                                 |
 
-The `README`, `audited_matrix`, `Hu_counties` and `Hu_grid` worksheets are deliberately not exported.
-
 ## Subclasses
 
 `summarized_targets.csv` and `model_vs_evidence.csv` are uniquely identified by `practice`, `outcome` and `subclass`.
