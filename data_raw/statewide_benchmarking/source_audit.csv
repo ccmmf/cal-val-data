@@ -23,3 +23,6 @@ Sun et al. (2020),NO,-,added 2026-09-17 for issue #11
 Bai et al. (2023),NO,-,"added 2026-09-17; organic amendment SOC synthesis, fills +Non-crop C x Soil C"
 Shcherbak et al. (2014),NO,-,"added 2026-09-17; nonlinear N2O response to N rate, fills +/- N Fertilization x N2O"
 "Han, Walter & Drinkwater (2017)",NO,-,"suggested 2026-09-17 for the empty N2O cells at +Cover Crops and +Non-crop C; full text not yet obtained, no pooled effect size extracted"
+"Hu et al. (2026), rice methane",NO,,DOI 10.1093/nsr/nwag555. Global rice methane emissions tripled over six decades amid declining emission intensity. Article and supplement reviewed. Modeled inventory reference. Absent from the active local Zotero copy on 2026-10-19.
+"Qin, global rice CH4, Figshare v2",NO,,"Dataset DOI 10.6084/m9.figshare.29287904.v2. California extraction uses S2, S3 and S5. Archive v2 posted 2026-08-19. Derived state/county/grid tables supplied in the 2026-10-15 handoff. Absent from the local Zotero copy."
+"CARB 2025 GHG inventory, rice 3C7",not checked,,"2025 edition, 2000-2023 annual rice series from the handoff. Original MMT CO2e values and AR4 GWP100=25 retained in CARB_rice_annual. This comparison mean does not resolve the older issue #228 crosscheck."

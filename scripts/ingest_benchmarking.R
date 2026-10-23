@@ -21,14 +21,16 @@ gs4_auth(email = Sys.getenv("CCMMF_SHEETS_EMAIL", "aritradey.nitt@gmail.com"))
 # review findings, so keeping the map explicit makes a future rename visible here.
 TABS <- c("evidence_assessment", "extracted_evidence", "normalised_targets", "summarized_targets",
           "reference_values", "model_vs_evidence", "coverage",
-          "source_audit", "carb_crosscheck", "data_processing")
-# README is deliberately not exported.
+          "source_audit", "carb_crosscheck", "data_processing",
+          "Hu_inventory", "CARB_rice_annual")
+# README, audited_matrix, Hu_counties and Hu_grid are deliberately not exported.
 
 # `data_processing` is a digitisation worksheet, not one table: a title row, then two
 # stacked blocks with their own headers. Reading it with column names would mangle it,
 # so it is taken as a raw grid and its blank spacer rows dropped, which is what the
-# committed CSV holds.
-RAW_GRID <- "data_processing"
+# committed CSV holds. `Hu_inventory` is a report layout with a title preamble and
+# stacked blocks, so it is read the same way.
+RAW_GRID <- c("data_processing", "Hu_inventory")
 
 changed <- 0L
 for (tb in TABS) {
