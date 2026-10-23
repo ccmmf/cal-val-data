@@ -6,6 +6,9 @@ Changes to datasets, schemas, and curation workflows are documented here.
 
 ### Changed
 
+- `delta-harvest-0015` (US-Bi2 2017 corn harvested carbon) now records the
+  conversion Hemes et al. (2019) used and that its uncertainty is an assumed
+  23% SD; the value is unchanged.
 - Salinas SOC stocks updated for the White et al. (2024) correction. All 288
   block-level rows (Years 0–8, 8 systems) are rescaled by 0.905 and recorded
   as `SCRIPTED_DERIVED`. The rows now record their basis in
