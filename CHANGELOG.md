@@ -21,6 +21,9 @@ Changes to datasets, schemas, and curation workflows are documented here.
 
 ### Changed
 
+- `crops`: the legume–rye and mustard mixtures now list their actual
+  components (faba bean, pea, common and purple vetch with rye; *Sinapis
+  alba* with *Brassica juncea*), as in Brennan and Boyd (2012).
 - `delta-harvest-0015` (US-Bi2 2017 corn harvested carbon) now records the
   conversion Hemes et al. (2019) used and that its uncertainty is an assumed
   23% SD; the value is unchanged.
