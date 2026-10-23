@@ -92,6 +92,9 @@ performed here.
 - **`Automated chamber annual mean`** — annual chamber values where the source reports them.
 - **`static_soil_publication_import`** — soil properties transcribed from
   the exact-site publication's table.
+- **`field_harvest`** — rice grain yield from the tower paddy harvest, as
+  Knox et al. (2016) Table 1 reports it; the paper does not state the
+  harvest method.
 
 ---
 
@@ -99,7 +102,9 @@ performed here.
 
 Flux rows retain their observation intervals. Where the source gives only a year,
 January 1–December 31 is assigned and noted per row. Soil rows retain the sampling
-information provided by the source.
+information provided by the source. Rice grain yield rows carry the harvest
+interval Knox et al. (2016) Table 1 reports for each year, the same dates as
+`managements` events `delta-harvest-0003` to `delta-harvest-0009`.
 
 ---
 
