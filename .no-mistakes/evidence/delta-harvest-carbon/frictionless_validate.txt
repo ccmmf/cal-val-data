@@ -1,0 +1,18 @@
+$ frictionless validate datapackage.json   # frictionless 5.21.0
+─────────────────────────────────── Dataset ────────────────────────────────────
+                            dataset                            
+┏━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓
+┃ name            ┃ type  ┃ path                     ┃ status ┃
+┡━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩
+│ citations       │ table │ data/citations.csv       │ VALID  │
+│ sites           │ table │ data/sites.csv           │ VALID  │
+│ treatments      │ table │ data/treatments.csv      │ VALID  │
+│ treatment_pairs │ table │ data/treatment_pairs.csv │ VALID  │
+│ managements     │ table │ data/managements.csv     │ VALID  │
+│ observations    │ table │ data/observations.csv    │ VALID  │
+│ methods         │ table │ data/methods.csv         │ VALID  │
+│ variables       │ table │ data/variables.csv       │ VALID  │
+│ crops           │ table │ data/crops.csv           │ VALID  │
+│ coverage        │ table │ data/coverage.csv        │ VALID  │
+└─────────────────┴───────┴──────────────────────────┴────────┘
+exit: 0

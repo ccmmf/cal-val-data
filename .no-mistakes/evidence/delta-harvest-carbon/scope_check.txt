@@ -1,0 +1,17 @@
+$ git show --name-only --format="%h %s%n%b" HEAD
+45c9a58 Fix rice fields
+Signed-off-by: Aritra Dey <adey01027@gmail.com>
+
+
+data/observations.csv
+
+# white_salinas_2020 observations rows / distinct variables per revision
+471db45: salinas rows=852 total rows=37258
+HEAD~1: salinas rows=852 total rows=37265
+HEAD: salinas rows=852 total rows=37265
+
+# variables.csv / methods.csv / citations.csv / crops.csv identical between HEAD~1 and HEAD:
+variables: identical
+methods: identical
+citations: identical
+crops: identical

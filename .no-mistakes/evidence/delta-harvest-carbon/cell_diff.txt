@@ -1,0 +1,28 @@
+$ git diff --stat HEAD~1 HEAD
+ data/observations.csv | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+$ Rscript cell_diff.R HEAD~1 HEAD
+rows: HEAD~1 37265 | HEAD 37265 
+columns identical: TRUE 
+  line sitename              variable study_year       column before     after
+ 37260   US-Twt rice_grain_yield_t_ha       2009 replicate_id     NA site_mean
+ 37260   US-Twt rice_grain_yield_t_ha       2009      variety   M104     M-104
+ 37261   US-Twt rice_grain_yield_t_ha       2010 replicate_id     NA site_mean
+ 37261   US-Twt rice_grain_yield_t_ha       2010      variety   M206     M-206
+ 37262   US-Twt rice_grain_yield_t_ha       2011 replicate_id     NA site_mean
+ 37262   US-Twt rice_grain_yield_t_ha       2011      variety   M104     M-104
+ 37263   US-Twt rice_grain_yield_t_ha       2012 replicate_id     NA site_mean
+ 37263   US-Twt rice_grain_yield_t_ha       2012      variety   M104     M-104
+ 37264   US-Twt rice_grain_yield_t_ha       2013 replicate_id     NA site_mean
+ 37264   US-Twt rice_grain_yield_t_ha       2013      variety   M206     M-206
+ 37265   US-Twt rice_grain_yield_t_ha       2014 replicate_id     NA site_mean
+ 37265   US-Twt rice_grain_yield_t_ha       2014      variety   M206     M-206
+ 37266   US-Twt rice_grain_yield_t_ha       2015 replicate_id     NA site_mean
+ 37266   US-Twt rice_grain_yield_t_ha       2015      variety   M206     M-206
+
+changed cells: 14 
+changed rows: 7 
+columns touched: replicate_id, variety 
+all changed rows are US-Twt rice_grain_yield_t_ha: TRUE 
+rice_grain_yield_t_ha rows at HEAD: 7 

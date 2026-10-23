@@ -1,0 +1,6 @@
+$ Rscript serialization_roundtrip.R data/observations.csv
+lines in committed file: 37266 | lines after write_csv: 37266 
+lines that differ after round trip: 0 
+rice_grain_yield_t_ha lines: 37260, 37261, 37262, 37263, 37264, 37265, 37266 
+rice lines byte-identical to write_csv output: TRUE 
+whole file byte-identical to write_csv output: TRUE 

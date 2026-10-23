@@ -1,0 +1,10 @@
+$ Rscript r_consumer.R   # readr defaults, as a downstream R user would read it
+ sitename study_year variety replicate_id value reported_units
+   US-Twt       2009   M-104    site_mean   4.7         t ha-1
+   US-Twt       2010   M-206    site_mean   4.5         t ha-1
+   US-Twt       2011   M-104    site_mean   6.0         t ha-1
+   US-Twt       2012   M-104    site_mean   5.6         t ha-1
+   US-Twt       2013   M-206    site_mean   7.3         t ha-1
+   US-Twt       2014   M-206    site_mean   5.7         t ha-1
+   US-Twt       2015   M-206    site_mean   7.4         t ha-1
+site_year_total rows: 53 | selected by replicate_id == 'site_mean': 53 

@@ -1,0 +1,31 @@
+$ python3 -I consumer_queries.py <HEAD~1 csvs> "before (HEAD~1 = 09f9f8b)"
+== before (HEAD~1 = 09f9f8b): 37265 observations rows, 3866 managements rows
+site_year_total rows: 53; with replicate_id == 'site_mean': 46; dropped by that filter: 7
+  dropped (sitename, variable): [('US-Twt', 'rice_grain_yield_t_ha')]
+  US-Twt site_mean totals by variable: {'CH4_flux': 8, 'NEE': 6}
+  rice yields selected: []
+Knox harvest events at US-Twt: 7
+  2009 variety=M104   yield=4.7  -> NO MATCH
+  2010 variety=M206   yield=4.5  -> NO MATCH
+  2011 variety=M104   yield=6    -> NO MATCH
+  2012 variety=M104   yield=5.6  -> NO MATCH
+  2013 variety=M206   yield=7.3  -> NO MATCH
+  2014 variety=M206   yield=5.7  -> NO MATCH
+  2015 variety=M206   yield=7.4  -> NO MATCH
+yields joined to a harvest event on site+dates+cultivar: 0/7
+
+$ python3 -I consumer_queries.py data/observations.csv data/managements.csv "after (HEAD)"
+== after (HEAD = 45c9a58): 37265 observations rows, 3866 managements rows
+site_year_total rows: 53; with replicate_id == 'site_mean': 53; dropped by that filter: 0
+  dropped (sitename, variable): none
+  US-Twt site_mean totals by variable: {'CH4_flux': 8, 'NEE': 6, 'rice_grain_yield_t_ha': 7}
+  rice yields selected: [('2009', '4.7'), ('2010', '4.5'), ('2011', '6'), ('2012', '5.6'), ('2013', '7.3'), ('2014', '5.7'), ('2015', '7.4')]
+Knox harvest events at US-Twt: 7
+  2009 variety=M-104  yield=4.7  -> delta-harvest-0003
+  2010 variety=M-206  yield=4.5  -> delta-harvest-0004
+  2011 variety=M-104  yield=6    -> delta-harvest-0005
+  2012 variety=M-104  yield=5.6  -> delta-harvest-0006
+  2013 variety=M-206  yield=7.3  -> delta-harvest-0007
+  2014 variety=M-206  yield=5.7  -> delta-harvest-0008
+  2015 variety=M-206  yield=7.4  -> delta-harvest-0009
+yields joined to a harvest event on site+dates+cultivar: 7/7

@@ -1,0 +1,17 @@
+$ Rscript -e 'testthat::test_file("tests/testthat/test-integrity.R", stop_on_failure = TRUE)'
+integrity: ...........
+
+══ DONE ════════════════════════════════════════════════════════════════════════
+                                          test nb failed skipped error
+         citations has its datapackage columns  1      0   FALSE FALSE
+             sites has its datapackage columns  1      0   FALSE FALSE
+        treatments has its datapackage columns  1      0   FALSE FALSE
+   treatment_pairs has its datapackage columns  1      0   FALSE FALSE
+       managements has its datapackage columns  1      0   FALSE FALSE
+      observations has its datapackage columns  1      0   FALSE FALSE
+           methods has its datapackage columns  1      0   FALSE FALSE
+         variables has its datapackage columns  1      0   FALSE FALSE
+             crops has its datapackage columns  1      0   FALSE FALSE
+          coverage has its datapackage columns  1      0   FALSE FALSE
+ validate_data runs in warn mode without error  1      0   FALSE FALSE
+total failed: 0  errors: 0 
