@@ -159,9 +159,11 @@ rye 90 / 270 (`socs_sys7` / `socs_sys8`), mustard 11 / 33 (`socs_sys5` /
 
 ## Dates
 
-The papers describe management as seasonal windows (e.g. "cover crops
-planted in fall, incorporated in late winter/early spring"). No exact
-calendar dates are given for any management event in any year.
+The White et al. papers describe management as seasonal windows (e.g.
+"cover crops planted in fall, incorporated in late winter/early spring"),
+with no exact calendar dates for any management event in any year.
+Brennan and Boyd (2012) Table 2 does give each winter's cover crop dates;
+`managements` does not use them yet (see Open follow-ups).
 
 Each `managements` row therefore carries the paper's stated season bounds
 in `min_date` / `max_date` (e.g. spring planting →
@@ -186,9 +188,12 @@ have their own date question. Both are in Open follow-ups.
   recoverable from the publication.
 - **Quadrennial cover crop schedule.** Confirmed from the companion paper:
   the quadrennial cover crop was planted in Years 3 and 7 (fall 2006 and
-  fall 2010). Year 0 pre-study (fall 2003) all systems received legume-rye;
-  counting from there gives the next quadrennial plantings at fall 2006 and
-  fall 2010.
+  fall 2010). Year 0 is the pre-study baseline soil sampling (fall 2003).
+  Per Brennan and Boyd (2012), the whole field grew a legume–rye cover crop
+  in the winter before the trial (2002–03), and the systems' different
+  cover crops start with the fall 2003 planting (cover crop Year 1, planted
+  16 October 2003). Counting from the pre-trial legume–rye gives the
+  quadrennial plantings at fall 2006 and fall 2010.
 - **Pre-study site history.** 1990–1996 hay production and mixed
   vegetable / sugar beet trials; 1997–2003 occasional vegetable trials and
   cover crops with minimal compost or fertilizer inputs and frequent fallow.
@@ -383,6 +388,15 @@ whether the snapshot holds the uncorrected or the corrected values.
   `socs_sys3`.
 - Replace the figure-read values with plot data if the authors share it
   (asked 2026-10-24).
+- Rebuild the Salinas management calendar. It is schematic: generic
+  seasonal windows, one year late for the annually cover-cropped systems
+  (their cover crop plantings run fall 2004 to fall 2011 instead of fall
+  2003 to fall 2010), and termination is only a 1 February to 15 March
+  tillage window. The six Year 1 cover crop biomass rows (winter 2003–04)
+  therefore have no matching cover crop in `managements` yet. Aritra
+  approved rebuilding it in a separate PR from Brennan and Boyd (2012)
+  Table 2, which gives each winter's planting, last irrigation, sampling
+  and termination dates.
 
 ---
 
