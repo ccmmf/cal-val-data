@@ -18,7 +18,8 @@ decisions made while curating them.
 
 Replicate-level values are pulled from the public archive; the two
 companion papers supply experimental design, methods, and cross-checks.
-Full citation metadata is in `citations`.
+Cover crop biomass comes as treatment means read from Brennan and Boyd
+(2012) Fig. 5. Full citation metadata is in `citations`.
 
 - **White et al. (2020a)** — *Data in Brief* 33, 106481. Supplemental
   tables (Tables 1–4) are the block-level source. Every SOC
@@ -78,8 +79,8 @@ substitute for it.
 ## Variables Measured
 
 Ingested to the `observations` tab in reported units (`n = 1` for
-block-level rows; `observation_level = replicate` except on the total N
-and nitrate-N rows, see below):
+block-level rows; `observation_level = replicate` except on the total N,
+nitrate-N and cover crop biomass rows, see below):
 
 | Variable | Units | Years | Notes |
 |---|---|---|---|
