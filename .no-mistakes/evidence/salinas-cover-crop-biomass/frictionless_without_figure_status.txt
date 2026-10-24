@@ -1,0 +1,34 @@
+$ frictionless validate datapackage_without_figure_status.json --resource-name observations   # schema with FILLED_PUBLICATION_FIGURE removed from the fill_status enum
+─────────────────────────────────── Dataset ────────────────────────────────────
+                         dataset                          
+┏━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┓
+┃ name         ┃ type  ┃ path                  ┃ status  ┃
+┡━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━┩
+│ observations │ table │ data/observations.csv │ INVALID │
+└──────────────┴───────┴───────────────────────┴─────────┘
+──────────────────────────────────── Tables ────────────────────────────────────
+                                  observations                                  
+┏━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Row ┃ Field ┃ Type             ┃ Message                                     ┃
+┡━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ 926 │ 18    │ constraint-error │ The cell "FILLED_PUBLICATION_FIGURE" in row │
+│     │       │                  │ at position "926" and field "fill_status"   │
+│     │       │                  │ at position "18" does not conform to a      │
+│     │       │                  │ constraint: constraint "enum" is            │
+│     │       │                  │ "['FILLED_ZOTERO_XLSX', 'FILLED_S1_TABLE',  │
+│     │       │                  │ 'FILLED_SITE_DATA_XLSX',                    │
+│     │       │                  │ 'FILLED_USDA_SOIL_XLSX', 'FILLED_DATASET',  │
+│     │       │                  │ 'PAPER_TEXT', 'NEEDS_FILL',                 │
+│     │       │                  │ 'MISSING_IN_SOURCE',                        │
+│     │       │                  │ 'FILLED_DATA_PUBLICATION',                  │
+│     │       │                  │ 'FILLED_PUBLICATION_TABLE',                 │
+│     │       │                  │ 'FILLED_PUBLICATION_TEXT',                  │
+│     │       │                  │ 'SCRIPTED_DERIVED', 'REPORTED_DIRECT']"     │
+│ 927 │ 18    │ constraint-error │ The cell "FILLED_PUBLICATION_FIGURE" in row │
+│     │       │                  │ at position "927" and field "fill_status"   │
+│     │       │                  │ at position "18" does not conform to a      │
+│     │       │                  │ constraint: constraint "enum" is            │
+   ... (remaining rows elided)
+
+constraint-error rows: 48, all on fill_status, row positions 926 to 973
+exit=1

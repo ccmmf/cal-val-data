@@ -1,0 +1,3 @@
+scenario: one cover crop row with misspelled fill_status FILLED_PUBLICATION_FIGUR, committed schema (scratch copy)
+observations valid: False | errors: 1
+  constraint-error fill_status row 926 'FILLED_PUBLICATION_FIGUR'

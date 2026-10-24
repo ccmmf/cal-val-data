@@ -1,0 +1,46 @@
+### disposable git repo built from the HEAD 5ae351f tree (git archive + git init); committed .gitignore rules for data_raw/white_salinas_2020/:
+  .gitignore:20:*.pdf
+  .gitignore:24:data_raw/white_salinas_2020/*.jpg
+  .gitignore:25:data_raw/white_salinas_2020/*.jpeg
+  .gitignore:26:data_raw/white_salinas_2020/*.png
+  .gitignore:27:data_raw/white_salinas_2020/image-*
+  .gitignore:28:data_raw/white_salinas_2020/font-*
+
+### mistaken flow: mutool extract run INSIDE data_raw/white_salinas_2020/ (mutool 1.23.10)
+$ cd data_raw/white_salinas_2020 && cp <USDA ARS copy of the paper> paper.pdf && mutool extract paper.pdf     # real paper: 13 PNG images, 13 fonts
+$ cd data_raw/white_salinas_2020 && cp <stand-in> standin.pdf && mutool extract standin.pdf                    # stand-in: grey JPEG, CMYK JPEG, CMYK Flate, RGB Flate, JPX, 1 TrueType font
+$ cd data_raw/white_salinas_2020 && mutool extract -r standin.pdf                                              # raw mode, same folder
+untracked files now in data_raw/white_salinas_2020/: 35
+  ignored: 35  ->  font.cff x5  font.ttf x9  image.jpg x2  image.pam x1  image.png x16  paper.pdf x1  standin.pdf x1  
+  NOT ignored: 0
+
+$ git check-ignore -v --no-index <one file per extension>
+  .gitignore:28:data_raw/white_salinas_2020/font-*	data_raw/white_salinas_2020/font-0005.ttf
+  .gitignore:28:data_raw/white_salinas_2020/font-*	data_raw/white_salinas_2020/font-0106.cff
+  .gitignore:27:data_raw/white_salinas_2020/image-*	data_raw/white_salinas_2020/image-0006.jpg
+  .gitignore:27:data_raw/white_salinas_2020/image-*	data_raw/white_salinas_2020/image-0007.png
+  .gitignore:27:data_raw/white_salinas_2020/image-*	data_raw/white_salinas_2020/image-0008.pam
+  .gitignore:20:*.pdf	data_raw/white_salinas_2020/paper.pdf
+
+$ git add -A && git status --porcelain
+    (nothing staged: no extracted image, font or PDF can be committed)
+
+### every image extension mutool can write (image-9999.{jpg,png,pam,jpx,pnm,pbm,pkm,tif,jb2,psd} created in data_raw/white_salinas_2020/)
+    (nothing staged)
+
+### control: the rules are not over-broad; legit edits in data_raw/white_salinas_2020/ still stage
+  M  data_raw/white_salinas_2020/brennan_boyd_2012_fig5_digitized.csv
+  A  data_raw/white_salinas_2020/new_helper.R
+  A  data_raw/white_salinas_2020/new_table.csv
+
+### out of the decided scope (noted only): extraction into a NEW SUBFOLDER of data_raw/white_salinas_2020/
+$ cd data_raw/white_salinas_2020 && mkdir extracted && cd extracted && mutool extract ../standin.pdf
+  A  data_raw/white_salinas_2020/extracted/font-0005.ttf
+  A  data_raw/white_salinas_2020/extracted/image-0006.jpg
+  A  data_raw/white_salinas_2020/extracted/image-0007.jpg
+  A  data_raw/white_salinas_2020/extracted/image-0008.pam
+  A  data_raw/white_salinas_2020/extracted/image-0009.png
+  A  data_raw/white_salinas_2020/extracted/image-0010.png
+  (the rules are anchored to data_raw/white_salinas_2020/ itself, so a subfolder is not covered; the script header now sends extraction to a scratch folder outside the repo)
+
+teardown: repo clean, no ignored leftovers

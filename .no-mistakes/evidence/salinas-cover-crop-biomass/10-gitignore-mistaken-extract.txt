@@ -1,0 +1,28 @@
+### disposable git repo built from the HEAD tree; mistaken flow: mutool extract run inside data_raw/white_salinas_2020/
+$ cd data_raw/white_salinas_2020 && mutool extract paper.pdf   # stand-in PDF: grey JPEG figure, CMYK images, 3 embedded fonts
+  font-0037.cff
+  font-0043.cff
+  font-0049.cff
+  image-0005.jpg
+  image-0012.pam
+  image-0019.png
+  image-0026.pam
+  image-0034.png
+
+$ git check-ignore -v --no-index data_raw/white_salinas_2020/{image,font}-*
+  .gitignore:24:data_raw/white_salinas_2020/*.jpg	data_raw/white_salinas_2020/image-0005.jpg
+  NOT IGNORED   data_raw/white_salinas_2020/image-0012.pam
+  .gitignore:26:data_raw/white_salinas_2020/*.png	data_raw/white_salinas_2020/image-0019.png
+  NOT IGNORED   data_raw/white_salinas_2020/image-0026.pam
+  .gitignore:26:data_raw/white_salinas_2020/*.png	data_raw/white_salinas_2020/image-0034.png
+  .gitignore:27:data_raw/white_salinas_2020/font-*	data_raw/white_salinas_2020/font-0037.cff
+  .gitignore:27:data_raw/white_salinas_2020/font-*	data_raw/white_salinas_2020/font-0043.cff
+  .gitignore:27:data_raw/white_salinas_2020/font-*	data_raw/white_salinas_2020/font-0049.cff
+
+$ git add -A && git status --porcelain
+  A  data_raw/white_salinas_2020/image-0012.pam
+  A  data_raw/white_salinas_2020/image-0026.pam
+
+### control: an intentional edit to the committed digitizer output is still stageable (rules are not over-broad)
+  M  data_raw/white_salinas_2020/brennan_boyd_2012_fig5_digitized.csv
+  M  data_raw/white_salinas_2020/digitize_brennan_boyd_2012_fig5.R

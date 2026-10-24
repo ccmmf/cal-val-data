@@ -1,0 +1,36 @@
+### mutation: value
+mutated observations socs_sys6 year 5 -> value
+                                                                        test
+      white_salinas_2020 SOC stocks carry the White et al. (2024) correction
+   white_salinas_2020 cover crop biomass matches the Fig. 5 digitizer output
+   failed
+        0
+        1
+
+### mutation: ci
+mutated observations socs_sys6 year 5 -> ci
+                                                                        test
+      white_salinas_2020 SOC stocks carry the White et al. (2024) correction
+   white_salinas_2020 cover crop biomass matches the Fig. 5 digitizer output
+   failed
+        0
+        3
+
+### mutation: fill
+mutated observations socs_sys6 year 5 -> fill
+                                                                        test
+      white_salinas_2020 SOC stocks carry the White et al. (2024) correction
+   white_salinas_2020 cover crop biomass matches the Fig. 5 digitizer output
+   failed
+        0
+        1
+
+### mutation: redigitize
+mutated digitizer output socs_sys8 year 2 (re-digitization not carried to workbook)
+                                                                        test
+      white_salinas_2020 SOC stocks carry the White et al. (2024) correction
+   white_salinas_2020 cover crop biomass matches the Fig. 5 digitizer output
+   failed
+        0
+        1
+

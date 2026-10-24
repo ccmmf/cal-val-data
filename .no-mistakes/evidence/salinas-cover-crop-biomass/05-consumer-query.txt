@@ -1,0 +1,54 @@
+== Which sites have per-year cover crop biomass? ==
+                    dataset                          variable Freq
+ russell_ranch_tautges_2019      cover_crop_dry_biomass_kg_ha  630
+         white_salinas_2020      cover_crop_dry_biomass_kg_ha    0
+ russell_ranch_tautges_2019 cover_crop_shoot_dry_matter_Mg_ha    0
+         white_salinas_2020 cover_crop_shoot_dry_matter_Mg_ha   48
+
+[PASS] observations total rows = 37313 (report says 37,313)
+[PASS] cover_crop_shoot_dry_matter_Mg_ha rows = 48, all white_salinas_2020 / salinas_socs
+[PASS] treatments socs_sys3..socs_sys8 x study_year 1..8, one row each
+[PASS] n = 4, observation_level = treatment_mean, reported_units = Mg ha-1
+[PASS] no replicate_id, no statname/stat (means only)
+[PASS] variables row exists, units 'Mg ha-1'
+[PASS] method cover_crop_quadrat_clipping defined in methods, cites 10.2134/agronj2011.0330
+[PASS] citation 10.2134/agronj2011.0330 exists in citations (Brennan & Boyd 2012)
+[PASS] fill_status = FILLED_PUBLICATION_FIGURE
+[PASS] crop per system: sys3/4 legume-rye, sys5/6 mustard, sys7/8 cereal rye; each joins to crops.csv
+   crops joined:
+                                                                 scientific name
+ Vicia faba / Pisum sativum / Vicia sativa / Vicia benghalensis / Secale cereale
+                                                  Sinapis alba / Brassica juncea
+                                                                  Secale cereale
+    common name
+ legume-rye mix
+        mustard
+     cereal rye
+[PASS] dates: season-end Feb/Mar of winter (2002+k)-(2003+k), max_date >= min_date
+[PASS] each year's sampling window identical across the 6 systems (one Table 2 date per winter)
+   sampling dates by year:
+ study_year   min_date   max_date
+          1 2004-03-03 2004-03-04
+          2 2005-02-24 2005-02-24
+          3 2006-02-07 2006-02-08
+          4 2007-03-15 2007-03-16
+          5 2008-02-13 2008-02-15
+          6 2009-03-10 2009-03-11
+          7 2010-03-16 2010-03-17
+          8 2011-03-07 2011-03-09
+[PASS] attributes_json cover_crop_year matches study_year
+[PASS] 95% CIs present on 33 of 48 rows, both ends together
+[PASS] every CI brackets its value (lower < value < upper)
+   8-year means vs the paper's stated means:
+ treatment_id mean_48_rows stated   diff
+    socs_sys3        6.876    6.9 -0.024
+    socs_sys4        7.502    7.5  0.002
+    socs_sys5        5.536    5.5  0.036
+    socs_sys6        5.749    5.7  0.049
+    socs_sys7        7.134    7.1  0.034
+    socs_sys8        7.185    7.2 -0.015
+[PASS] 8-year means within 0.05 Mg ha-1 of stated means for all six systems
+[PASS] stated 8-year means NOT added as extra rows (no study_year outside 1..8, no period rows)
+[PASS] no Salinas cover crop rows for socs_sys1/socs_sys2 (open follow-up)
+
+0 check(s) failed

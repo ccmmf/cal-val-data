@@ -1,0 +1,17 @@
+$ cd data_raw/white_salinas_2020 && Rscript digitize_brennan_boyd_2012_fig5.R /tmp/nmtest-W6td/figs/fig5_synthetic.jpg
+  treatment_id value_Mg_ha stated_8yr_mean difference
+1    socs_sys3     6.87750             6.9     -0.023
+2    socs_sys4     7.50000             7.5      0.000
+3    socs_sys5     5.53500             5.5      0.035
+4    socs_sys6     5.74750             5.7      0.047
+5    socs_sys7     7.13500             7.1      0.035
+6    socs_sys8     7.18875             7.2     -0.011
+wrote 48 rows to brennan_boyd_2012_fig5_digitized.csv 
+exit=0
+rows: committed 48 | rerun 48 | same keys and column order: TRUE 
+value: max |diff| = 0.020 Mg ha-1 (median 0.000)
+CI present on same rows: FALSE | committed 33 | rerun 32 
+CI ends: max |diff| lower 0.000, upper 0.000
+marker_x identical: TRUE 
+   treatment_id year ci95_lower ci95_upper rerun_lower rerun_upper
+27    socs_sys6    3       4.93       7.04          NA          NA

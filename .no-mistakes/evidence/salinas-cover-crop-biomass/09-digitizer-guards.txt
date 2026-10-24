@@ -1,0 +1,34 @@
+### guard 1: socs_sys5 (mustard 1x) drawn 0.07 Mg ha-1 high every year -> 8-yr mean ~0.106 off the stated 5.5
+  treatment_id value_Mg_ha stated_8yr_mean difference
+1    socs_sys3     6.87750             6.9     -0.023
+2    socs_sys4     7.50000             7.5      0.000
+3    socs_sys5     5.60375             5.5      0.104
+4    socs_sys6     5.74750             5.7      0.047
+5    socs_sys7     7.13500             7.1      0.035
+6    socs_sys8     7.18875             7.2     -0.011
+Error: figure reading is more than 0.1 Mg ha-1 off a stated mean
+Execution halted
+exit=1
+output csv sha256 before/after: 22f2ce6652316ba0 / 22f2ce6652316ba0 (unchanged = not overwritten)
+
+### guard 1 control: same system drawn only 0.04 high -> ~0.076 off, inside the 0.1 tolerance
+  treatment_id value_Mg_ha stated_8yr_mean difference
+1    socs_sys3     6.87750             6.9     -0.023
+2    socs_sys4     7.50000             7.5      0.000
+3    socs_sys5     5.57375             5.5      0.074
+4    socs_sys6     5.74750             5.7      0.047
+5    socs_sys7     7.13500             7.1      0.035
+6    socs_sys8     7.18875             7.2     -0.011
+wrote 48 rows to brennan_boyd_2012_fig5_digitized.csv 
+exit=0
+
+### guard 2: wrong image (600 x 950 instead of 667 x 1056)
+Error: expected the 667 x 1056 Fig. 5 image, got 600 x 950
+Execution halted
+exit=1
+
+### guard 3: no figure path given
+Error: usage: Rscript digitize_brennan_boyd_2012_fig5.R path/to/fig5.jpg
+Execution halted
+exit=1
+output csv unchanged after guards 2-3: yes

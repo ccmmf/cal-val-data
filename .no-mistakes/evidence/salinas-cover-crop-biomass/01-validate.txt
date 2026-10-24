@@ -1,0 +1,11 @@
+checked citations 79 rows
+checked sites 13 rows
+checked treatments 35 rows
+checked treatment_pairs 24 rows
+checked managements 3866 rows
+checked observations 37313 rows
+checked methods 49 rows
+checked variables 106 rows
+checked crops 13 rows
+checked coverage 32 rows
+validated 10 table(s) with 0 warning(s)

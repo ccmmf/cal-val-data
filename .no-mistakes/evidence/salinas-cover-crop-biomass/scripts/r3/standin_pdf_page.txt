@@ -1,0 +1,13 @@
+%%MediaBox 0 0 612 792
+%%Font F1 f1.ttf
+%%Image Im1 grey_fig.jpg
+%%Image Im2 cmyk.jpg
+%%Image Im3 cmyk.tif
+%%Image Im4 rgb.png
+%%Image Im5 rgb.jp2
+BT /F1 12 Tf 72 740 Td (Fig. 5 stand-in) Tj ET
+q 300 0 0 475 72 200 cm /Im1 Do Q
+q 120 0 0 80 400 600 cm /Im2 Do Q
+q 120 0 0 80 400 500 cm /Im3 Do Q
+q 120 0 0 80 400 400 cm /Im4 Do Q
+q 64 0 0 64 400 300 cm /Im5 Do Q

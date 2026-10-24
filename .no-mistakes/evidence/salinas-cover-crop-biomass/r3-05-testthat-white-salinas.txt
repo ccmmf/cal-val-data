@@ -1,0 +1,11 @@
+$ Rscript -e testthat::test_file("tests/testthat/test-white-salinas.R")   # real committed CSVs, HEAD 5ae351f
+white-salinas: ....................
+
+══ DONE ════════════════════════════════════════════════════════════════════════
+                                                                      test nb
+    white_salinas_2020 SOC stocks carry the White et al. (2024) correction 10
+ white_salinas_2020 cover crop biomass matches the Fig. 5 digitizer output 10
+ failed skipped error
+      0   FALSE FALSE
+      0   FALSE FALSE
+exit=0

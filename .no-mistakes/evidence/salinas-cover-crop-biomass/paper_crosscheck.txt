@@ -1,0 +1,24 @@
+Cross-check of the committed rows against Brennan and Boyd (2012), read from the public USDA ARS copy of the paper
+
+Table 2 season-end dry matter sampling vs observations min_date/max_date (all six systems per year):
+Year  winter     Table 2      rows min_date..max_date    match
+   1  2003-2004  3-4 Mar.     2004-03-03..2004-03-04     yes
+   2  2004-2005  24 Feb.      2005-02-24..2005-02-24     yes
+   3  2005-2006  7-8 Feb.     2006-02-07..2006-02-08     yes
+   4  2006-2007  15-16 Mar.   2007-03-15..2007-03-16     yes
+   5  2007-2008  13-15 Feb.   2008-02-13..2008-02-15     yes
+   6  2008-2009  10-11 Mar.   2009-03-10..2009-03-11     yes
+   7  2009-2010  16-17 Mar.   2010-03-16..2010-03-17     yes
+   8  2010-2011  7-9 Mar.     2011-03-07..2011-03-09     yes
+all eight match: True
+
+Fig. 6C legend (Feb/March, averaged across years) vs mean of the 8 committed rows per system:
+  socs_sys3 legume-rye 1x  stated 6.9  rows 6.876  diff -0.024  n_rows 8
+  socs_sys4 legume-rye 3x  stated 7.5  rows 7.502  diff +0.002  n_rows 8
+  socs_sys5 mustard 1x     stated 5.5  rows 5.536  diff +0.036  n_rows 8
+  socs_sys6 mustard 3x     stated 5.7  rows 5.749  diff +0.049  n_rows 8
+  socs_sys7 rye 1x         stated 7.1  rows 7.134  diff +0.034  n_rows 8
+  socs_sys8 rye 3x         stated 7.2  rows 7.185  diff -0.015  n_rows 8
+
+Method text in the paper: '50- by 100-cm quadrat oriented to include three adjacent rows' ... 'oven-dried at 65 C for at least 48 h until the weight had stabilized' -> matches methods.csv cover_crop_quadrat_clipping
+Abstract: legume-rye = rye + faba (Vicia faba) + pea (Pisum sativum) + common vetch (V. sativa) + purple vetch (V. benghalensis); mustard = Sinapis alba + Brassica juncea -> matches crops.csv after 'Fix crop names'

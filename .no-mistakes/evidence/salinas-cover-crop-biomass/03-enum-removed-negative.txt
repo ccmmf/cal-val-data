@@ -1,0 +1,5 @@
+scenario: FILLED_PUBLICATION_FIGURE removed from the fill_status enum (scratch copy)
+observations valid: False
+errors: 48 Counter({('constraint-error', 'fill_status'): 48})
+rows flagged: 48
+example: The cell "FILLED_PUBLICATION_FIGURE" in row at position "926" and field "fill_status" at position "18" does not conform to a constraint: constraint "enum" is "['FILLED_ZOTERO_XLSX', 'FILLED_S1_TABLE',

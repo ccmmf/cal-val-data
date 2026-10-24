@@ -1,0 +1,51 @@
+$ Rscript consumer_query.R <worktree @ 976cc4d> salinas_cover_crop_biomass_rows.png
+observations.csv data rows: 37313 
+rows with variable cover_crop_shoot_dry_matter_Mg_ha: 48 
+
+[PASS] 48 rows
+[PASS] all in dataset white_salinas_2020 at site salinas_socs
+[PASS] systems socs_sys3..socs_sys8 x Years 1..8, one row each
+[PASS] n = 4, observation_level = treatment_mean, replicate_id NA
+[PASS] reported_units = Mg ha-1
+[PASS] fill_status = FILLED_PUBLICATION_FIGURE
+[PASS] variable resolves in variables.csv (units 'Mg ha-1')
+[PASS] method resolves in methods.csv and cites the paper
+[PASS] citation 10.2134/agronj2011.0330 resolves in citations.csv
+[PASS] treatments and site resolve
+  citation: Brennan EB, Boyd NS (2012). Winter cover crop seeding rate and variety affects during eight years of organic vegetables: I. Cover crop biomass production. Agronomy Journal 104:684-698. 
+  method:   Cover crop shoots hand clipped from one 50 x 100 cm quadrat covering three adjacent rows per plot; legume and rye separated in the mixture; oven dried at 65 C for at least 48 h until weight stabilised. 
+
+[PASS] crop per system (legume-rye 3/4, mustard 5/6, rye 7/8) and resolves in crops.csv
+  crops.csv legume-rye mix  -> Vicia faba / Pisum sativum / Vicia sativa / Vicia benghalensis / Secale cereale
+  crops.csv mustard         -> Sinapis alba / Brassica juncea
+  crops.csv cereal rye      -> Secale cereale
+[PASS] cover_crop_year attribute: Year k = winter (2002+k)-(2003+k)
+[PASS] sample dates fall in Feb/Mar of 2003+k (season end)
+[PASS] seeding_rate attribute matches system (odd 1x, even 3x)
+
+  sampling window per Year (min_date .. max_date, cover_crop_year):
+ year        min        max    winter
+    1 2004-03-03 2004-03-04 2003-2004
+    2 2005-02-24 2005-02-24 2004-2005
+    3 2006-02-07 2006-02-08 2005-2006
+    4 2007-03-15 2007-03-16 2006-2007
+    5 2008-02-13 2008-02-15 2007-2008
+    6 2009-03-10 2009-03-11 2008-2009
+    7 2010-03-16 2010-03-17 2009-2010
+    8 2011-03-07 2011-03-09 2010-2011
+[PASS] 95% CI present on 33 of 48 rows (expect 33), both ends or neither
+[PASS] every CI brackets its value
+
+  8-year mean of the rows vs the paper's stated mean (Mg ha-1):
+ treatment_id mean_of_rows stated_8yr_mean difference
+    socs_sys3        6.876             6.9     -0.024
+    socs_sys4        7.502             7.5      0.002
+    socs_sys5        5.536             5.5      0.036
+    socs_sys6        5.749             5.7      0.049
+    socs_sys7        7.134             7.1      0.034
+    socs_sys8        7.185             7.2     -0.015
+[PASS] all six within 0.05 Mg ha-1 of the stated means
+[PASS] no separate 8-year-mean rows (every row has a Year 1..8)
+
+wrote /home/aritra/.no-mistakes/evidence/01M5NDFMD80P7FT6XVHNV4A5BJ/salinas_cover_crop_biomass_rows.png 
+exit=0

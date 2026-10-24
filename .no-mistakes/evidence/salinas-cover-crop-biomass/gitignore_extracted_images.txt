@@ -1,0 +1,100 @@
+Throwaway git copy of 976cc4d (git archive + git init). Following the script header: extract the figure images
+from your own copy of the paper with mutool, in data_raw/white_salinas_2020/, then stage everything.
+
+$ cd data_raw/white_salinas_2020 && mutool extract paper.pdf   # paper.pdf = the USDA ARS copy; its images come out as PNG
+$ cp image-0010.png fig5.jpg; cp <fig6> fig6.jpeg; cp <fig6> fig6_screenshot.png   # the .jpg/.jpeg/.png names a user might save
+files now in data_raw/white_salinas_2020/:
+  brennan_boyd_2012_fig5_digitized.csv
+  correct_soc_stocks_2024.R
+  data_entry_report.md
+  digitize_brennan_boyd_2012_fig5.R
+  fig5.jpg
+  fig6.jpeg
+  fig6_screenshot.png
+  font-0058.ttf
+  font-0064.ttf
+  font-0071.ttf
+  font-0077.ttf
+  font-0083.ttf
+  font-0106.cff
+  font-0108.ttf
+  font-0112.cff
+  font-0120.ttf
+  font-0131.ttf
+  font-0139.cff
+  font-0142.cff
+  font-0145.cff
+  image-0010.png
+  image-0014.png
+  image-0018.png
+  image-0020.png
+  image-0024.png
+  image-0028.png
+  image-0030.png
+  image-0034.png
+  image-0036.png
+  image-0040.png
+  image-0044.png
+  image-0046.png
+  image-0151.png
+  paper.pdf
+  soc_stocks_0_30cm_corrected_2024.csv
+
+$ git status --porcelain --untracked-files=all
+?? data_raw/white_salinas_2020/font-0058.ttf
+?? data_raw/white_salinas_2020/font-0064.ttf
+?? data_raw/white_salinas_2020/font-0071.ttf
+?? data_raw/white_salinas_2020/font-0077.ttf
+?? data_raw/white_salinas_2020/font-0083.ttf
+?? data_raw/white_salinas_2020/font-0106.cff
+?? data_raw/white_salinas_2020/font-0108.ttf
+?? data_raw/white_salinas_2020/font-0112.cff
+?? data_raw/white_salinas_2020/font-0120.ttf
+?? data_raw/white_salinas_2020/font-0131.ttf
+?? data_raw/white_salinas_2020/font-0139.cff
+?? data_raw/white_salinas_2020/font-0142.cff
+?? data_raw/white_salinas_2020/font-0145.cff
+(no images or PDF listed; only the font files mutool extract also writes are visible)
+
+$ git add -A && git diff --cached --name-only
+data_raw/white_salinas_2020/font-0058.ttf
+data_raw/white_salinas_2020/font-0064.ttf
+data_raw/white_salinas_2020/font-0071.ttf
+data_raw/white_salinas_2020/font-0077.ttf
+data_raw/white_salinas_2020/font-0083.ttf
+data_raw/white_salinas_2020/font-0106.cff
+data_raw/white_salinas_2020/font-0108.ttf
+data_raw/white_salinas_2020/font-0112.cff
+data_raw/white_salinas_2020/font-0120.ttf
+data_raw/white_salinas_2020/font-0131.ttf
+data_raw/white_salinas_2020/font-0139.cff
+data_raw/white_salinas_2020/font-0142.cff
+data_raw/white_salinas_2020/font-0145.cff
+(no images or PDF staged; the 13 extracted font files are staged)
+
+$ git check-ignore -v data_raw/white_salinas_2020/<each extracted file>
+.gitignore:20:*.pdf	data_raw/white_salinas_2020/paper.pdf
+.gitignore:23:data_raw/white_salinas_2020/*.jpg	data_raw/white_salinas_2020/fig5.jpg
+.gitignore:24:data_raw/white_salinas_2020/*.jpeg	data_raw/white_salinas_2020/fig6.jpeg
+.gitignore:25:data_raw/white_salinas_2020/*.png	data_raw/white_salinas_2020/fig6_screenshot.png
+.gitignore:25:data_raw/white_salinas_2020/*.png	data_raw/white_salinas_2020/image-0010.png
+.gitignore:25:data_raw/white_salinas_2020/*.png	data_raw/white_salinas_2020/image-0014.png
+.gitignore:25:data_raw/white_salinas_2020/*.png	data_raw/white_salinas_2020/image-0018.png
+
+## not over-broad: a new CSV next to them is still picked up, and images elsewhere are not caught by this rule
+$ git status --porcelain --untracked-files=all
+A  data_raw/white_salinas_2020/font-0058.ttf
+A  data_raw/white_salinas_2020/font-0064.ttf
+A  data_raw/white_salinas_2020/font-0071.ttf
+A  data_raw/white_salinas_2020/font-0077.ttf
+A  data_raw/white_salinas_2020/font-0083.ttf
+A  data_raw/white_salinas_2020/font-0106.cff
+A  data_raw/white_salinas_2020/font-0108.ttf
+A  data_raw/white_salinas_2020/font-0112.cff
+A  data_raw/white_salinas_2020/font-0120.ttf
+A  data_raw/white_salinas_2020/font-0131.ttf
+A  data_raw/white_salinas_2020/font-0139.cff
+A  data_raw/white_salinas_2020/font-0142.cff
+A  data_raw/white_salinas_2020/font-0145.cff
+?? data_raw/white_salinas_2020/new_output.csv
+?? docs/img/diagram.png

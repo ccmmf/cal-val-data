@@ -1,0 +1,22 @@
+### documented flow from the digitize_brennan_boyd_2012_fig5.R header (disposable git repo of HEAD 5ae351f)
+  # the paper is copyrighted, so the figure is not checked in. extract it from
+  # your own copy of 10.2134/agronj2011.0330 in a scratch folder outside this
+  # repository, since `mutool extract` writes every image and font in the PDF
+  # into the current directory (page 8 holds one 667 x 1056 greyscale JPEG):
+  #
+  #   cd "$(mktemp -d)" && mutool extract path/to/paper.pdf
+  #
+  # then run from this folder with the path to the extracted figure:
+  #
+  #   Rscript digitize_brennan_boyd_2012_fig5.R /path/to/scratch/image-NNNN.jpg
+
+$ cd "$(mktemp -d)" && mutool extract paper.pdf          # scratch = /tmp/nmtest-r3-te13/scratchx-JNPe (outside the repo), USDA ARS copy
+  -> 13 image-* and 13 font-* files written to the scratch folder
+$ convert <scratch>/image-0024.png -resize 667x1056! <scratch>/fig5_667x1056.jpg   # ARS copy is 500 x 792
+$ cd data_raw/white_salinas_2020 && Rscript digitize_brennan_boyd_2012_fig5.R /tmp/nmtest-r3-te13/scratchx-JNPe/fig5_667x1056.jpg
+  wrote 48 rows to brennan_boyd_2012_fig5_digitized.csv 
+
+$ git add -A && git status --porcelain     # only the regenerated digitizer output; nothing extracted
+  M  data_raw/white_salinas_2020/brennan_boyd_2012_fig5_digitized.csv
+
+teardown: repo clean

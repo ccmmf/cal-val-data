@@ -1,0 +1,62 @@
+Real figure: Fig. 5 (page 8, object 24) of the public USDA ARS copy of Brennan and Boyd (2012),
+https://www.ars.usda.gov/ARSUserFiles/21904/BrennanPeerRevPdfs/Agron%20J%20104p684.pdf, extracted per the script header
+into a scratch folder outside the repo (cd "$(mktemp -d)" && mutool extract paper.pdf). That copy holds the figure as a
+500 x 792 Flate PNG, not the 667 x 1056 publisher JPEG the script is calibrated on, so it was upscaled with
+ImageMagick (convert image-0024.png -resize 667x1056! fig5_667x1056.jpg). The figure itself is not in evidence.
+
+## 1. extracted ARS figure as-is (PNG saved as JPEG, 500 x 792) -> size guard
+$ Rscript digitize_brennan_boyd_2012_fig5.R <scratch>/fig5_ars_500x792.jpg
+Error: expected the 667 x 1056 Fig. 5 image, got 500 x 792
+Execution halted
+exit=1
+
+## 2. upscaled to 667 x 1056, run from data_raw/white_salinas_2020/ (documented flow)
+$ Rscript digitize_brennan_boyd_2012_fig5.R <scratch>/fig5_667x1056.jpg
+  treatment_id value_Mg_ha stated_8yr_mean difference
+1    socs_sys3     6.88000             6.9     -0.020
+2    socs_sys4     7.50750             7.5      0.008
+3    socs_sys5     5.54000             5.5      0.040
+4    socs_sys6     5.74500             5.7      0.045
+5    socs_sys7     7.13125             7.1      0.031
+6    socs_sys8     7.18375             7.2     -0.016
+wrote 48 rows to brennan_boyd_2012_fig5_digitized.csv 
+exit=0
+
+### re-run output vs committed brennan_boyd_2012_fig5_digitized.csv
+rows: committed 48 | rerun 48 | same keys and column order: TRUE 
+value: max |diff| = 0.030 Mg ha-1 (median 0.000)
+CI present on same rows: FALSE | committed 33 | rerun 24 
+CI ends: max |diff| lower 1.220, upper 0.050
+marker_x identical: FALSE 
+   treatment_id year ci95_lower ci95_upper rerun_lower rerun_upper
+4     socs_sys3    4       6.23      10.68          NA          NA
+8     socs_sys3    8       2.12       7.38          NA          NA
+13    socs_sys4    5         NA         NA        5.85        8.27
+17    socs_sys5    1       4.80      10.04          NA          NA
+19    socs_sys5    3       2.56       5.99          NA          NA
+20    socs_sys5    4       4.59       6.58          NA          NA
+30    socs_sys6    6       3.75       8.44          NA          NA
+31    socs_sys6    7       4.17       6.07          NA          NA
+36    socs_sys7    4       5.39       9.62          NA          NA
+37    socs_sys7    5       4.00       9.87          NA          NA
+46    socs_sys8    6       6.87      10.63          NA          NA
+
+## 3. no figure path -> usage guard
+$ Rscript digitize_brennan_boyd_2012_fig5.R
+Error: usage: Rscript digitize_brennan_boyd_2012_fig5.R path/to/fig5.jpg
+Execution halted
+exit=1
+
+## 4. real figure rolled up 5 px (about +0.2 Mg ha-1 on every marker) -> stated-mean guard
+$ Rscript digitize_brennan_boyd_2012_fig5.R <scratch>/fig5_shifted_up_5px.jpg
+  treatment_id value_Mg_ha stated_8yr_mean difference
+1    socs_sys3     7.08875             6.9      0.189
+2    socs_sys4     7.71875             7.5      0.219
+3    socs_sys5     5.75000             5.5      0.250
+4    socs_sys6     5.95750             5.7      0.257
+5    socs_sys7     7.34250             7.1      0.243
+6    socs_sys8     7.39750             7.2      0.197
+Error: figure reading is more than 0.1 Mg ha-1 off a stated mean
+Execution halted
+exit=1
+output csv left untouched by the failed run: yes

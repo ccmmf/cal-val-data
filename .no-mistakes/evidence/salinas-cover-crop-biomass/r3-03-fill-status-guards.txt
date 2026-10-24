@@ -1,0 +1,8 @@
+scenario: FILLED_PUBLICATION_FIGURE removed from the fill_status enum (scratch copy of HEAD)
+observations valid: False | errors: 48 Counter({('constraint-error', 'fill_status'): 48})
+  e.g. constraint-error row 926 'FILLED_PUBLICATION_FIGURE'
+  e.g. constraint-error row 927 'FILLED_PUBLICATION_FIGURE'
+
+scenario: one cover crop row (socs_sys3 year 1) with misspelled fill_status FILLED_PUBLICATION_FIGUR, committed schema
+observations valid: False | errors: 1 Counter({('constraint-error', 'fill_status'): 1})
+  e.g. constraint-error row 926 'FILLED_PUBLICATION_FIGUR'

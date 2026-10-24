@@ -1,0 +1,28 @@
+$ Rscript -e 'testthat::test_file("tests/testthat/test-white-salinas.R", reporter = "location")'   # at 976cc4d
+Start test: white_salinas_2020 SOC stocks carry the White et al. (2024) correction
+  'test-white-salinas.R:17:3' [success]
+  'test-white-salinas.R:18:3' [success]
+  'test-white-salinas.R:19:3' [success]
+  'test-white-salinas.R:23:3' [success]
+  'test-white-salinas.R:25:3' [success]
+  'test-white-salinas.R:28:3' [success]
+  'test-white-salinas.R:29:3' [success]
+  'test-white-salinas.R:30:3' [success]
+  'test-white-salinas.R:31:3' [success]
+  'test-white-salinas.R:32:3' [success]
+End test: white_salinas_2020 SOC stocks carry the White et al. (2024) correction
+
+Start test: white_salinas_2020 cover crop biomass matches the Fig. 5 digitizer output
+  'test-white-salinas.R:45:3' [success]
+  'test-white-salinas.R:46:3' [success]
+  'test-white-salinas.R:47:3' [success]
+  'test-white-salinas.R:50:3' [success]
+  'test-white-salinas.R:53:3' [success]
+  'test-white-salinas.R:56:3' [success]
+  'test-white-salinas.R:57:3' [success]
+  'test-white-salinas.R:58:3' [success]
+  'test-white-salinas.R:59:3' [success]
+  'test-white-salinas.R:60:3' [success]
+End test: white_salinas_2020 cover crop biomass matches the Fig. 5 digitizer output
+
+exit=0

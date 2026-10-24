@@ -1,0 +1,34 @@
+Drift guard: one observations.csv row changed in a throwaway copy of 976cc4d, then
+$ Rscript -e 'testthat::test_file("tests/testthat/test-white-salinas.R", reporter = "summary")'
+
+## mutation: socs_sys3 Year 1 value 9.69 -> 9.79
+══ Failed ══════════════════════════════════════════════════════════════════════
+── 1. Failure ('test-white-salinas.R:53:3'): white_salinas_2020 cover crop bioma
+as.numeric(obs$value) not equal to as.numeric(digitized$value_Mg_ha).
+1/48 mismatches
+[1] 9.79 - 9.69 == 0.1
+══ DONE ════════════════════════════════════════════════════════════════════════
+
+## mutation: socs_sys7 Year 1 ci95_lower/ci95_upper dropped from attributes_json
+══ Failed ══════════════════════════════════════════════════════════════════════
+── 1. Failure ('test-white-salinas.R:56:3'): white_salinas_2020 cover crop bioma
+ci("ci95_lower") not equal to as.numeric(digitized$ci95_lower).
+1/48 mismatches
+[33] NA - 7.38 == NA
+── 2. Failure ('test-white-salinas.R:57:3'): white_salinas_2020 cover crop bioma
+ci("ci95_upper") not equal to as.numeric(digitized$ci95_upper).
+1/48 mismatches
+[33] NA - 9.07 == NA
+── 3. Failure ('test-white-salinas.R:58:3'): white_salinas_2020 cover crop bioma
+sum(!is.na(ci("ci95_lower"))) not equal to 33L.
+1/1 mismatches
+[1] 32 - 33 == -1
+══ DONE ════════════════════════════════════════════════════════════════════════
+
+## mutation: socs_sys5 Year 8 fill_status -> FILLED_PUBLICATION_TABLE
+══ Failed ══════════════════════════════════════════════════════════════════════
+── 1. Failure ('test-white-salinas.R:60:3'): white_salinas_2020 cover crop bioma
+all(obs$fill_status == "FILLED_PUBLICATION_FIGURE") is not TRUE
+`actual`:   FALSE
+`expected`: TRUE 
+══ DONE ════════════════════════════════════════════════════════════════════════
