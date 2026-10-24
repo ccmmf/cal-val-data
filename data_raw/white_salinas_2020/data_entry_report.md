@@ -186,14 +186,14 @@ have their own date question. Both are in Open follow-ups.
   C:N was measured in only 4 of the 8 study years (range 18–28, mean 22);
   captured at the source level, not per-year, since per-year values are not
   recoverable from the publication.
-- **Quadrennial cover crop schedule.** Confirmed from the companion paper:
-  the quadrennial cover crop was planted in Years 3 and 7 (fall 2006 and
-  fall 2010). Year 0 is the pre-study baseline soil sampling (fall 2003).
-  Per Brennan and Boyd (2012), the whole field grew a legume–rye cover crop
-  in the winter before the trial (2002–03), and the systems' different
-  cover crops start with the fall 2003 planting (cover crop Year 1, planted
-  16 October 2003). Counting from the pre-trial legume–rye gives the
-  quadrennial plantings at fall 2006 and fall 2010.
+- **Quadrennial cover crop schedule.** Year 0 is the pre-study baseline
+  soil sampling (fall 2003). Per Brennan and Boyd (2012), the whole field
+  grew a legume–rye cover crop in the winter before the trial (2002–03),
+  and the systems' different cover crops start with the fall 2003 planting
+  (cover crop Year 1, planted 16 October 2003). Confirmed from the
+  companion paper, the quadrennial cover crop was planted in fall 2006 and
+  fall 2010, cover crop Years 4 and 8: every fourth winter, counting from
+  the pre-trial legume–rye.
 - **Pre-study site history.** 1990–1996 hay production and mixed
   vegetable / sugar beet trials; 1997–2003 occasional vegetable trials and
   cover crops with minimal compost or fertilizer inputs and frequent fallow.
