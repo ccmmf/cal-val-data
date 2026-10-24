@@ -4,10 +4,15 @@
 # Fig. 5; see data_entry_report.md, "Cover crop biomass"
 #
 # the paper is copyrighted, so the figure is not checked in. extract it from
-# your own copy of 10.2134/agronj2011.0330 (page 8 holds one 667 x 1056
-# greyscale JPEG, e.g. `mutool extract paper.pdf`), then run from this folder:
+# your own copy of 10.2134/agronj2011.0330 in a scratch folder outside this
+# repository, since `mutool extract` writes every image and font in the PDF
+# into the current directory (page 8 holds one 667 x 1056 greyscale JPEG):
 #
-#   Rscript digitize_brennan_boyd_2012_fig5.R path/to/fig5.jpg
+#   cd "$(mktemp -d)" && mutool extract path/to/paper.pdf
+#
+# then run from this folder with the path to the extracted figure:
+#
+#   Rscript digitize_brennan_boyd_2012_fig5.R /path/to/scratch/image-NNNN.jpg
 
 library(jpeg)
 library(readr)
