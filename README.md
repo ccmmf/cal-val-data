@@ -41,7 +41,7 @@ Each dataset pulls replicate level values from a public archive; companion analy
 
 | dataset_id | site | lat, lon | period | treatments | variables | citations (DOI) |
 | ---------- | ---- | -------- | ------ | ---------- | --------- | --------------- |
-| `white_salinas_2020` | salinas_socs (USDA ARS, Salinas Valley CA) | 36.62, -121.53 | 2003 to 2011 (8 yr) | 8 systems `socs_sys1`..`socs_sys8`, 4 blocks (compost with or without cover crop type, frequency, seeding rate) | SOC stock and concentration, bulk density, total N, nitrate | 10.1016/j.dib.2020.106481; 10.1371/journal.pone.0228677; 10.1371/journal.pone.0307250 (correction) |
+| `white_salinas_2020` | salinas_socs (USDA ARS, Salinas Valley CA) | 36.62, -121.53 | 2003 to 2011 (8 yr) | 8 systems `socs_sys1`..`socs_sys8`, 4 blocks (compost with or without cover crop type, frequency, seeding rate) | SOC stock and concentration, bulk density, total N, nitrate, cover crop shoot dry matter | 10.1016/j.dib.2020.106481; 10.1371/journal.pone.0228677; 10.1371/journal.pone.0307250 (correction); 10.2134/agronj2011.0330 (cover crop biomass) |
 | `nichols_modesto_2024` | modesto_almond_usda (USDA ARS almond fertigation trial, Modesto CA) | 37.63, -121.09 | 2018 to 2019 (2 yr) | `compost` vs `no_compost` (annual compost top dress vs control, same drip fertigation) | N2O flux, total C, total N, bulk density | 10.1002/saj2.20615; 10.15482/USDA.ADC/26155504 |
 | `russell_ranch_tautges_2019` | russell_ranch_davis (UC Davis Russell Ranch Century Experiment, Davis CA) | 38.54, -121.87 | 1992 to 2014 (study years -1 to 21) | 14 systems, 13 with observations (conventional, organic, legume cover, alfalfa phase corn-tomato; irrigated and rainfed wheat; transitional; native grass reference) | total C and N, bulk density to 250 cm, NH4-N, NO3-N, soil organic matter, corn, tomato, wheat, alfalfa and cover crop yields | 10.1002/ecy.2105; 10.1111/gcb.14762 |
 | `raffeld_2024` | russell_ranch_davis (UC Davis Russell Ranch Century Experiment, Davis CA) | 38.54, -121.87 | 1993 and 2012 | 8 treatments, 6 plots each | `SOC_stock_Mg_ha` at the treatment-specific 0-30 cm reference soil mass, computed per plot with SimpleESM ESM2 | 10.5061/dryad.p2ngf1w06 |
@@ -155,7 +155,7 @@ Each workbook tab maps to one CSV in `data/`. Full field schema, types, and keys
 | `notes` | string | free text, including date precision caveats |
 | `dataset_id` | string | short source packet id, e.g. `white_salinas_2020` |
 | `reported_units` | string | units as source reports them |
-| `observation_level` | string | replicate or zone_mean |
+| `observation_level` | string | experimental unit the row represents (e.g. `replicate`, `treatment_mean`); allowed values in [datapackage.json](datapackage.json) |
 
 ### managements.csv columns
 
@@ -182,7 +182,7 @@ Smaller tables (`citations`, `sites`, `treatments`, `treatment_pairs`, `methods`
 - **Dates.** Record source stated range in `min_date` and `max_date`. An exact date sets both equal; a stated month or season bounds interval; an unknown date stays blank with reason in `notes`. Never invent a day of year.
 - **Statistics.** Store reported statistic (`n`, `statname`, `stat`) as given. Statistic conversion (standard deviation to standard error, and similar) is a downstream step, not curation.
 - **Basis.** Methods state dry vs wet basis (prefer dry) and volumetric vs mass basis. Amendment rates carry their basis in `units`.
-- **fill_status.** Provenance code for each value. Codes in current data: FILLED_SITE_DATA_XLSX, FILLED_ZOTERO_XLSX, FILLED_DATASET. Additional codes (PAPER_TEXT, NEEDS_FILL, MISSING_IN_SOURCE) are reserved for rows still being curated.
+- **fill_status.** Provenance code for each value. Allowed codes are the `fill_status` enum in [datapackage.json](datapackage.json). Some codes (PAPER_TEXT, NEEDS_FILL, MISSING_IN_SOURCE) are reserved for rows still being curated.
 
 ## Validation
 
