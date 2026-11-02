@@ -47,6 +47,12 @@ Cover crop biomass comes as treatment means read from Brennan and Boyd
   Years 1–8. Yearly values appear only in Fig. 5; they were read from the
   figure (see Cover crop biomass below). Table 2 gives the sampling dates.
   <https://doi.org/10.2134/agronj2011.0330>
+- **Brennan and Smith (2017)** — *Agronomy Journal* 109:2199–2213.
+  Legume–rye cover crop in `socs_sys1`, `socs_sys2` and `socs_sys4`,
+  Years 4 and 8. Used only as a cross-check of the compost rate (7.6 Mg ha⁻¹
+  oven dry before each vegetable crop; 15.2 Mg ha⁻¹ a year in Table 1); not
+  yet in `citations`.
+  <https://doi.org/10.2134/agronj2016.06.0354>
 
 **License / attribution:** CC-BY (upstream). Attribute White, Brennan,
 Cavigelli and the USDA-ARS archive.
@@ -183,10 +189,28 @@ have their own date question. Both are in Open follow-ups.
 ## Curation Decisions and Caveats
 
 - **Compost characterization.** Urban yard-waste compost, applied at
-  7.6 Mg ha⁻¹, ~15 g N kg⁻¹, recorded as `event_type = compost_application`.
-  C:N was measured in only 4 of the 8 study years (range 18–28, mean 22);
-  captured at the source level, not per-year, since per-year values are not
-  recoverable from the publication.
+  7.6 Mg ha⁻¹ oven dry before each vegetable crop in the seven compost
+  systems (`socs_sys2`–`socs_sys8`): 15 applications, 114 Mg ha⁻¹ per
+  system over the study (*Data in Brief* Table 1, footnote 5; White et al.
+  2020b Table 1, which prints the 114 for its Systems 2–5; Brennan and Boyd
+  2012; Brennan and Smith 2017, which gives 15.2 Mg ha⁻¹ a year for
+  Years 1–7). White et al. (2020b) print the second application of each
+  year as "7.6 kg ha-1", a unit slip; the total needs Mg. These 105
+  applications are the `managements` rows with `mgmttype = fertilization`
+  and units `Mg ha-1 (oven-dry)`, so a filter on `compost_application`
+  misses them; the only Salinas `compost_application` row is the 2003
+  establishment compost. Twelve of the 105 (`fertilization-0008`–`0011`,
+  `0050`–`0054` and `0057`–`0059`) had been entered as 8, which put
+  `socs_sys2`–`socs_sys6` at 114.4–115.2 Mg ha⁻¹; they were corrected to 7.6
+  in the workbook on 2026-11-03
+  ([ccmmf/organization#297](https://github.com/ccmmf/organization/issues/297)).
+  White et al. (2020b) give the compost's C, 317 g C kg⁻¹, and its C:N,
+  measured in only 4 of the 8 study years (range 18–28, mean 22); together
+  they put N near 14 g N kg⁻¹ (11–18 across that C:N range). None of the
+  papers used here reports the N concentration itself, so the rows'
+  `N_content_g_kg=15` in `attributes_keyvalue` has no source yet (see Open
+  follow-ups). C:N is not recorded on the rows, and the papers give no
+  per-year values.
 - **Quadrennial cover crop schedule.** Year 0 is the pre-study baseline
   soil sampling (fall 2003). Per Brennan and Boyd (2012), the whole field
   grew a legume–rye cover crop in the winter before the trial (2002–03),
@@ -209,9 +233,9 @@ have their own date question. Both are in Open follow-ups.
   compost control, to the switch to spading to 30 cm and two fertilized,
   irrigated crops a year, which likely broke up macroaggregates built by
   earlier cover crop roots and exposed the SOC they protected. The routine
-  rate, 7.6 Mg ha⁻¹ dry weight before each vegetable crop, is on a different
-  basis. Currently a single `treatment_id = all_systems` pre-establishment
-  row in `managements`.
+  rate, 7.6 Mg ha⁻¹ oven dry before each vegetable crop, is on a different
+  basis. Currently a single `managements` row, `compost_application-0001`,
+  with `treatments.name = All systems (pre-study establishment)`.
 - **No GHG fluxes.** This dataset has no N₂O, CH₄, or CO₂ measurements —
   explicitly noted as a limitation in the paper. It supports SOC magnitude
   and treatment-contrast validation only.
@@ -384,9 +408,8 @@ whether the snapshot holds the uncorrected or the corrected values.
   `study_year` 4 rows are dated fall 2006, the Year 3 window, so they may
   be the Year 3 measurement labelled as Year 4.
 - Add cover crop biomass for `socs_sys1` and `socs_sys2` (Years 4 and 8)
-  from Brennan and Smith (2017), 10.2134/agronj2016.06.0354. Its every
-  winter System 3 was seeded at 420 kg ha⁻¹, so it is `socs_sys4`, not
-  `socs_sys3`.
+  from Brennan and Smith (2017). Its every winter System 3 was seeded at
+  420 kg ha⁻¹, so it is `socs_sys4`, not `socs_sys3`.
 - Replace the figure-read values with plot data if the authors share it
   (asked 2026-10-24).
 - Rebuild the Salinas management calendar. It is schematic: generic
@@ -394,10 +417,31 @@ whether the snapshot holds the uncorrected or the corrected values.
   (their cover crop plantings run fall 2004 to fall 2011 instead of fall
   2003 to fall 2010), and termination is only a 1 February to 15 March
   tillage window. The six Year 1 cover crop biomass rows (winter 2003–04)
-  therefore have no matching cover crop in `managements` yet. Aritra
-  approved rebuilding it in a separate PR from Brennan and Boyd (2012)
-  Table 2, which gives each winter's planting, last irrigation, sampling
-  and termination dates.
+  therefore have no matching cover crop in `managements` yet. The vegetable
+  crops, with their compost and tillage, are a year late too: they run 2005
+  to 2012, while White et al. (2020b) put Year 1 (lettuce, then baby leaf
+  spinach) in 2004, so Year 8 (lettuce only) was 2011; `managements` also
+  follows the first lettuce with broccoli, not spinach. Aritra approved
+  rebuilding it in a separate PR from Brennan and Boyd (2012) Table 2,
+  which gives each winter's planting, last irrigation, sampling and
+  termination dates; the vegetable rows need their dates from the papers'
+  text.
+- Add the Salinas fertilizer N rows (ccmmf/organization#297); the Salinas
+  `fertilization` rows are compost only. The fertilizer went to all eight
+  systems, `socs_sys1` included. Brennan and Boyd (2012) give pelleted
+  preplant fertilizer at 22 kg N ha⁻¹ for spinach, about 56 for lettuce and
+  112 (Year 2) or 134 (Years 3–7) for broccoli, with liquid fertilizer
+  through the drip bringing lettuce to 73 and broccoli to 134 (Year 2) or
+  168 (Years 3–7) kg N ha⁻¹. White et al. (2020b) give 55–66 kg N ha⁻¹
+  pelleted at the spring bed preparation and 134–170 kg N ha⁻¹ in total for
+  broccoli, and say the liquid fertilizer supplied less than 25% of the
+  fertilizer N from Year 2 on.
+- Decide what the 105 Salinas compost rows carry as `N_content_g_kg`. They
+  say 15, cited to *Data in Brief*, which gives no compost N; the compost's
+  C and C:N put it near 14 (White et al. 2020b). Maltais-Landry et al.
+  (2016), which budgets N and P on these plots
+  (<https://doi.org/10.1016/j.agee.2016.03.007>), may report it and has not
+  been checked.
 
 ---
 

@@ -21,6 +21,12 @@ Changes to datasets, schemas, and curation workflows are documented here.
 
 ### Changed
 
+- Salinas compost: 12 `managements` rows (`fertilization-0008`–`0011`,
+  `0050`–`0054` and `0057`–`0059`) changed from 8 to 7.6 Mg ha⁻¹ oven dry,
+  the published rate for every application, so each compost system now
+  totals 114 Mg ha⁻¹
+  ([ccmmf/organization#297](https://github.com/ccmmf/organization/issues/297));
+  see the Salinas report in `data_raw/`.
 - `crops`: the legume–rye and mustard mixtures now list their actual
   components (faba bean, pea, common and purple vetch with rye; *Sinapis
   alba* with *Brassica juncea*), as in Brennan and Boyd (2012).
