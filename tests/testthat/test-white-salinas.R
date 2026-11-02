@@ -59,3 +59,22 @@ test_that("white_salinas_2020 cover crop biomass matches the Fig. 5 digitizer ou
   expect_true(all(obs$n == "4"))
   expect_true(all(obs$fill_status == "FILLED_PUBLICATION_FIGURE"))
 })
+
+test_that("white_salinas_2020 compost applications are 7.6 Mg/ha oven dry per vegetable crop", {
+  mgmt_path <- file.path(root, "data", "managements.csv")
+  skip_if_not(file.exists(mgmt_path), "managements not generated yet")
+  mgmt <- read_chr(mgmt_path)
+  compost <- mgmt[mgmt$sites.name == "salinas_socs" & mgmt$mgmttype == "fertilization" &
+                    mgmt$units == "Mg ha-1 (oven-dry)", ]
+  systems <- paste0("socs_sys", 2:8)
+
+  expect_equal(nrow(compost), 105L)
+  # White et al. (2020) give 7.6 Mg/ha before each vegetable crop and 114 Mg/ha
+  # per compost system, so a rate typo re-entered in the workbook fails here
+  expect_true(all(as.numeric(compost$level) == 7.6))
+  expect_identical(sort(unique(compost$treatments.name)), systems)
+  per_system <- function(f) vapply(systems, function(s) f(compost[compost$treatments.name == s, ]),
+                                   numeric(1), USE.NAMES = FALSE)
+  expect_equal(per_system(nrow), rep(15, 7))
+  expect_equal(per_system(function(d) sum(as.numeric(d$level))), rep(114, 7))
+})
