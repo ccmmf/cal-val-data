@@ -1,0 +1,45 @@
+=== code mutation: unit match ignores case
+  - if (u %in% accepted) "ok" else "conflict"
+  + if (tolower(u) %in% tolower(accepted)) "ok" else "conflict"
+  fixture tests failing: 1 of 8
+   [FAIL] unit_status follows the variables.csv conventions 
+ratchet tests failing: 0 of 8
+
+=== code mutation: repeat check keeps the primary key
+  - rest <- dat[, setdiff(names(dat), pk), drop = FALSE]
+  + rest <- dat
+  fixture tests failing: 1 of 8
+   [FAIL] a primary key that numbers the rows does not hide a repeated record 
+ratchet tests failing: 0 of 8
+
+=== code mutation: DOI compare no longer case folded
+  - fold_value <- function(x) tolower(trimws(as.character(x)))
+  + fold_value <- function(x) trimws(as.character(x))
+  fixture tests failing: 1 of 8
+   [FAIL] a DOI on two citation rows warns once and names both ids 
+ratchet tests failing: 0 of 8
+
+=== code mutation: source-reported mixes warn instead of inform
+  - log_info(
+        resource$name, v, "carries more than one unit as published",
+  + log_warn(
+        resource$name, v, "carries more than one unit as published",
+  fixture tests failing: 1 of 8
+   [FAIL] check_units warns per conflicting variable, names method and dataset, and only informs on published mixes 
+  [FAIL] validate warns only about the known gaps
+ratchet tests failing: 1 of 8
+
+=== code mutation: qualifier not stripped
+  - accepted <- c(parts, trimws(sub("\\s*\\([^()]*\\)$", "", parts)))
+  + accepted <- parts
+  fixture tests failing: 1 of 8
+   [FAIL] unit_status follows the variables.csv conventions 
+ratchet tests failing: 0 of 8
+
+=== code mutation: empty mgmttype not checked
+  -   managements = "mgmttype"
+  +   managements = character(0)
+  fixture tests failing: 1 of 8
+   [FAIL] empty observation_level, reported_units and mgmttype warn with their count and place 
+ratchet tests failing: 0 of 8
+

@@ -1,0 +1,251 @@
+=== scenario: obs_repeat_new_dataset ===
+mutation: copied one ameriflux_us_bi1_mvp observation row: soil_carbon_content 
+--- $ Rscript scripts/validate.R
+WARNING: observations has 1189 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / bulk_density_g_cm3 536; russell_ranch_tautges_2019 / total_nitrogen_pct 343; russell_ranch_tautges_2019 / total_carbon_pct 103; russell_ranch_tautges_2019 / soil_no3_n_mg_kg 52; russell_ranch_tautges_2019 / tomato_green_f
+validated 10 table(s) with 6 warning(s)
+exit status: 0
+data/*.csv unchanged by validate.R
+--- test-integrity.R
+  [pass] validate_data runs in warn mode without error
+  [FAIL] observation repeats stay within the known Russell Ranch rows
+  [pass] management repeats stay within the known Russell Ranch rows
+  [pass] empty mgmttype stays within the known Delta rows
+  [pass] duplicated DOIs in citations do not grow
+  [pass] citation repeats do not grow
+  [pass] coverage repeats do not grow
+  [pass] validate warns only about the known gaps
+ratchet tests failing: 1 of 8
+
+=== scenario: obs_repeat_grow_russell ===
+mutation: added one more Russell observation repeat 
+--- $ Rscript scripts/validate.R
+WARNING: observations has 1189 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / bulk_density_g_cm3 536; russell_ranch_tautges_2019 / total_nitrogen_pct 343; russell_ranch_tautges_2019 / total_carbon_pct 104; russell_ranch_tautges_2019 / soil_no3_n_mg_kg 52; russell_ranch_tautges_2019 / tomato_green_f
+validated 10 table(s) with 6 warning(s)
+exit status: 0
+data/*.csv unchanged by validate.R
+--- test-integrity.R
+  [pass] validate_data runs in warn mode without error
+  [FAIL] observation repeats stay within the known Russell Ranch rows
+  [pass] management repeats stay within the known Russell Ranch rows
+  [pass] empty mgmttype stays within the known Delta rows
+  [pass] duplicated DOIs in citations do not grow
+  [pass] citation repeats do not grow
+  [pass] coverage repeats do not grow
+  [pass] validate warns only about the known gaps
+ratchet tests failing: 1 of 8
+
+=== scenario: obs_repeat_shrink ===
+mutation: removed one known Russell repeat (row 987 , dataset russell_ranch_tautges_2019 ) 
+--- $ Rscript scripts/validate.R
+WARNING: observations has 1187 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / bulk_density_g_cm3 536; russell_ranch_tautges_2019 / total_nitrogen_pct 343; russell_ranch_tautges_2019 / total_carbon_pct 102; russell_ranch_tautges_2019 / soil_no3_n_mg_kg 52; russell_ranch_tautges_2019 / tomato_green_f
+validated 10 table(s) with 6 warning(s)
+exit status: 0
+data/*.csv unchanged by validate.R
+--- test-integrity.R
+  [pass] validate_data runs in warn mode without error
+  [pass] observation repeats stay within the known Russell Ranch rows
+  [pass] management repeats stay within the known Russell Ranch rows
+  [pass] empty mgmttype stays within the known Delta rows
+  [pass] duplicated DOIs in citations do not grow
+  [pass] citation repeats do not grow
+  [pass] coverage repeats do not grow
+  [pass] validate warns only about the known gaps
+ratchet tests failing: 0 of 8
+
+=== scenario: mgmt_repeat_new_site ===
+mutation: copied salinas_socs management compost_application-0001 as planting-9999 
+--- $ Rscript scripts/validate.R
+WARNING: managements has 2196 row(s) repeating an earlier row in every column but event_id [russell_ranch_davis / planting 760; russell_ranch_davis / harvest 629; russell_ranch_davis / fertilization 590; russell_ranch_davis / compost_application 216; salinas_socs / compost_application 1]
+validated 10 table(s) with 6 warning(s)
+exit status: 0
+data/*.csv unchanged by validate.R
+--- test-integrity.R
+  [pass] validate_data runs in warn mode without error
+  [pass] observation repeats stay within the known Russell Ranch rows
+  [FAIL] management repeats stay within the known Russell Ranch rows
+  [pass] empty mgmttype stays within the known Delta rows
+  [pass] duplicated DOIs in citations do not grow
+  [pass] citation repeats do not grow
+  [pass] coverage repeats do not grow
+  [pass] validate warns only about the known gaps
+ratchet tests failing: 1 of 8
+
+=== scenario: mgmt_empty_type_non_delta ===
+mutation: blanked mgmttype on compost_application-0001 at salinas_socs 
+--- $ Rscript scripts/validate.R
+WARNING: managements mgmttype is empty on 43 row(s) [US-Bi2__management_field 22; US-Twt 6; US-Twt__publication_site_1 5; US-Twt__publication_site_2 4; US-Bi1 3; US-Bi1__alfalfa_chambers 2; salinas_socs 1]
+validated 10 table(s) with 6 warning(s)
+exit status: 0
+data/*.csv unchanged by validate.R
+--- test-integrity.R
+  [pass] validate_data runs in warn mode without error
+  [pass] observation repeats stay within the known Russell Ranch rows
+  [pass] management repeats stay within the known Russell Ranch rows
+  [FAIL] empty mgmttype stays within the known Delta rows
+  [pass] duplicated DOIs in citations do not grow
+  [pass] citation repeats do not grow
+  [pass] coverage repeats do not grow
+  [pass] validate warns only about the known gaps
+ratchet tests failing: 1 of 8
+
+=== scenario: doi_third_row ===
+mutation: added a third citations row on DOI 10.1016/J.AGRFORMET.2019.01.017 
+--- $ Rscript scripts/validate.R
+validated 10 table(s) with 6 warning(s)
+exit status: 0
+data/*.csv unchanged by validate.R
+--- test-integrity.R
+  [pass] validate_data runs in warn mode without error
+  [pass] observation repeats stay within the known Russell Ranch rows
+  [pass] management repeats stay within the known Russell Ranch rows
+  [pass] empty mgmttype stays within the known Delta rows
+  [FAIL] duplicated DOIs in citations do not grow
+  [pass] citation repeats do not grow
+  [pass] coverage repeats do not grow
+  [pass] validate warns only about the known gaps
+ratchet tests failing: 1 of 8
+
+=== scenario: doi_new_duplicate ===
+mutation: added a second row on DOI 10.1371/journal.pone.0228677 (upper case, padded) 
+--- $ Rscript scripts/validate.R
+WARNING: citations doi has 22 value(s) on more than one row: 10.5061/dryad.qz612jmnx (anthony_bouldin_2024_dryad = ref_10_5061_dryad_qz612jmnx); 10.1038/s41467-023-37391-2 (ref_10_1038_s41467_023_37391_2 = anthony2023cpo); 10.1016/J.AGRFORMET.2016.04.001 (ref_10_1016_j_agrformet_2016_04_001 = baldocchi2016tio); 10.1111/GCB.14559
+validated 10 table(s) with 6 warning(s)
+exit status: 0
+data/*.csv unchanged by validate.R
+--- test-integrity.R
+  [pass] validate_data runs in warn mode without error
+  [pass] observation repeats stay within the known Russell Ranch rows
+  [pass] management repeats stay within the known Russell Ranch rows
+  [pass] empty mgmttype stays within the known Delta rows
+  [FAIL] duplicated DOIs in citations do not grow
+  [pass] citation repeats do not grow
+  [pass] coverage repeats do not grow
+  [pass] validate warns only about the known gaps
+ratchet tests failing: 1 of 8
+
+=== scenario: citation_exact_repeat ===
+mutation: copied citations row Brennan EB, Boyd NS (2012). Winter cover crop seeding rate and variety affects during eight years of organic vegetables: I. Cover crop biomass production. Agronomy Journal 104:684-698. under a new citation_id 
+--- $ Rscript scripts/validate.R
+WARNING: citations has 20 row(s) repeating an earlier row in every column but citation_id [baldocchi2016tio 1; baldocchi2018tpa 1; baldocchi2020onr 1; brennan2012_copy 1; chamberlain2017eod 1; chu2018tdo 1; chu2021roe 1; eichelmann2018teo 1; and 12 more]
+WARNING: citations doi has 22 value(s) on more than one row: 10.5061/dryad.qz612jmnx (anthony_bouldin_2024_dryad = ref_10_5061_dryad_qz612jmnx); 10.1038/s41467-023-37391-2 (ref_10_1038_s41467_023_37391_2 = anthony2023cpo); 10.1016/J.AGRFORMET.2016.04.001 (ref_10_1016_j_agrformet_2016_04_001 = baldocchi2016tio); 10.1111/GCB.14559
+validated 10 table(s) with 6 warning(s)
+exit status: 0
+data/*.csv unchanged by validate.R
+--- test-integrity.R
+  [pass] validate_data runs in warn mode without error
+  [pass] observation repeats stay within the known Russell Ranch rows
+  [pass] management repeats stay within the known Russell Ranch rows
+  [pass] empty mgmttype stays within the known Delta rows
+  [FAIL] duplicated DOIs in citations do not grow
+  [FAIL] citation repeats do not grow
+  [pass] coverage repeats do not grow
+  [pass] validate warns only about the known gaps
+ratchet tests failing: 2 of 8
+
+=== scenario: coverage_third_block ===
+mutation: stacked a third copy of the 7 row guidance block 
+--- $ Rscript scripts/validate.R
+WARNING: coverage has 14 row(s) repeating an earlier row in every column [CH4 2; Core outputs 2; MVP Coverage Guidance 2; Other variables 2; System coverage 2; Treatments 2; Validation types 2]
+validated 10 table(s) with 6 warning(s)
+exit status: 0
+data/*.csv unchanged by validate.R
+--- test-integrity.R
+  [pass] validate_data runs in warn mode without error
+  [pass] observation repeats stay within the known Russell Ranch rows
+  [pass] management repeats stay within the known Russell Ranch rows
+  [pass] empty mgmttype stays within the known Delta rows
+  [pass] duplicated DOIs in citations do not grow
+  [pass] citation repeats do not grow
+  [FAIL] coverage repeats do not grow
+  [pass] validate warns only about the known gaps
+ratchet tests failing: 1 of 8
+
+=== scenario: unit_case_conflict ===
+mutation: changed white_salinas_2020 SOC_stock_Mg_ha reported_units from ‘Mg C ha-1’ to ‘mg C ha-1’ 
+--- $ Rscript scripts/validate.R
+WARNING: observations SOC_stock_Mg_ha has 1 row(s) in units variables.csv does not declare ('Mg C ha-1'): 'mg C ha-1' 1 (equivalent_soil_mass_white_2024_correction: white_salinas_2020)
+validated 10 table(s) with 7 warning(s)
+exit status: 0
+data/*.csv unchanged by validate.R
+--- test-integrity.R
+  [pass] validate_data runs in warn mode without error
+  [pass] observation repeats stay within the known Russell Ranch rows
+  [pass] management repeats stay within the known Russell Ranch rows
+  [pass] empty mgmttype stays within the known Delta rows
+  [pass] duplicated DOIs in citations do not grow
+  [pass] citation repeats do not grow
+  [pass] coverage repeats do not grow
+  [FAIL] validate warns only about the known gaps
+ratchet tests failing: 1 of 8
+
+=== scenario: unit_whitespace_only ===
+mutation: padded bulk_density_g_cm3 reported_units ‘g cm-3’ -> ‘g   cm-3’ 
+--- $ Rscript scripts/validate.R
+validated 10 table(s) with 6 warning(s)
+exit status: 0
+data/*.csv unchanged by validate.R
+--- test-integrity.R
+  [pass] validate_data runs in warn mode without error
+  [pass] observation repeats stay within the known Russell Ranch rows
+  [pass] management repeats stay within the known Russell Ranch rows
+  [pass] empty mgmttype stays within the known Delta rows
+  [pass] duplicated DOIs in citations do not grow
+  [pass] citation repeats do not grow
+  [pass] coverage repeats do not grow
+  [pass] validate warns only about the known gaps
+ratchet tests failing: 0 of 8
+
+=== scenario: salinas_units_blank ===
+mutation: blanked reported_units on white_salinas_2020 bulk_density_g_cm3 
+--- $ Rscript scripts/validate.R
+WARNING: observations reported_units is empty on 1 row(s) [white_salinas_2020 / bulk_density_g_cm3 1]
+validated 10 table(s) with 7 warning(s)
+exit status: 0
+data/*.csv unchanged by validate.R
+--- test-integrity.R
+  [pass] validate_data runs in warn mode without error
+  [pass] observation repeats stay within the known Russell Ranch rows
+  [pass] management repeats stay within the known Russell Ranch rows
+  [pass] empty mgmttype stays within the known Delta rows
+  [pass] duplicated DOIs in citations do not grow
+  [pass] citation repeats do not grow
+  [pass] coverage repeats do not grow
+  [FAIL] validate warns only about the known gaps
+ratchet tests failing: 1 of 8
+
+=== scenario: obs_level_blank ===
+mutation: blanked observation_level on nichols_modesto_2024 N2O_flux_g_N_ha_d 
+--- $ Rscript scripts/validate.R
+WARNING: observations observation_level is empty on 1 row(s) [nichols_modesto_2024 / N2O_flux_g_N_ha_d 1]
+validated 10 table(s) with 7 warning(s)
+exit status: 0
+data/*.csv unchanged by validate.R
+--- test-integrity.R
+  [pass] validate_data runs in warn mode without error
+  [pass] observation repeats stay within the known Russell Ranch rows
+  [pass] management repeats stay within the known Russell Ranch rows
+  [pass] empty mgmttype stays within the known Delta rows
+  [pass] duplicated DOIs in citations do not grow
+  [pass] citation repeats do not grow
+  [pass] coverage repeats do not grow
+  [FAIL] validate warns only about the known gaps
+ratchet tests failing: 1 of 8
+
+=== scenario: undeclared_units ===
+mutation: blanked variables.csv units for bulk_density_g_cm3 
+--- $ Rscript scripts/validate.R
+WARNING: variables.csv gives no units for 1 variable(s) used in observations: bulk_density_g_cm3
+validated 10 table(s) with 7 warning(s)
+exit status: 0
+data/*.csv unchanged by validate.R
+--- test-integrity.R
+  [pass] validate_data runs in warn mode without error
+  [pass] observation repeats stay within the known Russell Ranch rows
+  [pass] management repeats stay within the known Russell Ranch rows
+  [pass] empty mgmttype stays within the known Delta rows
+  [pass] duplicated DOIs in citations do not grow
+  [pass] citation repeats do not grow
+  [pass] coverage repeats do not grow
+  [FAIL] validate warns only about the known gaps
+ratchet tests failing: 1 of 8
+

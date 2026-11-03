@@ -1,0 +1,13 @@
+
+# tests/testthat/test-validate-checks.R 
+validate-checks: .................................................
+
+══ DONE ════════════════════════════════════════════════════════════════════════
+tests: 8, expectations failed: 0, skipped: 0
+
+# tests/testthat/test-integrity.R 
+integrity: ......................
+
+══ DONE ════════════════════════════════════════════════════════════════════════
+🧿 Your tests look perfect 🧿
+tests: 18, expectations failed: 0, skipped: 0

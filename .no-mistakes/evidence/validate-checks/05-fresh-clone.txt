@@ -1,0 +1,24 @@
+=== scenario: fresh clone, no data/*.csv generated
+--- $ Rscript scripts/validate.R
+skip citations not generated yet
+skip sites not generated yet
+skip treatments not generated yet
+skip treatment_pairs not generated yet
+skip managements not generated yet
+skip observations not generated yet
+skip methods not generated yet
+skip variables not generated yet
+skip crops not generated yet
+skip coverage not generated yet
+no data/*.csv generated yet; run scripts/ingest.R first
+exit status: 0
+--- test-integrity.R
+  [SKIP] validate_data runs in warn mode without error
+  [SKIP] observation repeats stay within the known Russell Ranch rows
+  [SKIP] management repeats stay within the known Russell Ranch rows
+  [SKIP] empty mgmttype stays within the known Delta rows
+  [SKIP] duplicated DOIs in citations do not grow
+  [SKIP] citation repeats do not grow
+  [SKIP] coverage repeats do not grow
+  [SKIP] validate warns only about the known gaps
+ratchet tests failing: 0 of 8
