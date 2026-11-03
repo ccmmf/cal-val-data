@@ -219,7 +219,6 @@ These warnings are expected on the current data and stay until the workbook or s
 - **`observations` has 1,188 rows that repeat an earlier row, all in `russell_ranch_tautges_2019`.** Most copies are separate plots: Wolf et al. (2018) report by plot, and the workbook kept only the east or west half in `replicate_id`, so plots with the same treatment, date, depth and value become identical rows. A row count is therefore not a sample size. The split is in the [Russell Ranch report](data_raw/russell_ranch_tautges_2019/data_entry_report.md); tracked in [ccmmf/organization#274](https://github.com/ccmmf/organization/issues/274). Capped at 1,188, all in that dataset.
 - **`coverage` has 7 rows that repeat an earlier row.** The Russell Ranch workbook's Coverage tab carries a second copy of the 7 row "MVP Coverage Guidance" block, and ingest stacks it under the first.
 
-
 ## Usage
 
 ### Load a table
