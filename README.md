@@ -127,7 +127,7 @@ Each workbook tab maps to one CSV in `data/`. Full field schema, types, and keys
 | `sites.csv` | site name and coordinates | `name` |
 | `treatments.csv` | treatment and system definitions, control flag | `name` |
 | `treatment_pairs.csv` | named contrasts for treatment difference validation | `pair_id` |
-| `managements.csv` | agronomic events (planting, harvest, tillage, fertilization, amendment) | `event_id` |
+| `managements.csv` | agronomic events (`mgmttype` values in [managements.csv columns](#managementscsv-columns)) | `event_id` |
 | `observations.csv` | measured data, long format | (composite) |
 | `methods.csv` | how each measurement was taken | `method name` |
 | `variables.csv` | variable dictionary (name, description, units) | `name` |
