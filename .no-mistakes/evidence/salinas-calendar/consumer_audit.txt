@@ -1,0 +1,101 @@
+== row accounting vs PR base (fabf5f5) ==
+rows HEAD: 4350  parent: 3866 
+[PASS] managements has 4350 rows
+[PASS] event_id unique
+[PASS] non-Salinas rows identical to parent (no other site touched)
+Salinas parent: 518  HEAD: 1002  removed: 0  added: 484  changed: 517 
+[PASS] 0 Salinas rows removed
+[PASS] 484 Salinas rows added
+[PASS] 517 Salinas rows changed
+
+fertilization    irrigation       tillage 
+          224           172            88 
+[PASS] added = 224 fertilization + 172 irrigation + 88 tillage
+[PASS] 2003 establishment compost row unchanged
+
+== crops and windows ==
+[PASS] lettuce planted in May every year 2004-2011
+[PASS] spinach only 2004, 8 systems
+[PASS] broccoli 2005-2010 planted July or August
+[PASS] no broccoli in 2011 (Year 8 lettuce only)
+[PASS] lettuce harvest in June or July
+[PASS] 2011 lettuce harvest ends 30 June
+[PASS] 16 unharvested rows = 2004 spinach + 2005 broccoli, marketed=no
+[PASS] broccoli harvest starts September (2010 starts 2010-09-30)
+
+== fertilizer N ==
+pelleted rows: 120  liquid rows: 104 
+[PASS] every liquid row labelled derived=total_minus_pelleted
+[PASS] liquid amounts are only 17, 22, 34 kg N/ha
+[PASS] no liquid fertilizer in 2004
+[PASS] pelleted amounts only 56/22/112/134
+[PASS] pelleted in all eight systems every year 2004-2011
+
+== irrigation ==
+[PASS] vegetable irrigation amounts blank (NA)
+[PASS] vegetable irrigation rows carry a method, except the 2004 spinach (method not reported, round 3)
+[PASS] cover crop irrigation rows carry application_days
+[PASS] Year 4 single application on 2006-11-05
+[PASS] no literal method=NA anywhere
+
+== tillage ==
+[PASS] no 45 cm subsoil depth left
+subsoiler rows: 64 
+[PASS] subsoiler rows are 100 cm
+[PASS] 52 flail_mower+spader spring rows
+fall residue incorporation candidate rows: 64  depths: 30 cm depth 
+2010 residue windows: 2010-10-13 2010-10-14 
+2004 residue windows: 2004-09-11 2004-09-11  approximate noted: TRUE 
+
+== round 4 and round 5 cells ==
+[PASS] 4 sys1/2 spading notes no longer say 'end of March'
+[PASS] 4 sys1/2 spading notes say '30 days before the bed formation'
+      event_id treatments.name   min_date   max_date
+1 tillage-0049       socs_sys1 2007-03-16 2007-03-18
+2 tillage-0050       socs_sys2 2007-03-16 2007-03-18
+3 tillage-0113       socs_sys1 2011-03-09 2011-03-11
+4 tillage-0114       socs_sys2 2011-03-09 2011-03-11
+[PASS] 15 round-5 fertilization rows start 2011-04-10
+[PASS] sys1/2 2011 spading may run to 2011-03-11
+[PASS] sys1/2 2011 spading starts after last 2011 biomass sampling and ends >=30 d before beds
+[PASS] compost before second crop: season=summer, none season=fall
+
+== per-system bed sequence (spring spading -> bed fertilizer -> lettuce planting) ==
+    system year cover  spade_end       beds      plant n_spade gap plant_lag
+ socs_sys1 2004 FALSE 2004-03-31 2004-04-07 2004-05-01       1   7        31
+ socs_sys1 2005 FALSE 2005-03-31 2005-04-10 2005-05-01       1  10        31
+ socs_sys1 2006 FALSE 2006-03-12 2006-03-13 2006-05-01       1   1        50
+ socs_sys1 2007  TRUE 2007-03-18 2007-04-17 2007-05-01       1  30        44
+ socs_sys1 2008 FALSE 2008-03-19 2008-03-20 2008-05-01       1   1        43
+ socs_sys1 2009 FALSE 2009-03-31 2009-05-24 2009-05-24       1  54        54
+ socs_sys1 2010 FALSE 2010-03-31 2010-04-17 2010-05-01       1  17        31
+ socs_sys1 2011  TRUE 2011-03-11 2011-04-10 2011-05-01       1  30        51
+ socs_sys3 2004  TRUE 2004-03-08 2004-04-07 2004-05-01       1  30        54
+ socs_sys3 2005  TRUE 2005-03-11 2005-04-10 2005-05-01       1  30        51
+ socs_sys3 2006  TRUE 2006-02-11 2006-03-13 2006-05-01       1  30        79
+ socs_sys3 2007  TRUE 2007-03-18 2007-04-17 2007-05-01       1  30        44
+ socs_sys3 2008  TRUE 2008-02-19 2008-03-20 2008-05-01       1  30        72
+ socs_sys3 2009  TRUE 2009-03-13 2009-05-24 2009-05-24       1  72        72
+ socs_sys3 2010  TRUE 2010-03-18 2010-04-17 2010-05-01       1  30        44
+ socs_sys3 2011  TRUE 2011-03-11 2011-04-10 2011-05-01       1  30        51
+[PASS] one spring spading row per system and year
+[PASS] spading ends before the beds in every system and year
+[PASS] after a cover crop the beds start 30 d after the last spading day (72 in 2009)
+[PASS] lettuce never planted before the bed fertilizer window opens
+[PASS] lettuce planted >= 30 d after the spading in every system and year
+
+== date sanity ==
+[PASS] every Salinas min_date and max_date parses
+[PASS] every Salinas max_date >= min_date
+point-dated Salinas rows by type:
+
+irrigation   planting    tillage 
+         8         52         74 
+distinct point dates: 2003-09-30 2003-10-16 2004-03-08 2004-09-11 2004-10-15 2005-03-11 2005-10-17 2006-02-11 2006-11-02 2006-11-05 2007-03-18 2007-10-04 2007-10-15 2008-02-19 2008-09-29 2008-10-15 2009-03-13 2009-10-29 2010-03-18 2010-10-27 
+[PASS] point-dated rows all cite Table 2 / a paper date in notes
+
+== other tables ==
+[PASS] treatments socs_sys1/2 mention Years 4 and 8
+[PASS] crops tab has baby leaf spinach
+[PASS] citations has Brennan and Smith 2017 (10.2134/agronj2016.06.0354)
+[PASS] every Salinas management citation resolves
