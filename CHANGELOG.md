@@ -43,9 +43,11 @@ Changes to datasets, schemas, and curation workflows are documented here.
   Brennan and Smith (2017) dates, and spading after an annual cover crop
   takes the Table 2 termination date (assumed the same day); the other
   windows follow the papers' wording. Subsoiling is 100 cm, not 45, and
-  spading 30 cm. Every cover crop planting carries its seeding rate, and
-  the rows cite the paper each date comes from. See the Salinas report in
-  `data_raw/`.
+  spading 30 cm, in spring and at the fall residue incorporation; the
+  spring spading after a cover crop names the flail mower, and the compost
+  before the second crop is labelled `season=summer`. Every cover crop
+  planting carries its seeding rate, and the rows cite the paper each date
+  comes from. See the Salinas report in `data_raw/`.
 - Salinas `treatments`: `socs_sys1` and `socs_sys2` now name cover crop
   Years 4 and 8 (planted fall 2006 and fall 2010), and `socs_sys1`,
   `socs_sys2`, `socs_sys4`, `socs_sys5` and `socs_sys7` state their seeding
