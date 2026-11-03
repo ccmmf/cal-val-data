@@ -39,6 +39,11 @@ Changes to datasets, schemas, and curation workflows are documented here.
 - US-Bi1 (Bouldin alfalfa) 2017 harvested carbon from Hemes et al. (2019),
   as `managements` event `delta-harvest-0018`; see the US-Bi1 report in
   `data_raw/`.
+- `validate.R` warns on rows repeated apart from their key, DOIs on more
+  than one citation, empty `observation_level`, `reported_units` or
+  `mgmttype`, and units `variables.csv` does not declare; tests cap the
+  known warnings listed in the README
+  ([ccmmf/organization#299](https://github.com/ccmmf/organization/issues/299)).
 
 ### Changed
 

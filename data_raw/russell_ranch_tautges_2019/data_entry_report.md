@@ -50,10 +50,31 @@ the carbon is entirely `NA`. Matching carbon to bulk density on treatment, repli
 year and depth succeeds for 50 of 2,180 rows, 2.3%.
 
 The plot identifiers do exist upstream. The Century Experiment release, Wolf et al.
-2018 (`10.1002/ecy.2105`), carries a `plot` column with 177 distinct plots, and the
-Raffeld deposit carries the same. The resolution was lost when this workbook was
-transcribed, not in ingest. See `data_raw/raffeld_2024/` for stocks computed at plot
-level from that deposit.
+2018 (`10.1002/ecy.2105`), carries a `plot` column, with 177 distinct plot labels in
+the bulk density file and 189 in the total C and N file (a plot and its east and west
+halves are separate labels), and the Raffeld deposit carries the same. The resolution
+was lost when this workbook was transcribed, not in ingest. For the 96 bulk density
+rows of the 2012-10-08 native grass sampling even the east or west half was lost:
+their source plot ids carry surrounding spaces (`' 7-1W '`), and they were curated
+with `replicate_id` `NA`. See `data_raw/raffeld_2024/` for stocks computed at plot level
+from that deposit.
+
+⚠️ **Rows repeat because plots collapse.** In `observations`, 1,188 rows repeat an
+earlier row in every column: bulk density 536, total N 343, total C 103, NO₃-N 52,
+tomato yields 135, NH₄-N 13, wheat 4 and soil organic matter 2. Matched back to the
+Wolf et al. (2018) files, every copy matches a source line of its own: 763 come from
+another plot, 183 from another line of the same plot, and 242 from lines the source
+files themselves repeat (bulk density 124, tomato 118). In `managements`, 2,195 rows
+repeat an earlier row apart from `event_id`: planting 760, harvest 629, fertilization
+590 and compost 216. The operations files list each event by plot, and dropping the
+plot accounts for 2,190 of these; the other 5 are harvest rows that also differ in the
+source's tractor column, which was not carried over either. 123 of the compost copies
+are lines `operations_compost.csv` itself repeats, and in 2005 plots 2-3, 6-4 and 6-8
+are listed with compost on both 20 April and 20 May, which an exact match cannot see.
+So a row count is not a sample size, and management rates must not be summed per
+treatment: three identical fertilization rows are three plots, not three applications.
+Nothing is deduplicated, because most copies are real records; restoring plot ids is
+tracked in `ccmmf/organization#274`, and `scripts/validate.R` warns on both tables.
 
 ---
 

@@ -38,3 +38,51 @@ test_that("validate_data runs in warn mode without error", {
   skip_if_not(any(file.exists(paths)), "no data generated yet")
   expect_error(validate_data(root = root), NA)
 })
+
+# ratchets on known warnings. validate.R only warns, so it cannot tell a known
+# warning from a new one; these tests can. each known gap may shrink but not
+# grow or spread to other rows. when a fix lands, lower the cap or make the
+# test strict in the same change. README "Known warnings" gives the reasons.
+resource_named <- function(name) Find(function(r) r$name == name, dp$resources)
+
+test_that("observation repeats stay within the known Russell Ranch rows", {
+  obs <- read_resource(dp, root, "observations")
+  skip_if(is.null(obs), "observations not generated yet")
+  dup <- repeated_rows(obs, resource_named("observations"))
+  where <- "plot ids not carried over, ccmmf/organization#274"
+  expect_identical(
+    setdiff(unique(obs$dataset_id[dup]), "russell_ranch_tautges_2019"),
+    character(0),
+    info = paste("repeated observation rows outside the known set;", where)
+  )
+  expect_lte(sum(dup), 1188)
+})
+
+test_that("management repeats stay within the known Russell Ranch rows", {
+  mg <- read_resource(dp, root, "managements")
+  skip_if(is.null(mg), "managements not generated yet")
+  dup <- repeated_rows(mg, resource_named("managements"))
+  expect_identical(
+    setdiff(unique(mg$sites.name[dup]), "russell_ranch_davis"),
+    character(0),
+    info = "repeated management rows outside the known set; ccmmf/organization#274"
+  )
+  expect_lte(sum(dup), 2195)
+})
+
+test_that("empty mgmttype stays within the known Delta rows", {
+  mg <- read_resource(dp, root, "managements")
+  skip_if(is.null(mg), "managements not generated yet")
+  empty <- !is_present(mg$mgmttype)
+  expect_true(
+    all(startsWith(mg$event_id[empty], "delta-")),
+    info = "mgmttype is empty outside the Delta (delta-) events"
+  )
+  expect_lte(sum(empty), 42)
+})
+
+test_that("duplicated DOIs in citations do not grow", {
+  ct <- read_resource(dp, root, "citations")
+  skip_if(is.null(ct), "citations not generated yet")
+  expect_lte(length(duplicated_values(ct$doi)), 21)
+})
