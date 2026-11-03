@@ -50,8 +50,9 @@ Changes to datasets, schemas, and curation workflows are documented here.
   are wheat-fallow without N fertilizer, not continuous wheat with
   synthetic N; `irr_wheat_fallow` and `rf_wheat_fallow` are the
   wheat-fallow systems with synthetic N; `irr_wheat_legume` and
-  `rf_wheat_legume` name their winter legume cover crop. The `treatment_pairs` rows `russell-6` to
-  `russell-13` follow in their factors and labels: `russell-6` and
+  `rf_wheat_legume` name their winter legume cover crop. The
+  `treatment_pairs` rows `russell-6` to `russell-13` follow in their
+  factors and labels: `russell-6` and
   `russell-9` now contrast N fertilizer (`synthetic_N`) and have
   `healthy_soils_practice` NA. Ids are unchanged; see the Russell report in
   `data_raw/`
