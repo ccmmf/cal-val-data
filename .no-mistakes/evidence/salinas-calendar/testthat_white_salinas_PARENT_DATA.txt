@@ -1,0 +1,63 @@
+white-salinas: ...........................1...2.3.456..789
+
+══ Failed ══════════════════════════════════════════════════════════════════════
+── 1. Failure ('test-white-salinas.R:99:3'): white_salinas_2020 calendar runs Ye
+sort(unique(yr(lettuce))) not identical to 2004:2011.
+8/8 mismatches (average diff: 1)
+[1] 2005 - 2004 == 1
+[2] 2006 - 2005 == 1
+[3] 2007 - 2006 == 1
+[4] 2008 - 2007 == 1
+[5] 2009 - 2008 == 1
+[6] 2010 - 2009 == 1
+[7] 2011 - 2010 == 1
+[8] 2012 - 2011 == 1
+
+── 2. Failure ('test-white-salinas.R:106:3'): white_salinas_2020 calendar runs Y
+all(broccoli == (yr(second) %in% 2005:2010)) is not TRUE
+
+`actual`:   FALSE
+`expected`: TRUE 
+
+── 3. Failure ('test-white-salinas.R:115:3'): white_salinas_2020 calendar runs Y
+all(day(annual$min_date) == day(annual$max_date)) is not TRUE
+
+`actual`:   FALSE
+`expected`: TRUE 
+
+── 4. Failure ('test-white-salinas.R:117:3'): white_salinas_2020 calendar runs Y
+unique(day(annual$min_date)) (`actual`) and `table2` (`expected`) don't have the same values.
+* Only in `actual`: "2004-09-30", "2005-10-01", "2006-10-01", "2007-10-01", "2008-09-30", "2009-10-01", "2010-10-01", "2011-10-01"
+* Only in `expected`: "2003-10-16", "2004-10-15", "2005-10-17", "2006-11-02", "2007-10-15", "2008-10-15", "2009-10-29", "2010-10-27"
+
+
+── 5. Failure ('test-white-salinas.R:120:3'): white_salinas_2020 calendar runs Y
+paste(quad$treatments.name, day(quad$min_date), day(quad$max_date)) (`actual`) and paste(...) (`expected`) don't have the same values.
+* Only in `actual`: "socs_sys1 2006-10-01 2006-11-12", "socs_sys2 2006-10-01 2006-11-12", "socs_sys1 2010-10-01 2010-11-12", "socs_sys2 2010-10-01 2010-11-12"
+* Only in `expected`: "socs_sys1 2006-11-02 2006-11-02", "socs_sys1 2010-10-27 2010-10-27", "socs_sys2 2006-11-02 2006-11-02", "socs_sys2 2010-10-27 2010-10-27"
+
+
+── 6. Failure ('test-white-salinas.R:128:3'): white_salinas_2020 calendar runs Y
+nrow(irr) not equal to 52L.
+1/1 mismatches
+[1] 0 - 52 == -52
+
+── 7. Failure ('test-white-salinas.R:138:3'): white_salinas_2020 calendar runs Y
+nrow(n) not equal to 224L.
+1/1 mismatches
+[1] 0 - 224 == -224
+
+── 8. Failure ('test-white-salinas.R:142:3'): white_salinas_2020 calendar runs Y
+sort(rownames(total)) not identical to `systems`.
+target is NULL, current is character
+
+── 9. Error ('test-white-salinas.R:143:3'): white_salinas_2020 calendar runs Yea
+<subscriptOutOfBoundsError/error/condition>
+Error in `total[, "2004", "lettuce"]`: subscript out of bounds
+Backtrace:
+    ▆
+ 1. └─testthat::expect_true(all(total[, "2004", "lettuce"] == 56)) at test-white-salinas.R:143:3
+ 2.   └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3.     └─rlang::eval_bare(expr, quo_get_env(quo))
+
+══ DONE ════════════════════════════════════════════════════════════════════════

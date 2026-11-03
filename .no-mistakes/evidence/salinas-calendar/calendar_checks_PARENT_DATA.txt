@@ -1,0 +1,68 @@
+== S1 vegetable years: Year 1 = 2004 ... Year 8 = 2011 ==
+[FAIL] 64 lettuce plantings, 2004-2011, exactly one per system per year
+[FAIL] 8 baby leaf spinach plantings, all in 2004, one per system
+[FAIL] 48 broccoli plantings, 2005-2010, one per system per year
+[FAIL] no broccoli in 2004 and no second crop in 2011
+[FAIL] no Salinas row dated in 2012 (old template ran vegetables to 2012)  -- max date 2012-07-31
+[FAIL] lettuce planted in May every year (from 24 May in 2009)
+[FAIL] broccoli planted July or August (1 Jul .. 31 Aug)
+[PASS] spinach seeded in July 2004
+== S2 unharvested crops (2004 spinach, 2005 broccoli) ==
+[FAIL] 16 rows for 2004 spinach + 2005 broccoli carry harvested_component=none; marketed=no
+[PASS] every other harvest row carries a real harvested component
+[PASS] harvest rows: 64 lettuce + 8 spinach + 48 broccoli = 120
+[FAIL] lettuce harvested June or July (June only in 2011)
+== S3 cover crop planting dates and seeding rates ==
+[FAIL] 48 annual cover crop plantings, point dates = Table 2, each system once per date
+[FAIL] socs_sys1/2 cover crops only on 2006-11-02 and 2010-10-27 (Years 4 and 8)  -- 2006-10-01..2006-11-12, 2010-10-01..2010-11-12
+[FAIL] socs_sys1/2 cover crop rows cite Brennan and Smith (2017)
+[FAIL] every cover crop planting carries its seeding rate (1/2/4/6/8 = 3x, 3/5/7 = 1x)  -- socs_sys1 NA | socs_sys2 NA | socs_sys3 1x_conventional | socs_sys4 3x_conventional | socs_sys5 NA | socs_sys6 3x_conventional | socs_sys7 NA | socs_sys8 3x_conventional
+== S4 tillage: spading, subsoil depth, residue incorporation ==
+[FAIL] all spader rows 30 cm
+[FAIL] all subsoiler rows 100 cm; no 45 cm depth anywhere at Salinas
+[FAIL] annual systems' spring spading is a Table 2 day (point date, or printed 2011 range), equal across sys3-8  -- 2005-02-01..2005-03-15, 2006-02-01..2006-03-15, 2007-02-01..2007-03-15, 2008-02-01..2008-03-14, 2009-02-01..2009-03-15, 2010-02-01..2010-03-15, 2011-02-01..2011-03-15, 2012-02-01..2012-03-14
+[FAIL] spading notes state the termination-day assumption
+[FAIL] socs_sys1/2 fallow-winter spading = February or March window
+[FAIL] socs_sys1/2 spading in 2007/2011 = last biomass sampling day to 31 March (a window)  -- 2007-02-01..2007-03-15, 2011-02-01..2011-03-15
+[FAIL] fall residue incorporation: 8 winters x 8 systems, includes flail mower, same date across systems
+[PASS] 2004 residue incorporation = 2004-09-11 and labelled approximate  -- NA
+[PASS] 2010 residue incorporation = 2010-10-13 to 2010-10-14
+[PASS] socs_sys1/2 residue incorporation notes say annual systems' field dates are used
+== S5 lettuce bed prep: spading + 30 days (72 in 2009) ==
+[FAIL] compost + pelleted before lettuce start at spading + 30 d (72 in 2009), end 31 May, all systems  -- 2005:59 2006:59 2007:59 2008:59 2009:59 2010:59 2011:59 2012:59
+[PASS] lettuce planting never before spading + 30 days
+== S6 fertilizer N ==
+[FAIL] 224 kg N rows (pelleted + liquid), all eight systems  -- 0 pelleted, 0 liquid
+[PASS] pelleted N: lettuce 56, spinach 22, broccoli 112 (2005) / 134 (2006-2010)
+[PASS] liquid rows carry derived=total_minus_pelleted and drip method
+[PASS] no liquid fertilizer in 2004
+[PASS] liquid levels are 17 (lettuce), 22 (broccoli 2005), 34 (broccoli 2006-2010)
+[FAIL] per system/crop totals: lettuce 73 (56 in 2004), broccoli 134 (2005) / 168, spinach 22
+[PASS] liquid window starts at the crop's planting start
+== S7 irrigation ==
+[FAIL] 52 cover crop establishment irrigation rows, mm = Fig. 2 (45,13,32,19,52,42,49,19)
+[PASS] application_days = 6,2,3,1,7,5,3,3
+[FAIL] Year 4 (2006) single application on 2006-11-05, incl. socs_sys1/2
+[PASS] socs_sys1/2 cover crop irrigation only in 2006 and 2010, 19 mm
+[FAIL] 120 vegetable irrigation rows, level and units NA (no paper reports amounts)
+[PASS] drip method on lettuce/broccoli irrigation rows
+[PASS] cover crop irrigation windows start at the planting date
+== S8 crop end windows and Year 8 (2011) ==
+[FAIL] broccoli harvest ends on the last day of the Table 2 residue incorporation
+[FAIL] broccoli harvest starts 1 Sept, 30 Sept in 2010
+[PASS] spinach ends 1 Aug .. 2004-09-11
+[FAIL] 2011 lettuce harvest, drip irrigation and liquid fertilizer windows end 30 June  -- 8
+[FAIL] 24 Year 8 tillage rows: June disking, August ripping 100 cm, August spading 30 cm
+== S9 point dates only where printed (adversarial) ==
+< table of extent 0 >
+[PASS] every Salinas point-date row is a Table 2 / Brennan and Smith 2017 printed date
+[PASS] no vegetable planting/harvest/fertilizer/irrigation row has an invented single day
+[PASS] min_date <= max_date for every Salinas row
+== S10 treatments / crops / citations ==
+[PASS] socs_sys1/2 definitions name cover crop Years 4 and 8 (fall 2006, fall 2010)
+[FAIL] socs_sys1/2/4/5/7 definitions state their seeding rate
+[FAIL] crops table has baby leaf spinach (Spinacia oleracea)
+[FAIL] citations has Brennan and Smith (2017) 10.2134/agronj2016.06.0354
+[PASS] every Salinas management citation resolves to citations.doi
+
+33 check(s) failed

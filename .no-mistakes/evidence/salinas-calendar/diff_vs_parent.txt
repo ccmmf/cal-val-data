@@ -1,0 +1,18 @@
+managements  rows old=3866 new=4350  changed=517 added=484 removed=0  dup-keys(new)=0
+  changed rows by site:
+salinas_socs 
+         517 
+  added rows by site:  
+salinas_socs 
+         484 
+  added Salinas rows by mgmttype:
+fertilization    irrigation       tillage 
+          224           172            88 
+  non-Salinas rows identical: TRUE ( 3348 rows )
+  Salinas rows old: 518  unchanged Salinas rows: compost_application-0001 
+treatments   rows old=35 new=35  changed=5 added=0 removed=0  dup-keys(new)=0
+  keys: socs_sys1 | socs_sys2 | socs_sys4 | socs_sys5 | socs_sys7 
+crops        rows old=13 new=14  changed=0 added=1 removed=0  dup-keys(new)=0
+  keys: Spinacia oleracea 
+citations    rows old=79 new=80  changed=0 added=1 removed=0  dup-keys(new)=24
+  keys: 10.2134/agronj2016.06.0354 
