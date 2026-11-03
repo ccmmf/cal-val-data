@@ -131,8 +131,9 @@ test_that("white_salinas_2020 calendar runs Year 1 (2004) to Year 8 (2011)", {
   expect_true(all(irr$units == "mm"))
   expect_equal(as.numeric(irr$level), unname(fig2[as.character(yr(irr))]))
 
-  # fertilizer N per crop: the pelleted rows plus the drip top-up reach the
-  # published totals (Brennan and Boyd 2012) in every system
+  # fertilizer N per crop in every system: from 2005 the pelleted rows plus
+  # the drip top-up reach the published totals (Brennan and Boyd 2012); the
+  # 2004 crops have the pelleted rows only, since the drip began in Year 2
   n <- sal[sal$mgmttype == "fertilization" & sal$units == "kg N ha-1" &
              grepl("material=(pelleted|liquid)_", sal$attributes_keyvalue), ]
   expect_equal(nrow(n), 224L)
