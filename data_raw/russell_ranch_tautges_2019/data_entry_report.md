@@ -66,7 +66,9 @@ level from that deposit.
 - **Design:** the Century Experiment — a long-term replicated comparison of
   **14 cropping systems** (13 of which carry observations) spanning conventional, organic, legume-cover, and
   alfalfa-phase corn-tomato rotations; irrigated and rainfed wheat systems
-  (control, fallow, legume); a conventional-to-organic `transitional`
+  (wheat-fallow without N fertilizer, `*_wheat_control`; wheat-fallow with
+  synthetic N, `*_wheat_fallow`; wheat alternating with a winter legume
+  cover crop, `*_wheat_legume`); a conventional-to-organic `transitional`
   treatment (3 plots converted 1999); and an unmanaged `native_grass`
   reference (planted 2012). Plot is the replicate unit.
 - **Contrasts:** 15 rows in `treatment_pairs` register the comparisons
@@ -161,6 +163,25 @@ the dates the source reports. **Point dates are never invented.**
   did not resolve. The **prefix was stripped from `treatments` and
   `treatment_pairs`** to match the referencing tables and the repo
   convention (Salinas/Modesto also use bare treatment keys).
+- **Wheat system names.** The wheat ids follow the Century package system
+  names (`plot-system.csv`). `irr_wheat_control` and `rf_wheat_control` are
+  Irrigated and Rainfed Wheat Control (IWC, RWC), wheat-fallow with no N
+  fertilizer. `irr_wheat_fallow` and `rf_wheat_fallow` are Irrigated and
+  Rainfed Wheat/Fallow (IWF, RWF), wheat-fallow with synthetic N. All four
+  alternate wheat with fallow; none is continuous wheat. Tautges et al.
+  (2019) call the same systems IWF and RWF (no N) and IWF+N and RWF+N, so
+  IWF and RWF mean the unfertilized systems in the paper and the fertilized
+  ones in the package. The Raffeld deposit keeps the package codes and
+  renames them IW, RW, IW + N and RW + N. Tautges Table 1 gives an annual N
+  rate of 168 (IWF+N) and 146 (RWF+N) kg N/ha, built in the Methods as
+  starter plus urea on each fertilized wheat crop; complete seasons in the
+  fertilizer log, as `managements` carries it, total 168.17 to 169.8 and
+  111.68 to 113.33. Table 1 also lists IWF at 168 kg N/ha with fertilizer
+  source None, while its Methods and the log give that system no N. The
+  `treatment_pairs` rows follow these definitions: `russell-6` and
+  `russell-9` contrast no N with synthetic N (`synthetic_N`), and carry no
+  `healthy_soils_practice`, since none of the existing values fits that
+  contrast ([ccmmf/organization#299](https://github.com/ccmmf/organization/issues/299)).
 - **Method names normalised to snake_case.** `observations.method` mixed
   snake_case (`soil_core`) with prose (`Walkley-Black`, `Loss upon
   ignition`, `Keeney and Nelson`, `Doane and Miranda`). The prose forms

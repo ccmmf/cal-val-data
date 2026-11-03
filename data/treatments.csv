@@ -16,12 +16,12 @@ org_corn_tomato,Organic corn-tomato rotation with composted poultry manure and w
 leg_corn_tomato,Conventional corn-tomato rotation with winter legume cover crop replacing some/all synthetic N.,1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
 alf_corn_tomato,Three-phase rotation: alfalfa -&gt; corn -&gt; tomato. Alfalfa-N feeds subsequent corn/tomato. Started 2012.,2012-01-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
 conv_wheat_tomato,"Conventional wheat-tomato rotation, synthetic fertilizer N, no cover crop.",1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
-irr_wheat_control,"Continuous irrigated wheat, conventional synthetic N, no cover crop.",1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
-irr_wheat_fallow,Irrigated wheat-fallow rotation (alternating years).,1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+irr_wheat_control,"Irrigated wheat-fallow rotation (wheat in alternate years), no N fertilizer, no cover crop; supplemental irrigation in dry years; P and K fertilizer only, in 1999 and 2013. Century Experiment Irrigated Wheat Control (IWC); the paper's IWF in Tautges et al. 2019.",1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+irr_wheat_fallow,"Irrigated wheat-fallow rotation (wheat in alternate years) with synthetic N fertilizer, no cover crop; supplemental irrigation in dry years; P and K fertilizer also in 2013. Century Experiment Irrigated Wheat/Fallow (IWF); IWF+N in Tautges et al. 2019.",1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
 irr_wheat_legume,Irrigated wheat-legume rotation; ended 2011.,1993-10-01,2011-12-31,NA,NA,NA,NA,NA,NA,NA
-rf_wheat_control,"Continuous rainfed wheat, conventional synthetic N, no cover crop.",1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
-rf_wheat_fallow,Rainfed wheat-fallow rotation (alternating years).,1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
-rf_wheat_legume,Rainfed wheat-legume rotation.,1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+rf_wheat_control,"Rainfed wheat-fallow rotation (wheat in alternate years), no N fertilizer, no cover crop; P and K fertilizer only, in 1999 and 2013. Century Experiment Rainfed Wheat Control (RWC); the paper's RWF in Tautges et al. 2019.",1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+rf_wheat_fallow,"Rainfed wheat-fallow rotation (wheat in alternate years) with synthetic N fertilizer, no cover crop; P and K fertilizer also in 2013. Century Experiment Rainfed Wheat/Fallow (RWF); RWF+N in Tautges et al. 2019.",1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
+rf_wheat_legume,"Rainfed rotation of wheat and a winter legume cover crop mix in alternate years, no N fertilizer; P and K fertilizer in 2013. Century Experiment Rainfed Wheat/Legume (RWL); RWF+WCC in Tautges et al. 2019.",1993-10-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
 native_grass,Native-grass reference (unmanaged); planted 2012.,2012-01-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
 transitional,Conventional-to-organic transition; 3 plots converted 1999.,1999-01-01,2014-12-31,NA,NA,NA,NA,NA,NA,NA
 US-Twt__system,"Single AmeriFlux tower system represented as one treatment. Rice paddy managed with spring drill seeding, flood onset about 1 month after planting, late-summer or early-fall harvest drainage, and winter reflooding.",NA,NA,NA,US-Twt,US-Twt tower system,NA,us_twt_base_dataset,NA,"{""site_page_citation_id"":""us_twt_site_page"",""publication_source_ids"":[""ref_10_1371_journal_pone_0121432""],""management_summary"":""Growing-season flood plus winter reflooding after residue chopping.""}"
