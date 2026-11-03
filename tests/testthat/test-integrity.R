@@ -84,7 +84,10 @@ test_that("empty mgmttype stays within the known Delta rows", {
 test_that("duplicated DOIs in citations do not grow", {
   ct <- read_resource(dp, root, "citations")
   skip_if(is.null(ct), "citations not generated yet")
-  expect_lte(length(duplicated_values(ct$doi)), 21)
+  dups <- duplicated_values(ct$doi)
+  expect_lte(length(dups), 21)
+  # rows on a duplicated DOI, so a third row on a known DOI also fails
+  expect_lte(sum(fold_value(ct$doi) %in% dups), 42)
 })
 
 test_that("citation repeats do not grow", {
