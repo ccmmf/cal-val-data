@@ -3,7 +3,10 @@
 **Dataset id:** `white_salinas_2020`
 **Entered by:** Aritra Dey
 **Entry date:** 2026-04-10
-**Updated:** 2026-10-03 — SOC stocks corrected for White et al. (2024); see
+**Updated:** 2026-11-03 — management calendar rebuilt, fertilizer N and
+irrigation added; see [Dates](#dates) and
+[ccmmf/organization#297](https://github.com/ccmmf/organization/issues/297).
+2026-10-03 — SOC stocks corrected for White et al. (2024); see
 [2024 correction to SOC stocks](#2024-correction-to-soc-stocks) and
 [#6](https://github.com/ccmmf/cal-val-data/issues/6).
 
@@ -45,13 +48,18 @@ Cover crop biomass comes as treatment means read from Brennan and Boyd
 - **Brennan and Boyd (2012)** — *Agronomy Journal* 104:684–698. Winter
   cover crop shoot dry matter for the six annually cover-cropped systems,
   Years 1–8. Yearly values appear only in Fig. 5; they were read from the
-  figure (see Cover crop biomass below). Table 2 gives the sampling dates.
+  figure (see Cover crop biomass below). Table 2 gives the sampling dates
+  and the cover crop management dates `managements` uses (see Dates); its
+  methods give the crop sequence, the fertilizer N rates and the irrigation
+  methods, and Fig. 2 the cover crop establishment irrigation.
   <https://doi.org/10.2134/agronj2011.0330>
 - **Brennan and Smith (2017)** — *Agronomy Journal* 109:2199–2213.
   Legume–rye cover crop in `socs_sys1`, `socs_sys2` and `socs_sys4`,
-  Years 4 and 8. Used only as a cross-check of the compost rate (7.6 Mg ha⁻¹
-  oven dry before each vegetable crop; 15.2 Mg ha⁻¹ a year in Table 1); not
-  yet in `citations`.
+  Years 4 and 8. Source of those cover crops' planting dates, the last
+  biomass samplings that open their spading windows, their 19 mm
+  establishment irrigation, the start of the 2010 broccoli harvest, and a
+  cross-check of the compost rate (7.6 Mg ha⁻¹ oven dry before each
+  vegetable crop; 15.2 Mg ha⁻¹ a year in Table 1).
   <https://doi.org/10.2134/agronj2016.06.0354>
 
 **License / attribution:** CC-BY (upstream). Attribute White, Brennan,
@@ -77,8 +85,9 @@ substitute for it.
   cover crop seeding rates. The workbook keeps all 8. PLOS ONE Systems 1–5
   are `socs_sys1`, `socs_sys2`, `socs_sys4`, `socs_sys5` and `socs_sys7`
   (*Data in Brief* Supplementary Table 1 carries both labels).
-- **Crops:** organic vegetable rotation — romaine lettuce and broccoli —
-  with winter cover crops and urban yard-waste compost.
+- **Crops:** organic vegetable rotation — romaine lettuce each year, then
+  baby leaf spinach (Year 1) or broccoli (Years 2–7), lettuce only in
+  Year 8 — with winter cover crops and urban yard-waste compost.
 
 ---
 
@@ -126,8 +135,8 @@ Years 4–8 (60). The 216 ingested rows have `observation_level` and
   cores, and `elemental_analysis` the concentration measurement.
 - **Harvest indices** (from White et al. 2020b, citing Brennan
   unpublished): romaine lettuce hearts HI = 0.26 (~74% of shoot biomass
-  left as residue); broccoli HI = 0.24 (~76% left as residue). Recorded on
-  the harvest rows in `managements`.
+  left as residue); broccoli HI = 0.24 (~76% left as residue). The
+  `managements` harvest rows do not carry them yet (ccmmf/organization#299).
 
 ### Cover crop biomass (Brennan and Boyd 2012)
 
@@ -166,16 +175,54 @@ rye 90 / 270 (`socs_sys7` / `socs_sys8`), mustard 11 / 33 (`socs_sys5` /
 
 ## Dates
 
-The White et al. papers describe management as seasonal windows (e.g.
-"cover crops planted in fall, incorporated in late winter/early spring"),
-with no exact calendar dates for any management event in any year.
-Brennan and Boyd (2012) Table 2 does give each winter's cover crop dates;
-`managements` does not use them yet (see Open follow-ups).
+The papers give the vegetable management only as seasons (Brennan and Boyd
+2012: "romaine lettuce from May to June or July"; White et al. 2020b: "from
+May to June"). Brennan and Boyd (2012) Table 2 gives each winter's residue
+incorporation, cover crop planting, last cover crop irrigation and
+termination (flail mowing) dates for the six annually cover-cropped
+systems, and Brennan and Smith (2017) give the Year 4 and Year 8 planting
+dates for `socs_sys1` and `socs_sys2`. Those rows carry the printed dates
+(`min_date = max_date`, or the printed range); every other row carries a
+window built from the papers' wording (table below), with the source
+summarized in `notes`. **Point dates are never invented.**
 
-Each `managements` row therefore carries the paper's stated season bounds
-in `min_date` / `max_date` (e.g. spring planting →
-`min_date = 2005-03-01`, `max_date = 2005-05-31`), with a `notes` field
-recording the source phrase. **Point dates are never invented.**
+Three things the rows state as assumptions or caveats:
+
+- The spring spading after an annual cover crop is taken as the Table 2
+  termination day: Brennan and Boyd (2012) say the cover crops "were
+  terminated by flail mowing and the residue was incorporated with one pass
+  using a spader", but do not date the spading.
+- `socs_sys1` and `socs_sys2` take the annual systems' Table 2 residue
+  incorporation dates and bed preparation windows, because *Data in Brief*
+  says tillage and harvest schedules were the same in every system.
+- Table 2 prints the Year 2 residue incorporation as approximate (≈ 11
+  September 2004); those rows keep 11 September and say so. Brennan and
+  Smith (2017) put the 2010 incorporation 12 days before 25 October (13
+  October) where Table 2 says 14 October, so those rows carry 13 to 14
+  October.
+
+The calendar runs from the 30 September 2003 residue incorporation before
+the Year 1 cover crop to the Year 8 spading in August 2011. Year 1's second
+crop is baby leaf spinach; Years 2–7 grow broccoli; Year 8 grows lettuce
+only. The windows:
+
+| Rows | Window | Source |
+| ---- | ------ | ------ |
+| spring spading | `socs_sys3`–`socs_sys8`: the Table 2 termination date; `socs_sys1` and `socs_sys2`: February or March in fallow winters, and in 2007 and 2011 from the last biomass sampling day to 31 March | Brennan and Boyd 2012; White et al. 2020b; Brennan and Smith 2017 |
+| compost and pelleted fertilizer before lettuce | Table 2 termination + 30 days (72 in Year 6, 2009) to 31 May, in all eight systems | White et al. 2020b (at bed formation, 30 to 42 days after the spading; 72 in Year 6) |
+| lettuce planting, harvest | May (from 24 May in 2009); June to July (June in 2011) | Brennan and Boyd 2012; White et al. 2020b |
+| compost and pelleted fertilizer before the second crop | 1 June to the end of its planting window | White et al. 2020b (when preparing the beds after the lettuce harvest) |
+| spinach (2004) | seeded in July; ended between 1 August and the residue incorporation (≈ 11 September) | Brennan and Boyd 2012; White et al. 2020b |
+| broccoli (2005–2010) | planted July or August; harvested from 1 September (30 September in 2010) to the last day of the Table 2 residue incorporation | Brennan and Boyd 2012; Brennan and Smith 2017 |
+| liquid fertilizer, vegetable irrigation | the crop's planting start to its harvest end | Brennan and Boyd 2012 |
+| subsoiling to about 1 m | the second crop's harvest start to the cover crop planting | White et al. 2020b; Brennan and Boyd 2012 |
+| fall residue incorporation | the Table 2 date, in all eight systems | Brennan and Boyd 2012; White et al. 2020a |
+| cover crop irrigation | planting to the Table 2 last irrigation; the single Year 4 application on 5 November 2006 | Brennan and Boyd 2012 (Table 2, Fig. 2) |
+| Year 8 bed disking, ripping and spading | June 2011; August 2011; August 2011 | White et al. 2020b |
+
+In 2009 the lettuce, compost and pelleted fertilizer windows are only 24 to
+31 May, because White et al. (2020b) report a 72 day decomposition after
+wet spring weather and Brennan and Boyd (2012) plant the lettuce in May.
 
 SOC, total N and nitrate-N rows use the fall sampling window of each year
 (August for Year 8). The Year 0 and Year 6 rows instead carry 13 October
@@ -211,14 +258,39 @@ have their own date question. Both are in Open follow-ups.
   `N_content_g_kg=15` in `attributes_keyvalue` has no source yet (see Open
   follow-ups). C:N is not recorded on the rows, and the papers give no
   per-year values.
+- **Fertilizer N.** Pelleted preplant organic fertilizer (Foster Poultry
+  Farms 4-4-2 or True Organic 8-1-1) in all eight systems (Brennan and Boyd
+  2012 for their six systems, White et al. 2020b for their five; *Data in
+  Brief*: inputs equal across systems): about 56 kg N ha⁻¹ before lettuce,
+  22 before the 2004 spinach, 112 before the 2005 broccoli and 134 before
+  broccoli in 2006–2010 (Brennan and Boyd 2012; White et al. (2020b) give
+  55–66 for lettuce and 134–170 in total for broccoli). Liquid organic
+  fertilizer through the drip brought lettuce to 73 kg N ha⁻¹ and broccoli
+  to 134 (2005) or 168 (2006–2010); the liquid rows carry the difference,
+  17, 22 and 34 kg N ha⁻¹, as derived values
+  (`derived=total_minus_pelleted`). White et al. (2020b) say the liquid
+  fertilizer was used from Year 2, so 2004 has pelleted rows only, although
+  they also say it brought each lettuce crop to 73 kg N ha⁻¹.
+- **Irrigation.** No paper gives irrigation depths for the vegetables: the
+  rows record drip for lettuce and broccoli and no method for the 2004
+  spinach, with `level` NA. The cover crops' establishment irrigation is in
+  Brennan and Boyd (2012) Fig. 2: 45, 13, 32, 19, 52, 42, 49 and 19 mm in
+  Years 1 to 8, on 6, 2, 3, 1, 7, 5, 3 and 3 days (`application_days`);
+  Brennan and Smith (2017) give the same 19 mm for `socs_sys1` and
+  `socs_sys2` in Years 4 and 8. These are the first `irrigation` rows in
+  `managements` and the first with units `mm`.
+- **Unharvested crops.** The 2004 spinach and the 2005 broccoli did not
+  meet market standards and were incorporated, not harvested (White et al.
+  2020b; Brennan and Boyd 2012: insect pests and disease). Their harvest
+  rows carry `harvested_component=none` and `marketed=no`.
 - **Quadrennial cover crop schedule.** Year 0 is the pre-study baseline
   soil sampling (fall 2003). Per Brennan and Boyd (2012), the whole field
   grew a legume–rye cover crop in the winter before the trial (2002–03),
   and the systems' different cover crops start with the fall 2003 planting
-  (cover crop Year 1, planted 16 October 2003). Confirmed from the
-  companion paper, the quadrennial cover crop was planted in fall 2006 and
-  fall 2010, cover crop Years 4 and 8: every fourth winter, counting from
-  the pre-trial legume–rye.
+  (cover crop Year 1, planted 16 October 2003). Brennan and Smith (2017)
+  date the quadrennial cover crop: planted 2 November 2006 and 27 October
+  2010, cover crop Years 4 and 8, every fourth winter counting from the
+  pre-trial legume–rye.
 - **Pre-study site history.** 1990–1996 hay production and mixed
   vegetable / sugar beet trials; 1997–2003 occasional vegetable trials and
   cover crops with minimal compost or fertilizer inputs and frequent fallow.
@@ -377,6 +449,10 @@ whether the snapshot holds the uncorrected or the corrected values.
 - `FILLED_PUBLICATION_FIGURE` — cover crop shoot dry matter rows, read
   from Brennan and Boyd (2012) Fig. 5.
 
+`managements` rows have no `fill_status`: `citation` names the paper each
+date or rate comes from, `notes` summarizes its wording, and the liquid
+fertilizer rows carry `derived=total_minus_pelleted`.
+
 ## Open follow-ups
 
 - Ask the authors for corrected block-level SOC stocks, or an updated
@@ -398,7 +474,15 @@ whether the snapshot holds the uncorrected or the corrected values.
   samples were not taken on 13 October 2003 and 30 October 2009, give
   those rows the fall window used in the other years.
 - Confirm the per-year vs pooled treatment of the 2003 establishment
-  compost row across the 8 systems.
+  compost row across the 8 systems, and re-date it: its window, 1 October
+  to 12 November 2003, runs past the Year 0 sampling (13 October 2003) and
+  the Year 1 cover crop planting (16 October 2003), while both papers put
+  the compost in the year before the trial.
+- Re-date the fall soil sampling rows. Their 1 October to 1 November
+  windows run past most cover crop plantings (White et al. 2020b sampled
+  "in the fall prior to cover crop planting"), the Year 6 date 30 October
+  2009 falls after the 29 October planting, and Brennan and Smith (2017)
+  print 1 November 2006 and 25 October 2010.
 - Reconcile the bulk density rows with their source. The 60 rows are
   Years 4, 7 and 8 for `socs_sys1`, `socs_sys2`, `socs_sys4`, `socs_sys5`
   and `socs_sys7`, recorded at 0–30 cm and cited to *Data in Brief*, and
@@ -412,30 +496,14 @@ whether the snapshot holds the uncorrected or the corrected values.
   420 kg ha⁻¹, so it is `socs_sys4`, not `socs_sys3`.
 - Replace the figure-read values with plot data if the authors share it
   (asked 2026-10-24).
-- Rebuild the Salinas management calendar. It is schematic: generic
-  seasonal windows, one year late for the annually cover-cropped systems
-  (their cover crop plantings run fall 2004 to fall 2011 instead of fall
-  2003 to fall 2010), and termination is only a 1 February to 15 March
-  tillage window. The six Year 1 cover crop biomass rows (winter 2003–04)
-  therefore have no matching cover crop in `managements` yet. The vegetable
-  crops, with their compost and tillage, are a year late too: they run 2005
-  to 2012, while White et al. (2020b) put Year 1 (lettuce, then baby leaf
-  spinach) in 2004, so Year 8 (lettuce only) was 2011; `managements` also
-  follows the first lettuce with broccoli, not spinach. Aritra approved
-  rebuilding it in a separate PR from Brennan and Boyd (2012) Table 2,
-  which gives each winter's planting, last irrigation, sampling and
-  termination dates; the vegetable rows need their dates from the papers'
-  text.
-- Add the Salinas fertilizer N rows (ccmmf/organization#297); the Salinas
-  `fertilization` rows are compost only. The fertilizer went to all eight
-  systems, `socs_sys1` included. Brennan and Boyd (2012) give pelleted
-  preplant fertilizer at 22 kg N ha⁻¹ for spinach, about 56 for lettuce and
-  112 (Year 2) or 134 (Years 3–7) for broccoli, with liquid fertilizer
-  through the drip bringing lettuce to 73 and broccoli to 134 (Year 2) or
-  168 (Years 3–7) kg N ha⁻¹. White et al. (2020b) give 55–66 kg N ha⁻¹
-  pelleted at the spring bed preparation and 134–170 kg N ha⁻¹ in total for
-  broccoli, and say the liquid fertilizer supplied less than 25% of the
-  fertilizer N from Year 2 on.
+- Add the tillage the papers time only relative to other events: the
+  lister bed formation (the window of the compost before lettuce), the bed
+  reshaping after the lettuce harvest (the window of the compost before the
+  second crop), and the shallow weed control in the fallow winters
+  (`socs_sys1`, `socs_sys2`; "as needed", Brennan and Smith 2017).
+- Rebuild the Salinas SIPNET events from this calendar
+  (ccmmf/organization#297). Runs made before this change used the one year
+  late, compost only calendar.
 - Decide what the 105 Salinas compost rows carry as `N_content_g_kg`. They
   say 15, cited to *Data in Brief*, which gives no compost N; the compost's
   C and C:N put it near 14 (White et al. 2020b). Maltais-Landry et al.

@@ -6,6 +6,20 @@ Changes to datasets, schemas, and curation workflows are documented here.
 
 ### Added
 
+- Salinas fertilizer N, irrigation and tillage: 484 `managements` rows
+  (224 fertilization, 172 irrigation, 88 tillage) for all eight systems.
+  Pelleted preplant fertilizer (56 kg N ha⁻¹ lettuce, 22 spinach, 112 or
+  134 broccoli) and liquid fertilizer through the drip (17, 22 and 34 kg N
+  ha⁻¹, derived as the published total minus the pelleted), from Brennan
+  and Boyd (2012). Irrigation rows for every crop, and cover crop
+  establishment irrigation from Brennan and Boyd (2012) Fig. 2 (13 to
+  52 mm a winter) and Brennan and Smith (2017); these are the first
+  `irrigation` rows, with units `mm`, and vegetable amounts stay NA. Fall
+  residue incorporation on the Brennan and Boyd (2012) Table 2 dates, and
+  the Year 8 bed disking, ripping and spading of White et al. (2020b)
+  ([ccmmf/organization#297](https://github.com/ccmmf/organization/issues/297)).
+- Citation for Brennan and Smith (2017), `10.2134/agronj2016.06.0354`, and
+  a `crops` row for baby leaf spinach.
 - Salinas winter cover crop shoot dry matter: 48 `observations` rows
   (`socs_sys3`–`socs_sys8`, Years 1–8) under a new variable,
   `cover_crop_shoot_dry_matter_Mg_ha`, read from Brennan and Boyd (2012)
@@ -21,6 +35,21 @@ Changes to datasets, schemas, and curation workflows are documented here.
 
 ### Changed
 
+- Salinas management calendar: 517 `managements` rows. The vegetable rows
+  move from 2005–2012 to 2004–2011 and the annual cover crops from
+  2004–2011 to 2003–2010; the Year 1 second crop is baby leaf spinach, not
+  broccoli; the 2004 spinach and 2005 broccoli are marked not harvested.
+  Cover crop planting takes the Brennan and Boyd (2012) Table 2 and
+  Brennan and Smith (2017) dates, and spading after an annual cover crop
+  takes the Table 2 termination date (assumed the same day); the other
+  windows follow the papers' wording. Subsoiling is 100 cm, not 45, and
+  spading 30 cm. Every cover crop planting carries its seeding rate, and
+  the rows cite the paper each date comes from. See the Salinas report in
+  `data_raw/`.
+- Salinas `treatments`: `socs_sys1` and `socs_sys2` now name cover crop
+  Years 4 and 8 (planted fall 2006 and fall 2010), and `socs_sys1`,
+  `socs_sys2`, `socs_sys4`, `socs_sys5` and `socs_sys7` state their seeding
+  rate.
 - Salinas compost: 12 `managements` rows (`fertilization-0008`–`0011`,
   `0050`–`0054` and `0057`–`0059`) changed from 8 to 7.6 Mg ha⁻¹ oven dry,
   the published rate for every application, so each compost system now
