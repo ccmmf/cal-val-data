@@ -94,6 +94,8 @@ test_that("Russell wheat definitions match the systems and their N records", {
   controls <- c("irr_wheat_control", "rf_wheat_control")
   expect_true(all(grepl("no N fertilizer", def[controls], fixed = TRUE)))
   expect_false(any(grepl("synthetic N", def[controls], fixed = TRUE)))
+  legumes <- c("irr_wheat_legume", "rf_wheat_legume")
+  expect_true(all(grepl("winter legume cover crop", def[legumes], fixed = TRUE)))
 
   # a definition that says no N must have no N in managements, and one that
   # says synthetic N must have some

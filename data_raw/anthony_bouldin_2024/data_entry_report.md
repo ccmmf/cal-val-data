@@ -121,13 +121,13 @@ invented.**
   for calibrating parameters that govern them.
 - **Rows outside a defined study year are excluded.** A subset of corn rows carry `Site Year = NA`
   and are not part of any annual period in the paper; they are omitted rather than assigned.
-- **Units are as published** — the archive reports `nmol m-2 s-1` (CH₄, N₂O) and `umol m-2 s-1`
-  (CO₂); these are expressed as the daily-rate units the figures use, with no change of quantity.
-  CH₄ and N₂O were converted as nmol m⁻² s⁻¹ × M × 0.0864 = mg m⁻² d⁻¹, with M = 16.043 g mol⁻¹
-  for CH₄ and 44.013 for N₂O (factors 1.386115 and 3.802723), so the rows are gas mass, not
-  CH₄-C or N₂O-N. They differ from Modesto's `g N2O-N ha-1 day-1`, so N₂O is carried as a
-  **separate variable** rather than merged; conversion belongs downstream in code, not in
-  curation.
+- **Units follow the paper's figures, not the archive** — the archive reports `nmol m-2 s-1`
+  (CH₄, N₂O) and `umol m-2 s-1` (CO₂); curation expressed these in the daily-rate units the
+  figures use, with no change of quantity. CH₄ and N₂O were converted as
+  nmol m⁻² s⁻¹ × M × 0.0864 = mg m⁻² d⁻¹, with M = 16.043 g mol⁻¹ for CH₄ and 44.013 for N₂O
+  (factors 1.386115 and 3.802723), so the rows are gas mass, not CH₄-C or N₂O-N. They differ
+  from Modesto's `g N2O-N ha-1 day-1`, so N₂O is carried as a **separate variable** rather than
+  merged; any conversion to CH₄-C or N₂O-N belongs downstream in code, not in curation.
 - **New variable names carry their units** (`N2O_flux_mg_m2_d`), following the existing
   `N2O_flux_g_N_ha_d` precedent, and deliberately do not reuse `CH4_flux` or `N2O_flux`. Those
   are annual variables in source-reported units: `CH4_flux` holds the 11 FLUXNET-CH4 tower
