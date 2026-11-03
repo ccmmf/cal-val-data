@@ -1,228 +1,252 @@
-# downstream-consumer checks on the committed Salinas management calendar.
-# usage: Rscript consumer_checks.R <repo_root> <parent_managements.csv>
-args <- commandArgs(trailingOnly = TRUE)
-root <- args[1]; parent_path <- args[2]
+#!/usr/bin/env Rscript
+# Downstream-consumer checks of the Salinas management calendar in the
+# committed data package. Reads data/*.csv the way a consumer would (all text,
+# readr), compares with the parent commit's data, and prints PASS/FAIL lines.
+# usage: Rscript consumer_checks.R <repo_root> <parent_data_dir>
+
+args <- commandArgs(TRUE)
+root <- args[1]
+parent_dir <- args[2]
 rd <- function(p) readr::read_csv(p, col_types = readr::cols(.default = "c"),
-                                  na = character(), show_col_types = FALSE)
-m  <- rd(file.path(root, "data/managements.csv"))
-p0 <- rd(parent_path)
-tr <- rd(file.path(root, "data/treatments.csv"))
-cr <- rd(file.path(root, "data/crops.csv"))
-ci <- rd(file.path(root, "data/citations.csv"))
-n_pass <- 0; n_fail <- 0
+                                  progress = FALSE, na = character())
+m <- rd(file.path(root, "data", "managements.csv"))
+p <- rd(file.path(parent_dir, "managements.csv"))
+fails <- 0L
 check <- function(label, ok, detail = NULL) {
   ok <- isTRUE(all(ok))
-  if (ok) n_pass <<- n_pass + 1 else n_fail <<- n_fail + 1
+  if (!ok) fails <<- fails + 1L
   cat(sprintf("[%s] %s\n", if (ok) "PASS" else "FAIL", label))
   if (!is.null(detail)) cat(paste0("       ", detail, collapse = "\n"), "\n")
 }
-D  <- function(x) as.Date(substr(x, 1, 10))
+day <- function(d) substr(d, 1, 10)
 yr <- function(d) as.integer(substr(d$min_date, 1, 4))
 has <- function(d, kv) grepl(kv, d$attributes_keyvalue, fixed = TRUE)
-row_key <- function(d) do.call(paste, c(d, sep = "\x1f"))
+num <- function(x) suppressWarnings(as.numeric(x))
 systems <- paste0("socs_sys", 1:8)
 
-cat("== 1. scope of the regenerated table (parent fabf5f5 -> HEAD) ==\n")
-check(sprintf("managements has %d rows (expected 4350)", nrow(m)), nrow(m) == 4350)
-other_new <- m[m$sites.name != "salinas_socs", ]; other_old <- p0[p0$sites.name != "salinas_socs", ]
-check(sprintf("non-Salinas rows identical to parent (%d rows, %d differ)", nrow(other_new),
-              length(setdiff(row_key(other_new), row_key(other_old))) +
-                length(setdiff(row_key(other_old), row_key(other_new)))),
-      identical(sort(row_key(other_new)), sort(row_key(other_old))))
-s1 <- m[m$sites.name == "salinas_socs", ]; s0 <- p0[p0$sites.name == "salinas_socs", ]
-removed <- setdiff(s0$event_id, s1$event_id); added <- s1[!s1$event_id %in% s0$event_id, ]
-common <- intersect(s0$event_id, s1$event_id)
-changed <- sum(row_key(s1[match(common, s1$event_id), ]) != row_key(s0[match(common, s0$event_id), ]))
-check(sprintf("Salinas: %d rows before, %d after; %d removed, %d added, %d changed (expected 0 / 484 / 517)",
-              nrow(s0), nrow(s1), length(removed), nrow(added), changed),
-      length(removed) == 0 && nrow(added) == 484 && changed == 517)
-tab <- table(added$mgmttype)
-check(sprintf("added rows by type: %s (expected fertilization 224, irrigation 172, tillage 88)",
-              paste(names(tab), tab, sep = "=", collapse = ", ")),
-      identical(as.integer(tab[c("fertilization", "irrigation", "tillage")]), c(224L, 172L, 88L)))
-unchanged <- setdiff(common, s1$event_id[s1$event_id %in% common][
-  row_key(s1[match(common, s1$event_id), ]) != row_key(s0[match(common, s0$event_id), ])])
-check(sprintf("the only unchanged Salinas row is the 2003 establishment compost: %s",
-              paste(unchanged, s1$min_date[match(unchanged, s1$event_id)], collapse = "; ")),
-      length(unchanged) == 1 && grepl("^2003", s1$min_date[match(unchanged, s1$event_id)]))
-check("event_id unique", !anyDuplicated(m$event_id))
-check("min_date <= max_date on every Salinas row", D(s1$min_date) <= D(s1$max_date))
+cat("== 1. scope of the change vs parent (fabf5f5) ==\n")
+key <- function(d) do.call(paste, c(d, sep = "\x1f"))
+other_now <- m[m$sites.name != "salinas_socs", ]
+other_par <- p[p$sites.name != "salinas_socs", ]
+check(sprintf("non-Salinas rows byte-identical (%d now, %d parent)", nrow(other_now), nrow(other_par)),
+      identical(sort(key(other_now)), sort(key(other_par))))
+sal <- m[m$sites.name == "salinas_socs", ]
+salp <- p[p$sites.name == "salinas_socs", ]
+removed <- setdiff(salp$event_id, sal$event_id)
+added <- setdiff(sal$event_id, salp$event_id)
+common <- intersect(sal$event_id, salp$event_id)
+changed <- common[key(sal[match(common, sal$event_id), ]) != key(salp[match(common, salp$event_id), ])]
+check(sprintf("no Salinas event removed (removed=%d)", length(removed)), length(removed) == 0)
+check(sprintf("517 Salinas rows changed (got %d)", length(changed)), length(changed) == 517)
+tab_added <- table(sal$mgmttype[sal$event_id %in% added])
+check(sprintf("484 rows added = 224 fertilization + 172 irrigation + 88 tillage (got %s)",
+              paste(names(tab_added), tab_added, collapse = ", ")),
+      length(added) == 484 && tab_added[["fertilization"]] == 224 &&
+        tab_added[["irrigation"]] == 172 && tab_added[["tillage"]] == 88)
+check("2003 establishment compost row untouched",
+      !"compost_application-0001" %in% changed)
+check(sprintf("managements total 4,350 rows (got %d)", nrow(m)), nrow(m) == 4350)
 
-sal <- s1
-cat("\n== 2. crop sequence ==\n")
-pl <- sal[sal$mgmttype == "planting", ]; cash <- pl[pl$cover_crop == "FALSE", ]
+cat("\n== 2. crop sequence per system and year ==\n")
+cash <- sal[sal$mgmttype == "planting" & sal$cover_crop == "FALSE", ]
 crop <- sub(".*crop=([a-z_]+).*", "\\1", cash$attributes_keyvalue)
-print(table(year = yr(cash), crop))
-lt <- cash[crop == "romaine_lettuce", ]
-check("lettuce once per system in every year 2004-2011", nrow(lt) == 64 &&
-        all(table(lt$treatments.name, yr(lt)) == 1) && identical(sort(unique(yr(lt))), 2004:2011))
-check("baby leaf spinach only in 2004 (8 systems)", all(yr(cash[crop == "baby_leaf_spinach", ]) == 2004) &&
+seq_tab <- tapply(crop, list(yr(cash), cash$treatments.name), function(x) paste(x, collapse = "+"))
+print(seq_tab[, systems])
+check("lettuce planted once per system every year 2004-2011",
+      all(table(yr(cash)[crop == "romaine_lettuce"], cash$treatments.name[crop == "romaine_lettuce"]) == 1) &&
+        identical(sort(unique(yr(cash)[crop == "romaine_lettuce"])), 2004:2011))
+check("baby leaf spinach only in 2004 (8 rows)", all(yr(cash)[crop == "baby_leaf_spinach"] == 2004) &&
         sum(crop == "baby_leaf_spinach") == 8)
-check("broccoli only 2005-2010, once per system per year",
-      setequal(yr(cash[crop == "broccoli", ]), 2005:2010) && sum(crop == "broccoli") == 48)
-check("no second crop in 2011 (Year 8 lettuce only)", !any(yr(cash) == 2011 & crop != "romaine_lettuce"))
-check("no vegetable rows in 2012 any more", !any(yr(sal) == 2012))
-
-cat("\n== 3. cover crop dates (Brennan and Boyd 2012 Table 2; Brennan and Smith 2017) ==\n")
-cc <- pl[pl$cover_crop == "TRUE", ]
-print(table(cc$treatments.name, substr(cc$min_date, 1, 10)))
-check("all cover crop plantings are printed point dates", D(cc$min_date) == D(cc$max_date))
-check("socs_sys1/2 cover crop only 2006-11-02 and 2010-10-27",
-      setequal(substr(cc$min_date[cc$treatments.name %in% systems[1:2]], 1, 10), c("2006-11-02", "2010-10-27")))
-
-cat("\n== 4. window rules for the vegetable rows ==\n")
-till <- sal[sal$mgmttype == "tillage", ]
-spade <- till[grepl("spader", till$attributes_keyvalue) & as.integer(substr(till$min_date, 6, 7)) %in% 2:3, ]
-cat("spring spading rows:", nrow(spade), "\n")
-gap_ok <- c(); gaps <- c()
-for (i in seq_len(nrow(lt))) {
-  s <- spade[spade$treatments.name == lt$treatments.name[i] & yr(spade) == yr(lt)[i], ]
-  if (nrow(s) != 1) { gap_ok <- c(gap_ok, FALSE); next }
-  need <- if (yr(lt)[i] == 2009) 72 else 30
-  g <- as.integer(D(lt$min_date[i]) - D(s$max_date))
-  gaps <- c(gaps, g)
-  gap_ok <- c(gap_ok, g >= need || (format(D(lt$min_date[i]), "%m-%d") == "05-01" && g >= need) ||
-                (D(lt$min_date[i]) == D(s$min_date) + need))
-}
-lt_start_ok <- mapply(function(st, y, sys) {
-  s <- spade[spade$treatments.name == sys & yr(spade) == y, ]
-  need <- if (y == 2009) 72 else 30
-  st >= max(as.Date(sprintf("%d-05-01", y)), D(s$min_date) + need)
-}, D(lt$min_date), yr(lt), lt$treatments.name)
-check("lettuce planting starts in May and no earlier than spading + 30 d (72 d in 2009)",
-      lt_start_ok & format(D(lt$max_date), "%m-%d") == "05-31")
-cat("       2009 lettuce windows:", unique(paste(lt$min_date[yr(lt) == 2009], lt$max_date[yr(lt) == 2009])), "\n")
+check("broccoli only 2005-2010, once per system", all(yr(cash)[crop == "broccoli"] %in% 2005:2010) &&
+        all(table(yr(cash)[crop == "broccoli"], cash$treatments.name[crop == "broccoli"]) == 1))
+check("no second crop in Year 8 (2011)", !any(yr(cash) == 2011 & crop != "romaine_lettuce"))
+check("no vegetable planting in 2012 (old one-year-late template gone)", !any(yr(cash) >= 2012))
 hv <- sal[sal$mgmttype == "harvest", ]
-hl <- hv[has(hv, "crop=romaine_lettuce"), ]
-check("lettuce harvest June-July (June in 2011)",
-      all(format(D(hl$min_date), "%m-%d") == "06-01") &&
-        all(format(D(hl$max_date[yr(hl) < 2011]), "%m-%d") == "07-31") &&
-        all(format(D(hl$max_date[yr(hl) == 2011]), "%m-%d") == "06-30"))
+unh <- hv[has(hv, "harvested_component=none"), ]
+check(sprintf("not harvested: 2004 spinach and 2005 broccoli only, marketed=no (%d rows)", nrow(unh)),
+      nrow(unh) == 16 && all(has(unh, "marketed=no")) &&
+        setequal(paste(yr(unh), sub(".*crop=([a-z_]+).*", "\\1", unh$attributes_keyvalue)),
+                 c("2004 baby_leaf_spinach", "2005 broccoli")))
+let <- cash[crop == "romaine_lettuce", ]
+check("lettuce planting windows lie in May",
+      all(substr(let$min_date, 6, 7) == "05" & substr(let$max_date, 6, 7) == "05"))
+lh <- hv[has(hv, "crop=romaine_lettuce"), ]
+check("lettuce harvest windows in June or July",
+      all(substr(lh$min_date, 6, 7) %in% c("06", "07") & substr(lh$max_date, 6, 7) %in% c("06", "07")))
 br <- cash[crop == "broccoli", ]
-check("broccoli planted July or August", format(D(br$min_date), "%m-%d") == "07-01" &
-        format(D(br$max_date), "%m-%d") == "08-31")
-hb <- hv[has(hv, "crop=broccoli"), ]
-ri <- till[grepl("flail_mower+disc_harrow", till$attributes_keyvalue, fixed = TRUE), ]
-cat("fall residue incorporation rows:", nrow(ri), " depths:", unique(paste(ri$level, ri$units)), "\n")
-hb_end_ok <- mapply(function(e, y, sys) e == max(D(ri$max_date[ri$treatments.name == sys & yr(ri) == y])),
-                    D(hb$max_date), yr(hb), hb$treatments.name)
-check("broccoli harvest ends on the last day of that year's residue incorporation", hb_end_ok)
-check("broccoli harvest starts 1 Sept (30 Sept in 2010)",
-      all(format(D(hb$min_date[yr(hb) != 2010]), "%m-%d") == "09-01") &&
-        all(D(hb$min_date[yr(hb) == 2010]) == as.Date("2010-09-30")))
-check("64 fall residue incorporation rows, all 30 cm depth, all 8 systems",
-      nrow(ri) == 64 && all(paste(ri$level, ri$units) == "30 cm depth") && setequal(ri$treatments.name, systems))
-ss <- till[has(till, "implement=subsoiler"), ]
-check(sprintf("subsoiling: %d rows, all 100 cm; no 45 cm depth anywhere in Salinas", nrow(ss)),
-      all(paste(ss$level, ss$units) == "100 cm depth") && !any(sal$level == "45" & sal$units == "cm depth"))
-sp12 <- spade[spade$treatments.name %in% systems[1:2] & yr(spade) %in% c(2007, 2011), ]
-cat("       socs_sys1/2 spading after their cover crop:", unique(paste(sp12$min_date, "to", sp12$max_date)), "\n")
-check("socs_sys1/2 spading 16-18 Mar 2007 and 9-10 Mar 2011",
-      setequal(paste(sp12$min_date, sp12$max_date), c("2007-03-16 2007-03-18", "2011-03-09 2011-03-10")))
-check("52 spring spading rows after a cover crop name the flail mower",
-      sum(till$attributes_keyvalue == "implement=flail_mower+spader") == 52)
+check("broccoli planting windows in July or August",
+      all(substr(br$min_date, 6, 7) %in% c("07", "08") & substr(br$max_date, 6, 7) %in% c("07", "08")))
+bh <- hv[has(hv, "crop=broccoli"), ]
+inc <- sal[sal$mgmttype == "tillage" & has(sal, "relative_to=cover_crop_or_fallow"), ]
+inc_end <- tapply(day(inc$max_date), paste(inc$treatments.name, yr(inc)), max)
+check("broccoli harvest starts in September (30 Sept in 2010) and ends on the last residue incorporation day",
+      all(substr(bh$min_date, 6, 10) %in% c("09-01", "09-30")) &&
+        all(day(bh$min_date[yr(bh) == 2010]) == "2010-09-30") &&
+        all(day(bh$max_date) == inc_end[paste(bh$treatments.name, yr(bh))]))
+# cover crop decomposition rule: lettuce >= last cover crop spading + 30 d (72 in 2009)
+spd <- sal[sal$mgmttype == "tillage" & sal$attributes_keyvalue == "implement=flail_mower+spader", ]
+lag <- vapply(2004:2011, function(y) as.numeric(min(as.Date(day(let$min_date[yr(let) == y]))) -
+                                                 max(as.Date(day(spd$max_date[yr(spd) == y])))), numeric(1))
+check(sprintf("lettuce planted no earlier than cover crop spading + 30 d (+72 in 2009): %s",
+              paste(2004:2011, lag, sep = ":", collapse = " ")),
+      all(lag[-6] >= 30) && lag[6] >= 72)
+# fallow winters (socs_sys1/2 outside Years 4 and 8): spading 'February or March', ends before the beds
+fal <- sal[sal$mgmttype == "tillage" & sal$attributes_keyvalue == "implement=spader" &
+             substr(sal$min_date, 6, 7) %in% c("02", "03"), ]
+# socs_sys1 gets no compost, so use the pelleted preplant fertilizer (all systems) to mark bed formation
+bed <- sal[sal$mgmttype == "fertilization" & has(sal, "material=pelleted_") & has(sal, "relative_to=romaine_lettuce"), ]
+bed_start <- tapply(day(bed$min_date), paste(bed$treatments.name, yr(bed)), min)
+check(sprintf("fallow-winter spading (%d rows, socs_sys1/2) is a Feb-Mar window ending before the bed formation", nrow(fal)),
+      nrow(fal) == 12 && all(fal$treatments.name %in% c("socs_sys1", "socs_sys2")) &&
+        !any(yr(fal) %in% c(2007, 2011)) && all(day(fal$max_date) < bed_start[paste(fal$treatments.name, yr(fal))]))
 
-pre <- sal[sal$mgmttype == "fertilization" & has(sal, "relative_to=romaine_lettuce") &
-             has(sal, "relative_timing=before_planting"), ]
-term <- c(`2004` = "2004-03-08", `2005` = "2005-03-11", `2006` = "2006-02-11", `2007` = "2007-03-18",
-          `2008` = "2008-02-19", `2009` = "2009-03-13", `2010` = "2010-03-18", `2011` = "2011-03-10")
-need <- ifelse(yr(pre) == 2009, 72, 30)
-check(sprintf("%d compost/pelleted rows before lettuce open at Table 2 termination + 30 d (72 d in 2009) and close 31 May",
-              nrow(pre)),
-      nrow(pre) == 64 + 56 && all(D(pre$min_date) == as.Date(term[as.character(yr(pre))]) + need) &&
-        all(format(D(pre$max_date), "%m-%d") == "05-31"))
-bed_ok <- mapply(function(sys, y) {
-  s <- spade[spade$treatments.name == sys & yr(spade) == y, ]
-  b <- pre[pre$treatments.name == sys & yr(pre) == y, ]
-  nrow(s) == 1 && all(D(s$max_date) < D(b$min_date))
-}, rep(systems, each = 8), rep(2004:2011, 8))
-check("in every system and year the spring spading window closes before the bed-formation window opens", bed_ok)
-cat("\n== 5. 'point dates only where a paper prints them' (adversarial) ==\n")
-pt <- sal[D(sal$min_date) == D(sal$max_date), ]
-pt$what <- ifelse(pt$mgmttype == "planting", paste("planting cover_crop", pt$cover_crop),
-                  paste(pt$mgmttype, sub(";.*", "", pt$attributes_keyvalue)))
-print(table(pt$what))
-veg <- sal[sal$mgmttype %in% c("harvest", "fertilization") | (sal$mgmttype == "planting" & sal$cover_crop == "FALSE") |
-             (sal$mgmttype == "irrigation" & !has(sal, "purpose=cover_crop_establishment")), ]
-veg <- veg[!grepl("^2003", veg$min_date), ]
-check(sprintf("no vegetable planting/harvest/fertilizer/drip row carries a single day (%d rows checked)", nrow(veg)),
-      D(veg$min_date) != D(veg$max_date))
-check("every point-dated row cites a paper and quotes it in notes",
-      nzchar(pt$citation) & pt$citation != "NA" & grepl("Table 2|Brennan and Smith|Fig. 2", pt$notes))
+cat("\n== 3. cover crops on the published dates ==\n")
+table2 <- c("2003-10-16", "2004-10-15", "2005-10-17", "2006-11-02",
+            "2007-10-15", "2008-10-15", "2009-10-29", "2010-10-27")
+cc <- sal[sal$mgmttype == "planting" & sal$cover_crop == "TRUE", ]
+ann <- cc[cc$treatments.name %in% paste0("socs_sys", 3:8), ]
+check("48 annual cover crop plantings, point dates = Brennan and Boyd 2012 Table 2",
+      nrow(ann) == 48 && all(day(ann$min_date) == day(ann$max_date)) &&
+        setequal(day(ann$min_date), table2))
+q <- cc[cc$treatments.name %in% c("socs_sys1", "socs_sys2"), ]
+check("socs_sys1/2 cover crops only Years 4 and 8 (2006-11-02, 2010-10-27)",
+      setequal(paste(q$treatments.name, day(q$min_date)),
+               paste(rep(c("socs_sys1", "socs_sys2"), each = 2), c("2006-11-02", "2010-10-27"))))
+term <- c("2004-03-08", "2005-03-11", "2006-02-11", "2007-03-18",
+          "2008-02-19", "2009-03-13", "2010-03-18", "2011-03-10")
+till <- sal[sal$mgmttype == "tillage", ]
+sp <- till[till$attributes_keyvalue == "implement=flail_mower+spader", ]
+sp38 <- sp[sp$treatments.name %in% paste0("socs_sys", 3:8), ]
+check("spring flail mow + spading of annual cover crops starts on Table 2 termination dates (30 cm)",
+      nrow(sp38) == 48 && setequal(day(sp38$min_date), term) && all(sp38$level == "30"))
 
-cat("\n== 6. fertilizer N ==\n")
+cat("\n== 4. fertilizer N ==\n")
 n <- sal[sal$mgmttype == "fertilization" & sal$units == "kg N ha-1", ]
-n$kind <- ifelse(has(n, "material=pelleted"), "pelleted", ifelse(has(n, "material=liquid"), "liquid", "other"))
-n$crop <- sub(".*(romaine_lettuce|baby_leaf_spinach|broccoli).*", "\\1", n$attributes_keyvalue)
-print(with(n, table(paste(crop, kind), level)))
-check("224 fertilizer N rows (pelleted or liquid), in all 8 systems incl. socs_sys1",
-      nrow(n) == 224 && all(n$kind != "other") && setequal(n$treatments.name, systems))
-liq <- n[n$kind == "liquid", ]
-check("every liquid row is labelled derived=total_minus_pelleted and is 17, 22 or 34",
-      has(liq, "derived=total_minus_pelleted") & liq$level %in% c("17", "22", "34"))
+pel <- n[has(n, "material=pelleted_"), ]
+liq <- n[has(n, "material=liquid_"), ]
+rel <- sub(".*relative_to=([a-z_]+).*", "\\1", pel$attributes_keyvalue)
+pl <- unique(paste(yr(pel), rel, pel$level))
+print(sort(pl))
+check("pelleted rates: lettuce 56, spinach 22, broccoli 112 (2005) / 134 (2006-2010)",
+      setequal(pl, c(paste(2004:2011, "romaine_lettuce", 56), "2004 baby_leaf_spinach 22",
+                     "2005 broccoli 112", paste(2006:2010, "broccoli", 134))) &&
+        all(table(paste(yr(pel), rel)) == 8))
+check("liquid fertilizer rows are labelled derived=total_minus_pelleted", all(has(liq, "derived=total_minus_pelleted")))
 check("no liquid fertilizer in 2004", !any(yr(liq) == 2004))
-tot <- aggregate(as.numeric(level) ~ treatments.name + yr + crop, data = transform(n, yr = yr(n)), sum)
-names(tot)[4] <- "N"
-tt <- unique(tot[, c("yr", "crop", "N")]); tt <- tt[order(tt$yr, tt$crop), ]
-print(tt, row.names = FALSE)
-want <- with(tot, ifelse(crop == "romaine_lettuce", ifelse(yr == 2004, 56, 73),
-                  ifelse(crop == "baby_leaf_spinach", 22, ifelse(yr == 2005, 134, 168))))
-check("per-crop N totals: lettuce 73 (56 in 2004), spinach 22, broccoli 134 (2005) / 168 (2006-10)",
-      all(tot$N == want) && nrow(tot) == 8 * (8 + 1 + 6))
-liq_win <- mapply(function(sys, y, cp, s, e) {
-  plt <- cash[cash$treatments.name == sys & yr(cash) == y & grepl(cp, cash$attributes_keyvalue), ]
-  hh <- hv[hv$treatments.name == sys & yr(hv) == y & grepl(cp, hv$attributes_keyvalue), ]
-  D(s) == D(plt$min_date) && D(e) == D(hh$max_date)
-}, liq$treatments.name, yr(liq), liq$crop, liq$min_date, liq$max_date)
-check("liquid window = crop planting start to its harvest end", liq_win)
+lc <- ifelse(has(liq, "romaine_lettuce"), "lettuce", "broccoli")
+check("liquid rates: lettuce 17, broccoli 22 (2005) / 34 (2006-2010)",
+      setequal(unique(paste(yr(liq), lc, liq$level)),
+               c(paste(2005:2011, "lettuce", 17), "2005 broccoli 22", paste(2006:2010, "broccoli", 34))))
+crop_of <- ifelse(grepl("romaine_lettuce", n$attributes_keyvalue), "lettuce", "second")
+tot <- tapply(num(n$level), list(paste(yr(n), crop_of), n$treatments.name), sum)
+print(tot[, systems])
+check("published totals per system: 73 lettuce (2005-11), 134 broccoli 2005, 168 broccoli 2006-10",
+      all(tot[paste(2005:2011, "lettuce"), ] == 73) && all(tot["2005 second", ] == 134) &&
+        all(tot[paste(2006:2010, "second"), ] == 168))
 
-cat("\n== 7. irrigation ==\n")
-ir <- sal[sal$mgmttype == "irrigation", ]
-ce <- ir[has(ir, "purpose=cover_crop_establishment"), ]
+cat("\n== 5. irrigation ==\n")
+irr <- sal[sal$mgmttype == "irrigation", ]
+cce <- irr[has(irr, "purpose=cover_crop_establishment"), ]
+veg <- irr[!has(irr, "purpose=cover_crop_establishment"), ]
 fig2 <- c(`2003` = 45, `2004` = 13, `2005` = 32, `2006` = 19, `2007` = 52, `2008` = 42, `2009` = 49, `2010` = 19)
 days <- c(`2003` = 6, `2004` = 2, `2005` = 3, `2006` = 1, `2007` = 7, `2008` = 5, `2009` = 3, `2010` = 3)
-check(sprintf("%d cover crop establishment rows carry Fig. 2 mm and application_days", nrow(ce)),
-      nrow(ce) == 52 && all(ce$units == "mm") &&
-        all(as.numeric(ce$level) == fig2[as.character(yr(ce))]) &&
-        all(has(ce, "application_days=") & sub(".*application_days=([0-9]+).*", "\\1", ce$attributes_keyvalue) ==
-              days[as.character(yr(ce))]))
-y4 <- ce[yr(ce) == 2006, ]
-cat("       Year 4 rows:", unique(paste(y4$treatments.name, y4$min_date, y4$max_date))[1:3], "...\n")
-check("Year 4 single application on 2006-11-05", all(substr(y4$min_date, 1, 10) == "2006-11-05" &
-                                                      substr(y4$max_date, 1, 10) == "2006-11-05"))
-vi <- ir[!has(ir, "purpose=cover_crop_establishment"), ]
-check(sprintf("%d vegetable irrigation rows have level NA (no paper reports amounts)", nrow(vi)),
-      nrow(vi) == 120 && all(vi$level == "NA"))
-check("drip on lettuce and broccoli; the 2004 spinach rows carry no method key (and no method=NA anywhere)",
-      all(has(vi[!has(vi, "spinach"), ], "method=drip")) && !any(has(vi[has(vi, "spinach"), ], "method=")) &&
-        !any(grepl("=NA(;|$)", sal$attributes_keyvalue)))
+check(sprintf("cover crop establishment irrigation: %d rows, Fig. 2 mm per year", nrow(cce)),
+      nrow(cce) == 52 && all(cce$units == "mm") && all(num(cce$level) == fig2[as.character(yr(cce))]))
+ad <- num(sub(".*application_days=([0-9]+).*", "\\1", cce$attributes_keyvalue))
+cce38 <- cce[cce$treatments.name %in% paste0("socs_sys", 3:8), ]
+ad38 <- num(sub(".*application_days=([0-9]+).*", "\\1", cce38$attributes_keyvalue))
+check("application days per year match the Fig. 2 caption (6,2,3,1,7,5,3,3)",
+      all(ad38 == days[as.character(yr(cce38))]))
+y4 <- cce[yr(cce) == 2006, ]
+check("Year 4 single application on 2006-11-05 (Table 2 last irrigation)",
+      all(day(y4$min_date) == "2006-11-05" & day(y4$max_date) == "2006-11-05"))
+check(sprintf("vegetable irrigation rows (%d) carry method/timing but no amount", nrow(veg)),
+      all(veg$level %in% c("", "NA")) && all(veg$units %in% c("", "NA")))
+check("no key=NA text inside attributes (e.g. method=NA)", !any(grepl("=NA(;|$)", sal$attributes_keyvalue)))
 
-cat("\n== 8. unharvested crops and other round-3 labels ==\n")
-un <- hv[has(hv, "harvested_component=none"), ]
-check(sprintf("%d harvest rows (2004 spinach, 2005 broccoli) say harvested_component=none; marketed=no", nrow(un)),
-      nrow(un) == 16 && all(has(un, "marketed=no")) &&
-        setequal(paste(yr(un), sub(".*crop=([a-z_]+).*", "\\1", un$attributes_keyvalue)),
-                 c("2004 baby_leaf_spinach", "2005 broccoli")))
-comp <- sal[sal$units == "Mg ha-1 (oven-dry)", ]
-check("no compost row is labelled season=fall; second-crop compost says season=summer",
-      !any(has(comp, "season=fall")) && all(has(comp[has(comp, "relative_to=broccoli") | has(comp, "relative_to=baby"), ],
-                                                  "season=summer")))
+cat("\n== 6. tillage depths ==\n")
+sub_ <- till[has(till, "implement=subsoiler"), ]
+check("subsoiling 100 cm everywhere, no 45 cm depth left", all(sub_$level == "100") && !any(sal$level == "45" & sal$units == "cm depth"))
+fall <- till[has(till, "relative_to=cover_crop_or_fallow"), ]
+check(sprintf("fall residue incorporation rows (%d) at 30 cm", nrow(fall)), nrow(fall) == 64 && all(fall$level == "30"))
+check("residue incorporation 2010 is 13-14 Oct and 2004 is ~11 Sept",
+      all(paste(day(fall$min_date[yr(fall) == 2010]), day(fall$max_date[yr(fall) == 2010])) == "2010-10-13 2010-10-14") &&
+        all(day(fall$min_date[yr(fall) == 2004]) == "2004-09-11"))
 y8 <- till[yr(till) == 2011 & has(till, "relative_timing=after_harvest"), ]
-print(table(paste(y8$attributes_keyvalue), paste(substr(y8$min_date, 1, 7), y8$level, y8$units)))
-check("Year 8: 24 tillage rows, June disking, August ripping 100 cm and spading 30 cm", nrow(y8) == 24)
-h11 <- hl[yr(hl) == 2011, ]
-check("2011 lettuce harvest cites White et al. 2020b", all(h11$citation == "10.1371/journal.pone.0228677"))
+check("Year 8 (2011) June disking + August ripping (100 cm) + spading (30 cm): 24 rows",
+      nrow(y8) == 24 && setequal(sub(";.*", "", y8$attributes_keyvalue),
+                                 c("implement=disc", "implement=subsoiler", "implement=spader")))
 
-cat("\n== 9. supporting tables ==\n")
-check("crops gains baby leaf spinach", any(grepl("spinach", cr[[2]], ignore.case = TRUE)))
-check("citations gains Brennan and Smith 2017", "10.2134/agronj2016.06.0354" %in% ci$doi)
-check("every Salinas management citation resolves in citations.csv", all(sal$citation %in% ci$doi))
-check("treatments: socs_sys1/2 cover crop in Years 4 and 8",
-      all(grepl("Years 4 and 8", tr[[2]][tr$name %in% systems[1:2]])))
-tw <- tr[tr$name %in% systems, ]
-out <- sal[D(sal$min_date) < D(tw[[3]][match(sal$treatments.name, tw$name)]) |
-             D(sal$max_date) > D(tw[[4]][match(sal$treatments.name, tw$name)]), ]
-cat(sprintf("       info: %d Salinas management rows fall outside the treatments start/end dates (%s)\n",
-            nrow(out), paste(unique(paste(out$mgmttype, out$min_date, out$max_date)), collapse = "; ")))
-cat(sprintf("\n%d checks passed, %d failed\n", n_pass, n_fail))
-quit(status = as.integer(n_fail > 0))
+cat("\n== 7. window rules, rounds 3-6 ==\n")
+comp <- sal[sal$mgmttype == "fertilization" & sal$units == "Mg ha-1 (oven-dry)", ]
+check("no compost labelled season=fall; second-crop compost is season=summer",
+      !any(has(comp, "season=fall")) && all(has(comp[has(comp, "relative_to=baby_leaf_spinach") | has(comp, "relative_to=broccoli"), ], "season=summer")))
+r4 <- sal[sal$event_id %in% c("tillage-0049", "tillage-0050", "tillage-0113", "tillage-0114"), ]
+check("round 4: the four socs_sys1/2 spading notes no longer say 'end of March'",
+      nrow(r4) == 4 && !any(grepl("end of March", r4$notes)) &&
+        all(grepl("30 days before the bed formation", r4$notes, fixed = TRUE)),
+      paste(r4$event_id, r4$treatments.name, day(r4$min_date), day(r4$max_date)))
+check("round 4/5: 2007 window ends 16-18 March, 2011 window ends 11 March",
+      all(day(r4$max_date[yr(r4) == 2007]) <= "2007-03-18") && all(day(r4$max_date[yr(r4) == 2011]) == "2011-03-11"))
+r5 <- sal[sal$event_id %in% c(sprintf("fertilization-%04d", c(99:105, 145, 173, 201, 229, 257, 285, 313, 341))), ]
+check(sprintf("round 5: %d pre-lettuce compost/pelleted rows in 2011 start 2011-04-10", nrow(r5)),
+      nrow(r5) == 15 && all(day(r5$min_date) == "2011-04-10") && all(yr(r5) == 2011))
+pre <- sal[sal$mgmttype == "fertilization" & (has(sal, "material=pelleted_") | sal$units == "Mg ha-1 (oven-dry)") &
+             substr(sal$min_date, 6, 7) %in% c("03", "04", "05"), ]
+gap <- vapply(2004:2011, function(y) as.numeric(min(as.Date(day(pre$min_date[yr(pre) == y]))) -
+                                                 max(as.Date(day(sp$max_date[yr(sp) == y])))), numeric(1))
+check(sprintf("gap last spading -> first pre-lettuce compost/pellet = 30 d (72 in 2009): %s",
+              paste(2004:2011, gap, sep = ":", collapse = " ")),
+      identical(gap, c(30, 30, 30, 30, 30, 72, 30, 30)))
+r6 <- sal[sal$event_id %in% sprintf("fertilization-%04d", c(1, 15, 29, 57, 71, 85)), ]
+check("round 6: six socs_sys2 fallow-winter compost notes say 'winter fallow in socs_sys2', no cover crop decomposition",
+      nrow(r6) == 6 && all(r6$treatments.name == "socs_sys2") &&
+        all(grepl("winter fallow in socs_sys2", r6$notes, fixed = TRUE)) &&
+        !any(grepl("after the cover crop decomposition", r6$notes, fixed = TRUE)),
+      paste(r6$event_id, yr(r6)))
+fall_sys2 <- sal[sal$treatments.name == "socs_sys2" & !yr(sal) %in% c(2007, 2011) &
+                   grepl("after the cover crop decomposition", sal$notes, fixed = TRUE), ]
+check("no socs_sys2 row in a fallow winter year claims a cover crop decomposition", nrow(fall_sys2) == 0)
+
+cat("\n== 8. date hygiene ==\n")
+check("every Salinas min_date <= max_date", all(day(sal$min_date) <= day(sal$max_date)))
+pt <- sal[day(sal$min_date) == day(sal$max_date), ]
+check(sprintf("every point-dated Salinas row (%d) cites a printed Table 2 / Fig. 2 / Brennan and Smith 2017 date in its notes", nrow(pt)),
+      all(mapply(function(n, d) grepl(d, n, fixed = TRUE) || grepl("Table 2|Fig. 2", n), pt$notes, day(pt$min_date))))
+cit <- rd(file.path(root, "data", "citations.csv"))
+check("every Salinas citation resolves to citations.csv", all(sal$citation %in% cit$doi))
+check("Brennan and Smith 2017 citation present", "10.2134/agronj2016.06.0354" %in% cit$doi)
+crops <- rd(file.path(root, "data", "crops.csv"))
+check("crops table has baby leaf spinach", any(grepl("spinach", tolower(do.call(paste, crops)))))
+tr <- rd(file.path(root, "data", "treatments.csv"))
+t12 <- tr[tr$name %in% c("socs_sys1", "socs_sys2"), ]
+check("treatments: socs_sys1/2 name cover crop Years 4 and 8",
+      all(grepl("Years 4 and 8", do.call(paste, t12), fixed = TRUE)))
+
+cat("\n== 9. report window table (data_entry_report.md Dates) vs rows ==\n")
+cropname <- function(d) sub(".*(romaine_lettuce|baby_leaf_spinach|broccoli).*", "\\1", d$attributes_keyvalue)
+k <- function(d) paste(d$treatments.name, yr(d), cropname(d))
+cash_k <- k(cash); hv_k <- k(hv)
+span <- sal[(sal$mgmttype == "irrigation" & !has(sal, "purpose=cover_crop_establishment")) |
+              (sal$mgmttype == "fertilization" & has(sal, "material=liquid_")), ]
+check(sprintf("liquid N and vegetable irrigation (%d rows) run from the crop's planting start to its harvest end", nrow(span)),
+      all(day(span$min_date) == day(cash$min_date[match(k(span), cash_k)])) &&
+        all(day(span$max_date) == day(hv$max_date[match(k(span), hv_k)])))
+ss <- till[has(till, "implement=subsoiler") & !(yr(till) == 2011), ]
+sk <- paste(ss$treatments.name, yr(ss), sub(".*relative_to=([a-z_]+).*", "\\1", ss$attributes_keyvalue))
+ccp <- tapply(day(cc$min_date), paste(cc$treatments.name, yr(cc)), min)
+check(sprintf("fall subsoiling (%d rows) runs from the second crop's harvest start to the fall cover crop planting date", nrow(ss)),
+      all(day(ss$min_date) == day(hv$min_date[match(sk, hv_k)])) &&
+        all(day(ss$max_date) == ccp[match(paste(ss$treatments.name, yr(ss)), names(ccp))] |
+              is.na(ccp[match(paste(ss$treatments.name, yr(ss)), names(ccp))])))
+sc <- sal[sal$mgmttype == "fertilization" & (has(sal, "relative_to=broccoli") | has(sal, "relative_to=baby_leaf_spinach")), ]
+sck <- paste(sc$treatments.name, yr(sc), sub(".*relative_to=([a-z_]+).*", "\\1", sc$attributes_keyvalue))
+check(sprintf("compost and pelleted N before the second crop (%d rows) run 1 June to the end of its planting window", nrow(sc)),
+      all(substr(sc$min_date, 6, 10) == "06-01") && all(day(sc$max_date) == day(cash$max_date[match(sck, cash_k)])))
+y6 <- sal[yr(sal) == 2009 & (has(sal, "relative_to=romaine_lettuce") & sal$mgmttype == "fertilization" |
+                               (sal$mgmttype == "planting" & has(sal, "crop=romaine_lettuce"))), ]
+check(sprintf("2009 lettuce, compost and pelleted windows are 24-31 May (%d rows)", nrow(y6)),
+      all(day(y6$min_date) == "2009-05-24" & day(y6$max_date) == "2009-05-31"))
+
+cat(sprintf("\n%d check(s) failed\n", fails))
+quit(status = if (fails) 1 else 0)

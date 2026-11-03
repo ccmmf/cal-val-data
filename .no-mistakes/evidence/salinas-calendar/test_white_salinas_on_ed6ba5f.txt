@@ -1,0 +1,23 @@
+$ Rscript -e 'testthat::test_file("tests/testthat/test-white-salinas.R")'   # test from f20bda6, data from ed6ba5f
+✔ | F W  S  OK | Context
+
+⠏ |          0 | white-salinas                                                  
+⠋ |          1 | white-salinas                                                  
+⠋ |         11 | white-salinas                                                  
+⠴ |         46 | white-salinas                                                  
+✖ | 1       53 | white-salinas
+────────────────────────────────────────────────────────────────────────────────
+Failure ('test-white-salinas.R:176:3'): white_salinas_2020 calendar runs Year 1 (2004) to Year 8 (2011)
+`gap` not equal to c(30, 30, 30, 30, 30, 72, 30, 30).
+1/8 mismatches
+[8] 29 - 30 == -1
+────────────────────────────────────────────────────────────────────────────────
+
+══ Results ═════════════════════════════════════════════════════════════════════
+── Failed tests ────────────────────────────────────────────────────────────────
+Failure ('test-white-salinas.R:176:3'): white_salinas_2020 calendar runs Year 1 (2004) to Year 8 (2011)
+`gap` not equal to c(30, 30, 30, 30, 30, 72, 30, 30).
+1/8 mismatches
+[8] 29 - 30 == -1
+
+[ FAIL 1 | WARN 0 | SKIP 0 | PASS 53 ]

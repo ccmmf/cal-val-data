@@ -1,0 +1,159 @@
+$ Rscript consumer_checks.R <worktree@f20bda6> <data from parent fabf5f5>
+== 1. scope of the change vs parent (fabf5f5) ==
+[PASS] non-Salinas rows byte-identical (3348 now, 3348 parent)
+[PASS] no Salinas event removed (removed=0)
+[PASS] 517 Salinas rows changed (got 517)
+[PASS] 484 rows added = 224 fertilization + 172 irrigation + 88 tillage (got fertilization 224, irrigation 172, tillage 88)
+[PASS] 2003 establishment compost row untouched
+[PASS] managements total 4,350 rows (got 4350)
+
+== 2. crop sequence per system and year ==
+     socs_sys1                           socs_sys2                          
+2004 "romaine_lettuce+baby_leaf_spinach" "romaine_lettuce+baby_leaf_spinach"
+2005 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2006 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2007 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2008 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2009 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2010 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2011 "romaine_lettuce"                   "romaine_lettuce"                  
+     socs_sys3                           socs_sys4                          
+2004 "romaine_lettuce+baby_leaf_spinach" "romaine_lettuce+baby_leaf_spinach"
+2005 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2006 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2007 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2008 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2009 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2010 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2011 "romaine_lettuce"                   "romaine_lettuce"                  
+     socs_sys5                           socs_sys6                          
+2004 "romaine_lettuce+baby_leaf_spinach" "romaine_lettuce+baby_leaf_spinach"
+2005 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2006 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2007 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2008 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2009 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2010 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2011 "romaine_lettuce"                   "romaine_lettuce"                  
+     socs_sys7                           socs_sys8                          
+2004 "romaine_lettuce+baby_leaf_spinach" "romaine_lettuce+baby_leaf_spinach"
+2005 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2006 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2007 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2008 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2009 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2010 "romaine_lettuce+broccoli"          "romaine_lettuce+broccoli"         
+2011 "romaine_lettuce"                   "romaine_lettuce"                  
+[PASS] lettuce planted once per system every year 2004-2011
+[PASS] baby leaf spinach only in 2004 (8 rows)
+[PASS] broccoli only 2005-2010, once per system
+[PASS] no second crop in Year 8 (2011)
+[PASS] no vegetable planting in 2012 (old one-year-late template gone)
+[PASS] not harvested: 2004 spinach and 2005 broccoli only, marketed=no (16 rows)
+[PASS] lettuce planting windows lie in May
+[PASS] lettuce harvest windows in June or July
+[PASS] broccoli planting windows in July or August
+[PASS] broccoli harvest starts in September (30 Sept in 2010) and ends on the last residue incorporation day
+[PASS] lettuce planted no earlier than cover crop spading + 30 d (+72 in 2009): 2004:54 2005:51 2006:79 2007:44 2008:72 2009:72 2010:44 2011:51
+[PASS] fallow-winter spading (12 rows, socs_sys1/2) is a Feb-Mar window ending before the bed formation
+
+== 3. cover crops on the published dates ==
+[PASS] 48 annual cover crop plantings, point dates = Brennan and Boyd 2012 Table 2
+[PASS] socs_sys1/2 cover crops only Years 4 and 8 (2006-11-02, 2010-10-27)
+[PASS] spring flail mow + spading of annual cover crops starts on Table 2 termination dates (30 cm)
+
+== 4. fertilizer N ==
+ [1] "2004 baby_leaf_spinach 22" "2004 romaine_lettuce 56"  
+ [3] "2005 broccoli 112"         "2005 romaine_lettuce 56"  
+ [5] "2006 broccoli 134"         "2006 romaine_lettuce 56"  
+ [7] "2007 broccoli 134"         "2007 romaine_lettuce 56"  
+ [9] "2008 broccoli 134"         "2008 romaine_lettuce 56"  
+[11] "2009 broccoli 134"         "2009 romaine_lettuce 56"  
+[13] "2010 broccoli 134"         "2010 romaine_lettuce 56"  
+[15] "2011 romaine_lettuce 56"  
+[PASS] pelleted rates: lettuce 56, spinach 22, broccoli 112 (2005) / 134 (2006-2010)
+[PASS] liquid fertilizer rows are labelled derived=total_minus_pelleted
+[PASS] no liquid fertilizer in 2004
+[PASS] liquid rates: lettuce 17, broccoli 22 (2005) / 34 (2006-2010)
+             socs_sys1 socs_sys2 socs_sys3 socs_sys4 socs_sys5 socs_sys6
+2004 lettuce        56        56        56        56        56        56
+2004 second         22        22        22        22        22        22
+2005 lettuce        73        73        73        73        73        73
+2005 second        134       134       134       134       134       134
+2006 lettuce        73        73        73        73        73        73
+2006 second        168       168       168       168       168       168
+2007 lettuce        73        73        73        73        73        73
+2007 second        168       168       168       168       168       168
+2008 lettuce        73        73        73        73        73        73
+2008 second        168       168       168       168       168       168
+2009 lettuce        73        73        73        73        73        73
+2009 second        168       168       168       168       168       168
+2010 lettuce        73        73        73        73        73        73
+2010 second        168       168       168       168       168       168
+2011 lettuce        73        73        73        73        73        73
+             socs_sys7 socs_sys8
+2004 lettuce        56        56
+2004 second         22        22
+2005 lettuce        73        73
+2005 second        134       134
+2006 lettuce        73        73
+2006 second        168       168
+2007 lettuce        73        73
+2007 second        168       168
+2008 lettuce        73        73
+2008 second        168       168
+2009 lettuce        73        73
+2009 second        168       168
+2010 lettuce        73        73
+2010 second        168       168
+2011 lettuce        73        73
+[PASS] published totals per system: 73 lettuce (2005-11), 134 broccoli 2005, 168 broccoli 2006-10
+
+== 5. irrigation ==
+[PASS] cover crop establishment irrigation: 52 rows, Fig. 2 mm per year
+[PASS] application days per year match the Fig. 2 caption (6,2,3,1,7,5,3,3)
+[PASS] Year 4 single application on 2006-11-05 (Table 2 last irrigation)
+[PASS] vegetable irrigation rows (120) carry method/timing but no amount
+[PASS] no key=NA text inside attributes (e.g. method=NA)
+
+== 6. tillage depths ==
+[PASS] subsoiling 100 cm everywhere, no 45 cm depth left
+[PASS] fall residue incorporation rows (64) at 30 cm
+[PASS] residue incorporation 2010 is 13-14 Oct and 2004 is ~11 Sept
+[PASS] Year 8 (2011) June disking + August ripping (100 cm) + spading (30 cm): 24 rows
+
+== 7. window rules, rounds 3-6 ==
+[PASS] no compost labelled season=fall; second-crop compost is season=summer
+[PASS] round 4: the four socs_sys1/2 spading notes no longer say 'end of March'
+       tillage-0049 socs_sys1 2007-03-16 2007-03-18
+       tillage-0050 socs_sys2 2007-03-16 2007-03-18
+       tillage-0113 socs_sys1 2011-03-09 2011-03-11
+       tillage-0114 socs_sys2 2011-03-09 2011-03-11 
+[PASS] round 4/5: 2007 window ends 16-18 March, 2011 window ends 11 March
+[PASS] round 5: 15 pre-lettuce compost/pelleted rows in 2011 start 2011-04-10
+[PASS] gap last spading -> first pre-lettuce compost/pellet = 30 d (72 in 2009): 2004:30 2005:30 2006:30 2007:30 2008:30 2009:72 2010:30 2011:30
+[PASS] round 6: six socs_sys2 fallow-winter compost notes say 'winter fallow in socs_sys2', no cover crop decomposition
+       fertilization-0001 2004
+       fertilization-0015 2005
+       fertilization-0029 2006
+       fertilization-0057 2008
+       fertilization-0071 2009
+       fertilization-0085 2010 
+[PASS] no socs_sys2 row in a fallow winter year claims a cover crop decomposition
+
+== 8. date hygiene ==
+[PASS] every Salinas min_date <= max_date
+[PASS] every point-dated Salinas row (134) cites a printed Table 2 / Fig. 2 / Brennan and Smith 2017 date in its notes
+[PASS] every Salinas citation resolves to citations.csv
+[PASS] Brennan and Smith 2017 citation present
+[PASS] crops table has baby leaf spinach
+[PASS] treatments: socs_sys1/2 name cover crop Years 4 and 8
+
+== 9. report window table (data_entry_report.md Dates) vs rows ==
+[PASS] liquid N and vegetable irrigation (224 rows) run from the crop's planting start to its harvest end
+[PASS] fall subsoiling (56 rows) runs from the second crop's harvest start to the fall cover crop planting date
+[PASS] compost and pelleted N before the second crop (105 rows) run 1 June to the end of its planting window
+[PASS] 2009 lettuce, compost and pelleted windows are 24-31 May (23 rows)
+
+0 check(s) failed
+exit=0

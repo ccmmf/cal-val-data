@@ -1,0 +1,13 @@
+$ Rscript export_roundtrip.R <worktree@f20bda6> /tmp/nm-salinas/roundtrip
+citations        byte-identical  f9cd1b165924dfeabc2bdfc17571cac7
+sites            byte-identical  4f2b0529b935c8988262434fd4c319d0
+treatments       byte-identical  d817704c0795aa848731188fc0d59862
+treatment_pairs  byte-identical  c908448c4ac6d7e97394a566a3667ba6
+managements      byte-identical  89266355d3db0a1310766140cb0f1c9f
+observations     byte-identical  91cce0ec868691dc03faa5f26bf7e52d
+methods          byte-identical  71641b1790d6c0d1fa1b5ee07847aabc
+variables        byte-identical  9d3fc86ad08e2c548a6ade54ade76aff
+crops            byte-identical  070537e5f551b62503285ba53f900433
+coverage         byte-identical  705c49181a1747f0c5ea386911637be5
+0 table(s) differ
+exit=0

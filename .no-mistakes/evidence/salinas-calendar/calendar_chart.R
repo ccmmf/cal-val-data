@@ -1,54 +1,71 @@
-# draw the Salinas management calendar for two systems, before and after, from the committed csvs
-args <- commandArgs(trailingOnly = TRUE)
-library(ggplot2)
+#!/usr/bin/env Rscript
+# Before/after timeline of one Salinas system's management events, drawn from
+# data/managements.csv at the parent commit and at this change.
+# usage: Rscript calendar_chart.R <parent_managements.csv> <head_managements.csv> <system> <out.png>
+suppressPackageStartupMessages(library(ggplot2))
+args <- commandArgs(TRUE)
 rd <- function(p, lab) {
-  d <- readr::read_csv(p, col_types = readr::cols(.default = "c"), na = character(), show_col_types = FALSE)
-  d <- d[d$sites.name == "salinas_socs" & d$treatments.name %in% c("socs_sys1", "socs_sys4"), ]
-  d$version <- lab; d
+  d <- readr::read_csv(p, col_types = readr::cols(.default = "c"), progress = FALSE)
+  d <- d[d$sites.name == "salinas_socs" & d$treatments.name == args[3], ]
+  d$version <- lab
+  d
 }
-d <- rbind(rd(args[1], "before (parent fabf5f5)"), rd(args[2], "after (HEAD 236a7cd)"))
-d$version <- factor(d$version, c("before (parent fabf5f5)", "after (HEAD 236a7cd)"))
+d <- rbind(rd(args[1], "parent fabf5f5 (old template)"), rd(args[2], "this change f20bda6 (rebuilt calendar)"))
+d$version <- factor(d$version, levels = unique(d$version))
 kv <- d$attributes_keyvalue
-crop <- ifelse(grepl("baby_leaf_spinach", kv) | grepl("spinach", d$crop_name), "spinach",
-         ifelse(grepl("broccoli", kv), "broccoli", ifelse(grepl("romaine_lettuce|lettuce", kv), "lettuce", "")))
-d$lane <- with(d, ifelse(mgmttype == "planting" & cover_crop == "TRUE", "cover crop planting",
-           ifelse(mgmttype == "planting", paste(crop, "planting"),
-           ifelse(mgmttype == "harvest", paste(crop, "harvest"),
-           ifelse(mgmttype == "irrigation", ifelse(grepl("cover_crop", kv), "irrigation: cover crop (mm)", "irrigation: drip (no amount)"),
-           ifelse(mgmttype %in% c("fertilization", "compost_application"),
-                  ifelse(grepl("material=pelleted", kv), "fertilizer: pelleted",
-                  ifelse(grepl("material=liquid", kv), "fertilizer: liquid (derived)", "compost")),
-           ifelse(grepl("subsoiler", kv), "tillage: subsoil",
-           ifelse(grepl("spader", kv) & as.integer(substr(min_date, 6, 7)) <= 3, "tillage: spring spading",
-           ifelse(grepl("disc_harrow", kv), "tillage: residue incorporation", "tillage: other")))))))))
-d$lane[d$lane %in% c(" planting", " harvest")] <- paste("other", d$mgmttype[d$lane %in% c(" planting", " harvest")])
-lanes <- c("cover crop planting", "irrigation: cover crop (mm)", "tillage: spring spading", "compost",
-           "fertilizer: pelleted", "lettuce planting", "lettuce harvest", "spinach planting", "spinach harvest",
-           "broccoli planting", "broccoli harvest", "fertilizer: liquid (derived)", "irrigation: drip (no amount)",
-           "tillage: subsoil", "tillage: residue incorporation", "tillage: other", "other planting", "other harvest")
-d$lane <- factor(d$lane, rev(intersect(lanes, unique(d$lane))))
-d$start <- as.Date(substr(d$min_date, 1, 10)); d$end <- as.Date(substr(d$max_date, 1, 10)) + 1
-d$point <- d$start == d$end - 1
-d$xend <- pmax(d$end, d$start + 9)  # keep few-day windows visible
-d$group <- sub(":.*| planting| harvest", "", as.character(d$lane))
-d <- d[!is.na(d$start), ]
-pal <- c("cover crop" = "#4a7c59", "irrigation" = "#3b82c4", tillage = "#8a6d3b", compost = "#a0522d",
-         fertilizer = "#c47f00", lettuce = "#7cb342", spinach = "#00897b", broccoli = "#5e35b1", other = "grey50")
-d$group[!d$group %in% names(pal)] <- "other"
-g <- ggplot(d) +
-  geom_rect(aes(xmin = start, xmax = xend, ymin = as.numeric(lane) - 0.38, ymax = as.numeric(lane) + 0.38, fill = group),
-            alpha = 0.75) +
-  geom_point(data = d[d$point, ], aes(x = start, y = as.numeric(lane)), shape = 18, size = 1.6) +
-  scale_y_continuous(breaks = seq_along(levels(d$lane)), labels = levels(d$lane), expand = c(0.01, 0.01)) +
-  scale_x_date(date_breaks = "1 year", date_labels = "%Y", minor_breaks = NULL,
-               limits = as.Date(c("2003-07-01", "2013-01-01"))) +
+d$row <- with(d, ifelse(mgmttype == "planting" & cover_crop == "TRUE", "cover crop planting",
+               ifelse(mgmttype == "planting", "vegetable planting",
+               ifelse(mgmttype == "harvest", "vegetable harvest",
+               ifelse(mgmttype == "tillage", "tillage (spading, subsoil, incorporation)",
+               ifelse(mgmttype == "irrigation", "irrigation",
+               ifelse(grepl("pelleted_", kv), "pelleted N (kg N/ha)",
+               ifelse(grepl("liquid_", kv), "liquid N via drip (derived)",
+               ifelse(mgmttype %in% c("fertilization", "compost_application"), "compost", mgmttype)))))))))
+rows <- c("cover crop planting", "tillage (spading, subsoil, incorporation)", "compost",
+          "pelleted N (kg N/ha)", "liquid N via drip (derived)", "vegetable planting",
+          "vegetable harvest", "irrigation")
+d$row <- factor(d$row, levels = rev(rows))
+# two lanes per row so back-to-back windows stay distinct: lettuce / spring above, second crop below
+second <- grepl("baby_leaf_spinach|broccoli", kv)
+d$y <- as.numeric(d$row) + ifelse(d$row %in% c("tillage (spading, subsoil, incorporation)", "cover crop planting"),
+                                  0, ifelse(second, -0.17, 0.17))
+d$kind <- ifelse(d$mgmttype == "fertilization" | d$mgmttype == "compost_application", "fertilization", d$mgmttype)
+d$start <- as.Date(substr(d$min_date, 1, 10))
+d$end <- as.Date(substr(d$max_date, 1, 10))
+d$point <- d$start == d$end
+crop <- ifelse(grepl("crop=", kv), sub(".*crop=([a-z_]+).*", "\\1", kv), NA)
+d$crop_lab <- ifelse(d$row == "vegetable planting",
+                     c(romaine_lettuce = "lettuce", baby_leaf_spinach = "spinach", broccoli = "broccoli")[crop], NA)
+pal <- c(planting = "#2a78d6", tillage = "#eb6834", fertilization = "#1baf7a",
+         harvest = "#eda100", irrigation = "#e87ba4")
+yrs <- as.Date(sprintf("%d-01-01", 2004:2012))
+p <- ggplot(d) +
+  geom_vline(xintercept = yrs, colour = "#e6e5e0", linewidth = 0.4) +
+  geom_segment(data = d[!d$point, ], aes(x = start, xend = end, y = y, yend = y, colour = kind),
+               linewidth = 2.4, lineend = "round") +
+  geom_point(data = d[d$point, ], aes(x = start, y = y, fill = kind), shape = 21, size = 2.8,
+             colour = "#fcfcfb", stroke = 0.6) +
+  geom_text(data = d[!is.na(d$crop_lab) & !second, ], aes(x = start, y = y, label = crop_lab),
+            vjust = -0.9, hjust = 0, size = 2.5, colour = "#52514e") +
+  geom_text(data = d[!is.na(d$crop_lab) & second, ], aes(x = start, y = y, label = crop_lab),
+            vjust = 1.9, hjust = 0, size = 2.5, colour = "#52514e") +
+  scale_y_continuous(breaks = seq_along(levels(d$row)), labels = levels(d$row), expand = c(0.04, 0)) +
+  facet_wrap(~version, ncol = 1) +
+  scale_colour_manual(values = pal, guide = "none") +
   scale_fill_manual(values = pal, guide = "none") +
-  facet_grid(treatments.name ~ version) +
-  labs(title = "Salinas (white_salinas_2020) management calendar from data/managements.csv",
-       subtitle = "socs_sys1 (cover crop Years 4 and 8 only) and socs_sys4 (annual legume-rye). Diamonds: printed point dates; bars: source windows (drawn at least 9 days wide).",
-       x = NULL, y = NULL) +
-  theme_minimal(base_size = 9) +
-  theme(panel.grid.major.y = element_line(colour = "grey92"), strip.text = element_text(face = "bold", size = 10),
-        panel.spacing = grid::unit(1, "lines"), plot.title = element_text(face = "bold"))
-ggsave(args[3], g, width = 15, height = 9.5, dpi = 130, bg = "white")
-cat("wrote", args[3], "\n")
+  scale_x_date(limits = as.Date(c("2003-09-01", "2012-12-31")), breaks = yrs,
+               date_labels = "%Y", expand = c(0, 0)) +
+  labs(title = sprintf("Salinas %s management calendar: parent vs this change", args[3]),
+       subtitle = "Bars are source-stated date windows; dots are point dates printed in Brennan and Boyd (2012) Table 2 / Fig. 2 or Brennan and Smith (2017)",
+       x = NULL, y = NULL,
+       caption = "Read from data/managements.csv at each commit. Within a row, the upper lane is the lettuce (spring) event and the lower lane the second crop (spinach/broccoli). Gridlines mark 1 January.") +
+  theme_minimal(base_size = 10) +
+  theme(plot.background = element_rect(fill = "#fcfcfb", colour = NA),
+        panel.grid = element_blank(),
+        strip.text = element_text(face = "bold", hjust = 0, size = 10, colour = "#0b0b0b"),
+        axis.text = element_text(colour = "#52514e"),
+        plot.title = element_text(colour = "#0b0b0b", face = "bold"),
+        plot.subtitle = element_text(colour = "#52514e", size = 8.5),
+        plot.caption = element_text(colour = "#52514e", size = 7.5))
+ggsave(args[4], p, width = 13, height = 8.5, dpi = 150, bg = "#fcfcfb")
+cat("wrote", args[4], "\n")

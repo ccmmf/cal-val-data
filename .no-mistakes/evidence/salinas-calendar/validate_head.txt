@@ -1,3 +1,4 @@
+$ Rscript scripts/validate.R   # at f20bda6
 checked citations 80 rows
 checked sites 13 rows
 checked treatments 35 rows

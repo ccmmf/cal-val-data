@@ -1,0 +1,11 @@
+$ Rscript -e 'testthat::test_file("tests/testthat/test-white-salinas.R")'   # at f20bda6
+✔ | F W  S  OK | Context
+
+⠏ |          0 | white-salinas                                                  
+⠋ |          1 | white-salinas                                                  
+⠋ |         11 | white-salinas                                                  
+⠸ |         44 | white-salinas                                                  
+✔ |         54 | white-salinas
+
+══ Results ═════════════════════════════════════════════════════════════════════
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 54 ]

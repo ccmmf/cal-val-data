@@ -1,0 +1,93 @@
+$ Rscript consumer_checks.R <data from parent fabf5f5> <data from parent fabf5f5>   # control: same checks on the old calendar
+== 1. scope of the change vs parent (fabf5f5) ==
+[PASS] non-Salinas rows byte-identical (3348 now, 3348 parent)
+[PASS] no Salinas event removed (removed=0)
+[FAIL] 517 Salinas rows changed (got 0)
+[FAIL] 484 rows added = 224 fertilization + 172 irrigation + 88 tillage (got )
+[PASS] 2003 establishment compost row untouched
+[FAIL] managements total 4,350 rows (got 3866)
+
+== 2. crop sequence per system and year ==
+     socs_sys1                  socs_sys2                 
+2005 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2006 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2007 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2008 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2009 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2010 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2011 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2012 "romaine_lettuce"          "romaine_lettuce"         
+     socs_sys3                  socs_sys4                 
+2005 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2006 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2007 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2008 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2009 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2010 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2011 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2012 "romaine_lettuce"          "romaine_lettuce"         
+     socs_sys5                  socs_sys6                 
+2005 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2006 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2007 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2008 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2009 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2010 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2011 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2012 "romaine_lettuce"          "romaine_lettuce"         
+     socs_sys7                  socs_sys8                 
+2005 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2006 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2007 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2008 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2009 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2010 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2011 "romaine_lettuce+broccoli" "romaine_lettuce+broccoli"
+2012 "romaine_lettuce"          "romaine_lettuce"         
+[FAIL] lettuce planted once per system every year 2004-2011
+[FAIL] baby leaf spinach only in 2004 (8 rows)
+[FAIL] broccoli only 2005-2010, once per system
+[FAIL] no second crop in Year 8 (2011)
+[FAIL] no vegetable planting in 2012 (old one-year-late template gone)
+[FAIL] not harvested: 2004 spinach and 2005 broccoli only, marketed=no (0 rows)
+[FAIL] lettuce planting windows lie in May
+[FAIL] lettuce harvest windows in June or July
+[FAIL] broccoli planting windows in July or August
+[FAIL] broccoli harvest starts in September (30 Sept in 2010) and ends on the last residue incorporation day
+Warning messages:
+1: In min.default(numeric(0), na.rm = FALSE) :
+  no non-missing arguments to min; returning Inf
+2: In max.default(numeric(0), na.rm = FALSE) :
+  no non-missing arguments to max; returning -Inf
+3: In max.default(numeric(0), na.rm = FALSE) :
+  no non-missing arguments to max; returning -Inf
+4: In max.default(numeric(0), na.rm = FALSE) :
+  no non-missing arguments to max; returning -Inf
+5: In max.default(numeric(0), na.rm = FALSE) :
+  no non-missing arguments to max; returning -Inf
+6: In max.default(numeric(0), na.rm = FALSE) :
+  no non-missing arguments to max; returning -Inf
+7: In max.default(numeric(0), na.rm = FALSE) :
+  no non-missing arguments to max; returning -Inf
+8: In max.default(numeric(0), na.rm = FALSE) :
+  no non-missing arguments to max; returning -Inf
+9: In max.default(numeric(0), na.rm = FALSE) :
+  no non-missing arguments to max; returning -Inf
+[PASS] lettuce planted no earlier than cover crop spading + 30 d (+72 in 2009): 2004:Inf 2005:Inf 2006:Inf 2007:Inf 2008:Inf 2009:Inf 2010:Inf 2011:Inf
+[FAIL] fallow-winter spading (64 rows, socs_sys1/2) is a Feb-Mar window ending before the bed formation
+
+== 3. cover crops on the published dates ==
+[FAIL] 48 annual cover crop plantings, point dates = Brennan and Boyd 2012 Table 2
+[FAIL] socs_sys1/2 cover crops only Years 4 and 8 (2006-11-02, 2010-10-27)
+[FAIL] spring flail mow + spading of annual cover crops starts on Table 2 termination dates (30 cm)
+
+== 4. fertilizer N ==
+character(0)
+[FAIL] pelleted rates: lettuce 56, spinach 22, broccoli 112 (2005) / 134 (2006-2010)
+[PASS] liquid fertilizer rows are labelled derived=total_minus_pelleted
+[PASS] no liquid fertilizer in 2004
+[FAIL] liquid rates: lettuce 17, broccoli 22 (2005) / 34 (2006-2010)
+Error in tot[, systems] : subscript out of bounds
+Calls: print
+Execution halted
+exit=1
