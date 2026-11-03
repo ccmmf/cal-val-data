@@ -208,8 +208,8 @@ only. The windows:
 
 | Rows | Window | Source |
 | ---- | ------ | ------ |
-| spring spading | `socs_sys3`–`socs_sys8`: the Table 2 termination date; `socs_sys1` and `socs_sys2`: February or March in fallow winters, ending before the bed formation, and in 2007 and 2011 from the last biomass sampling day to 30 days before the bed formation (16–18 March 2007, 9–10 March 2011) | Brennan and Boyd 2012; White et al. 2020b; Brennan and Smith 2017 |
-| compost and pelleted fertilizer before lettuce | Table 2 termination + 30 days (72 in Year 6, 2009) to 31 May, in all eight systems | White et al. 2020b (at bed formation, 30 to 42 days after the spading; 72 in Year 6) |
+| spring spading | `socs_sys3`–`socs_sys8`: the Table 2 termination date; `socs_sys1` and `socs_sys2`: February or March in fallow winters, ending before the bed formation, and in 2007 and 2011 from the last biomass sampling day to 30 days before the bed formation (16–18 March 2007, 9–11 March 2011) | Brennan and Boyd 2012; White et al. 2020b; Brennan and Smith 2017 |
+| compost and pelleted fertilizer before lettuce | the last Table 2 termination day + 30 days (72 in Year 6, 2009) to 31 May, in all eight systems | White et al. 2020b (at bed formation, 30 to 42 days after the spading; 72 in Year 6) |
 | lettuce planting, harvest | May (from 24 May in 2009); June to July (June in 2011) | Brennan and Boyd 2012; White et al. 2020b |
 | compost and pelleted fertilizer before the second crop | 1 June to the end of its planting window | White et al. 2020b (when preparing the beds after the lettuce harvest) |
 | spinach (2004) | seeded in July; ended between 1 August and the residue incorporation (≈ 11 September) | Brennan and Boyd 2012; White et al. 2020b |

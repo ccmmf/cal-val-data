@@ -162,6 +162,19 @@ test_that("white_salinas_2020 calendar runs Year 1 (2004) to Year 8 (2011)", {
   expect_equal(nrow(spade), 48L)
   expect_setequal(unique(day(spade$min_date)), term)
 
+  # the beds, with the compost and pelleted fertilizer before the lettuce,
+  # come 30 days after the last spading day (72 in Year 6, 2009)
+  cover_spade <- till[till$attributes_keyvalue == "implement=flail_mower+spader", ]
+  pre <- sal[sal$mgmttype == "fertilization" &
+               (attr_has(sal, "material=pelleted_") |
+                  sal$units == "Mg ha-1 (oven-dry)") &
+               substr(sal$min_date, 6, 7) %in% c("03", "04", "05"), ]
+  gap <- vapply(2004:2011, function(y) {
+    as.numeric(min(as.Date(day(pre$min_date[yr(pre) == y]))) -
+                 max(as.Date(day(cover_spade$max_date[yr(cover_spade) == y]))))
+  }, numeric(1))
+  expect_equal(gap, c(30, 30, 30, 30, 30, 72, 30, 30))
+
   # Year 8 (2011): bed disking in June, ripping and spading in August
   y8 <- till[yr(till) == 2011 & grepl("relative_timing=after_harvest",
                                       till$attributes_keyvalue, fixed = TRUE), ]
