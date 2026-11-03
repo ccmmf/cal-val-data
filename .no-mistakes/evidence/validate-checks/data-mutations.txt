@@ -1,0 +1,146 @@
+# Data mutations on a disposable copy of the repo at 3db9f35: each case mutates data/*.csv, runs 'Rscript scripts/validate.R' (diff vs real-data output shown) and the test-integrity.R ratchets
+=== case: control
+  validate.R exit=0; data untouched by validate; validated 10 table(s) with 6 warning(s)
+  ratchet PASS validate_data runs in warn mode without error
+  ratchet PASS observation repeats stay within the known Russell Ranch rows
+  ratchet PASS management repeats stay within the known Russell Ranch rows
+  ratchet PASS empty mgmttype stays within the known Delta rows
+  ratchet PASS duplicated DOIs in citations do not grow
+=== case: obs_spread
+  validate.R exit=0; data untouched by validate; validated 10 table(s) with 6 warning(s)
+  - real:    WARNING: observations has 1188 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / bulk_density_g_cm3 536; russell_ranch_tautges_2019 / total_nitrogen_pct 343; russell_ranch_tautges_2019 / total_carbon_pct 103; russell_ranch_tautges_2019 / soil_no3_n_mg_kg 52; russell_ranch_tautges_2019 / tomato_green_fresh_yield_Mg_ha 45; russell_ranch_tautges_2019 / tomato_
+  + mutated: WARNING: observations has 1188 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / bulk_density_g_cm3 536; russell_ranch_tautges_2019 / total_nitrogen_pct 343; russell_ranch_tautges_2019 / total_carbon_pct 102; russell_ranch_tautges_2019 / soil_no3_n_mg_kg 52; russell_ranch_tautges_2019 / tomato_green_fresh_yield_Mg_ha 45; russell_ranch_tautges_2019 / tomato_
+  ratchet PASS validate_data runs in warn mode without error
+  ratchet FAIL observation repeats stay within the known Russell Ranch rows
+    -> setdiff(unique(obs$dataset_id[dup]), "russell_ranch_tautges_2019") not identical to character(0). Lengths differ: 1 is not 0 repeated observation rows outside the known set; plot ids not carried over, ccmmf/organization#274 
+  ratchet PASS management repeats stay within the known Russell Ranch rows
+  ratchet PASS empty mgmttype stays within the known Delta rows
+  ratchet PASS duplicated DOIs in citations do not grow
+=== case: obs_grow
+  validate.R exit=0; data untouched by validate; validated 10 table(s) with 6 warning(s)
+  - real:    WARNING: observations has 1188 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / bulk_density_g_cm3 536; russell_ranch_tautges_2019 / total_nitrogen_pct 343; russell_ranch_tautges_2019 / total_carbon_pct 103; russell_ranch_tautges_2019 / soil_no3_n_mg_kg 52; russell_ranch_tautges_2019 / tomato_green_fresh_yield_Mg_ha 45; russell_ranch_tautges_2019 / tomato_
+  + mutated: WARNING: observations has 1189 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / bulk_density_g_cm3 536; russell_ranch_tautges_2019 / total_nitrogen_pct 343; russell_ranch_tautges_2019 / total_carbon_pct 104; russell_ranch_tautges_2019 / soil_no3_n_mg_kg 52; russell_ranch_tautges_2019 / tomato_green_fresh_yield_Mg_ha 45; russell_ranch_tautges_2019 / tomato_
+  ratchet PASS validate_data runs in warn mode without error
+  ratchet FAIL observation repeats stay within the known Russell Ranch rows
+    -> sum(dup) is not less than 1188. Difference: 1 
+  ratchet PASS management repeats stay within the known Russell Ranch rows
+  ratchet PASS empty mgmttype stays within the known Delta rows
+  ratchet PASS duplicated DOIs in citations do not grow
+=== case: obs_shrink
+  validate.R exit=0; data untouched by validate; validated 10 table(s) with 6 warning(s)
+  - real:    WARNING: observations has 1188 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / bulk_density_g_cm3 536; russell_ranch_tautges_2019 / total_nitrogen_pct 343; russell_ranch_tautges_2019 / total_carbon_pct 103; russell_ranch_tautges_2019 / soil_no3_n_mg_kg 52; russell_ranch_tautges_2019 / tomato_green_fresh_yield_Mg_ha 45; russell_ranch_tautges_2019 / tomato_
+  + mutated: WARNING: observations has 1183 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / bulk_density_g_cm3 536; russell_ranch_tautges_2019 / total_nitrogen_pct 340; russell_ranch_tautges_2019 / total_carbon_pct 101; russell_ranch_tautges_2019 / soil_no3_n_mg_kg 52; russell_ranch_tautges_2019 / tomato_green_fresh_yield_Mg_ha 45; russell_ranch_tautges_2019 / tomato_
+  ratchet PASS validate_data runs in warn mode without error
+  ratchet PASS observation repeats stay within the known Russell Ranch rows
+  ratchet PASS management repeats stay within the known Russell Ranch rows
+  ratchet PASS empty mgmttype stays within the known Delta rows
+  ratchet PASS duplicated DOIs in citations do not grow
+=== case: mg_spread
+  validate.R exit=0; data untouched by validate; validated 10 table(s) with 6 warning(s)
+  - real:    WARNING: managements has 2195 row(s) repeating an earlier row in every column but event_id [russell_ranch_davis / planting 760; russell_ranch_davis / harvest 629; russell_ranch_davis / fertilization 590; russell_ranch_davis / compost_application 216]
+  + mutated: WARNING: managements has 2195 row(s) repeating an earlier row in every column but event_id [russell_ranch_davis / planting 759; russell_ranch_davis / harvest 629; russell_ranch_davis / fertilization 590; russell_ranch_davis / compost_application 216; salinas_socs / compost_application 1]
+  ratchet PASS validate_data runs in warn mode without error
+  ratchet PASS observation repeats stay within the known Russell Ranch rows
+  ratchet FAIL management repeats stay within the known Russell Ranch rows
+    -> setdiff(unique(mg$sites.name[dup]), "russell_ranch_davis") not identical to character(0). Lengths differ: 1 is not 0 repeated management rows outside the known set; ccmmf/organization#274 
+  ratchet PASS empty mgmttype stays within the known Delta rows
+  ratchet PASS duplicated DOIs in citations do not grow
+=== case: mg_grow
+  validate.R exit=0; data untouched by validate; validated 10 table(s) with 6 warning(s)
+  - real:    WARNING: managements has 2195 row(s) repeating an earlier row in every column but event_id [russell_ranch_davis / planting 760; russell_ranch_davis / harvest 629; russell_ranch_davis / fertilization 590; russell_ranch_davis / compost_application 216]
+  + mutated: WARNING: managements has 2196 row(s) repeating an earlier row in every column but event_id [russell_ranch_davis / planting 761; russell_ranch_davis / harvest 629; russell_ranch_davis / fertilization 590; russell_ranch_davis / compost_application 216]
+  ratchet PASS validate_data runs in warn mode without error
+  ratchet PASS observation repeats stay within the known Russell Ranch rows
+  ratchet FAIL management repeats stay within the known Russell Ranch rows
+    -> sum(dup) is not less than 2195. Difference: 1 
+  ratchet PASS empty mgmttype stays within the known Delta rows
+  ratchet PASS duplicated DOIs in citations do not grow
+=== case: mgmttype_spread
+  validate.R exit=0; data untouched by validate; validated 10 table(s) with 6 warning(s)
+  - real:    WARNING: managements mgmttype is empty on 42 row(s) [US-Bi2__management_field 22; US-Twt 6; US-Twt__publication_site_1 5; US-Twt__publication_site_2 4; US-Bi1 3; US-Bi1__alfalfa_chambers 2]
+  + mutated: WARNING: managements mgmttype is empty on 43 row(s) [US-Bi2__management_field 22; US-Twt 6; US-Twt__publication_site_1 5; US-Twt__publication_site_2 4; US-Bi1 3; US-Bi1__alfalfa_chambers 2; salinas_socs 1]
+  ratchet PASS validate_data runs in warn mode without error
+  ratchet PASS observation repeats stay within the known Russell Ranch rows
+  ratchet PASS management repeats stay within the known Russell Ranch rows
+  ratchet FAIL empty mgmttype stays within the known Delta rows
+    -> all(startsWith(mg$event_id[empty], "delta-")) is not TRUE  `actual`:   FALSE `expected`: TRUE  mgmttype is empty outside the Delta (delta-) events 
+    -> sum(empty) is not less than 42. Difference: 1 
+  ratchet PASS duplicated DOIs in citations do not grow
+=== case: mgmttype_grow
+  validate.R exit=0; data untouched by validate; validated 10 table(s) with 6 warning(s)
+  - real:    WARNING: managements mgmttype is empty on 42 row(s) [US-Bi2__management_field 22; US-Twt 6; US-Twt__publication_site_1 5; US-Twt__publication_site_2 4; US-Bi1 3; US-Bi1__alfalfa_chambers 2]
+  + mutated: WARNING: managements mgmttype is empty on 43 row(s) [US-Bi2__management_field 22; US-Twt 6; US-Twt__publication_site_1 6; US-Twt__publication_site_2 4; US-Bi1 3; US-Bi1__alfalfa_chambers 2]
+  ratchet PASS validate_data runs in warn mode without error
+  ratchet PASS observation repeats stay within the known Russell Ranch rows
+  ratchet PASS management repeats stay within the known Russell Ranch rows
+  ratchet FAIL empty mgmttype stays within the known Delta rows
+    -> sum(empty) is not less than 42. Difference: 1 
+  ratchet PASS duplicated DOIs in citations do not grow
+=== case: doi_dup
+  validate.R exit=0; data untouched by validate; validated 10 table(s) with 8 warning(s)
+  - real:    WARNING: citations doi has 21 value(s) on more than one row: 10.5061/dryad.qz612jmnx (anthony_bouldin_2024_dryad = ref_10_5061_dryad_qz612jmnx); 10.1038/s41467-023-37391-2 (ref_10_1038_s41467_023_37391_2 = anthony2023cpo); 10.1016/J.AGRFORMET.2016.04.001 (ref_10_1016_j_agrformet_2016_04_001 = baldocchi2016tio); 10.1111/GCB.14559 (ref_10_1111_gcb_14559 = baldocchi2018tpa); 10.1029/2019
+  + mutated: WARNING: citations doi has 22 value(s) on more than one row: 10.1016/j.dib.2020.106481 (White KE, Brennan EB, Cavigelli MA (2020). Soil carbon and nitrogen data during eight years of cover crop and compost treatments in organic vegetable production. Data in Brief 33:106481. = White KE, Brennan EB, Cavigelli MA, Smith RF (2020). Winter cover crops increase readily decomposable soil car
+  + mutated: WARNING: managements citation -> citations.doi has 1 unmatched value(s): 10.1371/journal.pone.0228677
+  + mutated: WARNING: methods citation_id -> citations.doi has 1 unmatched value(s): 10.1371/journal.pone.0228677
+  ratchet PASS validate_data runs in warn mode without error
+  ratchet PASS observation repeats stay within the known Russell Ranch rows
+  ratchet PASS management repeats stay within the known Russell Ranch rows
+  ratchet PASS empty mgmttype stays within the known Delta rows
+  ratchet FAIL duplicated DOIs in citations do not grow
+    -> length(duplicated_values(ct$doi)) is not less than 21. Difference: 1 
+=== case: unit_case
+  validate.R exit=0; data untouched by validate; validated 10 table(s) with 7 warning(s)
+  + mutated: WARNING: observations rice_grain_yield_t_ha has 1 row(s) in units variables.csv does not declare ('t ha-1'): 'T ha-1' 1 (field_harvest: ameriflux_us_twt_mvp)
+  ratchet PASS validate_data runs in warn mode without error
+  ratchet PASS observation repeats stay within the known Russell Ranch rows
+  ratchet PASS management repeats stay within the known Russell Ranch rows
+  ratchet PASS empty mgmttype stays within the known Delta rows
+  ratchet PASS duplicated DOIs in citations do not grow
+=== case: unit_ws
+  validate.R exit=0; data untouched by validate; validated 10 table(s) with 6 warning(s)
+  ratchet PASS validate_data runs in warn mode without error
+  ratchet PASS observation repeats stay within the known Russell Ranch rows
+  ratchet PASS management repeats stay within the known Russell Ranch rows
+  ratchet PASS empty mgmttype stays within the known Delta rows
+  ratchet PASS duplicated DOIs in citations do not grow
+=== case: unit_convertible
+  validate.R exit=0; data untouched by validate; validated 10 table(s) with 7 warning(s)
+  + mutated: WARNING: observations SOC_stock_Mg_ha has 1 row(s) in units variables.csv does not declare ('Mg C ha-1'): 'kg C m-2' 1 (equivalent_soil_mass_white_2024_correction: white_salinas_2020)
+  ratchet PASS validate_data runs in warn mode without error
+  ratchet PASS observation repeats stay within the known Russell Ranch rows
+  ratchet PASS management repeats stay within the known Russell Ranch rows
+  ratchet PASS empty mgmttype stays within the known Delta rows
+  ratchet PASS duplicated DOIs in citations do not grow
+=== case: unit_alternatives
+  validate.R exit=0; data untouched by validate; validated 10 table(s) with 7 warning(s)
+  + mutated: WARNING: observations SOC_stock_Mg_ha has 1 row(s) in units variables.csv does not declare ('Mg C ha-1 (0-30 cm); kg C m-2 (profile)'): 'kg C m-2 (other)' 1 (equivalent_soil_mass_white_2024_correction: white_salinas_2020)
+  ratchet PASS validate_data runs in warn mode without error
+  ratchet PASS observation repeats stay within the known Russell Ranch rows
+  ratchet PASS management repeats stay within the known Russell Ranch rows
+  ratchet PASS empty mgmttype stays within the known Delta rows
+  ratchet PASS duplicated DOIs in citations do not grow
+=== case: undeclared
+  validate.R exit=0; data untouched by validate; validated 10 table(s) with 7 warning(s)
+  + mutated: WARNING: variables.csv gives no units for 1 variable(s) used in observations: rice_grain_yield_t_ha
+  ratchet PASS validate_data runs in warn mode without error
+  ratchet PASS observation repeats stay within the known Russell Ranch rows
+  ratchet PASS management repeats stay within the known Russell Ranch rows
+  ratchet PASS empty mgmttype stays within the known Delta rows
+  ratchet PASS duplicated DOIs in citations do not grow
+=== case: source_mix
+  validate.R exit=0; data untouched by validate; validated 10 table(s) with 6 warning(s)
+  + mutated: observations soil_ph carries more than one unit as published (variables.csv: source-reported units): 'pH units' 1 (Soil-water slurry pH: ameriflux_us_bi1_mvp); 'pH' 3 (Soil-water slurry pH: ameriflux_us_bi2_mvp; Soil sampling and laboratory analysis: ameriflux_us_twt_mvp)
+  ratchet PASS validate_data runs in warn mode without error
+  ratchet PASS observation repeats stay within the known Russell Ranch rows
+  ratchet PASS management repeats stay within the known Russell Ranch rows
+  ratchet PASS empty mgmttype stays within the known Delta rows
+  ratchet PASS duplicated DOIs in citations do not grow
+=== case: empty_level_units
+  validate.R exit=0; data untouched by validate; validated 10 table(s) with 8 warning(s)
+  + mutated: WARNING: observations observation_level is empty on 2 row(s) [white_salinas_2020 / bulk_density_g_cm3 2]
+  + mutated: WARNING: observations reported_units is empty on 1 row(s) [white_salinas_2020 / bulk_density_g_cm3 1]
+  ratchet PASS validate_data runs in warn mode without error
+  ratchet PASS observation repeats stay within the known Russell Ranch rows
+  ratchet PASS management repeats stay within the known Russell Ranch rows
+  ratchet PASS empty mgmttype stays within the known Delta rows
+  ratchet PASS duplicated DOIs in citations do not grow

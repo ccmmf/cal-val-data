@@ -1,0 +1,12 @@
+# Code mutants of scripts/validate.R on a disposable copy: tests failing per mutant (test-validate-checks.R + test-integrity.R)
+=== C1_pk_not_excluded: failing tests: 1 [a primary key that numbers the rows does not hide a repeated record] 
+=== C2_doi_case_sensitive: failing tests: 1 [a DOI on two citation rows warns once and names both ids] 
+=== C3_doi_not_trimmed: failing tests: 1 [a DOI on two citation rows warns once and names both ids] 
+=== C4_blank_not_empty: failing tests: 1 [empty observation_level, reported_units and mgmttype warn with their count and place] 
+=== C5_no_ws_squash: failing tests: 1 [unit_status follows the variables.csv conventions] 
+=== C6_units_case_insensitive: failing tests: 1 [unit_status follows the variables.csv conventions] 
+=== C7_qualifier_required: failing tests: 1 [unit_status follows the variables.csv conventions] 
+=== C8_source_mix_warns: failing tests: 1 [check_units warns per conflicting variable, names method and dataset, and only informs on published mixes] 
+=== C9_count_one_copy: failing tests: 1 [every copy after the first counts, and empty cells do not hide a repeat] 
+=== C10_units_not_wired: failing tests: 0 
+=== C11_dup_rows_not_wired: failing tests: 0 

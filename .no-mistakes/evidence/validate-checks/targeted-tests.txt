@@ -1,0 +1,57 @@
+validate-checks: .................................................
+
+══ DONE ════════════════════════════════════════════════════════════════════════
+integrity: ..................
+
+══ DONE ════════════════════════════════════════════════════════════════════════
+😸
+                                                                                                       test
+1                             an exact repeat warns once with its count; one differing cell is not a repeat
+2                                   every copy after the first counts, and empty cells do not hide a repeat
+3                                       a primary key that numbers the rows does not hide a repeated record
+4                                                  a DOI on two citation rows warns once and names both ids
+5                      empty observation_level, reported_units and mgmttype warn with their count and place
+6                                                         unit_status follows the variables.csv conventions
+7 check_units warns per conflicting variable, names method and dataset, and only informs on published mixes
+8                                             check_units stays quiet without the columns or the dictionary
+  nb failed skipped error
+1  4      0   FALSE FALSE
+2  3      0   FALSE FALSE
+3  2      0   FALSE FALSE
+4  7      0   FALSE FALSE
+5  8      0   FALSE FALSE
+6 12      0   FALSE FALSE
+7  8      0   FALSE FALSE
+8  5      0   FALSE FALSE
+                                                           test nb failed
+1                         citations has its datapackage columns  1      0
+2                             sites has its datapackage columns  1      0
+3                        treatments has its datapackage columns  1      0
+4                   treatment_pairs has its datapackage columns  1      0
+5                       managements has its datapackage columns  1      0
+6                      observations has its datapackage columns  1      0
+7                           methods has its datapackage columns  1      0
+8                         variables has its datapackage columns  1      0
+9                             crops has its datapackage columns  1      0
+10                         coverage has its datapackage columns  1      0
+11                validate_data runs in warn mode without error  1      0
+12 observation repeats stay within the known Russell Ranch rows  2      0
+13  management repeats stay within the known Russell Ranch rows  2      0
+14             empty mgmttype stays within the known Delta rows  2      0
+15                     duplicated DOIs in citations do not grow  1      0
+   skipped error
+1    FALSE FALSE
+2    FALSE FALSE
+3    FALSE FALSE
+4    FALSE FALSE
+5    FALSE FALSE
+6    FALSE FALSE
+7    FALSE FALSE
+8    FALSE FALSE
+9    FALSE FALSE
+10   FALSE FALSE
+11   FALSE FALSE
+12   FALSE FALSE
+13   FALSE FALSE
+14   FALSE FALSE
+15   FALSE FALSE
