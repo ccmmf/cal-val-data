@@ -1,0 +1,9 @@
+$ Rscript: Bouldin conversion factors and row units (anthony_bouldin_2024)
+CH4: 16.043 g/mol x 0.0864 = 1.386115 (report: 1.386115)
+N2O: 44.013 g/mol x 0.0864 = 3.802723 (report: 3.802723)
+ sitename         variable reported_units  n
+   US-Bi1 CH4_flux_mg_m2_d mg CH4 m-2 d-1 34
+   US-Bi1 N2O_flux_mg_m2_d mg N2O m-2 d-1 34
+   US-Bi2 CH4_flux_mg_m2_d mg CH4 m-2 d-1 36
+   US-Bi2 N2O_flux_mg_m2_d mg N2O m-2 d-1 36
+Dryad Corn_GHG.xlsx download: HTTP 401 {"error":"Unauthorized, must have current bearer token"} (API) / 403 (web file_stream)

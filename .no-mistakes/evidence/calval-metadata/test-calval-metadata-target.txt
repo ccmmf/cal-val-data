@@ -1,0 +1,10 @@
+$ Rscript -e testthat::test_file("tests/testthat/test-calval-metadata.R")   # target data (761a045)
+✔ | F W  S  OK | Context
+
+⠏ |          0 | calval-metadata                                                
+⠋ |          1 | calval-metadata                                                
+⠇ |         19 | calval-metadata                                                
+✔ |         31 | calval-metadata
+
+══ Results ═════════════════════════════════════════════════════════════════════
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 31 ]

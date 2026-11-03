@@ -1,0 +1,92 @@
+$ Rscript -e testthat::test_file("tests/testthat/test-calval-metadata.R")   # same test, parent data (5fb2133)
+calval-metadata: ..12345....6..78.9a.bcdef.g.hij
+
+══ Failed ══════════════════════════════════════════════════════════════════════
+── 1. Failure ('test-calval-metadata.R:29:3'): white_salinas_2020 total N and ni
+any(blank(n_rows$reported_units)) is not FALSE
+
+`actual`:   TRUE 
+`expected`: FALSE
+
+── 2. Failure ('test-calval-metadata.R:30:3'): white_salinas_2020 total N and ni
+n_rows$reported_units not identical to unname(units[n_rows$variable]).
+216/216 mismatches
+x[1]: "NA"
+y[1]: "mg N kg-1 soil"
+
+x[2]: "NA"
+y[2]: "mg NO3-N kg-1 soil"
+
+x[3]: "NA"
+y[3]: "mg N kg-1 soil"
+
+x[4]: "NA"
+y[4]: "mg NO3-N kg-1 soil"
+
+x[5]: "NA"
+y[5]: "mg N kg-1 soil"
+
+── 3. Failure ('test-calval-metadata.R:32:3'): white_salinas_2020 total N and ni
+any(blank(n_rows$observation_level)) is not FALSE
+
+`actual`:   TRUE 
+`expected`: FALSE
+
+── 4. Failure ('test-calval-metadata.R:33:3'): white_salinas_2020 total N and ni
+all(n_rows$observation_level == "replicate") is not TRUE
+
+`actual`:   FALSE
+`expected`: TRUE 
+
+── 5. Failure ('test-calval-metadata.R:48:3'): white_salinas_2020 marketed harve
+sum(heart) not equal to 64L.
+1/1 mismatches
+[1] 0 - 64 == -64
+
+── 6. Failure ('test-calval-metadata.R:54:3'): white_salinas_2020 marketed harve
+all(hi[floret] == "0.24") is not TRUE
+
+`actual`:   <NA>
+`expected`: TRUE
+
+── 7. Failure ('test-calval-metadata.R:59:3'): white_salinas_2020 marketed harve
+sum(!is.na(hi)) not equal to 104L.
+1/1 mismatches
+[1] 0 - 104 == -104
+
+── 8. Failure ('test-calval-metadata.R:61:3'): white_salinas_2020 marketed harve
+any(kv(sal$attributes_keyvalue, "harvested_component") %in% "head") is not FALSE
+
+`actual`:   TRUE 
+`expected`: FALSE
+
+── 9. Failure ('test-calval-metadata.R:68:3'): white_salinas_2020 marketed harve
+startsWith(romaine, "Hearts harvested") is not TRUE
+
+`actual`:   FALSE
+`expected`: TRUE 
+
+── 10. Failure ('test-calval-metadata.R:78:3'): CH4_flux and NEE declare source-
+`units` not identical to c("source-reported units", "source-reported units").
+2/2 mismatches
+x[1]: "kg C m-2 s-1 (daily mean); kg C m-2 year-1 (annual total)"
+y[1]: "source-reported units"
+
+x[2]: "kg C m-2 s-1 (daily mean); kg C m-2 year-1 (annual total)"
+y[2]: "source-reported units"
+  ... and 9 more
+
+
+Maximum number of 10 failures reached, some test results may be missing.
+
+══ DONE ════════════════════════════════════════════════════════════════════════
+                                                                    test failed
+1    white_salinas_2020 total N and nitrate-N rows carry units and level      4
+2 white_salinas_2020 marketed harvests carry the published harvest index      5
+3                         CH4_flux and NEE declare source-reported units      1
+4        Russell wheat definitions match the systems and their N records      9
+  passed
+1      2
+2      7
+3      0
+4      3

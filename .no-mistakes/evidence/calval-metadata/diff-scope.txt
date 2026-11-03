@@ -1,0 +1,11 @@
+$ Rscript diff_scope.R parent(5fb2133) target(761a045)
+citations        rows    80  changed rows    0  changed columns: -
+coverage         rows    32  changed rows    0  changed columns: -
+crops            rows    14  changed rows    1  changed columns: notes
+managements      rows  4350  changed rows  104  changed columns: notes, attributes_keyvalue
+methods          rows    49  changed rows    0  changed columns: -
+observations     rows 37313  changed rows  216  changed columns: reported_units, observation_level
+sites            rows    13  changed rows    0  changed columns: -
+treatment_pairs  rows    24  changed rows    8  changed columns: comparison_factor, comparison_label, healthy_soils_practice
+treatments       rows    35  changed rows    5  changed columns: definition
+variables        rows   106  changed rows    4  changed columns: description, units, notes

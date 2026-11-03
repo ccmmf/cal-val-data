@@ -1,0 +1,7 @@
+$ (anonymous, isolated HOME) googlesheets4::gs4_deauth(); source("scripts/ingest.R")  # data_dir -> temp
+1pXiZUkN...: Client error: (403) PERMISSION_DENIED • Client does not have sufficient permission. This can happen because the OAuth   token does not have the right scopes, the client doesn't have permission, or   the API has not been enabled for the client project. • The caller does not have permission
+
+1UXKQy0E...: Client error: (403) PERMISSION_DENIED • Client does not have sufficient permission. This can happen because the OAuth   token does not have the right scopes, the client doesn't have permission, or   the API has not been enabled for the client project. • The caller does not have permission
+
+148G8Iya...: Client error: (403) PERMISSION_DENIED • Client does not have sufficient permission. This can happen because the OAuth   token does not have the right scopes, the client doesn't have permission, or   the API has not been enabled for the client project. • The caller does not have permission
+
