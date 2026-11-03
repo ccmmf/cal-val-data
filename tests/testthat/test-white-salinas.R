@@ -145,4 +145,32 @@ test_that("white_salinas_2020 calendar runs Year 1 (2004) to Year 8 (2011)", {
   expect_true(all(total[, "2004", "second"] == 22))
   expect_true(all(total[, "2005", "second"] == 134))
   expect_true(all(total[, as.character(2006:2010), "second"] == 168))
+
+  # seeding rate per system (Data in Brief Table 1)
+  rate <- c(socs_sys1 = "3x", socs_sys2 = "3x", socs_sys3 = "1x",
+            socs_sys4 = "3x", socs_sys5 = "1x", socs_sys6 = "3x",
+            socs_sys7 = "1x", socs_sys8 = "3x")
+  want <- paste0("seeding_rate_relative=", rate[cc$treatments.name])
+  expect_true(all(mapply(grepl, want, cc$attributes_keyvalue, fixed = TRUE)))
+
+  # spring spading after an annual cover crop on the Table 2 termination date
+  term <- c("2004-03-08", "2005-03-11", "2006-02-11", "2007-03-18",
+            "2008-02-19", "2009-03-13", "2010-03-18", "2011-03-10")
+  till <- sal[sal$mgmttype == "tillage", ]
+  spade <- till[till$attributes_keyvalue == "implement=flail_mower+spader" &
+                  till$treatments.name %in% paste0("socs_sys", 3:8), ]
+  expect_equal(nrow(spade), 48L)
+  expect_setequal(unique(day(spade$min_date)), term)
+
+  # Year 8 (2011): bed disking in June, ripping and spading in August
+  y8 <- till[yr(till) == 2011 & grepl("relative_timing=after_harvest",
+                                      till$attributes_keyvalue, fixed = TRUE), ]
+  expect_equal(nrow(y8), 24L)
+  expect_setequal(paste(y8$level, y8$units),
+                  c("NA NA", "100 cm depth", "30 cm depth"))
+
+  # the compost before the second crop is a summer application
+  comp <- sal[sal$mgmttype == "fertilization" &
+                sal$units == "Mg ha-1 (oven-dry)", ]
+  expect_false(any(attr_has(comp, "season=fall")))
 })

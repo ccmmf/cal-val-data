@@ -208,7 +208,7 @@ only. The windows:
 
 | Rows | Window | Source |
 | ---- | ------ | ------ |
-| spring spading | `socs_sys3`–`socs_sys8`: the Table 2 termination date; `socs_sys1` and `socs_sys2`: February or March in fallow winters, and in 2007 and 2011 from the last biomass sampling day to 31 March | Brennan and Boyd 2012; White et al. 2020b; Brennan and Smith 2017 |
+| spring spading | `socs_sys3`–`socs_sys8`: the Table 2 termination date; `socs_sys1` and `socs_sys2`: February or March in fallow winters, ending before the bed formation, and in 2007 and 2011 from the last biomass sampling day to 30 days before the bed formation (16–18 March 2007, 9–10 March 2011) | Brennan and Boyd 2012; White et al. 2020b; Brennan and Smith 2017 |
 | compost and pelleted fertilizer before lettuce | Table 2 termination + 30 days (72 in Year 6, 2009) to 31 May, in all eight systems | White et al. 2020b (at bed formation, 30 to 42 days after the spading; 72 in Year 6) |
 | lettuce planting, harvest | May (from 24 May in 2009); June to July (June in 2011) | Brennan and Boyd 2012; White et al. 2020b |
 | compost and pelleted fertilizer before the second crop | 1 June to the end of its planting window | White et al. 2020b (when preparing the beds after the lettuce harvest) |
@@ -216,7 +216,7 @@ only. The windows:
 | broccoli (2005–2010) | planted July or August; harvested from 1 September (30 September in 2010) to the last day of the Table 2 residue incorporation | Brennan and Boyd 2012; Brennan and Smith 2017 |
 | liquid fertilizer, vegetable irrigation | the crop's planting start to its harvest end | Brennan and Boyd 2012 |
 | subsoiling to about 1 m | the second crop's harvest start to the cover crop planting | White et al. 2020b; Brennan and Boyd 2012 |
-| fall residue incorporation | the Table 2 date, in all eight systems | Brennan and Boyd 2012; White et al. 2020a |
+| fall residue incorporation | the Table 2 date, in all eight systems; flail mowing, then spading to 30 cm among the other passes | Brennan and Boyd 2012; White et al. 2020a; White et al. 2020b |
 | cover crop irrigation | planting to the Table 2 last irrigation; the single Year 4 application on 5 November 2006 | Brennan and Boyd 2012 (Table 2, Fig. 2) |
 | Year 8 bed disking, ripping and spading | June 2011; August 2011; August 2011 | White et al. 2020b |
 
@@ -272,9 +272,11 @@ have their own date question. Both are in Open follow-ups.
   fertilizer was used from Year 2, so 2004 has pelleted rows only, although
   they also say it brought each lettuce crop to 73 kg N ha⁻¹.
 - **Irrigation.** No paper gives irrigation depths for the vegetables: the
-  rows record drip for lettuce and broccoli and no method for the 2004
-  spinach, with `level` NA. The cover crops' establishment irrigation is in
-  Brennan and Boyd (2012) Fig. 2: 45, 13, 32, 19, 52, 42, 49 and 19 mm in
+  rows record drip for lettuce and broccoli (assumed for the 2004 lettuce,
+  since the papers name the drip as the carrier of the liquid fertilizer,
+  which began in Year 2) and no method for the 2004 spinach, with `level`
+  NA. The cover crops' establishment irrigation is in Brennan and Boyd
+  (2012) Fig. 2: 45, 13, 32, 19, 52, 42, 49 and 19 mm in
   Years 1 to 8, on 6, 2, 3, 1, 7, 5, 3 and 3 days (`application_days`);
   Brennan and Smith (2017) give the same 19 mm for `socs_sys1` and
   `socs_sys2` in Years 4 and 8. These are the first `irrigation` rows in
