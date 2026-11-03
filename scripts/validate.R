@@ -284,16 +284,26 @@ unit_status <- function(variable, unit, vars) {
   key <- paste(variable, unit, sep = "\r")
   first <- which(!duplicated(key))
   one <- function(known, d, u) {
-    if (!known) return("unknown")
-    if (!is_present(u)) return("missing")
-    if (!is_present(d)) return("undeclared")
-    if (tolower(d) == source_reported_units) return("deferred")
+    if (!known) {
+      return("unknown")
+    }
+    if (!is_present(u)) {
+      return("missing")
+    }
+    if (!is_present(d)) {
+      return("undeclared")
+    }
+    if (tolower(d) == source_reported_units) {
+      return("deferred")
+    }
     parts <- trimws(strsplit(d, ";", fixed = TRUE)[[1]])
     accepted <- c(parts, trimws(sub("\\s*\\([^()]*\\)$", "", parts)))
     if (u %in% accepted) "ok" else "conflict"
   }
-  status <- vapply(first, function(i) one(!is.na(row[i]), declared[i], unit[i]),
-                   character(1))
+  status <- vapply(
+    first, function(i) one(!is.na(row[i]), declared[i], unit[i]),
+    character(1)
+  )
   status[match(key, key[first])]
 }
 
@@ -316,8 +326,8 @@ unit_tally <- function(dat) {
 
 check_units <- function(dat, resource, vars) {
   if (is.null(vars) || nrow(dat) == 0 ||
-      !all(c("variable", "reported_units") %in% names(dat)) ||
-      !all(c("name", "units") %in% names(vars))) {
+    !all(c("variable", "reported_units") %in% names(dat)) ||
+    !all(c("name", "units") %in% names(vars))) {
     return(0L)
   }
   status <- unit_status(dat$variable, dat$reported_units, vars)
