@@ -6,6 +6,13 @@ Changes to datasets, schemas, and curation workflows are documented here.
 
 ### Added
 
+- Salinas harvest index: the 104 marketed harvest rows carry
+  `harvest_index` in `attributes_keyvalue`, 0.26 on the 64 romaine lettuce
+  rows (2004–2011) and 0.24 on the 40 broccoli rows (2006–2010), one value
+  per crop for the whole study (White et al. 2020b), with the source in
+  `notes`. The 16 rows of the unharvested 2004 spinach and 2005 broccoli
+  carry none
+  ([ccmmf/organization#299](https://github.com/ccmmf/organization/issues/299)).
 - Salinas fertilizer N, irrigation and tillage: 484 `managements` rows
   (224 fertilization, 172 irrigation, 88 tillage) for all eight systems.
   Pelleted preplant fertilizer (56 kg N ha⁻¹ lettuce, 22 spinach, 112 or
@@ -35,6 +42,20 @@ Changes to datasets, schemas, and curation workflows are documented here.
 
 ### Changed
 
+- Salinas lettuce harvest rows: `harvested_component` is `heart`, not
+  `head`, and the `crops` entry for romaine lettuce says hearts harvested,
+  as White et al. (2020b) define the harvest index for romaine hearts
+  ([ccmmf/organization#299](https://github.com/ccmmf/organization/issues/299)).
+- Russell wheat definitions: `irr_wheat_control` and `rf_wheat_control`
+  are wheat-fallow without N fertilizer, not continuous wheat with
+  synthetic N; `irr_wheat_fallow` and `rf_wheat_fallow` are the
+  wheat-fallow systems with synthetic N; `rf_wheat_legume` names its
+  winter legume cover crop. The `treatment_pairs` rows `russell-6` to
+  `russell-13` follow in their factors and labels: `russell-6` and
+  `russell-9` now contrast N fertilizer (`synthetic_N`) and have
+  `healthy_soils_practice` NA. Ids are unchanged; see the Russell report in
+  `data_raw/`
+  ([ccmmf/organization#299](https://github.com/ccmmf/organization/issues/299)).
 - Salinas management calendar: 517 `managements` rows. The vegetable rows
   move from 2005–2012 to 2004–2011 and the annual cover crops from
   2004–2011 to 2003–2010; the Year 1 second crop is baby leaf spinach, not
@@ -88,6 +109,24 @@ Changes to datasets, schemas, and curation workflows are documented here.
   `elemental_analysis` no longer describes stock calculations. Both are
   shared by Salinas and Modesto, so depth and dates are read from each
   observation row, and stocks keep their own method.
+
+### Fixed
+
+- Salinas total N and nitrate-N: the 216 `white_salinas_2020` rows (108
+  each) had `reported_units` and `observation_level` blank. They now carry
+  `mg N kg-1 soil` and `mg NO3-N kg-1 soil`, the unit Supplementary Table 1
+  prints with the element each column names, and `observation_level =
+  replicate`. The two `variables` notes now give the ingested years
+  (Years 4–8, and Year 3 for `socs_sys5` and `socs_sys7`) and name the
+  `observations` tab, not `white-additional-data`
+  ([ccmmf/organization#299](https://github.com/ccmmf/organization/issues/299)).
+- `CH4_flux` and `NEE` in `variables` declared `kg C m-2 s-1 (daily mean);
+  kg C m-2 year-1 (annual total)`, a unit none of their rows use. Both now
+  declare `source-reported units`, and the `CH4_flux` description and
+  notes give the basis of each row type: CH₄-C for the 11 FLUXNET-CH4 tower
+  totals, CH₄ mass for the 7 chamber annual means. No row changes; see the
+  three AmeriFlux Delta reports and `anthony_bouldin_2024` in `data_raw/`
+  ([ccmmf/organization#299](https://github.com/ccmmf/organization/issues/299)).
 
 ## 0.1.0 — Initial release
 

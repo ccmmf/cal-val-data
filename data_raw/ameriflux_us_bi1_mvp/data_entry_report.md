@@ -53,10 +53,27 @@ exact-site publication only where AmeriFlux BADM/BIF does not carry them.
 | NEE (AmeriFlux FLUXNET-1F) | g C m⁻² year⁻¹ | 8 | `site_year_total` |
 | CH₄ flux (FLUXNET-CH4) | g C m⁻² year⁻¹ | 1 | `site_year_total` |
 | CH₄ flux (Anthony 2023, chambers) | mg CH₄ m⁻² year⁻¹ | 4 | `site_year_total` |
+| N₂O flux (Anthony 2023, chambers) | mg N₂O m⁻² year⁻¹ | 4 | `site_year_total` |
 | Soil carbon content | % | 3 | `site_layer`, 0–15 / 15–30 / 30–60 cm |
 | Soil nitrogen content | % | 3 | `site_layer`, 0–15 / 15–30 / 30–60 cm |
 
 **Fluxes now come from source-reported annual values** (see below).
+
+**The mass basis differs by row type**, and `reported_units` on each row
+gives it; `variables.csv` declares `CH4_flux` and `NEE` as
+`source-reported units`. Values are kept as published, and converting is
+left to the consumer.
+
+- The FLUXNET-CH4 row (`fluxnet_ch4_community_product_v1_appendix_b_v2`,
+  tower) is CH₄-C, `g C m-2 yr-1`.
+- The Anthony et al. (2023) Table 1 rows
+  (`publication_anthony_2023_table_1`, chambers) are gas mass,
+  `mg CH4 m-2 yr-1` and `mg N2O m-2 yr-1`. They use sitename
+  `US-Bi1__alfalfa_chambers` (38.1076, -121.5021), the chamber field the
+  paper places less than 1 km from the tower, and they aggregate the same
+  chamber records as the US-Bi1 rows of `anthony_bouldin_2024`, so the two
+  are not independent (see that report).
+- NEE (`ameriflux_fluxnet_1f_us_bi1_v1_3_r1`) is carbon, `gC m-2 y-1`.
 
 **Deepest soil profile of the three Delta sites** — three layers to 60 cm,
 against a single 0–15 cm layer at US-Bi2. It is still a single time point,
