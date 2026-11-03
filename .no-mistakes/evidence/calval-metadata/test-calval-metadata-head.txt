@@ -1,0 +1,15 @@
+calval-metadata: ................................
+
+══ DONE ════════════════════════════════════════════════════════════════════════
+🥇 Your tests deserve a gold medal 🥇
+                                                                    test nb
+1    white_salinas_2020 total N and nitrate-N rows carry units and level  6
+2 white_salinas_2020 marketed harvests carry the published harvest index 12
+3                         CH4_flux and NEE declare source-reported units  1
+4        Russell wheat definitions match the systems and their N records 13
+  failed skipped error
+1      0   FALSE FALSE
+2      0   FALSE FALSE
+3      0   FALSE FALSE
+4      0   FALSE FALSE
+expectations: 32  failed: 0 

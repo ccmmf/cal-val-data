@@ -1,0 +1,200 @@
+=== S1 Salinas total N / nitrate-N observations ===
+changed obs rows: 216; all are Salinas N rows: TRUE; Salinas N rows total: 216
+, , observation_level = replicate
+
+                    reported_units
+variable             mg N kg-1 soil mg NO3-N kg-1 soil
+  nitrate_N_mg_kg                 0                108
+  total_N_conc_mg_kg            108                  0
+
+before: reported_units blank=216 observation_level blank=216
+value/mean columns unchanged on those rows: TRUE
+SOC_conc rows in same dataset use units: mg C kg-1 soil
+treatments x years of N rows: 5 treatments, years 2006,2007,2008,2009,2010,2011
+
+=== S3/S4 CH4 / N2O / NEE ===
+-- variable total_N_conc_mg_kg
+   notes
+     OLD: Block-level; Zotero Table 1; 5 systems, Years 0-8, 4 reps; in white-additional-data tab
+     NEW: Block-level; Zotero Table 1; 5 systems, Years 4-8 and Year 3 for socs_sys5 and socs_sys7, 4 reps; in observations tab
+-- variable nitrate_N_mg_kg
+   notes
+     OLD: Block-level; Zotero Table 1; 5 systems, Years 0-8, 4 reps; in white-additional-data tab; ammonium not reported
+     NEW: Block-level; Zotero Table 1; 5 systems, Years 4-8 and Year 3 for socs_sys5 and socs_sys7, 4 reps; in observations tab; ammonium not reported
+-- variable CH4_flux
+   description
+     OLD: Methane flux expressed as carbon.
+     NEW: Methane flux from an authoritative upstream product or publication. Mass basis and measurement support vary by source: reported_units gives the basis, method gives tower or chamber.
+   units
+     OLD: kg C m-2 s-1 (daily mean); kg C m-2 year-1 (annual total)
+     NEW: source-reported units
+   notes
+     OLD: Mass refers to carbon following the PEcAn standard variable definition.
+     NEW: Kept in the published basis, not converted. g C m-2 yr-1 = CH4-C (FLUXNET-CH4 Appendix B2 Ann_Flux_g_C_m-2, tower annual totals). mg CH4 m-2 yr-1 / y-1 = CH4 mass (automated chamber annual means, Anthony et al. 2023 Table 1; Anthony and Silver 2021 Table 1). PEcAn CH4_flux is kg C m-2 s-1; convert CH4 mass to CH4-C downstream by 12.011/16.043. Tower and chamber values are not interchangeable; the chamber rows aggregate the same records as anthony_bouldin_2024.
+-- variable NEE
+   units
+     OLD: kg C m-2 s-1 (daily mean); kg C m-2 year-1 (annual total)
+     NEW: source-reported units
+N2O_flux units (unchanged reference): source-reported units
+gas/NEE observation rows: 240; identical to parent in every column: TRUE
+          variable     reported_units
+ N2O_flux_g_N_ha_d g N2O-N ha-1 day-1
+  CH4_flux_mg_m2_d     mg CH4 m-2 d-1
+  N2O_flux_mg_m2_d     mg N2O m-2 d-1
+          N2O_flux    mg N2O m-2 yr-1
+          CH4_flux    mg CH4 m-2 yr-1
+          N2O_flux      g N2O m-2 y-1
+          CH4_flux     mg CH4 m-2 y-1
+          CH4_flux       g C m-2 yr-1
+               NEE         gC m-2 y-1
+
+=== S2 Salinas harvest index on managements ===
+changed managements rows: 104; all are Salinas harvest rows: TRUE; Salinas harvest rows total: 120
+, , component_new = floret, harvest_index = 0.24
+
+                 component_old
+crop              floret head
+  broccoli            40    0
+  romaine_lettuce      0    0
+
+, , component_new = heart, harvest_index = 0.24
+
+                 component_old
+crop              floret head
+  broccoli             0    0
+  romaine_lettuce      0    0
+
+, , component_new = floret, harvest_index = 0.26
+
+                 component_old
+crop              floret head
+  broccoli             0    0
+  romaine_lettuce      0    0
+
+, , component_new = heart, harvest_index = 0.26
+
+                 component_old
+crop              floret head
+  broccoli             0    0
+  romaine_lettuce      0   64
+
+years with harvest_index: romaine 2004-2011, broccoli 2006-2010
+unmarketed Salinas harvest rows: 16 (crops baby_leaf_spinach,broccoli), with harvest_index: 0, changed: 0
+attributes identical apart from harvested_component/harvest_index: TRUE
+other managements columns unchanged on those rows: TRUE
+-- row 31 socs_sys1 2004-06-01
+   attrs OLD: crop=romaine_lettuce; harvested_component=head; stover_left=yes
+   attrs NEW: crop=romaine_lettuce; harvested_component=heart; stover_left=yes; harvest_index=0.26
+   notes OLD: Brennan and Boyd 2012: romaine lettuce from May to June or July; heads marketed, residue left
+   notes NEW: Brennan and Boyd 2012: romaine lettuce from May to June or July; harvested for the wholesale market, residue left; romaine hearts removed, harvest index 0.26 of oven-dry shoot biomass, one value for the whole study (White et al. 2020b p. 5, citing Brennan, unpublished)
+-- row 192 socs_sys1 2006-09-01
+   attrs OLD: crop=broccoli; harvested_component=floret; stover_left=yes
+   attrs NEW: crop=broccoli; harvested_component=floret; stover_left=yes; harvest_index=0.24
+   notes OLD: Brennan and Boyd 2012: broccoli harvested September or October, before the residue incorporation (Table 2: 2006-10-30 to 2006-10-31)
+   notes NEW: Brennan and Boyd 2012: broccoli harvested September or October, before the residue incorporation (Table 2: 2006-10-30 to 2006-10-31); harvest index 0.24 of oven-dry shoot biomass, one value for the whole study (White et al. 2020b p. 5, citing Brennan, unpublished; Brennan and Smith 2017 p. 2211 give 0.24 as typical, citing Smith, unpublished 2014)
+-- crops changed: romaine lettuce
+   OLD: Head harvested; stover left in field; transplanted
+   NEW: Hearts harvested; stover left in field; transplanted
+
+=== S5 Russell treatment definitions ===
+-- irr_wheat_control
+   OLD: Continuous irrigated wheat, conventional synthetic N, no cover crop.
+   NEW: Irrigated wheat-fallow rotation (wheat in alternate years), no N fertilizer, no cover crop; supplemental irrigation in dry years; P and K fertilizer only, in 1999 and 2013. Century Experiment Irrigated Wheat Control (IWC); the paper's IWF in Tautges et al. 2019.
+-- irr_wheat_fallow
+   OLD: Irrigated wheat-fallow rotation (alternating years).
+   NEW: Irrigated wheat-fallow rotation (wheat in alternate years) with synthetic N fertilizer, no cover crop; supplemental irrigation in dry years; P and K fertilizer also in 2013. Century Experiment Irrigated Wheat/Fallow (IWF); IWF+N in Tautges et al. 2019.
+-- irr_wheat_legume
+   OLD: Irrigated wheat-legume rotation; ended 2011.
+   NEW: Irrigated rotation of wheat and a winter legume cover crop mix in alternate years, no N fertilizer; terminated in 2007 and fallowed until the plots became alf_corn_tomato. Century Experiment Irrigated Wheat/Legume (IWL).
+-- rf_wheat_control
+   OLD: Continuous rainfed wheat, conventional synthetic N, no cover crop.
+   NEW: Rainfed wheat-fallow rotation (wheat in alternate years), no N fertilizer, no cover crop; P and K fertilizer only, in 1999 and 2013. Century Experiment Rainfed Wheat Control (RWC); the paper's RWF in Tautges et al. 2019.
+-- rf_wheat_fallow
+   OLD: Rainfed wheat-fallow rotation (alternating years).
+   NEW: Rainfed wheat-fallow rotation (wheat in alternate years) with synthetic N fertilizer, no cover crop; P and K fertilizer also in 2013. Century Experiment Rainfed Wheat/Fallow (RWF); RWF+N in Tautges et al. 2019.
+-- rf_wheat_legume
+   OLD: Rainfed wheat-legume rotation.
+   NEW: Rainfed rotation of wheat and a winter legume cover crop mix in alternate years, no N fertilizer; P and K fertilizer in 2013. Century Experiment Rainfed Wheat/Legume (RWL); RWF+WCC in Tautges et al. 2019.
+IWL non-definition columns unchanged: TRUE
+             name start_date   end_date control site_id treatment_name
+ irr_wheat_legume 1993-10-01 2011-12-31      NA      NA             NA
+ is_control citation_id notes attributes_json
+         NA          NA    NA              NA
+IWL managements: 121 rows; years 1993-2007
+
+ harvest planting 
+      45       76 
+IWL planting crops (from attributes): 
+            material
+crop_name    cover_crop_seed wheat_seed
+  Cover Crop              37          0
+  Wheat                    0         39
+IWL fertilization rows: 0
+  irr_wheat_control  fertilization kg N ha-1 rows=  6 total=    0.00
+  rf_wheat_control   fertilization kg N ha-1 rows=  6 total=    0.00
+  irr_wheat_fallow   fertilization kg N ha-1 rows=108 total= 8757.15
+  rf_wheat_fallow    fertilization kg N ha-1 rows=117 total= 6222.03
+  irr_wheat_legume   fertilization kg N ha-1 rows=  0 total=    0.00
+  rf_wheat_legume    fertilization kg N ha-1 rows=  3 total=    0.00
+
+=== S6 Russell treatment_pairs ===
+changed pair ids: russell-6, russell-7, russell-8, russell-9, russell-10, russell-11, russell-12, russell-13
+-- OLD
+    pair_id    treatment_id_1   treatment_id_2            comparison_factor
+  russell-6 irr_wheat_control irr_wheat_fallow        alternate_year_fallow
+  russell-7 irr_wheat_control irr_wheat_legume        alternate_year_legume
+  russell-8  irr_wheat_fallow irr_wheat_legume fallow_vs_legume_in_off_year
+  russell-9  rf_wheat_control  rf_wheat_fallow        alternate_year_fallow
+ russell-10  rf_wheat_control  rf_wheat_legume        alternate_year_legume
+ russell-11   rf_wheat_fallow  rf_wheat_legume fallow_vs_legume_in_off_year
+ russell-12 irr_wheat_control rf_wheat_control        rainfed_vs_irrigation
+ russell-13  irr_wheat_fallow  rf_wheat_fallow        rainfed_vs_irrigation
+ healthy_soils_practice
+         other_rotation
+             cover_crop
+             cover_crop
+         other_rotation
+             cover_crop
+             cover_crop
+             irrigation
+             irrigation
+                                             comparison_label
+      Continuous wheat vs alternating-year fallow (irrigated)
+ Continuous wheat vs alternating-year legume crop (irrigated)
+     Bare fallow vs legume crop in off-year (irrigated wheat)
+        Continuous wheat vs alternating-year fallow (rainfed)
+   Continuous wheat vs alternating-year legume crop (rainfed)
+       Bare fallow vs legume crop in off-year (rainfed wheat)
+                      Rainfed vs irrigated (continuous wheat)
+                         Rainfed vs irrigated  (wheat-fallow)
+-- NEW
+    pair_id    treatment_id_1   treatment_id_2            comparison_factor
+  russell-6 irr_wheat_control irr_wheat_fallow                  synthetic_N
+  russell-7 irr_wheat_control irr_wheat_legume fallow_vs_legume_in_off_year
+  russell-8  irr_wheat_fallow irr_wheat_legume     synthetic_N + cover_crop
+  russell-9  rf_wheat_control  rf_wheat_fallow                  synthetic_N
+ russell-10  rf_wheat_control  rf_wheat_legume fallow_vs_legume_in_off_year
+ russell-11   rf_wheat_fallow  rf_wheat_legume     synthetic_N + cover_crop
+ russell-12 irr_wheat_control rf_wheat_control        rainfed_vs_irrigation
+ russell-13  irr_wheat_fallow  rf_wheat_fallow        rainfed_vs_irrigation
+ healthy_soils_practice
+                     NA
+             cover_crop
+             cover_crop
+                     NA
+             cover_crop
+             cover_crop
+             irrigation
+             irrigation
+                                                                                comparison_label
+                                          No N vs synthetic N fertilizer, irrigated wheat-fallow
+ Fallow vs winter legume cover crop in the off year, neither with N fertilizer (irrigated wheat)
+      Synthetic N with fallow vs winter legume cover crop without N fertilizer (irrigated wheat)
+                                            No N vs synthetic N fertilizer, rainfed wheat-fallow
+   Fallow vs winter legume cover crop in the off year, neither with N fertilizer (rainfed wheat)
+        Synthetic N with fallow vs winter legume cover crop without N fertilizer (rainfed wheat)
+                                            Rainfed vs irrigated (wheat-fallow, no N fertilizer)
+                       Rainfed vs irrigated (wheat-fallow with synthetic N; N rates also differ)
+treatment/control ids unchanged: TRUE
+healthy_soils_practice raw text on russell-6/9/15: russell-6 = "NA"; russell-9 = "NA"; russell-15 = "NA"
+IWL planting years: wheat 1993-2007, cover crop 1993-2007

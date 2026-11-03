@@ -1,0 +1,20 @@
+calval-metadata: .......................1........
+
+══ Failed ══════════════════════════════════════════════════════════════════════
+── 1. Failure ('test-calval-metadata.R:98:3'): Russell wheat definitions match t
+all(grepl("winter legume cover crop", def[legumes], fixed = TRUE)) is not TRUE
+
+`actual`:   FALSE
+`expected`: TRUE 
+
+══ DONE ════════════════════════════════════════════════════════════════════════
+                                                                    test nb
+1    white_salinas_2020 total N and nitrate-N rows carry units and level  6
+2 white_salinas_2020 marketed harvests carry the published harvest index 12
+3                         CH4_flux and NEE declare source-reported units  1
+4        Russell wheat definitions match the systems and their N records 13
+  failed
+1      0
+2      0
+3      0
+4      1
