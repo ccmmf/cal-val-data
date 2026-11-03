@@ -106,12 +106,14 @@ test_that("coverage repeats do not grow", {
 test_that("validate warns only about the known gaps", {
   paths <- file.path(root, vapply(dp$resources, function(r) r$path, character(1)))
   skip_if_not(all(file.exists(paths)), "data not fully generated yet")
-  known <- c("citations has [0-9]+ row\\(s\\) repeating",
-             "citations doi has [0-9]+ value",
-             "managements has [0-9]+ row\\(s\\) repeating",
-             "managements mgmttype is empty",
-             "observations has [0-9]+ row\\(s\\) repeating",
-             "coverage has [0-9]+ row\\(s\\) repeating")
+  known <- c(
+    "citations has [0-9]+ row\\(s\\) repeating",
+    "citations doi has [0-9]+ value",
+    "managements has [0-9]+ row\\(s\\) repeating",
+    "managements mgmttype is empty",
+    "observations has [0-9]+ row\\(s\\) repeating",
+    "coverage has [0-9]+ row\\(s\\) repeating"
+  )
   msgs <- character(0)
   withCallingHandlers(validate_data(root = root), message = function(m) {
     msgs <<- c(msgs, conditionMessage(m))
@@ -120,5 +122,6 @@ test_that("validate warns only about the known gaps", {
   warns <- sub("^WARNING: ", "", grep("^WARNING: ", msgs, value = TRUE))
   new <- warns[!grepl(paste0("^(", paste(known, collapse = "|"), ")"), warns)]
   expect_identical(new, character(0),
-                   info = "a warning not listed under Known warnings in README")
+    info = "a warning not listed under Known warnings in README"
+  )
 })
