@@ -1,0 +1,136 @@
+== data from fabf5f5 ==
+white-salinas: 12.......3...4.5.678..9ab
+══ Failed ══════════════════════════════════════════════════════════════════════
+── 1. Error ('test-white-salinas.R:11:3'): white_salinas_2020 SOC stocks carry t
+Error: '/home/aritra/.no-mistakes/worktrees/fdde55bbf43c/01M6GDGJR322ZPQSMZH5GRAHBG/.nm_scratch/fabf5f5/data_raw/white_salinas_2020/soc_stocks_0_30cm_corrected_2024.csv' does not exist.
+Backtrace:
+    ▆
+ 1. ├─read_chr(file.path(root, "data_raw", "white_salinas_2020", "soc_stocks_0_30cm_corrected_2024.csv")) at test-white-salinas.R:11:3
+ 2. │ └─readr::read_csv(...) at test-white-salinas.R:3:3
+ 3. │   └─vroom::vroom(...)
+ 4. │     └─vroom:::vroom_(...)
+ 5. └─vroom (local) `<fn>`("/home/aritra/.no-mistakes/worktrees/fdde55bbf43c/01M6GDGJR322ZPQSMZH5GRAHBG/.nm_scratch/fabf5f5/data_raw/white_salinas_2020/soc_stocks_0_30cm_corrected_2024.csv")
+ 6.   └─vroom:::check_path(path)
+── 2. Error ('test-white-salinas.R:38:3'): white_salinas_2020 cover crop biomass
+Error: '/home/aritra/.no-mistakes/worktrees/fdde55bbf43c/01M6GDGJR322ZPQSMZH5GRAHBG/.nm_scratch/fabf5f5/data_raw/white_salinas_2020/brennan_boyd_2012_fig5_digitized.csv' does not exist.
+Backtrace:
+    ▆
+ 1. ├─read_chr(file.path(root, "data_raw", "white_salinas_2020", "brennan_boyd_2012_fig5_digitized.csv")) at test-white-salinas.R:38:3
+ 2. │ └─readr::read_csv(...) at test-white-salinas.R:3:3
+ 3. │   └─vroom::vroom(...)
+ 4. │     └─vroom:::vroom_(...)
+ 5. └─vroom (local) `<fn>`("/home/aritra/.no-mistakes/worktrees/fdde55bbf43c/01M6GDGJR322ZPQSMZH5GRAHBG/.nm_scratch/fabf5f5/data_raw/white_salinas_2020/brennan_boyd_2012_fig5_digitized.csv")
+ 6.   └─vroom:::check_path(path)
+── 3. Failure ('test-white-salinas.R:99:3'): white_salinas_2020 calendar runs Ye
+sort(unique(yr(lettuce))) not identical to 2004:2011.
+8/8 mismatches (average diff: 1)
+[1] 2005 - 2004 == 1
+[2] 2006 - 2005 == 1
+[3] 2007 - 2006 == 1
+[4] 2008 - 2007 == 1
+[5] 2009 - 2008 == 1
+[6] 2010 - 2009 == 1
+[7] 2011 - 2010 == 1
+[8] 2012 - 2011 == 1
+── 4. Failure ('test-white-salinas.R:106:3'): white_salinas_2020 calendar runs Y
+all(broccoli == (yr(second) %in% 2005:2010)) is not TRUE
+`actual`:   FALSE
+`expected`: TRUE 
+── 5. Failure ('test-white-salinas.R:115:3'): white_salinas_2020 calendar runs Y
+all(day(annual$min_date) == day(annual$max_date)) is not TRUE
+`actual`:   FALSE
+`expected`: TRUE 
+── 6. Failure ('test-white-salinas.R:117:3'): white_salinas_2020 calendar runs Y
+unique(day(annual$min_date)) (`actual`) and `table2` (`expected`) don't have the same values.
+* Only in `actual`: "2004-09-30", "2005-10-01", "2006-10-01", "2007-10-01", "2008-09-30", "2009-10-01", "2010-10-01", "2011-10-01"
+* Only in `expected`: "2003-10-16", "2004-10-15", "2005-10-17", "2006-11-02", "2007-10-15", "2008-10-15", "2009-10-29", "2010-10-27"
+── 7. Failure ('test-white-salinas.R:120:3'): white_salinas_2020 calendar runs Y
+paste(quad$treatments.name, day(quad$min_date), day(quad$max_date)) (`actual`) and paste(...) (`expected`) don't have the same values.
+* Only in `actual`: "socs_sys1 2006-10-01 2006-11-12", "socs_sys2 2006-10-01 2006-11-12", "socs_sys1 2010-10-01 2010-11-12", "socs_sys2 2010-10-01 2010-11-12"
+* Only in `expected`: "socs_sys1 2006-11-02 2006-11-02", "socs_sys1 2010-10-27 2010-10-27", "socs_sys2 2006-11-02 2006-11-02", "socs_sys2 2010-10-27 2010-10-27"
+── 8. Failure ('test-white-salinas.R:128:3'): white_salinas_2020 calendar runs Y
+nrow(irr) not equal to 52L.
+1/1 mismatches
+[1] 0 - 52 == -52
+── 9. Failure ('test-white-salinas.R:138:3'): white_salinas_2020 calendar runs Y
+nrow(n) not equal to 224L.
+1/1 mismatches
+[1] 0 - 224 == -224
+── 10. Failure ('test-white-salinas.R:142:3'): white_salinas_2020 calendar runs 
+sort(rownames(total)) not identical to `systems`.
+target is NULL, current is character
+  ... and 1 more
+Maximum number of 10 failures reached, some test results may be missing.
+══ DONE ════════════════════════════════════════════════════════════════════════
+                                                             test nb failed
+4 white_salinas_2020 calendar runs Year 1 (2004) to Year 8 (2011) 17      8
+  error
+4  TRUE
+== data from dcd41a3 ==
+white-salinas: 12............................34..5
+══ Failed ══════════════════════════════════════════════════════════════════════
+── 1. Error ('test-white-salinas.R:11:3'): white_salinas_2020 SOC stocks carry t
+Error: '/home/aritra/.no-mistakes/worktrees/fdde55bbf43c/01M6GDGJR322ZPQSMZH5GRAHBG/.nm_scratch/dcd41a3/data_raw/white_salinas_2020/soc_stocks_0_30cm_corrected_2024.csv' does not exist.
+Backtrace:
+    ▆
+ 1. ├─read_chr(file.path(root, "data_raw", "white_salinas_2020", "soc_stocks_0_30cm_corrected_2024.csv")) at test-white-salinas.R:11:3
+ 2. │ └─readr::read_csv(...) at test-white-salinas.R:3:3
+ 3. │   └─vroom::vroom(...)
+ 4. │     └─vroom:::vroom_(...)
+ 5. └─vroom (local) `<fn>`("/home/aritra/.no-mistakes/worktrees/fdde55bbf43c/01M6GDGJR322ZPQSMZH5GRAHBG/.nm_scratch/dcd41a3/data_raw/white_salinas_2020/soc_stocks_0_30cm_corrected_2024.csv")
+ 6.   └─vroom:::check_path(path)
+── 2. Error ('test-white-salinas.R:38:3'): white_salinas_2020 cover crop biomass
+Error: '/home/aritra/.no-mistakes/worktrees/fdde55bbf43c/01M6GDGJR322ZPQSMZH5GRAHBG/.nm_scratch/dcd41a3/data_raw/white_salinas_2020/brennan_boyd_2012_fig5_digitized.csv' does not exist.
+Backtrace:
+    ▆
+ 1. ├─read_chr(file.path(root, "data_raw", "white_salinas_2020", "brennan_boyd_2012_fig5_digitized.csv")) at test-white-salinas.R:38:3
+ 2. │ └─readr::read_csv(...) at test-white-salinas.R:3:3
+ 3. │   └─vroom::vroom(...)
+ 4. │     └─vroom:::vroom_(...)
+ 5. └─vroom (local) `<fn>`("/home/aritra/.no-mistakes/worktrees/fdde55bbf43c/01M6GDGJR322ZPQSMZH5GRAHBG/.nm_scratch/dcd41a3/data_raw/white_salinas_2020/brennan_boyd_2012_fig5_digitized.csv")
+ 6.   └─vroom:::check_path(path)
+── 3. Failure ('test-white-salinas.R:162:3'): white_salinas_2020 calendar runs Y
+nrow(spade) not equal to 48L.
+1/1 mismatches
+[1] 0 - 48 == -48
+── 4. Failure ('test-white-salinas.R:163:3'): white_salinas_2020 calendar runs Y
+unique(day(spade$min_date)) (`actual`) and `term` (`expected`) don't have the same values.
+* Only in `expected`: "2004-03-08", "2005-03-11", "2006-02-11", "2007-03-18", "2008-02-19", "2009-03-13", "2010-03-18", "2011-03-10"
+── 5. Failure ('test-white-salinas.R:175:3'): white_salinas_2020 calendar runs Y
+any(attr_has(comp, "season=fall")) is not FALSE
+`actual`:   TRUE 
+`expected`: FALSE
+══ DONE ════════════════════════════════════════════════════════════════════════
+Keep trying!
+                                                             test nb failed
+4 white_salinas_2020 calendar runs Year 1 (2004) to Year 8 (2011) 28      3
+  error
+4 FALSE
+== data from 236a7cd ==
+white-salinas: 12.................................
+══ Failed ══════════════════════════════════════════════════════════════════════
+── 1. Error ('test-white-salinas.R:11:3'): white_salinas_2020 SOC stocks carry t
+Error: '/home/aritra/.no-mistakes/worktrees/fdde55bbf43c/01M6GDGJR322ZPQSMZH5GRAHBG/.nm_scratch/236a7cd/data_raw/white_salinas_2020/soc_stocks_0_30cm_corrected_2024.csv' does not exist.
+Backtrace:
+    ▆
+ 1. ├─read_chr(file.path(root, "data_raw", "white_salinas_2020", "soc_stocks_0_30cm_corrected_2024.csv")) at test-white-salinas.R:11:3
+ 2. │ └─readr::read_csv(...) at test-white-salinas.R:3:3
+ 3. │   └─vroom::vroom(...)
+ 4. │     └─vroom:::vroom_(...)
+ 5. └─vroom (local) `<fn>`("/home/aritra/.no-mistakes/worktrees/fdde55bbf43c/01M6GDGJR322ZPQSMZH5GRAHBG/.nm_scratch/236a7cd/data_raw/white_salinas_2020/soc_stocks_0_30cm_corrected_2024.csv")
+ 6.   └─vroom:::check_path(path)
+── 2. Error ('test-white-salinas.R:38:3'): white_salinas_2020 cover crop biomass
+Error: '/home/aritra/.no-mistakes/worktrees/fdde55bbf43c/01M6GDGJR322ZPQSMZH5GRAHBG/.nm_scratch/236a7cd/data_raw/white_salinas_2020/brennan_boyd_2012_fig5_digitized.csv' does not exist.
+Backtrace:
+    ▆
+ 1. ├─read_chr(file.path(root, "data_raw", "white_salinas_2020", "brennan_boyd_2012_fig5_digitized.csv")) at test-white-salinas.R:38:3
+ 2. │ └─readr::read_csv(...) at test-white-salinas.R:3:3
+ 3. │   └─vroom::vroom(...)
+ 4. │     └─vroom:::vroom_(...)
+ 5. └─vroom (local) `<fn>`("/home/aritra/.no-mistakes/worktrees/fdde55bbf43c/01M6GDGJR322ZPQSMZH5GRAHBG/.nm_scratch/236a7cd/data_raw/white_salinas_2020/brennan_boyd_2012_fig5_digitized.csv")
+ 6.   └─vroom:::check_path(path)
+══ DONE ════════════════════════════════════════════════════════════════════════
+                                                             test nb failed
+4 white_salinas_2020 calendar runs Year 1 (2004) to Year 8 (2011) 28      0
+  error
+4 FALSE

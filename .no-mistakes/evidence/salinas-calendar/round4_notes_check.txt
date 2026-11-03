@@ -1,0 +1,26 @@
+rows before: 4350  rows after: 4350  same event_id order: TRUE 
+cells changed: 4 
+      event_id column csv_line
+1 tillage-0049  notes      215
+2 tillage-0050  notes      216
+3 tillage-0113  notes      489
+4 tillage-0114  notes      490
+
+ tillage-0049 socs_sys1 2007-03-16 -> 2007-03-18 30 cm depth 
+  notes: cover crop spaded between the last Brennan and Smith 2017 biomass sampling and 30 days before the bed formation (White et al. 2020b: spaded in February or March, then a 30 day decomposition period); exact day not reported; spading to 30 cm 
+
+ tillage-0050 socs_sys2 2007-03-16 -> 2007-03-18 30 cm depth 
+  notes: cover crop spaded between the last Brennan and Smith 2017 biomass sampling and 30 days before the bed formation (White et al. 2020b: spaded in February or March, then a 30 day decomposition period); exact day not reported; spading to 30 cm 
+
+ tillage-0113 socs_sys1 2011-03-09 -> 2011-03-10 30 cm depth 
+  notes: cover crop spaded between the last Brennan and Smith 2017 biomass sampling and 30 days before the bed formation (White et al. 2020b: spaded in February or March, then a 30 day decomposition period); exact day not reported; spading to 30 cm 
+
+ tillage-0114 socs_sys2 2011-03-09 -> 2011-03-10 30 cm depth 
+  notes: cover crop spaded between the last Brennan and Smith 2017 biomass sampling and 30 days before the bed formation (White et al. 2020b: spaded in February or March, then a 30 day decomposition period); exact day not reported; spading to 30 cm 
+
+Salinas rows still containing 'end of March': 0 
+Salinas rows citing '30 days before the bed formation': 4 
+tillage-0049 window ends 2007-03-18 ; next event fertilization-0141 fertilization starts 2007-04-17 ; gap 30 days
+tillage-0050 window ends 2007-03-18 ; next event fertilization-0043 fertilization starts 2007-04-17 ; gap 30 days
+tillage-0113 window ends 2011-03-10 ; next event fertilization-0145 fertilization starts 2011-04-09 ; gap 30 days
+tillage-0114 window ends 2011-03-10 ; next event fertilization-0099 fertilization starts 2011-04-09 ; gap 30 days

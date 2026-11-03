@@ -1,0 +1,13 @@
+[PASS] compost + pelleted before lettuce: Table 2 termination + 30 d (72 in 2009) to 31 May 120 rows; starts 2004-04-07 2005-04-10 2006-03-13 2007-04-17 2008-03-20 2009-05-24 2010-04-17 2011-04-09
+[PASS] lettuce planting in May (from 24 May in 2009) 
+[PASS] lettuce harvest June to July (June in 2011) 
+[PASS] compost + pelleted before the second crop: 1 June to the end of its planting window 105 rows
+[PASS] spinach (2004) seeded in July; ended 1 August to the residue incorporation (2004-09-11) 
+[PASS] liquid fertilizer and vegetable irrigation: planting start to harvest end 224 of 224 rows
+[PASS] subsoiling 2004-2010: second crop harvest start to the cover crop planting 56 of 56 rows
+[PASS] cover crop irrigation: starts on its planting date (single 2006-11-05 application in Year 4) 52 rows
+[PASS] socs_sys1/2 fallow spading: February or March, ending before the bed formation 12 rows; ends 03-12 03-19 03-31
+[PASS] socs_sys1/2 2007 and 2011 spading: 16-18 March 2007, 9-10 March 2011 
+[PASS] Year 8 bed disking June 2011, ripping and spading August 2011 24 rows
+
+11 checks, 0 failed

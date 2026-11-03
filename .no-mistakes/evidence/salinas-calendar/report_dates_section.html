@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>data_raw/white_salinas_2020/data_entry_report.md (HEAD ed6ba5f): Dates section</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">data_raw/white_salinas_2020/data_entry_report.md (HEAD
+ed6ba5f): Dates section</h1>
+</header>
+<h2 id="dates">Dates</h2>
+<p>The papers give the vegetable management only as seasons (Brennan and
+Boyd 2012: “romaine lettuce from May to June or July”; White et
+al. 2020b: “from May to June”). Brennan and Boyd (2012) Table 2 gives
+each winter’s residue incorporation, cover crop planting, last cover
+crop irrigation and termination (flail mowing) dates for the six
+annually cover-cropped systems, and Brennan and Smith (2017) give the
+Year 4 and Year 8 planting dates for <code>socs_sys1</code> and
+<code>socs_sys2</code>. Those rows carry the printed dates
+(<code>min_date = max_date</code>, or the printed range); every other
+row carries a window built from the papers’ wording (table below), with
+the source summarized in <code>notes</code>. <strong>Point dates are
+never invented.</strong></p>
+<p>Three things the rows state as assumptions or caveats:</p>
+<ul>
+<li>The spring spading after an annual cover crop is taken as the Table
+2 termination day: Brennan and Boyd (2012) say the cover crops “were
+terminated by flail mowing and the residue was incorporated with one
+pass using a spader”, but do not date the spading.</li>
+<li><code>socs_sys1</code> and <code>socs_sys2</code> take the annual
+systems’ Table 2 residue incorporation dates and bed preparation
+windows, because <em>Data in Brief</em> says tillage and harvest
+schedules were the same in every system.</li>
+<li>Table 2 prints the Year 2 residue incorporation as approximate (≈ 11
+September 2004); those rows keep 11 September and say so. Brennan and
+Smith (2017) put the 2010 incorporation 12 days before 25 October (13
+October) where Table 2 says 14 October, so those rows carry 13 to 14
+October.</li>
+</ul>
+<p>The calendar runs from the 30 September 2003 residue incorporation
+before the Year 1 cover crop to the Year 8 spading in August 2011. Year
+1’s second crop is baby leaf spinach; Years 2–7 grow broccoli; Year 8
+grows lettuce only. The windows:</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 37%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr>
+<th>Rows</th>
+<th>Window</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>spring spading</td>
+<td><code>socs_sys3</code>–<code>socs_sys8</code>: the Table 2
+termination date; <code>socs_sys1</code> and <code>socs_sys2</code>:
+February or March in fallow winters, ending before the bed formation,
+and in 2007 and 2011 from the last biomass sampling day to 30 days
+before the bed formation (16–18 March 2007, 9–10 March 2011)</td>
+<td>Brennan and Boyd 2012; White et al. 2020b; Brennan and Smith
+2017</td>
+</tr>
+<tr>
+<td>compost and pelleted fertilizer before lettuce</td>
+<td>Table 2 termination + 30 days (72 in Year 6, 2009) to 31 May, in all
+eight systems</td>
+<td>White et al. 2020b (at bed formation, 30 to 42 days after the
+spading; 72 in Year 6)</td>
+</tr>
+<tr>
+<td>lettuce planting, harvest</td>
+<td>May (from 24 May in 2009); June to July (June in 2011)</td>
+<td>Brennan and Boyd 2012; White et al. 2020b</td>
+</tr>
+<tr>
+<td>compost and pelleted fertilizer before the second crop</td>
+<td>1 June to the end of its planting window</td>
+<td>White et al. 2020b (when preparing the beds after the lettuce
+harvest)</td>
+</tr>
+<tr>
+<td>spinach (2004)</td>
+<td>seeded in July; ended between 1 August and the residue incorporation
+(≈ 11 September)</td>
+<td>Brennan and Boyd 2012; White et al. 2020b</td>
+</tr>
+<tr>
+<td>broccoli (2005–2010)</td>
+<td>planted July or August; harvested from 1 September (30 September in
+2010) to the last day of the Table 2 residue incorporation</td>
+<td>Brennan and Boyd 2012; Brennan and Smith 2017</td>
+</tr>
+<tr>
+<td>liquid fertilizer, vegetable irrigation</td>
+<td>the crop’s planting start to its harvest end</td>
+<td>Brennan and Boyd 2012</td>
+</tr>
+<tr>
+<td>subsoiling to about 1 m</td>
+<td>the second crop’s harvest start to the cover crop planting</td>
+<td>White et al. 2020b; Brennan and Boyd 2012</td>
+</tr>
+<tr>
+<td>fall residue incorporation</td>
+<td>the Table 2 date, in all eight systems; flail mowing, then spading
+to 30 cm among the other passes</td>
+<td>Brennan and Boyd 2012; White et al. 2020a; White et al. 2020b</td>
+</tr>
+<tr>
+<td>cover crop irrigation</td>
+<td>planting to the Table 2 last irrigation; the single Year 4
+application on 5 November 2006</td>
+<td>Brennan and Boyd 2012 (Table 2, Fig. 2)</td>
+</tr>
+<tr>
+<td>Year 8 bed disking, ripping and spading</td>
+<td>June 2011; August 2011; August 2011</td>
+<td>White et al. 2020b</td>
+</tr>
+</tbody>
+</table>
+<p>In 2009 the lettuce, compost and pelleted fertilizer windows are only
+24 to 31 May, because White et al. (2020b) report a 72 day decomposition
+after wet spring weather and Brennan and Boyd (2012) plant the lettuce
+in May.</p>
+<p>SOC, total N and nitrate-N rows use the fall sampling window of each
+year (August for Year 8). The Year 0 and Year 6 rows instead carry 13
+October 2003 and 30 October 2009, which White et al. (2020b) give as the
+dates of additional samples frozen for microbial biomass; the paper does
+not say the 0–30 cm composite samples were taken on those days. The bulk
+density rows have their own date question. Both are in Open
+follow-ups.</p>
+</body>
+</html>

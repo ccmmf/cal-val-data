@@ -1,0 +1,28 @@
+[PASS] all Salinas windows have min_date <= max_date 
+[PASS] Salinas calendar spans 2003-2011 only (old template ran to 2012) max year 2011
+[PASS] no 45 cm subsoil depth left 
+[PASS] subsoil/ripping rows are 100 cm 64 rows, levels 100
+[PASS] lettuce planting windows fall in May 05-01 05-31 | 05-24 05-31
+[PASS] lettuce planting starts >= spading + 30 d (+72 d after the 2009 cover crops) min gap 31 d (other years), 72 d (2009 after cover crop), 54 d (2009 fallow); 0 system-years without a spring spading row
+[PASS] lettuce harvest windows in June or July 64 rows
+[PASS] broccoli planting windows in July or August 48 rows
+[PASS] broccoli harvest windows start in September or later 2005-09-01,2006-09-01,2007-09-01,2008-09-01,2009-09-01,2010-09-30
+[PASS] broccoli harvest window ends on the residue incorporation's last day 
+[PASS] 2004 spinach and 2005 broccoli harvest rows say harvested_component=none; marketed=no (8 systems each) 16 rows
+[PASS] every other harvest row is not tagged unharvested 
+[PASS] compost before the second crop is not later than the second crop's planting window 49 compost rows, 0 violations; windows 06-01 07-31,06-01 08-31
+[PASS] pelleted fertilizer rows exist in all eight systems 120 pelleted rows; levels 22,56,112,134
+[PASS] liquid drip N is 17/22/34 kg N/ha, labelled derived=total_minus_pelleted, none in 2004 104 liquid rows; levels 17,22,34
+[PASS] cover crop irrigation carries Fig. 2 mm and application days 52 rows
+[PASS] Year 4 single application is the point date 2006-11-05 8 rows
+[PASS] vegetable irrigation amounts stay blank (no paper reports them); method present except the 2004 spinach (method not reported) 120 rows; 8 without method: 2004 baby_leaf_spinach
+[PASS] no imputed or inserted amounts in Salinas managements 
+[PASS] no literal method=NA key left 
+[PASS] no Salinas compost is labelled season=fall 
+[PASS] fall residue incorporation rows exist once per system per year 2003-2010 and carry 30 cm 64 rows; windows 2003-09-30..2003-09-30 2004-09-11..2004-09-11 2005-09-21..2005-09-29 2006-10-30..2006-10-31 2007-10-04..2007-10-04 2008-09-29..2008-09-29 2009-10-07..2009-10-08 2010-10-13..2010-10-14
+[PASS] 2004 residue incorporation is 2004-09-11 labelled approximate 
+[PASS] 2010 residue incorporation runs 2010-10-13 to 2010-10-14 
+[PASS] 2010 broccoli harvest starts 2010-09-30 8 rows
+[PASS] 2011 lettuce harvest ends 30 June 
+
+26 checks, 0 failed

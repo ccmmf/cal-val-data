@@ -1,0 +1,14 @@
+Salinas rows: 1002  point-date rows: 134  window rows: 868 
+
+    mgmttype backed rows
+1 irrigation   TRUE    8
+2   planting   TRUE   52
+3    tillage   TRUE   74
+
+point-date rows whose notes do not print the day:
+none
+
+distinct point dates by mgmttype:
+planting             2003-10-16 2004-10-15 2005-10-17 2006-11-02 2007-10-15 2008-10-15 2009-10-29 2010-10-27
+tillage              2003-09-30 2004-03-08 2004-09-11 2005-03-11 2006-02-11 2007-03-18 2007-10-04 2008-02-19 2008-09-29 2009-03-13 2010-03-18
+irrigation           2006-11-05

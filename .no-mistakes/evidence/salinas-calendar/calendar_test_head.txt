@@ -1,0 +1,13 @@
+white-salinas: .....................................................
+
+══ DONE ════════════════════════════════════════════════════════════════════════
+                                                                               test
+1            white_salinas_2020 SOC stocks carry the White et al. (2024) correction
+2         white_salinas_2020 cover crop biomass matches the Fig. 5 digitizer output
+3 white_salinas_2020 compost applications are 7.6 Mg/ha oven dry per vegetable crop
+4                   white_salinas_2020 calendar runs Year 1 (2004) to Year 8 (2011)
+  nb failed skipped error
+1 10      0   FALSE FALSE
+2 10      0   FALSE FALSE
+3  5      0   FALSE FALSE
+4 28      0   FALSE FALSE

@@ -1,0 +1,32 @@
+managements      parent   3866 rows, HEAD   4350 rows:  517 changed,  484 added, 0 removed (key event_id)
+treatments       parent     35 rows, HEAD     35 rows:    5 changed,    0 added, 0 removed (key name)
+crops            parent     13 rows, HEAD     14 rows:    0 changed,    1 added, 0 removed (key scientific name)
+citations        parent     79 rows, HEAD     80 rows:    0 changed,    1 added, 0 removed (key citation_id)
+sites            parent     13 rows, HEAD     13 rows:    0 changed,    0 added, 0 removed (key name)
+treatment_pairs  parent     24 rows, HEAD     24 rows:    0 changed,    0 added, 0 removed (key pair_id)
+observations     parent  37313 rows, HEAD  37313 rows:    0 changed,    0 added, 0 removed (key min_date)
+methods          parent     49 rows, HEAD     49 rows:    0 changed,    0 added, 0 removed (key method name)
+variables        parent    106 rows, HEAD    106 rows:    0 changed,    0 added, 0 removed (key name)
+coverage         parent     32 rows, HEAD     32 rows:    0 changed,    0 added, 0 removed (key System)
+
+managements by site, parent vs HEAD:
+                      parent Freq.x Freq.y
+1        modesto_almond_usda     39     39
+2        russell_ranch_davis   3208   3208
+3               salinas_socs    518   1002
+4                     US-Bi1      8      8
+5   US-Bi1__alfalfa_chambers      3      3
+6   US-Bi2__management_field     42     42
+7                     US-Twt     33     33
+8 US-Twt__publication_site_1      8      8
+9 US-Twt__publication_site_2      7      7
+non-Salinas managements rows identical (all columns, same order): TRUE 
+added Salinas rows by mgmttype:
+
+fertilization    irrigation       tillage 
+          224           172            88 
+ data/citations.csv   |    1 +
+ data/crops.csv       |    1 +
+ data/managements.csv | 1518 +++++++++++++++++++++++++++++++++-----------------
+ data/treatments.csv  |   10 +-
+ 4 files changed, 1008 insertions(+), 522 deletions(-)
