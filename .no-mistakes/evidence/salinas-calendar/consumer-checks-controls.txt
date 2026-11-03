@@ -1,0 +1,34 @@
+--- control: same checks on data/ from fabf5f5
+[FAIL] managements has 3866 rows (expected 4350)
+[FAIL] Salinas: 518 rows before, 518 after; 0 removed, 0 added, 0 changed (expected 0 / 484 / 517)
+[FAIL] added rows by type:  (expected fertilization 224, irrigation 172, tillage 88)
+[FAIL] the only unchanged Salinas row is the 2003 establishment compost: compost_application-0001 2003-10-01; planting-0001 2004-09-30; planting-0002 2004-09-30; planting-0003 2004-09-30; planting-0004 2004-09-30; planting-0005 2004-09-30;  … [truncated: every parent Salinas row is unchanged]
+[FAIL] lettuce once per system in every year 2004-2011
+[FAIL] baby leaf spinach only in 2004 (8 systems)
+[FAIL] broccoli only 2005-2010, once per system per year
+[FAIL] no second crop in 2011 (Year 8 lettuce only)
+[FAIL] no vegetable rows in 2012 any more
+[FAIL] all cover crop plantings are printed point dates
+[FAIL] socs_sys1/2 cover crop only 2006-11-02 and 2010-10-27
+[FAIL] lettuce planting starts in May and no earlier than spading + 30 d (72 d in 2009)
+[FAIL] lettuce harvest June-July (June in 2011)
+[FAIL] broccoli planted July or August
+[FAIL] broccoli harvest ends on the last day of that year's residue incorporation
+[FAIL] broccoli harvest starts 1 Sept (30 Sept in 2010)
+[FAIL] 64 fall residue incorporation rows, all 30 cm depth, all 8 systems
+[FAIL] subsoiling: 56 rows, all 100 cm; no 45 cm depth anywhere in Salinas
+[FAIL] socs_sys1/2 spading 16-18 Mar 2007 and 9-10 Mar 2011
+[FAIL] 52 spring spading rows after a cover crop name the flail mower
+[FAIL] 56 compost/pelleted rows before lettuce open at Table 2 termination + 30 d (72 d in 2009) and close 31 May
+[FAIL] in every system and year the spring spading window closes before the bed-formation window opens
+[FAIL] 224 fertilizer N rows (pelleted or liquid), in all 8 systems incl. socs_sys1
+(script stops here on parent data: there are no fertilizer N rows to total)
+--- control: same checks on data/ from dcd41a3
+[FAIL] 64 fall residue incorporation rows, all 30 cm depth, all 8 systems
+[FAIL] socs_sys1/2 spading 16-18 Mar 2007 and 9-10 Mar 2011
+[FAIL] 52 spring spading rows after a cover crop name the flail mower
+[FAIL] in every system and year the spring spading window closes before the bed-formation window opens
+[FAIL] drip on lettuce and broccoli; the 2004 spinach rows carry no method key (and no method=NA anywhere)
+[FAIL] no compost row is labelled season=fall; second-crop compost says season=summer
+[FAIL] 2011 lettuce harvest cites White et al. 2020b
+37 checks passed, 7 failed

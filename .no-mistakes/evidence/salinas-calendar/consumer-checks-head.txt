@@ -1,0 +1,148 @@
+$ Rscript consumer_checks.R . managements_parent.csv   # HEAD 236a7cd vs parent fabf5f5
+== 1. scope of the regenerated table (parent fabf5f5 -> HEAD) ==
+[PASS] managements has 4350 rows (expected 4350)
+[PASS] non-Salinas rows identical to parent (3348 rows, 0 differ)
+[PASS] Salinas: 518 rows before, 1002 after; 0 removed, 484 added, 517 changed (expected 0 / 484 / 517)
+[PASS] added rows by type: fertilization=224, irrigation=172, tillage=88 (expected fertilization 224, irrigation 172, tillage 88)
+[PASS] the only unchanged Salinas row is the 2003 establishment compost: compost_application-0001 2003-10-01
+[PASS] event_id unique
+[PASS] min_date <= max_date on every Salinas row
+
+== 2. crop sequence ==
+      crop
+year   baby_leaf_spinach broccoli romaine_lettuce
+  2004                 8        0               8
+  2005                 0        8               8
+  2006                 0        8               8
+  2007                 0        8               8
+  2008                 0        8               8
+  2009                 0        8               8
+  2010                 0        8               8
+  2011                 0        0               8
+[PASS] lettuce once per system in every year 2004-2011
+[PASS] baby leaf spinach only in 2004 (8 systems)
+[PASS] broccoli only 2005-2010, once per system per year
+[PASS] no second crop in 2011 (Year 8 lettuce only)
+[PASS] no vegetable rows in 2012 any more
+
+== 3. cover crop dates (Brennan and Boyd 2012 Table 2; Brennan and Smith 2017) ==
+           
+            2003-10-16 2004-10-15 2005-10-17 2006-11-02 2007-10-15 2008-10-15
+  socs_sys1          0          0          0          1          0          0
+  socs_sys2          0          0          0          1          0          0
+  socs_sys3          1          1          1          1          1          1
+  socs_sys4          1          1          1          1          1          1
+  socs_sys5          1          1          1          1          1          1
+  socs_sys6          1          1          1          1          1          1
+  socs_sys7          1          1          1          1          1          1
+  socs_sys8          1          1          1          1          1          1
+           
+            2009-10-29 2010-10-27
+  socs_sys1          0          1
+  socs_sys2          0          1
+  socs_sys3          1          1
+  socs_sys4          1          1
+  socs_sys5          1          1
+  socs_sys6          1          1
+  socs_sys7          1          1
+  socs_sys8          1          1
+[PASS] all cover crop plantings are printed point dates
+[PASS] socs_sys1/2 cover crop only 2006-11-02 and 2010-10-27
+
+== 4. window rules for the vegetable rows ==
+spring spading rows: 64 
+[PASS] lettuce planting starts in May and no earlier than spading + 30 d (72 d in 2009)
+       2009 lettuce windows: 2009-05-24 2009-05-31 
+[PASS] lettuce harvest June-July (June in 2011)
+[PASS] broccoli planted July or August
+fall residue incorporation rows: 64  depths: 30 cm depth 
+[PASS] broccoli harvest ends on the last day of that year's residue incorporation
+[PASS] broccoli harvest starts 1 Sept (30 Sept in 2010)
+[PASS] 64 fall residue incorporation rows, all 30 cm depth, all 8 systems
+[PASS] subsoiling: 64 rows, all 100 cm; no 45 cm depth anywhere in Salinas
+       socs_sys1/2 spading after their cover crop: 2007-03-16 to 2007-03-18 2011-03-09 to 2011-03-10 
+[PASS] socs_sys1/2 spading 16-18 Mar 2007 and 9-10 Mar 2011
+[PASS] 52 spring spading rows after a cover crop name the flail mower
+[PASS] 120 compost/pelleted rows before lettuce open at Table 2 termination + 30 d (72 d in 2009) and close 31 May
+[PASS] in every system and year the spring spading window closes before the bed-formation window opens
+
+== 5. 'point dates only where a paper prints them' (adversarial) ==
+
+                                         irrigation method=sprinkler_linear_move 
+                                                                               8 
+                                                        planting cover_crop TRUE 
+                                                                              52 
+tillage implement=flail_mower+disc_harrow+spring_tooth_harrow+spader+ring_roller 
+                                                                              32 
+                                            tillage implement=flail_mower+spader 
+                                                                              42 
+[PASS] no vegetable planting/harvest/fertilizer/drip row carries a single day (689 rows checked)
+[PASS] every point-dated row cites a paper and quotes it in notes
+
+== 6. fertilizer N ==
+                            level
+                             112 134 17 22 34 56
+  baby_leaf_spinach pelleted   0   0  0  8  0  0
+  broccoli liquid              0   0  0  8 40  0
+  broccoli pelleted            8  40  0  0  0  0
+  romaine_lettuce liquid       0   0 56  0  0  0
+  romaine_lettuce pelleted     0   0  0  0  0 64
+[PASS] 224 fertilizer N rows (pelleted or liquid), in all 8 systems incl. socs_sys1
+[PASS] every liquid row is labelled derived=total_minus_pelleted and is 17, 22 or 34
+[PASS] no liquid fertilizer in 2004
+   yr              crop   N
+ 2004 baby_leaf_spinach  22
+ 2004   romaine_lettuce  56
+ 2005          broccoli 134
+ 2005   romaine_lettuce  73
+ 2006          broccoli 168
+ 2006   romaine_lettuce  73
+ 2007          broccoli 168
+ 2007   romaine_lettuce  73
+ 2008          broccoli 168
+ 2008   romaine_lettuce  73
+ 2009          broccoli 168
+ 2009   romaine_lettuce  73
+ 2010          broccoli 168
+ 2010   romaine_lettuce  73
+ 2011   romaine_lettuce  73
+[PASS] per-crop N totals: lettuce 73 (56 in 2004), spinach 22, broccoli 134 (2005) / 168 (2006-10)
+[PASS] liquid window = crop planting start to its harvest end
+
+== 7. irrigation ==
+[PASS] 52 cover crop establishment rows carry Fig. 2 mm and application_days
+       Year 4 rows: socs_sys1 2006-11-05 2006-11-05 socs_sys2 2006-11-05 2006-11-05 socs_sys3 2006-11-05 2006-11-05 ...
+[PASS] Year 4 single application on 2006-11-05
+[PASS] 120 vegetable irrigation rows have level NA (no paper reports amounts)
+[PASS] drip on lettuce and broccoli; the 2004 spinach rows carry no method key (and no method=NA anywhere)
+
+== 8. unharvested crops and other round-3 labels ==
+[PASS] 16 harvest rows (2004 spinach, 2005 broccoli) say harvested_component=none; marketed=no
+[PASS] no compost row is labelled season=fall; second-crop compost says season=summer
+                                                                                 
+                                                                                  2011-06 NA NA
+  implement=disc; relative_timing=after_harvest; relative_to=romaine_lettuce                  8
+  implement=spader; relative_timing=after_harvest; relative_to=romaine_lettuce                0
+  implement=subsoiler; relative_timing=after_harvest; relative_to=romaine_lettuce             0
+                                                                                 
+                                                                                  2011-08 100 cm depth
+  implement=disc; relative_timing=after_harvest; relative_to=romaine_lettuce                         0
+  implement=spader; relative_timing=after_harvest; relative_to=romaine_lettuce                       0
+  implement=subsoiler; relative_timing=after_harvest; relative_to=romaine_lettuce                    8
+                                                                                 
+                                                                                  2011-08 30 cm depth
+  implement=disc; relative_timing=after_harvest; relative_to=romaine_lettuce                        0
+  implement=spader; relative_timing=after_harvest; relative_to=romaine_lettuce                      8
+  implement=subsoiler; relative_timing=after_harvest; relative_to=romaine_lettuce                   0
+[PASS] Year 8: 24 tillage rows, June disking, August ripping 100 cm and spading 30 cm
+[PASS] 2011 lettuce harvest cites White et al. 2020b
+
+== 9. supporting tables ==
+[PASS] crops gains baby leaf spinach
+[PASS] citations gains Brennan and Smith 2017
+[PASS] every Salinas management citation resolves in citations.csv
+[PASS] treatments: socs_sys1/2 cover crop in Years 4 and 8
+       info: 9 Salinas management rows fall outside the treatments start/end dates (NA NA NA; tillage 2003-09-30 2003-09-30)
+
+44 checks passed, 0 failed
+exit=0

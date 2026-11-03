@@ -1,0 +1,14 @@
+$ Rscript roundtrip.R .   # HEAD 236a7cd: re-serialise each data/*.csv with readr::write_csv (the ingest.R writer) and compare bytes
+citations.csv              80 rows  byte-identical to write_csv output
+coverage.csv               32 rows  byte-identical to write_csv output
+crops.csv                  14 rows  byte-identical to write_csv output
+managements.csv          4350 rows  byte-identical to write_csv output
+methods.csv                49 rows  byte-identical to write_csv output
+observations.csv        37313 rows  byte-identical to write_csv output
+sites.csv                  13 rows  byte-identical to write_csv output
+treatment_pairs.csv        24 rows  byte-identical to write_csv output
+treatments.csv             35 rows  byte-identical to write_csv output
+variables.csv             106 rows  byte-identical to write_csv output
+
+$ Rscript roundtrip.R handedit   # control: same managements.csv with one field hand-quoted in a text editor
+managements.csv          4350 rows  DIFFERS from write_csv output
