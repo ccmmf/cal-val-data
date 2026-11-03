@@ -202,7 +202,7 @@ Smaller tables (`citations`, `sites`, `treatments`, `treatment_pairs`, `methods`
 Rscript scripts/validate.R
 ```
 
-Tests under `tests/testthat/` run the same checks via testthat. Tables not yet generated are skipped, so a fresh clone passes. `test-validate-checks.R` pins each check on small fixtures, and `test-integrity.R` caps the known warnings below: each may shrink, but one that grows or spreads to other rows fails the tests.
+Tests under `tests/testthat/` run the same checks via testthat. Tables not yet generated are skipped, so a fresh clone passes. `test-validate-checks.R` pins each check on small fixtures, and `test-integrity.R` caps each of the known warnings below: each may shrink, but one that grows or spreads to other rows fails the tests, and so does any warning not on the list.
 
 ```bash
 Rscript -e 'testthat::test_dir("tests/testthat")'
@@ -212,12 +212,12 @@ Rscript -e 'testthat::test_dir("tests/testthat")'
 
 These warnings are expected on the current data and stay until the workbook or source is fixed.
 
-- **`citations` has 19 rows that repeat an earlier row apart from `citation_id`.** The AmeriFlux Delta workbook lists these papers twice, under an id derived from the DOI (`ref_10_1002_2015jg003247`) and under a named key (`knox2016bco`).
+- **`citations` has 19 rows that repeat an earlier row apart from `citation_id`.** The AmeriFlux Delta workbook lists these papers twice, under an id derived from the DOI (`ref_10_1002_2015jg003247`) and under a named key (`knox2016bco`). Capped at 19.
 - **`citations.doi` has 21 values on two rows each.** Same cause: the 19 repeats above, plus two pairs (`anthony2023cpo`, `anthony_bouldin_2024_dryad`) whose rows also differ in notes, so only this check finds them. Other tables reference both forms of id, so a fix keeps one id per DOI and repoints the references to the other. Capped at 21.
 - **`managements` has 2,195 rows that repeat an earlier row apart from `event_id`, all at `russell_ranch_davis`** (planting 760, harvest 629, fertilization 590, compost 216). Most copies are separate plots: Wolf et al. (2018) list operations by plot, and the plot id was not carried into the workbook. See the [Russell Ranch report](data_raw/russell_ranch_tautges_2019/data_entry_report.md) and [ccmmf/organization#274](https://github.com/ccmmf/organization/issues/274). Capped at 2,195, all at that site.
 - **`managements.mgmttype` is empty on 42 rows, all Delta events** (`delta-` event ids at the US-Bi1, US-Bi2 and US-Twt sites). The Delta workbook fills only its `event_type` column on these rows, and ingest drops `event_type` as a duplicate of `mgmttype`; the type survives in the event id, as in `delta-drainage-0001`. 17 of the rows are types the `mgmttype` enum does not allow (drainage, termination, residue treatment, furrowing, herbicide application), so filling them needs the enum extended rather than the nearest existing label; the other 25 are flooding, irrigation and grazing, which it allows. Capped at 42, all `delta-`.
 - **`observations` has 1,188 rows that repeat an earlier row, all in `russell_ranch_tautges_2019`.** Most copies are separate plots: Wolf et al. (2018) report by plot, and the workbook kept only the east or west half in `replicate_id`, so plots with the same treatment, date, depth and value become identical rows. A row count is therefore not a sample size. The split is in the [Russell Ranch report](data_raw/russell_ranch_tautges_2019/data_entry_report.md); tracked in [ccmmf/organization#274](https://github.com/ccmmf/organization/issues/274). Capped at 1,188, all in that dataset.
-- **`coverage` has 7 rows that repeat an earlier row.** The Russell Ranch workbook's Coverage tab carries a second copy of the 7 row "MVP Coverage Guidance" block, and ingest stacks it under the first.
+- **`coverage` has 7 rows that repeat an earlier row.** The Russell Ranch workbook's Coverage tab carries a second copy of the 7 row "MVP Coverage Guidance" block, and ingest stacks it under the first. Capped at 7.
 
 ## Usage
 

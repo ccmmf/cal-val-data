@@ -86,3 +86,36 @@ test_that("duplicated DOIs in citations do not grow", {
   skip_if(is.null(ct), "citations not generated yet")
   expect_lte(length(duplicated_values(ct$doi)), 21)
 })
+
+test_that("citation repeats do not grow", {
+  ct <- read_resource(dp, root, "citations")
+  skip_if(is.null(ct), "citations not generated yet")
+  expect_lte(sum(repeated_rows(ct, resource_named("citations"))), 19)
+})
+
+test_that("coverage repeats do not grow", {
+  cv <- read_resource(dp, root, "coverage")
+  skip_if(is.null(cv), "coverage not generated yet")
+  expect_lte(sum(repeated_rows(cv, resource_named("coverage"))), 7)
+})
+
+# the README Known warnings, by table and check; any other warning is new
+test_that("validate warns only about the known gaps", {
+  paths <- file.path(root, vapply(dp$resources, function(r) r$path, character(1)))
+  skip_if_not(all(file.exists(paths)), "data not fully generated yet")
+  known <- c("citations has [0-9]+ row\\(s\\) repeating",
+             "citations doi has [0-9]+ value",
+             "managements has [0-9]+ row\\(s\\) repeating",
+             "managements mgmttype is empty",
+             "observations has [0-9]+ row\\(s\\) repeating",
+             "coverage has [0-9]+ row\\(s\\) repeating")
+  msgs <- character(0)
+  withCallingHandlers(validate_data(root = root), message = function(m) {
+    msgs <<- c(msgs, conditionMessage(m))
+    invokeRestart("muffleMessage")
+  })
+  warns <- sub("^WARNING: ", "", grep("^WARNING: ", msgs, value = TRUE))
+  new <- warns[!grepl(paste0("^(", paste(known, collapse = "|"), ")"), warns)]
+  expect_identical(new, character(0),
+                   info = "a warning not listed under Known warnings in README")
+})
