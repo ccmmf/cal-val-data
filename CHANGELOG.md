@@ -4,8 +4,21 @@ Changes to datasets, schemas, and curation workflows are documented here.
 
 ## Unreleased
 
+### Added
+
+- US-Twt (Twitchell rice) grain yield for 2009 to 2015 from Knox et al.
+  (2016) Table 1, as 7 `observations` rows under a new variable,
+  `rice_grain_yield_t_ha` (t ha⁻¹ at 14% moisture); see the US-Twt report in
+  `data_raw/`.
+- US-Bi1 (Bouldin alfalfa) 2017 harvested carbon from Hemes et al. (2019),
+  as `managements` event `delta-harvest-0018`; see the US-Bi1 report in
+  `data_raw/`.
+
 ### Changed
 
+- `delta-harvest-0015` (US-Bi2 2017 corn harvested carbon) now records the
+  conversion Hemes et al. (2019) used and that its uncertainty is an assumed
+  23% SD; the value is unchanged.
 - Salinas SOC stocks updated for the White et al. (2024) correction. All 288
   block-level rows (Years 0–8, 8 systems) are rescaled by 0.905 and recorded
   as `SCRIPTED_DERIVED`. The rows now record their basis in

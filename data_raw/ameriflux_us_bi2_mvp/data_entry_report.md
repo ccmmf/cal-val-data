@@ -20,6 +20,10 @@ datasets — US-Bi2 (this one), `ameriflux_us_bi1_mvp` (alfalfa), and
 - **Exact-site soil publication** — source of the static soil carbon and
   nitrogen values.
   <https://doi.org/10.1016/j.jenvman.2021.113562>
+- **Hemes et al. (2019)**, *Agricultural and Forest Meteorology*. Table 1
+  harvested carbon for 2017; the accepted manuscript is open on eScholarship
+  (CC BY).
+  <https://doi.org/10.1016/j.agrformet.2019.01.017>
 
 Annual flux values come from the source products and publications listed below.
 Soil properties are transcribed from the
@@ -92,6 +96,12 @@ run from July 1 through June 30 of the following year.
 - **Annual resolution only.** Site-year totals constrain annual carbon and
   methane budgets; they cannot constrain seasonal or event-scale dynamics
   even though the underlying record is half-hourly.
+- **Harvested carbon from Hemes et al. (2019).** The 2017 corn harvest
+  carbon (712 g C m⁻² yr⁻¹, `managements` event `delta-harvest-0015`) comes
+  from farmer records, converted by the authors at 44% C of dry matter with
+  corn harvested at 65% moisture. The ±164 is not a measured spread: for
+  single site years the authors assumed an SD of 23% of harvested carbon. It
+  is carbon removed at harvest, not total aboveground biomass.
 - **Empty `variable` header repaired.** The `observations` tab had an empty
   header cell over the column holding the variable names, so the key column
   read as unnamed and its foreign key could not resolve. The header was set
