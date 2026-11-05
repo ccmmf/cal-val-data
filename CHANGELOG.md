@@ -28,8 +28,10 @@ Changes to datasets, schemas, and curation workflows are documented here.
   ([ccmmf/organization#297](https://github.com/ccmmf/organization/issues/297));
   see the Salinas report in `data_raw/`.
 - `crops`: the legume–rye and mustard mixtures now list their actual
-  components (faba bean, pea, common and purple vetch with rye; *Sinapis
-  alba* with *Brassica juncea*), as in Brennan and Boyd (2012).
+  components (faba bean *Vicia faba*, pea *Pisum sativum*, common vetch
+  *Vicia sativa* and purple vetch *Vicia benghalensis* with rye
+  *Secale cereale*; white mustard *Sinapis alba* with Indian mustard
+  *Brassica juncea*), as in Brennan and Boyd (2012).
 - `delta-harvest-0015` (US-Bi2 2017 corn harvested carbon) now records the
   conversion Hemes et al. (2019) used and that its uncertainty is an assumed
   23% SD; the value is unchanged.
