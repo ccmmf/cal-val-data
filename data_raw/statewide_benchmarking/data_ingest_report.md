@@ -397,3 +397,27 @@ The Six estimate stays in the table because it is verified, but it is not a targ
 The rice CH4 target uses Jiang Table 2 drying-event classes with reported confidence
 intervals and derived log-scale SEs. Select the applicable class; these rows are
 `likelihood` targets, not sign checks on an assumed spread.
+
+### California rice CH4 inventory references
+
+Three absolute references for California rice CH4 sit in `reference_values.csv` and
+`extracted_evidence.csv`, all in Gg CH4 yr-1. Their inputs are in `Hu_inventory.csv` and
+`CARB_rice_annual.csv`.
+
+| row                               | value     | derivation                                                         |
+| --------------------------------- | --------- | ------------------------------------------------------------------ |
+| `Hu_2026_CA_rice_CH4_Tier3`       | 76.682839 | mean of CH4MOD and CH4-ML from the California grid extraction      |
+| `Hu_2026_CA_rice_CH4_EF_derived`  | 68.387853 | S3 Tier 3 total minus the archived Tier 3 minus EF difference (S2) |
+| `CARB_2025_CA_rice_CH4_2011_2020` | 31.391947 | arithmetic mean of the 2011-2020 annual values                     |
+
+**CARB** reports category 3C7 in MMT CO2e. Each year is converted as MMT CO2e x 1000 / 25, using the
+AR4 GWP100 of 25, and `CARB_rice_annual.csv` keeps the reported value and the GWP beside the
+converted `ch4_gg`. The source series repeats the 2020 value for 2021-2023.
+
+**Hu** reports the decade as the 2010s; 2011-2020 is inferred, not confirmed by the archive. California
+intervals are unavailable. The CH4-EF value is reconstructed from the archived method difference in the
+same archive, so it is not independent evidence or an uncertainty bound on the Tier 3 mean.
+
+All three are contextual references, not calibration targets. Hu is a modeled growing-season
+inventory and the CARB method includes winter flooding, so seasons and area must be matched before
+the two are compared. The Hu/CARB ratio of 2.44x is descriptive only.
