@@ -17,9 +17,11 @@ Changes to datasets, schemas, and curation workflows are documented here.
 ### Changed
 
 - Nichols Modesto report: states what the 0, 50 and 150 cm emitter distances
-  can support. Only bulk density (top ~5 cm) varies by distance, total C and N
-  are per treatment, and the paper's sampling geometry does not support an
-  area-weighted whole-orchard estimate (review of ccmmf/cal-val-data#18).
+  can support. N₂O, soil water, temperature, NH₄⁺, NO₃⁻ and bulk density were
+  measured at each distance, total C and N are per treatment, the curated N₂O
+  is the highest chamber scaled up rather than an area-weighted mean, and the
+  paper's sampling geometry does not support an area-weighted whole-orchard
+  estimate (review of ccmmf/cal-val-data#18).
 - `delta-harvest-0015` (US-Bi2 2017 corn harvested carbon) now records the
   conversion Hemes et al. (2019) used and that its uncertainty is an assumed
   23% SD; the value is unchanged.

@@ -126,9 +126,18 @@ with the source phrase in `notes`. **Point dates are never invented.**
   along the row and rows 6.4 m apart, with a surface drip hose and an emitter
   every 3.7 m. The chambers sit 0, 50 and 150 cm from an emitter, across the
   row, and the paper scales N₂O to a 3.7 m × 2 m rectangle (7.4 m²) per
-  emitter. Only bulk density was measured at each distance, in brass rings
-  about 5 cm tall; total C and N are 0–30 cm cores reported per treatment
-  (n = 3), not by distance. An area-weighted whole-orchard estimate is not
+  emitter. N₂O flux, soil water content, soil temperature, and NH₄⁺ and
+  NO₃⁻ were measured at each of the 0, 50 and 150 cm positions (archive
+  `QdripZone.csv`; only emitter-level N₂O is curated here), and bulk density
+  in brass rings about 5.08 cm tall at each position (sampling depth not
+  reported); total C and total N are 0–30 cm cores reported per treatment
+  (n = 3), not by distance. Per the archive, the curated emitter-level N₂O
+  values (`N2O_flux_g_N_ha_d`) are the archive's emitter values
+  (`Qdripemitter.csv`; all 54 rows match), and in all 48 date × replicate
+  cases with chamber data each equals the highest of the three chambers
+  times the constant `rectangle_area` (198), not an area-weighted mean
+  across the three positions (highest at 0 cm 21 times, 150 cm 18 times,
+  50 cm 9 times). An area-weighted whole-orchard estimate is not
   supported as published: the rectangle reaches 2 m from the row while half
   the row spacing is 3.2 m, the paper calls 150 cm the alley centre, and its
   unit tree area (37.46 m² from about 267 trees ha⁻¹) differs from
