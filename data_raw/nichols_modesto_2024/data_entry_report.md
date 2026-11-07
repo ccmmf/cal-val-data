@@ -144,12 +144,11 @@ with the source phrase in `notes`. **Point dates are never invented.**
   is neither an upper bound nor an area weighted mean. An area-weighted
   whole-orchard estimate is not supported as published: the rectangle
   reaches 2 m from the row while half the row spacing is 3.2 m, the paper
-  calls 150 cm the alley centre, and its
-  unit tree area (37.46 m² from about 267 trees ha⁻¹) differs from
-  4.3 m × 6.4 m = 27.5 m², so how much of the orchard floor the three
-  positions represent is unclear. No bulk density to 30 cm was found for this
-  site. The data support the compost-vs-control contrast, not a field-scale
-  stock or flux.
+  calls 150 cm the alley centre, and its unit tree area (37.46 m² from
+  about 267 trees ha⁻¹) differs from 4.3 m × 6.4 m = 27.5 m², so how much
+  of the orchard floor the three positions represent is unclear. No bulk
+  density to 30 cm was found for this site. The data support the
+  compost-vs-control contrast, not a field-scale stock or flux.
 - **Fertigation characterization.** The ≈195 kg N ha⁻¹ is delivered across
   ~14 small fertigation events, not a single application — relevant because
   N₂O responds to the pulse structure, not just the seasonal total.
