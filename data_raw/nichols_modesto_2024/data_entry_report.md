@@ -137,9 +137,14 @@ with the source phrase in `notes`. **Point dates are never invented.**
   cases with chamber data each equals the highest of the three chambers
   times the constant `rectangle_area` (198), not an area-weighted mean
   across the three positions (highest at 0 cm 21 times, 150 cm 18 times,
-  50 cm 9 times). An area-weighted whole-orchard estimate is not
-  supported as published: the rectangle reaches 2 m from the row while half
-  the row spacing is 3.2 m, the paper calls 150 cm the alley centre, and its
+  50 cm 9 times). The archive then divides the emitter value by an area five
+  times the chamber area (0.099 m² and 0.0198 m²), so in g N per ha per day
+  each curated value is one fifth of the highest chamber's flux, below the
+  three chamber mean in all 48 cases and below the lowest chamber in 27; it
+  is neither an upper bound nor an area weighted mean. An area-weighted
+  whole-orchard estimate is not supported as published: the rectangle
+  reaches 2 m from the row while half the row spacing is 3.2 m, the paper
+  calls 150 cm the alley centre, and its
   unit tree area (37.46 m² from about 267 trees ha⁻¹) differs from
   4.3 m × 6.4 m = 27.5 m², so how much of the orchard floor the three
   positions represent is unclear. No bulk density to 30 cm was found for this
