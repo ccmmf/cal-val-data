@@ -122,6 +122,20 @@ with the source phrase in `notes`. **Point dates are never invented.**
   not whole-orchard areal average; downstream comparison must apply the
   same footprint assumption, so the upscaling basis is documented on the
   `methods` row rather than baked silently into the values.
+- **What the distances from the emitter can support.** Trees are 4.3 m apart
+  along the row and rows 6.4 m apart, with a surface drip hose and an emitter
+  every 3.7 m. The chambers sit 0, 50 and 150 cm from an emitter, across the
+  row, and the paper scales N₂O to a 3.7 m × 2 m rectangle (7.4 m²) per
+  emitter. Only bulk density was measured at each distance, in brass rings
+  about 5 cm tall; total C and N are 0–30 cm cores reported per treatment
+  (n = 3), not by distance. An area-weighted whole-orchard estimate is not
+  supported as published: the rectangle reaches 2 m from the row while half
+  the row spacing is 3.2 m, the paper calls 150 cm the alley centre, and its
+  unit tree area (37.46 m² from about 267 trees ha⁻¹) differs from
+  4.3 m × 6.4 m = 27.5 m², so how much of the orchard floor the three
+  positions represent is unclear. No bulk density to 30 cm was found for this
+  site. The data support the compost-vs-control contrast, not a field-scale
+  stock or flux.
 - **Fertigation characterization.** The ≈195 kg N ha⁻¹ is delivered across
   ~14 small fertigation events, not a single application — relevant because
   N₂O responds to the pulse structure, not just the seasonal total.
