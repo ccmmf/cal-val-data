@@ -73,11 +73,11 @@ contrast validation but not a SOC trajectory**.
 
 ## Methods
 
-- **N₂O flux** by **closed static chamber**, sampled on **9 dates**
-  (December 2018 to August 2019), **3 replicate arrays per treatment**,
-  **upscaled to emitter level** (accounting for the fertigation wetting
-  pattern rather than assuming uniform areal emission). The upscaling rule
-  is carried on the corresponding `methods` row.
+- **N₂O flux** by **closed static chamber** at 0, 50 and 150 cm from a
+  drip emitter, sampled on **9 dates** (December 2018 to August 2019),
+  **3 replicate arrays per treatment**. The curated values are the archive's
+  emitter-level values; how they relate to the three chambers is under
+  "What the distances from the emitter can support" below.
 - **Fertigation:** high-frequency, low-concentration drip, **≈195 kg N
   ha⁻¹ across ~14 events** over the season; recorded as fertilization
   events in `managements` with `level` / `units` where reported.
@@ -118,10 +118,50 @@ with the source phrase in `notes`. **Point dates are never invented.**
   mismatch, **not** an equivalent soil mass stock; any use of it should say
   so in the methods. It supports the compost-vs-control contrast at one
   date (0.81 vs 1.34 % total C in the curated rows), not change over time.
-- **Emitter-level N₂O upscaling.** Fluxes are reported at emitter level,
-  not whole-orchard areal average; downstream comparison must apply the
-  same footprint assumption, so the upscaling basis is documented on the
-  `methods` row rather than baked silently into the values.
+- **Emitter-level N₂O.** Fluxes are the archive's emitter-level values, not
+  a whole-orchard areal average and not an area-weighted combination of the
+  three chambers (next bullet); downstream comparison must say so. The
+  `methods` row, the variable description and the row notes still describe
+  an upscaling across the three collar zones; that text comes from the
+  workbook and needs the same correction there.
+- **What the distances from the emitter can support.** Trees are 4.3 m apart
+  along the row and rows 6.4 m apart, with a surface drip hose and an emitter
+  every 3.7 m. The chambers sit 0, 50 and 150 cm from an emitter, across the
+  row, and the paper scales N₂O to a 3.7 m × 2 m rectangle (7.4 m²) per
+  emitter. Measured at each of the three positions: N₂O flux on every date;
+  soil water content and temperature in the top 0–5 cm on most dates; NH₄⁺
+  and NO₃⁻ in 0–30 cm cores taken from one replicate array per date (the
+  archive repeats that value for all three replicates; values on 6 of 9
+  dates for No Compost and 5 of 9 for Compost); and bulk density once, in
+  brass rings about 5.08 cm tall (sampling depth not reported), curated as
+  the six `zone_mean` bulk density rows. Of the by-position data, only bulk
+  density is curated; N₂O is curated at emitter level. Total C and total N
+  are 0–30 cm cores reported per treatment (n = 3), not by distance.
+  The curated N₂O values (`N2O_flux_g_N_ha_d`) are the archive's emitter
+  values (`Qdripemitter.csv`; all 54 rows match). `QdripZone.csv` has all
+  three chambers for all 54 date × replicate cases; on 2019-04-22 and
+  2019-05-06 the No Compost chambers are labelled `FJ-BL` rather than
+  `Drip`, but they are block 2 and give that day's emitter values. In every
+  case the emitter value is the highest of the three chambers times the
+  archive's `rectangle_area` of 198 cm² (a 50 cm × 3.96 cm rectangle per
+  chamber, neither the 20 cm collar nor the paper's 7.4 m²), not a sum or
+  area-weighted mean across positions. The highest chamber was at 0 cm in
+  21 cases, 150 cm in 19 and 50 cm in 14. The archive then expresses the
+  emitter value per 990 cm² and each chamber per 198 cm², so in g N per ha
+  per day each curated value is exactly one fifth of the highest chamber's
+  flux. It is therefore always below the three-chamber mean, and it is below
+  the lowest chamber in 29 of the 54 cases: it is neither an upper bound nor
+  an area-weighted mean. The paper's fluxes come from the same emitter values:
+  its December means (0.55 and 0.54 g N₂O-N ha⁻¹ d⁻¹) and cumulative totals
+  (20.1 and 11.5 g N₂O-N ha⁻¹) reproduce from `Qdripemitter.csv`. An
+  area-weighted whole-orchard estimate is not supported as
+  published: the rectangle reaches 2 m from the row while half the row
+  spacing is 3.2 m, the paper calls 150 cm the alley centre, and its unit
+  tree area (37.46 m² from about 267 trees ha⁻¹) differs from
+  4.3 m × 6.4 m = 27.5 m², so how much of the orchard floor the three
+  positions represent is unclear. Neither the paper's main text nor the
+  archive gives bulk density to 30 cm for this site. The data support the
+  compost-vs-control contrast, not a field-scale stock or flux.
 - **Fertigation characterization.** The ≈195 kg N ha⁻¹ is delivered across
   ~14 small fertigation events, not a single application — relevant because
   N₂O responds to the pulse structure, not just the seasonal total.
