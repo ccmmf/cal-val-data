@@ -524,7 +524,7 @@
           {
             "name": "method",
             "type": "string",
-            "description": "links to methods; note current export uses depth-suffixed forms not present in methods"
+            "description": "method key; every value matches a `method name` in methods"
           },
           {
             "name": "value",
