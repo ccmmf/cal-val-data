@@ -504,7 +504,7 @@
           {
             "name": "crop",
             "type": "string",
-            "description": "crop the row relates to, where recorded: the harvested crop on yield and biomass rows, the crop at the site on flux and soil rows; mostly a common name (e.g. corn, rice), but Modesto rows hold Prunus dulcis and Russell Ranch cover crop rows winter_cover_crop, so values do not all match crops"
+            "description": "crop the row relates to, where recorded: the harvested crop on yield and biomass rows, the crop at the site on flux and soil rows; mostly a crops.`common name` (e.g. corn, rice); Modesto rows hold the scientific name Prunus dulcis, and Russell Ranch cover crop rows hold winter_cover_crop, which matches neither crops column (crops has winter_cover_crop_mix)"
           },
           {
             "name": "variety",
