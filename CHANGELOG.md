@@ -16,6 +16,7 @@ Changes to datasets, schemas, and curation workflows are documented here.
 
 ### Changed
 
+- Every field in `datapackage.json` now has a description; 25 had none.
 - `delta-harvest-0015` (US-Bi2 2017 corn harvested carbon) now records the
   conversion Hemes et al. (2019) used and that its uncertainty is an assumed
   23% SD; the value is unchanged.

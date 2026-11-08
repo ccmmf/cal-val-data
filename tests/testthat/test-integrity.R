@@ -33,6 +33,24 @@ for (res in dp$resources) {
   })
 }
 
+# the README sends readers to datapackage.json for the full field schema, so a
+# field with no description there is undocumented for most tables
+test_that("every datapackage field has a description", {
+  undescribed <- character(0)
+  for (res in dp$resources) {
+    for (field in res$schema$fields) {
+      d <- field$description
+      if (is.null(d) || !nzchar(trimws(d))) {
+        undescribed <- c(undescribed, paste0(res$name, ".", field$name))
+      }
+    }
+  }
+  expect_true(
+    length(undescribed) == 0,
+    info = paste("fields with no description:", paste(undescribed, collapse = ", "))
+  )
+})
+
 test_that("validate_data runs in warn mode without error", {
   paths <- file.path(root, vapply(dp$resources, function(r) r$path, character(1)))
   skip_if_not(any(file.exists(paths)), "no data generated yet")
