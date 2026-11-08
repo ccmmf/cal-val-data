@@ -524,7 +524,7 @@
           {
             "name": "method",
             "type": "string",
-            "description": "method key; every value matches a `method name` in methods"
+            "description": "method key; refers to methods.`method name`"
           },
           {
             "name": "value",
@@ -821,53 +821,53 @@
       "name": "coverage",
       "path": "data/coverage.csv",
       "profile": "tabular-data-resource",
-      "description": "coverage planning matrix: system and treatment contrast against each target, split into magnitude and treatment contrast. Workbook tab carries a multi row title preamble above header; ingest must skip preamble so these field names land on header row.",
+      "description": "coverage planning tables, stacked from each workbook's coverage tab: a matrix of cropping system and treatment contrast against each target, split into magnitude and treatment contrast, then an MVP Coverage Guidance heading row and guidance rows, repeated once per workbook that has them, then per site row counts. The matrix copies from different workbooks can disagree for the same system and contrast. Workbook tab carries a multi row title preamble above header; ingest must skip preamble so these field names land on header row.",
       "schema": {
         "fields": [
           {
             "name": "System",
             "type": "string",
-            "description": "cropping system the row covers (e.g. Annual row / vegetable, Rice / flooded); below the MVP Coverage Guidance heading row it holds a guidance topic instead (e.g. Core outputs, CH4); blank on the per site row count rows"
+            "description": "on matrix rows, the cropping system the row covers (e.g. Annual row / vegetable, Rice / flooded); MVP Coverage Guidance on each guidance heading row; on guidance rows, the guidance topic (e.g. Core outputs, CH4); blank on the per site row count rows"
           },
           {
             "name": "Treatment contrast",
             "type": "string",
-            "description": "management contrast the row covers (e.g. Cover crop vs no cover crop, Tillage contrast); on guidance rows, the guidance text for the topic in `System`"
+            "description": "on matrix rows, the management contrast the row covers (e.g. Cover crop vs no cover crop, Tillage contrast); on guidance rows, the guidance text for the topic in `System`"
           },
           {
             "name": "ΔSOC magnitude",
             "type": "string",
-            "description": "1 if the workbook marks the absolute change in soil organic carbon (ΔSOC) as covered for this system and contrast, 0 if not; as recorded, not checked against observations"
+            "description": "1 if the workbook marks the absolute change in soil organic carbon (ΔSOC) as covered for this system and contrast, 0 if not; as recorded in each workbook copy, so copies can disagree for the same system and contrast; not checked against observations"
           },
           {
             "name": "ΔSOC treatment contrast",
             "type": "string",
-            "description": "1 if the workbook marks the treatment difference in ΔSOC as covered for this system and contrast, 0 if not; as recorded, not checked against observations"
+            "description": "1 if the workbook marks the treatment difference in ΔSOC as covered for this system and contrast, 0 if not; as recorded in each workbook copy, so copies can disagree for the same system and contrast; not checked against observations"
           },
           {
             "name": "N2O magnitude",
             "type": "string",
-            "description": "1 if the workbook marks absolute N2O flux as covered for this system and contrast, 0 if not; as recorded, not checked against observations"
+            "description": "1 if the workbook marks absolute N2O flux as covered for this system and contrast, 0 if not; as recorded in each workbook copy, so copies can disagree for the same system and contrast; not checked against observations"
           },
           {
             "name": "N2O treatment contrast",
             "type": "string",
-            "description": "1 if the workbook marks the treatment difference in N2O flux as covered for this system and contrast, 0 if not; as recorded, not checked against observations"
+            "description": "1 if the workbook marks the treatment difference in N2O flux as covered for this system and contrast, 0 if not; as recorded in each workbook copy, so copies can disagree for the same system and contrast; not checked against observations"
           },
           {
             "name": "CH4 magnitude",
             "type": "string",
-            "description": "1 if the workbook marks absolute CH4 flux as covered for this system and contrast, 0 if not; as recorded, not checked against observations"
+            "description": "1 if the workbook marks absolute CH4 flux as covered for this system and contrast, 0 if not; as recorded in each workbook copy, so copies can disagree for the same system and contrast; not checked against observations"
           },
           {
             "name": "CH4 treatment contrast",
             "type": "string",
-            "description": "1 if the workbook marks the treatment difference in CH4 flux as covered for this system and contrast, 0 if not; as recorded, not checked against observations"
+            "description": "1 if the workbook marks the treatment difference in CH4 flux as covered for this system and contrast, 0 if not; as recorded in each workbook copy, so copies can disagree for the same system and contrast; not checked against observations"
           },
           {
             "name": "Woody Biomass magnitude",
             "type": "string",
-            "description": "1 if the workbook marks absolute woody biomass as covered for this system and contrast, 0 if not; one Rice / flooded row holds X, whose meaning the workbook does not state; as recorded, not checked against observations"
+            "description": "1 if the workbook marks absolute woody biomass as covered for this system and contrast, 0 if not; blank on most rows, including every matrix row of a copy whose workbook has no such column; one Rice / flooded row holds X, whose meaning the workbook does not state; as recorded in each workbook copy, not checked against observations"
           },
           {
             "name": "Initial data sources",
