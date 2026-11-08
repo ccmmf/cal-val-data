@@ -1,0 +1,43 @@
+PASS  observations.method: every distinct value refers to a methods.`method name`
+        19 distinct method values; unresolved: []
+PASS  observations.crop: mostly a crops.`common name`
+        19738/20440 non-blank crop rows match common name; distinct values: {'Prunus dulcis': 72, 'corn': 9258, 'tomato': 2106, 'wheat': 844, 'alfalfa': 7410, 'winter_cover_crop': 630, 'sudangrass': 87, 'rice': 33}
+PASS  observations.crop: Prunus dulcis held on Modesto rows (and it is crops.`scientific name`)
+        sites with Prunus dulcis: {'modesto_almond_usda'}
+PASS  observations.crop: winter_cover_crop on Russell Ranch rows, matches neither crops column; crops has winter_cover_crop_mix
+        sites: {'russell_ranch_davis'}
+PASS  observations.variety: e.g. rice M-206; blank on most rows
+        7/37265 rows have a variety; distinct: ['M-104', 'M-206']
+PASS  observations.notes: Russell Ranch rows carry a bare label such as east_side_compilation
+        944 rows with notes == east_side_compilation; variables: ['total_carbon_pct', 'total_nitrogen_pct']
+PASS  methods.`method name`: snake case e.g. static_chamber_N2O, plain title e.g. Eddy covariance daily
+PASS  variables.name examples exist: SOC_stock_Mg_ha, NEE, SoilTemp, SoilTemp__TS_1_1_1
+        missing: []
+PASS  observations.variable values all refer to variables.name
+        unresolved: []
+PASS  variables.units: `source-reported units` appears
+PASS  variables.units: CH4_flux observation reported_units can differ from variables.units
+        variables.units=['kg C m-2 s-1 (daily mean); kg C m-2 year-1 (annual total)']; observations.reported_units=['g C m-2 yr-1', 'mg CH4 m-2 y-1', 'mg CH4 m-2 yr-1']
+PASS  crops: cover crop mix lists taxa separated by ' / ' (Vicia villosa / Secale cereale)
+PASS  crops.`common name` examples exist: romaine lettuce, almond, legume-rye mix
+PASS  treatment_pairs.use_for_validation: blank on every Russell Ranch pair
+        15 Russell pairs
+PASS  treatment_pairs.use_for_validation: FALSE only on the three Salinas seeding rate pairs
+        FALSE pairs: ['6:seeding_rate', '7:seeding_rate', '8:seeding_rate']
+PASS  treatment_pairs.use_for_validation: every other non-Russell pair is TRUE
+        coverage header: ['System', 'Treatment contrast', 'ΔSOC magnitude', 'ΔSOC treatment contrast', 'N2O magnitude', 'N2O treatment contrast', 'CH4 magnitude', 'CH4 treatment contrast', 'Woody Biomass magnitude', 'Initial data sources', 'Notes', 'site_id', 'variable', 'daily_rows', 'annual_rows', 'seasonal_rows', 'static_observation_rows', 'weather_rows', 'notes']
+PASS  coverage: two MVP Coverage Guidance heading rows (stacked per workbook)
+        heading data rows (1-based): [7, 20]
+PASS  coverage: System blank on per site row count rows
+        per site rows: [27, 28, 29, 30, 31, 32]
+PASS  coverage: second matrix copy repeats the same System x contrast keys
+PASS  coverage: matrix copies disagree for the same system and contrast (as the 1/0 descriptions now say)
+        Annual row / vegetable x Cover crop vs no cover crop: ΔSOC magnitude 1 vs 0; Annual row / vegetable x Cover crop vs no cover crop: ΔSOC treatment contrast 1 vs 0; Annual row / vegetable x Compost / OM vs fertilizer: ΔSOC magnitude 1 vs 0; Annual row / vegetable x Compost / OM vs fertilizer: ΔSOC treatment contrast 1 vs 0; Perennial woody (orchard / vineyard) x One management contrast with known history: N2O magnitude 1 vs 0; Perennial woody (orchard / vineyard) x One management contrast with known history: N2O treatment contrast 1 vs 0
+PASS  coverage.Woody Biomass magnitude: blank on most rows; one Rice / flooded row holds X; blank on every row of second copy
+        blank 26/32; X at [(6, 'Rice / flooded')]; values: Counter({'NA': 26, '0': 5, 'X': 1})
+PASS  coverage.System: guidance topics include Core outputs and CH4
+        ['Core outputs', 'Validation types', 'System coverage', 'Treatments', 'CH4', 'Other variables']
+PASS  coverage.`Initial data sources` examples exist: White/Salinas, TBD, Nichols 2024 (substring)
+PASS  coverage: per site row count rows use lowercase `notes` column, not `Notes`
+
+24/24 claims hold

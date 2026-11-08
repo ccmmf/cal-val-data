@@ -1,0 +1,34 @@
+stripped base == stripped head (order-preserving): True
+resources: 10; fields: 123; described at base: 98; described at head: 123
+  changed description: treatments.definition (new)
+  changed description: treatment_pairs.comparison_label (new)
+  changed description: treatment_pairs.use_for_validation (new)
+  changed description: managements.notes (new)
+  changed description: observations.crop (new)
+  changed description: observations.variety (new)
+  changed description: observations.method (rewritten)
+  changed description: observations.notes (new)
+  changed description: methods.method name (new)
+  changed description: variables.name (new)
+  changed description: variables.description (new)
+  changed description: variables.units (new)
+  changed description: variables.notes (new)
+  changed description: crops.scientific name (new)
+  changed description: crops.common name (new)
+  changed description: coverage.System (new)
+  changed description: coverage.Treatment contrast (new)
+  changed description: coverage.ΔSOC magnitude (new)
+  changed description: coverage.ΔSOC treatment contrast (new)
+  changed description: coverage.N2O magnitude (new)
+  changed description: coverage.N2O treatment contrast (new)
+  changed description: coverage.CH4 magnitude (new)
+  changed description: coverage.CH4 treatment contrast (new)
+  changed description: coverage.Woody Biomass magnitude (new)
+  changed description: coverage.Initial data sources (new)
+  changed description: coverage.Notes (new)
+  changed resource description: coverage
+--- files changed vs base:
+ CHANGELOG.md                    |  1 +
+ datapackage.json                | 79 +++++++++++++++++++++++++++--------------
+ tests/testthat/test-integrity.R | 18 ++++++++++
+ 3 files changed, 71 insertions(+), 27 deletions(-)
