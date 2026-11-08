@@ -74,7 +74,7 @@ Supporting variables (soil organic matter fractions, texture, pH, biomass, yield
 
 ## Coverage
 
-data/coverage.csv crosses system and treatment contrast against each target, split into magnitude and treatment contrast, for both SOC change and N2O. Cells marked yes are covered by current datasets; blank cells are tracked gaps.
+The table below is a hand written summary of coverage by dataset. It crosses cropping system and treatment contrast against ΔSOC and N2O, each split into magnitude and treatment contrast, and names the source dataset. Cells marked yes are covered by that dataset; blank cells are tracked gaps. The table does not mirror `data/coverage.csv`; for that file's layout and its 1/0 flags, see the `coverage` resource in [datapackage.json](datapackage.json).
 
 | System | Treatment contrast | ΔSOC magnitude | ΔSOC contrast | N2O magnitude | N2O contrast | source |
 | ------ | ------------------ | :---: | :---: | :---: | :---: | ------ |
