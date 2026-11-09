@@ -41,7 +41,7 @@ Each dataset pulls replicate level values from a public archive; companion analy
 
 | dataset_id | site | lat, lon | period | treatments | variables | citations (DOI) |
 | ---------- | ---- | -------- | ------ | ---------- | --------- | --------------- |
-| `white_salinas_2020` | salinas_socs (USDA ARS, Salinas Valley CA) | 36.62, -121.53 | 2003 to 2011 (8 yr) | 8 systems `socs_sys1`..`socs_sys8`, 4 blocks (compost with or without cover crop type, frequency, seeding rate) | SOC stock and concentration, bulk density, total N, nitrate, cover crop shoot dry matter | 10.1016/j.dib.2020.106481; 10.1371/journal.pone.0228677; 10.1371/journal.pone.0307250 (correction); 10.2134/agronj2011.0330 (cover crop biomass) |
+| `white_salinas_2020` | salinas_socs (USDA ARS, Salinas Valley CA) | 36.62, -121.53 | 2003 to 2011 (8 yr) | 8 systems `socs_sys1`..`socs_sys8`, 4 blocks (compost with or without cover crop type, frequency, seeding rate) | SOC stock and concentration, bulk density, total N, nitrate, cover crop shoot dry matter | 10.1016/j.dib.2020.106481; 10.1371/journal.pone.0228677; 10.1371/journal.pone.0307250 (correction); 10.2134/agronj2011.0330 (cover crop biomass, management dates, fertilizer N, cover crop irrigation); 10.2134/agronj2016.06.0354 (Year 4 and 8 cover crops) |
 | `nichols_modesto_2024` | modesto_almond_usda (USDA ARS almond fertigation trial, Modesto CA) | 37.63, -121.09 | 2018 to 2019 (2 yr) | `compost` vs `no_compost` (annual compost top dress vs control, same drip fertigation) | N2O flux, total C, total N, bulk density | 10.1002/saj2.20615; 10.15482/USDA.ADC/26155504 |
 | `russell_ranch_tautges_2019` | russell_ranch_davis (UC Davis Russell Ranch Century Experiment, Davis CA) | 38.54, -121.87 | 1992 to 2014 (study years -1 to 21) | 14 systems, 13 with observations (conventional, organic, legume cover, alfalfa phase corn-tomato; irrigated and rainfed wheat; transitional; native grass reference) | total C and N, bulk density to 250 cm, NH4-N, NO3-N, soil organic matter, corn, tomato, wheat, alfalfa and cover crop yields | 10.1002/ecy.2105; 10.1111/gcb.14762 |
 | `raffeld_2024` | russell_ranch_davis (UC Davis Russell Ranch Century Experiment, Davis CA) | 38.54, -121.87 | 1993 and 2012 | 8 treatments, 6 plots each | `SOC_stock_Mg_ha` at the treatment-specific 0-30 cm reference soil mass, computed per plot with SimpleESM ESM2 | 10.5061/dryad.p2ngf1w06 |
@@ -49,7 +49,7 @@ Each dataset pulls replicate level values from a public archive; companion analy
 
 ### white_salinas_2020
 
-Organic vegetable rotation (romaine lettuce, broccoli) with winter cover crops and compost. Randomized complete block, 4 blocks, so block level is replicate level here. Companion analysis paper focuses on 5 systems (those with optimal cover crop seeding rates); workbook carries all 8 from archive. SOC stock is concentration times bulk density times depth (0 to 30 cm), with bulk density measured only at end of Years 3 and 7 and propagated by equivalent soil mass. Stock rows are Data in Brief block values rescaled by 0.905 for the White et al. (2024) correction, which does not state the corrected reference soil mass; they carry method `equivalent_soil_mass_white_2024_correction` and keep the uncorrected value in `attributes_json`. A large Year 0 to Year 1 SOC drop appears across all systems including no compost control, and is documented in source.
+Organic vegetable rotation (romaine lettuce each year, then baby leaf spinach in Year 1 or broccoli in Years 2 to 7) with winter cover crops and compost. Randomized complete block, 4 blocks, so block level is replicate level here. Companion analysis paper focuses on 5 systems (those with optimal cover crop seeding rates); workbook carries all 8 from archive. SOC stock is concentration times bulk density times depth (0 to 30 cm), with bulk density measured only at end of Years 3 and 7 and propagated by equivalent soil mass. Stock rows are Data in Brief block values rescaled by 0.905 for the White et al. (2024) correction, which does not state the corrected reference soil mass; they carry method `equivalent_soil_mass_white_2024_correction` and keep the uncorrected value in `attributes_json`. A large Year 0 to Year 1 SOC drop appears across all systems including no compost control, and is documented in source.
 
 ### nichols_modesto_2024
 
@@ -127,7 +127,7 @@ Each workbook tab maps to one CSV in `data/`. Full field schema, types, and keys
 | `sites.csv` | site name and coordinates | `name` |
 | `treatments.csv` | treatment and system definitions, control flag | `name` |
 | `treatment_pairs.csv` | named contrasts for treatment difference validation | `pair_id` |
-| `managements.csv` | agronomic events (planting, harvest, tillage, fertilization, amendment) | `event_id` |
+| `managements.csv` | agronomic events (`mgmttype` values in [managements.csv columns](#managementscsv-columns)) | `event_id` |
 | `observations.csv` | measured data, long format | (composite) |
 | `methods.csv` | how each measurement was taken | `method name` |
 | `variables.csv` | variable dictionary (name, description, units) | `name` |
@@ -165,10 +165,10 @@ Each workbook tab maps to one CSV in `data/`. Full field schema, types, and keys
 | `sites.name` | string | foreign key to `sites.name` |
 | `treatments.name` | string | foreign key to `treatments.name` |
 | `min_date`, `max_date` | datetime | event window |
-| `mgmttype` | string | `planting`, `harvest`, `tillage`, `fertilization`, `compost_application` |
+| `mgmttype` | string | `planting`, `harvest`, `tillage`, `fertilization`, `compost_application`, `irrigation` |
 | `cover_crop` | boolean | planting rows: cover crop vs cash crop |
 | `crop_name` | string | cover crop name on planting rows |
-| `level`, `units` | number, string | rate and its unit (e.g. `Mg ha-1 (oven-dry)`, `kg N ha-1`, `cm depth`) |
+| `level`, `units` | number, string | rate and its unit (e.g. `Mg ha-1 (oven-dry)`, `kg N ha-1`, `cm depth`, `mm`) |
 | `notes` | string | provenance comment |
 | `attributes_keyvalue` | string | semicolon delimited `key=value` extras (material, N content, implement, timing) |
 | `citation` | string | DOI, foreign key to `citations.doi` |

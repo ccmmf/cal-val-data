@@ -78,3 +78,113 @@ test_that("white_salinas_2020 compost applications are 7.6 Mg/ha oven dry per ve
   expect_equal(per_system(nrow), rep(15, 7))
   expect_equal(per_system(function(d) sum(as.numeric(d$level))), rep(114, 7))
 })
+
+test_that("white_salinas_2020 calendar runs Year 1 (2004) to Year 8 (2011)", {
+  mgmt_path <- file.path(root, "data", "managements.csv")
+  skip_if_not(file.exists(mgmt_path), "managements not generated yet")
+  mgmt <- read_chr(mgmt_path)
+  sal <- mgmt[mgmt$sites.name == "salinas_socs", ]
+  day <- function(d) substr(d, 1, 10)
+  yr <- function(d) as.integer(substr(d$min_date, 1, 4))
+  attr_has <- function(d, kv) grepl(kv, d$attributes_keyvalue, fixed = TRUE)
+  systems <- paste0("socs_sys", 1:8)
+  plantings <- sal[sal$mgmttype == "planting", ]
+  cash <- plantings[plantings$cover_crop == "FALSE", ]
+
+  # Brennan and Boyd (2012): lettuce every year, then spinach in Year 1 and
+  # broccoli in Years 2 to 7; White et al. (2020b): no second crop in Year 8
+  lettuce <- cash[attr_has(cash, "crop=romaine_lettuce"), ]
+  expect_equal(nrow(lettuce), 64L)
+  expect_true(all(table(yr(lettuce), lettuce$treatments.name) == 1))
+  expect_identical(sort(unique(yr(lettuce))), 2004:2011)
+  second <- cash[!attr_has(cash, "crop=romaine_lettuce"), ]
+  expect_equal(nrow(second), 56L)
+  expect_true(all(table(yr(second), second$treatments.name) == 1))
+  spinach <- attr_has(second, "crop=baby_leaf_spinach")
+  broccoli <- attr_has(second, "crop=broccoli")
+  expect_true(all(spinach == (yr(second) == 2004)))
+  expect_true(all(broccoli == (yr(second) %in% 2005:2010)))
+
+  # annual cover crops plant on the Table 2 dates; socs_sys1 and socs_sys2
+  # on the Brennan and Smith (2017) dates of Years 4 and 8 only
+  table2 <- c("2003-10-16", "2004-10-15", "2005-10-17", "2006-11-02",
+              "2007-10-15", "2008-10-15", "2009-10-29", "2010-10-27")
+  cc <- plantings[plantings$cover_crop == "TRUE", ]
+  annual <- cc[cc$treatments.name %in% paste0("socs_sys", 3:8), ]
+  expect_equal(nrow(annual), 48L)
+  expect_true(all(day(annual$min_date) == day(annual$max_date)))
+  expect_true(all(table(annual$treatments.name, day(annual$min_date)) == 1))
+  expect_setequal(unique(day(annual$min_date)), table2)
+  quad <- cc[cc$treatments.name %in% c("socs_sys1", "socs_sys2"), ]
+  quad_dates <- c("2006-11-02", "2010-10-27")
+  expect_setequal(
+    paste(quad$treatments.name, day(quad$min_date), day(quad$max_date)),
+    paste(rep(c("socs_sys1", "socs_sys2"), each = 2), quad_dates, quad_dates)
+  )
+
+  # cover crop establishment irrigation, Brennan and Boyd (2012) Fig. 2
+  irr <- sal[sal$mgmttype == "irrigation" &
+               attr_has(sal, "purpose=cover_crop_establishment"), ]
+  expect_equal(nrow(irr), 52L)
+  fig2 <- c(`2003` = 45, `2004` = 13, `2005` = 32, `2006` = 19,
+            `2007` = 52, `2008` = 42, `2009` = 49, `2010` = 19)
+  expect_true(all(irr$units == "mm"))
+  expect_equal(as.numeric(irr$level), unname(fig2[as.character(yr(irr))]))
+
+  # fertilizer N per crop in every system: from 2005 the pelleted rows plus
+  # the drip top-up reach the published totals (Brennan and Boyd 2012); the
+  # 2004 crops have the pelleted rows only, since the drip began in Year 2
+  n <- sal[sal$mgmttype == "fertilization" & sal$units == "kg N ha-1" &
+             grepl("material=(pelleted|liquid)_", sal$attributes_keyvalue), ]
+  expect_equal(nrow(n), 224L)
+  crop_of <- ifelse(attr_has(n, "romaine_lettuce"), "lettuce", "second")
+  total <- tapply(as.numeric(n$level),
+                  list(n$treatments.name, yr(n), crop_of), sum)
+  expect_identical(sort(rownames(total)), systems)
+  expect_true(all(total[, "2004", "lettuce"] == 56))
+  expect_true(all(total[, as.character(2005:2011), "lettuce"] == 73))
+  expect_true(all(total[, "2004", "second"] == 22))
+  expect_true(all(total[, "2005", "second"] == 134))
+  expect_true(all(total[, as.character(2006:2010), "second"] == 168))
+
+  # seeding rate per system (Data in Brief Table 1)
+  rate <- c(socs_sys1 = "3x", socs_sys2 = "3x", socs_sys3 = "1x",
+            socs_sys4 = "3x", socs_sys5 = "1x", socs_sys6 = "3x",
+            socs_sys7 = "1x", socs_sys8 = "3x")
+  want <- paste0("seeding_rate_relative=", rate[cc$treatments.name])
+  expect_true(all(mapply(grepl, want, cc$attributes_keyvalue, fixed = TRUE)))
+
+  # spring spading after an annual cover crop on the Table 2 termination date
+  term <- c("2004-03-08", "2005-03-11", "2006-02-11", "2007-03-18",
+            "2008-02-19", "2009-03-13", "2010-03-18", "2011-03-10")
+  till <- sal[sal$mgmttype == "tillage", ]
+  spade <- till[till$attributes_keyvalue == "implement=flail_mower+spader" &
+                  till$treatments.name %in% paste0("socs_sys", 3:8), ]
+  expect_equal(nrow(spade), 48L)
+  expect_setequal(unique(day(spade$min_date)), term)
+
+  # the beds, with the compost and pelleted fertilizer before the lettuce,
+  # come 30 days after the last spading day (72 in Year 6, 2009)
+  cover_spade <- till[till$attributes_keyvalue == "implement=flail_mower+spader", ]
+  pre <- sal[sal$mgmttype == "fertilization" &
+               (attr_has(sal, "material=pelleted_") |
+                  sal$units == "Mg ha-1 (oven-dry)") &
+               substr(sal$min_date, 6, 7) %in% c("03", "04", "05"), ]
+  gap <- vapply(2004:2011, function(y) {
+    as.numeric(min(as.Date(day(pre$min_date[yr(pre) == y]))) -
+                 max(as.Date(day(cover_spade$max_date[yr(cover_spade) == y]))))
+  }, numeric(1))
+  expect_equal(gap, c(30, 30, 30, 30, 30, 72, 30, 30))
+
+  # Year 8 (2011): bed disking in June, ripping and spading in August
+  y8 <- till[yr(till) == 2011 & grepl("relative_timing=after_harvest",
+                                      till$attributes_keyvalue, fixed = TRUE), ]
+  expect_equal(nrow(y8), 24L)
+  expect_setequal(paste(y8$level, y8$units),
+                  c("NA NA", "100 cm depth", "30 cm depth"))
+
+  # the compost before the second crop is a summer application
+  comp <- sal[sal$mgmttype == "fertilization" &
+                sal$units == "Mg ha-1 (oven-dry)", ]
+  expect_false(any(attr_has(comp, "season=fall")))
+})
