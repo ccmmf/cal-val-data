@@ -31,3 +31,50 @@ test_that("white_salinas_2020 SOC stocks carry the White et al. (2024) correctio
   expect_true(all(obs$method == "equivalent_soil_mass_white_2024_correction"))
   expect_true(all(endsWith(obs$notes, derived$correction_note)))
 })
+
+test_that("white_salinas_2020 cover crop biomass matches the Fig. 5 digitizer output", {
+  obs_path <- file.path(root, "data", "observations.csv")
+  skip_if_not(file.exists(obs_path), "observations not generated yet")
+  digitized <- read_chr(file.path(root, "data_raw", "white_salinas_2020",
+                                  "brennan_boyd_2012_fig5_digitized.csv"))
+  obs <- read_chr(obs_path)
+  obs <- obs[obs$dataset_id == "white_salinas_2020" &
+               obs$variable == "cover_crop_shoot_dry_matter_Mg_ha", ]
+  key <- function(treatment_id, year) paste(treatment_id, year)
+
+  expect_equal(nrow(digitized), 48L)
+  expect_equal(nrow(obs), 48L)
+  expect_false(anyDuplicated(key(obs$treatment_id, obs$study_year)) > 0)
+  obs <- obs[match(key(digitized$treatment_id, digitized$year),
+                   key(obs$treatment_id, obs$study_year)), ]
+  expect_false(anyNA(obs$value))
+  # the rows are written to the workbook from the digitizer output, so a
+  # re-digitization or a workbook edit that is not carried through fails here
+  expect_equal(as.numeric(obs$value), as.numeric(digitized$value_Mg_ha))
+  attrs <- lapply(obs$attributes_json, jsonlite::fromJSON)
+  ci <- function(end) vapply(attrs, function(a) if (is.null(a[[end]])) NA_real_ else a[[end]], numeric(1))
+  expect_equal(ci("ci95_lower"), as.numeric(digitized$ci95_lower))
+  expect_equal(ci("ci95_upper"), as.numeric(digitized$ci95_upper))
+  expect_equal(sum(!is.na(ci("ci95_lower"))), 33L)
+  expect_true(all(obs$n == "4"))
+  expect_true(all(obs$fill_status == "FILLED_PUBLICATION_FIGURE"))
+})
+
+test_that("white_salinas_2020 compost applications are 7.6 Mg/ha oven dry per vegetable crop", {
+  mgmt_path <- file.path(root, "data", "managements.csv")
+  skip_if_not(file.exists(mgmt_path), "managements not generated yet")
+  mgmt <- read_chr(mgmt_path)
+  compost <- mgmt[mgmt$sites.name == "salinas_socs" & mgmt$mgmttype == "fertilization" &
+                    mgmt$units == "Mg ha-1 (oven-dry)", ]
+  systems <- paste0("socs_sys", 2:8)
+
+  expect_equal(nrow(compost), 105L)
+  # White et al. (2020) give 7.6 Mg/ha before each vegetable crop and 114 Mg/ha
+  # per compost system, so a rate typo re-entered in the workbook fails here
+  expect_true(all(as.numeric(compost$level) == 7.6))
+  expect_identical(sort(unique(compost$treatments.name)), systems)
+  per_system <- function(f) vapply(systems, function(s) f(compost[compost$treatments.name == s, ]),
+                                   numeric(1), USE.NAMES = FALSE)
+  expect_equal(per_system(nrow), rep(15, 7))
+  expect_equal(per_system(function(d) sum(as.numeric(d$level))), rep(114, 7))
+})

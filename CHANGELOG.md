@@ -6,6 +6,11 @@ Changes to datasets, schemas, and curation workflows are documented here.
 
 ### Added
 
+- Salinas winter cover crop shoot dry matter: 48 `observations` rows
+  (`socs_sys3`–`socs_sys8`, Years 1–8) under a new variable,
+  `cover_crop_shoot_dry_matter_Mg_ha`, read from Brennan and Boyd (2012)
+  Fig. 5 and flagged with a new `fill_status`, `FILLED_PUBLICATION_FIGURE`;
+  see the Salinas report in `data_raw/`.
 - US-Twt (Twitchell rice) grain yield for 2009 to 2015 from Knox et al.
   (2016) Table 1, as 7 `observations` rows under a new variable,
   `rice_grain_yield_t_ha` (t ha⁻¹ at 14% moisture); see the US-Twt report in
@@ -16,6 +21,17 @@ Changes to datasets, schemas, and curation workflows are documented here.
 
 ### Changed
 
+- Salinas compost: 12 `managements` rows (`fertilization-0008`–`0011`,
+  `0050`–`0054` and `0057`–`0059`) changed from 8 to 7.6 Mg ha⁻¹ oven dry,
+  the published rate for every application, so each compost system now
+  totals 114 Mg ha⁻¹
+  ([ccmmf/organization#297](https://github.com/ccmmf/organization/issues/297));
+  see the Salinas report in `data_raw/`.
+- `crops`: the legume–rye and mustard mixtures now list their actual
+  components (faba bean *Vicia faba*, pea *Pisum sativum*, common vetch
+  *Vicia sativa* and purple vetch *Vicia benghalensis* with rye
+  *Secale cereale*; white mustard *Sinapis alba* with Indian mustard
+  *Brassica juncea*), as in Brennan and Boyd (2012).
 - `delta-harvest-0015` (US-Bi2 2017 corn harvested carbon) now records the
   conversion Hemes et al. (2019) used and that its uncertainty is an assumed
   23% SD; the value is unchanged.
