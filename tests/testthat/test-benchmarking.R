@@ -73,7 +73,7 @@ test_that("assumed spreads and reference-only observations remain distinct", {
   expect_true(all(selected$spread_type[assumed] == "assumed log-scale sensitivity spread"))
   expect_false(any(grepl("calibrated rather than arbitrary|within 5 percent|only cell with a real SE",
                          selected$note, ignore.case = TRUE)))
-  expect_false(any(grepl("^(CARB|IPCC)_", selected$source_id[selected$use == "likelihood"])))
+  expect_false(any(grepl("^(CARB|IPCC|Hu_2026)_", selected$source_id[selected$use == "likelihood"])))
   expect_false(any(selected$source_id == "Anthony_2023_alfalfa_N2O"))
 })
 
