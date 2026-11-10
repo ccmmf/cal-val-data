@@ -29,13 +29,14 @@ Changes to datasets, schemas, and curation workflows are documented here.
   a `crops` row for baby leaf spinach.
 - Salinas winter cover crop shoot dry matter: 48 `observations` rows
   (`socs_sys3`–`socs_sys8`, Years 1–8) under a new variable,
-  `cover_crop_shoot_dry_matter_Mg_ha`, read from Brennan and Boyd (2012)
-  Fig. 5 and flagged with a new `fill_status`, `FILLED_PUBLICATION_FIGURE`;
-  see the Salinas report in `data_raw/`.
+  `cover_crop_shoot_dry_matter_Mg_ha` (now `aboveground_dry_biomass`),
+  read from Brennan and Boyd (2012) Fig. 5 and flagged with a new
+  `fill_status`, `FILLED_PUBLICATION_FIGURE`; see the Salinas report in
+  `data_raw/`.
 - US-Twt (Twitchell rice) grain yield for 2009 to 2015 from Knox et al.
   (2016) Table 1, as 7 `observations` rows under a new variable,
-  `rice_grain_yield_t_ha` (t ha⁻¹ at 14% moisture); see the US-Twt report in
-  `data_raw/`.
+  `rice_grain_yield_t_ha` (now `grain_yield`; t ha⁻¹ at 14% moisture); see
+  the US-Twt report in `data_raw/`.
 - US-Bi1 (Bouldin alfalfa) 2017 harvested carbon from Hemes et al. (2019),
   as `managements` event `delta-harvest-0018`; see the US-Bi1 report in
   `data_raw/`.
@@ -47,6 +48,55 @@ Changes to datasets, schemas, and curation workflows are documented here.
 
 ### Changed
 
+- Variable names: one name per quantity, with the crop in `crop`, the
+  harvest method in `method` and the unit in `reported_units`
+  ([ccmmf/organization#302](https://github.com/ccmmf/organization/issues/302)).
+  `variables` goes from 106 to 89 rows, and each renamed row's `notes`
+  names the variables it replaces. Values and units are unchanged. The map:
+  - `soil_organic_carbon_content`: `SOC_stock_Mg_ha`
+  - `soil_organic_carbon_concentration`: `SOC_conc_mg_kg`
+  - `soil_total_carbon_concentration`: `total_carbon_pct`, `total_C_pct`,
+    `soil_carbon_content`
+  - `soil_total_nitrogen_concentration`: `total_nitrogen_pct`,
+    `total_N_pct`, `total_N_conc_mg_kg`, `soil_nitrogen_content`
+  - `soil_nitrate_nitrogen_concentration`: `soil_no3_n_mg_kg`,
+    `nitrate_N_mg_kg`
+  - `soil_ammonium_nitrogen_concentration`: `soil_nh4_n_mg_kg`
+  - `soil_organic_matter_concentration`: `soil_organic_matter_pct`
+  - `soil_bulk_density`: `bulk_density_g_cm3`
+  - `grain_dry_yield`: `corn_grain_dry_yield_kg_ha`,
+    `corn_grain_mh_dry_yield_kg_ha`, `wheat_mh_dry_grain_yield_kg_ha`
+  - `grain_yield`: `rice_grain_yield_t_ha`
+  - `aboveground_dry_biomass`: `corn_total_biomass_kg_ha`,
+    `cover_crop_dry_biomass_kg_ha`, `cover_crop_shoot_dry_matter_Mg_ha`
+  - `harvested_dry_biomass`: `alfalfa_dry_yield_kg_ha`,
+    `sudangrass_dry_yield_kg_ha`
+  - `red_fruit_fresh_yield` and `green_fruit_fresh_yield`:
+    `tomato_red_fresh_yield_Mg_ha` and `tomato_green_fresh_yield_Mg_ha`,
+    kept apart because they share crop, method, units, plot and date
+  - `fruit_dry_yield`: `tomato_mh_dry_yield_Mg_ha`
+  - `vine_dry_biomass`: `tomato_vine_dry_yield_Mg_ha`
+  - `soil_CO2_flux`: `CO2_flux_g_m2_d`
+  - `CH4_flux` also takes `CH4_flux_mg_m2_d`, and `N2O_flux` takes
+    `N2O_flux_g_N_ha_d` and `N2O_flux_mg_m2_d`, so each now holds rows of
+    several mass bases, time steps and supports; `reported_units` and
+    `method` tell them apart.
+
+  Russell Ranch yields move from `field_harvest` to two new methods,
+  `hand_harvest` and `machine_harvest` (`methods` 49 to 51 rows), and
+  `field_harvest` remains only on the 7 US-Twt rice rows. In
+  `russell_ranch_tautges_2019`, `replicate_id` now holds the Century
+  Experiment plot label (`1-1E`, `7-1W`, or `1-2` for a whole plot) on
+  every row, matched to the Wolf et al. (2018) files
+  ([ccmmf/organization#274](https://github.com/ccmmf/organization/issues/274)).
+  The 309 hand harvested wheat rows move to a new `excluded_obs` tab in the
+  Russell workbook, because their size is that of whole plant biomass
+  rather than grain. Corn and wheat machine yields that the source repeats
+  on both halves of a plot are kept once per plot (245 copies removed), and
+  118 tomato lines the source lists twice are removed. `observations` goes
+  from 37,313 to 36,641 rows (`russell_ranch_tautges_2019` 20,462 to
+  19,790), and the known repeated observation rows from 1,188 to 303, with
+  the test cap lowered to match. See the Russell report in `data_raw/`.
 - Salinas lettuce harvest rows: `harvested_component` is `heart`, not
   `head`, and the `crops` entry for romaine lettuce says hearts harvested,
   as White et al. (2020b) define the harvest index for romaine hearts
@@ -108,11 +158,11 @@ Changes to datasets, schemas, and curation workflows are documented here.
   `equivalent_soil_mass_white_2024_correction`, in place of
   `elemental_analysis`, whose description did not fit the corrected stocks.
 - Modesto bulk density: the six `nichols_modesto_2024`
-  `bulk_density_g_cm3` rows no longer carry a 0–30 cm depth. `min_depth`
-  and `max_depth` are now NA, with a note, because neither Nichols et al.
-  (2024) nor the Ag Data Commons archive gives a sampling depth for the
-  ~5.08 cm brass rings. Values are unchanged; see
-  `data_raw/nichols_modesto_2024/data_entry_report.md`.
+  `bulk_density_g_cm3` rows (now `soil_bulk_density`) no longer carry a
+  0–30 cm depth. `min_depth` and `max_depth` are now NA, with a note,
+  because neither Nichols et al. (2024) nor the Ag Data Commons archive
+  gives a sampling depth for the ~5.08 cm brass rings. Values are
+  unchanged; see `data_raw/nichols_modesto_2024/data_entry_report.md`.
 - Method descriptions: `core_sample` no longer states a 0–30 cm depth, and
   `elemental_analysis` no longer describes stock calculations. Both are
   shared by Salinas and Modesto, so depth and dates are read from each
@@ -127,7 +177,9 @@ Changes to datasets, schemas, and curation workflows are documented here.
   replicate`. The two `variables` notes now give the ingested years
   (Years 4–8, and Year 3 for `socs_sys5` and `socs_sys7`) and name the
   `observations` tab, not `white-additional-data`
-  ([ccmmf/organization#299](https://github.com/ccmmf/organization/issues/299)).
+  ([ccmmf/organization#299](https://github.com/ccmmf/organization/issues/299));
+  the organization#302 merge above dropped those notes, and the years are
+  in the Salinas report.
 - `CH4_flux` and `NEE` in `variables` declared `kg C m-2 s-1 (daily mean);
   kg C m-2 year-1 (annual total)`, a unit none of their rows use. Both now
   declare `source-reported units`, and the `CH4_flux` description and

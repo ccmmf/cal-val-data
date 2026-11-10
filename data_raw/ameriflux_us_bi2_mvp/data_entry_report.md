@@ -53,8 +53,12 @@ exact-site publication only where AmeriFlux BADM/BIF does not carry them.
 | CH₄ flux (FLUXNET-CH4) | g C m⁻² year⁻¹ | 2 | `site_year_total` |
 | CH₄ flux (Anthony and Silver 2021, chambers) | mg CH₄ m⁻² year⁻¹ | 3 | `site_year_total` |
 | N₂O flux (Anthony and Silver 2021, chambers) | g N₂O m⁻² year⁻¹ | 3 | `site_year_total` |
-| Soil carbon content | % | 1 | `site_layer`, 0–15 cm |
-| Soil nitrogen content | % | 1 | `site_layer`, 0–15 cm |
+| Soil total carbon, `soil_total_carbon_concentration` | % | 1 | `site_layer`, 0–15 cm |
+| Soil total nitrogen, `soil_total_nitrogen_concentration` | % | 1 | `site_layer`, 0–15 cm |
+
+The soil rows were `soil_carbon_content` and `soil_nitrogen_content` before
+[ccmmf/organization#302](https://github.com/ccmmf/organization/issues/302); they are
+concentrations, not the per area quantities those PEcAn names stand for.
 
 **Fluxes now come from source-reported annual values** (see below).
 Given the drained peat setting CH₄ is the informative target. Soil is a **single

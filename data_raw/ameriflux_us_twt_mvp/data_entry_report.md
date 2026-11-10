@@ -55,13 +55,18 @@ Curated rows:
 |---|---|---|---|
 | NEE (FLUXNET2015) | g C m⁻² year⁻¹ | 6 | `site_year_total` |
 | CH₄ flux (FLUXNET-CH4) | g C m⁻² year⁻¹ | 8 | `site_year_total` |
-| Soil carbon content | g kg⁻¹ | 2 | `site_layer`, 0–15 / 0–30 cm |
-| Soil nitrogen content | g kg⁻¹ | 2 | `site_layer` |
+| Soil total carbon, `soil_total_carbon_concentration` | g kg⁻¹ | 2 | `site_layer`, 0–15 / 0–30 cm |
+| Soil total nitrogen, `soil_total_nitrogen_concentration` | g kg⁻¹ | 2 | `site_layer` |
 | Soil C:N ratio | ratio | 2 | `site_layer` |
 | Soil pH | pH | 2 | `site_layer` |
 | Soil phosphorus content | g kg⁻¹ | 2 | `site_layer` |
 | Soil potassium content | g kg⁻¹ | 2 | `site_layer` |
-| Rice grain yield (14% moisture) | t ha⁻¹ | 7 | `site_year_total`, 2009–2015 |
+| Rice grain yield (14% moisture), `grain_yield` | t ha⁻¹ | 7 | `site_year_total`, 2009–2015 |
+
+The soil carbon and nitrogen rows were `soil_carbon_content` and
+`soil_nitrogen_content`, and the yield rows `rice_grain_yield_t_ha`, before
+[ccmmf/organization#302](https://github.com/ccmmf/organization/issues/302). The soil
+rows are concentrations, not the per area quantities those PEcAn names stand for.
 
 **Fluxes now come from source-reported annual values** (see below). For a flooded rice paddy on Delta
 peat, **CH₄ is the headline target**.
@@ -100,7 +105,9 @@ performed here.
   the exact-site publication's table.
 - **`field_harvest`** — rice grain yield from the tower paddy harvest, as
   Knox et al. (2016) Table 1 reports it; the paper does not state the
-  harvest method.
+  harvest method. These 7 rows are now the only ones on `field_harvest`,
+  whose `methods` row still carries the description and Wolf et al. (2018)
+  citation of its earlier use at Russell Ranch.
 
 ---
 
