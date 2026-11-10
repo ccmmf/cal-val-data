@@ -1,0 +1,40 @@
+=================== CASE: control: untouched copy
+  validate.R: WARNING: observations has 347 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / soil_bulk_density 131; russell_ranch_tautges_2019 / soil_total_nitrogen_concentration 124; russell_ranch_tautges_2019 / soil_nitrate_nitro
+  validate.R: validated 10 table(s) with 6 warning(s)
+  frictionless: │ observations │ table │ data/observations.csv │ VALID  │
+  testthat: test-russell-plots.R: failed tests = none 
+  testthat: test-integrity.R: failed tests = none 
+=================== CASE: retired name: one Russell bulk density row written as bulk_density_g_cm3
+  validate.R: WARNING: observations variable -> variables.name has 1 unmatched value(s): bulk_density_g_cm3
+  validate.R: WARNING: observations has 347 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / soil_bulk_density 131; russell_ranch_tautges_2019 / soil_total_nitrogen_concentration 124; russell_ranch_tautges_2019 / soil_nitrate_nitro
+  validate.R: validated 10 table(s) with 7 warning(s)
+  frictionless: │ observations │ table │ data/observations.csv │ INVALID │
+  frictionless: ┃ Row  ┃ Field ┃ Type        ┃ Message                                         ┃
+  frictionless: │ 5334 │ None  │ foreign-key │ Row at position "5334" violates the foreign     │
+  testthat: test-russell-plots.R: failed tests = 'old variable names are gone'; 'Russell Ranch yields name their harvest method and leave hand wheat out' 
+  testthat: test-integrity.R: failed tests = 'validate warns only about the known gaps' 
+=================== CASE: plot on an NH4-N row: soil N row given plot 1-1
+  validate.R: WARNING: observations has 347 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / soil_bulk_density 131; russell_ranch_tautges_2019 / soil_total_nitrogen_concentration 124; russell_ranch_tautges_2019 / soil_nitrate_nitro
+  validate.R: validated 10 table(s) with 6 warning(s)
+  frictionless: │ observations │ table │ data/observations.csv │ VALID  │
+  testthat: test-russell-plots.R: failed tests = 'Russell Ranch rows carry the source plot label where the source is consistent' 
+=================== CASE: plot under a second treatment: a conv_corn_tomato plot row relabelled org_corn_tomato
+  validate.R: WARNING: observations has 347 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / soil_bulk_density 131; russell_ranch_tautges_2019 / soil_total_nitrogen_concentration 124; russell_ranch_tautges_2019 / soil_nitrate_nitro
+  validate.R: validated 10 table(s) with 6 warning(s)
+  frictionless: │ observations │ table │ data/observations.csv │ VALID  │
+  testthat: test-russell-plots.R: failed tests = 'Russell Ranch rows carry the source plot label where the source is consistent' 
+=================== CASE: machine copy reintroduced: whole-plot corn machine yield written onto both halves
+  validate.R: WARNING: observations has 347 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / soil_bulk_density 131; russell_ranch_tautges_2019 / soil_total_nitrogen_concentration 124; russell_ranch_tautges_2019 / soil_nitrate_nitro
+  validate.R: validated 10 table(s) with 6 warning(s)
+  frictionless: │ observations │ table │ data/observations.csv │ VALID  │
+  testthat: test-russell-plots.R: failed tests = 'a machine yield copied onto both halves of a plot is kept once' 
+=================== CASE: hand harvested wheat put back into observations
+  validate.R: WARNING: observations has 347 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / soil_bulk_density 131; russell_ranch_tautges_2019 / soil_total_nitrogen_concentration 124; russell_ranch_tautges_2019 / soil_nitrate_nitro
+  validate.R: validated 10 table(s) with 6 warning(s)
+  frictionless: │ observations │ table │ data/observations.csv │ VALID  │
+  testthat: test-russell-plots.R: failed tests = 'Russell Ranch yields name their harvest method and leave hand wheat out' 
+=================== CASE: new repeated observation row (348 > cap 347)
+  validate.R: WARNING: observations has 348 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / soil_bulk_density 131; russell_ranch_tautges_2019 / soil_total_nitrogen_concentration 124; russell_ranch_tautges_2019 / soil_nitrate_nitro
+  validate.R: validated 10 table(s) with 6 warning(s)
+  frictionless: │ observations │ table │ data/observations.csv │ VALID  │
+  testthat: test-integrity.R: failed tests = 'observation repeats stay within the known Russell Ranch rows' 

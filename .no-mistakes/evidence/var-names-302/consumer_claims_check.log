@@ -1,0 +1,55 @@
+== 1. one variable name per quantity (#302) ==
+[PASS] observations rows 36,641  -> 36641
+[PASS] variables rows 88  -> 88
+[PASS] methods rows 51  -> 51
+[PASS] CO2_flux removed, soil_CO2_flux kept
+[PASS] every observation variable is declared in variables.csv
+[PASS] no retired name in observations or variables
+[PASS] red and green tomato fruit kept apart
+[PASS] crop/unit not in yield names; crop column filled on every yield row  -> Counter({'corn': 739, 'winter_cover_crop': 630, 'wheat': 391, 'sudangrass': 87, 'alfalfa': 78, 'legume-rye mix': 16, 'mustard': 16, 'cereal rye': 16, 'rice': 7})
+
+== 2. values and units unchanged; only the documented rows removed ==
+[PASS] pre-rename baseline has 37,313 rows  -> 37313
+[PASS] no observation value appears that was not there before (no invented values)
+[PASS] removed = 309 hand wheat + 245 machine copies + 118 tomato = 672  -> {'grain_dry_yield': 245, 'red_fruit_fresh_yield': 30, 'green_fruit_fresh_yield': 30, 'vine_dry_biomass': 30, 'fruit_dry_yield': 28, 'wheat_hh_dry_grain_yield_kg_ha': 309}
+[PASS] nothing removed outside russell_ranch_tautges_2019
+[PASS] 245 corn/wheat machine copies and 118 tomato rows removed  -> grain 245, tomato 118, hand wheat 309
+
+== 3. harvest methods (David on #302) ==
+[PASS] russell_ranch_tautges_2019 rows 19,790  -> 19790
+[PASS] every Russell yield row is hand_harvest or machine_harvest  -> Counter({'hand_harvest': 2777, 'machine_harvest': 1136})
+[PASS] field_harvest only on 7 US-Twt rice grain_yield rows  -> 7
+[PASS] no hand harvested wheat in observations
+[PASS] 570 corn/wheat machine grain rows, 103 with a half label (corn 78, wheat 25)  -> 570 rows, 103 half ({'corn': 78, 'wheat': 25})
+[PASS] halves kept only where they differ (corn 16, wheat 9 pairs) or one half given (46 corn, 7 wheat)  -> differ {'corn': 16, 'wheat': 9}, single {'corn': 46, 'wheat': 7}
+[PASS] no plot-date keeps two halves with the same value (copies kept once)
+
+== 4. plot labels in replicate_id (#274) ==
+[PASS] 12,823 rows carry a plot, 6,967 empty  -> 12823 / 6967
+[PASS] labels look like 1-1E / 7-1W / 1-2
+[PASS] 195 distinct labels on 66 plots  -> 195 labels, 66 plots
+[PASS] no NH4-N or NO3-N row carries a plot (6,964 rows)
+[PASS] exactly 3 other rows withheld: 1 bulk density 2007-12-03, 2 wheat (1995, 2006)  -> [('grain_dry_yield', 'wheat', '1995-07-05', 'irr_wheat_fallow'), ('grain_dry_yield', 'wheat', '2006-06-28', 'irr_wheat_fallow'), ('soil_bulk_density', 'NA', '2007-12-03', 'irr_wheat_legume')]
+[PASS] one treatment per plot except the six IWL plots  -> {'4-7': ['alf_corn_tomato', 'irr_wheat_legume'], '4-8': ['alf_corn_tomato', 'irr_wheat_legume'], '5-1': ['alf_corn_tomato', 'irr_wheat_legume'], '5-2': ['alf_corn_tomato', 'irr_wheat_legume'], '7-5': ['alf_corn_tomato', 'irr_wheat_legume'], '7-6': ['alf_corn_tomato', 'irr_wheat_legume']}
+[PASS] those six plots: irr_wheat_legume + alf_corn_tomato only  -> {'4-7': ['alf_corn_tomato', 'irr_wheat_legume'], '4-8': ['alf_corn_tomato', 'irr_wheat_legume'], '5-1': ['alf_corn_tomato', 'irr_wheat_legume'], '5-2': ['alf_corn_tomato', 'irr_wheat_legume'], '7-5': ['alf_corn_tomato', 'irr_wheat_legume'], '7-6': ['alf_corn_tomato', 'irr_wheat_legume']}
+[PASS] 306 rows keep irr_wheat_legume after 2011-12-31 (288 bulk density 2012-10-08, 18 tomato 2013-08-20)  -> {('soil_bulk_density', '2012-10-08'): 288, ('red_fruit_fresh_yield', '2013-08-20'): 6, ('green_fruit_fresh_yield', '2013-08-20'): 6, ('fruit_dry_yield', '2013-08-20'): 6}
+[PASS] native grass bulk density rows all carry a plot (restored labels)  -> 144 of 144
+[PASS] before #274 no Russell row carried a plot (only a bare E/W half)  -> {'E': 4635, 'W': 5082}
+[PASS] NH4-N and NO3-N rows were already empty before #274
+[PASS] 4,451 of 4,452 Russell bulk density rows carry a label
+
+== 5. definitions match their rows (follow-up commits) ==
+[PASS] soil_total_carbon_concentration: no 'by dry combustion' in definition
+[PASS] soil_total_carbon_concentration: 6 Delta rows have empty depth and the layer in attributes_json, as the definition now says  -> Counter({'ameriflux_us_bi1_mvp': 3, 'ameriflux_us_twt_mvp': 2, 'ameriflux_us_bi2_mvp': 1})
+[PASS] soil_total_carbon_concentration: every non-Delta row has min_depth and max_depth  -> 2186
+[PASS] soil_total_nitrogen_concentration: no 'by dry combustion' in definition
+[PASS] soil_total_nitrogen_concentration: 6 Delta rows have empty depth and the layer in attributes_json, as the definition now says  -> Counter({'ameriflux_us_bi1_mvp': 3, 'ameriflux_us_twt_mvp': 2, 'ameriflux_us_bi2_mvp': 1})
+[PASS] soil_total_nitrogen_concentration: every non-Delta row has min_depth and max_depth  -> 2294
+[PASS] SOC stock: equivalent_depth_cm on 96/96 raffeld_2024, 0/288 white_salinas_2020; definition says 'where the source reports it'  -> {'white_salinas_2020': [288, 0], 'raffeld_2024': [96, 96]}
+[PASS] bulk density: depth empty only on the 6 nichols_modesto_2024 rows; definition says so  -> {'nichols_modesto_2024': 6}
+[PASS] machine_harvest description says 'usually' once per plot and keeps halves where they differ or one is given
+
+== 6. carbon to bulk density pairing figures in the docs (1.1%, 12.8%, 76.3%) ==
+[PASS] same plot+year+depth 24 (1.1%), halves pooled 279 (12.8%), any year 1,664 (76.3%) of 2,180  -> of 2180: same year 24 (1.1%), pooled 279 (12.8%), any year 1664 (76.3%)
+
+42 of 42 checks passed

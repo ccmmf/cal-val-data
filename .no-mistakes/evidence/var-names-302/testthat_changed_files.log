@@ -1,0 +1,6 @@
+test-integrity.R           tests= 18 expectations= 22 failed=0 skipped=0 errors=0
+test-russell-plots.R       tests=  4 expectations=  9 failed=0 skipped=0 errors=0
+test-calval-metadata.R     tests=  4 expectations= 32 failed=0 skipped=0 errors=0
+test-validate-checks.R     tests=  8 expectations= 49 failed=0 skipped=0 errors=0
+test-white-salinas.R       tests=  4 expectations= 54 failed=0 skipped=0 errors=0
+expectations 166 failures 0 

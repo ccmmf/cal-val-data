@@ -1,0 +1,11 @@
+Real scripts/ingest.R (unchanged on this branch) run offline against a disposable googlesheets4 stand-in: three workbooks in 000-config.yml order serving the committed data/*.csv (observations split Salinas+Modesto | Russell+raffeld | Delta; Delta value and stat cells served as plain text, as their 0.0-style cells require). Output compared byte for byte with the committed data/*.csv.
+IDENTICAL  data/citations.csv (80 rows, sha256 dc834d4f17445690)
+IDENTICAL  data/coverage.csv (32 rows, sha256 5a784ed6317533a4)
+IDENTICAL  data/crops.csv (14 rows, sha256 1a3aee598984c4f7)
+IDENTICAL  data/managements.csv (4350 rows, sha256 3d68ca7c51d760b3)
+IDENTICAL  data/methods.csv (51 rows, sha256 a57994eeb1e54db3)
+IDENTICAL  data/observations.csv (36641 rows, sha256 05f6376ad16c8d34)
+IDENTICAL  data/sites.csv (14 rows, sha256 a1ac61d2ca30ecc4)
+IDENTICAL  data/treatment_pairs.csv (24 rows, sha256 4364e92c14e82b19)
+IDENTICAL  data/treatments.csv (35 rows, sha256 3ce12cba1f135a94)
+IDENTICAL  data/variables.csv (88 rows, sha256 6c8a7640e833cbc8)
