@@ -236,7 +236,7 @@ if (file.exists(observations_file)) {
   snapshot <- read_csv(observations_file,
     col_types = cols(.default = col_character()), progress = FALSE
   ) |>
-    filter(dataset_id == "white_salinas_2020", variable == "SOC_stock_Mg_ha") |>
+    filter(dataset_id == "white_salinas_2020", variable == "soil_organic_carbon_content") |>
     transmute(
       treatment_id,
       replicate_id = as.integer(replicate_id),

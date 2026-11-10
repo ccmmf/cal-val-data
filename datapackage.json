@@ -548,7 +548,7 @@
           {
             "name": "replicate_id",
             "type": "string",
-            "description": "replicate label as the source uses it; numeric at some sites, lettered blocks or named zones at others"
+            "description": "replicate label as the source uses it; numeric at some sites, lettered blocks or named zones at others; at Russell Ranch the Century Experiment plot label (1-1E, 7-1W: plot, then E or W for the east or west half; no suffix for the whole plot)"
           },
           {
             "name": "study_year",
