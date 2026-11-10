@@ -558,12 +558,12 @@
           {
             "name": "min_depth",
             "type": "number",
-            "description": "cm; sampled interval for depth-based observations; reference interval for equivalent-soil-mass stocks"
+            "description": "cm; sampled interval for depth-based observations; reference interval for equivalent-soil-mass stocks; empty on the AmeriFlux Delta soil rows, whose layer is in attributes_json (reported_layer_top_cm, reported_layer_bottom_cm), and on the 6 nichols_modesto_2024 bulk density rows, whose source does not report the sampling depth"
           },
           {
             "name": "max_depth",
             "type": "number",
-            "description": "cm; sampled interval for depth-based observations; reference interval for equivalent-soil-mass stocks, with actual integrated depth in attributes_json.equivalent_depth_cm where the source reports it; empty on the AmeriFlux Delta soil rows, whose layer is in attributes_json (reported_layer_top_cm, reported_layer_bottom_cm)"
+            "description": "cm; sampled interval for depth-based observations; reference interval for equivalent-soil-mass stocks, with actual integrated depth in attributes_json.equivalent_depth_cm where the source reports it; empty on the AmeriFlux Delta soil rows, whose layer is in attributes_json (reported_layer_top_cm, reported_layer_bottom_cm), and on the 6 nichols_modesto_2024 bulk density rows, whose source does not report the sampling depth"
           },
           {
             "name": "citation",

@@ -156,7 +156,7 @@ Each workbook tab maps to one CSV in `data/`. Full field schema, types, and keys
 | `treatment_id` | string | foreign key to `treatments.name` |
 | `replicate_id` | string | block, plot, core, or chamber identifier as the source labels it; `russell_ranch_tautges_2019` rows carry the Century Experiment plot label (`1-1E`, `7-1W`, or `1-2` for a whole plot), except NH4-N and NO3-N and 3 other rows where the source's plot and system disagree, which are empty; `raffeld_2024` writes the same labels with an underscore (`1_3`, `1_2W`) |
 | `study_year` | number | experiment year or calendar year |
-| `min_depth`, `max_depth` | number | cm; sampled interval for depth-based observations and reference interval for equivalent-soil-mass stocks; actual integrated depth is recorded in `attributes_json.equivalent_depth_cm` where the source reports it; empty on the AmeriFlux Delta soil rows, whose layer is in `attributes_json` (`reported_layer_top_cm`, `reported_layer_bottom_cm`) |
+| `min_depth`, `max_depth` | number | cm; sampled interval for depth-based observations and reference interval for equivalent-soil-mass stocks; actual integrated depth is recorded in `attributes_json.equivalent_depth_cm` where the source reports it; empty on the AmeriFlux Delta soil rows, whose layer is in `attributes_json` (`reported_layer_top_cm`, `reported_layer_bottom_cm`), and on the 6 `nichols_modesto_2024` bulk density rows, whose source does not report the sampling depth |
 | `citation` | string | DOI, foreign key to `citations.doi` |
 | `fill_status` | string | provenance code (see [Conventions](#conventions)) |
 | `notes` | string | free text, including date precision caveats |
