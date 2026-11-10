@@ -1,0 +1,25 @@
+=== test-russell-plots.R
+russell-plots: .........
+
+══ DONE ════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+test-russell-plots.R: tests=4 passed_expectations=9 failed=0 skipped=0 errors=0
+=== test-integrity.R
+integrity: ......................
+
+══ DONE ════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+test-integrity.R: tests=18 passed_expectations=22 failed=0 skipped=0 errors=0
+=== test-calval-metadata.R
+calval-metadata: ................................
+
+══ DONE ════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+test-calval-metadata.R: tests=4 passed_expectations=32 failed=0 skipped=0 errors=0
+=== test-validate-checks.R
+validate-checks: .................................................
+
+══ DONE ════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+test-validate-checks.R: tests=8 passed_expectations=49 failed=0 skipped=0 errors=0
+=== test-white-salinas.R
+white-salinas: ......................................................
+
+══ DONE ════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+test-white-salinas.R: tests=4 passed_expectations=54 failed=0 skipped=0 errors=0

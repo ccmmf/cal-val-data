@@ -1,0 +1,211 @@
+################ case: control
+---- Rscript scripts/validate.R (WARNING lines + summary)
+WARNING: citations has 19 row(s) repeating an earlier row in every column but citation_id [baldocchi2016tio 1; baldocchi2018tpa 1; baldocchi2020onr 1; chamberlain2017eod 1; chu2018tdo 1; chu2021roe 1; eichelmann2018teo 1; hatala2012gep 1; and 11 more]
+WARNING: citations doi has 21 value(s) on more than one row: 10.5061/dryad.qz612jmnx (anthony_bouldin_2024_dryad = ref_10_5061_dryad_qz612jmnx); 10.1038/s41467-023-37391-2 (ref_10_1038_s41467_023_37391_2 = anthony2023cpo); 10.1016/J.AGRFORMET.2016.04.001 (ref_10_1016_j_agrformet_2016_04_001 = baldoc
+WARNING: managements has 2195 row(s) repeating an earlier row in every column but event_id [russell_ranch_davis / planting 760; russell_ranch_davis / harvest 629; russell_ranch_davis / fertilization 590; russell_ranch_davis / compost_application 216]
+WARNING: managements mgmttype is empty on 42 row(s) [US-Bi2__management_field 22; US-Twt 6; US-Twt__publication_site_1 5; US-Twt__publication_site_2 4; US-Bi1 3; US-Bi1__alfalfa_chambers 2]
+WARNING: observations has 347 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / soil_bulk_density 131; russell_ranch_tautges_2019 / soil_total_nitrogen_concentration 124; russell_ranch_tautges_2019 / soil_nitrate_nitrogen_concentration 52; russell_ranch_tautges_2019 / soi
+checked observations 36641 rows
+WARNING: coverage has 7 row(s) repeating an earlier row in every column [CH4 1; Core outputs 1; MVP Coverage Guidance 1; Other variables 1; System coverage 1; Treatments 1; Validation types 1]
+validated 10 table(s) with 6 warning(s)
+---- testthat test-russell-plots.R
+  ok   Russell Ranch rows carry the source plot label where the source is consistent
+  ok   old variable names are gone
+  ok   Russell Ranch yields name their harvest method and leave hand wheat out
+  ok   a machine yield copied onto both halves of a plot is kept once
+---- testthat test-integrity.R
+  ok   citations has its datapackage columns
+  ok   sites has its datapackage columns
+  ok   treatments has its datapackage columns
+  ok   treatment_pairs has its datapackage columns
+  ok   managements has its datapackage columns
+  ok   observations has its datapackage columns
+  ok   methods has its datapackage columns
+  ok   variables has its datapackage columns
+  ok   crops has its datapackage columns
+  ok   coverage has its datapackage columns
+  ok   validate_data runs in warn mode without error
+  ok   observation repeats stay within the known Russell Ranch rows
+  ok   management repeats stay within the known Russell Ranch rows
+  ok   empty mgmttype stays within the known Delta rows
+  ok   duplicated DOIs in citations do not grow
+  ok   citation repeats do not grow
+  ok   coverage repeats do not grow
+  ok   validate warns only about the known gaps
+################ case: retired_name
+retired_name row 5334 -> {'min_date': '1992-07-01', 'max_date': '1992-07-01', 'crop': 'NA', 'variety': 'NA', 'sitename': 'russell_ranch_davis', 'variable': 'bulk_density_g_cm3', 'method': 'soil_core', 'value': '1.55', 'n': '1', 'statname': 'NA', 'stat': 'NA', 'treatment_id': 'leg_corn_tomato', 'replicate_id': '1-1W', 'study_year': '-1', 'min_depth': '0', 'max_depth': '25', 'citation': '10.1002/ecy
+---- Rscript scripts/validate.R (WARNING lines + summary)
+WARNING: citations has 19 row(s) repeating an earlier row in every column but citation_id [baldocchi2016tio 1; baldocchi2018tpa 1; baldocchi2020onr 1; chamberlain2017eod 1; chu2018tdo 1; chu2021roe 1; eichelmann2018teo 1; hatala2012gep 1; and 11 more]
+WARNING: citations doi has 21 value(s) on more than one row: 10.5061/dryad.qz612jmnx (anthony_bouldin_2024_dryad = ref_10_5061_dryad_qz612jmnx); 10.1038/s41467-023-37391-2 (ref_10_1038_s41467_023_37391_2 = anthony2023cpo); 10.1016/J.AGRFORMET.2016.04.001 (ref_10_1016_j_agrformet_2016_04_001 = baldoc
+WARNING: managements has 2195 row(s) repeating an earlier row in every column but event_id [russell_ranch_davis / planting 760; russell_ranch_davis / harvest 629; russell_ranch_davis / fertilization 590; russell_ranch_davis / compost_application 216]
+WARNING: managements mgmttype is empty on 42 row(s) [US-Bi2__management_field 22; US-Twt 6; US-Twt__publication_site_1 5; US-Twt__publication_site_2 4; US-Bi1 3; US-Bi1__alfalfa_chambers 2]
+WARNING: observations variable -> variables.name has 1 unmatched value(s): bulk_density_g_cm3
+WARNING: observations has 347 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / soil_bulk_density 131; russell_ranch_tautges_2019 / soil_total_nitrogen_concentration 124; russell_ranch_tautges_2019 / soil_nitrate_nitrogen_concentration 52; russell_ranch_tautges_2019 / soi
+checked observations 36641 rows
+WARNING: coverage has 7 row(s) repeating an earlier row in every column [CH4 1; Core outputs 1; MVP Coverage Guidance 1; Other variables 1; System coverage 1; Treatments 1; Validation types 1]
+validated 10 table(s) with 7 warning(s)
+---- testthat test-russell-plots.R
+  ok   Russell Ranch rows carry the source plot label where the source is consistent
+  FAIL old variable names are gone
+  FAIL Russell Ranch yields name their harvest method and leave hand wheat out
+  ok   a machine yield copied onto both halves of a plot is kept once
+---- testthat test-integrity.R
+  ok   citations has its datapackage columns
+  ok   sites has its datapackage columns
+  ok   treatments has its datapackage columns
+  ok   treatment_pairs has its datapackage columns
+  ok   managements has its datapackage columns
+  ok   observations has its datapackage columns
+  ok   methods has its datapackage columns
+  ok   variables has its datapackage columns
+  ok   crops has its datapackage columns
+  ok   coverage has its datapackage columns
+  ok   validate_data runs in warn mode without error
+  ok   observation repeats stay within the known Russell Ranch rows
+  ok   management repeats stay within the known Russell Ranch rows
+  ok   empty mgmttype stays within the known Delta rows
+  ok   duplicated DOIs in citations do not grow
+  ok   citation repeats do not grow
+  ok   coverage repeats do not grow
+  FAIL validate warns only about the known gaps
+################ case: nh4_plot
+nh4_plot row 9887 -> {'min_date': '1994-08-03', 'max_date': '1994-08-03', 'crop': 'NA', 'variety': 'NA', 'sitename': 'russell_ranch_davis', 'variable': 'soil_ammonium_nitrogen_concentration', 'method': 'keeney_nelson', 'value': '0.632826032', 'n': '1', 'statname': 'NA', 'stat': 'NA', 'treatment_id': 'leg_corn_tomato', 'replicate_id': '1-1E', 'study_year': '1', 'min_depth': '30', 'max_depth': '60',
+---- Rscript scripts/validate.R (WARNING lines + summary)
+WARNING: citations has 19 row(s) repeating an earlier row in every column but citation_id [baldocchi2016tio 1; baldocchi2018tpa 1; baldocchi2020onr 1; chamberlain2017eod 1; chu2018tdo 1; chu2021roe 1; eichelmann2018teo 1; hatala2012gep 1; and 11 more]
+WARNING: citations doi has 21 value(s) on more than one row: 10.5061/dryad.qz612jmnx (anthony_bouldin_2024_dryad = ref_10_5061_dryad_qz612jmnx); 10.1038/s41467-023-37391-2 (ref_10_1038_s41467_023_37391_2 = anthony2023cpo); 10.1016/J.AGRFORMET.2016.04.001 (ref_10_1016_j_agrformet_2016_04_001 = baldoc
+WARNING: managements has 2195 row(s) repeating an earlier row in every column but event_id [russell_ranch_davis / planting 760; russell_ranch_davis / harvest 629; russell_ranch_davis / fertilization 590; russell_ranch_davis / compost_application 216]
+WARNING: managements mgmttype is empty on 42 row(s) [US-Bi2__management_field 22; US-Twt 6; US-Twt__publication_site_1 5; US-Twt__publication_site_2 4; US-Bi1 3; US-Bi1__alfalfa_chambers 2]
+WARNING: observations has 347 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / soil_bulk_density 131; russell_ranch_tautges_2019 / soil_total_nitrogen_concentration 124; russell_ranch_tautges_2019 / soil_nitrate_nitrogen_concentration 52; russell_ranch_tautges_2019 / soi
+checked observations 36641 rows
+WARNING: coverage has 7 row(s) repeating an earlier row in every column [CH4 1; Core outputs 1; MVP Coverage Guidance 1; Other variables 1; System coverage 1; Treatments 1; Validation types 1]
+validated 10 table(s) with 6 warning(s)
+---- testthat test-russell-plots.R
+  FAIL Russell Ranch rows carry the source plot label where the source is consistent
+  ok   old variable names are gone
+  ok   Russell Ranch yields name their harvest method and leave hand wheat out
+  ok   a machine yield copied onto both halves of a plot is kept once
+---- testthat test-integrity.R
+  ok   citations has its datapackage columns
+  ok   sites has its datapackage columns
+  ok   treatments has its datapackage columns
+  ok   treatment_pairs has its datapackage columns
+  ok   managements has its datapackage columns
+  ok   observations has its datapackage columns
+  ok   methods has its datapackage columns
+  ok   variables has its datapackage columns
+  ok   crops has its datapackage columns
+  ok   coverage has its datapackage columns
+  ok   validate_data runs in warn mode without error
+  ok   observation repeats stay within the known Russell Ranch rows
+  ok   management repeats stay within the known Russell Ranch rows
+  ok   empty mgmttype stays within the known Delta rows
+  ok   duplicated DOIs in citations do not grow
+  ok   citation repeats do not grow
+  ok   coverage repeats do not grow
+  ok   validate warns only about the known gaps
+################ case: machine_copy
+machine_copy row 16853 -> ('4-7', '4-7W', '10115.7')
+---- Rscript scripts/validate.R (WARNING lines + summary)
+WARNING: citations has 19 row(s) repeating an earlier row in every column but citation_id [baldocchi2016tio 1; baldocchi2018tpa 1; baldocchi2020onr 1; chamberlain2017eod 1; chu2018tdo 1; chu2021roe 1; eichelmann2018teo 1; hatala2012gep 1; and 11 more]
+WARNING: citations doi has 21 value(s) on more than one row: 10.5061/dryad.qz612jmnx (anthony_bouldin_2024_dryad = ref_10_5061_dryad_qz612jmnx); 10.1038/s41467-023-37391-2 (ref_10_1038_s41467_023_37391_2 = anthony2023cpo); 10.1016/J.AGRFORMET.2016.04.001 (ref_10_1016_j_agrformet_2016_04_001 = baldoc
+WARNING: managements has 2195 row(s) repeating an earlier row in every column but event_id [russell_ranch_davis / planting 760; russell_ranch_davis / harvest 629; russell_ranch_davis / fertilization 590; russell_ranch_davis / compost_application 216]
+WARNING: managements mgmttype is empty on 42 row(s) [US-Bi2__management_field 22; US-Twt 6; US-Twt__publication_site_1 5; US-Twt__publication_site_2 4; US-Bi1 3; US-Bi1__alfalfa_chambers 2]
+WARNING: observations has 347 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / soil_bulk_density 131; russell_ranch_tautges_2019 / soil_total_nitrogen_concentration 124; russell_ranch_tautges_2019 / soil_nitrate_nitrogen_concentration 52; russell_ranch_tautges_2019 / soi
+checked observations 36642 rows
+WARNING: coverage has 7 row(s) repeating an earlier row in every column [CH4 1; Core outputs 1; MVP Coverage Guidance 1; Other variables 1; System coverage 1; Treatments 1; Validation types 1]
+validated 10 table(s) with 6 warning(s)
+---- testthat test-russell-plots.R
+  ok   Russell Ranch rows carry the source plot label where the source is consistent
+  ok   old variable names are gone
+  ok   Russell Ranch yields name their harvest method and leave hand wheat out
+  FAIL a machine yield copied onto both halves of a plot is kept once
+---- testthat test-integrity.R
+  ok   citations has its datapackage columns
+  ok   sites has its datapackage columns
+  ok   treatments has its datapackage columns
+  ok   treatment_pairs has its datapackage columns
+  ok   managements has its datapackage columns
+  ok   observations has its datapackage columns
+  ok   methods has its datapackage columns
+  ok   variables has its datapackage columns
+  ok   crops has its datapackage columns
+  ok   coverage has its datapackage columns
+  ok   validate_data runs in warn mode without error
+  ok   observation repeats stay within the known Russell Ranch rows
+  ok   management repeats stay within the known Russell Ranch rows
+  ok   empty mgmttype stays within the known Delta rows
+  ok   duplicated DOIs in citations do not grow
+  ok   citation repeats do not grow
+  ok   coverage repeats do not grow
+  ok   validate warns only about the known gaps
+################ case: bad_unit
+bad_unit row 974 -> {'min_date': '1993-09-01', 'max_date': '1993-09-01', 'crop': 'NA', 'variety': 'NA', 'sitename': 'russell_ranch_davis', 'variable': 'soil_total_carbon_concentration', 'method': 'dry_combustion_elemental_analysis', 'value': '1.01', 'n': '1', 'statname': 'NA', 'stat': 'NA', 'treatment_id': 'conv_corn_tomato', 'replicate_id': '1-3E', 'study_year': '0', 'min_depth': '0', 'max_depth'
+---- Rscript scripts/validate.R (WARNING lines + summary)
+WARNING: citations has 19 row(s) repeating an earlier row in every column but citation_id [baldocchi2016tio 1; baldocchi2018tpa 1; baldocchi2020onr 1; chamberlain2017eod 1; chu2018tdo 1; chu2021roe 1; eichelmann2018teo 1; hatala2012gep 1; and 11 more]
+WARNING: citations doi has 21 value(s) on more than one row: 10.5061/dryad.qz612jmnx (anthony_bouldin_2024_dryad = ref_10_5061_dryad_qz612jmnx); 10.1038/s41467-023-37391-2 (ref_10_1038_s41467_023_37391_2 = anthony2023cpo); 10.1016/J.AGRFORMET.2016.04.001 (ref_10_1016_j_agrformet_2016_04_001 = baldoc
+WARNING: managements has 2195 row(s) repeating an earlier row in every column but event_id [russell_ranch_davis / planting 760; russell_ranch_davis / harvest 629; russell_ranch_davis / fertilization 590; russell_ranch_davis / compost_application 216]
+WARNING: managements mgmttype is empty on 42 row(s) [US-Bi2__management_field 22; US-Twt 6; US-Twt__publication_site_1 5; US-Twt__publication_site_2 4; US-Bi1 3; US-Bi1__alfalfa_chambers 2]
+WARNING: observations has 347 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / soil_bulk_density 131; russell_ranch_tautges_2019 / soil_total_nitrogen_concentration 124; russell_ranch_tautges_2019 / soil_nitrate_nitrogen_concentration 52; russell_ranch_tautges_2019 / soi
+WARNING: observations soil_total_carbon_concentration has 1 row(s) in units variables.csv does not declare ('%; % dry weight; g kg-1'): 'mg C kg-1 soil' 1 (dry_combustion_elemental_analysis: russell_ranch_tautges_2019)
+checked observations 36641 rows
+WARNING: coverage has 7 row(s) repeating an earlier row in every column [CH4 1; Core outputs 1; MVP Coverage Guidance 1; Other variables 1; System coverage 1; Treatments 1; Validation types 1]
+validated 10 table(s) with 7 warning(s)
+---- testthat test-russell-plots.R
+  ok   Russell Ranch rows carry the source plot label where the source is consistent
+  ok   old variable names are gone
+  ok   Russell Ranch yields name their harvest method and leave hand wheat out
+  ok   a machine yield copied onto both halves of a plot is kept once
+---- testthat test-integrity.R
+  ok   citations has its datapackage columns
+  ok   sites has its datapackage columns
+  ok   treatments has its datapackage columns
+  ok   treatment_pairs has its datapackage columns
+  ok   managements has its datapackage columns
+  ok   observations has its datapackage columns
+  ok   methods has its datapackage columns
+  ok   variables has its datapackage columns
+  ok   crops has its datapackage columns
+  ok   coverage has its datapackage columns
+  ok   validate_data runs in warn mode without error
+  ok   observation repeats stay within the known Russell Ranch rows
+  ok   management repeats stay within the known Russell Ranch rows
+  ok   empty mgmttype stays within the known Delta rows
+  ok   duplicated DOIs in citations do not grow
+  ok   citation repeats do not grow
+  ok   coverage repeats do not grow
+  FAIL validate warns only about the known gaps
+################ case: extra_repeat
+extra_repeat row 5334 -> {'min_date': '1992-07-01', 'max_date': '1992-07-01', 'crop': 'NA', 'variety': 'NA', 'sitename': 'russell_ranch_davis', 'variable': 'soil_bulk_density', 'method': 'soil_core', 'value': '1.55', 'n': '1', 'statname': 'NA', 'stat': 'NA', 'treatment_id': 'leg_corn_tomato', 'replicate_id': '1-1W', 'study_year': '-1', 'min_depth': '0', 'max_depth': '25', 'citation': '10.1002/ecy.
+---- Rscript scripts/validate.R (WARNING lines + summary)
+WARNING: citations has 19 row(s) repeating an earlier row in every column but citation_id [baldocchi2016tio 1; baldocchi2018tpa 1; baldocchi2020onr 1; chamberlain2017eod 1; chu2018tdo 1; chu2021roe 1; eichelmann2018teo 1; hatala2012gep 1; and 11 more]
+WARNING: citations doi has 21 value(s) on more than one row: 10.5061/dryad.qz612jmnx (anthony_bouldin_2024_dryad = ref_10_5061_dryad_qz612jmnx); 10.1038/s41467-023-37391-2 (ref_10_1038_s41467_023_37391_2 = anthony2023cpo); 10.1016/J.AGRFORMET.2016.04.001 (ref_10_1016_j_agrformet_2016_04_001 = baldoc
+WARNING: managements has 2195 row(s) repeating an earlier row in every column but event_id [russell_ranch_davis / planting 760; russell_ranch_davis / harvest 629; russell_ranch_davis / fertilization 590; russell_ranch_davis / compost_application 216]
+WARNING: managements mgmttype is empty on 42 row(s) [US-Bi2__management_field 22; US-Twt 6; US-Twt__publication_site_1 5; US-Twt__publication_site_2 4; US-Bi1 3; US-Bi1__alfalfa_chambers 2]
+WARNING: observations has 348 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / soil_bulk_density 132; russell_ranch_tautges_2019 / soil_total_nitrogen_concentration 124; russell_ranch_tautges_2019 / soil_nitrate_nitrogen_concentration 52; russell_ranch_tautges_2019 / soi
+checked observations 36642 rows
+WARNING: coverage has 7 row(s) repeating an earlier row in every column [CH4 1; Core outputs 1; MVP Coverage Guidance 1; Other variables 1; System coverage 1; Treatments 1; Validation types 1]
+validated 10 table(s) with 6 warning(s)
+---- testthat test-russell-plots.R
+  ok   Russell Ranch rows carry the source plot label where the source is consistent
+  ok   old variable names are gone
+  ok   Russell Ranch yields name their harvest method and leave hand wheat out
+  ok   a machine yield copied onto both halves of a plot is kept once
+---- testthat test-integrity.R
+  ok   citations has its datapackage columns
+  ok   sites has its datapackage columns
+  ok   treatments has its datapackage columns
+  ok   treatment_pairs has its datapackage columns
+  ok   managements has its datapackage columns
+  ok   observations has its datapackage columns
+  ok   methods has its datapackage columns
+  ok   variables has its datapackage columns
+  ok   crops has its datapackage columns
+  ok   coverage has its datapackage columns
+  ok   validate_data runs in warn mode without error
+  FAIL observation repeats stay within the known Russell Ranch rows
+  ok   management repeats stay within the known Russell Ranch rows
+  ok   empty mgmttype stays within the known Delta rows
+  ok   duplicated DOIs in citations do not grow
+  ok   citation repeats do not grow
+  ok   coverage repeats do not grow
+  ok   validate warns only about the known gaps

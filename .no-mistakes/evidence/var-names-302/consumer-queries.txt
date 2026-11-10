@@ -1,0 +1,86 @@
+README 'Load a table' snippet: replicate level SOC stock rows = 384 
+
+      raffeld_2024 white_salinas_2020 
+                96                288 
+README 'Pull a treatment contrast' snippet: validation pairs = 6 
+
+Russell Ranch rows by variable, crop, method, units (compare with report 'Variables Measured' table)
+                             variable              crop
+              aboveground_dry_biomass              corn
+              aboveground_dry_biomass winter_cover_crop
+                      fruit_dry_yield            tomato
+                      grain_dry_yield              corn
+                      grain_dry_yield              corn
+                      grain_dry_yield             wheat
+              green_fruit_fresh_yield            tomato
+                harvested_dry_biomass           alfalfa
+                harvested_dry_biomass        sudangrass
+                harvested_dry_biomass        sudangrass
+                red_fruit_fresh_yield            tomato
+ soil_ammonium_nitrogen_concentration                  
+ soil_ammonium_nitrogen_concentration                  
+                    soil_bulk_density                  
+  soil_nitrate_nitrogen_concentration                  
+  soil_nitrate_nitrogen_concentration                  
+    soil_organic_matter_concentration                  
+    soil_organic_matter_concentration                  
+      soil_total_carbon_concentration                  
+    soil_total_nitrogen_concentration                  
+                     vine_dry_biomass            tomato
+                            method   units rows
+                      hand_harvest kg ha-1  280
+                      hand_harvest kg ha-1  630
+                   machine_harvest Mg ha-1  503
+                      hand_harvest kg ha-1  280
+                   machine_harvest kg ha-1  179
+                   machine_harvest kg ha-1  391
+                      hand_harvest Mg ha-1  505
+                      hand_harvest kg ha-1   78
+                      hand_harvest kg ha-1   24
+                   machine_harvest kg ha-1   63
+                      hand_harvest Mg ha-1  505
+                     doane_miranda mg kg-1 1754
+                     keeney_nelson mg kg-1 1730
+                         soil_core  g cm-3 4452
+                     doane_miranda mg kg-1 1754
+                     keeney_nelson mg kg-1 1726
+                  loss_on_ignition       %    9
+                     walkley_black       %   92
+ dry_combustion_elemental_analysis       % 2180
+ dry_combustion_elemental_analysis       % 2180
+                      hand_harvest Mg ha-1  475
+
+Russell total rows: 19790 
+
+Hand vs machine corn grain yield, one variable filtered by crop and method (kg ha-1):
+   crop          method value.n value.median
+1  corn    hand_harvest     280        10827
+2  corn machine_harvest     179         7908
+3 wheat machine_harvest     391         4538
+
+Tomato red vs green fresh fruit stay separate variables (Mg ha-1):
+                 variable value.n value.median
+1 green_fruit_fresh_yield   505.0          5.4
+2   red_fruit_fresh_yield   505.0         77.6
+
+Variables across datasets after the merge (variable: datasets)
+  soil_total_carbon_concentration        ameriflux_us_bi1_mvp [3]; ameriflux_us_bi2_mvp [1]; ameriflux_us_twt_mvp [2]; nichols_modesto_2024 [6]; russell_ranch_tautges_2019 [2180]
+                                         units: % dry weight | % | g kg-1
+  soil_total_nitrogen_concentration      ameriflux_us_bi1_mvp [3]; ameriflux_us_bi2_mvp [1]; ameriflux_us_twt_mvp [2]; nichols_modesto_2024 [6]; russell_ranch_tautges_2019 [2180]; white_salinas_2020 [108]
+                                         units: % dry weight | mg N kg-1 soil | % | g kg-1
+  soil_nitrate_nitrogen_concentration    russell_ranch_tautges_2019 [3480]; white_salinas_2020 [108]
+                                         units: mg NO3-N kg-1 soil | mg kg-1
+  aboveground_dry_biomass                russell_ranch_tautges_2019 [910]; white_salinas_2020 [48]
+                                         units: Mg ha-1 | kg ha-1
+  N2O_flux                               anthony_bouldin_2024 [70]; nichols_modesto_2024 [54]; publication_anthony_2023_table_1 [4]; publication_anthony_silver_2021_table_1 [3]
+                                         units: g N2O-N ha-1 day-1 | mg N2O m-2 d-1 | mg N2O m-2 yr-1 | g N2O m-2 y-1
+  CH4_flux                               anthony_bouldin_2024 [70]; fluxnet_ch4_community_product_v1_appendix_b_v2 [11]; publication_anthony_2023_table_1 [4]; publication_anthony_silver_2021_table_1 [3]
+                                         units: mg CH4 m-2 d-1 | mg CH4 m-2 yr-1 | mg CH4 m-2 y-1 | g C m-2 yr-1
+  soil_bulk_density                      nichols_modesto_2024 [6]; russell_ranch_tautges_2019 [4452]; white_salinas_2020 [60]
+                                         units: g cm-3
+  soil_organic_carbon_content            raffeld_2024 [96]; white_salinas_2020 [288]
+                                         units: Mg C ha-1
+  grain_yield                            ameriflux_us_twt_mvp [7]
+                                         units: t ha-1
+  soil_CO2_flux                          anthony_bouldin_2024 [70]
+                                         units: g CO2 m-2 d-1

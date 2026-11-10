@@ -1,0 +1,193 @@
+== Rename map (#302)
+[PASS] observations rows before -> after
+      got:  37313, 36641
+      want: 37313, 36641
+[PASS] variables rows before -> after
+      got:  106, 88
+      want: 106, 88
+[PASS] CO2_flux dropped, soil_CO2_flux present
+      got:  FALSE, TRUE
+      want: FALSE, TRUE
+[PASS] CO2_flux was unused before removal
+      got:  0
+      want: 0
+retired observation names ( 32 ): alfalfa_dry_yield_kg_ha bulk_density_g_cm3 CH4_flux_mg_m2_d CO2_flux_g_m2_d corn_grain_dry_yield_kg_ha corn_grain_mh_dry_yield_kg_ha corn_total_biomass_kg_ha cover_crop_dry_biomass_kg_ha cover_crop_shoot_dry_matter_Mg_ha N2O_flux_g_N_ha_d N2O_flux_mg_m2_d nitrate_N_mg_kg rice_grain_yield_t_ha SOC_conc_mg_kg SOC_stock_Mg_ha soil_carbon_content soil_nh4_n_mg_kg soil_nitrogen_content soil_no3_n_mg_kg soil_organic_matter_pct sudangrass_dry_yield_kg_ha tomato_green_fresh_yield_Mg_ha tomato_mh_dry_yield_Mg_ha tomato_red_fresh_yield_Mg_ha tomato_vine_dry_yield_Mg_ha total_C_pct total_carbon_pct total_N_conc_mg_kg total_N_pct total_nitrogen_pct wheat_hh_dry_grain_yield_kg_ha wheat_mh_dry_grain_yield_kg_ha 
+new observation names ( 17 ): aboveground_dry_biomass fruit_dry_yield grain_dry_yield grain_yield green_fruit_fresh_yield harvested_dry_biomass red_fruit_fresh_yield soil_ammonium_nitrogen_concentration soil_bulk_density soil_CO2_flux soil_nitrate_nitrogen_concentration soil_organic_carbon_concentration soil_organic_carbon_content soil_organic_matter_concentration soil_total_carbon_concentration soil_total_nitrogen_concentration vine_dry_biomass 
+retired variables.csv names ( 33 ): alfalfa_dry_yield_kg_ha bulk_density_g_cm3 CH4_flux_mg_m2_d CO2_flux CO2_flux_g_m2_d corn_grain_dry_yield_kg_ha corn_grain_mh_dry_yield_kg_ha corn_total_biomass_kg_ha cover_crop_dry_biomass_kg_ha cover_crop_shoot_dry_matter_Mg_ha N2O_flux_g_N_ha_d N2O_flux_mg_m2_d nitrate_N_mg_kg rice_grain_yield_t_ha SOC_conc_mg_kg SOC_stock_Mg_ha soil_carbon_content soil_nh4_n_mg_kg soil_nitrogen_content soil_no3_n_mg_kg soil_organic_matter_pct sudangrass_dry_yield_kg_ha tomato_green_fresh_yield_Mg_ha tomato_mh_dry_yield_Mg_ha tomato_red_fresh_yield_Mg_ha tomato_vine_dry_yield_Mg_ha total_C_pct total_carbon_pct total_N_conc_mg_kg total_N_pct total_nitrogen_pct wheat_hh_dry_grain_yield_kg_ha wheat_mh_dry_grain_yield_kg_ha 
+[PASS] every observation variable is declared in variables.csv
+      got:  0
+      want: 0
+[PASS] no retired name left in observations or variables
+      got:  0
+      want: 0
+[PASS] no variable name embeds a unit or crop token
+      got:  0
+      want: 0
+[PASS] tomato red and green fruit kept apart
+      got:  505, 505
+      want: 505, 505
+[PASS] before: red/green tomato rows (each incl. 30 source repeats)
+      got:  535, 535
+      want: 535, 535
+
+== Harvest methods
+[PASS] hand_harvest and machine_harvest declared in methods.csv; field_harvest kept
+      got:  TRUE, TRUE, TRUE
+      want: TRUE, TRUE, TRUE
+[PASS] field_harvest rows after: count and datasets
+      got:  7, ameriflux_us_twt_mvp, grain_yield, rice
+      want: 7, ameriflux_us_twt_mvp, grain_yield, rice
+[PASS] Russell yields use hand_harvest or machine_harvest only
+      got:  hand_harvest|machine_harvest
+      want: hand_harvest|machine_harvest
+[PASS] no hand harvested wheat in observations
+      got:  0
+      want: 0
+[PASS] hand wheat rows before (removed to excluded_obs)
+      got:  309
+      want: 309
+[PASS] corn+wheat machine copies removed
+      got:  245
+      want: 245
+[PASS] corn / wheat machine copies removed
+      got:  101, 144
+      want: 101, 144
+[PASS] tomato rows removed (red, green, vine, machine)
+      got:  30, 30, 30, 28
+      want: 30, 30, 30, 28
+[PASS] removed tomato rows were all on 2012-09-04
+      got:  2012-09-04, 2012-09-04, 2012-09-04, 2012-09-04
+      want: 2012-09-04, 2012-09-04, 2012-09-04, 2012-09-04
+[PASS] total rows removed = 309 + 245 + 118
+      got:  672
+      want: 672
+[PASS] Russell rows 20,462 -> 19,790
+      got:  20462, 19790
+      want: 20462, 19790
+[PASS] non-Russell row count unchanged
+      got:  16851
+      want: 16851
+[PASS] non-Russell values, units, dates unchanged (only names moved)
+      got:  TRUE
+      want: TRUE
+[PASS] Russell soil rows: identical value multiset before/after rename
+      got:  TRUE, TRUE, TRUE, TRUE, TRUE, TRUE
+      want: TRUE, TRUE, TRUE, TRUE, TRUE, TRUE
+[PASS] Russell units unchanged per renamed variable
+      got:  TRUE, TRUE, TRUE, TRUE, TRUE, TRUE
+      want: TRUE, TRUE, TRUE, TRUE, TRUE, TRUE
+
+== Plot labels (#274)
+[PASS] Russell rows with plot / without
+      got:  12823, 6967
+      want: 12823, 6967
+[PASS] distinct labels / plots
+      got:  195, 66
+      want: 195, 66
+[PASS] before #274 these rows had no plot (only E/W/NA)
+      got:  E|NA|W
+      want: E|NA|W
+[PASS] NH4-N + NO3-N rows: none carry a plot
+      got:  6964, 0
+      want: 6964, 0
+[PASS] the 3 other unlabelled rows
+      got:  grain_dry_yield wheat 1995-07-05 irr_wheat_fallow, grain_dry_yield wheat 2006-06-28 irr_wheat_fallow, soil_bulk_density NA 2007-12-03 irr_wheat_legume
+      want: grain_dry_yield wheat 1995-07-05 irr_wheat_fallow, grain_dry_yield wheat 2006-06-28 irr_wheat_fallow, soil_bulk_density NA 2007-12-03 irr_wheat_legume
+           variable  crop   min_date     treatment_id replicate_id min_depth
+1 soil_bulk_density    NA 2007-12-03 irr_wheat_legume           NA         0
+2   grain_dry_yield wheat 2006-06-28 irr_wheat_fallow           NA        NA
+3   grain_dry_yield wheat 1995-07-05 irr_wheat_fallow           NA        NA
+  max_depth   value notes
+1        15    1.44    NA
+2        NA 2003.24    NA
+3        NA 4792.61    NA
+wheat years: 1995 2006 
+[PASS] native grass 2012-10-08 bulk density rows all labelled (96 of them restored from spaced source labels; see restore check), no label has spaces
+      got:  144, 144, 0
+      want: 144, 144, 0
+[PASS] plots with >1 treatment
+      got:  4-7, 4-8, 5-1, 5-2, 7-5, 7-6
+      want: 4-7, 4-8, 5-1, 5-2, 7-5, 7-6
+their treatments: alf_corn_tomato+irr_wheat_legume 
+[PASS] rows keeping irr_wheat_legume after 2011-12-31 (total, BD 2012-10-08, tomato 2013-08-20)
+      got:  306, 288, 18
+      want: 306, 288, 18
+[PASS] those rows are only on the six switching plots
+      got:  4-7, 4-8, 5-1, 5-2, 7-5, 7-6
+      want: 4-7, 4-8, 5-1, 5-2, 7-5, 7-6
+[PASS] raffeld_2024 labels use an underscore
+      got:  TRUE
+      want: TRUE
+[PASS] raffeld plots are a subset of Russell plots after normalising separator
+      got:  0
+      want: 0
+
+== Machine yields once per plot
+[PASS] no plot/date with copies of one machine value
+      got:  0
+      want: 0
+[PASS] rows with the kept-once note
+      got:  244
+      want: 244
+
+== Repeats (validate)
+[PASS] observation rows repeating an earlier row
+      got:  347
+      want: 347
+[PASS] all repeats in Russell
+      got:  russell_ranch_tautges_2019
+      want: russell_ranch_tautges_2019
+[PASS] repeat split BD/TN/NO3/TC/NH4
+      got:  131, 124, 52, 27, 13
+      want: 131, 124, 52, 27, 13
+[PASS] non-N repeats are on a labelled plot (303 = 347 - 65 + 21)
+      got:  282, 65
+      want: 282, 65
+
+== Depth claims in merged definitions
+[PASS] Delta total C/N rows: count, depth empty, layer in attributes_json
+      got:  12, 12, 12
+      want: 12, 12, 12
+[PASS] Delta total C/N per dataset (bi1, bi2, twt)
+      got:  6, 2, 4
+      want: 6, 2, 4
+[PASS] other total C/N rows all have depth
+      got:  0
+      want: 0
+[PASS] SOC stock rows with equivalent_depth_cm: raffeld / white_salinas
+      got:  96, 96, 0
+      want: 96, 96, 0
+[PASS] SOC stock rows all have min/max depth
+      got:  0
+      want: 0
+[PASS] bulk density rows without depth
+      got:  6, nichols_modesto_2024
+      want: 6, nichols_modesto_2024
+[PASS] soil_organic_carbon_concentration rows all have depth (definition says so)
+      got:  0
+      want: 0
+[PASS] merged total C/N definitions do not say 'dry combustion'
+      got:  FALSE
+      want: FALSE
+
+== Carbon to bulk density pairing (docs: 76.3%, 1.1%, 12.8%)
+[PASS] carbon rows
+      got:  2180
+      want: 2180
+[PASS] pairs any year / same year / pooled halves
+      got:  1664, 24, 279
+      want: 1664, 24, 279
+[PASS] as percentages
+      got:  76.3%, 1.1%, 12.8%
+      want: 76.3%, 1.1%, 12.8%
+
+52 checks, 52 pass, 0 fail
+
+== Grass plot restore (ca63889~1 vs HEAD)
+all other columns identical row by row: TRUE 
+rows gaining a label: 96  losing: 0  relabelled: 0 
+
+russell_ranch_tautges_2019 native_grass soil_bulk_density 2012-10-08 
+                                                                  96 
+labels given: 7-1E 7-1W 8-6E 8-6W 
+Russell BD rows unlabelled before restore: 97  after: 1  of 4452 
