@@ -44,7 +44,7 @@ are used only for cross-checking, never as a fill source.
 **`replicate_id` is the Century Experiment plot label**, as the Wolf et al. (2018) files
 write it: the plot, then `E` or `W` where the row is the east or west half (`1-1E`,
 `7-1W`), and no suffix where the source gives one value for the whole plot (`1-2`).
-Every row carries one, 196 labels on 66 plots. Each row was matched back to its line in
+12,727 of the 19,790 rows carry one, 191 labels on 64 plots. Each row was matched back to its line in
 the Wolf et al. files on variable, date, depth, treatment, half and value, and all
 20,462 rows of the earlier curation matched
 ([ccmmf/organization#274](https://github.com/ccmmf/organization/issues/274)). A group
@@ -56,8 +56,18 @@ the 2012-10-08 native grass sampling, whose source labels carry surrounding spac
 underscore (`1_3`, `1_2W`), so a join between the two datasets needs the separator
 normalised.
 
-⚠️ **303 rows still repeat an earlier row in every column**: bulk density 131, total N
-124, total C 27, NO₃-N 18 and NH₄-N 3. Each is a separate line of the Wolf et al. (2018)
+⚠️ **7,063 rows keep only the half, because the source contradicts itself on the plot.**
+In `soil_extracts_N_all.csv` the plot and the `system_name` of a line disagree, judged
+against `plot_system.csv`, on 2,727 of 3,484 lines, in every sampling year (1994 to 2007),
+while total C and N, soil organic matter and every yield file agree on every line. The
+N file's plot cannot be trusted, so no NH₄-N or NO₃-N row (6,964) carries a plot; their
+`treatment_id` comes from `system_name`, as before. The 97 bulk density lines and 2 wheat
+lines whose plot and `system_name` disagree keep only the half too. Apart from those, each
+plot label belongs to one treatment, except the six Irrigated Wheat/Legume plots (4-7, 4-8,
+5-1, 5-2, 7-5, 7-6) that became Alfalfa/Corn/Tomato in 2012.
+
+⚠️ **352 rows still repeat an earlier row in every column**: bulk density 136, total N
+124, NO₃-N 52, total C 27 and NH₄-N 13. Each is a separate line of the Wolf et al. (2018)
 files, on the same plot, depth and date, that no curated column tells apart:
 
 | Cause | Rows |
@@ -66,6 +76,8 @@ files, on the same plot, depth and date, that no curated column tells apart:
 | bulk density cores that differ only in residue gravel weight (2003) | 7 |
 | repeated total C and N analyses of one sample that differ only in the other element (1993, 1995, 1997) | 151 (N 124, C 27) |
 | NH₄-N and NO₃-N extracts that differ only in the other ion (10 of the NO₃-N rows also in sampling location) | 21 (NO₃-N 18, NH₄-N 3) |
+| NH₄-N and NO₃-N rows of different plots that match once the plot is withheld (above) | 44 (NO₃-N 34, NH₄-N 10) |
+| bulk density rows of different plots that match once the plot is withheld (above) | 5 |
 
 They are kept, because each is a real record, so a row count is not a sample size.
 Before the plot labels were restored 1,188 rows repeated: 763 were other plots, resolved
@@ -278,7 +290,7 @@ the dates the source reports. **Point dates are never invented.**
   [Russell Ranch workbook](https://docs.google.com/spreadsheets/d/1UXKQy0EUEtPBHIjtuf6d-cdQf6sSq0wiZfC_sW_13S0),
   each with that reason and as it would now read (`grain_dry_yield`,
   `hand_harvest`, plot label); ingest does not read the tab. They are also
-  recoverable from `data/observations.csv` at commit b9980f1 on `main`
+  recoverable from `data/observations.csv` at commit b9980f1 on `develop`
   (`variable = wheat_hh_dry_grain_yield_kg_ha`).
 - **A machine yield the source gives once per plot is kept once.** The
   Century Experiment files measure corn and wheat machine yield once per

@@ -107,7 +107,8 @@ normalised; after that, all 48 plot labels here appear there.
 
 The separate `russell_ranch_tautges_2019` dataset holds 19,790 soil, nutrient,
 biomass, and yield observations, including 4,452 bulk-density and 2,180
-total-carbon rows, each with its Century Experiment plot label. Those profile
+total-carbon rows; all of the carbon rows and all but 97 of the bulk density rows carry
+the Century Experiment plot label (see that report). Those profile
 observations may support other analyses, but they were not inputs to this ESM2
 calculation. Carbon and bulk-density campaigns differ in some years, and some
 bulk densities are implausible. The Raffeld files pair carbon with bulk density
