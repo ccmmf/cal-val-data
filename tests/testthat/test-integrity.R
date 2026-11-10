@@ -55,7 +55,7 @@ test_that("observation repeats stay within the known Russell Ranch rows", {
     character(0),
     info = paste("repeated observation rows outside the known set;", where)
   )
-  expect_lte(sum(dup), 352)
+  expect_lte(sum(dup), 347)
 })
 
 test_that("management repeats stay within the known Russell Ranch rows", {

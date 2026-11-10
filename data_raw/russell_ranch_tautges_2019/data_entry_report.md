@@ -44,7 +44,7 @@ are used only for cross-checking, never as a fill source.
 **`replicate_id` is the Century Experiment plot label**, as the Wolf et al. (2018) files
 write it: the plot, then `E` or `W` where the row is the east or west half (`1-1E`,
 `7-1W`), and no suffix where the source gives one value for the whole plot (`1-2`).
-12,727 of the 19,790 rows carry one, 191 labels on 64 plots. Each row was matched back to its line in
+12,823 of the 19,790 rows carry one, 195 labels on 66 plots. Each row was matched back to its line in
 the Wolf et al. files on variable, date, depth, treatment, half and value, and all
 20,462 rows of the earlier curation matched
 ([ccmmf/organization#274](https://github.com/ccmmf/organization/issues/274)). A group
@@ -56,17 +56,25 @@ the 2012-10-08 native grass sampling, whose source labels carry surrounding spac
 underscore (`1_3`, `1_2W`), so a join between the two datasets needs the separator
 normalised.
 
-⚠️ **7,063 rows keep only the half, because the source contradicts itself on the plot.**
-In `soil_extracts_N_all.csv` the plot and the `system_name` of a line disagree, judged
-against `plot_system.csv`, on 2,727 of 3,484 lines, in every sampling year (1994 to 2007),
-while total C and N, soil organic matter and every yield file agree on every line. The
-N file's plot cannot be trusted, so no NH₄-N or NO₃-N row (6,964) carries a plot; their
-`treatment_id` comes from `system_name`, as before. The 97 bulk density lines and 2 wheat
-lines whose plot and `system_name` disagree keep only the half too. Apart from those, each
-plot label belongs to one treatment, except the six Irrigated Wheat/Legume plots (4-7, 4-8,
-5-1, 5-2, 7-5, 7-6) that became Alfalfa/Corn/Tomato in 2012.
+⚠️ **6,967 rows carry no plot label, because the source contradicts itself on the plot.**
+Their `replicate_id` is empty, as it was before the plot labels were added. In
+`soil_extracts_N_all.csv` the plot and the `system_name` of a line disagree, judged against
+`plot_system.csv` (both trimmed of spaces), on 2,727 of 3,484 lines, in every sampling year
+(1994 to 2007), while total C and N, soil organic matter and every yield file agree on every
+line. The N file's plot cannot be trusted, so no NH₄-N or NO₃-N row (6,964) carries a plot;
+their `treatment_id` comes from `system_name`, as before. One bulk density line (plot 7-4,
+2007-12-03) and 2 wheat lines (8-3 in 2006, 8-6 in 1995) whose plot and `system_name`
+disagree carry no plot either. Apart from those, each plot label belongs to one treatment,
+except the six Irrigated Wheat/Legume plots (4-7, 4-8, 5-1, 5-2, 7-5, 7-6) that became
+Alfalfa/Corn/Tomato in 2012.
 
-⚠️ **352 rows still repeat an earlier row in every column**: bulk density 136, total N
+⚠️ **306 rows on those six plots keep `irr_wheat_legume` after it ended (2011-12-31)**:
+288 bulk density rows of 2012-10-08 and 18 tomato yield rows of 2013-08-20. The source
+files name these lines by the plots' old system (`old_system_name` in `plot_system.csv`),
+and `treatment_id` follows the file's `system_name`. They are left as the source gives
+them here; relabelling them `alf_corn_tomato` is a separate decision.
+
+⚠️ **347 rows still repeat an earlier row in every column**: bulk density 131, total N
 124, NO₃-N 52, total C 27 and NH₄-N 13. Each is a separate line of the Wolf et al. (2018)
 files, on the same plot, depth and date, that no curated column tells apart:
 
@@ -77,10 +85,9 @@ files, on the same plot, depth and date, that no curated column tells apart:
 | repeated total C and N analyses of one sample that differ only in the other element (1993, 1995, 1997) | 151 (N 124, C 27) |
 | NH₄-N and NO₃-N extracts that differ only in the other ion (10 of the NO₃-N rows also in sampling location) | 21 (NO₃-N 18, NH₄-N 3) |
 | NH₄-N and NO₃-N rows of different plots that match once the plot is withheld (above) | 44 (NO₃-N 34, NH₄-N 10) |
-| bulk density rows of different plots that match once the plot is withheld (above) | 5 |
 
 They are kept, because each is a real record, so a row count is not a sample size.
-Before the plot labels were restored 1,188 rows repeated: 763 were other plots, resolved
+Before the plot labels were restored 1,188 rows repeated: 719 were other plots, resolved
 by the label, and 118 tomato rows and 4 wheat machine rows were source repeats, removed
 (see Curation Decisions and Caveats).
 

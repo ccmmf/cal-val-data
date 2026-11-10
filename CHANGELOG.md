@@ -88,9 +88,9 @@ Changes to datasets, schemas, and curation workflows are documented here.
   `field_harvest` remains only on the 7 US-Twt rice rows. In
   `russell_ranch_tautges_2019`, `replicate_id` now holds the Century
   Experiment plot label (`1-1E`, `7-1W`, or `1-2` for a whole plot),
-  matched to the Wolf et al. (2018) files, on 12,727 of 19,790 rows; NH4-N
-  and NO3-N rows and 99 others keep only the half, because the source's plot
-  and system disagree there (2,727 of 3,484 lines of its N file)
+  matched to the Wolf et al. (2018) files, on 12,823 of 19,790 rows; NH4-N
+  and NO3-N rows and 3 others stay empty, because the source's plot and
+  system disagree there (2,727 of 3,484 lines of its N file)
   ([ccmmf/organization#274](https://github.com/ccmmf/organization/issues/274)).
   The 309 hand harvested wheat rows move to a new `excluded_obs` tab in the
   Russell workbook, because their size is that of whole plant biomass
@@ -98,7 +98,7 @@ Changes to datasets, schemas, and curation workflows are documented here.
   on both halves of a plot are kept once per plot (245 copies removed), and
   118 tomato lines the source lists twice are removed. `observations` goes
   from 37,313 to 36,641 rows (`russell_ranch_tautges_2019` 20,462 to
-  19,790), and the known repeated observation rows from 1,188 to 352, with
+  19,790), and the known repeated observation rows from 1,188 to 347, with
   the test cap lowered to match. See the Russell report in `data_raw/`.
 - Salinas lettuce harvest rows: `harvested_component` is `heart`, not
   `head`, and the `crops` entry for romaine lettuce says hearts harvested,

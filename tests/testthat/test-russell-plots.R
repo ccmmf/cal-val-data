@@ -19,8 +19,8 @@ test_that("Russell Ranch rows carry the source plot label where the source is co
   # so no NH4-N or NO3-N row takes a plot
   soil_n <- rr$variable %in% c("soil_ammonium_nitrogen_concentration", "soil_nitrate_nitrogen_concentration")
   expect_false(any(lab[soil_n]))
-  # every other row has its plot, except 97 bulk density and 2 wheat lines whose plot and system disagree
-  expect_equal(sum(!lab[!soil_n]), 99L)
+  # every other row has its plot, except 1 bulk density and 2 wheat lines whose plot and system disagree
+  expect_equal(sum(!lab[!soil_n]), 3L)
   # one treatment per plot, apart from the six Irrigated Wheat/Legume plots that became
   # Alfalfa/Corn/Tomato in 2012
   plot <- sub("[EW]$", "", rr$replicate_id[lab])

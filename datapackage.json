@@ -548,7 +548,7 @@
           {
             "name": "replicate_id",
             "type": "string",
-            "description": "replicate label as the source uses it; numeric at some sites, lettered blocks or named zones at others; in russell_ranch_tautges_2019 the Century Experiment plot label (1-1E, 7-1W: plot, then E or W for the east or west half; no suffix for the whole plot), which raffeld_2024 writes with an underscore (1_3, 1_2W); NH4-N and NO3-N rows and 99 others keep only E or W, because the source's plot and system disagree there"
+            "description": "replicate label as the source uses it; numeric at some sites, lettered blocks or named zones at others; in russell_ranch_tautges_2019 the Century Experiment plot label (1-1E, 7-1W: plot, then E or W for the east or west half; no suffix for the whole plot), which raffeld_2024 writes with an underscore (1_3, 1_2W); empty on NH4-N and NO3-N rows and 3 others, because the source's plot and system disagree there"
           },
           {
             "name": "study_year",
