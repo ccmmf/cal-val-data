@@ -1,0 +1,7 @@
+$ cd data_raw/white_salinas_2020 && Rscript correct_soc_stocks_2024.R   # temp copy of HEAD data/ + data_raw/white_salinas_2020
+correction factor 0.905 (single cells 0.902 to 0.909; standard errors 0.907)
+block means vs 2020 S1: slope 1.0012, RMS 0.39, max 0.95 Mg C ha-1
+rescaled block means vs 2024 S1: RMS 0.35, max 0.87 Mg C ha-1
+data/observations.csv holds the corrected values
+wrote 288 rows to soc_stocks_0_30cm_corrected_2024.csv
+regenerated soc_stocks_0_30cm_corrected_2024.csv is byte-identical to the committed file

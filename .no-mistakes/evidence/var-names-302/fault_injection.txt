@@ -1,0 +1,22 @@
+dup injected; rows 36642 
+--- validate.R (dup)
+WARNING: observations has 348 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / soil_bulk_density 132; russell_ranch_tautges_2019 / soil_total_nitrogen_concentration 124; russell_ranch_tautges_2019 / soil_nitrate_nitrogen_concentration 52; russell_ranch_tautges_2019 / soil_total_carbon_concentration 27; russell_ranch_tautges_2019 / soil_ammonium_nitrogen_concentration 13]
+validated 10 table(s) with 6 warning(s)
+--- tests (dup)
+test-integrity.R failed tests: observation repeats stay within the known Russell Ranch rows 
+test-russell-plots.R failed tests:  
+retired injected; rows 36641 
+--- validate.R (retired)
+WARNING: observations variable -> variables.name has 1 unmatched value(s): SOC_stock_Mg_ha
+WARNING: observations has 347 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / soil_bulk_density 131; russell_ranch_tautges_2019 / soil_total_nitrogen_concentration 124; russell_ranch_tautges_2019 / soil_nitrate_nitrogen_concentration 52; russell_ranch_tautges_2019 / soil_total_carbon_concentration 27; russell_ranch_tautges_2019 / soil_ammonium_nitrogen_concentration 13]
+validated 10 table(s) with 7 warning(s)
+--- tests (retired)
+test-integrity.R failed tests: validate warns only about the known gaps 
+test-russell-plots.R failed tests: old variable names are gone 
+nh4plot injected; rows 36641 
+--- validate.R (nh4plot)
+WARNING: observations has 347 row(s) repeating an earlier row in every column [russell_ranch_tautges_2019 / soil_bulk_density 131; russell_ranch_tautges_2019 / soil_total_nitrogen_concentration 124; russell_ranch_tautges_2019 / soil_nitrate_nitrogen_concentration 52; russell_ranch_tautges_2019 / soil_total_carbon_concentration 27; russell_ranch_tautges_2019 / soil_ammonium_nitrogen_concentration 13]
+validated 10 table(s) with 6 warning(s)
+--- tests (nh4plot)
+test-integrity.R failed tests:  
+test-russell-plots.R failed tests: Russell Ranch rows carry the source plot label where the source is consistent 

@@ -1,0 +1,46 @@
+== S6 restore commit ca63889: rows going from empty replicate_id to a label
+row order and all other columns identical across the restore: TRUE 
+rows whose replicate_id changed: 96 
+, ,  = soil_bulk_density,  = 2012-10-08
+
+          
+from_empty native_grass
+      TRUE           96
+
+restored labels: 7-1E 7-1W 8-6E 8-6W 
+any space in a label now: FALSE 
+native grass BD rows now: 144 labelled: 144 
+restore commit observations identical to HEAD: TRUE 
+== S8b dropped rows by category (method included in the match)
+old Russell yield methods: field_harvest 
+new rows with no old counterpart (method included): 15457 
+keys where new has more copies than old: 0 
+               bulk_density_g_cm3                  CH4_flux_mg_m2_d 
+                             4518                                70 
+                  CO2_flux_g_m2_d     corn_grain_mh_dry_yield_kg_ha 
+                               70                               101 
+cover_crop_shoot_dry_matter_Mg_ha                 N2O_flux_g_N_ha_d 
+                               48                                54 
+                 N2O_flux_mg_m2_d                   nitrate_N_mg_kg 
+                               70                               108 
+            rice_grain_yield_t_ha                    SOC_conc_mg_kg 
+                                7                               288 
+                  SOC_stock_Mg_ha               soil_carbon_content 
+                              384                                 6 
+                 soil_nh4_n_mg_kg             soil_nitrogen_content 
+                             3484                                 6 
+                 soil_no3_n_mg_kg           soil_organic_matter_pct 
+                             3480                               101 
+   tomato_green_fresh_yield_Mg_ha         tomato_mh_dry_yield_Mg_ha 
+                               30                                28 
+     tomato_red_fresh_yield_Mg_ha       tomato_vine_dry_yield_Mg_ha 
+                               30                                30 
+                      total_C_pct                  total_carbon_pct 
+                                6                              2180 
+               total_N_conc_mg_kg                       total_N_pct 
+                              108                                 6 
+               total_nitrogen_pct    wheat_hh_dry_grain_yield_kg_ha 
+                             2180                               309 
+   wheat_mh_dry_grain_yield_kg_ha 
+                              144 
+total dropped: 17846 

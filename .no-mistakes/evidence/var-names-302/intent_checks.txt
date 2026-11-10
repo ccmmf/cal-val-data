@@ -1,0 +1,107 @@
+== S1 table sizes
+[PASS] observations 37,313 -> 36,641 37313 -> 36641
+[PASS] russell_ranch_tautges_2019 20,462 -> 19,790 20462 -> 19790
+[PASS] variables 106 -> 88 106 -> 88
+[PASS] methods 49 -> 51 (hand_harvest, machine_harvest added) 49 -> 51
+== S2 one name per quantity
+retired names: 33 
+ [1] "alfalfa_dry_yield_kg_ha"           "bulk_density_g_cm3"               
+ [3] "CH4_flux_mg_m2_d"                  "CO2_flux"                         
+ [5] "CO2_flux_g_m2_d"                   "corn_grain_dry_yield_kg_ha"       
+ [7] "corn_grain_mh_dry_yield_kg_ha"     "corn_total_biomass_kg_ha"         
+ [9] "cover_crop_dry_biomass_kg_ha"      "cover_crop_shoot_dry_matter_Mg_ha"
+[11] "N2O_flux_g_N_ha_d"                 "N2O_flux_mg_m2_d"                 
+[13] "nitrate_N_mg_kg"                   "rice_grain_yield_t_ha"            
+[15] "SOC_conc_mg_kg"                    "SOC_stock_Mg_ha"                  
+[17] "soil_carbon_content"               "soil_nh4_n_mg_kg"                 
+[19] "soil_nitrogen_content"             "soil_no3_n_mg_kg"                 
+[21] "soil_organic_matter_pct"           "sudangrass_dry_yield_kg_ha"       
+[23] "tomato_green_fresh_yield_Mg_ha"    "tomato_mh_dry_yield_Mg_ha"        
+[25] "tomato_red_fresh_yield_Mg_ha"      "tomato_vine_dry_yield_Mg_ha"      
+[27] "total_C_pct"                       "total_carbon_pct"                 
+[29] "total_N_conc_mg_kg"                "total_N_pct"                      
+[31] "total_nitrogen_pct"                "wheat_hh_dry_grain_yield_kg_ha"   
+[33] "wheat_mh_dry_grain_yield_kg_ha"   
+new names: 15 
+ [1] "aboveground_dry_biomass"             
+ [2] "fruit_dry_yield"                     
+ [3] "grain_dry_yield"                     
+ [4] "grain_yield"                         
+ [5] "green_fruit_fresh_yield"             
+ [6] "harvested_dry_biomass"               
+ [7] "red_fruit_fresh_yield"               
+ [8] "soil_ammonium_nitrogen_concentration"
+ [9] "soil_CO2_flux"                       
+[10] "soil_nitrate_nitrogen_concentration" 
+[11] "soil_organic_carbon_concentration"   
+[12] "soil_organic_matter_concentration"   
+[13] "soil_total_carbon_concentration"     
+[14] "soil_total_nitrogen_concentration"   
+[15] "vine_dry_biomass"                    
+[PASS] CO2_flux removed, soil_CO2_flux present 
+[PASS] old CO2_flux had no observation rows (unused duplicate) 
+[PASS] no retired name left in observations 
+[PASS] every observation variable is declared in variables.csv 
+[PASS] no variable name embeds a unit or crop token 
+[PASS] tomato red and green fresh fruit kept apart 505 505
+== S3 harvest methods
+[PASS] Russell yields use only hand_harvest / machine_harvest hand_harvest,machine_harvest
+[PASS] field_harvest stays only on 7 US-Twt rice rows 7 rice ameriflux_us_twt_mvp
+[PASS] no hand harvested wheat left in observations 
+[PASS] 309 hand wheat rows existed before 
+== S4 plot labels (#274)
+[PASS] 12,823 labelled, 6,967 empty 12823 6967
+[PASS] 195 labels on 66 plots 195 66
+[PASS] labels are trimmed and well formed 
+[PASS] no NH4-N or NO3-N row carries a plot (6,964 rows) 6964 0
+               variable  crop   min_date     treatment_id          method
+6308  soil_bulk_density    NA 2007-12-03 irr_wheat_legume       soil_core
+19651   grain_dry_yield wheat 2006-06-28 irr_wheat_fallow machine_harvest
+19888   grain_dry_yield wheat 1995-07-05 irr_wheat_fallow machine_harvest
+        value min_depth max_depth
+6308     1.44         0        15
+19651 2003.24        NA        NA
+19888 4792.61        NA        NA
+[PASS] the 3 other unlabelled rows: 1 BD 2007-12-03, wheat 2006 and wheat 1995 
+[PASS] old replicate_id held only the half (E, W, NA) E,W,NA
+== S5 one treatment per plot except the six IWL plots
+[PASS] only 4-7, 4-8, 5-1, 5-2, 7-5, 7-6 change treatment 4-7,4-8,5-1,5-2,7-5,7-6
+                  
+                   FALSE TRUE
+  alf_corn_tomato      0   93
+  irr_wheat_legume   585  306
+[PASS] 306 rows keep irr_wheat_legume after 2011-12-31 (288 BD 2012-10-08, 18 tomato 2013-08-20) 306 288 18
+plots shared with raffeld_2024: 48 
+[1] plot        trt_raffeld trt_russell
+<0 rows> (or 0-length row.names)
+[PASS] Russell plot -> treatment agrees with raffeld_2024 on every shared plot (pre-2012 rows) 48 plots compared
+== S6 native grass bulk density labels restored
+[PASS] every native grass BD row of 2012-10-08 (144, incl. the 96 restored) carries a trimmed plot label 144 144
+[PASS] 4,451 of 4,452 Russell BD rows labelled 4451 / 4452
+== S7 machine yields once per plot, tomato source repeats removed
+[PASS] no corn/wheat machine yield copied across a plot's halves 
+[PASS] 2012-09-04 tomato lines no longer listed twice 118 rows, 0 dups
+== S8 values and units unchanged (old snapshot vs new)
+[PASS] map covers every retired name with observation rows 
+[PASS] same columns before and after 
+[PASS] no observation row is new (every new row matches an old row on all value columns) 0 new-only rows
+[PASS] exactly 672 old rows dropped (309 hand wheat + 245 machine copies + 118 tomato repeats) 672 old-only rows
+
+ corn_grain_mh_dry_yield_kg_ha tomato_green_fresh_yield_Mg_ha 
+                           202                             60 
+     tomato_mh_dry_yield_Mg_ha   tomato_red_fresh_yield_Mg_ha 
+                            56                             60 
+   tomato_vine_dry_yield_Mg_ha wheat_hh_dry_grain_yield_kg_ha 
+                            60                            309 
+wheat_mh_dry_grain_yield_kg_ha 
+                           287 
+[PASS] dropped rows are all Russell Ranch 
+[PASS] no new (variable, reported_units) pair introduced 
+== S9 carbon / bulk density pairing figures in the docs
+carbon rows: 2180  any year: 1664 (76.3%)  same year: 24 (1.1%)  halves pooled: 279 (12.8%) 
+[PASS] pairing: any year 1,664 (76.3%) 1664 (76.3%)
+[PASS] pairing: same year 24 (1.1%) 24 (1.1%)
+[PASS] pairing: halves pooled 279 (12.8%) 279 (12.8%)
+[PASS] pooled pairs only in 2003 and 2012 2003,2012
+
+ 37 of 37 checks pass

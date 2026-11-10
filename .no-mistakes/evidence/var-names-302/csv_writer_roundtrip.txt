@@ -1,0 +1,10 @@
+citations.csv              80 rows  rewritten by readr::write_csv byte-identical: TRUE
+coverage.csv               32 rows  rewritten by readr::write_csv byte-identical: TRUE
+crops.csv                  14 rows  rewritten by readr::write_csv byte-identical: TRUE
+managements.csv          4350 rows  rewritten by readr::write_csv byte-identical: FALSE
+methods.csv                51 rows  rewritten by readr::write_csv byte-identical: TRUE
+observations.csv        36641 rows  rewritten by readr::write_csv byte-identical: FALSE
+sites.csv                  13 rows  rewritten by readr::write_csv byte-identical: TRUE
+treatment_pairs.csv        24 rows  rewritten by readr::write_csv byte-identical: TRUE
+treatments.csv             35 rows  rewritten by readr::write_csv byte-identical: FALSE
+variables.csv              88 rows  rewritten by readr::write_csv byte-identical: TRUE
