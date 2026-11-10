@@ -563,7 +563,7 @@
           {
             "name": "max_depth",
             "type": "number",
-            "description": "cm; sampled interval for depth-based observations; reference interval for equivalent-soil-mass stocks, with actual integrated depth in attributes_json.equivalent_depth_cm"
+            "description": "cm; sampled interval for depth-based observations; reference interval for equivalent-soil-mass stocks, with actual integrated depth in attributes_json.equivalent_depth_cm where the source reports it; empty on the AmeriFlux Delta soil rows, whose layer is in attributes_json (reported_layer_top_cm, reported_layer_bottom_cm)"
           },
           {
             "name": "citation",

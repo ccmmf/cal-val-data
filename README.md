@@ -64,7 +64,7 @@ Core variables, in reported units. A variable name gives the quantity only: the 
 | `soil_organic_carbon_content` | Mg C ha-1 | soil organic carbon stock; `min_depth` / `max_depth` give the sampled interval for fixed-depth stocks and the reference interval for equivalent-soil-mass stocks |
 | `soil_organic_carbon_concentration` | mg C kg-1 soil | soil organic carbon concentration |
 | `soil_bulk_density` | g cm-3 | soil bulk density |
-| `soil_total_carbon_concentration` | %; % dry weight; g kg-1 | total soil carbon by dry combustion |
+| `soil_total_carbon_concentration` | %; % dry weight; g kg-1 | total soil carbon (organic plus inorganic); the row's method gives the analysis |
 | `soil_total_nitrogen_concentration` | %; % dry weight; mg N kg-1 soil; g kg-1 | total soil nitrogen |
 | `soil_nitrate_nitrogen_concentration` | mg kg-1; mg NO3-N kg-1 soil | extractable soil nitrate nitrogen |
 | `N2O_flux` | source-reported units | nitrous oxide flux; basis and support vary by source (see [Coverage](#coverage)) |
@@ -156,7 +156,7 @@ Each workbook tab maps to one CSV in `data/`. Full field schema, types, and keys
 | `treatment_id` | string | foreign key to `treatments.name` |
 | `replicate_id` | string | block, plot, core, or chamber identifier as the source labels it; `russell_ranch_tautges_2019` rows carry the Century Experiment plot label (`1-1E`, `7-1W`, or `1-2` for a whole plot), except NH4-N and NO3-N and 3 other rows where the source's plot and system disagree, which are empty; `raffeld_2024` writes the same labels with an underscore (`1_3`, `1_2W`) |
 | `study_year` | number | experiment year or calendar year |
-| `min_depth`, `max_depth` | number | cm; sampled interval for depth-based observations and reference interval for equivalent-soil-mass stocks; actual integrated depth is recorded in `attributes_json.equivalent_depth_cm` |
+| `min_depth`, `max_depth` | number | cm; sampled interval for depth-based observations and reference interval for equivalent-soil-mass stocks; actual integrated depth is recorded in `attributes_json.equivalent_depth_cm` where the source reports it; empty on the AmeriFlux Delta soil rows, whose layer is in `attributes_json` (`reported_layer_top_cm`, `reported_layer_bottom_cm`) |
 | `citation` | string | DOI, foreign key to `citations.doi` |
 | `fill_status` | string | provenance code (see [Conventions](#conventions)) |
 | `notes` | string | free text, including date precision caveats |
