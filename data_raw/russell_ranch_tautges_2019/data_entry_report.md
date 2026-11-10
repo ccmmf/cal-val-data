@@ -76,7 +76,9 @@ them here; relabelling them `alf_corn_tomato` is a separate decision.
 
 ⚠️ **347 rows still repeat an earlier row in every column**: bulk density 131, total N
 124, NO₃-N 52, total C 27 and NH₄-N 13. Each is a separate line of the Wolf et al. (2018)
-files, on the same plot, depth and date, that no curated column tells apart:
+files, on the same depth and date, that no curated column tells apart. 303 are on the
+same plot; the other 44 are NH₄-N and NO₃-N rows of different plots whose plot is
+withheld (above):
 
 | Cause | Rows |
 |---|---|
