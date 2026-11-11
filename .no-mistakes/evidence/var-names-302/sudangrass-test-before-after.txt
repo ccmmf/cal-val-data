@@ -1,0 +1,38 @@
+### test-russell-plots.R (from f5fa52f) against data/ at e8837f7
+[ FAIL 2 | WARN 0 | SKIP 0 | PASS 11 ]
+══ Failed tests ════════════════════════════════════════════════════════════════
+── Failure ('test-russell-plots.R:68:3'): harvested_dry_biomass holds only biomass taken off the field ──
+all(substr(hv$min_date[hv$crop == "sudangrass"], 1, 4) == "1993") is not TRUE
+`actual`:   FALSE
+`expected`: TRUE 
+── Failure ('test-russell-plots.R:71:3'): harvested_dry_biomass holds only biomass taken off the field ──
+all(sg$variable == "aboveground_dry_biomass") is not TRUE
+`actual`:   FALSE
+`expected`: TRUE 
+[ FAIL 2 | WARN 0 | SKIP 0 | PASS 11 ]
+                                                                           test
+1 Russell Ranch rows carry the source plot label where the source is consistent
+2                                                   old variable names are gone
+3       Russell Ranch yields name their harvest method and leave hand wheat out
+4                  harvested_dry_biomass holds only biomass taken off the field
+5                a machine yield copied onto both halves of a plot is kept once
+  nb failed
+1  4      0
+2  1      0
+3  3      0
+4  4      2
+5  1      0
+### test-russell-plots.R (from f5fa52f) against data/ at f5fa52f
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 13 ]
+                                                                           test
+1 Russell Ranch rows carry the source plot label where the source is consistent
+2                                                   old variable names are gone
+3       Russell Ranch yields name their harvest method and leave hand wheat out
+4                  harvested_dry_biomass holds only biomass taken off the field
+5                a machine yield copied onto both halves of a plot is kept once
+  nb failed
+1  4      0
+2  1      0
+3  3      0
+4  4      0
+5  1      0

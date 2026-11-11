@@ -1,25 +1,59 @@
-=== test-russell-plots.R
-russell-plots: .........
+russell-plots: .............
 
-══ DONE ════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-test-russell-plots.R: tests=4 passed_expectations=9 failed=0 skipped=0 errors=0
-=== test-integrity.R
-integrity: ......................
-
-══ DONE ════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-test-integrity.R: tests=18 passed_expectations=22 failed=0 skipped=0 errors=0
-=== test-calval-metadata.R
+══ DONE ════════════════════════════════════════════════════════════════════════
+🧿 Your tests look perfect 🧿
 calval-metadata: ................................
 
-══ DONE ════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-test-calval-metadata.R: tests=4 passed_expectations=32 failed=0 skipped=0 errors=0
-=== test-validate-checks.R
+══ DONE ════════════════════════════════════════════════════════════════════════
+integrity: ......................
+
+══ DONE ════════════════════════════════════════════════════════════════════════
 validate-checks: .................................................
 
-══ DONE ════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-test-validate-checks.R: tests=8 passed_expectations=49 failed=0 skipped=0 errors=0
-=== test-white-salinas.R
+══ DONE ════════════════════════════════════════════════════════════════════════
 white-salinas: ......................................................
 
-══ DONE ════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-test-white-salinas.R: tests=4 passed_expectations=54 failed=0 skipped=0 errors=0
+══ DONE ════════════════════════════════════════════════════════════════════════
+
+file                         test                                                                          nb fail skip  err
+test-russell-plots.R         Russell Ranch rows carry the source plot label where the source is consiste    4    0 FALSE FALSE
+test-russell-plots.R         old variable names are gone                                                    1    0 FALSE FALSE
+test-russell-plots.R         Russell Ranch yields name their harvest method and leave hand wheat out        3    0 FALSE FALSE
+test-russell-plots.R         harvested_dry_biomass holds only biomass taken off the field                   4    0 FALSE FALSE
+test-russell-plots.R         a machine yield copied onto both halves of a plot is kept once                 1    0 FALSE FALSE
+test-calval-metadata.R       white_salinas_2020 total N and nitrate-N rows carry units and level            6    0 FALSE FALSE
+test-calval-metadata.R       white_salinas_2020 marketed harvests carry the published harvest index        12    0 FALSE FALSE
+test-calval-metadata.R       CH4_flux and NEE declare source-reported units                                 1    0 FALSE FALSE
+test-calval-metadata.R       Russell wheat definitions match the systems and their N records               13    0 FALSE FALSE
+test-integrity.R             citations has its datapackage columns                                          1    0 FALSE FALSE
+test-integrity.R             sites has its datapackage columns                                              1    0 FALSE FALSE
+test-integrity.R             treatments has its datapackage columns                                         1    0 FALSE FALSE
+test-integrity.R             treatment_pairs has its datapackage columns                                    1    0 FALSE FALSE
+test-integrity.R             managements has its datapackage columns                                        1    0 FALSE FALSE
+test-integrity.R             observations has its datapackage columns                                       1    0 FALSE FALSE
+test-integrity.R             methods has its datapackage columns                                            1    0 FALSE FALSE
+test-integrity.R             variables has its datapackage columns                                          1    0 FALSE FALSE
+test-integrity.R             crops has its datapackage columns                                              1    0 FALSE FALSE
+test-integrity.R             coverage has its datapackage columns                                           1    0 FALSE FALSE
+test-integrity.R             validate_data runs in warn mode without error                                  1    0 FALSE FALSE
+test-integrity.R             observation repeats stay within the known Russell Ranch rows                   2    0 FALSE FALSE
+test-integrity.R             management repeats stay within the known Russell Ranch rows                    2    0 FALSE FALSE
+test-integrity.R             empty mgmttype stays within the known Delta rows                               2    0 FALSE FALSE
+test-integrity.R             duplicated DOIs in citations do not grow                                       2    0 FALSE FALSE
+test-integrity.R             citation repeats do not grow                                                   1    0 FALSE FALSE
+test-integrity.R             coverage repeats do not grow                                                   1    0 FALSE FALSE
+test-integrity.R             validate warns only about the known gaps                                       1    0 FALSE FALSE
+test-validate-checks.R       an exact repeat warns once with its count; one differing cell is not a repe    4    0 FALSE FALSE
+test-validate-checks.R       every copy after the first counts, and empty cells do not hide a repeat        3    0 FALSE FALSE
+test-validate-checks.R       a primary key that numbers the rows does not hide a repeated record            2    0 FALSE FALSE
+test-validate-checks.R       a DOI on two citation rows warns once and names both ids                       7    0 FALSE FALSE
+test-validate-checks.R       empty observation_level, reported_units and mgmttype warn with their count     8    0 FALSE FALSE
+test-validate-checks.R       unit_status follows the variables.csv conventions                             12    0 FALSE FALSE
+test-validate-checks.R       check_units warns per conflicting variable, names method and dataset, and o    8    0 FALSE FALSE
+test-validate-checks.R       check_units stays quiet without the columns or the dictionary                  5    0 FALSE FALSE
+test-white-salinas.R         white_salinas_2020 SOC stocks carry the White et al. (2024) correction        10    0 FALSE FALSE
+test-white-salinas.R         white_salinas_2020 cover crop biomass matches the Fig. 5 digitizer output     10    0 FALSE FALSE
+test-white-salinas.R         white_salinas_2020 compost applications are 7.6 Mg/ha oven dry per vegetabl    5    0 FALSE FALSE
+test-white-salinas.R         white_salinas_2020 calendar runs Year 1 (2004) to Year 8 (2011)               29    0 FALSE FALSE
+
+TOTAL expectations: 170  failed: 0  skipped tests: 0  errors: 0 

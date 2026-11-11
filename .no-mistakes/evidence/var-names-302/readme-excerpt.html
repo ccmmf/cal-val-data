@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README excerpt</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-size:15px;line-height:1.5;max-width:1180px;margin:20px auto;color:#1f2328}
+table{border-collapse:collapse;margin:10px 0}th,td{border:1px solid #d0d7de;padding:5px 10px;vertical-align:top}th{background:#f6f8fa}
+code{background:#eff1f3;padding:1px 4px;border-radius:4px;font-size:90%}h2{border-bottom:1px solid #d8dee4;padding-bottom:4px}
+.note{color:#59636e;font-size:13px;border-left:3px solid #d0d7de;padding-left:8px}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">README excerpt</h1>
+</header>
+<p class="note">
+README.md at f5fa52f (branch var-names-302), sections rendered with
+pandoc: Measured Variables, observations.csv columns, Known warnings
+</p>
+<h2 id="measured-variables">Measured Variables</h2>
+<p>Core variables, in reported units. A variable name gives the quantity
+only: the crop is in <code>crop</code> and the unit in
+<code>reported_units</code>. Where <code>variables.csv</code> declares
+more than one unit (separated by <code>;</code>), each source keeps its
+own.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 20%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr>
+<th>variable</th>
+<th>units</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>soil_organic_carbon_content</code></td>
+<td>Mg C ha-1</td>
+<td>soil organic carbon stock; <code>min_depth</code> /
+<code>max_depth</code> give the sampled interval for fixed-depth stocks
+and the reference interval for equivalent-soil-mass stocks</td>
+</tr>
+<tr>
+<td><code>soil_organic_carbon_concentration</code></td>
+<td>mg C kg-1 soil</td>
+<td>soil organic carbon concentration</td>
+</tr>
+<tr>
+<td><code>soil_bulk_density</code></td>
+<td>g cm-3</td>
+<td>soil bulk density</td>
+</tr>
+<tr>
+<td><code>soil_total_carbon_concentration</code></td>
+<td>%; % dry weight; g kg-1</td>
+<td>total soil carbon (organic plus inorganic); the row’s method gives
+the analysis</td>
+</tr>
+<tr>
+<td><code>soil_total_nitrogen_concentration</code></td>
+<td>%; % dry weight; mg N kg-1 soil; g kg-1</td>
+<td>total soil nitrogen</td>
+</tr>
+<tr>
+<td><code>soil_nitrate_nitrogen_concentration</code></td>
+<td>mg kg-1; mg NO3-N kg-1 soil</td>
+<td>extractable soil nitrate nitrogen</td>
+</tr>
+<tr>
+<td><code>N2O_flux</code></td>
+<td>source-reported units</td>
+<td>nitrous oxide flux; basis and support vary by source (see <a href="#coverage">Coverage</a>)</td>
+</tr>
+<tr>
+<td><code>CH4_flux</code></td>
+<td>source-reported units</td>
+<td>methane flux; basis and support vary by source (see <a href="#coverage">Coverage</a>)</td>
+</tr>
+</tbody>
+</table>
+<p>Supporting variables (soil organic matter fractions, texture, pH,
+biomass, yields, nitrogen inputs) accompany core targets where source
+reports them. Yield and biomass variables do not name the crop
+(<code>grain_dry_yield</code>, <code>aboveground_dry_biomass</code>,
+<code>harvested_dry_biomass</code>), so filter on <code>crop</code> as
+well: at Russell Ranch <code>aboveground_dry_biomass</code> holds corn,
+the winter cover crop and the 2008 and 2009 sudangrass, which was plowed
+under, while <code>harvested_dry_biomass</code> holds only biomass taken
+off the field (alfalfa cuttings, 1993 sudangrass hay).
+<code>method</code> separates hand from machine harvest. Full list lives
+in <code>data/variables.csv</code>.</p>
+<h3 id="observations.csv-columns">observations.csv columns</h3>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 19%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>min_date</code>, <code>max_date</code></td>
+<td>date</td>
+<td>source stated window; equal for a point sample, blank when source
+gives no date</td>
+</tr>
+<tr>
+<td><code>crop</code>, <code>variety</code></td>
+<td>string</td>
+<td>crop and variety, where reported</td>
+</tr>
+<tr>
+<td><code>sitename</code></td>
+<td>string</td>
+<td>foreign key to <code>sites.name</code></td>
+</tr>
+<tr>
+<td><code>variable</code></td>
+<td>string</td>
+<td>foreign key to <code>variables.name</code></td>
+</tr>
+<tr>
+<td><code>method</code></td>
+<td>string</td>
+<td>measurement method (see <code>methods.csv</code>)</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>number</td>
+<td>measured value, in <code>reported_units</code></td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td>number</td>
+<td>sample size; 1 for replicate level rows</td>
+</tr>
+<tr>
+<td><code>statname</code>, <code>stat</code></td>
+<td>string, number</td>
+<td>reported statistic (e.g. SE) and its value; not converted during
+curation</td>
+</tr>
+<tr>
+<td><code>treatment_id</code></td>
+<td>string</td>
+<td>foreign key to <code>treatments.name</code></td>
+</tr>
+<tr>
+<td><code>replicate_id</code></td>
+<td>string</td>
+<td>block, plot, core, or chamber identifier as the source labels it;
+<code>russell_ranch_tautges_2019</code> rows carry the Century
+Experiment plot label (<code>1-1E</code>, <code>7-1W</code>, or
+<code>1-2</code> for a whole plot), except NH4-N and NO3-N and 3 other
+rows where the source’s plot and system disagree, which are empty;
+<code>raffeld_2024</code> writes the same labels with an underscore
+(<code>1_3</code>, <code>1_2W</code>)</td>
+</tr>
+<tr>
+<td><code>study_year</code></td>
+<td>number</td>
+<td>experiment year or calendar year</td>
+</tr>
+<tr>
+<td><code>min_depth</code>, <code>max_depth</code></td>
+<td>number</td>
+<td>cm; sampled interval for depth-based observations and reference
+interval for equivalent-soil-mass stocks; actual integrated depth is
+recorded in <code>attributes_json.equivalent_depth_cm</code> where the
+source reports it; empty on the AmeriFlux Delta soil rows, whose layer
+is in <code>attributes_json</code> (<code>reported_layer_top_cm</code>,
+<code>reported_layer_bottom_cm</code>), and on the 6
+<code>nichols_modesto_2024</code> bulk density rows, whose source does
+not report the sampling depth</td>
+</tr>
+<tr>
+<td><code>citation</code></td>
+<td>string</td>
+<td>DOI, foreign key to <code>citations.doi</code></td>
+</tr>
+<tr>
+<td><code>fill_status</code></td>
+<td>string</td>
+<td>provenance code (see <a href="#conventions">Conventions</a>)</td>
+</tr>
+<tr>
+<td><code>notes</code></td>
+<td>string</td>
+<td>free text, including date precision caveats</td>
+</tr>
+<tr>
+<td><code>dataset_id</code></td>
+<td>string</td>
+<td>short source packet id, e.g. <code>white_salinas_2020</code></td>
+</tr>
+<tr>
+<td><code>reported_units</code></td>
+<td>string</td>
+<td>units as source reports them</td>
+</tr>
+<tr>
+<td><code>observation_level</code></td>
+<td>string</td>
+<td>experimental unit the row represents (e.g. <code>replicate</code>,
+<code>treatment_mean</code>); allowed values in <a href="datapackage.json">datapackage.json</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="known-warnings">Known warnings</h3>
+<p>These warnings are expected on the current data and stay until the
+workbook or source is fixed.</p>
+<ul>
+<li><strong><code>citations</code> has 19 rows that repeat an earlier
+row apart from <code>citation_id</code>.</strong> The AmeriFlux Delta
+workbook lists these papers twice, under an id derived from the DOI
+(<code>ref_10_1002_2015jg003247</code>) and under a named key
+(<code>knox2016bco</code>). Capped at 19.</li>
+<li><strong><code>citations.doi</code> has 21 values on two rows
+each.</strong> Same cause: the 19 repeats above, plus two pairs
+(<code>anthony2023cpo</code>, <code>anthony_bouldin_2024_dryad</code>)
+whose rows also differ in notes, so only this check finds them. Other
+tables reference both forms of id, so a fix keeps one id per DOI and
+repoints the references to the other. Capped at 21.</li>
+<li><strong><code>managements</code> has 2,195 rows that repeat an
+earlier row apart from <code>event_id</code>, all at
+<code>russell_ranch_davis</code></strong> (planting 760, harvest 629,
+fertilization 590, compost 216). Most copies are separate plots: Wolf et
+al. (2018) list operations by plot, and the plot id was not carried into
+the workbook. See the <a href="data_raw/russell_ranch_tautges_2019/data_entry_report.md">Russell
+Ranch report</a> and <a href="https://github.com/ccmmf/organization/issues/274">ccmmf/organization#274</a>.
+Capped at 2,195, all at that site.</li>
+<li><strong><code>managements.mgmttype</code> is empty on 42 rows, all
+Delta events</strong> (<code>delta-</code> event ids at the US-Bi1,
+US-Bi2 and US-Twt sites). The Delta workbook fills only its
+<code>event_type</code> column on these rows, and ingest drops
+<code>event_type</code> as a duplicate of <code>mgmttype</code>; the
+type survives in the event id, as in <code>delta-drainage-0001</code>.
+17 of the rows are types the <code>mgmttype</code> enum does not allow
+(drainage, termination, residue treatment, furrowing, herbicide
+application), so filling them needs the enum extended rather than the
+nearest existing label; the other 25 are flooding, irrigation and
+grazing, which it allows. Capped at 42, all <code>delta-</code>.</li>
+<li><strong><code>observations</code> has 347 rows that repeat an
+earlier row, all in <code>russell_ranch_tautges_2019</code></strong>
+(bulk density 131, total N 124, NO3-N 52, total C 27, NH4-N 13). Each is
+a separate line of the Wolf et al. (2018) files, on the same depth and
+date, that no curated column tells apart. 303 are on the same plot: bulk
+density cores with no core id in the source, repeated analyses of one
+soil sample that differ only in the other element, and extracts that
+differ only in the other ion, so a row count is not a sample size. The
+other 44 are NH4-N and NO3-N rows of different plots whose plot is
+withheld because the source contradicts itself on it. The split is in
+the <a href="data_raw/russell_ranch_tautges_2019/data_entry_report.md">Russell
+Ranch report</a>. Capped at 347, all in that dataset.</li>
+<li><strong><code>coverage</code> has 7 rows that repeat an earlier
+row.</strong> The Russell Ranch workbook’s Coverage tab carries a second
+copy of the 7 row “MVP Coverage Guidance” block, and ingest stacks it
+under the first. Capped at 7.</li>
+</ul>
+</body>
+</html>

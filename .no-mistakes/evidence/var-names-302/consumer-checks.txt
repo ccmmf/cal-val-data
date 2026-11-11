@@ -1,0 +1,78 @@
+== 1. Table sizes ==
+PASS  observations 37,313 -> 36,641   [37313 -> 36641] 
+PASS  russell_ranch_tautges_2019 20,462 -> 19,790   [20462 -> 19790] 
+PASS  variables 106 -> 88   [106 -> 88] 
+PASS  methods 49 -> 51   [49 -> 51] 
+PASS  every observation variable is in variables.csv 
+PASS  CO2_flux row removed, soil_CO2_flux present 
+PASS  old CO2_flux was unused by observations at base 
+
+== 2. Rename map (CHANGELOG) applied with values and units unchanged ==
+PASS  no observation uses a retired name   [33 retired names] 
+PASS  every base observation variable is mapped or kept 
+PASS  non-Russell datasets: every row identical to pre-rename 2da13da apart from the renamed variable   [16851 rows compared on all 27 columns] 
+PASS  Russell: no row invented (every new row's value/date/plot-free key exists in base)   [0 new keys absent from base] 
+PASS  Russell: 672 rows removed (309 hand wheat + 245 machine copies + 118 tomato)   [672 removed] 
+          corn grain_dry_yield         tomato fruit_dry_yield 
+                           101                             28 
+tomato green_fruit_fresh_yield   tomato red_fruit_fresh_yield 
+                            30                             30 
+       tomato vine_dry_biomass               wheat (excluded) 
+                            30                            309 
+         wheat grain_dry_yield 
+                           144 
+PASS  removed rows: 309 hand wheat 
+PASS  removed rows: 245 corn/wheat machine copies 
+PASS  removed rows: 118 tomato 
+PASS  base 5575ed2 -> 2da13da (PR #25 'Fill calval metadata'): only 216 Salinas N rows gain units/level, values untouched   [216 rows] 
+
+== 3. Tomato red and green fresh fruit kept apart ==
+PASS  both variables present, crop tomato   [505 red, 505 green] 
+PASS  red and green share crop, method, units, plot and date (merging would lose which is which)   [100.0% of red rows have a green twin] 
+
+== 4. Sudangrass: plowed-under 2008/2009 vs 1993 hay (target commit) ==
+PASS  harvested_dry_biomass crops are alfalfa and sudangrass only 
+PASS  harvested sudangrass is all 1993 hay (63 rows)   [63 rows] 
+PASS  24 sudangrass rows of 2008/2009, all aboveground_dry_biomass   [24] 
+PASS  2008/2009 sudangrass is hand_harvest, 1993 hay is machine_harvest 
+PASS  sudangrass values, dates, units and treatments identical to base (87 rows, only the name moved)   [87 vs 87] 
+PASS  adversarial: at parent e8837f7 those 24 rows were harvested_dry_biomass (the new test would have failed)   [24] 
+PASS  Russell aboveground_dry_biomass crops   [corn 280; sudangrass 24; winter_cover_crop 630] 
+
+== 5. Harvest methods (David on #302) ==
+PASS  field_harvest only on 7 US-Twt rice rows   [7 rows; US-Twt] 
+PASS  Russell yields use only hand_harvest/machine_harvest   [hand_harvest 2777; machine_harvest 1136] 
+PASS  no hand harvested wheat in observations 
+PASS  base had 309 hand wheat rows 
+PASS  machine corn+wheat grain rows: 103 of 570 are half rows (machine_harvest description: 'usually' once per plot)   [103 of 570] 
+PASS  machine_harvest description says 'usually' and keeps half rows where halves differ or one is given 
+
+== 6. replicate_id holds the plot label (#274) ==
+PASS  12,823 Russell rows carry a plot, 6,967 empty   [12823 / 6967] 
+PASS  195 labels on 66 plots   [195 labels, 66 plots] 
+PASS  6,967 empty-replicate rows were empty at base too   [base empty: 10745 of 20462] 
+PASS  no NH4-N or NO3-N row carries a plot   [6964 soil N rows] 
+# A tibble: 3 × 7
+  min_date   crop  variable          treatment_id     min_depth max_depth value 
+  <chr>      <chr> <chr>             <chr>            <chr>     <chr>     <chr> 
+1 2007-12-03 NA    soil_bulk_density irr_wheat_legume 0         15        1.44  
+2 2006-06-28 wheat grain_dry_yield   irr_wheat_fallow NA        NA        2003.…
+3 1995-07-05 wheat grain_dry_yield   irr_wheat_fallow NA        NA        4792.…
+PASS  other unlabelled rows: 1 bulk density 2007-12-03 + 2 wheat (2006, 1995) 
+PASS  native grass bulk density labels restored (all labelled)   [144 rows] 
+PASS  306 IWL rows after 2011-12-31 kept as documented caveat (288 BD 2012-10-08 + 18 tomato 2013-08-20)   [306 rows] 
+PASS  one treatment per plot except the 6 IWL->ACT plots 
+
+== 7. Merged definitions match their rows ==
+PASS  soil_total_carbon_concentration no longer claims dry combustion 
+PASS  soil_total_nitrogen_concentration no longer claims dry combustion 
+PASS  12 AmeriFlux Delta total C/N rows: empty depth, layer in attributes_json   [12 rows; ameriflux_us_bi1_mvp 6 ameriflux_us_bi2_mvp 2 ameriflux_us_twt_mvp 4] 
+PASS  6 Modesto bulk density rows have empty depth, definition allows it 
+PASS  equivalent_depth_cm: raffeld_2024 yes (96), white_salinas_2020 no; definition says 'where the source reports it' 
+PASS  README Measured Variables names all exist in variables.csv 
+
+== 8. Carbon to bulk density pairing figures in the Russell report ==
+carbon rows 2180; any year 1664 (76.3%); same year 24 (1.1%); pooled halves 279 (12.8%)
+PASS  report figures 2,180 / 1,664 (76.3%) / 24 (1.1%) / 279 (12.8%) reproduce 
+
+46 checks passed, 0 failed
