@@ -59,9 +59,9 @@ with no data) plus **15,498 daily soil sensor rows**.
 
 | Variable | Units | Rows |
 |---|---|---|
-| `N2O_flux_mg_m2_d` | mg N₂O m⁻² d⁻¹ | 70 |
-| `CH4_flux_mg_m2_d` | mg CH₄ m⁻² d⁻¹ | 70 |
-| `CO2_flux_g_m2_d` | g CO₂ m⁻² d⁻¹ | 70 |
+| `N2O_flux` | mg N₂O m⁻² d⁻¹ | 70 |
+| `CH4_flux` | mg CH₄ m⁻² d⁻¹ | 70 |
+| `soil_CO2_flux` | g CO₂ m⁻² d⁻¹ | 70 |
 | `soil_temperature` | °C | 5,198 |
 | `soil_water_content` | m³ m⁻³ | 5,132 |
 | `soil_oxygen_content` | % | 5,168 |
@@ -125,22 +125,30 @@ invented.**
   (CH₄, N₂O) and `umol m-2 s-1` (CO₂); curation expressed these in the daily-rate units the
   figures use, with no change of quantity. CH₄ and N₂O were converted as
   nmol m⁻² s⁻¹ × M × 0.0864 = mg m⁻² d⁻¹, with M = 16.043 g mol⁻¹ for CH₄ and 44.013 for N₂O
-  (factors 1.386115 and 3.802723), so the rows are gas mass, not CH₄-C or N₂O-N. They differ
-  from Modesto's `g N2O-N ha-1 day-1`, so N₂O is carried as a **separate variable** rather than
-  merged; any conversion to CH₄-C or N₂O-N belongs downstream in code, not in curation.
-- **New variable names carry their units** (`N2O_flux_mg_m2_d`), following the existing
-  `N2O_flux_g_N_ha_d` precedent, and deliberately do not reuse `CH4_flux` or `N2O_flux`. Those
-  are annual variables in source-reported units: `CH4_flux` holds the 11 FLUXNET-CH4 tower
-  annual totals (CH₄-C) and 7 chamber annual means from publications (CH₄ mass), and
-  `N2O_flux` the 7 matching chamber N₂O means.
-- **The publication chamber rows are not independent of these.** The 14 `CH4_flux` and
-  `N2O_flux` chamber rows, Anthony et al. (2023) Table 1 at `US-Bi1__alfalfa_chambers` and
-  Anthony and Silver (2021) Table 1 at US-Bi2, aggregate the same chamber records. At corn,
-  Anthony and Silver (2024) say years 1 to 3 were reported in Anthony and Silver (2021). At
-  alfalfa, the `n` of the US-Bi1 rows here sums to 103,013 for N₂O and 102,997 for CH₄, the
-  measurement counts Anthony et al. (2023) report, though the windows differ: the deposit's
-  `Site Year` 1 runs 2017-01-26 to 2018-06-29 and year 4 2020-07-01 to 2021-02-19, against the
-  paper's 27 January to 26 January years. Use one source per site-year as a target, never both.
+  (factors 1.386115 and 3.802723), so the rows are gas mass, not CH₄-C or N₂O-N, and differ
+  from Modesto's `g N2O-N ha-1 day-1`. Any conversion to CH₄-C or N₂O-N belongs downstream in
+  code, not in curation.
+- **The fluxes share `CH4_flux` and `N2O_flux` with other sources.** They were first curated
+  under names that carried their units (`N2O_flux_mg_m2_d`, `CH4_flux_mg_m2_d`,
+  `CO2_flux_g_m2_d`) and kept apart from `CH4_flux` and `N2O_flux` because the basis differs.
+  [ccmmf/organization#302](https://github.com/ccmmf/organization/issues/302) reversed that:
+  one name per quantity, with the basis in `reported_units`, so CH₄ and N₂O moved to `CH4_flux`
+  and `N2O_flux` and CO₂ to `soil_CO2_flux`. Both variables are declared in source-reported
+  units. `CH4_flux` (88 rows) also holds the 11 FLUXNET-CH4 tower annual totals (CH₄-C,
+  `g C m-2 yr-1`) and 7 chamber annual means from publications (CH₄ mass per year), and
+  `N2O_flux` (131 rows) the 7 matching chamber N₂O means and the 54 Modesto static chamber
+  fluxes (`g N2O-N ha-1 day-1`). Rows of one variable therefore differ in mass basis, time
+  step and support; filter on `dataset_id`, `method` or `reported_units` before using them.
+- **The publication chamber rows are not independent of these.** The 14 publication chamber
+  rows of `CH4_flux` and `N2O_flux` (`publication_anthony_2023_table_1` at
+  `US-Bi1__alfalfa_chambers` and `publication_anthony_silver_2021_table_1` at US-Bi2, from
+  Anthony et al. (2023) Table 1 and Anthony and Silver (2021) Table 1) aggregate the same
+  chamber records. At corn, Anthony and Silver (2024) say years 1 to 3 were reported in
+  Anthony and Silver (2021). At alfalfa, the `n` of the US-Bi1 rows here sums to 103,013
+  for N₂O and 102,997 for CH₄, the measurement counts Anthony et al. (2023) report, though
+  the windows differ: the deposit's `Site Year` 1 runs 2017-01-26 to 2018-06-29 and year 4
+  2020-07-01 to 2021-02-19, against the paper's 27 January to 26 January years. Use one
+  source per site-year as a target, never both.
 - **Continuous soil sensor data is curated as daily means.** The deposit logs temperature,
   water content and oxygen at 10, 30 and 50 cm every 15 minutes (2018-09-05 to 2021-10-05).
   These are curated at **daily** resolution rather than annual: a daily mean of a state

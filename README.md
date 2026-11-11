@@ -43,8 +43,8 @@ Each dataset pulls replicate level values from a public archive; companion analy
 | ---------- | ---- | -------- | ------ | ---------- | --------- | --------------- |
 | `white_salinas_2020` | salinas_socs (USDA ARS, Salinas Valley CA) | 36.62, -121.53 | 2003 to 2011 (8 yr) | 8 systems `socs_sys1`..`socs_sys8`, 4 blocks (compost with or without cover crop type, frequency, seeding rate) | SOC stock and concentration, bulk density, total N, nitrate, cover crop shoot dry matter | 10.1016/j.dib.2020.106481; 10.1371/journal.pone.0228677; 10.1371/journal.pone.0307250 (correction); 10.2134/agronj2011.0330 (cover crop biomass, management dates, fertilizer N, cover crop irrigation); 10.2134/agronj2016.06.0354 (Year 4 and 8 cover crops) |
 | `nichols_modesto_2024` | modesto_almond_usda (USDA ARS almond fertigation trial, Modesto CA) | 37.63, -121.09 | 2018 to 2019 (2 yr) | `compost` vs `no_compost` (annual compost top dress vs control, same drip fertigation) | N2O flux, total C, total N, bulk density | 10.1002/saj2.20615; 10.15482/USDA.ADC/26155504 |
-| `russell_ranch_tautges_2019` | russell_ranch_davis (UC Davis Russell Ranch Century Experiment, Davis CA) | 38.54, -121.87 | 1992 to 2014 (study years -1 to 21) | 14 systems, 13 with observations (conventional, organic, legume cover, alfalfa phase corn-tomato; irrigated and rainfed wheat; transitional; native grass reference) | total C and N, bulk density to 250 cm, NH4-N, NO3-N, soil organic matter, corn, tomato, wheat, alfalfa and cover crop yields | 10.1002/ecy.2105; 10.1111/gcb.14762 |
-| `raffeld_2024` | russell_ranch_davis (UC Davis Russell Ranch Century Experiment, Davis CA) | 38.54, -121.87 | 1993 and 2012 | 8 treatments, 6 plots each | `SOC_stock_Mg_ha` at the treatment-specific 0-30 cm reference soil mass, computed per plot with SimpleESM ESM2 | 10.5061/dryad.p2ngf1w06 |
+| `russell_ranch_tautges_2019` | russell_ranch_davis (UC Davis Russell Ranch Century Experiment, Davis CA) | 38.54, -121.87 | 1992 to 2014 (study years -1 to 21) | 14 systems, 13 with observations (conventional, organic, legume cover, alfalfa phase corn-tomato; irrigated and rainfed wheat; transitional; native grass reference) | total C and N, bulk density to 300 cm, NH4-N, NO3-N, soil organic matter, corn, tomato, wheat (machine harvest), alfalfa, sudangrass and cover crop yields and biomass, by plot | 10.1002/ecy.2105; 10.1111/gcb.14762 |
+| `raffeld_2024` | russell_ranch_davis (UC Davis Russell Ranch Century Experiment, Davis CA) | 38.54, -121.87 | 1993 and 2012 | 8 treatments, 6 plots each | `soil_organic_carbon_content` at the treatment-specific 0-30 cm reference soil mass, computed per plot with SimpleESM ESM2 | 10.5061/dryad.p2ngf1w06 |
 | `anthony_bouldin_2024` | US-Bi2 (Bouldin corn) and US-Bi1 (Bouldin alfalfa), Sacramento-San Joaquin Delta CA | 38.1091, -121.535; 38.0992, -121.499 | 2017 to 2021 (4 study years) | single system per site; 9 automated chambers per site as spatial replicates | chamber N2O, CH4 and CO2 flux, annual mean per chamber per year with standard error | 10.5061/dryad.qz612jmnx; 10.1007/s10533-023-01095-y |
 
 ### white_salinas_2020
@@ -57,20 +57,20 @@ Long term compost orchard with high frequency low concentration drip fertigation
 
 ## Measured Variables
 
-Core variables, in reported units:
+Core variables, in reported units. A variable name gives the quantity only: the crop is in `crop` and the unit in `reported_units`. Where `variables.csv` declares more than one unit (separated by `;`), each source keeps its own.
 
 | variable | units | description |
 | -------- | ----- | ----------- |
-| `SOC_stock_Mg_ha` | Mg C ha-1 | soil organic carbon stock; `min_depth` / `max_depth` give the sampled interval for fixed-depth stocks and the reference interval for equivalent-soil-mass stocks |
-| `SOC_conc_mg_kg` | mg C kg-1 soil | soil organic carbon concentration |
-| `bulk_density_g_cm3` | g cm-3 | soil bulk density |
-| `total_N_conc_mg_kg` | mg N kg-1 soil | total soil nitrogen concentration |
-| `nitrate_N_mg_kg` | mg NO3-N kg-1 soil | soil nitrate nitrogen |
-| `N2O_flux_g_N_ha_d` | g N2O-N ha-1 day-1 | nitrous oxide flux |
-| `total_C_pct` | % dry weight | total soil carbon by dry combustion |
-| `total_N_pct` | % dry weight | total soil nitrogen by dry combustion |
+| `soil_organic_carbon_content` | Mg C ha-1 | soil organic carbon stock; `min_depth` / `max_depth` give the sampled interval for fixed-depth stocks and the reference interval for equivalent-soil-mass stocks |
+| `soil_organic_carbon_concentration` | mg C kg-1 soil | soil organic carbon concentration |
+| `soil_bulk_density` | g cm-3 | soil bulk density |
+| `soil_total_carbon_concentration` | %; % dry weight; g kg-1 | total soil carbon (organic plus inorganic); the row's method gives the analysis |
+| `soil_total_nitrogen_concentration` | %; % dry weight; mg N kg-1 soil; g kg-1 | total soil nitrogen |
+| `soil_nitrate_nitrogen_concentration` | mg kg-1; mg NO3-N kg-1 soil | extractable soil nitrate nitrogen |
+| `N2O_flux` | source-reported units | nitrous oxide flux; basis and support vary by source (see [Coverage](#coverage)) |
+| `CH4_flux` | source-reported units | methane flux; basis and support vary by source (see [Coverage](#coverage)) |
 
-Supporting variables (soil organic matter fractions, texture, pH, biomass, yields, nitrogen inputs) accompany core targets where source reports them. Full list lives in `data/variables.csv`.
+Supporting variables (soil organic matter fractions, texture, pH, biomass, yields, nitrogen inputs) accompany core targets where source reports them. Yield and biomass variables do not name the crop (`grain_dry_yield`, `aboveground_dry_biomass`, `harvested_dry_biomass`), so filter on `crop` as well: at Russell Ranch `aboveground_dry_biomass` holds corn, the winter cover crop and the 2008 and 2009 sudangrass, which was plowed under, while `harvested_dry_biomass` holds only biomass taken off the field (alfalfa cuttings, 1993 sudangrass hay). `method` separates hand from machine harvest. Full list lives in `data/variables.csv`.
 
 ## Coverage
 
@@ -91,9 +91,12 @@ automated chamber at US-Bi2 and US-Bi1) and **CH4 at three** (tower annual budge
 US-Bi1 and US-Bi2, plus chamber CH4 at the two Bouldin sites). Chamber and tower values are
 different measurement supports and are not interchangeable. The mass basis also differs: N2O is
 N2O-N at Modesto and N2O mass at Bouldin, and CH4 is CH4-C in the tower budgets and CH4 mass in
-the chamber rows. `reported_units` on each row gives the basis, and `CH4_flux` and `NEE` are
-declared as `source-reported units` in `variables.csv`. These constraints are documented for
-any consumer.
+the chamber rows. Each gas is one variable, `N2O_flux` or `CH4_flux`, across supports, bases and
+time steps: tower annual totals, chamber annual values from publications, Bouldin chamber annual
+means of daily flux, and Modesto chamber fluxes per sampling date. `reported_units` on each row
+gives the basis and time step and `method` the support; `CH4_flux`, `N2O_flux` and `NEE` are
+declared as `source-reported units` in `variables.csv`. Filter on these before combining rows.
+These constraints are documented for any consumer.
 
 ## Repository Structure
 
@@ -151,9 +154,9 @@ Each workbook tab maps to one CSV in `data/`. Full field schema, types, and keys
 | `n` | number | sample size; 1 for replicate level rows |
 | `statname`, `stat` | string, number | reported statistic (e.g. SE) and its value; not converted during curation |
 | `treatment_id` | string | foreign key to `treatments.name` |
-| `replicate_id` | number | block, plot, core, or chamber identifier |
+| `replicate_id` | string | block, plot, core, or chamber identifier as the source labels it; `russell_ranch_tautges_2019` rows carry the Century Experiment plot label (`1-1E`, `7-1W`, or `1-2` for a whole plot), except NH4-N and NO3-N and 3 other rows where the source's plot and system disagree, which are empty; `raffeld_2024` writes the same labels with an underscore (`1_3`, `1_2W`) |
 | `study_year` | number | experiment year or calendar year |
-| `min_depth`, `max_depth` | number | cm; sampled interval for depth-based observations and reference interval for equivalent-soil-mass stocks; actual integrated depth is recorded in `attributes_json.equivalent_depth_cm` |
+| `min_depth`, `max_depth` | number | cm; sampled interval for depth-based observations and reference interval for equivalent-soil-mass stocks; actual integrated depth is recorded in `attributes_json.equivalent_depth_cm` where the source reports it; empty on the AmeriFlux Delta soil rows, whose layer is in `attributes_json` (`reported_layer_top_cm`, `reported_layer_bottom_cm`), and on the 6 `nichols_modesto_2024` bulk density rows, whose source does not report the sampling depth |
 | `citation` | string | DOI, foreign key to `citations.doi` |
 | `fill_status` | string | provenance code (see [Conventions](#conventions)) |
 | `notes` | string | free text, including date precision caveats |
@@ -216,7 +219,7 @@ These warnings are expected on the current data and stay until the workbook or s
 - **`citations.doi` has 21 values on two rows each.** Same cause: the 19 repeats above, plus two pairs (`anthony2023cpo`, `anthony_bouldin_2024_dryad`) whose rows also differ in notes, so only this check finds them. Other tables reference both forms of id, so a fix keeps one id per DOI and repoints the references to the other. Capped at 21.
 - **`managements` has 2,195 rows that repeat an earlier row apart from `event_id`, all at `russell_ranch_davis`** (planting 760, harvest 629, fertilization 590, compost 216). Most copies are separate plots: Wolf et al. (2018) list operations by plot, and the plot id was not carried into the workbook. See the [Russell Ranch report](data_raw/russell_ranch_tautges_2019/data_entry_report.md) and [ccmmf/organization#274](https://github.com/ccmmf/organization/issues/274). Capped at 2,195, all at that site.
 - **`managements.mgmttype` is empty on 42 rows, all Delta events** (`delta-` event ids at the US-Bi1, US-Bi2 and US-Twt sites). The Delta workbook fills only its `event_type` column on these rows, and ingest drops `event_type` as a duplicate of `mgmttype`; the type survives in the event id, as in `delta-drainage-0001`. 17 of the rows are types the `mgmttype` enum does not allow (drainage, termination, residue treatment, furrowing, herbicide application), so filling them needs the enum extended rather than the nearest existing label; the other 25 are flooding, irrigation and grazing, which it allows. Capped at 42, all `delta-`.
-- **`observations` has 1,188 rows that repeat an earlier row, all in `russell_ranch_tautges_2019`.** Most copies are separate plots: Wolf et al. (2018) report by plot, and the workbook kept only the east or west half in `replicate_id`, so plots with the same treatment, date, depth and value become identical rows. A row count is therefore not a sample size. The split is in the [Russell Ranch report](data_raw/russell_ranch_tautges_2019/data_entry_report.md); tracked in [ccmmf/organization#274](https://github.com/ccmmf/organization/issues/274). Capped at 1,188, all in that dataset.
+- **`observations` has 347 rows that repeat an earlier row, all in `russell_ranch_tautges_2019`** (bulk density 131, total N 124, NO3-N 52, total C 27, NH4-N 13). Each is a separate line of the Wolf et al. (2018) files, on the same depth and date, that no curated column tells apart. 303 are on the same plot: bulk density cores with no core id in the source, repeated analyses of one soil sample that differ only in the other element, and extracts that differ only in the other ion, so a row count is not a sample size. The other 44 are NH4-N and NO3-N rows of different plots whose plot is withheld because the source contradicts itself on it. The split is in the [Russell Ranch report](data_raw/russell_ranch_tautges_2019/data_entry_report.md). Capped at 347, all in that dataset.
 - **`coverage` has 7 rows that repeat an earlier row.** The Russell Ranch workbook's Coverage tab carries a second copy of the 7 row "MVP Coverage Guidance" block, and ingest stacks it under the first. Capped at 7.
 
 ## Usage
@@ -228,7 +231,7 @@ library(readr)
 obs <- read_csv("data/observations.csv", show_col_types = FALSE)
 
 # replicate level SOC stock
-subset(obs, variable == "SOC_stock_Mg_ha" & observation_level == "replicate")
+subset(obs, variable == "soil_organic_carbon_content" & observation_level == "replicate")
 ```
 
 ### Pull a treatment contrast

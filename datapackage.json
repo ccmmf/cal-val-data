@@ -548,7 +548,7 @@
           {
             "name": "replicate_id",
             "type": "string",
-            "description": "replicate label as the source uses it; numeric at some sites, lettered blocks or named zones at others"
+            "description": "replicate label as the source uses it; numeric at some sites, lettered blocks or named zones at others; in russell_ranch_tautges_2019 the Century Experiment plot label (1-1E, 7-1W: plot, then E or W for the east or west half; no suffix for the whole plot), which raffeld_2024 writes with an underscore (1_3, 1_2W); empty on NH4-N and NO3-N rows and 3 others, because the source's plot and system disagree there"
           },
           {
             "name": "study_year",
@@ -558,12 +558,12 @@
           {
             "name": "min_depth",
             "type": "number",
-            "description": "cm; sampled interval for depth-based observations; reference interval for equivalent-soil-mass stocks"
+            "description": "cm; sampled interval for depth-based observations; reference interval for equivalent-soil-mass stocks; empty on the AmeriFlux Delta soil rows, whose layer is in attributes_json (reported_layer_top_cm, reported_layer_bottom_cm), and on the 6 nichols_modesto_2024 bulk density rows, whose source does not report the sampling depth"
           },
           {
             "name": "max_depth",
             "type": "number",
-            "description": "cm; sampled interval for depth-based observations; reference interval for equivalent-soil-mass stocks, with actual integrated depth in attributes_json.equivalent_depth_cm"
+            "description": "cm; sampled interval for depth-based observations; reference interval for equivalent-soil-mass stocks, with actual integrated depth in attributes_json.equivalent_depth_cm where the source reports it; empty on the AmeriFlux Delta soil rows, whose layer is in attributes_json (reported_layer_top_cm, reported_layer_bottom_cm), and on the 6 nichols_modesto_2024 bulk density rows, whose source does not report the sampling depth"
           },
           {
             "name": "citation",

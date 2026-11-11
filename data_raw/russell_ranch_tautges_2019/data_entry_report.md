@@ -41,40 +41,69 @@ publication.
 carries `observation_level = replicate`. Treatment means in the analysis papers
 are used only for cross-checking, never as a fill source.
 
-⚠️ **`replicate_id` does not resolve individual plots.** It holds only `E`, `W` or
-`NA`, which is the east/west split of a plot rather than the plot itself, and its
-coverage is inconsistent between variables and years. Consumers should not assume a
-row can be traced to an experimental unit. Concretely, carbon cannot be paired with
-bulk density on the same unit: in 1993 the bulk density is entirely `W`, and in 2012
-the carbon is entirely `NA`. Matching carbon to bulk density on treatment, replicate,
-year and depth succeeds for 50 of 2,180 rows, 2.3%.
+**`replicate_id` is the Century Experiment plot label**, as the Wolf et al. (2018) files
+write it: the plot, then `E` or `W` where the row is the east or west half (`1-1E`,
+`7-1W`), and no suffix where the source gives one value for the whole plot (`1-2`).
+12,823 of the 19,790 rows carry one, 195 labels on 66 plots. Each row was matched back to its line in
+the Wolf et al. files on variable, date, depth, treatment, half and value, and all
+20,462 rows of the earlier curation matched
+([ccmmf/organization#274](https://github.com/ccmmf/organization/issues/274)). A group
+of rows identical in every column matched the same number of source lines one to one,
+so which copy took which plot does not change the table. The 96 bulk density rows of
+the 2012-10-08 native grass sampling, whose source labels carry surrounding spaces
+(`' 7-1W '`), take the trimmed label. Until then the column held only `E`, `W` or
+`NA`, the half without the plot. `raffeld_2024` writes the same plots with an
+underscore (`1_3`, `1_2W`), so a join between the two datasets needs the separator
+normalised.
 
-The plot identifiers do exist upstream. The Century Experiment release, Wolf et al.
-2018 (`10.1002/ecy.2105`), carries a `plot` column, with 177 distinct plot labels in
-the bulk density file and 189 in the total C and N file (a plot and its east and west
-halves are separate labels), and the Raffeld deposit carries the same. The resolution
-was lost when this workbook was transcribed, not in ingest. For the 96 bulk density
-rows of the 2012-10-08 native grass sampling even the east or west half was lost:
-their source plot ids carry surrounding spaces (`' 7-1W '`), and they were curated
-with `replicate_id` `NA`. See `data_raw/raffeld_2024/` for stocks computed at plot level
-from that deposit.
+⚠️ **6,967 rows carry no plot label, because the source contradicts itself on the plot.**
+Their `replicate_id` is empty, as it was before the plot labels were added. In
+`soil_extracts_N_all.csv` the plot and the `system_name` of a line disagree, judged against
+`plot_system.csv` (both trimmed of spaces), on 2,727 of 3,484 lines, in every sampling year
+(1994 to 2007), while total C and N, soil organic matter and every yield file agree on every
+line. The N file's plot cannot be trusted, so no NH₄-N or NO₃-N row (6,964) carries a plot;
+their `treatment_id` comes from `system_name`, as before. One bulk density line (plot 7-4,
+2007-12-03) and 2 wheat lines (8-3 in 2006, 8-6 in 1995) whose plot and `system_name`
+disagree carry no plot either. Apart from those, each plot label belongs to one treatment,
+except the six Irrigated Wheat/Legume plots (4-7, 4-8, 5-1, 5-2, 7-5, 7-6) that became
+Alfalfa/Corn/Tomato in 2012.
 
-⚠️ **Rows repeat because plots collapse.** In `observations`, 1,188 rows repeat an
-earlier row in every column: bulk density 536, total N 343, total C 103, NO₃-N 52,
-tomato yields 135, NH₄-N 13, wheat 4 and soil organic matter 2. Matched back to the
-Wolf et al. (2018) files, every copy matches a source line of its own: 763 come from
-another plot, 183 from another line of the same plot, and 242 from lines the source
-files themselves repeat (bulk density 124, tomato 118). In `managements`, 2,195 rows
+⚠️ **306 rows on those six plots keep `irr_wheat_legume` after it ended (2011-12-31)**:
+288 bulk density rows of 2012-10-08 and 18 tomato yield rows of 2013-08-20. The source
+files name these lines by the plots' old system (`old_system_name` in `plot_system.csv`),
+and `treatment_id` follows the file's `system_name`. They are left as the source gives
+them here; relabelling them `alf_corn_tomato` is a separate decision.
+
+⚠️ **347 rows still repeat an earlier row in every column**: bulk density 131, total N
+124, NO₃-N 52, total C 27 and NH₄-N 13. Each is a separate line of the Wolf et al. (2018)
+files, on the same depth and date, that no curated column tells apart. 303 are on the
+same plot; the other 44 are NH₄-N and NO₃-N rows of different plots whose plot is
+withheld (above):
+
+| Cause | Rows |
+|---|---|
+| bulk density cores identical in every source column (2007 and 2012; several cores per plot and depth, no core id in the source) | 124 |
+| bulk density cores that differ only in residue gravel weight (2003) | 7 |
+| repeated total C and N analyses of one sample that differ only in the other element (1993, 1995, 1997) | 151 (N 124, C 27) |
+| NH₄-N and NO₃-N extracts that differ only in the other ion (10 of the NO₃-N rows also in sampling location) | 21 (NO₃-N 18, NH₄-N 3) |
+| NH₄-N and NO₃-N rows of different plots that match once the plot is withheld (above) | 44 (NO₃-N 34, NH₄-N 10) |
+
+They are kept, because each is a real record, so a row count is not a sample size.
+Before the plot labels were restored 1,188 rows repeated: 719 were other plots, resolved
+by the label, and 118 tomato rows and 4 wheat machine rows were source repeats, removed
+(see Curation Decisions and Caveats).
+
+⚠️ **Management rows repeat because plots collapse.** In `managements`, 2,195 rows
 repeat an earlier row apart from `event_id`: planting 760, harvest 629, fertilization
 590 and compost 216. The operations files list each event by plot, and dropping the
 plot accounts for 2,190 of these; the other 5 are harvest rows that also differ in the
 source's tractor column, which was not carried over either. 123 of the compost copies
 are lines `operations_compost.csv` itself repeats, and in 2005 plots 2-3, 6-4 and 6-8
 are listed with compost on both 20 April and 20 May, which an exact match cannot see.
-So a row count is not a sample size, and management rates must not be summed per
-treatment: three identical fertilization rows are three plots, not three applications.
-Nothing is deduplicated, because most copies are real records; restoring plot ids is
-tracked in `ccmmf/organization#274`, and `scripts/validate.R` warns on both tables.
+So management rates must not be summed per treatment: three identical fertilization
+rows are three plots, not three applications. Nothing is deduplicated, because most
+copies are real records; restoring plot ids to `managements` is still open in
+`ccmmf/organization#274`, and `scripts/validate.R` warns on both tables.
 
 ---
 
@@ -102,39 +131,56 @@ tracked in `ccmmf/organization#274`, and `scripts/validate.R` warns on both tabl
 
 ## Variables Measured
 
-Ingested to the `observations` tab in reported units (20,462 rows, all at
-replicate level):
+Ingested to the `observations` tab in reported units (19,790 rows, all at
+replicate level). The variable names the quantity only: the crop is in `crop`, and
+hand or machine harvest in `method`. The last column gives the name each row had before
+[ccmmf/organization#302](https://github.com/ccmmf/organization/issues/302).
 
-| Variable | Units | Rows | Notes |
-|---|---|---|---|
-| Bulk density | g cm⁻³ | 4452 | intact core; surface and deep increments |
-| Soil NH₄-N | mg kg⁻¹ | 3484 | KCl extract, colorimetric |
-| Soil NO₃-N | mg kg⁻¹ | 3480 | KCl extract, colorimetric |
-| Total soil C | % | 2180 | dry combustion |
-| Total soil N | % | 2180 | dry combustion |
-| Cover crop dry biomass | kg ha⁻¹ | 630 | |
-| Tomato yield (red / green fresh, vine dry, machine-harvest dry) | Mg ha⁻¹ | 535 / 535 / 505 / 531 | fractions reported separately |
-| Wheat grain yield (machine / hand harvest) | kg ha⁻¹ | 535 / 309 | |
-| Corn yield (grain dry, grain machine-harvest, total biomass) | kg ha⁻¹ | 280 / 280 / 280 | |
-| Soil organic matter | % | 101 | Walkley-Black and loss on ignition |
-| Sudangrass dry yield | kg ha⁻¹ | 87 | |
-| Alfalfa dry yield | kg ha⁻¹ | 78 | multiple cuts per year, 2012-2014 |
+| Variable | Crop | Method | Units | Rows | Earlier name |
+|---|---|---|---|---|---|
+| `soil_bulk_density` | | `soil_core` | g cm⁻³ | 4,452 | `bulk_density_g_cm3` |
+| `soil_ammonium_nitrogen_concentration` | | KCl extract, `keeney_nelson` or `doane_miranda` | mg kg⁻¹ | 3,484 | `soil_nh4_n_mg_kg` |
+| `soil_nitrate_nitrogen_concentration` | | KCl extract, `keeney_nelson` or `doane_miranda` | mg kg⁻¹ | 3,480 | `soil_no3_n_mg_kg` |
+| `soil_total_carbon_concentration` | | `dry_combustion_elemental_analysis` | % | 2,180 | `total_carbon_pct` |
+| `soil_total_nitrogen_concentration` | | `dry_combustion_elemental_analysis` | % | 2,180 | `total_nitrogen_pct` |
+| `aboveground_dry_biomass` | winter cover crop | `hand_harvest` | kg ha⁻¹ | 630 | `cover_crop_dry_biomass_kg_ha` |
+| `aboveground_dry_biomass` | corn | `hand_harvest` | kg ha⁻¹ | 280 | `corn_total_biomass_kg_ha` |
+| `grain_dry_yield` | corn | `hand_harvest` | kg ha⁻¹ | 280 | `corn_grain_dry_yield_kg_ha` |
+| `grain_dry_yield` | corn | `machine_harvest` | kg ha⁻¹ | 179 | `corn_grain_mh_dry_yield_kg_ha` |
+| `grain_dry_yield` | wheat | `machine_harvest` | kg ha⁻¹ | 391 | `wheat_mh_dry_grain_yield_kg_ha` |
+| `red_fruit_fresh_yield` | tomato | `hand_harvest` | Mg ha⁻¹ | 505 | `tomato_red_fresh_yield_Mg_ha` |
+| `green_fruit_fresh_yield` | tomato | `hand_harvest` | Mg ha⁻¹ | 505 | `tomato_green_fresh_yield_Mg_ha` |
+| `vine_dry_biomass` | tomato | `hand_harvest` | Mg ha⁻¹ | 475 | `tomato_vine_dry_yield_Mg_ha` |
+| `fruit_dry_yield` | tomato | `machine_harvest` | Mg ha⁻¹ | 503 | `tomato_mh_dry_yield_Mg_ha` |
+| `soil_organic_matter_concentration` | | `walkley_black` (92) or `loss_on_ignition` (9) | % | 101 | `soil_organic_matter_pct` |
+| `harvested_dry_biomass` | sudangrass | `machine_harvest` | kg ha⁻¹ | 63 | `sudangrass_dry_yield_kg_ha`; 1993, baled hay |
+| `aboveground_dry_biomass` | sudangrass | `hand_harvest` | kg ha⁻¹ | 24 | `sudangrass_dry_yield_kg_ha`; 2008 and 2009, sampled before plowing under, no hay removed |
+| `harvested_dry_biomass` | alfalfa | `hand_harvest` | kg ha⁻¹ | 78 | `alfalfa_dry_yield_kg_ha`; each cutting, 2013 and 2014 |
+
+Hand harvested wheat grain (`wheat_hh_dry_grain_yield_kg_ha`, 309 rows) is not in
+`observations`; see Curation Decisions and Caveats. Red and green tomato fruit share
+crop, method, units, plot and date, so they keep separate names. The tomato machine
+yields are per half, as the source gives them; the corn and wheat machine yields are
+mostly once per plot (bare plot label).
 
 **Depth resolution.** Surface sampling dominates (0-15 cm, 15-30 cm), and
-the dataset additionally carries the **deep increments to 250 cm**
-(100-150, 150-200, 200-250 cm) that make this site useful for subsurface
+the dataset additionally carries the **deep increments to 300 cm**
+(100-150, 150-200, 200-250, 250-300 cm) that make this site useful for subsurface
 soil-carbon validation — the point of the Tautges et al. analysis. Several
 other increments appear where the source reports them (0-7.5, 0-25, 0-30,
 10-22, 15-22.5, 22-34 cm).
 
 **Note on soil C.** Total C and N are reported here as **percent**, not as stocks.
 
-**Do not compute stocks from these rows.** Two things prevent it. `replicate_id` does
-not resolve plots, so the per plot differencing in Tautges et al. sections 2.5 to 2.6
-is not reproducible, and `mean(BD × C)` is not `mean(BD) × mean(C)`, so a
-treatment-level shortcut does not return the published values. And there is no 1993
-bulk density at all: the campaigns are 1992, 1995, 1999, 2003, 2007 and 2012 for bulk
-density against 1993, 1995, 1997, 2003 and 2012 for carbon.
+**Do not compute stocks from these rows.** The plot labels pair carbon with bulk
+density on the same plot and depth for 1,664 of 2,180 carbon rows (76.3%), but almost
+never from the same campaign: the campaigns are 1992, 1995, 1999, 2003, 2007 and 2012
+for bulk density against 1993, 1995, 1997, 2003 and 2012 for carbon. On plot label,
+year and depth 24 carbon rows pair (1.1%), and 279 (12.8%) with the east and west
+halves pooled to the plot, all in 2003 and 2012. There is no 1993 bulk density at all,
+so the per plot differencing in Tautges et al. sections 2.5 to 2.6 cannot be rebuilt
+from these rows, and `mean(BD × C)` is not `mean(BD) × mean(C)`, so a treatment-level
+shortcut does not return the published values.
 
 **0-30 cm stocks are precomputed in `data_raw/raffeld_2024/`** from the Raffeld et al.
 2024 deposit (`10.5061/dryad.p2ngf1w06`), which resolves plots, harmonises depths
@@ -159,9 +205,17 @@ Method rows are registered in `methods` and referenced per observation:
   or `doane_miranda` depending on which the source reports.
 - **Soil organic matter** by `walkley_black` (wet oxidation) or
   `loss_on_ignition`, per the source.
-- **Yields** by `field_harvest` (hand-harvested subsamples or machine
-  harvest); the hand- vs machine-harvest distinction is carried in the
-  variable name (`_hh_` / `_mh_`) rather than the method.
+- **Yields and biomass** by `hand_harvest` or `machine_harvest`, both
+  defined from the Century Experiment metadata and cited to Wolf et al.
+  (2018). Hand harvest cuts a fixed area inside the plot (1.52 m² corn,
+  3.04 m² tomato, 4.65 m² winter cover crop, alfalfa and the 2008 and 2009
+  sudangrass), weighs it fresh and oven dries it; it gives corn grain and
+  total biomass, tomato red and green fruit and vines, the winter cover
+  crop, alfalfa and that sudangrass. Machine harvest takes a strip or the whole plot: corn
+  and wheat grain, tomato dry fruit, and the 1993 sudangrass, mowed, air
+  dried and baled. Until organization#302 all yields used one method,
+  `field_harvest`, and the variable name carried the difference (`_hh_` /
+  `_mh_`); `field_harvest` is now used only by the US-Twt rice rows.
 
 ---
 
@@ -225,6 +279,45 @@ the dates the source reports. **Point dates are never invented.**
   `Coverage`, `Citations`, …) where the Salinas/Modesto workbook uses
   lowercase. `scripts/ingest.R` matches tab names case-insensitively rather
   than renaming the tabs.
+- **One variable name per quantity**
+  ([ccmmf/organization#302](https://github.com/ccmmf/organization/issues/302)).
+  The 18 Russell names that carried a crop, harvest method or unit were
+  renamed to the 13 names in the table under Variables Measured, and the
+  `variables` rows that defined them were merged. Values, units and dates
+  did not change.
+- **Hand harvested wheat is left out of calibration and validation.** The
+  309 rows of the source's `wheat_hh_dry_grain_yield_kg/ha` (curated as
+  `wheat_hh_dry_grain_yield_kg_ha`; 2001 to 2003, 2005, 2009 to 2011 and
+  2013) are too large to be grain. Their yearly medians run 7.7 to 13.9 t/ha,
+  about 2.6 times the machine yield on the same plot and date (median ratio
+  of the paired rows), the size of whole plant aboveground biomass rather
+  than grain. The Century Experiment metadata say wheat heads were cut from
+  the stalk by hand through 2012, which fits that reading but does not prove
+  it. On organization#302 (2026-11-09) David LeBauer agreed to leave these
+  rows out of calibration and validation and to use the machine harvested
+  values for harvest removal. The rows were moved to a new `excluded_obs`
+  tab in the
+  [Russell Ranch workbook](https://docs.google.com/spreadsheets/d/1UXKQy0EUEtPBHIjtuf6d-cdQf6sSq0wiZfC_sW_13S0),
+  each with that reason and as it would now read (`grain_dry_yield`,
+  `hand_harvest`, plot label); ingest does not read the tab. They are also
+  recoverable from `data/observations.csv` at commit b9980f1 on `develop`
+  (`variable = wheat_hh_dry_grain_yield_kg_ha`).
+- **A machine yield the source gives once per plot is kept once.** The
+  Century Experiment files measure corn and wheat machine yield once per
+  plot and repeat the value on the line of each half, next to that half's
+  own hand harvest value, so the workbook had it on both the east and west
+  half rows. Where the rows of a plot and date carried one value, the first
+  is kept with the bare plot label and a note, and the copies were deleted:
+  245 rows (corn 101, wheat 144, including 4 wheat rows on lines the source
+  repeats without a half). 244 rows carry the note. Where the values differ
+  (corn 16 east and west pairs; wheat 9 pairs and 5 repeated lines) every
+  row is kept. Tomato machine yields are per half in the source and stay
+  per half.
+- **Tomato lines the source lists twice were removed.**
+  `tomato_harvests_all.csv` lists every one of the 30 plot halves harvested
+  on 2012-09-04 twice, identical in all 11 columns, where every other date
+  has one line per half. The second copy went: 118 rows (30 red fruit, 30
+  green fruit, 30 vine, 28 machine dry fruit).
 - **No N₂O or CH₄.** This dataset supports SOC/soil-N and yield validation;
   it carries no greenhouse gas flux observations.
 
