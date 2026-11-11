@@ -70,7 +70,7 @@ Core variables, in reported units. A variable name gives the quantity only: the 
 | `N2O_flux` | source-reported units | nitrous oxide flux; basis and support vary by source (see [Coverage](#coverage)) |
 | `CH4_flux` | source-reported units | methane flux; basis and support vary by source (see [Coverage](#coverage)) |
 
-Supporting variables (soil organic matter fractions, texture, pH, biomass, yields, nitrogen inputs) accompany core targets where source reports them. Yield and biomass variables do not name the crop (`grain_dry_yield`, `aboveground_dry_biomass`, `harvested_dry_biomass`), so filter on `crop` as well: at Russell Ranch `aboveground_dry_biomass` holds both corn and the winter cover crop. `method` separates hand from machine harvest. Full list lives in `data/variables.csv`.
+Supporting variables (soil organic matter fractions, texture, pH, biomass, yields, nitrogen inputs) accompany core targets where source reports them. Yield and biomass variables do not name the crop (`grain_dry_yield`, `aboveground_dry_biomass`, `harvested_dry_biomass`), so filter on `crop` as well: at Russell Ranch `aboveground_dry_biomass` holds corn, the winter cover crop and the 2008 and 2009 sudangrass, which was plowed under, while `harvested_dry_biomass` holds only biomass taken off the field (alfalfa cuttings, 1993 sudangrass hay). `method` separates hand from machine harvest. Full list lives in `data/variables.csv`.
 
 ## Coverage
 

@@ -58,6 +58,19 @@ test_that("Russell Ranch yields name their harvest method and leave hand wheat o
   expect_true(all(c("hand_harvest", "machine_harvest") %in% methods$`method name`))
 })
 
+test_that("harvested_dry_biomass holds only biomass taken off the field", {
+  skip_if_not(file.exists(obs_path), "observations not generated yet")
+  obs <- read_chr(obs_path)
+  rr <- obs[obs$dataset_id == "russell_ranch_tautges_2019", ]
+  hv <- rr[rr$variable == "harvested_dry_biomass", ]
+  # alfalfa cuttings and the 1993 sudangrass hay; the 2008 and 2009 sudangrass was plowed under
+  expect_setequal(unique(hv$crop), c("alfalfa", "sudangrass"))
+  expect_true(all(substr(hv$min_date[hv$crop == "sudangrass"], 1, 4) == "1993"))
+  sg <- rr[rr$crop == "sudangrass" & substr(rr$min_date, 1, 4) %in% c("2008", "2009"), ]
+  expect_equal(nrow(sg), 24L)
+  expect_true(all(sg$variable == "aboveground_dry_biomass"))
+})
+
 test_that("a machine yield copied onto both halves of a plot is kept once", {
   skip_if_not(file.exists(obs_path), "observations not generated yet")
   obs <- read_chr(obs_path)

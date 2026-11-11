@@ -69,9 +69,11 @@ Changes to datasets, schemas, and curation workflows are documented here.
     `corn_grain_mh_dry_yield_kg_ha`, `wheat_mh_dry_grain_yield_kg_ha`
   - `grain_yield`: `rice_grain_yield_t_ha`
   - `aboveground_dry_biomass`: `corn_total_biomass_kg_ha`,
-    `cover_crop_dry_biomass_kg_ha`, `cover_crop_shoot_dry_matter_Mg_ha`
-  - `harvested_dry_biomass`: `alfalfa_dry_yield_kg_ha`,
-    `sudangrass_dry_yield_kg_ha`
+    `cover_crop_dry_biomass_kg_ha`, `cover_crop_shoot_dry_matter_Mg_ha`,
+    and the 24 `sudangrass_dry_yield_kg_ha` rows of 2008 and 2009
+    (sampled before plowing under, no hay removed)
+  - `harvested_dry_biomass`: `alfalfa_dry_yield_kg_ha`, and
+    `sudangrass_dry_yield_kg_ha` for the 1993 baled hay (63 rows)
   - `red_fruit_fresh_yield` and `green_fruit_fresh_yield`:
     `tomato_red_fresh_yield_Mg_ha` and `tomato_green_fresh_yield_Mg_ha`,
     kept apart because they share crop, method, units, plot and date

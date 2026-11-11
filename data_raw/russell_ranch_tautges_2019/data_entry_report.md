@@ -153,7 +153,8 @@ hand or machine harvest in `method`. The last column gives the name each row had
 | `vine_dry_biomass` | tomato | `hand_harvest` | Mg ha⁻¹ | 475 | `tomato_vine_dry_yield_Mg_ha` |
 | `fruit_dry_yield` | tomato | `machine_harvest` | Mg ha⁻¹ | 503 | `tomato_mh_dry_yield_Mg_ha` |
 | `soil_organic_matter_concentration` | | `walkley_black` (92) or `loss_on_ignition` (9) | % | 101 | `soil_organic_matter_pct` |
-| `harvested_dry_biomass` | sudangrass | `machine_harvest` (1993, 63) or `hand_harvest` (2008 and 2009, 24) | kg ha⁻¹ | 87 | `sudangrass_dry_yield_kg_ha` |
+| `harvested_dry_biomass` | sudangrass | `machine_harvest` | kg ha⁻¹ | 63 | `sudangrass_dry_yield_kg_ha`; 1993, baled hay |
+| `aboveground_dry_biomass` | sudangrass | `hand_harvest` | kg ha⁻¹ | 24 | `sudangrass_dry_yield_kg_ha`; 2008 and 2009, sampled before plowing under, no hay removed |
 | `harvested_dry_biomass` | alfalfa | `hand_harvest` | kg ha⁻¹ | 78 | `alfalfa_dry_yield_kg_ha`; each cutting, 2013 and 2014 |
 
 Hand harvested wheat grain (`wheat_hh_dry_grain_yield_kg_ha`, 309 rows) is not in
