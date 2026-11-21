@@ -115,7 +115,8 @@ any consumer.
 └── tests/
     └── testthat/
         ├── helper.R               # loads validate.R for the tests
-        └── test-integrity.R       # datapackage columns present; warn mode gaps surfaced
+        ├── test-integrity.R       # datapackage columns present; caps on known warnings
+        └── test-validate-checks.R # validate.R checks on small fixtures
 ```
 
 ## Data Products
@@ -189,17 +190,34 @@ Smaller tables (`citations`, `sites`, `treatments`, `treatment_pairs`, `methods`
 
 ## Validation
 
-`scripts/validate.R` checks every generated `data/*.csv` against `datapackage.json`. It runs in warn mode: missing columns, empty keys, broken foreign keys, and odd dates warn but do not stop, so a workbook in progress still passes. It needs only base R plus `jsonlite` and `readr`.
+`scripts/validate.R` checks every generated `data/*.csv` against `datapackage.json`. It runs in warn mode: everything it finds warns but does not stop, so a workbook in progress still passes. It needs only base R plus `jsonlite` and `readr`. It warns on
+
+- missing columns, empty or duplicate primary keys, broken foreign keys, and odd dates;
+- rows that repeat an earlier row in every column except the primary key, as one warning per table counting the copies after the first by dataset and variable (or by site and `mgmttype`). Nothing is dropped;
+- a DOI on more than one `citations` row, compared case insensitively. `observations.citation`, `managements.citation` and `methods.citation_id` all join on `citations.doi`, so such a DOI doubles every row joined to it;
+- empty `observation_level` or `reported_units` in `observations`, and empty `mgmttype` in `managements`;
+- `reported_units` that `variables.csv` does not declare for the variable. Units match as text after runs of whitespace are squashed, so the match is case sensitive (`mg` is not `Mg`) and nothing is converted. `variables.csv` may give alternatives separated by `;`, each with an optional qualifier in parentheses, as in `kg C m-2 s-1 (daily mean); kg C m-2 year-1 (annual total)`. A variable declared `source-reported units` is not checked; if it carries more than one unit, validate prints an information line instead of a warning. Each of these lines names the method and datasets behind every unit, so tower and chamber values stay apart.
 
 ```bash
 Rscript scripts/validate.R
 ```
 
-Tests under `tests/testthat/` run the same checks via testthat. Tables not yet generated are skipped, so a fresh clone passes.
+Tests under `tests/testthat/` run the same checks via testthat. Tables not yet generated are skipped, so a fresh clone passes. `test-validate-checks.R` pins each check on small fixtures, and `test-integrity.R` caps each of the known warnings below: each may shrink, but one that grows or spreads to other rows fails the tests, and so does any warning not on the list.
 
 ```bash
 Rscript -e 'testthat::test_dir("tests/testthat")'
 ```
+
+### Known warnings
+
+These warnings are expected on the current data and stay until the workbook or source is fixed.
+
+- **`citations` has 19 rows that repeat an earlier row apart from `citation_id`.** The AmeriFlux Delta workbook lists these papers twice, under an id derived from the DOI (`ref_10_1002_2015jg003247`) and under a named key (`knox2016bco`). Capped at 19.
+- **`citations.doi` has 21 values on two rows each.** Same cause: the 19 repeats above, plus two pairs (`anthony2023cpo`, `anthony_bouldin_2024_dryad`) whose rows also differ in notes, so only this check finds them. Other tables reference both forms of id, so a fix keeps one id per DOI and repoints the references to the other. Capped at 21.
+- **`managements` has 2,195 rows that repeat an earlier row apart from `event_id`, all at `russell_ranch_davis`** (planting 760, harvest 629, fertilization 590, compost 216). Most copies are separate plots: Wolf et al. (2018) list operations by plot, and the plot id was not carried into the workbook. See the [Russell Ranch report](data_raw/russell_ranch_tautges_2019/data_entry_report.md) and [ccmmf/organization#274](https://github.com/ccmmf/organization/issues/274). Capped at 2,195, all at that site.
+- **`managements.mgmttype` is empty on 42 rows, all Delta events** (`delta-` event ids at the US-Bi1, US-Bi2 and US-Twt sites). The Delta workbook fills only its `event_type` column on these rows, and ingest drops `event_type` as a duplicate of `mgmttype`; the type survives in the event id, as in `delta-drainage-0001`. 17 of the rows are types the `mgmttype` enum does not allow (drainage, termination, residue treatment, furrowing, herbicide application), so filling them needs the enum extended rather than the nearest existing label; the other 25 are flooding, irrigation and grazing, which it allows. Capped at 42, all `delta-`.
+- **`observations` has 1,188 rows that repeat an earlier row, all in `russell_ranch_tautges_2019`.** Most copies are separate plots: Wolf et al. (2018) report by plot, and the workbook kept only the east or west half in `replicate_id`, so plots with the same treatment, date, depth and value become identical rows. A row count is therefore not a sample size. The split is in the [Russell Ranch report](data_raw/russell_ranch_tautges_2019/data_entry_report.md); tracked in [ccmmf/organization#274](https://github.com/ccmmf/organization/issues/274). Capped at 1,188, all in that dataset.
+- **`coverage` has 7 rows that repeat an earlier row.** The Russell Ranch workbook's Coverage tab carries a second copy of the 7 row "MVP Coverage Guidance" block, and ingest stacks it under the first. Capped at 7.
 
 ## Usage
 
