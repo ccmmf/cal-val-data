@@ -66,7 +66,9 @@ level from that deposit.
 - **Design:** the Century Experiment — a long-term replicated comparison of
   **14 cropping systems** (13 of which carry observations) spanning conventional, organic, legume-cover, and
   alfalfa-phase corn-tomato rotations; irrigated and rainfed wheat systems
-  (control, fallow, legume); a conventional-to-organic `transitional`
+  (wheat-fallow without N fertilizer, `*_wheat_control`; wheat-fallow with
+  synthetic N, `*_wheat_fallow`; wheat alternating with a winter legume
+  cover crop, `*_wheat_legume`); a conventional-to-organic `transitional`
   treatment (3 plots converted 1999); and an unmanaged `native_grass`
   reference (planted 2012). Plot is the replicate unit.
 - **Contrasts:** 15 rows in `treatment_pairs` register the comparisons
@@ -161,6 +163,27 @@ the dates the source reports. **Point dates are never invented.**
   did not resolve. The **prefix was stripped from `treatments` and
   `treatment_pairs`** to match the referencing tables and the repo
   convention (Salinas/Modesto also use bare treatment keys).
+- **Wheat treatment names.** These four treatments all alternate wheat with fallow. Within each water regime, one treatment receives synthetic nitrogen fertilizer and one receives none. Our treatment IDs follow `plot-system.csv` in the Russell Ranch Century Experiment dataset. The Raffeld dataset retains the Century codes and also provides the display labels below. [Century Experiment dataset](https://doi.org/10.1002/ecy.2105) · [Tautges et al. (2019)](https://doi.org/10.1111/gcb.14762)
+
+  | Water regime | N fertilizer | Our treatment ID | Century code | Tautges et al. (2019) | Raffeld label |
+  |---|---|---|---|---|---|
+  | Irrigated | None | `irr_wheat_control` | IWC | IWF | IW |
+  | Irrigated | Synthetic N | `irr_wheat_fallow` | IWF | IWF+N | IW + N |
+  | Rainfed | None | `rf_wheat_control` | RWC | RWF | RW |
+  | Rainfed | Synthetic N | `rf_wheat_fallow` | RWF | RWF+N | RW + N |
+
+  The source matters when interpreting `IWF` or `RWF`. Both codes identify **fertilized** wheat in the Century dataset and **unfertilized** wheat in Tautges et al., who mark fertilized treatments with `+N`.
+
+- **Wheat nitrogen applications.** Tautges et al. describe a starter fertilizer application followed by urea for each fertilized wheat crop. The field-log totals sum the applications recorded in `managements` for each complete wheat season. The irrigated totals closely match Table 1. The rainfed totals are lower than the published rate.
+
+  | Fertilized treatment | Annual rate in Tautges Table 1 (kg N/ha) | Logged total per complete wheat season (kg N/ha) |
+  |---|---:|---:|
+  | Irrigated | 168 | 168.17–169.80 |
+  | Rainfed | 146 | 111.68–113.33 |
+
+  Table 1 also lists 168 kg N/ha for the unfertilized irrigated treatment (`IWF` in the paper), alongside a fertilizer source of “None.” We classify this treatment as unfertilized because the Methods and field log agree that it received no N fertilizer.
+
+- **Wheat treatment comparisons.** In `treatment_pairs`, `russell-6` and `russell-9` each compare fertilized and unfertilized wheat within the same water regime. Both rows use `synthetic_N` for the contrast and leave `healthy_soils_practice` blank because its existing categories do not describe this comparison. [ccmmf/organization#299](https://github.com/ccmmf/organization/issues/299)
 - **Method names normalised to snake_case.** `observations.method` mixed
   snake_case (`soil_core`) with prose (`Walkley-Black`, `Loss upon
   ignition`, `Keeney and Nelson`, `Doane and Miranda`). The prose forms

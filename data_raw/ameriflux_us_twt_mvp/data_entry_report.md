@@ -53,7 +53,8 @@ Curated rows:
 
 | Variable | Units | Rows | Level |
 |---|---|---|---|
-| CH₄ flux | g C m⁻² year⁻¹ | 8 | `site_year_total` |
+| NEE (FLUXNET2015) | g C m⁻² year⁻¹ | 6 | `site_year_total` |
+| CH₄ flux (FLUXNET-CH4) | g C m⁻² year⁻¹ | 8 | `site_year_total` |
 | Soil carbon content | g kg⁻¹ | 2 | `site_layer`, 0–15 / 0–30 cm |
 | Soil nitrogen content | g kg⁻¹ | 2 | `site_layer` |
 | Soil C:N ratio | ratio | 2 | `site_layer` |
@@ -64,6 +65,11 @@ Curated rows:
 
 **Fluxes now come from source-reported annual values** (see below). For a flooded rice paddy on Delta
 peat, **CH₄ is the headline target**.
+
+**Both fluxes are on a carbon basis.** The CH₄ rows are FLUXNET-CH4 tower annual totals
+(`fluxnet_ch4_community_product_v1_appendix_b_v2`) in CH₄-C, `g C m-2 yr-1`, not CH₄ mass; NEE
+is `gC m-2 y-1`. `variables.csv` declares `CH4_flux` and `NEE` as `source-reported units`, so
+`reported_units` on each row gives the basis.
 
 **Soil units differ from the other Delta sites** — carbon and nitrogen are
 in g kg⁻¹ here, percent at US-Bi1 and US-Bi2. Values stay in the units the

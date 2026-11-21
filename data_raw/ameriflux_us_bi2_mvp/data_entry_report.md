@@ -49,8 +49,10 @@ exact-site publication only where AmeriFlux BADM/BIF does not carry them.
 
 | Variable | Units | Rows | Level |
 |---|---|---|---|
+| NEE (AmeriFlux FLUXNET-1F) | g C m⁻² year⁻¹ | 7 | `site_year_total` |
 | CH₄ flux (FLUXNET-CH4) | g C m⁻² year⁻¹ | 2 | `site_year_total` |
 | CH₄ flux (Anthony and Silver 2021, chambers) | mg CH₄ m⁻² year⁻¹ | 3 | `site_year_total` |
+| N₂O flux (Anthony and Silver 2021, chambers) | g N₂O m⁻² year⁻¹ | 3 | `site_year_total` |
 | Soil carbon content | % | 1 | `site_layer`, 0–15 cm |
 | Soil nitrogen content | % | 1 | `site_layer`, 0–15 cm |
 
@@ -58,6 +60,21 @@ exact-site publication only where AmeriFlux BADM/BIF does not carry them.
 Given the drained peat setting CH₄ is the informative target. Soil is a **single
 0–15 cm layer at one time**, so the dataset supports flux validation, not a
 soil-carbon trajectory.
+
+**The mass basis differs by row type**, and `reported_units` on each row
+gives it; `variables.csv` declares `CH4_flux` and `NEE` as
+`source-reported units`. Values are kept as published, and converting is
+left to the consumer.
+
+- The FLUXNET-CH4 rows (`fluxnet_ch4_community_product_v1_appendix_b_v2`,
+  tower) are CH₄-C, `g C m-2 yr-1`.
+- The Anthony and Silver (2021) Table 1 rows
+  (`publication_anthony_silver_2021_table_1`, nine automated chambers in
+  the US-Bi2 field) are gas mass, `mg CH4 m-2 y-1` and `g N2O m-2 y-1`.
+  They report years 1–3 of the same chamber record curated in
+  `anthony_bouldin_2024` (Anthony and Silver 2024, Methods), so the two are
+  not independent (see that report).
+- NEE (`ameriflux_fluxnet_1f_us_bi2_v1_3_r1`) is carbon, `gC m-2 y-1`.
 
 
 **Annual NEE is curated from gap-filled products.** Earlier revisions of this dataset

@@ -89,7 +89,10 @@ The table above predates the AmeriFlux Delta and Bouldin chamber datasets. As of
 **N2O is covered at three sites** (`nichols_modesto_2024` static chamber; `anthony_bouldin_2024`
 automated chamber at US-Bi2 and US-Bi1) and **CH4 at three** (tower annual budgets for US-Twt,
 US-Bi1 and US-Bi2, plus chamber CH4 at the two Bouldin sites). Chamber and tower values are
-different measurement supports and are not interchangeable. These constraints are documented for
+different measurement supports and are not interchangeable. The mass basis also differs: N2O is
+N2O-N at Modesto and N2O mass at Bouldin, and CH4 is CH4-C in the tower budgets and CH4 mass in
+the chamber rows. `reported_units` on each row gives the basis, and `CH4_flux` and `NEE` are
+declared as `source-reported units` in `variables.csv`. These constraints are documented for
 any consumer.
 
 ## Repository Structure

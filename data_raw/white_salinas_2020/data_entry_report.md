@@ -6,6 +6,9 @@
 **Updated:** 2026-11-03 — management calendar rebuilt, fertilizer N and
 irrigation added; see [Dates](#dates) and
 [ccmmf/organization#297](https://github.com/ccmmf/organization/issues/297).
+2026-11-03 — total N and nitrate-N rows given units and level, harvest
+index added to the harvest rows
+([ccmmf/organization#299](https://github.com/ccmmf/organization/issues/299)).
 2026-10-03 — SOC stocks corrected for White et al. (2024); see
 [2024 correction to SOC stocks](#2024-correction-to-soc-stocks) and
 [#6](https://github.com/ccmmf/cal-val-data/issues/6).
@@ -94,14 +97,14 @@ substitute for it.
 ## Variables Measured
 
 Ingested to the `observations` tab in reported units (`n = 1` for
-block-level rows; `observation_level = replicate` except on the total N,
-nitrate-N and cover crop biomass rows, see below):
+block-level rows; `observation_level = replicate` except on the cover crop
+biomass rows, see below):
 
 | Variable | Units | Years | Notes |
 |---|---|---|---|
 | SOC stock | Mg C ha⁻¹ | 0–8 | 0–30 cm; corrected for White et al. (2024) |
 | SOC concentration | mg C kg⁻¹ | 0–8 | |
-| Total N concentration | mg kg⁻¹ | 3–8 | Year 3 `socs_sys5` and `socs_sys7` only; N stocks not ingested |
+| Total N concentration | mg N kg⁻¹ | 3–8 | Year 3 `socs_sys5` and `socs_sys7` only; N stocks not ingested |
 | Nitrate-N | mg NO₃-N kg⁻¹ | 3–8 | Year 3 `socs_sys5` and `socs_sys7` only |
 | POXC (labile C) | — | 0, 6, 8 only | not ingested; *Data in Brief* Supplementary Table 3 |
 | Bulk density | g cm⁻³ | 4, 7, 8 | five PLOS ONE systems; the paper measured Years 3 and 7, see Open follow-ups |
@@ -114,8 +117,12 @@ same table: Year 3 for `socs_sys5` and `socs_sys7`, and Years 4–8 for the
 five PLOS ONE systems. The other 180 block values of each in Supplementary
 Table 1 are not yet ingested: Years 0–2 for all 8 systems (96), Year 3 for
 the other six systems (24), and `socs_sys3`, `socs_sys6` and `socs_sys8` in
-Years 4–8 (60). The 216 ingested rows have `observation_level` and
-`reported_units` blank. No rows come from the PLOS ONE S1 Table.
+Years 4–8 (60). Supplementary Table 1 prints one unit, mg kg⁻¹ soil, over
+its total organic C, total N and nitrate N columns; the rows record it with
+the element each column names (`mg C kg-1 soil`, `mg N kg-1 soil`,
+`mg NO3-N kg-1 soil`). All are on air-dried soil (*Data in Brief* p. 18).
+Total N is printed to 100 mg kg⁻¹ in Years 0–5 and to 10 mg kg⁻¹ in
+Years 6–8. No rows come from the PLOS ONE S1 Table.
 
 ---
 
@@ -135,8 +142,17 @@ Years 4–8 (60). The 216 ingested rows have `observation_level` and
   cores, and `elemental_analysis` the concentration measurement.
 - **Harvest indices** (from White et al. 2020b, citing Brennan
   unpublished): romaine lettuce hearts HI = 0.26 (~74% of shoot biomass
-  left as residue); broccoli HI = 0.24 (~76% left as residue). The
-  `managements` harvest rows do not carry them yet (ccmmf/organization#299).
+  left as residue); broccoli HI = 0.24 (~76% left as residue). Both are
+  one value per crop for the whole study: *Data in Brief* (p. 3) calls them
+  typical and assumes them for every crop, and Brennan and Smith (2017,
+  p. 2211) give the broccoli 0.24 as typical, citing Smith (unpublished
+  data, 2014). The 104 marketed harvest rows carry them as `harvest_index`
+  in `attributes_keyvalue` (0.26 on the 64 lettuce rows, 2004–2011,
+  `harvested_component=heart`; 0.24 on the 40 broccoli rows, 2006–2010),
+  with the source in `notes`; the 2004 spinach and 2005 broccoli rows,
+  incorporated unharvested, carry none. For broccoli N export *Data in
+  Brief* (p. 18) multiplies shoot N by 0.31 (Smith et al. 2016), not 0.24;
+  that factor is not recorded.
 
 ### Cover crop biomass (Brennan and Boyd 2012)
 
@@ -467,11 +483,17 @@ fertilizer rows carry `derived=total_minus_pelleted`.
   (`010_prepare_observations.R`, `020_build_priors.R`) from the corrected
   observations, after refreshing the observation copy that workflow reads.
   Targets scale by 0.905 and their variances by 0.819 (issue #6).
-- Ingest the remaining 180 total N and 180 nitrate-N block values from
-  Supplementary Table 1, and fill `observation_level = replicate` and
-  `reported_units` on the existing 216 rows (workbook write, then
-  re-ingest). Correct the `total_N_conc_mg_kg` and `nitrate_N_mg_kg` notes
-  in `variables` at the same time; they say Years 0–8.
+- Ingest the other 180 total N and 180 nitrate-N block values of
+  Supplementary Table 1. The uningested `white-additional-data` tab already
+  holds 72 of each (the five PLOS ONE systems in Years 0–2, and
+  `socs_sys1`, `socs_sys2` and `socs_sys4` in Year 3); its other 108 of
+  each repeat rows already in `observations`, so copy only the 72, the
+  nitrate rows with method `colorimetric_nitrate` (the tab's
+  `colorimetric_nitrate_0_30cm` is not in `methods`), and as numbers: 32 of
+  its 360 N values read back with a thousands separator (`1,300`). The 108
+  of each for `socs_sys3`, `socs_sys6` and `socs_sys8` are only in
+  Supplementary Table 1, whose header cell D4 ends in two non-breaking
+  spaces. Update the two `variables` notes when they land.
 - Check the Year 0 and Year 6 observation dates. If the 0–30 cm composite
   samples were not taken on 13 October 2003 and 30 October 2009, give
   those rows the fall window used in the other years.
