@@ -163,25 +163,27 @@ the dates the source reports. **Point dates are never invented.**
   did not resolve. The **prefix was stripped from `treatments` and
   `treatment_pairs`** to match the referencing tables and the repo
   convention (Salinas/Modesto also use bare treatment keys).
-- **Wheat system names.** The wheat ids follow the Century package system
-  names (`plot-system.csv`). `irr_wheat_control` and `rf_wheat_control` are
-  Irrigated and Rainfed Wheat Control (IWC, RWC), wheat-fallow with no N
-  fertilizer. `irr_wheat_fallow` and `rf_wheat_fallow` are Irrigated and
-  Rainfed Wheat/Fallow (IWF, RWF), wheat-fallow with synthetic N. All four
-  alternate wheat with fallow; none is continuous wheat. Tautges et al.
-  (2019) call the same systems IWF and RWF (no N) and IWF+N and RWF+N, so
-  IWF and RWF mean the unfertilized systems in the paper and the fertilized
-  ones in the package. The Raffeld deposit keeps the package codes and
-  renames them IW, RW, IW + N and RW + N. Tautges Table 1 gives an annual N
-  rate of 168 (IWF+N) and 146 (RWF+N) kg N/ha, built in the Methods as
-  starter plus urea on each fertilized wheat crop; complete seasons in the
-  fertilizer log, as `managements` carries it, total 168.17 to 169.8 and
-  111.68 to 113.33. Table 1 also lists IWF at 168 kg N/ha with fertilizer
-  source None, while its Methods and the log give that system no N. The
-  `treatment_pairs` rows follow these definitions: `russell-6` and
-  `russell-9` contrast no N with synthetic N (`synthetic_N`), and carry no
-  `healthy_soils_practice`, since none of the existing values fits that
-  contrast ([ccmmf/organization#299](https://github.com/ccmmf/organization/issues/299)).
+- **Wheat treatment names.** These four treatments all alternate wheat with fallow. Within each water regime, one treatment receives synthetic nitrogen fertilizer and one receives none. Our treatment IDs follow `plot-system.csv` in the Russell Ranch Century Experiment dataset. The Raffeld dataset retains the Century codes and also provides the display labels below. [Century Experiment dataset](https://doi.org/10.1002/ecy.2105) · [Tautges et al. (2019)](https://doi.org/10.1111/gcb.14762)
+
+  | Water regime | N fertilizer | Our treatment ID | Century code | Tautges et al. (2019) | Raffeld label |
+  |---|---|---|---|---|---|
+  | Irrigated | None | `irr_wheat_control` | IWC | IWF | IW |
+  | Irrigated | Synthetic N | `irr_wheat_fallow` | IWF | IWF+N | IW + N |
+  | Rainfed | None | `rf_wheat_control` | RWC | RWF | RW |
+  | Rainfed | Synthetic N | `rf_wheat_fallow` | RWF | RWF+N | RW + N |
+
+  The source matters when interpreting `IWF` or `RWF`. Both codes identify **fertilized** wheat in the Century dataset and **unfertilized** wheat in Tautges et al., who mark fertilized treatments with `+N`.
+
+- **Wheat nitrogen applications.** Tautges et al. describe a starter fertilizer application followed by urea for each fertilized wheat crop. The field-log totals sum the applications recorded in `managements` for each complete wheat season. The irrigated totals closely match Table 1. The rainfed totals are lower than the published rate.
+
+  | Fertilized treatment | Annual rate in Tautges Table 1 (kg N/ha) | Logged total per complete wheat season (kg N/ha) |
+  |---|---:|---:|
+  | Irrigated | 168 | 168.17–169.80 |
+  | Rainfed | 146 | 111.68–113.33 |
+
+  Table 1 also lists 168 kg N/ha for the unfertilized irrigated treatment (`IWF` in the paper), alongside a fertilizer source of “None.” We classify this treatment as unfertilized because the Methods and field log agree that it received no N fertilizer.
+
+- **Wheat treatment comparisons.** In `treatment_pairs`, `russell-6` and `russell-9` each compare fertilized and unfertilized wheat within the same water regime. Both rows use `synthetic_N` for the contrast and leave `healthy_soils_practice` blank because its existing categories do not describe this comparison. [ccmmf/organization#299](https://github.com/ccmmf/organization/issues/299)
 - **Method names normalised to snake_case.** `observations.method` mixed
   snake_case (`soil_core`) with prose (`Walkley-Black`, `Loss upon
   ignition`, `Keeney and Nelson`, `Doane and Miranda`). The prose forms
