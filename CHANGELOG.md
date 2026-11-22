@@ -51,8 +51,10 @@ Changes to datasets, schemas, and curation workflows are documented here.
 - Variable names: one name per quantity, with the crop in `crop`, the
   harvest method in `method` and the unit in `reported_units`
   ([ccmmf/organization#302](https://github.com/ccmmf/organization/issues/302)).
-  `variables` goes from 106 to 88 rows (the unused Delta `CO2_flux`, the
-  same quantity as `soil_CO2_flux`, is removed), and each renamed row's `notes`
+  `variables` goes from 106 to 85 rows (four unused Delta rows that duplicate
+  a name the data uses are removed: `CO2_flux` for `soil_CO2_flux`, `SoilTemp`
+  for `soil_temperature`, `SoilMoistFrac` for `soil_water_content` and
+  `soil_oxygen_concentration` for `soil_oxygen_content`), and each renamed row's `notes`
   names the variables it replaces. Values and units are unchanged. The map:
   - `soil_organic_carbon_content`: `SOC_stock_Mg_ha`
   - `soil_organic_carbon_concentration`: `SOC_conc_mg_kg`
