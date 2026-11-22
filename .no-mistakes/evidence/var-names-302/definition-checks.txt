@@ -1,0 +1,20 @@
+base Russell NH4/NO3 rows labelled: 0 of 6964
+
+soil_total_carbon_concentration: Total soil carbon (organic plus inorganic) concentration, mass per mass of dry soil; the row's method gives the analysis. Distinct from soil organic carbon where carbonates may contribute. Depth interval in min_depth and max_depth, or in attributes_json reported_layer_top_cm and reported_layer_bottom_cm where those are empty.
+
+soil_total_nitrogen_concentration: Total soil nitrogen concentration, mass per mass of dry soil; the row's method gives the analysis. Depth interval in min_depth and max_depth, or in attributes_json reported_layer_top_cm and reported_layer_bottom_cm where those are empty.
+
+soil_organic_carbon_content: Soil organic carbon stock per unit area. min_depth and max_depth give the sampled interval for fixed depth stocks and the reference interval for equivalent soil mass stocks, whose integrated depth is in attributes_json.equivalent_depth_cm where the source reports it.
+
+soil_bulk_density: Soil bulk density, dry soil mass per volume. Depth interval in min_depth and max_depth, empty where the source does not report the sampling depth.
+PASS  total C/N definitions no longer claim 'dry combustion'
+total C/N rows with empty depth: 12 -> ameriflux_us_bi1_mvp 6; ameriflux_us_bi2_mvp 2; ameriflux_us_twt_mvp 4
+PASS  those 12 rows are AmeriFlux Delta and carry reported_layer_top_cm/bottom_cm in attributes_json, as the definition says
+soil_organic_carbon_content rows by dataset: raffeld_2024 96; white_salinas_2020 288; with equivalent_depth_cm: raffeld_2024 96; white_salinas_2020 0
+PASS  definition says equivalent_depth_cm only where reported; raffeld_2024 has it on all 96, white_salinas_2020 on none of 288
+bulk density rows with empty depth: 6 (nichols_modesto_2024)
+PASS  bulk density definition allows empty depth; exactly the 6 nichols_modesto_2024 rows are empty
+
+machine_harvest: Crop harvested with farm machinery from a strip or the whole plot and weighed; dry weight uses the moisture measured on the harvested grain or fruit. For corn and wheat the source usually gives one value per plot, written on both half rows, and those copies are kept once per plot here; where the two halves carry different values, or only one half is given, the half rows are kept. Tomato has one value per half. The 1993 sudangrass was mowed, air dried and baled over the whole plot, with four bales weighed and the bales counted (air dry weight).
+PASS  machine_harvest says corn and wheat usually come once per plot and keeps half rows where halves differ or only one half is given
+PASS  field_harvest method row still exists for the US-Twt rice rows

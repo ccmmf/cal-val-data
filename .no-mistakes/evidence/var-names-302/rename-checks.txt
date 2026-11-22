@@ -1,0 +1,47 @@
+== variables.csv ==
+base rows: 106  target rows: 85
+PASS  variables 106 -> 85
+PASS  unused duplicates CO2_flux, SoilTemp, SoilMoistFrac, soil_oxygen_concentration removed
+PASS  their counterparts soil_CO2_flux, soil_temperature, soil_water_content, soil_oxygen_content kept
+PASS  removed duplicates had no observations in the base snapshot
+PASS  every observation variable resolves to variables.name
+PASS  variables.name unique
+
+== observations: old names -> new names ==
+old names used in base obs, absent now (32): alfalfa_dry_yield_kg_ha, bulk_density_g_cm3, CH4_flux_mg_m2_d, CO2_flux_g_m2_d, corn_grain_dry_yield_kg_ha, corn_grain_mh_dry_yield_kg_ha, corn_total_biomass_kg_ha, cover_crop_dry_biomass_kg_ha, cover_crop_shoot_dry_matter_Mg_ha, N2O_flux_g_N_ha_d, N2O_flux_mg_m2_d, nitrate_N_mg_kg, rice_grain_yield_t_ha, SOC_conc_mg_kg, SOC_stock_Mg_ha, soil_carbon_content, soil_nh4_n_mg_kg, soil_nitrogen_content, soil_no3_n_mg_kg, soil_organic_matter_pct, sudangrass_dry_yield_kg_ha, tomato_green_fresh_yield_Mg_ha, tomato_mh_dry_yield_Mg_ha, tomato_red_fresh_yield_Mg_ha, tomato_vine_dry_yield_Mg_ha, total_C_pct, total_carbon_pct, total_N_conc_mg_kg, total_N_pct, total_nitrogen_pct, wheat_hh_dry_grain_yield_kg_ha, wheat_mh_dry_grain_yield_kg_ha
+new names used now, absent in base obs (17): aboveground_dry_biomass, fruit_dry_yield, grain_dry_yield, grain_yield, green_fruit_fresh_yield, harvested_dry_biomass, red_fruit_fresh_yield, soil_ammonium_nitrogen_concentration, soil_bulk_density, soil_CO2_flux, soil_nitrate_nitrogen_concentration, soil_organic_carbon_concentration, soil_organic_carbon_content, soil_organic_matter_concentration, soil_total_carbon_concentration, soil_total_nitrogen_concentration, vine_dry_biomass
+non-Russell rows: base 16851, target 16851
+PASS  non-Russell row count unchanged
+PASS  non-Russell rows identical in every column but variable (same order)
+                               old                                 new
+ cover_crop_shoot_dry_matter_Mg_ha             aboveground_dry_biomass
+                  CH4_flux_mg_m2_d                            CH4_flux
+             rice_grain_yield_t_ha                         grain_yield
+                 N2O_flux_g_N_ha_d                            N2O_flux
+                  N2O_flux_mg_m2_d                            N2O_flux
+                bulk_density_g_cm3                   soil_bulk_density
+                   CO2_flux_g_m2_d                       soil_CO2_flux
+                   nitrate_N_mg_kg soil_nitrate_nitrogen_concentration
+                    SOC_conc_mg_kg   soil_organic_carbon_concentration
+                   SOC_stock_Mg_ha         soil_organic_carbon_content
+               soil_carbon_content     soil_total_carbon_concentration
+                       total_C_pct     soil_total_carbon_concentration
+             soil_nitrogen_content   soil_total_nitrogen_concentration
+                total_N_conc_mg_kg   soil_total_nitrogen_concentration
+                       total_N_pct   soil_total_nitrogen_concentration
+PASS  each old name maps to exactly one new name
+
+== names carry no crop or unit ==
+PASS  no observation variable names a crop or unit (found: )
+
+== tomato red and green fruit kept apart ==
+                         
+                          hand_harvest machine_harvest
+  fruit_dry_yield                    0             503
+  green_fruit_fresh_yield          505               0
+  red_fruit_fresh_yield            505               0
+  vine_dry_biomass                 475               0
+PASS  red_fruit_fresh_yield and green_fruit_fresh_yield both present
+plot-dates with both red and green: 505; of those, red value == green value: 0
+PASS  red and green are separate values, not one merged quantity
+PASS  tomato fruit rows have crop=tomato and Mg ha-1

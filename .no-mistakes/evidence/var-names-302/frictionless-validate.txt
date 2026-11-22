@@ -1,3 +1,4 @@
+$ frictionless validate datapackage.json
 ─────────────────────────────────── Dataset ────────────────────────────────────
                             dataset                            
 ┏━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓
@@ -14,3 +15,4 @@
 │ crops           │ table │ data/crops.csv           │ VALID  │
 │ coverage        │ table │ data/coverage.csv        │ VALID  │
 └─────────────────┴───────┴──────────────────────────┴────────┘
+exit status: 0

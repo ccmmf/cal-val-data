@@ -1,0 +1,29 @@
+$ Rscript -e 'testthat::test_file("tests/testthat/test-russell-plots.R")'
+russell-plots: .............
+
+══ DONE ════════════════════════════════════════════════════════════════════════
+failed: 0 skipped: 0 errors: 0 passed: 13 
+exit status: 0
+
+$ Rscript -e 'testthat::test_file("tests/testthat/test-integrity.R")'
+integrity: ......................
+
+══ DONE ════════════════════════════════════════════════════════════════════════
+failed: 0 skipped: 0 errors: 0 passed: 22 
+exit status: 0
+
+$ Rscript -e 'testthat::test_file("tests/testthat/test-calval-metadata.R")'
+calval-metadata: ................................
+
+══ DONE ════════════════════════════════════════════════════════════════════════
+YIPPIE - primo code.
+failed: 0 skipped: 0 errors: 0 passed: 32 
+exit status: 0
+
+$ Rscript -e 'testthat::test_file("tests/testthat/test-white-salinas.R")'
+white-salinas: ......................................................
+
+══ DONE ════════════════════════════════════════════════════════════════════════
+failed: 0 skipped: 0 errors: 0 passed: 54 
+exit status: 0
+

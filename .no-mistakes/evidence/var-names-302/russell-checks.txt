@@ -1,0 +1,66 @@
+== totals ==
+observations: base 37313, target 36641, removed 672
+PASS  observations 37,313 -> 36,641
+Russell rows: base 20462, target 19790
+base hand-harvested wheat rows: 309
+
+== #274 plot labels ==
+rows with a plot: 12823; empty: 6967; distinct labels: 195; distinct plots: 66
+PASS  12,823 rows carry a plot, 6,967 empty, 195 labels, 66 plots
+PASS  every label is plot-like (1-1 .. 8-9, optional E/W)
+base Russell rows with a replicate_id: 9717
+NH4-N/NO3-N rows: 6964; of them labelled: 0
+PASS  ADVERSARIAL: no NH4-N or NO3-N row carries a plot
+non-NH4/NO3 rows without a plot:
+   min_date  crop          variable          method     treatment_id   value
+ 2007-12-03    NA soil_bulk_density       soil_core irr_wheat_legume    1.44
+ 2006-06-28 wheat   grain_dry_yield machine_harvest irr_wheat_fallow 2003.24
+ 1995-07-05 wheat   grain_dry_yield machine_harvest irr_wheat_fallow 4792.61
+PASS  exactly 3 withheld: 1 bulk density 2007-12-03, wheat 1995 and 2006
+native grass treatments: native_grass; bulk density rows 144, labelled 144
+PASS  native grass bulk density labels restored (none withheld)
+rows on the six converted plots still irr_wheat_legume after 2011-12-31: 306
+
+        fruit_dry_yield 2013-08-20 green_fruit_fresh_yield 2013-08-20 
+                                 6                                  6 
+  red_fruit_fresh_yield 2013-08-20       soil_bulk_density 2012-10-08 
+                                 6                                288 
+PASS  documented caveat: 306 rows (288 bulk density 2012-10-08, 18 tomato 2013-08-20) left as irr_wheat_legume
+
+== #302 harvest methods ==
+                                           
+                                            hand_harvest machine_harvest
+  aboveground_dry_biomass corn                       280               0
+  aboveground_dry_biomass sudangrass                  24               0
+  aboveground_dry_biomass winter_cover_crop          630               0
+  fruit_dry_yield tomato                               0             503
+  grain_dry_yield corn                               280             179
+  grain_dry_yield wheat                                0             391
+  green_fruit_fresh_yield tomato                     505               0
+  harvested_dry_biomass alfalfa                       78               0
+  harvested_dry_biomass sudangrass                     0              63
+  red_fruit_fresh_yield tomato                       505               0
+  vine_dry_biomass tomato                            475               0
+PASS  Russell yields use only hand_harvest or machine_harvest
+field_harvest rows: 7 (ameriflux_us_twt_mvp rice grain_yield)
+PASS  field_harvest stays only on 7 US-Twt rice rows
+PASS  ADVERSARIAL: no hand-harvested wheat in observations
+PASS  309 base hand-harvested wheat rows
+corn+wheat machine grain rows: base 815, target 570 (removed 245); half-labelled 103 (corn 78, wheat 25)
+PASS  245 machine copies removed; 570 rows remain, 103 half rows
+PASS  ADVERSARIAL: no plot-date keeps two identical machine values (copy on both halves)
+tomato rows: base 2106, target 1988 (removed 118)
+PASS  118 repeated tomato rows removed
+PASS  removals add up: 309 + 245 + 118 = 672 = Russell rows dropped
+
+== sudangrass and harvested_dry_biomass ==
+            
+             1993 2013 2014
+  alfalfa       0   36   42
+  sudangrass   63    0    0
+                         
+                          1993 2008 2009
+  aboveground_dry_biomass    0    6   18
+  harvested_dry_biomass     63    0    0
+PASS  2008 and 2009 sudangrass (24 rows) are aboveground_dry_biomass
+PASS  harvested_dry_biomass holds only alfalfa cuttings and 1993 sudangrass hay
