@@ -11,7 +11,7 @@ test_that("white_salinas_2020 SOC stocks carry the White et al. (2024) correctio
   derived <- read_chr(file.path(root, "data_raw", "white_salinas_2020",
                                 "soc_stocks_0_30cm_corrected_2024.csv"))
   obs <- read_chr(obs_path)
-  obs <- obs[obs$dataset_id == "white_salinas_2020" & obs$variable == "SOC_stock_Mg_ha", ]
+  obs <- obs[obs$dataset_id == "white_salinas_2020" & obs$variable == "soil_organic_carbon_content", ]
   key <- function(d) paste(d$treatment_id, d$replicate_id, d$study_year)
 
   expect_equal(nrow(derived), 288L)
@@ -39,7 +39,7 @@ test_that("white_salinas_2020 cover crop biomass matches the Fig. 5 digitizer ou
                                   "brennan_boyd_2012_fig5_digitized.csv"))
   obs <- read_chr(obs_path)
   obs <- obs[obs$dataset_id == "white_salinas_2020" &
-               obs$variable == "cover_crop_shoot_dry_matter_Mg_ha", ]
+               obs$variable == "aboveground_dry_biomass", ]
   key <- function(treatment_id, year) paste(treatment_id, year)
 
   expect_equal(nrow(digitized), 48L)

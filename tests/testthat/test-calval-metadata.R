@@ -18,9 +18,9 @@ test_that("white_salinas_2020 total N and nitrate-N rows carry units and level",
   skip_if_not(file.exists(obs_path), "observations not generated yet")
   obs <- read_chr(obs_path)
   n_rows <- obs[obs$dataset_id == "white_salinas_2020" &
-                  obs$variable %in% c("total_N_conc_mg_kg", "nitrate_N_mg_kg"), ]
-  units <- c(total_N_conc_mg_kg = "mg N kg-1 soil",
-             nitrate_N_mg_kg = "mg NO3-N kg-1 soil")
+                  obs$variable %in% c("soil_total_nitrogen_concentration", "soil_nitrate_nitrogen_concentration"), ]
+  units <- c(soil_total_nitrogen_concentration = "mg N kg-1 soil",
+             soil_nitrate_nitrogen_concentration = "mg NO3-N kg-1 soil")
 
   expect_equal(nrow(n_rows), 216L)
   expect_equal(as.vector(table(n_rows$variable)[names(units)]), c(108L, 108L))

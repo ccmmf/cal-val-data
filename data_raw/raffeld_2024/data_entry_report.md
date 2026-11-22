@@ -23,10 +23,10 @@ the Wisconsin trial and is out of scope.
 
 The Raffeld deposit preserves the campaign, treatment, plot, point, and depth
 keys needed to pair carbon concentrations with bulk density in `Original_data`.
-In the separately curated `russell_ranch_tautges_2019` data, only the E or W
-suffix of some plot labels survived transcription, and matching carbon to bulk
-density on the curated plot identifier and depth succeeds for only 2.3 percent
-of carbon rows.
+The separately curated `russell_ranch_tautges_2019` data now carry the same plot
+labels, but its carbon and bulk density rarely share a campaign: on plot, year and
+depth they pair for 279 of 2,180 carbon rows (12.8 percent) with the east and west
+halves pooled, and there is no 1993 bulk density.
 
 The Raffeld files also provide harmonized 1993 and 2012 depth increments and
 bulk densities ranging from 1.01 to 1.76 g/cm3. By comparison, the Century
@@ -94,17 +94,22 @@ to `RW + N`, `RWL` to `RW + WCC`, `CMT` to `CMT`, `LMT` to `CMT + WCC`, and
 and repository treatment identifier.
 
 The output contains 96 rows: eight treatments x six plots x two campaigns.
-SOC stock is reported in Mg C ha-1 and equivalent depth in cm. Every value is
-`SCRIPTED_DERIVED`; none was transcribed from a results table.
+SOC stock is reported in Mg C ha-1 as `soil_organic_carbon_content` (named
+`SOC_stock_Mg_ha` before ccmmf/organization#302) and equivalent depth in cm.
+Every value is `SCRIPTED_DERIVED`; none was transcribed from a results table.
+
+`replicate_id` keeps Raffeld's plot label, with an underscore (`1_3`, `1_2W`).
+`russell_ranch_tautges_2019` writes the same plots as the Century Experiment
+files do (`1-3`, `1-2W`), so a join between the two datasets needs the separator
+normalised; after that, all 48 plot labels here appear there.
 
 ## Related data
 
-The separate `russell_ranch_tautges_2019` dataset retains all 20,462 soil,
-nutrient, biomass, and yield observations, including 4,452 bulk-density and
-2,180 total-carbon rows. Those profile observations may support other analyses,
-but they were not inputs to this ESM2 calculation. Full plot identifiers were
-lost in the curated repository workbook, although they remain available in the
-original Wolf et al. Century Experiment files. Carbon and bulk-density campaigns
-also differ in some years, and some bulk densities are implausible. The Raffeld
-files preserve the required identifiers and provide harmonized depth increments
-for this calculation.
+The separate `russell_ranch_tautges_2019` dataset holds 19,790 soil, nutrient,
+biomass, and yield observations, including 4,452 bulk-density and 2,180
+total-carbon rows; all of the carbon rows and all but 1 of the bulk density rows carry
+the Century Experiment plot label (see that report). Those profile
+observations may support other analyses, but they were not inputs to this ESM2
+calculation. Carbon and bulk-density campaigns differ in some years, and some
+bulk densities are implausible. The Raffeld files pair carbon with bulk density
+in each campaign and provide harmonized depth increments for this calculation.

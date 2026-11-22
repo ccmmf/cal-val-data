@@ -49,13 +49,13 @@ test_that("observation repeats stay within the known Russell Ranch rows", {
   obs <- read_resource(dp, root, "observations")
   skip_if(is.null(obs), "observations not generated yet")
   dup <- repeated_rows(obs, resource_named("observations"))
-  where <- "plot ids not carried over, ccmmf/organization#274"
+  where <- "separate Russell Ranch source records that share every curated column; README Known warnings"
   expect_identical(
     setdiff(unique(obs$dataset_id[dup]), "russell_ranch_tautges_2019"),
     character(0),
     info = paste("repeated observation rows outside the known set;", where)
   )
-  expect_lte(sum(dup), 1188)
+  expect_lte(sum(dup), 347)
 })
 
 test_that("management repeats stay within the known Russell Ranch rows", {

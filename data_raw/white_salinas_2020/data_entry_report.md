@@ -102,13 +102,19 @@ biomass rows, see below):
 
 | Variable | Units | Years | Notes |
 |---|---|---|---|
-| SOC stock | Mg C ha⁻¹ | 0–8 | 0–30 cm; corrected for White et al. (2024) |
-| SOC concentration | mg C kg⁻¹ | 0–8 | |
-| Total N concentration | mg N kg⁻¹ | 3–8 | Year 3 `socs_sys5` and `socs_sys7` only; N stocks not ingested |
-| Nitrate-N | mg NO₃-N kg⁻¹ | 3–8 | Year 3 `socs_sys5` and `socs_sys7` only |
+| SOC stock, `soil_organic_carbon_content` | Mg C ha⁻¹ | 0–8 | 0–30 cm; corrected for White et al. (2024) |
+| SOC concentration, `soil_organic_carbon_concentration` | mg C kg⁻¹ | 0–8 | |
+| Total N concentration, `soil_total_nitrogen_concentration` | mg N kg⁻¹ | 3–8 | Year 3 `socs_sys5` and `socs_sys7` only; N stocks not ingested |
+| Nitrate-N, `soil_nitrate_nitrogen_concentration` | mg NO₃-N kg⁻¹ | 3–8 | Year 3 `socs_sys5` and `socs_sys7` only |
 | POXC (labile C) | — | 0, 6, 8 only | not ingested; *Data in Brief* Supplementary Table 3 |
-| Bulk density | g cm⁻³ | 4, 7, 8 | five PLOS ONE systems; the paper measured Years 3 and 7, see Open follow-ups |
-| Cover crop shoot dry matter | Mg ha⁻¹ | 1–8 | season-end, treatment means of 4 plots, `socs_sys3`–`socs_sys8`; read from Brennan and Boyd (2012) Fig. 5 |
+| Bulk density, `soil_bulk_density` | g cm⁻³ | 4, 7, 8 | five PLOS ONE systems; the paper measured Years 3 and 7, see Open follow-ups |
+| Cover crop shoot dry matter, `aboveground_dry_biomass` | Mg ha⁻¹ | 1–8 | season-end, treatment means of 4 plots, `socs_sys3`–`socs_sys8`; read from Brennan and Boyd (2012) Fig. 5 |
+
+Before [ccmmf/organization#302](https://github.com/ccmmf/organization/issues/302) these
+variables were `SOC_stock_Mg_ha`, `SOC_conc_mg_kg`, `total_N_conc_mg_kg`,
+`nitrate_N_mg_kg`, `bulk_density_g_cm3` and `cover_crop_shoot_dry_matter_Mg_ha`. All
+but `soil_organic_carbon_concentration` also hold other datasets' rows, so filter on
+`dataset_id`.
 
 SOC stock and SOC concentration are block-level in every year: 288 rows
 each (8 systems × 4 blocks × Years 0–8), from *Data in Brief*
@@ -156,9 +162,11 @@ Years 6–8. No rows come from the PLOS ONE S1 Table.
 
 ### Cover crop biomass (Brennan and Boyd 2012)
 
-48 rows of `cover_crop_shoot_dry_matter_Mg_ha`: season-end (February or
-March) total shoot dry matter for `socs_sys3`–`socs_sys8`, Years 1–8, each
-the mean of the 4 blocks (`n = 4`, `observation_level = treatment_mean`).
+48 rows of `aboveground_dry_biomass` (curated as
+`cover_crop_shoot_dry_matter_Mg_ha` until organization#302), with the cover
+crop in `crop`: season-end (February or March) total shoot dry matter for
+`socs_sys3`–`socs_sys8`, Years 1–8, each the mean of the 4 blocks (`n = 4`,
+`observation_level = treatment_mean`).
 Shoots were hand clipped from one 50 × 100 cm quadrat per plot and oven
 dried at 65 °C (method `cover_crop_quadrat_clipping`). Year *k* is the
 winter cover crop planted in fall 2002 + *k*; dates are the season-end
@@ -493,7 +501,10 @@ fertilizer rows carry `derived=total_minus_pelleted`.
   its 360 N values read back with a thousands separator (`1,300`). The 108
   of each for `socs_sys3`, `socs_sys6` and `socs_sys8` are only in
   Supplementary Table 1, whose header cell D4 ends in two non-breaking
-  spaces. Update the two `variables` notes when they land.
+  spaces. Update the years under Variables Measured when they land. The
+  `variables` notes that also gave them were merged into
+  `soil_total_nitrogen_concentration` and `soil_nitrate_nitrogen_concentration`
+  by organization#302, and those notes do not list years.
 - Check the Year 0 and Year 6 observation dates. If the 0–30 cm composite
   samples were not taken on 13 October 2003 and 30 October 2009, give
   those rows the fall window used in the other years.

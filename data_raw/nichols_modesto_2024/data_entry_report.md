@@ -59,10 +59,16 @@ Ingested to the `observations` tab in reported units:
 
 | Variable | Units | Years | Notes |
 |---|---|---|---|
-| N₂O flux | g N₂O-N ha⁻¹ day⁻¹ | 2018–2019 | closed static chamber, 9 dates (Dec 2018 – Aug 2019) |
-| Total soil C | % dry weight | 2019 | single timepoint (Aug 2019), 0–30 cm; a concentration, not a stock (see caveats) |
-| Total soil N | per source (conc. or %) | 2019 | single timepoint (Aug 2019) |
-| Bulk density | g cm⁻³ | 2019 | single timepoint (Aug 2019); sampling depth not reported, so `min_depth` / `max_depth` are NA (see caveats) |
+| N₂O flux, `N2O_flux` | g N₂O-N ha⁻¹ day⁻¹ | 2018–2019 | closed static chamber, 9 dates (Dec 2018 – Aug 2019) |
+| Total soil C, `soil_total_carbon_concentration` | % dry weight | 2019 | single timepoint (Aug 2019), 0–30 cm; a concentration, not a stock (see caveats) |
+| Total soil N, `soil_total_nitrogen_concentration` | % dry weight | 2019 | single timepoint (Aug 2019) |
+| Bulk density, `soil_bulk_density` | g cm⁻³ | 2019 | single timepoint (Aug 2019); sampling depth not reported, so `min_depth` / `max_depth` are NA (see caveats) |
+
+Before [ccmmf/organization#302](https://github.com/ccmmf/organization/issues/302) these
+were `N2O_flux_g_N_ha_d`, `total_C_pct`, `total_N_pct` and `bulk_density_g_cm3`.
+`N2O_flux` now also holds the Bouldin chamber rows, which are N₂O mass rather than
+N₂O-N and annual values rather than single dates, so select Modesto rows by
+`dataset_id` (or `sitename`) and check `reported_units`.
 
 N₂O is the trajectory variable (9 flux dates across a full season). The
 soil variables (total C, total N, bulk density) are **single-timepoint**
